@@ -48,8 +48,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ServiceLocationPage({ params }: PageProps) {
   const { service: serviceSlug, mesto: citySlug } = await params;
 
-  if (serviceSlug === 'stavba-domu-na-kluc' || serviceSlug === 'rekonstrukcia-rodinneho-domu' || serviceSlug === 'rodinne-domy') {
+  if (serviceSlug === 'stavba-domu-na-kluc' || serviceSlug === 'rekonstrukcia-rodinneho-domu') {
     redirect(`/sluzby/rodinne-domy/${serviceSlug}/${citySlug}`);
+  }
+  if (serviceSlug === 'rodinne-domy') {
+    redirect(`/sluzby/rodinne-domy/stavba-domu-na-kluc/${citySlug}`);
   }
 
   const city = getCityBySlug(citySlug);

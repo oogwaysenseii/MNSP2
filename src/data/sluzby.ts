@@ -2,31 +2,31 @@ export const sluzby = [
   { 
     id: 'rodinne-domy', 
     name: 'Rodinné domy',
-    description: 'Kompletná výstavba moderných nízkoenergetických dom...',
+    description: 'Kompletná výstavba a rekonštrukcie moderných rodinných domov.',
     imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80'
   },
   { 
     id: 'rezidencne-budovy', 
     name: 'Rezidenčné budovy',
-    description: 'Komplexná výstavba bytových domov, apartmánových komplex...',
+    description: 'Komplexná výstavba bytových domov a polyfunkčných objektov.',
     imageUrl: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop&q=80'
   },
   { 
     id: 'komercna-vystavba', 
     name: 'Komerčná výstavba',
-    description: 'Moderné administratívne budovy, retailové prevádzky, reštaurácie a...',
+    description: 'Moderné administratívne budovy, sídla, prevádzky, predajne, showroomy či obchodné centrá.',
     imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop&q=80'
   },
   { 
     id: 'priemyselne-objekty', 
     name: 'Priemyselné objekty',
-    description: 'Skladové haly s veľkým rozpätím, logistické centrá, výrobné závody a kovov...',
+    description: 'Skladové haly, logistické centrá, výrobné závody ...',
     imageUrl: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop&q=80'
   },
   { 
     id: 'obcianske-stavby', 
     name: 'Občianske stavby',
-    description: 'Oporné systémy, inžinierske siete, prístupové cesty,...',
+    description: 'Školy, nemocnice, domovy sociálnych služieb, úrady ...',
     imageUrl: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80'
   },
   { id: 'zakladanie-stavieb', name: 'Zakladanie stavieb', description: 'Profesionálna realizácia.', imageUrl: 'https://picsum.photos/seed/zaklady/600/400' },
