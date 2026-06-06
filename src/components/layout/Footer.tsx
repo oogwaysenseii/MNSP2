@@ -1,0 +1,70 @@
+import Link from 'next/link';
+import { Container } from '../ui/Container';
+
+export function Footer() {
+  return (
+    <footer className="border-t border-gray-200 py-16 text-sm text-gray-500 mt-12 bg-white">
+      <Container className="max-w-[1400px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
+          {/* Column 1: Description */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-black tracking-tight mb-6">Stavebná firma</h3>
+            <p className="leading-relaxed">
+              Poskytujeme komplexné stavebné riešenia od návrhu až po realizáciu na kľúč, s dôrazom na kvalitu, inováciu a detail.
+            </p>
+          </div>
+
+          {/* Column 2: Links */}
+          <div>
+            <h4 className="text-[11px] font-mono tracking-widest text-black font-bold uppercase mb-6">Rýchle odkazy</h4>
+            <ul className="space-y-3">
+              <li><Link href="/" className="hover:text-amber-600 transition-colors">Domov</Link></li>
+              <li><Link href="/o-nas" className="hover:text-amber-600 transition-colors">O nás</Link></li>
+              <li><Link href="/sluzby" className="hover:text-amber-600 transition-colors">Služby</Link></li>
+              <li><Link href="/portfolio" className="hover:text-amber-600 transition-colors">Portfólio</Link></li>
+              <li><Link href="/kontakt" className="hover:text-amber-600 transition-colors">Kontakt</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Services */}
+          <div>
+            <h4 className="text-[11px] font-mono tracking-widest text-black font-bold uppercase mb-6">Naše služby</h4>
+            <ul className="space-y-3">
+              <li><Link href="/sluzby/rodinne-domy" className="hover:text-amber-600 transition-colors">Rodinné domy</Link></li>
+              <li><Link href="/sluzby/komercna-vystavba" className="hover:text-amber-600 transition-colors">Komerčná výstavba</Link></li>
+              <li><Link href="/sluzby/rezidencne-budovy" className="hover:text-amber-600 transition-colors">Rezidenčné budovy</Link></li>
+              <li><Link href="/sluzby/rekonstrukcie" className="hover:text-amber-600 transition-colors">Rekonštrukcie</Link></li>
+              <li><Link href="/sluzby/priemyselne-objekty" className="hover:text-amber-600 transition-colors">Priemyselné objekty</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 4: Contact */}
+          <div>
+            <h4 className="text-[11px] font-mono tracking-widest text-black font-bold uppercase mb-6">Kontakt</h4>
+            <ul className="space-y-3">
+              <li>
+                <a href="mailto:info@stavebnafirma.sk" className="hover:text-amber-600 transition-colors">info@stavebnafirma.sk</a>
+              </li>
+              <li>
+                <a href="tel:+421900111222" className="hover:text-amber-600 transition-colors">+421 900 111 222</a>
+              </li>
+              <li className="pt-2">
+                Stavebná ulica 123<br />
+                821 00 Bratislava<br />
+                Slovensko
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="border-t border-gray-100 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between">
+          <p>&copy; {new Date().getFullYear()} Stavebná firma. Všetky práva vyhradené.</p>
+          <div className="flex space-x-6 mt-4 md:mt-0">
+            <Link href="/ochrana-sukromia" className="hover:text-amber-600 transition-colors">Ochrana súkromia</Link>
+            <Link href="/obchodne-podmienky" className="hover:text-amber-600 transition-colors">Podmienky</Link>
+          </div>
+        </div>
+      </Container>
+    </footer>
+  );
+}
