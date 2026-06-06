@@ -84,7 +84,7 @@ export function RodinneDomyServiceDetail({
   const calculatedEstimate = Math.round(projectSize * baseRate * gradeModifier);
 
   return (
-    <div className="bg-white text-zinc-900 pb-16 pt-18">
+    <div className="bg-white text-zinc-900  pt-18">
       {/* 1. IMMERSIVE HERO WITH CATEGORY BANNER */}
       <div className="relative h-[45vh] min-h-[350px] bg-zinc-950 text-white overflow-hidden flex items-end">
         <div className="absolute inset-0">
@@ -428,13 +428,21 @@ export function RodinneDomyServiceDetail({
         </div>
       </div>
 
+      {/* 3. COMPLETED PAST PROJECTS IN THIS DIVISION */}
+      <Projects
+          defaultCategory={category}
+          hideFilters={true}
+          titleSk={`Relevatné realizácie z portfólia`}
+          subtitleSk="Pozrite si ukážky našej odbornej práce na podobných projektoch."
+      />
+
       {!hideBlog && (
         <BlogSection filterCategory={blogFilterCategory || "Rezidenčné"} compact={true} />
       )}
 
       {/* 2.6. OTHER LOCATIONS */}
       {serviceSlug && (
-        <div className="max-w-7xl mx-auto px-6 mt-16 space-y-8">
+        <div className="max-w-7xl mx-auto px-6 mt-10 mb-10 space-y-8">
           <div className="bg-zinc-50 border border-zinc-200 p-8 ">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
               <h2 className="text-xl font-display font-bold text-zinc-900 flex items-center gap-2">
@@ -474,13 +482,6 @@ export function RodinneDomyServiceDetail({
 
       {customFaq}
 
-      {/* 3. COMPLETED PAST PROJECTS IN THIS DIVISION */}
-      <Projects
-        defaultCategory={category}
-        hideFilters={true}
-        titleSk={`Relevatné realizácie z portfólia`}
-        subtitleSk="Pozrite si ukážky našej odbornej práce na podobných projektoch."
-      />
 
        <CTA 
         title={ctaTitle}

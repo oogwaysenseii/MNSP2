@@ -20,14 +20,14 @@ import { CITIES } from "@/src/data/cities";
 
 export default function ResidentialHubPage() {
   return (
-    <div className="bg-white text-zinc-900 pb-24">
+    <div className="bg-white text-zinc-900 ">
       {/* 1. IMMERSIVE HERO WITH CATEGORY BANNER */}
       <div className="relative h-[50vh] min-h-[400px] bg-zinc-950 text-white overflow-hidden flex items-end">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+            src="https://images.unsplash.com/photo-1670589953882-b94c9cb380f5?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Stavba a rekonštrukcia rodinných domov"
-            className="w-full h-full object-cover opacity-50"
+            className="w-full h-full object-cover object-[center_25%] opacity-50"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-950/40 to-zinc-950/70" />
         </div>
@@ -40,15 +40,14 @@ export default function ResidentialHubPage() {
             Výstavba a rekonštrukcie rodinných domov
           </h1>
           <p className="max-w-2xl text-zinc-300 text-sm md:text-base leading-relaxed">
-            Naša divízia rodinných domov sa špecializuje na výstavbu na kľúč a komplexné rekonštrukcie. 
-            Prinášame precíznosť, kvalitu a moderné technológie do každého projektu.
+            Od výstavby nových domov až po kompletné rekonštrukcie poskytujeme kvalitné remeselné spracovanie a riešenia na mieru.
           </p>
         </div>
       </div>
 
       {/* 2. SERVICES SPLIT SECTION */}
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+      <div className="max-w-7xl mx-auto px-6 mt-10 mb-10">
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-10">
           <h2 className="text-3xl md:text-4xl font-display font-extrabold text-zinc-950 tracking-tight">
             Naše služby pre rodinné domy
           </h2>
@@ -91,10 +90,11 @@ export default function ResidentialHubPage() {
                   </p>
                   <ul className="space-y-2.5 mb-8">
                     {[
-                      "Kompletné inžinierske siete a základy",
-                      "Hrubá stavba a murárske práce",
-                      "Strechy, fasády a okná",
-                      "Interiérové úpravy a odovzdanie na kľúč",
+                      "Základy a prípojky",
+                      "Hrubá stavba (murárske práce, betonáže, strechy, okná a dvere ...)",
+                      "Kompletné rozvody (kúrenie, voda, elektrina ...)",
+                      "Interiér (Sadrokartón, omietky, potery, inštalácie, obklady, dlažby...)",
+                      "Exteriér (Fasády, zámkové dlažby, ploty, prístrešky, garáže ...)",
                     ].map((feat, idx) => (
                       <li
                         key={idx}
@@ -148,9 +148,10 @@ export default function ResidentialHubPage() {
                   <ul className="space-y-2.5 mb-8">
                     {[
                       "Búracie práce a likvidácia odpadu",
-                      "Nové rozvody a inštalácie (voda, elektrina)",
-                      "Zateplenie a nové fasády",
-                      "Moderné kúpeľne a zmeny dispozície",
+                      "Zmeny dispozície a statické úpravy",
+                      "Nové rozvody a inštalácie (kúrenie, voda, elektrina ...)",
+                      "Rekonštrukcia interiéru (Sadrokartón, omietky, potery, inštalácie, obklady, dlažby...)",
+                      "Rekonštrukcia exteriéru(Exteriér (Fasády, zámkové dlažby, ploty, prístrešky, garáže ...)",
                     ].map((feat, idx) => (
                       <li
                         key={idx}
@@ -216,12 +217,12 @@ export default function ResidentialHubPage() {
       />
 
       {/* 5. BLOG SECTION */}
-      <div className="border-t border-zinc-200">
+      <div>
         <BlogSection compact={true} filterCategory="Pasívny dom" />
       </div>
 
       {/* 6. LOCATIONS BLOCK */}
-      <div className="max-w-7xl mx-auto px-6 mt-16 space-y-8">
+      <div className="max-w-7xl mx-auto px-6 mt-10 mb-10 space-y-8">
         <div className="bg-zinc-50 border border-zinc-200 p-8 ">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <h2 className="text-xl font-display font-bold text-zinc-900 flex items-center gap-2">

@@ -187,15 +187,15 @@ export default async function StavbaLocationPage({ params }: PageProps) {
         ]}
         options={[
           {
-            label: "Štandardný variant (Plastové okná trojsklo, dubové podlahy, klasické omietky)",
+            label: "Ekonomický variant",
             premiumModifier: 1.0,
           },
           {
-            label: "Prémiový variant (Hliníkové okná, podlahové chladenie, veľkoformátový gres)",
+            label: "Zlatá stredná cesta",
             premiumModifier: 1.25,
           },
           {
-            label: "Pasívny dom (Tepelné čerpadlo, riadená rekuperácia, smart fotovoltika)",
+            label: "Prémiový variant",
             premiumModifier: 1.45,
           },
         ]}

@@ -89,7 +89,7 @@ export function Projects({
   };
 
   return (
-    <section id="portfolio-container" className="py-24 sm:py-16 bg-white overflow-hidden">
+    <section id="portfolio-container" className="py-10 bg-white overflow-hidden">
       <Container className="max-w-[1400px]">
         
         {/* HEADER TOP ROW */}
