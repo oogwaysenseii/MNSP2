@@ -70,7 +70,7 @@ export default async function StavbaLocationPage({ params }: PageProps) {
         {city.slug === 'banska-bystrica' && (
           <div className="pt-4 mt-4 border-t border-zinc-200/60">
             <strong className="text-sm text-zinc-900 block mb-2">
-              {`Pôsobíme v oblasti ${city.name} a okolí:`}
+              {`Pôsobíme v celej oblasti ${city.name} a okolí:`}
             </strong>
             <ul className="flex flex-wrap gap-2">
               {["Badín", "Selce", "Slovenská Ľupča", "Harmanec", "Tajov", "Kynceľová"].map((mun, idx) => (
@@ -147,6 +147,10 @@ export default async function StavbaLocationPage({ params }: PageProps) {
       <RodinneDomyServiceDetail
         title={`Stavba domu na kľúč v ${city.locative}`}
         breadcrumbTitle={city.name}
+        parentBreadcrumbTitle="Stavba domu na kľúč"
+        parentBreadcrumbUrl="/sluzby/rodinne-domy/stavba-domu-na-kluc"
+        subtitle1={`Aj v ${city.locative} vám postavíme váš vysnívaný dom bez námahy.`}
+        subtitle2="Projekt vám vypracujeme, dom vám postavíme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás."
         fullDesc={`Staviame rodinné domy podľa požiadaviek a potrieb našich klientov v regióne ${city.name}. Spolupracujeme s architektmi a inžiniermi, aby výsledok zodpovedal vašim predstavám aj vysokým nárokom na kvalitu.\n\nPri výstavbe používame výhradne kvalitné a overené materiály, dbáme na dostatočnú hydroizoláciu, poctivú tepelnú izoláciu a integráciu moderných technológií.`}
         imageUrl="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80"
         features={[

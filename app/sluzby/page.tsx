@@ -61,10 +61,10 @@ export default function SluzbyPage() {
       <div className="max-w-[1400px] mx-auto px-6">
         <div className="mb-14 space-y-3">
           <span className="text-xs font-mono tracking-widest text-amber-600 font-bold uppercase block">
-            REMESLÁ
+            MASTERSKÉ REMESLÁ
           </span>
           <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-neutral-950 tracking-tight">
-            Remeslá a špeciálne stavebné služby
+            Špeciálne Stavebné Služby
           </h2>
           <p className="text-zinc-500 text-sm max-w-xl">
             Naše detailné remeselné práce, realizované certifikovanými odborníkmi, kde sa kvalita stretáva so stovkami hodín skúseností.
@@ -110,14 +110,12 @@ export default function SluzbyPage() {
 
                     {/* BULLET HIGHLIGHTS (Mocked or pulled if we had an array, here we just show 2 generic ones for illustration based on user's mockup) */}
                     <div className="mt-5 space-y-1.5 pt-4 border-t border-zinc-200">
-                      <div className="flex items-start gap-1.5 text-[11px] text-zinc-600">
-                        <CheckCircle className="w-3 h-3 text-amber-500 shrink-0 mt-0.5" />
-                        <span className="line-clamp-1">Precízna remeselná kvalita</span>
-                      </div>
-                      <div className="flex items-start gap-1.5 text-[11px] text-zinc-600">
-                        <CheckCircle className="w-3 h-3 text-amber-500 shrink-0 mt-0.5" />
-                        <span className="line-clamp-1">Dlhoročné skúsenosti tímu</span>
-                      </div>
+                      {sub.highlights?.map((highlight, hIdx) => (
+                        <div key={hIdx} className="flex items-start gap-1.5 text-[11px] text-zinc-600">
+                          <CheckCircle className="w-3 h-3 text-amber-500 shrink-0 mt-0.5" />
+                          <span className="line-clamp-1">{highlight}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
 

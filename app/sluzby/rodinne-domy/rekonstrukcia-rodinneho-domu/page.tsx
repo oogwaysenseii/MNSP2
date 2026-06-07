@@ -8,6 +8,8 @@ export default function RekonstrukciaDomuPage() {
     <RodinneDomyServiceDetail
       title="Rekonštrukcia rodinného domu"
       breadcrumbTitle="Rekonštrukcia domu"
+      subtitle1="Postavte si svoj vysnívaný dom bez námahy."
+      subtitle2="Projekt vám vypracujeme, dom vám postavíme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás."
       fullDesc={`Naša divízia prémiových rekonštrukcií prináša špičkovú kvalitu do starších nehnuteľností. Zvyšujeme životnú úroveň pôvodných domov prostredníctvom moderných technológií, energetických úspor a rešpektovania statiky pôvodnej budovy.\n\nČi už potrebujete komplexné statické spevnenie nosných stien, výmenu starých inštalácií, precízne zateplenie, alebo kompletnú premenu interiérových dispozícií na kľúč, naši remeselníci garantujú najvyššiu stavebnú presnosť.`}
       imageUrl="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=1600&q=80"
       features={[

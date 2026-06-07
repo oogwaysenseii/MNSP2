@@ -8,6 +8,8 @@ export default function StavbaDomuNaKlucPage() {
     <RodinneDomyServiceDetail
       title="Stavba domu na kľúč"
       breadcrumbTitle="Stavba domu na kľúč"
+      subtitle1="Postavte si svoj vysnívaný dom bez námahy."
+      subtitle2="Projekt vám vypracujeme, dom vám postavíme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás."
       fullDesc={`Staviame rodinné domy podľa požiadaviek a potrieb našich klientov. Spolupracujeme s architektmi a inžiniermi, aby výsledok zodpovedal vašim predstavám aj vysokým nárokom na kvalitu.\n\nPri výstavbe používame výhradne kvalitné a overené materiály, dbáme na dostatočnú hydroizoláciu, poctivú tepelnú izoláciu a integráciu moderných technológií.`}
       imageUrl="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80"
       features={[

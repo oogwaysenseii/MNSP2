@@ -109,7 +109,7 @@ export default async function ServiceLocationPage({ params }: PageProps) {
         {city.slug === 'banska-bystrica' && (
           <div className="pt-4 mt-4 border-t border-zinc-200/60">
             <strong className="text-sm text-zinc-900 block mb-2">
-              {`Pôsobíme v oblasti ${city.name} a okolí:`}
+              {`Pôsobíme v celej oblasti ${city.name} a okolí:`}
             </strong>
             <ul className="flex flex-wrap gap-2">
               {["Badín", "Selce", "Slovenská Ľupča", "Harmanec", "Tajov", "Kynceľová"].map((mun, idx) => (

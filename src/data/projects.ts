@@ -51,7 +51,7 @@ export const projectsData: Project[] = [
     id: 'obchvat-most',
     title: 'Rekonštrukcia rodidnného domu Hriňová',
     description: 'Dodávka a realizácia monolitických železobetónových konštrukcií a pilierov na rozostavanom úseku bratislavského obchvatu.',
-    category: 'residential',
+    category: 'civil',
     location: 'Hriňová',
     year: 2025,
     duration: '12 mesiacov',

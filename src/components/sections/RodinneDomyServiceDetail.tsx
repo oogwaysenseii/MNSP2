@@ -52,6 +52,10 @@ export interface ServiceDetailProps {
   blogFilterCategory?: string;
   customLocationTop?: React.ReactNode;
   customFaq?: React.ReactNode;
+  parentBreadcrumbTitle?: string;
+  parentBreadcrumbUrl?: string;
+  subtitle1?: string;
+  subtitle2?: string;
 }
 
 export function RodinneDomyServiceDetail({
@@ -76,6 +80,10 @@ export function RodinneDomyServiceDetail({
   serviceSlug,
   customLocationTop,
   customFaq,
+  parentBreadcrumbTitle,
+  parentBreadcrumbUrl,
+  subtitle1,
+  subtitle2,
 }: ServiceDetailProps) {
   const [projectSize, setProjectSize] = useState(defaultSize);
   const [selectedSpecIndex, setSelectedSpecIndex] = useState(0);
@@ -111,6 +119,14 @@ export function RodinneDomyServiceDetail({
               Rodinné domy
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-zinc-500" />
+            {parentBreadcrumbTitle && parentBreadcrumbUrl && (
+              <>
+                <Link href={parentBreadcrumbUrl} className="hover:underline hover:text-white transition-colors uppercase line-clamp-1">
+                  {parentBreadcrumbTitle}
+                </Link>
+                <ChevronRight className="w-3.5 h-3.5 text-zinc-500" />
+              </>
+            )}
             <span className="text-white uppercase line-clamp-1">{breadcrumbTitle}</span>
           </div>
 
@@ -138,8 +154,13 @@ export function RodinneDomyServiceDetail({
         <div className="lg:col-span-8 space-y-12">
           <div className="space-y-6">
             <h3 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-zinc-950">
-              {title}
+              {subtitle1 || title}
             </h3>
+            {subtitle2 && (
+              <p className="text-zinc-800 text-sm sm:text-base font-medium leading-relaxed">
+                {subtitle2}
+              </p>
+            )}
             <p className="text-zinc-600 text-sm sm:text-base leading-relaxed whitespace-pre-wrap">
               {fullDesc}
             </p>

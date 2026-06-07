@@ -70,7 +70,7 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
         {city.slug === 'banska-bystrica' && (
           <div className="pt-4 mt-4 border-t border-zinc-200/60">
             <strong className="text-sm text-zinc-900 block mb-2">
-              {`Pôsobíme v oblasti ${city.name} a okolí:`}
+              {`Pôsobíme v celej oblasti ${city.name} a okolí:`}
             </strong>
             <ul className="flex flex-wrap gap-2">
               {["Badín", "Selce", "Slovenská Ľupča", "Harmanec", "Tajov", "Kynceľová"].map((mun, idx) => (
@@ -147,6 +147,10 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
       <RodinneDomyServiceDetail
         title={`Rekonštrukcia domov v ${city.locative}`}
         breadcrumbTitle={city.name}
+        parentBreadcrumbTitle="Rekonštrukcia domu"
+        parentBreadcrumbUrl="/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu"
+        subtitle1={`Aj v ${city.locative} vám postavíme váš vysnívaný dom bez námahy.`}
+        subtitle2="Projekt vám vypracujeme, dom vám postavíme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás."
         fullDesc={`Realizujeme kompletné alebo prebiehajúce rekonštrukcie rodinných domov v meste a okolí ${city.name}. Spolupracujeme s tými najlepšími v obore s ohľadom na aktuálne normy, statiku a historickú hodnotu budov.\n\nSme prispôsobený na riadenie komplikovaných búracich prác u starých objektov, vstavby podkroví, sanácií muriva, nadstavbám a podobne.`}
         imageUrl="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80"
         features={[
