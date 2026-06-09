@@ -171,7 +171,7 @@ export function RodinneDomyServiceDetail({
           {/* CHECKMARKS FOR CAPABILITIES */}
           <div className="bg-zinc-50 p-6 sm:p-8 border border-zinc-150 space-y-6">
             <h4 className="text-xs font-mono text-zinc-500 font-bold tracking-wider uppercase mb-2">
-              Hlavné benefity a vlastnosti
+              Hlavné benefity spolupráce s nami
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                {features.map((feat, idx) => (
@@ -227,10 +227,10 @@ export function RodinneDomyServiceDetail({
           <div className="space-y-8">
             <div className="space-y-2">
               <span className="text-xs font-mono font-bold text-amber-600 tracking-wider uppercase block">
-                NÁŠ ŠTRUKTÚROVANÝ PROCES
+                Ako to prebieha ?
               </span>
               <h4 className="text-xl sm:text-2xl font-display font-extrabold text-zinc-900 tracking-tight">
-                Zabezpečujeme proces od začiatku do konca
+                Priebeh výstavby rodinného domu
               </h4>
             </div>
 
@@ -453,7 +453,7 @@ export function RodinneDomyServiceDetail({
       <Projects
           defaultCategory={category}
           hideFilters={true}
-          titleSk={`Relevatné realizácie z portfólia`}
+          titleSk={`Relevantné realizácie z portfólia`}
           subtitleSk="Pozrite si ukážky našej odbornej práce na podobných projektoch."
       />
 

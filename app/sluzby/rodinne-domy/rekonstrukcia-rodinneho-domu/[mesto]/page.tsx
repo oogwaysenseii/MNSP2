@@ -67,13 +67,13 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
           V {city.locative} realizujeme kompletné alebo čiastočné rekonštrukcie rodinných domov, nadstavby, prístavby a modernizácie. Naše stavebné kapacity pokrývajú celé mesto a priľahlé oblasti. Zabezpečujeme plynulý chod prác a odborné riešenia pre všetky typy domov.
         </p>
 
-        {city.slug === 'banska-bystrica' && (
+        {city.surrounding && city.surrounding.length > 0 && (
           <div className="pt-4 mt-4 border-t border-zinc-200/60">
             <strong className="text-sm text-zinc-900 block mb-2">
               {`Pôsobíme v celej oblasti ${city.name} a okolí:`}
             </strong>
             <ul className="flex flex-wrap gap-2">
-              {["Badín", "Selce", "Slovenská Ľupča", "Harmanec", "Tajov", "Kynceľová"].map((mun, idx) => (
+              {city.surrounding.map((mun, idx) => (
                 <li key={idx} className="text-xs bg-zinc-150 px-3 py-1.5 text-zinc-700 border border-zinc-200">
                   {mun}
                 </li>

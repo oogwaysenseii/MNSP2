@@ -66,14 +66,14 @@ export default async function StavbaLocationPage({ params }: PageProps) {
         <p className="text-zinc-700 leading-relaxed text-sm sm:text-base font-medium">
           V {city.locative} realizujeme výstavbu rodinných domov, základové dosky, hrubé stavby a domy na kľúč. Naše stavebné kapacity pokrývajú celé mesto a priľahlé svahovité pozemky, kde zúročujeme naše inžinierske skúsenosti.
         </p>
-        
-        {city.slug === 'banska-bystrica' && (
+
+        {city.surrounding && city.surrounding.length > 0 && (
           <div className="pt-4 mt-4 border-t border-zinc-200/60">
             <strong className="text-sm text-zinc-900 block mb-2">
               {`Pôsobíme v celej oblasti ${city.name} a okolí:`}
             </strong>
             <ul className="flex flex-wrap gap-2">
-              {["Badín", "Selce", "Slovenská Ľupča", "Harmanec", "Tajov", "Kynceľová"].map((mun, idx) => (
+              {city.surrounding.map((mun, idx) => (
                 <li key={idx} className="text-xs bg-zinc-150 px-3 py-1.5 text-zinc-700 border border-zinc-200">
                   {mun}
                 </li>
@@ -154,11 +154,10 @@ export default async function StavbaLocationPage({ params }: PageProps) {
         fullDesc={`Staviame rodinné domy podľa požiadaviek a potrieb našich klientov v regióne ${city.name}. Spolupracujeme s architektmi a inžiniermi, aby výsledok zodpovedal vašim predstavám aj vysokým nárokom na kvalitu.\n\nPri výstavbe používame výhradne kvalitné a overené materiály, dbáme na dostatočnú hydroizoláciu, poctivú tepelnú izoláciu a integráciu moderných technológií.`}
         imageUrl="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80"
         features={[
-          "Kompletné inžinierske projektovanie a zakázková architektúra",
-          "Stavba obvodových stien s vysokým tepelným odporom",
-          "Integrácia fotovoltických systémov a rekuperácie",
-          "Certifikované zakladanie stavby s plnou zárukou",
-          "Prémiové interiérové práce a finálne dispozičné úpravy",
+          "Dlhoročné skúsenosti s výstavbou rodinných domov",
+          "Kompletná realizácia, všetko vybavíme za vás",
+          "Profesionálny dohľad nad každou fázou výstavby",
+          "Transparentná komunikácia a férový prístup",
         ]}
         stages={[
           {

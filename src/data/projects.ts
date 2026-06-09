@@ -15,7 +15,7 @@ export interface Project {
 export const projectsData: Project[] = [
 
   {
-    id: 'byty-raca',
+    id: 'rekonstrukcia-domovu-socialnych-sluzieb-detva',
     title: 'Zariadenie sociálnych služieb Detva',
     description: 'Výstavba 3 bytových domov vrátane inžinierskych sietí, opornej steny a podzemného parkovania pre obyvateľov.',
     category: 'civil',
@@ -26,10 +26,10 @@ export const projectsData: Project[] = [
     imageUrl: '/Domov-socialnych-sluzieb-Detva.webp'
   },
   {
-    id: 'logisticke-centrum',
+    id: 'rekonstrukcia-novohradskeho-muzea-lucenec',
     title: 'Novohradské múzeum a galéria Lučenec',
     description: 'Realizácia základov, oporných múrov a monolitických konštrukcií pre novú rozsiahlu skladovú halu a prľahlé administratívne priestory.',
-    category: 'industrial',
+    category: 'civil',
     location: 'Lučenec',
     year: 2025,
     duration: '6 mesiacov',
@@ -37,10 +37,10 @@ export const projectsData: Project[] = [
     imageUrl: '/Rekonstrukcia-novohradskeho-muzea-Lucenec.webp'
   },
   {
-    id: 'kancelarie-apollo',
+    id: 'rekonstrukcia-domovu-dochodcov-senior-active-hrinova-n-o',
     title: 'Zariadenie pre seniorov a domov sociálnych služieb SENIOR ACTIVE Hriňová',
     description: 'Rekonštrukcia a modernizácia kancelárskych priestorov na 3 podlažiach do prémiového štandardu s využitím moderných materiálov.',
-    category: 'commercial',
+    category: 'civil',
     location: 'Hriňová',
     year: 2025,
     duration: '4 mesiace',
@@ -48,10 +48,10 @@ export const projectsData: Project[] = [
     imageUrl: '/rekonstrukcia-domovu-dochodcov-senior-active-hrinova.webp'
   },
   {
-    id: 'obchvat-most',
+    id: 'rekonstrukcia-rodinneho-domu-hrinova',
     title: 'Rekonštrukcia rodidnného domu Hriňová',
     description: 'Dodávka a realizácia monolitických železobetónových konštrukcií a pilierov na rozostavanom úseku bratislavského obchvatu.',
-    category: 'civil',
+    category: 'residential',
     location: 'Hriňová',
     year: 2025,
     duration: '12 mesiacov',
@@ -60,16 +60,41 @@ export const projectsData: Project[] = [
   },
 
   {
-    id: 'obchvat-most',
-    title: 'Mostná konštrukcia D4',
+    id: 'monoliticka-stropna-doska-stozok',
+    title: 'Monolitická stropná doska Stožok',
     description: 'Dodávka a realizácia monolitických železobetónových konštrukcií a pilierov na rozostavanom úseku bratislavského obchvatu.',
-    category: 'civil',
+    category: 'residential',
     location: 'Bratislava',
     year: 2022,
     duration: '12 mesiacov',
     budgetString: '€ 2.8M',
-    imageUrl: 'https://images.unsplash.com/photo-1545459720-aac8509eb02c?w=800&h=600&fit=crop&q=80'
+    imageUrl: '/monolit-stozok/Monolit-Stozok-1536x1152.jpg'
   },
+
+  {
+    id: 'rekonstrukcia-rodinneho-domu-detva',
+    title: 'Rekonštrukcia rodinného domu Detva',
+    description: 'Kompletná rekonštrukcia rodinného domu v Detve.',
+    category: 'residential',
+    location: 'Banská Bystrica  ',
+    year: 2023,
+    duration: '',
+    budgetString: '',
+    imageUrl: '/rekonstrukcia-domu-detva/Rekonstrukcia-domu-detva.webp'
+  },
+
+  {
+    id: 'hruba-stavba-dubravy',
+    title: 'Hrubá stavba Dúbravy',
+    description: 'Kompletná hrubá stavba rodinného domu a prístupovej cesty s prvkami modernej architektúry a nadštandardným zateplením.',
+    category: 'residential',
+    location: 'Banská Bystrica  ',
+    year: 2023,
+    duration: '',
+    budgetString: '',
+    imageUrl: '/hruba-stavba-dubravy/hruba-stavba-rd-dubravy.webp'
+  },
+
   {
     id: 'rd-zahorska',
     title: 'Rodinný dom Banská Bystrica',

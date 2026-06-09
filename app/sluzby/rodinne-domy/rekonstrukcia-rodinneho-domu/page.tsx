@@ -8,37 +8,36 @@ export default function RekonstrukciaDomuPage() {
     <RodinneDomyServiceDetail
       title="Rekonštrukcia rodinného domu"
       breadcrumbTitle="Rekonštrukcia domu"
-      subtitle1="Postavte si svoj vysnívaný dom bez námahy."
-      subtitle2="Projekt vám vypracujeme, dom vám postavíme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás."
+      subtitle1="Zrekonštruujte si svoj vysnívaný dom bez námahy."
+      subtitle2="Projekt vám vypracujeme, dom vám zrekonštruujeme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás."
       fullDesc={`Naša divízia prémiových rekonštrukcií prináša špičkovú kvalitu do starších nehnuteľností. Zvyšujeme životnú úroveň pôvodných domov prostredníctvom moderných technológií, energetických úspor a rešpektovania statiky pôvodnej budovy.\n\nČi už potrebujete komplexné statické spevnenie nosných stien, výmenu starých inštalácií, precízne zateplenie, alebo kompletnú premenu interiérových dispozícií na kľúč, naši remeselníci garantujú najvyššiu stavebnú presnosť.`}
       imageUrl="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=1600&q=80"
       features={[
-        "Sanácie a statické zosilňovanie pôvodných konštrukcií",
-        "Búracie práce a vkladanie nových nosných oceľových prekladov",
-        "Prémiové kompletné dispozičné zmeny na kľúč",
-        "Dodatočné zateplenie, nové omietky a výmena zastaralých rozvodov",
-        "Odstránenie vlhkosti, profesionálne injektáže a hydroizolácie",
+        "Dlhoročné skúsenosti s rekonštrukciami rodinných domov",
+        "Kompletná realizácia, všetko vybavíme za vás",
+        "Profesionálny dohľad nad každou fázou rekonštrukcie",
+        "Transparentná komunikácia a férový prístup",
       ]}
       stages={[
         {
           step: "01",
-          title: "Zosilnenie a statika",
-          desc: "Zhodnotenie stavu, dočasné podopretie stropov a overenie statiky s navrhnutím prekladov pred začaním prác.",
+          title: "Konzultácia a obhliadka",
+          desc: "Na základe obhliadky objektu a vašich požiadaviek navrhneme optimálne riešenie a pripravíme cenovú ponuku.",
         },
         {
           step: "02",
-          title: "Búranie a sanácia",
-          desc: "Šetrné vybúranie nenosných stien, odstránenie starých podláh a omietok s profesionálnym odvozom suťového odpadu.",
+          title: "Návrh rekonštrukcie",
+          desc: "Vypracujeme plán prác, navrhneme technické riešenia a pomôžeme s potrebnou dokumentáciou.",
         },
         {
           step: "03",
-          title: "Nové rozvody a steny",
-          desc: "Nové inštalácie vodovodov a elektroinštalácií, výmena kúrenia a murovanie nových deliacich priečok.",
+          title: "Realizácia rekonštrukcie",
+          desc: "Zabezpečíme odborné stavebné práce vrátane búrania, úprav dispozície, výmeny rozvodov a modernizácie priestoro",
         },
         {
           step: "04",
-          title: "Finálny fit-out",
-          desc: "Poliatie nových poterov, aplikácia hladkých stierok, osadenie sanity a finálna pokládka podláh a obkladov.",
+          title: "Dokončenie a odovzdanie",
+          desc: "Po ukončení všetkých prác vám odovzdáme zrekonštruovaný objekt pripravený na komfortné a bezproblémové užívanie.",
         },
       ]}
       equipment={[

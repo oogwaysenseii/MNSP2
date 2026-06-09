@@ -13,11 +13,10 @@ export default function StavbaDomuNaKlucPage() {
       fullDesc={`Staviame rodinné domy podľa požiadaviek a potrieb našich klientov. Spolupracujeme s architektmi a inžiniermi, aby výsledok zodpovedal vašim predstavám aj vysokým nárokom na kvalitu.\n\nPri výstavbe používame výhradne kvalitné a overené materiály, dbáme na dostatočnú hydroizoláciu, poctivú tepelnú izoláciu a integráciu moderných technológií.`}
       imageUrl="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80"
       features={[
-        "Kompletné inžinierske projektovanie a zakázková architektúra",
-        "Stavba obvodových stien s vysokým tepelným odporom",
-        "Integrácia fotovoltických systémov a rekuperácie",
-        "Certifikované zakladanie stavby s plnou zárukou",
-        "Prémiové interiérové práce a finálne dispozičné úpravy",
+        "Dlhoročné skúsenosti s výstavbou rodinných domov",
+        "Kompletná realizácia, všetko vybavíme za vás",
+        "Profesionálny dohľad nad každou fázou výstavby",
+        "Transparentná komunikácia a férový prístup",
       ]}
       stages={[
         {
