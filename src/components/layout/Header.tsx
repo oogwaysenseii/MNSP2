@@ -73,7 +73,7 @@ export function Header() {
           onClick={handleNavClick}
           className="flex items-center gap-2.5 group cursor-pointer text-left"
         >
-          <div className="p-2 bg-zinc-950 text-amber-500 rounded font-bold group-hover:scale-105 transition-transform">
+          <div className="p-2 bg-zinc-950 text-amber-500  font-bold group-hover:scale-105 transition-transform">
             <HardHat className="w-5 h-5" />
           </div>
           <div>
@@ -126,7 +126,7 @@ export function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute left-1/2 -translate-x-1/2 mt-2 w-64 rounded-md bg-white border border-zinc-150 shadow-xl py-2 z-50 text-zinc-800"
+                  className="absolute left-1/2 -translate-x-1/2 mt-2 w-64  bg-white border border-zinc-150 shadow-xl py-2 z-50 text-zinc-800"
                 >
                   {topServices.map((srv) => (
                     <Link
@@ -156,7 +156,7 @@ export function Header() {
                     <ChevronRight className="w-3.5 h-3.5" />
 
                     <div className="absolute left-full top-[-10px] ml-1 opacity-0 shadow-none pointer-events-none group-hover/trades:opacity-100 group-hover/trades:pointer-events-auto transition-opacity duration-200">
-                      <div className="w-64 rounded-md bg-white border border-zinc-150 shadow-xl py-2 z-50 text-zinc-800">
+                      <div className="w-64  bg-white border border-zinc-150 shadow-xl py-2 z-50 text-zinc-800">
                         {secondaryServices.map((sec) => (
                           <Link 
                             key={sec.href}
@@ -212,7 +212,7 @@ export function Header() {
           <Link
             href="/kalkulacka"
             onClick={handleNavClick}
-            className={`flex items-center gap-1.5 px-4 py-2.5 rounded text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 px-4 py-2.5  text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
               isSolid
                 ? 'bg-zinc-950 text-white hover:bg-zinc-800 shadow-sm'
                 : 'bg-white text-zinc-950 hover:bg-zinc-100 shadow-md'
@@ -228,14 +228,14 @@ export function Header() {
           <Link
             href="/kalkulacka"
             onClick={handleNavClick}
-            className="p-2 bg-amber-500 text-zinc-950 rounded hover:bg-amber-400 transition-colors cursor-pointer inline-flex items-center"
+            className="p-2 bg-amber-500 text-zinc-950  hover:bg-amber-400 transition-colors cursor-pointer inline-flex items-center"
             title="Kalkulácia"
           >
             <Phone className="w-4 h-4" />
           </Link>
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className={`p-2 rounded border transition-colors cursor-pointer ${
+            className={`p-2  border transition-colors cursor-pointer ${
               isSolid ? 'border-zinc-200 hover:bg-zinc-50 text-zinc-900' : 'border-white/20 hover:bg-white/10 text-white'
             }`}
           >
@@ -314,7 +314,7 @@ export function Header() {
               </div>
 
               {/* Direct Telephone Access */}
-              <div className="bg-neutral-50 rounded-lg p-4 space-y-3.5 border border-zinc-100 text-center">
+              <div className="bg-neutral-50  p-4 space-y-3.5 border border-zinc-100 text-center">
                 <p className="text-xs font-medium text-zinc-500">Potrebujete poradiť s projektom?</p>
                 <a href="tel:+421900000000" className="block text-lg font-bold text-zinc-900 hover:text-amber-600">
                   +421 900 000 000

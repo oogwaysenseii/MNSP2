@@ -216,8 +216,8 @@ export default async function ServiceLocationPage({ params }: PageProps) {
         cityAccusative={city.accusative}
         citySlug={city.slug}
         customLocationTop={LocationSpecificTop}
-        customFaq={LocationFaq}
       />
+      {LocationFaq}
     </>
   );
 }

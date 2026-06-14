@@ -213,8 +213,8 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
         defaultSize={120}
         baseRate={950} 
         customLocationTop={LocationSpecificTop}
-        customFaq={LocationFaq}
       />
+      {LocationFaq}
     </>
   );
 }

@@ -269,6 +269,7 @@ export default async function GenericServicePage({ params }: PageProps) {
   );
 
   return (
+    <>
     <SubServiceDetail
       serviceId={serviceIdForComponent}
       serviceSlug={service.slug}
@@ -278,7 +279,8 @@ export default async function GenericServicePage({ params }: PageProps) {
       materials={extra.materials}
       equipment={extra.equipment}
       customLocationTop={GenericSpecificTop}
-      customFaq={GenericFaq}
     />
+    {GenericFaq}
+    </>
   );
 }

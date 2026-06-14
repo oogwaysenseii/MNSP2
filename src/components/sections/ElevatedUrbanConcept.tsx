@@ -9,15 +9,15 @@ export function ElevatedUrbanConcept() {
     <section className="bg-zinc-950 py-12 sm:py-16 relative overflow-hidden">
       {/* Background patterns */}
       <div className="absolute inset-0 bg-stone-900/10 opacity-30 bg-[radial-gradient(#1f2937_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] pointer-events-none" />
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-40 -right-40 w-96 h-96 bg-amber-500/10  blur-3xl pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           
           <div className="space-y-6">
             <div className="space-y-3">
-              <span className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 text-amber-500 text-[10px] font-mono font-bold uppercase tracking-widest rounded border border-amber-500/20">
-                <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse" />
+              <span className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 text-amber-500 text-[10px] font-mono font-bold uppercase tracking-widest  border border-amber-500/20">
+                <span className="w-1.5 h-1.5 bg-amber-500  animate-pulse" />
                 {"ELEVATED URBAN DEVELOPEMENT"}
               </span>
               
@@ -32,7 +32,7 @@ export function ElevatedUrbanConcept() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div className="flex gap-3 items-start">
-                <div className="w-8 h-8 shrink-0 rounded bg-white/5 border border-white/10 flex items-center justify-center text-amber-500">
+                <div className="w-8 h-8 shrink-0  bg-white/5 border border-white/10 flex items-center justify-center text-amber-500">
                   <Building2 className="w-4 h-4" />
                 </div>
                 <div>
@@ -42,7 +42,7 @@ export function ElevatedUrbanConcept() {
               </div>
               
               <div className="flex gap-3 items-start">
-                <div className="w-8 h-8 shrink-0 rounded bg-white/5 border border-white/10 flex items-center justify-center text-amber-500">
+                <div className="w-8 h-8 shrink-0  bg-white/5 border border-white/10 flex items-center justify-center text-amber-500">
                   <Coins className="w-4 h-4" />
                 </div>
                 <div>
@@ -55,7 +55,7 @@ export function ElevatedUrbanConcept() {
             <div className="pt-4">
               <Link
                 href="/kontakt"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-wider rounded hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/10 cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-wider  hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/10 cursor-pointer"
               >
                 {"Konzultovať Možnosti"}
                 <ArrowRight className="w-4 h-4 ml-1" />
@@ -63,7 +63,7 @@ export function ElevatedUrbanConcept() {
             </div>
           </div>
           
-          <div className="relative h-[250px] sm:h-[320px] rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl group">
+          <div className="relative h-[250px] sm:h-[320px]  overflow-hidden border border-zinc-800 shadow-2xl group">
              <Image 
               src="/elevated-urban-developement.webp"
               alt={"Moderná architektúra budovy"} 
