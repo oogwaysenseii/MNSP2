@@ -6,12 +6,14 @@ export interface CTAProps {
   title?: string;
   subtitle?: string;
   description?: string;
+  pageName?: string;
 }
 
 export function CTA({ 
   title = "Plánujete stavbu či rekonštrukciu ?",
   subtitle = "Vypracujeme vám detailnú cenovú ponuku, vďaka ktorej získate úplný prehľad o nákladoch a platobných podmienkach pre váš projekt.",
-  description = "Stačí ak nám zanecháte vaše údaje a my vás budeme kontaktovať."
+  description = "Stačí ak nám zanecháte vaše údaje a my vás budeme kontaktovať.",
+  pageName = "Neznáma stránka"
 }: CTAProps) {
   return (
     <section className="bg-zinc-950 py-10 relative overflow-hidden">
@@ -45,7 +47,7 @@ export function CTA({
           {/* Right Column - Form Container */}
           <div className="bg-zinc-900/50 backdrop-blur-md border border-white/10 p-6 relative shadow-2xl">
             <div className="absolute -top-12 -right-12 w-48 h-48 bg-amber-500/10 rounded-full blur-2xl pointer-events-none opacity-50" />
-            <SimpleContactForm />
+            <SimpleContactForm pageName={pageName} />
           </div>
 
         </div>

@@ -9,28 +9,19 @@ export async function POST(req: Request) {
         const result = await resend.emails.send({
             from: 'MNSP <noreply@form.mnsp.sk>',
             to: 'info@mnsp.sk',
-            subject: `Nový dopyt - ${body.name}`,
+            subject: `Rýchly dopyt - ${body.pageName}`,
             html: `
-        <h2>Nový dopyt - MNSP</h2>
+        <h2>Nový rýchly dopyt</h2>
 
-        <p><strong>Meno:</strong> ${body.name}</p>
+        <p><strong>Stránka:</strong> ${body.pageName}</p>
         <p><strong>Telefón:</strong> ${body.phone}</p>
         <p><strong>Email:</strong> ${body.email || 'Neuvedený'}</p>
-        <p><strong>Typ projektu:</strong> ${body.projectType}</p>
-
-        <p><strong>Správa:</strong></p>
-        <p>${body.message || 'Bez správy'}</p>
       `,
         });
 
         if (result.error) {
-            console.error('Resend error:', result.error);
-
             return Response.json(
-                {
-                    success: false,
-                    error: result.error,
-                },
+                { success: false, error: result.error },
                 { status: 500 }
             );
         }
@@ -39,14 +30,9 @@ export async function POST(req: Request) {
             success: true,
             id: result.data?.id,
         });
-    } catch (error) {
-        console.error('Contact form error:', error);
-
+    } catch {
         return Response.json(
-            {
-                success: false,
-                error: 'Failed to send email',
-            },
+            { success: false },
             { status: 500 }
         );
     }
