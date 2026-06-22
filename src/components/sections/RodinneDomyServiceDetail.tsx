@@ -510,6 +510,7 @@ export function RodinneDomyServiceDetail({
        <CTA 
         title={ctaTitle}
         subtitle={ctaSubtitle}
+        pageName={title}
       />
     </div>
   );
