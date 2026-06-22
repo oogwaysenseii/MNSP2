@@ -7,28 +7,45 @@ export async function POST(req: Request) {
         const body = await req.json();
 
         const result = await resend.emails.send({
-            from: 'MNSP <noreply@contact.mnsp.sk>',
+            from: 'MNSP <noreply@form.mnsp.sk>',
             to: 'info@mnsp.sk',
             subject: `Nový dopyt - ${body.name}`,
             html: `
         <h2>Nový dopyt z webu</h2>
+
         <p><strong>Meno:</strong> ${body.name}</p>
+        <p><strong>Telefón:</strong> ${body.phone}</p>
+        <p><strong>Email:</strong> ${body.email || 'Neuvedený'}</p>
+        <p><strong>Typ projektu:</strong> ${body.projectType}</p>
+
+        <p><strong>Správa:</strong></p>
+        <p>${body.message || 'Bez správy'}</p>
       `,
         });
 
-        console.log("RESEND RESULT:", result);
+        if (result.error) {
+            console.error('Resend error:', result.error);
+
+            return Response.json(
+                {
+                    success: false,
+                    error: result.error,
+                },
+                { status: 500 }
+            );
+        }
 
         return Response.json({
             success: true,
-            result,
+            id: result.data?.id,
         });
     } catch (error) {
-        console.error("RESEND ERROR:", error);
+        console.error('Contact form error:', error);
 
         return Response.json(
             {
                 success: false,
-                error: String(error),
+                error: 'Failed to send email',
             },
             { status: 500 }
         );
