@@ -64,7 +64,7 @@ export function SimpleContactForm() {
           href="/kalkulacka"
           className="w-full inline-flex items-center justify-center gap-2  py-3 bg-transparent border border-white/20 text-white font-bold text-xs uppercase tracking-wider hover:bg-white/10 transition-colors cursor-pointer"
         >
-          Konfigurátor stavby
+          Rozpočtová kalkulačka
           <Calculator className="w-4 h-4 ml-1" />
         </Link>
       </div>

@@ -204,8 +204,8 @@ export function Header() {
             }`}>
               KONTAKTNÁ LINKA
             </span>
-            <a href="tel:+421900000000" className="text-sm font-bold tracking-tight hover:text-amber-500 transition-colors">
-              +421 900 000 000
+            <a href="tel:+421950699585" className="text-sm font-bold tracking-tight hover:text-amber-500 transition-colors">
+              +421 950 699 585
             </a>
           </div>
 

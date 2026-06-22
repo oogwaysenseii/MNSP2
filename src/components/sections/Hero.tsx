@@ -141,7 +141,7 @@ export function Hero() {
                 href="/kontakt"
                 className="group inline-flex items-center gap-2 px-6 py-3.5 bg-amber-500 text-zinc-950 text-sm font-semibold hover:bg-amber-400 transition-all shadow-lg hover:shadow-amber-500/15 cursor-pointer"
               >
-                {'Nezáväzne dopytovať cenu'}
+                {'Získať cenovú ponuku'}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
@@ -174,9 +174,7 @@ export function Hero() {
               >
                 {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
               </button>
-              <div className="text-xs font-mono text-zinc-400">
-                <span className="text-amber-400">{'ŽIVÝ TIMELAPSE'}</span>
-              </div>
+
             </div>
           </div>
         </div>

@@ -54,16 +54,16 @@ export function ElevatedUrbanConcept() {
             
             <div className="pt-4">
               <Link
-                href="/kontakt"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-wider  hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/10 cursor-pointer"
+                href="/elevated-urban-development"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-wider hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/10 cursor-pointer"
               >
-                {"Konzultovať Možnosti"}
+                {"Viac o projekte"}
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Link>
             </div>
           </div>
           
-          <div className="relative h-[250px] sm:h-[320px]  overflow-hidden border border-zinc-800 shadow-2xl group">
+          <Link href="/elevated-urban-development" className="relative h-[250px] sm:h-[320px] overflow-hidden border border-zinc-800 shadow-2xl group block cursor-pointer">
              <Image 
               src="/elevated-urban-developement.webp"
               alt={"Moderná architektúra budovy"} 
@@ -78,7 +78,7 @@ export function ElevatedUrbanConcept() {
                </span>
                <p className="text-white font-display font-bold text-lg">ELEVATED URBAN DEVELOPEMENT</p>
             </div>
-          </div>
+          </Link>
           
         </div>
       </div>

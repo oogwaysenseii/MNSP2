@@ -20,7 +20,7 @@ export function Projects({
   defaultCategory = 'all',
   hideFilters = false,
   titleSk = 'Realizované projekty',
-  subtitleSk = 'Prezrite si naše zrealizované stavebné diela podľa kategórií.',
+  subtitleSk = 'Prehľad zrealizovaných a prebiehajúich projektov.',
   viewMode = 'carousel',
   locationFilter = 'all'
 }: ProjectsSectionProps = {}) {

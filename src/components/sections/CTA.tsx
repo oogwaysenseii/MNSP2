@@ -9,9 +9,9 @@ export interface CTAProps {
 }
 
 export function CTA({ 
-  title = "Hľadáte spoľahlivého partnera pre váš ďalší stavebný projekt?", 
-  subtitle = "Stačí ak nám zanecháte vaše údaje a my vás budeme kontaktovať.", 
-  description = "Naši špecialisti sú pripravení posúdiť vaše plány a navrhnúť najlepšie a najefektívnejšie riešenia prispôsobené vašim potrebám." 
+  title = "Plánujete stavbu či rekonštrukciu ?",
+  subtitle = "Vypracujeme vám detailnú cenovú ponuku, vďaka ktorej získate úplný prehľad o nákladoch a platobných podmienkach pre váš projekt.",
+  description = "Stačí ak nám zanecháte vaše údaje a my vás budeme kontaktovať."
 }: CTAProps) {
   return (
     <section className="bg-zinc-950 py-10 relative overflow-hidden">
@@ -36,7 +36,7 @@ export function CTA({
               </p>
 
               {/* Description with high-readability text color and generous tracking */}
-              <p className="text-zinc-400 text-sm  leading-relaxed tracking-wide whitespace-pre-wrap font-light opacity-90">
+              <p className="text-white text-sm  leading-relaxed tracking-wide whitespace-pre-wrap font-light opacity-90">
                 {description}
               </p>
             </div>

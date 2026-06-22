@@ -9,12 +9,12 @@ export function ServicesGrid({ hideAllLink = false }: { hideAllLink?: boolean })
       <Container className="max-w-[1400px]">
 
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
           {sluzby.slice(0, 5).map((sluzba) => (
             <Link 
               key={sluzba.id} 
               href={`/sluzby/${sluzba.id}`}
-              className="group flex flex-col bg-white border border-gray-200 transition-all duration-500 hover:-translate-y-3 hover:border-amber-500 hover:shadow-2xl h-full relative"
+              className="group flex flex-col bg-white border border-gray-200 transition-all duration-500 hover:border-amber-500 hover:shadow-2xl h-full relative"
             >
               {/* Image Container - Fixed height to ensure rendering regardless of aspect ratio support */}
               <div className="relative w-full h-48 lg:h-56 overflow-hidden bg-gray-200">
