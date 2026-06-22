@@ -11,7 +11,8 @@ export default function Home() {
       <ServicesGrid />
       <ElevatedUrbanConcept />
       <Projects />
-      <CTA />
+      <CTA pageName="MNSP - Domovská stránka" />
     </>
+
   );
 }

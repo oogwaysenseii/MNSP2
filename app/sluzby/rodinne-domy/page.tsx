@@ -254,6 +254,7 @@ export default function ResidentialHubPage() {
       <CTA 
         title="Plánujete stavbu alebo rekonštrukciu rodinného domu?"
         subtitle="Vypracujeme vám detailnú cenovú ponuku, vďaka ktorej získate úplný prehľad o nákladoch a platobných podmienkach pri stavbe rodinného domu."
+        pageName="Rodinné domy - hlavná stránka"
       />
     </div>
   );
