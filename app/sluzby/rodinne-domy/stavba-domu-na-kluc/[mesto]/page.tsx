@@ -212,6 +212,7 @@ export default async function StavbaLocationPage({ params }: PageProps) {
         defaultSize={140}
         baseRate={1350}
         customLocationTop={LocationSpecificTop}
+        locationFilter={city.name}
       />
       {LocationFaq}
     </>

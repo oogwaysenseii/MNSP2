@@ -203,7 +203,7 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
             premiumModifier: 1.50,
           },
         ]}
-        category="renovations"
+        category="residential"
         serviceSlug="rekonstrukcia-rodinneho-domu"
         ctaTitle={`Máte záujem o rekonštrukciu domu v ${city.locative}?`}
         ctaSubtitle="Spojte sa s našim tímom a dohodnite si termín technickej obhliadky na mieste."
@@ -213,6 +213,7 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
         defaultSize={120}
         baseRate={950} 
         customLocationTop={LocationSpecificTop}
+        locationFilter={city.name}
       />
       {LocationFaq}
     </>

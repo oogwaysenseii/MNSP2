@@ -42,7 +42,7 @@ export default async function RodinneDomyMestoPage({ params }: PageProps) {
   }
 
   return (
-    <div className="bg-white text-zinc-900 pb-24">
+    <div className="bg-white text-zinc-900 mt-18 ">
       {/* 1. IMMERSIVE HERO WITH CATEGORY BANNER */}
       <div className="relative h-[50vh] min-h-[400px] bg-zinc-950 text-white overflow-hidden flex items-end">
         <div className="absolute inset-0">
@@ -58,7 +58,7 @@ export default async function RodinneDomyMestoPage({ params }: PageProps) {
           <div className="inline-block px-3 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[10px] font-mono tracking-widest uppercase">
             Rodinné domy • {city.name}
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight text-white leading-tight max-w-3xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight text-white leading-tight max-w-5xl">
             Výstavba a rekonštrukcie rodinných domov v {city.locative}
           </h1>
           <p className="max-w-2xl text-zinc-300 text-sm md:text-base leading-relaxed">
@@ -69,8 +69,8 @@ export default async function RodinneDomyMestoPage({ params }: PageProps) {
       </div>
 
       {/* 2. SERVICES SPLIT SECTION */}
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+      <div className="max-w-7xl mx-auto px-6 py-10">
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-10">
           <h2 className="text-3xl md:text-4xl font-display font-extrabold text-zinc-950 tracking-tight">
             Naše služby pre rodinné domy
           </h2>
@@ -223,7 +223,7 @@ export default async function RodinneDomyMestoPage({ params }: PageProps) {
         defaultCategory="residential"
         hideFilters={true}
         titleSk="Realizácie rodinných domov"
-        subtitleSk="Pozrite si ukážky našej poctivej práce pri výstavbe a rekonštrukcii rodinných domov."
+        subtitleSk="Prehľad zrealizovaných a prebiehajúcich projektov výstavby a rekonštrukcií rodinných domov."
       />
 
       {/* 5. BLOG SECTION */}
@@ -232,7 +232,7 @@ export default async function RodinneDomyMestoPage({ params }: PageProps) {
       </div>
 
       {/* 6. LOCATIONS BLOCK */}
-      <div className="max-w-7xl mx-auto px-6 mt-16 space-y-8">
+      <div className="max-w-7xl mx-auto px-6 mb-10 mt-10 space-y-8">
         <div className="bg-zinc-50 border border-zinc-200 p-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <h2 className="text-xl font-display font-bold text-zinc-900 flex items-center gap-2">

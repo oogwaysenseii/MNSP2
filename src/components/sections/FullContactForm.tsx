@@ -18,12 +18,34 @@ export default function FullContactForm() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would send the data to a server
-    console.log('Form submitted:', formData);
-    alert('Ďakujeme za vašu správu. Budeme vás čoskoro kontaktovať.');
-    setFormData({ name: '', email: '', phone: '', message: '', projectType: 'rodinny-dom' });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      alert('Ďakujeme za váš dopyt.');
+
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+        projectType: 'rodinny-dom',
+      });
+    } catch {
+      alert('Nastala chyba. Skúste to znova.');
+    }
   };
 
   return (

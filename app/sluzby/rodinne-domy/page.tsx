@@ -213,7 +213,7 @@ export default function ResidentialHubPage() {
         defaultCategory="residential"
         hideFilters={true}
         titleSk="Realizácie rodinných domov"
-        subtitleSk="Pozrite si ukážky našej poctivej práce pri výstavbe a rekonštrukcii rodinných domov."
+        subtitleSk="Prehľad zrealizovaných a prebiehajúcich projektov výstavby a rekonštrukcií rodinných domov."
       />
 
       {/* 5. BLOG SECTION */}
@@ -253,7 +253,7 @@ export default function ResidentialHubPage() {
 
       <CTA 
         title="Plánujete stavbu alebo rekonštrukciu rodinného domu?"
-        subtitle="Zanechajte nám na seba kontakt a my sa o všetko postaráme."
+        subtitle="Vypracujeme vám detailnú cenovú ponuku, vďaka ktorej získate úplný prehľad o nákladoch a platobných podmienkach pri stavbe rodinného domu."
       />
     </div>
   );

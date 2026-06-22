@@ -56,6 +56,7 @@ export interface ServiceDetailProps {
   parentBreadcrumbUrl?: string;
   subtitle1?: string;
   subtitle2?: string;
+  locationFilter?: string;
 }
 
 export function RodinneDomyServiceDetail({
@@ -84,6 +85,7 @@ export function RodinneDomyServiceDetail({
   parentBreadcrumbUrl,
   subtitle1,
   subtitle2,
+  locationFilter,
 }: ServiceDetailProps) {
   const [projectSize, setProjectSize] = useState(defaultSize);
   const [selectedSpecIndex, setSelectedSpecIndex] = useState(0);
@@ -455,6 +457,7 @@ export function RodinneDomyServiceDetail({
           hideFilters={true}
           titleSk={`Relevantné realizácie z portfólia`}
           subtitleSk="Pozrite si ukážky našej odbornej práce na podobných projektoch."
+          locationFilter={locationFilter}
       />
 
       {!hideBlog && (
