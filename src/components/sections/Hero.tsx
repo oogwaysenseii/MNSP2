@@ -141,7 +141,7 @@ export function Hero() {
                 href="/kontakt"
                 className="group inline-flex items-center gap-2 px-6 py-3.5 bg-amber-500 text-zinc-950 text-sm font-semibold hover:bg-amber-400 transition-all shadow-lg hover:shadow-amber-500/15 cursor-pointer"
               >
-                {'Získať cenovú ponuku'}
+                {'Nezáväzne dopytovať cenu'}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
