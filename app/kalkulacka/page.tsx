@@ -1,9 +1,11 @@
 import ConstructionCalculator from "@/src/components/calculator/ConstructionCalculator";
+import { getSEOTags } from '@/src/lib/seo';
 
-export const metadata = {
-  title: "Cenová kalkulačka | MN-Stavebné Práce",
-  description: "Vypočítajte si orientačnú cenu vašej plánovanej stavby alebo rekonštrukcie.",
-};
+export const metadata = getSEOTags(
+  "Cenová kalkulačka",
+  "Vypočítajte si orientačnú cenu vašej plánovanej stavby alebo rekonštrukcie.",
+  "/kalkulacka"
+);
 
 export default function KalkulackaPage() {
   return (

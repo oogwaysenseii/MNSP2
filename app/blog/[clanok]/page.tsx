@@ -2,9 +2,26 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Clock, ArrowLeft, BookmarkCheck } from 'lucide-react';
 import { blogPostsData } from '@/src/data/blog';
+import { getSEOTags } from '@/src/lib/seo';
+import { Metadata } from 'next';
 
 interface BlogPostPageProps {
   params: Promise<{ clanok: string }>;
+}
+
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const post = blogPostsData.find((p) => p.id === resolvedParams.clanok);
+  
+  if (!post) {
+    return {};
+  }
+
+  return getSEOTags(
+    post.title,
+    post.excerpt,
+    `/blog/${post.id}`
+  );
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -15,8 +32,33 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "image": post.imageUrl,
+    "datePublished": "2024-03-15T08:00:00+01:00",
+    "dateModified": "2024-03-15T08:00:00+01:00",
+    "author": {
+      "@type": "Person",
+      "name": "Marek Nosáľ"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "MNSP"
+    },
+    "description": post.excerpt
+  };
+
   return (
-    <div className="bg-white text-zinc-900 py-16 sm:py-24">
+    <>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <div className="bg-white text-zinc-900 py-16 sm:py-24">
       <div className="max-w-3xl mx-auto px-6 space-y-8">
         
         {/* EXIT TO LIST OVERLAY */}
@@ -100,5 +142,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       </div>
     </div>
+    </>
   );
 }

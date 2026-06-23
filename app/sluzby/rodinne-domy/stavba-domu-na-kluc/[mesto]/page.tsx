@@ -4,6 +4,7 @@ import { getSEOTags } from '@/src/lib/seo';
 import { RodinneDomyServiceDetail } from '@/src/components/sections/RodinneDomyServiceDetail';
 import { Metadata } from 'next';
 import { CheckCircle2, ShieldCheck, MapPin, HelpCircle } from 'lucide-react';
+import { generateServiceAndLocalBusinessSchema, DOMAIN } from '@/src/lib/schema';
 
 interface PageProps {
   params: Promise<{ mesto: string }>;
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `Stavba domu na kľúč v ${city.locative} | Kvalitne a profesionálne`;
   const description = `Staviame moderné rodinné domy na kľúč. Profesionálna realizácia priamo pre obyvateľov v oblasti ${city.name} a okolí. Kontaktujte nás pre nezáväznú cenovú ponuku.`;
 
-  return getSEOTags(title, description);
+  return getSEOTags(title, description, `/sluzby/rodinne-domy/stavba-domu-na-kluc/${citySlug}`);
 }
 
 export default async function StavbaLocationPage({ params }: PageProps) {
@@ -38,21 +39,12 @@ export default async function StavbaLocationPage({ params }: PageProps) {
     notFound();
   }
 
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": `Stavba domu na kľúč ${city.name}`,
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "MNSP",
-      "image": "https://www.mnsp.sk/logo.png"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": city.name
-    },
-    "description": `Profesionálna výstavba rodinných domov na kľúč v oblasti ${city.name}.`
-  };
+  const jsonLd = generateServiceAndLocalBusinessSchema(
+    `Stavba domu na kľúč v ${city.locative}`,
+    `Profesionálna výstavba rodinných domov na kľúč v oblasti ${city.name}.`,
+    `${DOMAIN}/sluzby/rodinne-domy/stavba-domu-na-kluc/${city.slug}`,
+    city.slug
+  );
 
   const LocationSpecificTop = (
     <div className="mt-8 border border-zinc-200  overflow-hidden shadow-sm">
@@ -140,10 +132,12 @@ export default async function StavbaLocationPage({ params }: PageProps) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-      />
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <RodinneDomyServiceDetail
         title={`Stavba domu na kľúč v ${city.locative}`}
         breadcrumbTitle={city.name}

@@ -2,15 +2,25 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import { ArrowRight, Building2, Coins, Leaf, MapPin, Zap } from 'lucide-react';
 import Link from 'next/link';
+import { getSEOTags } from '@/src/lib/seo';
+import { generateServiceSchema, DOMAIN } from '@/src/lib/schema';
 
-export const metadata: Metadata = {
-  title: 'Elevated Urban Development | MNSP',
-  description: 'Revolučný koncept využitia parkovacích plôch na luxusné a komerčné priestory.',
-};
+const title = 'Elevated Urban Development';
+const description = 'Revolučný koncept využitia parkovacích plôch na luxusné a komerčné priestory.';
+
+export const metadata: Metadata = getSEOTags(title, description, '/elevated-urban-development');
 
 export default function ElevatedUrbanDevelopmentPage() {
+  const jsonLd = generateServiceSchema(title, description, `${DOMAIN}/elevated-urban-development`);
+
   return (
     <div className="bg-white">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-zinc-950 overflow-hidden">
         <div className="absolute inset-0 bg-stone-900/10 opacity-30 bg-[radial-gradient(#1f2937_1px,transparent_1px)] bg-[size:1.5rem_1.5rem]" />

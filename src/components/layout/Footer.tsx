@@ -32,11 +32,11 @@ export function Footer() {
             <h4 className="text-[14px] font-mono tracking-widest text-black font-bold uppercase mb-6">Naše služby</h4>
             <div className="grid grid-cols-2 gap-x-4 gap-y-2">
               <ul className="space-y-1 ">
-                <li><Link href="/sluzby/rodinne-domy" className="hover:text-amber-600 transition-colors">Rodinné domy</Link></li>
-                <li><Link href="/sluzby/komercna-vystavba" className="hover:text-amber-600 transition-colors">Komerčná výstavba</Link></li>
-                <li><Link href="/sluzby/rezidencne-budovy" className="hover:text-amber-600 transition-colors">Rezidenčné budovy</Link></li>
-                <li><Link href="/sluzby/priemyselne-objekty" className="hover:text-amber-600 transition-colors">Priemyselné objekty</Link></li>
-                <li><Link href="/sluzby/obcianske-stavby" className="hover:text-amber-600 transition-colors">Občianske stavby</Link></li>
+                <li><Link href="/sluzby/rodinne-domy" className="hover:text-amber-600 transition-colors">• Rodinné domy</Link></li>
+                <li><Link href="/sluzby/komercna-vystavba" className="hover:text-amber-600 transition-colors">• Komerčná výstavba</Link></li>
+                <li><Link href="/sluzby/rezidencne-budovy" className="hover:text-amber-600 transition-colors">• Rezidenčné budovy</Link></li>
+                <li><Link href="/sluzby/priemyselne-objekty" className="hover:text-amber-600 transition-colors">• Priemyselné objekty</Link></li>
+                <li><Link href="/sluzby/obcianske-stavby" className="hover:text-amber-600 transition-colors">• Občianske stavby</Link></li>
 
               </ul>
               <ul className="space-y-2 text-[10px]">

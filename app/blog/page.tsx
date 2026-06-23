@@ -1,6 +1,14 @@
 import BlogSection from '@/src/components/sections/BlogSection';
 import { generateLocalBusinessSchema } from '@/src/lib/schema';
 import { blogPostsData } from '@/src/data/blog';
+import { getSEOTags } from '@/src/lib/seo';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = getSEOTags(
+  "Blog",
+  "Odborné články a rady zo sveta stavebníctva a rekonštrukcií.",
+  "/blog"
+);
 
 export default function BlogPage() {
   const schemaData = {

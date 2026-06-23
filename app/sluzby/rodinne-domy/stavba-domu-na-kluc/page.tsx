@@ -1,11 +1,24 @@
 import { RodinneDomyServiceDetail } from "@/src/components/sections/RodinneDomyServiceDetail";
 import { getSEOTags } from "@/src/lib/seo";
+import { generateServiceSchema, DOMAIN } from '@/src/lib/schema';
 
-export const metadata = getSEOTags("Stavba domu na kľúč", "Komplexná výstavba moderných rodinných domov s dôrazom na udržateľnosť a precíznosť.");
+const title = "Stavba domu na kľúč";
+const description = "Komplexná výstavba moderných rodinných domov s dôrazom na udržateľnosť a precíznosť.";
+
+export const metadata = getSEOTags(title, description, '/sluzby/rodinne-domy/stavba-domu-na-kluc');
 
 export default function StavbaDomuNaKlucPage() {
+  const jsonLd = generateServiceSchema(title, description, `${DOMAIN}/sluzby/rodinne-domy/stavba-domu-na-kluc`);
+
   return (
-    <RodinneDomyServiceDetail
+    <>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <RodinneDomyServiceDetail
       title="Stavba domu na kľúč"
       breadcrumbTitle="Stavba domu na kľúč"
       subtitle1="Postavte si svoj vysnívaný dom bez námahy."
@@ -72,5 +85,6 @@ export default function StavbaDomuNaKlucPage() {
       defaultSize={140}
       baseRate={1350} // 1350e/m2 na kluc 
     />
+    </>
   );
 }

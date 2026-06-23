@@ -1,12 +1,31 @@
 import { Metadata } from 'next';
 import ContactPageContent from './ContactPageContent';
 import { getSEOTags } from '@/src/lib/seo';
+import { generateOrganizationSchema, generateLocalBusinessSchema } from '@/src/lib/schema';
 
 export const metadata: Metadata = getSEOTags(
-  "Kontakt | Stavebná firma Apex Builders",
-  "Kontaktujte našu stavebnú firmu. Zabezpečujeme kompletné stavebné služby, od rodinných domov až po priemyselné stavby. Máme pobočky v rôznych mestách a sme tu pre vás."
+  "Kontakt",
+  "Kontaktujte nás. Zabezpečujeme kompletné stavebné služby, od rodinných domov až po priemyselné stavby.",
+  "/kontakt"
 );
 
 export default function Page() {
-  return <ContactPageContent />;
+  const jsonLd = [
+    generateOrganizationSchema(),
+    generateLocalBusinessSchema('Zvolen'),
+    generateLocalBusinessSchema('Hrinova'),
+    generateLocalBusinessSchema('BanskaBystrica'),
+  ];
+  
+  return (
+    <>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <ContactPageContent />
+    </>
+  );
 }

@@ -1,11 +1,24 @@
 import { RodinneDomyServiceDetail } from "@/src/components/sections/RodinneDomyServiceDetail";
 import { getSEOTags } from "@/src/lib/seo";
+import { generateServiceSchema, DOMAIN } from '@/src/lib/schema';
 
-export const metadata = getSEOTags("Rekonštrukcia rodinného domu", "Sanácia statiky, zatepľovanie a komplexné rekonštrukcie pre staršie nehnuteľnosti.");
+const title = "Rekonštrukcia rodinného domu";
+const description = "Sanácia statiky, zatepľovanie a komplexné rekonštrukcie pre staršie nehnuteľnosti.";
+
+export const metadata = getSEOTags(title, description, '/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu');
 
 export default function RekonstrukciaDomuPage() {
+  const jsonLd = generateServiceSchema(title, description, `${DOMAIN}/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu`);
+
   return (
-    <RodinneDomyServiceDetail
+    <>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <RodinneDomyServiceDetail
       title="Rekonštrukcia rodinného domu"
       breadcrumbTitle="Rekonštrukcia domu"
       subtitle1="Zrekonštruujte si svoj vysnívaný dom bez námahy."
@@ -72,5 +85,6 @@ export default function RekonstrukciaDomuPage() {
       defaultSize={120}
       baseRate={950} // 950 za m2 pre rekonstrukciu (base)
     />
+    </>
   );
 }

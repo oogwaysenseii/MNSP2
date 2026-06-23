@@ -4,6 +4,7 @@ import { getSEOTags } from '@/src/lib/seo';
 import { Metadata } from 'next';
 import { SubServiceDetail, SubServiceKey } from '@/src/components/sections/SubServiceDetail';
 import { ShieldCheck, HardHat, CheckCircle2 } from 'lucide-react';
+import { generateServiceSchema, DOMAIN } from '@/src/lib/schema';
 
 interface PageProps {
   params: Promise<{ service: string }>;
@@ -25,7 +26,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return getSEOTags(
     `${service.name} | Kvalitne a profesionálne`,
-    service.description
+    service.description,
+    `/sluzby/${serviceSlug}`
   );
 }
 
@@ -268,8 +270,20 @@ export default async function GenericServicePage({ params }: PageProps) {
     </div>
   );
 
+  const jsonLd = generateServiceSchema(
+    service.name,
+    extra.longDescription,
+    `${DOMAIN}/sluzby/${service.slug}`
+  );
+
   return (
     <>
+    <head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+    </head>
     <SubServiceDetail
       serviceId={serviceIdForComponent}
       serviceSlug={service.slug}

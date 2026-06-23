@@ -1,5 +1,5 @@
 export const siteMetadata = {
-  title: 'Stavebná firma',
-  description: 'Profesionálne stavebné služby na strednom Slovensku',
-  siteUrl: 'https://www.example.com',
+  title: 'MNSP | Stavby a rekonštrukcie',
+  description: 'Zabezpečujeme kompletné stavebné služby, od rodinných domov až po priemyselné stavby na kľúč.',
+  siteUrl: 'https://www.mnsp.sk',
 };

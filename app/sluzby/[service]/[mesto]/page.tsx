@@ -6,6 +6,7 @@ import { getSEOTags } from '@/src/lib/seo';
 import { Metadata } from 'next';
 import { SubServiceDetail, SubServiceKey } from '@/src/components/sections/SubServiceDetail';
 import { MapPin, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { generateServiceAndLocalBusinessSchema, DOMAIN } from '@/src/lib/schema';
 
 interface PageProps {
   params: Promise<{ service: string; mesto: string }>;
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${service.name} v ${city.locative} | Kvalitne a profesionálne`;
   const description = `${service.description} Profesionálna realizácia služby ${service.name.toLowerCase()} priamo pre obyvateľov v oblasti ${city.name} a okolí. Kontaktujte nás pre nezáväznú cenovú ponuku.`;
 
-  return getSEOTags(title, description);
+  return getSEOTags(title, description, `/sluzby/${serviceSlug}/${citySlug}`);
 }
 
 export default async function ServiceLocationPage({ params }: PageProps) {
@@ -62,21 +63,12 @@ export default async function ServiceLocationPage({ params }: PageProps) {
     notFound();
   }
 
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": `${service.name} ${city.name}`,
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "MNSP",
-      "image": "https://www.mnsp.sk/logo.png"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": city.name
-    },
-    "description": `${service.description} Profesionálna realizácia v oblasti ${city.name}.`
-  };
+  const jsonLd = generateServiceAndLocalBusinessSchema(
+    `${service.name} v ${city.locative}`,
+    `${service.description} Profesionálna realizácia služby ${service.name.toLowerCase()} priamo pre obyvateľov v oblasti ${city.name} a okolí.`,
+    `${DOMAIN}/sluzby/${service.slug}/${city.slug}`,
+    city.slug
+  );
 
   let serviceIdForComponent: SubServiceKey;
   if (serviceSlug === 'zakladanie-stavieb') serviceIdForComponent = 'zakladanie';
@@ -185,10 +177,12 @@ export default async function ServiceLocationPage({ params }: PageProps) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-      />
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <SubServiceDetail
         serviceId={serviceIdForComponent}
         serviceSlug={service.slug}
