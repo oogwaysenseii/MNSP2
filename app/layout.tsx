@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     template: `%s | ${COMPANY_NAME}`,
     default: COMPANY_NAME,
   },
-  description: 'Profesionálne stavebné služby, výstavba a rekonštrukcie rodinných domov, komerčná výstavba.',
+  description: 'Stavebná firma zameraná na výstavbu a rekonštrukcie budov, rodinných domov, bytových domov, komerčných budov, priemyselných objektov a občianskych stavieb.',
   openGraph: {
     title: {
       template: `%s | ${COMPANY_NAME}`,
       default: COMPANY_NAME,
     },
-    description: 'Profesionálne stavebné služby, výstavba a rekonštrukcie rodinných domov, komerčná výstavba.',
+    description: 'Stavebná firma zameraná na výstavbu a rekonštrukcie budov, rodinných domov, bytových domov, komerčných budov, priemyselných objektov a občianskych stavieb.',
     url: DOMAIN,
     siteName: COMPANY_NAME,
     locale: 'sk_SK',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       template: `%s | ${COMPANY_NAME}`,
       default: COMPANY_NAME,
     },
-    description: 'Profesionálne stavebné služby, výstavba a rekonštrukcie rodinných domov, komerčná výstavba.',
+    description: 'Stavebná firma zameraná na výstavbu a rekonštrukcie budov, rodinných domov, bytových domov, komerčných budov, priemyselných objektov a občianskych stavieb.',
   },
   robots: {
     index: true,
