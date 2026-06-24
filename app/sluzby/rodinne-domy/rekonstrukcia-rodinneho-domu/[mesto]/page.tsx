@@ -131,13 +131,13 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
   );
 
   return (
-    <>
-      <head>
+      <>
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(jsonLd),
+            }}
         />
-      </head>
       <RodinneDomyServiceDetail
         title={`Rekonštrukcia domov v ${city.locative}`}
         breadcrumbTitle={city.name}

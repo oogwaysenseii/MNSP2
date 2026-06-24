@@ -51,13 +51,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   };
 
   return (
-    <>
-      <head>
+      <>
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(jsonLd),
+            }}
         />
-      </head>
+
       <div className="bg-white text-zinc-900 py-16 sm:py-24">
       <div className="max-w-3xl mx-auto px-6 space-y-8">
         

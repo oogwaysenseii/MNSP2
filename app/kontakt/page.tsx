@@ -16,16 +16,14 @@ export default function Page() {
     generateLocalBusinessSchema('Hrinova'),
     generateLocalBusinessSchema('BanskaBystrica'),
   ];
-  
-  return (
-    <>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
-      <ContactPageContent />
-    </>
-  );
+
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <ContactPageContent />
+        </>
+    );
 }

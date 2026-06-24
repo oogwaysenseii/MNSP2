@@ -1,11 +1,14 @@
+import type { Metadata } from 'next';
 import ConstructionCalculator from "@/src/components/calculator/ConstructionCalculator";
 import { getSEOTags } from '@/src/lib/seo';
 
-export const metadata = getSEOTags(
-  "Cenová kalkulačka",
-  "Vypočítajte si orientačnú cenu vašej plánovanej stavby alebo rekonštrukcie.",
-  "/kalkulacka"
+const seo = getSEOTags(
+    "Cenová kalkulačka",
+    "Vypočítajte si orientačnú cenu vašej plánovanej stavby alebo rekonštrukcie.",
+    "/kalkulacka"
 );
+
+export const metadata: Metadata = seo;
 
 export default function KalkulackaPage() {
   return (

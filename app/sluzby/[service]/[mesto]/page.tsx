@@ -176,13 +176,13 @@ export default async function ServiceLocationPage({ params }: PageProps) {
   );
 
   return (
-    <>
-      <head>
+      <>
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(jsonLd),
+            }}
         />
-      </head>
       <SubServiceDetail
         serviceId={serviceIdForComponent}
         serviceSlug={service.slug}

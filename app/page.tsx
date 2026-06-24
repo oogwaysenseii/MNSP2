@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Script from 'next/script';
 import { Hero } from '@/src/components/sections/Hero';
 import { ServicesGrid } from '@/src/components/sections/ServicesGrid';
 import { ElevatedUrbanConcept } from '@/src/components/sections/ElevatedUrbanConcept';
@@ -13,27 +14,29 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const jsonLd = [
-    generateOrganizationSchema(),
-    generateWebSiteSchema(),
-    generateLocalBusinessSchema('Zvolen'),
-    generateLocalBusinessSchema('Hrinova'),
-    generateLocalBusinessSchema('BanskaBystrica'),
-  ];
+    const jsonLd = [
+        generateOrganizationSchema(),
+        generateWebSiteSchema(),
+        generateLocalBusinessSchema('Zvolen'),
+        generateLocalBusinessSchema('Hrinova'),
+        generateLocalBusinessSchema('BanskaBystrica'),
+    ];
 
-  return (
-    <>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
-      <Hero />
-      <ServicesGrid />
-      <ElevatedUrbanConcept />
-      <Projects />
-      <CTA pageName="MNSP - Domovská stránka" />
-    </>
-  );
+    return (
+        <>
+            <Script
+                id="homepage-schema"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(jsonLd),
+                }}
+            />
+
+            <Hero />
+            <ServicesGrid />
+            <ElevatedUrbanConcept />
+            <Projects />
+            <CTA pageName="MNSP - Domovská stránka" />
+        </>
+    );
 }

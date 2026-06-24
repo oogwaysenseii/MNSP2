@@ -1,23 +1,30 @@
 import { RodinneDomyServiceDetail } from "@/src/components/sections/RodinneDomyServiceDetail";
 import { getSEOTags } from "@/src/lib/seo";
 import { generateServiceSchema, DOMAIN } from '@/src/lib/schema';
+import type { Metadata } from 'next';
 
 const title = "Rekonštrukcia rodinného domu";
 const description = "Sanácia statiky, zatepľovanie a komplexné rekonštrukcie pre staršie nehnuteľnosti.";
 
-export const metadata = getSEOTags(title, description, '/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu');
+const seo = getSEOTags(
+    title,
+    description,
+    '/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu'
+);
+
+export const metadata: Metadata = seo;
 
 export default function RekonstrukciaDomuPage() {
   const jsonLd = generateServiceSchema(title, description, `${DOMAIN}/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu`);
 
   return (
-    <>
-      <head>
+      <>
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(jsonLd),
+            }}
         />
-      </head>
       <RodinneDomyServiceDetail
       title="Rekonštrukcia rodinného domu"
       breadcrumbTitle="Rekonštrukcia domu"

@@ -28,13 +28,14 @@ export default function ResidentialHubPage() {
   const jsonLd = generateServiceSchema(title, description, `${DOMAIN}/sluzby/rodinne-domy`);
 
   return (
-    <div className="bg-white text-zinc-900 ">
-      <head>
+      <div className="bg-white text-zinc-900 ">
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(jsonLd),
+            }}
         />
-      </head>
+
       {/* 1. IMMERSIVE HERO WITH CATEGORY BANNER */}
       <div className="relative h-[50vh] min-h-[400px] bg-zinc-950 text-white overflow-hidden flex items-end">
         <div className="absolute inset-0">

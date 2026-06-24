@@ -1,23 +1,32 @@
 import { RodinneDomyServiceDetail } from "@/src/components/sections/RodinneDomyServiceDetail";
 import { getSEOTags } from "@/src/lib/seo";
 import { generateServiceSchema, DOMAIN } from '@/src/lib/schema';
+import type { Metadata } from 'next';
 
 const title = "Stavba domu na kľúč";
 const description = "Komplexná výstavba moderných rodinných domov s dôrazom na udržateľnosť a precíznosť.";
 
-export const metadata = getSEOTags(title, description, '/sluzby/rodinne-domy/stavba-domu-na-kluc');
+
+const seo = getSEOTags(
+    title,
+    description,
+    '/sluzby/rodinne-domy/stavba-domu-na-kluc'
+);
+
+export const metadata: Metadata = seo;
 
 export default function StavbaDomuNaKlucPage() {
   const jsonLd = generateServiceSchema(title, description, `${DOMAIN}/sluzby/rodinne-domy/stavba-domu-na-kluc`);
 
   return (
-    <>
-      <head>
+      <>
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(jsonLd)
+            }}
         />
-      </head>
+
       <RodinneDomyServiceDetail
       title="Stavba domu na kľúč"
       breadcrumbTitle="Stavba domu na kľúč"

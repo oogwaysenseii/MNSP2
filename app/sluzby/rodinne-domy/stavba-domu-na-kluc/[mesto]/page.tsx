@@ -131,13 +131,13 @@ export default async function StavbaLocationPage({ params }: PageProps) {
   );
 
   return (
-    <>
-      <head>
+      <>
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(jsonLd),
+            }}
         />
-      </head>
       <RodinneDomyServiceDetail
         title={`Stavba domu na kľúč v ${city.locative}`}
         breadcrumbTitle={city.name}

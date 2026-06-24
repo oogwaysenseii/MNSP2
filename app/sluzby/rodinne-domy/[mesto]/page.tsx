@@ -50,13 +50,13 @@ export default async function RodinneDomyMestoPage({ params }: PageProps) {
   );
 
   return (
-    <div className="bg-white text-zinc-900 mt-18 ">
-      <head>
+      <div className="bg-white text-zinc-900 mt-18 ">
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(jsonLd),
+            }}
         />
-      </head>
       {/* 1. IMMERSIVE HERO WITH CATEGORY BANNER */}
       <div className="relative h-[50vh] min-h-[400px] bg-zinc-950 text-white overflow-hidden flex items-end">
         <div className="absolute inset-0">
