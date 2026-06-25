@@ -143,9 +143,9 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
         breadcrumbTitle={city.name}
         parentBreadcrumbTitle="Rekonštrukcia domu"
         parentBreadcrumbUrl="/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu"
-        subtitle1={`Aj v ${city.locative} vám postavíme váš vysnívaný dom bez námahy.`}
-        subtitle2="Projekt vám vypracujeme, dom vám postavíme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás."
-        fullDesc={`Realizujeme kompletné alebo prebiehajúce rekonštrukcie rodinných domov v meste a okolí ${city.name}. Spolupracujeme s tými najlepšími v obore s ohľadom na aktuálne normy, statiku a historickú hodnotu budov.\n\nSme prispôsobený na riadenie komplikovaných búracich prác u starých objektov, vstavby podkroví, sanácií muriva, nadstavbám a podobne.`}
+        subtitle1={`Aj v ${city.locative} vám zrekonštruujeme váš dom bez starostí.`}
+        subtitle2="Projekt vám vypracujeme, dom vám zrekonštruujeme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás."
+        fullDesc={`Realizujeme kompletné alebo čiastočné rekonštrukcie rodinných domov v meste ${city.name} a okolí. Spolupracujeme s tými najlepšími v obore s ohľadom na aktuálne normy, statiku a historickú hodnotu budov.\n\nSme prispôsobený na riadenie komplikovaných búracich prác u starých objektov, vstavby podkroví, sanácií muriva, nadstavbám a podobne.`}
         imageUrl="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80"
         features={[
           "Búracie práce s vlastnou stavebnou technikou a odvozom sutín",
