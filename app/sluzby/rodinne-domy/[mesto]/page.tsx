@@ -44,7 +44,7 @@ export default async function RodinneDomyMestoPage({ params }: PageProps) {
 
   const jsonLd = generateServiceAndLocalBusinessSchema(
     `Výstavba a rekonštrukcie rodinných domov v ${city.locative}`,
-    `Naša divízia rodinných domov pokrýva oblasť ${city.name} a prináša výstavbu na kľúč a komplexné rekonštrukcie.`,
+    `Pokrývame aj oblasť ${city.name} a prinášame výstavbu na kľúč a komplexné rekonštrukcie.`,
     `${DOMAIN}/sluzby/rodinne-domy/${city.slug}`,
     city.slug
   );
@@ -76,7 +76,7 @@ export default async function RodinneDomyMestoPage({ params }: PageProps) {
             Výstavba a rekonštrukcie rodinných domov v {city.locative}
           </h1>
           <p className="max-w-2xl text-zinc-300 text-sm md:text-base leading-relaxed">
-            Naša divízia rodinných domov pokrýva oblasť {city.name} a prináša výstavbu na kľúč a komplexné rekonštrukcie. 
+            Pkrývame aj oblasť {city.name} a prinášame výstavbu na kľúč a komplexné rekonštrukcie.
             Využite naše lokálne znalosti, precíznosť a moderné stavebné postupy.
           </p>
         </div>
@@ -89,7 +89,7 @@ export default async function RodinneDomyMestoPage({ params }: PageProps) {
             Naše služby pre rodinné domy
           </h2>
           <p className="text-zinc-600 leading-relaxed">
-            Pôsobíme priamo u vás v lokalite {city.name}. Či už plánujete stavbu úplne nového rodinného domu na kľúč, alebo hľadáte 
+            Pôsobíme priamo u vás v okrese {city.name}. Či už plánujete stavbu úplne nového rodinného domu na kľúč, alebo hľadáte
             skúseného partnera na náročnú rekonštrukciu, naše tímy sú pripravené dodať tú najvyššiu kvalitu na trhu.
           </p>
         </div>
@@ -167,7 +167,7 @@ export default async function RodinneDomyMestoPage({ params }: PageProps) {
                     Rekonštrukcia domu v {city.locative}
                   </h3>
                   <p className="text-zinc-600 text-sm leading-relaxed mb-6">
-                    Komplexné stavebné rekonštrukcie, historické renovácie a transformácie interiérov v lokalite {city.name}. 
+                    Komplexné rekonštrukcie rodinných domov, renovácie historických sídiel a transformácie interiérov v lokalite {city.name}.
                     Meníme staršie nehnuteľnosti na moderné, bezpečné a energeticky efektívne domovy.
                   </p>
                   <ul className="space-y-2.5 mb-8">

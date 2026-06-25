@@ -30,7 +30,7 @@ export default function RekonstrukciaDomuPage() {
       breadcrumbTitle="Rekonštrukcia domu"
       subtitle1="Zrekonštruujte si svoj vysnívaný dom bez námahy."
       subtitle2="Projekt vám vypracujeme, dom vám zrekonštruujeme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás."
-      fullDesc={`Naša divízia prémiových rekonštrukcií prináša špičkovú kvalitu do starších nehnuteľností. Zvyšujeme životnú úroveň pôvodných domov prostredníctvom moderných technológií, energetických úspor a rešpektovania statiky pôvodnej budovy.\n\nČi už potrebujete komplexné statické spevnenie nosných stien, výmenu starých inštalácií, precízne zateplenie, alebo kompletnú premenu interiérových dispozícií na kľúč, naši remeselníci garantujú najvyššiu stavebnú presnosť.`}
+      fullDesc={`Špecializujeme sa na kvalitné rekonštrukcie starších domov a budov s dôrazom na precízne spracovanie a dlhú životnosť. Zvyšujeme životnú úroveň pôvodných domov prostredníctvom moderných technológií, energetických úspor a rešpektovania statiky pôvodnej budovy.\n\nČi už potrebujete komplexné statické spevnenie nosných stien, výmenu starých inštalácií, precízne zateplenie, alebo kompletnú premenu interiérových dispozícií na kľúč, naši remeselníci garantujú najvyššiu stavebnú presnosť.`}
       imageUrl="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=1600&q=80"
       features={[
         "Dlhoročné skúsenosti s rekonštrukciami rodinných domov",

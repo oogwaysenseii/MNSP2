@@ -157,7 +157,7 @@ export default function ResidentialHubPage() {
                     Rekonštrukcia domu
                   </h3>
                   <p className="text-zinc-600 text-sm leading-relaxed mb-6">
-                    Komplexné stavebné rekonštrukcie, historické renovácie a transformácie interiérov. 
+                    Komplexné rekonštrukcie rodinných domov, renovácie historických sídiel a transformácie interiérov.
                     Meníme staršie nehnuteľnosti na moderné, bezpečné a energeticky efektívne domovy.
                   </p>
                   <ul className="space-y-2.5 mb-8">
