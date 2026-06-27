@@ -277,13 +277,14 @@ export default async function GenericServicePage({ params }: PageProps) {
   );
 
   return (
-    <>
-    <head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-    </head>
+      <>
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(jsonLd),
+            }}
+        />
+
     <SubServiceDetail
       serviceId={serviceIdForComponent}
       serviceSlug={service.slug}
