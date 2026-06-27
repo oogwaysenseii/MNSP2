@@ -139,7 +139,7 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
             }}
         />
       <RodinneDomyServiceDetail
-        title={`Rekonštrukcia domov v ${city.locative}`}
+        title={`Rekonštrukcia domu ${city.name}`}
         breadcrumbTitle={city.name}
         parentBreadcrumbTitle="Rekonštrukcia domu"
         parentBreadcrumbUrl="/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu"
