@@ -9,13 +9,13 @@ export default function ContactPageContent() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   const currentOfficeDetails = {
-    city: 'Apex Centrála & Projekcia',
-    address: 'Priemyselná 4, Hlinkovo námestie',
-    coordinates: '811 01 Bratislava, Slovensko',
-    phone: '+421 905 555 199',
-    email: 'bratislava@apexbuilders.sk',
+    city: 'Zvolen',
+    address: 'Jozefa Kozáčeka 829/2',
+    coordinates: '960 01, Zvolens',
+    phone: '+421 950 699 585',
+    email: 'info@mnsp.sk',
     hours: 'Po - Pia • 7:00 - 18:00',
-    manager: 'Marek Nosáľ, generálny riaditeľ'
+    manager: ''
   };
 
   const faqs = [
@@ -47,11 +47,9 @@ export default function ContactPageContent() {
             KONTAKTUJTE NÁS
           </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight text-neutral-950">
-            Konzultujte stavbu s našimi majstrami
-          </h1>
+            Dohodnite si nezáväznú konzultáciu.          </h1>
           <p className="text-zinc-650 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Sme vám k dispozícii. Kontaktujte nás a získate presné informácie pre váš projekt.
-          </p>
+            Kontaktujte nás telefonicky, e-mailom alebo prostredníctvom formulára.          </p>
         </div>
 
         {/* SECTION A: DETAILED CONTROLLER GRID */}
