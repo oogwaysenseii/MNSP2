@@ -58,7 +58,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               __html: JSON.stringify(jsonLd),
             }}
         />
-
       <div className="bg-white text-zinc-900 py-16 sm:py-24">
       <div className="max-w-3xl mx-auto px-6 space-y-8">
         

@@ -214,7 +214,7 @@ export function SubServiceDetail({
 
         <Link
           href="/sluzby"
-          className="group inline-flex items-center gap-2 px-4 py-2 bg-zinc-50 border border-zinc-200 text-xs font-mono font-bold tracking-wider text-zinc-700 hover:text-amber-600 hover:bg-white rounded transition-all cursor-pointer"
+          className="group inline-flex items-center gap-2 px-4 py-2 bg-zinc-50 border border-zinc-200 text-xs font-mono font-bold tracking-wider text-zinc-700 hover:text-amber-600 hover:bg-white  transition-all cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Späť na prehľad služieb
@@ -226,7 +226,7 @@ export function SubServiceDetail({
         {/* LEFT COMPONENT: CORE SPECS AND CONTENT (7/12 cols) */}
         <div className="lg:col-span-7 space-y-10 sm:space-y-12 text-left">
           <div className="space-y-4">
-            <span className="text-xs font-mono bg-amber-500/10 text-amber-700 font-bold tracking-widest px-3 py-1 rounded-full uppercase inline-block">
+            <span className="text-xs font-mono bg-amber-500/10 text-amber-700 font-bold tracking-widest px-3 py-1  uppercase inline-block">
               ŠPECIALIZOVANÉ REMESLO
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight text-zinc-950 leading-tight">
@@ -249,9 +249,9 @@ export function SubServiceDetail({
               {features.map((feat, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-3 bg-zinc-50 border border-zinc-150 p-4 rounded-lg"
+                  className="flex items-start gap-3 bg-zinc-50 border border-zinc-150 p-4 "
                 >
-                  <div className="w-6 h-6 rounded-md bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0">
+                  <div className="w-6 h-6  bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0">
                     <CheckCircle className="w-4 h-4 text-amber-600" />
                   </div>
                   <div>
@@ -268,7 +268,7 @@ export function SubServiceDetail({
           </div>
 
           {/* Technical material arrays */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-zinc-50 border border-zinc-150 rounded-xl p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-zinc-50 border border-zinc-150  p-6">
             <div>
               <span className="block text-xs font-mono font-bold text-zinc-400 uppercase mb-3">
                 Certifikované materiály
@@ -276,7 +276,7 @@ export function SubServiceDetail({
               <ul className="space-y-2 text-xs font-semibold text-zinc-700">
                 {materials.map((mat, mIdx) => (
                   <li key={mIdx} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
+                    <span className="w-1.5 h-1.5  bg-amber-500 shrink-0" />
                     <span>{mat}</span>
                   </li>
                 ))}
@@ -289,7 +289,7 @@ export function SubServiceDetail({
               <ul className="space-y-2 text-xs font-semibold text-zinc-700">
                 {equipment.map((eq, eIdx) => (
                   <li key={eIdx} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
+                    <span className="w-1.5 h-1.5  bg-amber-500 shrink-0" />
                     <span>{eq}</span>
                   </li>
                 ))}
@@ -301,7 +301,7 @@ export function SubServiceDetail({
         {/* RIGHT COMPONENT: IMAGE HERO & PRICING ESTIMATOR (5/12 cols) */}
         <div className="lg:col-span-5 space-y-8 sticky top-28">
           {/* Beautiful Header showcase Image Slider */}
-          <div className="h-64 sm:h-80 rounded-xl overflow-hidden shadow-md relative group">
+          <div className="h-64 sm:h-80  overflow-hidden shadow-md relative group">
             <AnimatePresence mode="wait">
               {images.length > 0 && (
                 <motion.img
@@ -323,33 +323,33 @@ export function SubServiceDetail({
               <>
                 <button
                   onClick={() => setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-amber-500 hover:text-zinc-950 transition-colors opacity-0 group-hover:opacity-100 cursor-pointer"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8  bg-black/40 text-white flex items-center justify-center hover:bg-amber-500 hover:text-zinc-950 transition-colors opacity-0 group-hover:opacity-100 cursor-pointer"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
                   onClick={() => setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-amber-500 hover:text-zinc-950 transition-colors opacity-0 group-hover:opacity-100 cursor-pointer"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8  bg-black/40 text-white flex items-center justify-center hover:bg-amber-500 hover:text-zinc-950 transition-colors opacity-0 group-hover:opacity-100 cursor-pointer"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
               </>
             )}
 
-            <div className="absolute bottom-4 left-4 right-4 bg-zinc-950/80 backdrop-blur-xs p-3 rounded-lg border border-white/10 text-white text-[11px] font-mono flex items-center justify-between">
+            <div className="absolute bottom-4 left-4 right-4 bg-zinc-950/80 backdrop-blur-xs p-3  border border-white/10 text-white text-[11px] font-mono flex items-center justify-between">
               <span className="truncate mr-4">
                 {images[currentImageIndex]?.descSk}
               </span>
               <div className="flex items-center gap-1 shrink-0">
                 {images.map((_, i) => (
-                  <div key={i} className={`h-1 rounded-full ${i === currentImageIndex ? 'w-4 bg-amber-500' : 'w-1.5 bg-white/30'}`} />
+                  <div key={i} className={`h-1 -full ${i === currentImageIndex ? 'w-4 bg-amber-500' : 'w-1.5 bg-white/30'}`} />
                 ))}
               </div>
             </div>
           </div>
 
           {/* DYNAMIC ESTIMATE BOX */}
-          <div className="bg-zinc-950 text-white border border-zinc-800 rounded-xl p-6 sm:p-8 space-y-6 relative overflow-hidden shadow-xl">
+          <div className="bg-zinc-950 text-white border border-zinc-800  p-6 sm:p-8 space-y-6 relative overflow-hidden shadow-xl">
             <div className="absolute inset-0 bg-stone-900/10 opacity-30 bg-[radial-gradient(#1f2937_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] pointer-events-none" />
 
             <div className="relative z-10 space-y-1">
@@ -378,7 +378,7 @@ export function SubServiceDetail({
                   step={5}
                   value={sizeM2}
                   onChange={(e) => setSizeM2(Number(e.target.value))}
-                  className="w-full h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-amber-500"
+                  className="w-full h-1.5 bg-zinc-800  appearance-none cursor-pointer accent-amber-500"
                 />
 
                 <div className="flex justify-between text-[10px] font-mono text-zinc-500">
@@ -399,7 +399,7 @@ export function SubServiceDetail({
                       type="button"
                       key={oIdx}
                       onClick={() => setSelectedSpec(oIdx)}
-                      className={`w-full text-left p-3 rounded-lg border text-xs font-semibold tracking-wide transition-all ${
+                      className={`w-full text-left p-3 border text-xs font-semibold tracking-wide transition-all ${
                         selectedSpec === oIdx
                           ? "bg-amber-500 border-amber-500 text-zinc-950 font-bold"
                           : "bg-zinc-900 border-zinc-800 text-zinc-300 hover:border-zinc-700"
@@ -429,10 +429,72 @@ export function SubServiceDetail({
               {/* TRIGGER CONQUIRY CTA */}
               <Link
                 href="/kontakt"
-                className="w-full py-4 bg-white hover:bg-zinc-100 text-zinc-950 font-bold tracking-widest text-xs rounded transition-all shadow-md hover:shadow-lg cursor-pointer text-center block uppercase"
+                className="w-full py-4 bg-white hover:bg-zinc-100 text-zinc-950 font-bold tracking-widest text-xs  transition-all shadow-md hover:shadow-lg cursor-pointer text-center block uppercase"
               >
                 Nezáväzná cenová ponuka
               </Link>
+            </div>
+          </div>
+
+          {/* LIST OF SERVICES */}
+          <div className="bg-zinc-50 p-5 border border-zinc-200 text-zinc-800 space-y-4 ">
+            <h5 className="text-[10px] font-mono text-zinc-500 font-bold uppercase tracking-wider">
+              NAŠE SLUŽBY
+            </h5>
+            <div className="flex flex-col space-y-2">
+              <Link
+                href="/sluzby/rodinne-domy"
+                className="text-sm font-medium hover:text-amber-600 transition-colors"
+              >
+                Rodinné domy
+              </Link>
+              <Link
+                href="/sluzby/rodinne-domy/stavba-domu-na-kluc"
+                className="text-xs text-zinc-600 hover:text-amber-500 pl-3 border-l-2 border-zinc-200 hover:border-amber-500 transition-all font-medium"
+              >
+                Stavba domu na kľúč
+              </Link>
+              <Link
+                href="/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu"
+                className="text-xs text-zinc-600 hover:text-amber-500 pl-3 border-l-2 border-zinc-200 hover:border-amber-500 transition-all font-medium"
+              >
+                Rekonštrukcia rodinného domu
+              </Link>
+
+              <Link
+                href="/sluzby"
+                className="text-sm font-medium hover:text-amber-600 transition-colors mt-2 block"
+              >
+                Stavebné sektory
+              </Link>
+
+              <div className="p-1"></div>
+              <h5 className="pb-2 text-[10px] font-mono text-zinc-500 font-bold uppercase tracking-wider mb-1 mt-2 border-b border-zinc-200">
+                Remeslá
+              </h5>
+              <div className="grid grid-cols-1 gap-2 pt-2">
+                {[
+                  { name: "Monolitické konštrukcie", id: "monoliticke" },
+                  { name: "Murárske práce", id: "murarske" },
+                  { name: "Tesárske práce", id: "tesarske" },
+                  { name: "Omietky", id: "omietky" },
+                  { name: "Potery", id: "potery" },
+                  { name: "Obkladačské práce", id: "obkladacske" },
+                  { name: "Fasády", id: "fasady" },
+                  { name: "Výkopové a zemné práce", id: "vykopove" },
+                  { name: "Búracie práce", id: "buracie" },
+                  { name: "Jadrové vŕtanie", id: "jadrove" },
+                  { name: "Rezanie otvorov", id: "rezanie" }
+                ].map(r => (
+                  <Link
+                    key={r.id}
+                    href={`/sluzby/${r.id}`}
+                    className="text-xs text-zinc-600 hover:text-amber-600 transition-colors"
+                  >
+                    {r.name}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>

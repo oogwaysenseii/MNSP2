@@ -38,7 +38,6 @@ export function Footer() {
                 <li><Link href="/sluzby/priemyselne-objekty" className="hover:text-amber-600 transition-colors">Priemyselné objekty</Link></li>
                 <li><Link href="/sluzby/obcianske-stavby" className="hover:text-amber-600 transition-colors">Občianske stavby</Link></li>
 
-
               </ul>
               <ul className="space-y-2 text-[10px]">
                 <li><Link href="/sluzby/zakladanie-stavieb" className="hover:text-amber-600 transition-colors">Zakladanie stavieb</Link></li>
