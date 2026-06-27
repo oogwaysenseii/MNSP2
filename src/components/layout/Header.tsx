@@ -16,9 +16,9 @@ const secondaryServices = sluzby.slice(5).map(s => ({ name: s.name, href: `/sluz
 
 const mainLinks = [
   { name: 'Domov', href: '/' },
-  { name: 'Lokality', href: '/lokality' },
   { name: 'Portfólio', href: '/portfolio' },
   { name: 'Blog', href: '/blog' },
+  { name: 'FAQ', href: '/faq' },
   { name: 'O nás', href: '/o-nas' },
   { name: 'Kontakt', href: '/kontakt' },
 ];
@@ -35,7 +35,6 @@ export function Header() {
   else if (pathname === '/o-nas') currentPage = 'about';
   else if (pathname === '/blog') currentPage = 'blog';
   else if (pathname === '/kontakt') currentPage = 'contact';
-  else if (pathname === '/lokality') currentPage = 'lokality';
   else if (pathname.startsWith('/sluzby')) currentPage = 'services';
 
   useEffect(() => {

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'motion/react';
 import { Clock, ArrowRight, ArrowUpRight, Search } from 'lucide-react';
 import { blogPostsData } from '@/src/data/blog';
+import { calculateReadingTime } from '@/src/lib/blogUtils';
 
 interface BlogSectionProps {
   filterCategory?: string;
@@ -202,7 +203,7 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
                         <div className="p-6 pt-0 border-t border-zinc-100 mt-6 flex items-center justify-between">
                           <span className="text-[10px] font-mono text-zinc-400 flex items-center gap-1">
                             <Clock className="w-3.5 h-3.5" />
-                            {post.readTime}
+                            {calculateReadingTime(post.content)}
                           </span>
 
                           <span className="font-mono text-[10px] font-extrabold text-zinc-950 group-hover:text-amber-600 uppercase flex items-center gap-1 cursor-pointer">

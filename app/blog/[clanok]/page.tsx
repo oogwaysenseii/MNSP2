@@ -1,9 +1,23 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { Clock, ArrowLeft, BookmarkCheck } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowLeft, Clock, Calendar, FileText, ChevronLeft, ChevronRight } from 'lucide-react';
 import { blogPostsData } from '@/src/data/blog';
 import { getSEOTags } from '@/src/lib/seo';
 import { Metadata } from 'next';
+import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { DOMAIN, COMPANY_NAME } from '@/src/lib/schema';
+import { ShareButtons } from '@/src/components/blog/ShareButtons';
+import { TableOfContents } from '@/src/components/blog/TableOfContents';
+import { AuthorBox } from '@/src/components/blog/AuthorBox';
+import { RelatedArticles } from '@/src/components/blog/RelatedArticles';
+import { RelatedServices } from '@/src/components/blog/RelatedServices';
+import { BlogCTA } from '@/src/components/blog/BlogCTA';
+import { extractFAQ, getWordCount, calculateReadingTime } from '@/src/lib/blogUtils';
+import { autoLinkKeywords } from '@/src/lib/blogAutoLink';
 
 interface BlogPostPageProps {
   params: Promise<{ clanok: string }>;
@@ -17,131 +31,256 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     return {};
   }
 
-  return getSEOTags(
-    post.title,
-    post.excerpt,
-    `/blog/${post.id}`
-  );
+  return getSEOTags({
+    title: post.title,
+    description: post.excerpt,
+    path: `/blog/${post.id}`,
+    imageUrl: post.imageUrl,
+    type: 'article',
+    publishedTime: post.publishedAt,
+    modifiedTime: post.updatedAt,
+    author: 'MNSP',
+    keywords: post.tags,
+  });
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const resolvedParams = await params;
-  const post = blogPostsData.find((p) => p.id === resolvedParams.clanok);
+  
+  // Sort posts by publishedAt descending to determine prev/next
+  const sortedPosts = [...blogPostsData].sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+  const postIndex = sortedPosts.findIndex((p) => p.id === resolvedParams.clanok);
+  const post = sortedPosts[postIndex];
 
   if (!post) {
     notFound();
   }
 
+  const nextPost = postIndex > 0 ? sortedPosts[postIndex - 1] : null;
+  const prevPost = postIndex < sortedPosts.length - 1 ? sortedPosts[postIndex + 1] : null;
+
+  const url = `${DOMAIN}/blog/${post.id}`;
+  
+  // Content Processing
+  const rawContent = post.content;
+  const linkedContent = autoLinkKeywords(rawContent);
+  const wordCount = getWordCount(rawContent);
+  const readTime = calculateReadingTime(rawContent);
+  
+  const faqs = extractFAQ(rawContent);
+
+  const authorSchema = post.author && typeof post.author === 'object' 
+    ? { "@type": "Person", "name": post.author.name, "url": post.author.url }
+    : { "@type": "Organization", "name": post.author || "MNSP Odborný Tím" };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.title,
+    "description": post.excerpt,
     "image": post.imageUrl,
-    "datePublished": "2024-03-15T08:00:00+01:00",
-    "dateModified": "2024-03-15T08:00:00+01:00",
-    "author": {
-      "@type": "Person",
-      "name": "Marek Nosáľ"
-    },
+    "datePublished": post.publishedAt,
+    "dateModified": post.updatedAt ?? post.publishedAt,
+    "author": authorSchema,
     "publisher": {
       "@type": "Organization",
-      "name": "MNSP"
+      "name": COMPANY_NAME,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${DOMAIN}/logo.png`
+      }
     },
-    "description": post.excerpt
+    "url": url,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": url
+    },
+    "isPartOf": {
+      "@type": "Blog",
+      "name": "MNSP Blog"
+    },
+    "articleSection": post.category,
+    "keywords": post.tags.join(", "),
+    "wordCount": wordCount,
+    "inLanguage": "sk-SK",
+    "articleBody": rawContent,
+    "about": {
+      "@type": "Thing",
+      "name": post.category
+    },
+    "mentions": post.tags.map(tag => ({
+      "@type": "Thing",
+      "name": tag
+    }))
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Domov", "item": DOMAIN },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${DOMAIN}/blog` },
+      { "@type": "ListItem", "position": 3, "name": post.title, "item": url }
+    ]
+  };
+
+  let faqJsonLd = null;
+  if (faqs.length > 0) {
+    faqJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    };
+  }
+
   return (
-      <>
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(jsonLd),
-            }}
-        />
-      <div className="bg-white text-zinc-900 py-16 sm:py-24">
-      <div className="max-w-3xl mx-auto px-6 space-y-8">
-        
-        {/* EXIT TO LIST OVERLAY */}
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-wider text-zinc-500 hover:text-zinc-950 uppercase border border-zinc-200 px-4 py-2.5 rounded hover:bg-neutral-50 transition-all cursor-pointer"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          {'Späť na zoznam článkov'}
-        </Link>
-
-        {/* POST HEADER CONTAINER */}
-        <div className="space-y-4">
-          <div className="flex gap-4 items-center text-xs font-mono font-bold tracking-wider text-zinc-400 border-b border-zinc-100 pb-4">
-            <span className="text-amber-600 uppercase bg-amber-50 px-2.5 py-1 rounded">{post.category}</span>
-            <span>{post.date}</span>
-            <span>•</span>
-            <span>{post.readTime}</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight text-zinc-950 leading-tight">
-            {post.title}
-          </h1>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
+      
+      <div className="bg-white text-zinc-900 py-16 sm:py-24 border-t border-zinc-200">
+        <div className=" mx-auto px-6 space-y-8">
           
-          <p className="text-zinc-500 italic text-sm sm:text-base leading-relaxed">
-            "{post.excerpt}"
-          </p>
-        </div>
+          {/* BREADCRUMBS */}
+          <nav className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-zinc-500 uppercase overflow-x-auto whitespace-nowrap pb-2 scrollbar-hide">
+            <Link href="/" className="hover:text-amber-600 transition-colors">Domov</Link>
+            <span className="text-zinc-300">/</span>
+            <Link href="/blog" className="hover:text-amber-600 transition-colors">Blog</Link>
+            <span className="text-zinc-300">/</span>
+            <span className="text-zinc-900 truncate">{post.title}</span>
+          </nav>
 
-        {/* LARGE PHOTO IMMERSE */}
-        <div className="aspect-[21/9] rounded-xl overflow-hidden border border-zinc-200">
-          <img
-            src={post.imageUrl}
-            alt={post.title}
-            className="w-full h-full object-cover"
-          />
-        </div>
+          {/* POST HEADER CONTAINER */}
+          <div className="space-y-6">
+            <div className="flex flex-wrap gap-4 items-center text-xs font-mono font-bold tracking-wider text-zinc-400 border-b border-zinc-100 pb-4">
+              <span className="text-amber-600 uppercase bg-amber-50 px-2.5 py-1 rounded">{post.category}</span>
+              <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> {post.date}</span>
+              <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> {readTime}</span>
+              <span className="flex items-center gap-1.5"><FileText className="w-3.5 h-3.5" /> {wordCount} slov</span>
+            </div>
 
-        {/* EDITORIAL REVIEWS CONTENT MULTI PARAGRAPHS */}
-        <div className="prose max-w-none text-zinc-800 space-y-6 text-sm sm:text-base leading-relaxed font-sans">
-          {post.content.map((pText, pIdx) => (
-            <p key={pIdx}>
-              {pText}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight text-zinc-950 leading-tight">
+              {post.title}
+            </h1>
+            
+            <p className="text-zinc-500 text-lg leading-relaxed">
+              {post.excerpt}
             </p>
-          ))}
-        </div>
-
-        {/* FLOOR TAGS AND CITATIONS */}
-        <div className="border-t border-zinc-200 pt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex flex-wrap gap-2">
-            {post.tags.map((tg) => (
-              <span key={tg} className="px-3.5 py-1 bg-zinc-100 border border-zinc-200 text-xs font-medium text-zinc-600 rounded">
-                #{tg}
-              </span>
-            ))}
           </div>
 
-          <div className="flex items-center gap-2">
-            <BookmarkCheck className="w-5 h-5 text-amber-600" />
-            <span className="text-xs font-mono text-zinc-400 font-bold uppercase">
-              {'OVERENÁ INŽINIERSKA ŠTÚDIA'}
-            </span>
+          {/* LARGE PHOTO IMMERSE */}
+          <div className="relative aspect-[21/9] rounded-xl overflow-hidden border border-zinc-200 shadow-md">
+            <Image
+              src={post.imageUrl}
+              alt={post.title}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="object-cover"
+            />
           </div>
-        </div>
 
-        {/* BOTTOM FOOTER CALL WRAPPER */}
-        <div className="bg-zinc-50 rounded-xl p-6 border border-zinc-200 space-y-4 mt-12 text-center sm:text-left">
-          <h4 className="text-sm font-bold font-display text-zinc-950">
-            {'Zaujali vás naše stavebné postupy?'}
-          </h4>
-          <p className="text-xs text-zinc-600 max-w-xl leading-relaxed">
-            {'Náš projekčný a stavebný tím zaistí kompletné posúdenie stavby, statický prepočet a geologický prieskum podložia pre váš budúci zámis.'}
-          </p>
-          <Link
-            href="/blog"
-            className="inline-block px-5 py-2.5 bg-zinc-950 hover:bg-zinc-800 text-white text-xs font-bold uppercase tracking-wider rounded transition-colors cursor-pointer"
-          >
-            {'Vrátiť sa ku všetkým článkom'}
-          </Link>
-        </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-12">
+            
+            {/* DESKTOP STICKY TOC */}
+            <div className="hidden lg:block lg:col-span-4 sticky top-32">
+              <TableOfContents content={rawContent} isDesktop={true} />
+            </div>
 
+            {/* MAIN CONTENT */}
+            <div className="lg:col-span-8">
+              
+              {/* MOBILE TOC */}
+              <div className="block lg:hidden mb-8">
+                <TableOfContents content={rawContent} />
+              </div>
+
+              {/* EDITORIAL REVIEWS CONTENT MULTI PARAGRAPHS */}
+              <div className="prose max-w-none text-zinc-800 text-sm sm:text-base leading-relaxed font-sans prose-headings:font-display prose-headings:font-bold prose-a:text-amber-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:shadow-sm">
+                <div className="markdown-body">
+                  <Markdown 
+                    remarkPlugins={[remarkGfm]} 
+                    rehypePlugins={[
+                      rehypeSlug,
+                      [rehypeAutolinkHeadings, { behavior: 'append', properties: { className: ['anchor-link'] } }]
+                    ]}
+                    components={{
+                      img: ({node, ...props}) => (
+                        <span className="relative block w-full aspect-video my-8 rounded-xl overflow-hidden bg-zinc-100 border border-zinc-200">
+                          <Image 
+                            src={String(props.src || '')} 
+                            alt={String(props.alt || '')} 
+                            fill 
+                            className="object-cover" 
+                            sizes="(max-width: 768px) 100vw, 800px" 
+                          />
+                        </span>
+                      )
+                    }}
+                  >
+                    {linkedContent}
+                  </Markdown>
+                </div>
+              </div>
+
+              {/* SHARE BUTTONS */}
+              <ShareButtons url={url} title={post.title} />
+
+              {/* TAGS */}
+              <div className="mt-8 flex flex-wrap gap-2">
+                {post.tags.map((tg) => (
+                  <span key={tg} className="px-3.5 py-1 bg-zinc-100 border border-zinc-200 text-xs font-medium text-zinc-600 rounded">
+                    #{tg}
+                  </span>
+                ))}
+              </div>
+
+              {/* AUTHOR BOX */}
+              <AuthorBox />
+
+            </div>
+          </div>
+
+          {/* RELATED SERVICES & ARTICLES */}
+          <div className="pt-16">
+            <RelatedServices content={rawContent} tags={post.tags} />
+            <RelatedArticles currentPostId={post.id} category={post.category} tags={post.tags} allPosts={blogPostsData} />
+          </div>
+
+          {/* PREVIOUS / NEXT ARTICLE */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-16 pt-8 border-t border-zinc-200">
+            {prevPost ? (
+              <Link href={`/blog/${prevPost.id}`} className="group p-6 bg-zinc-50 border border-zinc-200 rounded-xl hover:border-amber-300 hover:bg-amber-50/50 transition-all text-left">
+                <span className="text-xs font-mono text-zinc-500 font-bold uppercase tracking-wider mb-2 block flex items-center gap-1">
+                  <ChevronLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" /> Predchádzajúci článok
+                </span>
+                <h4 className="font-bold text-zinc-900 group-hover:text-amber-700 transition-colors line-clamp-2">{prevPost.title}</h4>
+              </Link>
+            ) : <div />}
+            
+            {nextPost ? (
+              <Link href={`/blog/${nextPost.id}`} className="group p-6 bg-zinc-50 border border-zinc-200 rounded-xl hover:border-amber-300 hover:bg-amber-50/50 transition-all text-right">
+                <span className="text-xs font-mono text-zinc-500 font-bold uppercase tracking-wider mb-2 block flex justify-end items-center gap-1">
+                  Nasledujúci článok <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <h4 className="font-bold text-zinc-900 group-hover:text-amber-700 transition-colors line-clamp-2">{nextPost.title}</h4>
+              </Link>
+            ) : <div />}
+          </div>
+
+          {/* CTA */}
+          <BlogCTA />
+
+        </div>
       </div>
-    </div>
     </>
   );
 }

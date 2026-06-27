@@ -22,6 +22,7 @@ export function Footer() {
               <li><Link href="/sluzby" className="hover:text-amber-600 transition-colors">Služby</Link></li>
               <li><Link href="/portfolio" className="hover:text-amber-600 transition-colors">Portfólio</Link></li>
               <li><Link href="/blog" className="hover:text-amber-600 transition-colors">Blog</Link></li>
+              <li><Link href="/faq" className="hover:text-amber-600 transition-colors">Časté otázky (FAQ)</Link></li>
               <li><Link href="/o-nas" className="hover:text-amber-600 transition-colors">O nás</Link></li>
               <li><Link href="/kontakt" className="hover:text-amber-600 transition-colors">Kontakt</Link></li>
             </ul>

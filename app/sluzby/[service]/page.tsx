@@ -284,7 +284,7 @@ export default async function GenericServicePage({ params }: PageProps) {
               __html: JSON.stringify(jsonLd),
             }}
         />
-
+        
     <SubServiceDetail
       serviceId={serviceIdForComponent}
       serviceSlug={service.slug}

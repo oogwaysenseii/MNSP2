@@ -42,6 +42,14 @@ export function generateWebSiteSchema() {
     '@type': 'WebSite',
     name: COMPANY_NAME,
     url: DOMAIN,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${DOMAIN}/blog?q={search_term_string}`
+      },
+      'query-input': 'required name=search_term_string'
+    }
   };
 }
 

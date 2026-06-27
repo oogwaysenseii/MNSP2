@@ -37,8 +37,8 @@ export default function BlogPage() {
         "@id": `https://www.mnsp.sk/blog#${post.id}`,
         "headline": post.title,
         "image": post.imageUrl,
-        "datePublished": "2024-03-15T08:00:00+01:00",
-        "dateModified": "2024-03-15T08:00:00+01:00",
+        "datePublished": post.publishedAt,
+        "dateModified": post.updatedAt ?? post.publishedAt,
         "author": {
           "@type": "Person",
           "name": "Marek Nosáľ"
