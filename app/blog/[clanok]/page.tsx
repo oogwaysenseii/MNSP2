@@ -11,7 +11,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { DOMAIN, COMPANY_NAME } from '@/src/lib/schema';
 import { ShareButtons } from '@/src/components/blog/ShareButtons';
-import { TableOfContents } from '@/src/components/blog/TableOfContents';
+import { BlogSidebarContact } from '@/src/components/blog/BlogSidebarContact';
 import { AuthorBox } from '@/src/components/blog/AuthorBox';
 import { RelatedArticles } from '@/src/components/blog/RelatedArticles';
 import { RelatedServices } from '@/src/components/blog/RelatedServices';
@@ -147,7 +147,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
       
       <div className="bg-white text-zinc-900 py-16 sm:py-24 border-t border-zinc-200">
-        <div className=" mx-auto px-6 space-y-8">
+        <div className=" mx-auto px-10 space-y-8">
           
           {/* BREADCRUMBS */}
           <nav className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-zinc-500 uppercase overflow-x-auto whitespace-nowrap pb-2 scrollbar-hide">
@@ -188,20 +188,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-12">
+          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-12 items-start mt-12">
             
-            {/* DESKTOP STICKY TOC */}
-            <div className="hidden lg:block lg:col-span-4 sticky top-32">
-              <TableOfContents content={rawContent} isDesktop={true} />
+            {/* STICKY SIDEBAR CONTACT */}
+            <div className="order-2 lg:order-1 lg:col-span-4 sticky top-32 w-full">
+              <BlogSidebarContact />
             </div>
 
             {/* MAIN CONTENT */}
-            <div className="lg:col-span-8">
-              
-              {/* MOBILE TOC */}
-              <div className="block lg:hidden mb-8">
-                <TableOfContents content={rawContent} />
-              </div>
+            <div className="order-1 lg:order-2 lg:col-span-8 w-full">
 
               {/* EDITORIAL REVIEWS CONTENT MULTI PARAGRAPHS */}
               <div className="prose max-w-none text-zinc-800 text-sm sm:text-base leading-relaxed font-sans prose-headings:font-display prose-headings:font-bold prose-a:text-amber-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:shadow-sm">

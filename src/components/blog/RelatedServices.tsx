@@ -33,7 +33,7 @@ export function RelatedServices({ content, tags }: RelatedServicesProps) {
   if (matchedServices.length === 0) return null;
 
   return (
-    <div className="mt-12 bg-white border border-zinc-200 rounded-xl p-6 sm:p-8 shadow-sm">
+    <div className=" bg-white border border-zinc-200 rounded-xl p-6 sm:p-8 shadow-sm">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center">
           <Wrench className="w-5 h-5 text-amber-600" />
