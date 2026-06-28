@@ -40,7 +40,7 @@ export default function ResidentialHubPage() {
       <div className="relative h-[50vh] min-h-[400px] bg-zinc-950 text-white overflow-hidden flex items-end">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1670589953882-b94c9cb380f5?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="/rodinne-domy/rodinne-domy.webp"
             alt="Stavba a rekonštrukcia rodinných domov"
             className="w-full h-full object-cover object-[center_25%] opacity-50"
           />
@@ -86,9 +86,9 @@ export default function ResidentialHubPage() {
             >
               <div className="h-64 relative overflow-hidden bg-zinc-950">
                 <img
-                  src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80"
-                  alt="Výstavba rodinných domov na kľúč"
-                  className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
+                  src="/rodinne-domy/stavba-domu-na-kluc.png"
+                  alt="Moderný rodinný dom vo výstavbe s projektovou dokumentáciou, stavebnými materiálmi a základmi pre službu stavba domu na kľúč"
+                  className="w-full h-full object-[center_70%] object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute top-4 left-4 bg-white shadow-md p-3  border border-zinc-100">
                   <Home className="w-6 h-6 text-amber-600" />
@@ -143,9 +143,9 @@ export default function ResidentialHubPage() {
             >
               <div className="h-64 relative overflow-hidden bg-zinc-950">
                 <img
-                  src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80"
-                  alt="Rekonštrukcia rodinných domov"
-                  className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
+                  src="/rodinne-domy/rekonstrukcia-rodineho-domu.png"
+                  alt="Moderný rodinný dom počas rekonštrukcie s lešením, zateplením fasády a prebiehajúcimi stavebnými prácami."
+                  className="w-full h-full object-cover object-[center_70%] opacity-80 group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute top-4 left-4 bg-white shadow-md p-3  border border-zinc-100">
                   <Hammer className="w-6 h-6 text-amber-600" />

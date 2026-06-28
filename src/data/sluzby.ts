@@ -3,7 +3,7 @@ export const sluzby = [
     id: 'rodinne-domy', 
     name: 'Rodinné domy',
     description: 'Kompletná výstavba a rekonštrukcie moderných rodinných domov.',
-    imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: '/rodinne-domy/rodinne-domy.webp',
     highlights: ['Stavba na kľúč', 'Záruka kvality']
   },
   { 
