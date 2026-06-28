@@ -6,7 +6,7 @@ import { sluzby } from '@/src/data/sluzby';
 export function ServicesGrid({ hideAllLink = false }: { hideAllLink?: boolean }) {
   return (
     <section className="pt-5 pb-5 bg-white border-b border-gray-200 overflow-hidden">
-      <Container className="max-w-[1400px]">
+      <Container className="max-w-[1500px]">
 
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">

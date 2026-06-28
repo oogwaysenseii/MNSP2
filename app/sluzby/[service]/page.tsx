@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!service) return {};
 
   return getSEOTags(
-    `${service.name} | Kvalitne a profesionálne`,
+    `${service.name} | MNSP`,
     service.description,
     `/sluzby/${serviceSlug}`
   );

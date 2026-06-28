@@ -21,7 +21,7 @@ export function CTA({
       <div className="absolute inset-0 bg-stone-900/10 opacity-30 bg-[radial-gradient(#1f2937_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1500px] mx-auto px-10 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
           {/* Left Column - Text */}

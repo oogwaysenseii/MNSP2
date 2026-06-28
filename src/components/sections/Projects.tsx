@@ -90,7 +90,7 @@ export function Projects({
 
   return (
     <section id="portfolio-container" className="py-10 bg-white overflow-hidden">
-      <Container className="max-w-[1400px]">
+      <Container className="max-w-[1500px]">
         
         {/* HEADER TOP ROW */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">

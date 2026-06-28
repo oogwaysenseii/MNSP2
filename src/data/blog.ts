@@ -5,8 +5,8 @@ export const blogPostsData: BlogPost[] = [
     id: 'kolko-stoji-stavba-rodinneho-domu-v-roku-2026',
     title: 'Koľko stojí stavba rodinného domu v roku 2026? Kompletný rozpočet',
     excerpt: 'Zistite, koľko stojí stavba rodinného domu v roku 2026. Prinášame detailný rozpočet pre dom na kľúč aj hrubú stavbu, vrátane cien za m² a skrytých nákladov.',
-    category: 'Rozpočet a financie',
-    tags: ['Cena domu na kľúč', 'Rozpočet', 'Hrubá stavba', 'Cena za m2', 'Výstavba domu'],
+    category: 'Rodinné domy',
+    tags: ['Rodinné domy', 'Stavba domu'],
     date: '27. Jún 2026',
     publishedAt: '2026-06-27T08:00:00+01:00',
     updatedAt: '2026-06-27T08:00:00+01:00',
@@ -147,7 +147,7 @@ Pokiaľ hľadáte zodpovedného partnera pre realizáciu vašej **hrubej stavby*
     title: 'Stavba rodinného domu v roku 2026: Kompletný sprievodca krok za krokom',
     excerpt: 'Plánujete stavať dom? Prevedieme vás celým procesom krok za krokom. Zistite, ako prebieha výstavba v roku 2026, čo obnáša a na čo určite nezabudnúť.',
     category: 'Rodinné domy',
-    tags: ['Stavba domu', 'Proces výstavby', 'Základy', 'Hrubá stavba', 'Kolaudácia'],
+    tags: ['Rodinné domy', 'Stavba domu'],
     content: `Plánujete si splniť sen o vlastnom bývaní? **Stavba rodinného domu** je pre väčšinu z nás najväčším životným a finančným projektom. V roku 2026 sa stavebníctvo vyznačuje prísnymi energetickými normami (štandard A0), rastúcim dopytom po moderných technológiách a snahou o maximálnu efektivitu. V tomto rozsiahlom sprievodcovi vás prevedieme celým procesom krok za krokom – od prvej myšlienky až po odovzdanie kľúčov.
 
 Ak uvažujete nad tým, [koľko stojí stavba rodinného domu v roku 2026](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026), odporúčame prečítať si náš predchádzajúci článok venovaný detailnému rozpočtu. Teraz sa však poďme pozrieť na to, ako samotná **stavba rodinného domu** prebieha v praxi.
@@ -270,7 +270,7 @@ Ak hľadáte spoľahlivého partnera, ktorý vás prevedie celým procesom a zre
     title: 'Dom na kľúč alebo hrubá stavba? Kompletné porovnanie',
     excerpt: 'Rozhodujete sa, ako budete realizovať svoje nové bývanie? Porovnali sme výhody, nevýhody, časovú náročnosť a reálne náklady oboch prístupov.',
     category: 'Rodinné domy',
-    tags: ['Dom na kľúč', 'Hrubá stavba', 'Rozpočet', 'Porovnanie'],
+    tags: ['Rodinné domy', 'Stavba domu'],
     content: `Stojíte pred dôležitým rozhodnutím a neviete, či je pre vás lepší **dom na kľúč alebo hrubá stavba**? Táto otázka trápi takmer každého budúceho majiteľa rodinného domu. Kým v minulosti bolo úplne bežné stavať domy po večeroch a víkendoch s pomocou širokej rodiny a známych, v roku 2026 je situácia výrazne odlišná. Moderné stavebné postupy, prísne energetické normy (štandard A0) a vysoké pracovné vyťaženie menia pohľad na to, ako Slováci pristupujú k výstavbe.
 
 V tomto detailnom porovnaní sa pozrieme na to, čo presne oba pojmy znamenajú, aké majú výhody i nevýhody a ktoré riešenie bude najvýhodnejšie práve pre váš životný štýl a rozpočet.
@@ -404,7 +404,7 @@ V **MNSP | Stavby a rekonštrukcie** vám ponúkame obe cesty. Zastávame férov
     title: 'Ako si vybrať stavebnú firmu? 12 vecí, ktoré rozhodujú',
     excerpt: 'Výber stavebnej firmy je najdôležitejšie rozhodnutie pri stavbe domu. Zistite, na čo si dať pozor, aké otázky sa pýtať a ako odhaliť nespoľahlivých majstrov.',
     category: 'Stavebná firma',
-    tags: ['Výber firmy', 'Stavebná firma', 'Zmluvy', 'Záruky', 'Kvalita'],
+    tags: ['Stavebná firma'],
     content: `Stavba rodinného domu je pravdepodobne najväčším finančným projektom vášho života. To, či bude tento proces plynulou cestou za vysnívaným bývaním, alebo nočnou morou plnou stresu a nečakaných výdavkov, závisí od jediného rozhodnutia: **ako vybrať stavebnú firmu**, ktorá váš dom postaví. 
 
 Na trhu v roku 2026 pôsobí obrovské množstvo firiem a živnostníkov. Kým niektorí dodávajú špičkovú prácu s modernými technológiami, iní lákajú na podozrivo nízke ceny, ktoré sa neskôr predražia pre skryté poplatky a nekvalitnú prácu. V tomto článku sme zhrnuli 12 kľúčových kritérií, ktoré by ste mali zvážiť pred podpisom zmluvy.
@@ -517,7 +517,7 @@ V spoločnosti **MNSP | Stavby a rekonštrukcie** staviame na otvorenej komunik�
     title: 'Najčastejšie chyby pri stavbe rodinného domu a ako sa im vyhnúť',
     excerpt: 'Vyhnite sa drahým a časovo náročným chybám pri stavbe domu. Zhrnuli sme najčastejšie omyly, ktoré robia stavebníci, a ponúkame overené rady, ako im predísť.',
     category: 'Rodinné domy',
-    tags: ['Chyby pri stavbe', 'Stavba domu', 'Rady a tipy', 'Plánovanie'],
+    tags: ['Rodinné domy', 'Stavba domu'],
     content: `Cesta k vlastnému bývaniu je často dláždená dobrými úmyslami, no v realite aj mnohými prekážkami. Z našich dlhoročných skúseností v **MNSP | Stavby a rekonštrukcie** vieme, že niektoré **chyby pri stavbe domu** sa opakujú so železnou pravideľnosťou. Tieto omyly dokážu stavbu nielen výrazne predražiť, ale aj predĺžiť a znepríjemniť samotné bývanie v novom dome.
 
 Pripravili sme pre vás prehľad tých najčastejších zlyhaní, aby ste sa im mohli oblúkom vyhnúť.
@@ -623,8 +623,8 @@ Ak nechcete riskovať peniaze, čas a nervy s neoverenými partiami majstrov, zv
     id: 'ako-pripravit-pozemok-na-stavbu-rodinneho-domu',
     title: 'Ako pripraviť pozemok na stavbu rodinného domu',
     excerpt: 'Zistite, čo všetko zahŕňa príprava pozemku na stavbu, ako prebiehajú zemné práce a prečo by ste tento krok nemali podceniť.',
-    category: 'Stavebný proces',
-    tags: ['Príprava pozemku', 'Zemné práce', 'Stavba domu', 'Základy'],
+    category: 'Stavebné procesy',
+    tags: ['Stavebné procesy', 'Stavba domu'],
     content: `Kúpa vytúženej parcely je iba prvým krokom na dlhej ceste za novým domovom. Skôr než sa na mieste vyleje prvá miešačka betónu, musí prebehnúť dôkladná **príprava pozemku na stavbu**. Tento proces je často laikmi podceňovaný, avšak akékoľvek chyby v tejto fáze sa môžu nepríjemne predražiť počas realizácie základov.
 
 V tomto článku sa detailne pozrieme na to, čo všetko príprava pozemku na stavbu zahŕňa v roku 2026, od prvých geodetických meraní až po samotné [výkopové a zemné práce](/sluzby/zemne-prace).
@@ -720,8 +720,8 @@ Spoločnosť **MNSP | Stavby a rekonštrukcie** disponuje vlastnou technikou a s
     id: 'ako-sa-robia-zaklady-domu-kompletny-sprievodca',
     title: 'Ako sa robia základy domu? Kompletný sprievodca',
     excerpt: 'Kvalitné základy sú alfou a omegou každej stavby. Prečítajte si krok za krokom, ako sa robia základy domu, prečo je dôležitý geologický prieskum a na čom nešetriť.',
-    category: 'Stavebný proces',
-    tags: ['Základy domu', 'Monolitické konštrukcie', 'Betonáž', 'Hrubá stavba'],
+    category: 'Stavebné procesy',
+    tags: ['Stavebné procesy', 'Stavba domu'],
     content: `Hovorí sa, že dom je len taký pevný, ako jeho základy. A v stavebníctve to platí stonásobne. Akákoľvek chyba pri murovaní steny alebo pri ukladaní krytiny sa dá relatívne ľahko opraviť. Ak však spravíte chybu pod zemou, jej oprava je extrémne drahá, a v niektorých prípadoch aj nemožná. Preto je otázka, **ako sa robia základy domu**, jednou z najdôležitejších, ktorú by ste si pred [stavbou domu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom) mali položiť.
 
 V spoločnosti **MNSP | Stavby a rekonštrukcie** kladieme na [monolitické konštrukcie](/sluzby/monoliticke-konstrukcie) a zakladanie stavieb maximálny dôraz. Poďme si krok za krokom prejsť celý proces od výkopu až po zaliatu základovú dosku.
@@ -814,14 +814,14 @@ V **MNSP | Stavby a rekonštrukcie** berieme základy doslova ako posvätnú vec
     date: '20. Máj 2026',
     publishedAt: '2026-05-20T08:00:00+01:00',
     updatedAt: '2026-05-20T08:00:00+01:00',
-    imageUrl: '/Blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca.webp'
+    imageUrl: '/Blog/ako-sa-robia-zaklady-domu.webp'
   },
   {
     id: 'stavebne-povolenie-krok-za-krokom-v-roku-2026',
     title: 'Stavebné povolenie krok za krokom v roku 2026',
     excerpt: 'Vybavovanie stavebného povolenia je pre mnohých nočnou morou. Prečítajte si nášho aktuálneho sprievodcu, ako získať povolenie rýchlo, bez stresu a na čo si dať pozor.',
-    category: 'Stavebný proces',
-    tags: ['Stavebné povolenie', 'Byrokracia', 'Úrady', 'Zákony'],
+    category: 'Stavebné procesy',
+    tags: ['Stavebné procesy', 'Stavba domu'],
     content: `Získanie **stavebného povolenia** je často považované za najdlhšiu a najstresujúcejšiu fázu celej výstavby. Mnohí stavebníci majú pocit, že bojujú s veternými mlynmi byrokracie. Rok 2026 priniesol do stavebného zákona určité zmeny smerujúce k digitalizácii a čiastočnému zrýchleniu procesov, no úradný postup si stále vyžaduje pevnú vôľu, systém a dostatok času.
 
 Aby ste pri vybavovaní papierov nestratili hlavu, pripravili sme pre vás prehľadný návod, ako postupovať **krok za krokom**, čo všetko budete potrebovať a akým častým chybám sa vyhnúť.
@@ -927,8 +927,8 @@ Keď konečne držíte v rukách právoplatné povolenie, ten najväčší papie
     id: 'kolko-trva-stavba-rodinneho-domu',
     title: 'Koľko trvá stavba rodinného domu? Reálny harmonogram prác',
     excerpt: 'Od prvého výkopu až po kolaudáciu. Zistite, koľko trvá stavba domu, aké sú technologické prestávky a čo najviac spomaľuje celý proces.',
-    category: 'Stavebný proces',
-    tags: ['Harmonogram', 'Stavba domu', 'Trvanie stavby', 'Plánovanie'],
+    category: 'Stavebné procesy',
+    tags: ['Stavebné procesy', 'Stavba domu'],
     content: `Otázka, **koľko trvá stavba domu**, zaznieva na našich stretnutiach s klientmi hneď po otázke na cenu. A odpoveď? "Závisí to." To znie síce alibisticky, ale v stavebníctve vstupuje do hry obrovské množstvo premenných – od počasia, cez zložitosť projektu, až po spôsob financovania.
 
 Ak staviate dom na kľúč so serióznou firmou a financovanie máte zabezpečené, štandardný murovaný dom s rozlohou okolo 120 m² je možné postaviť **za 9 až 12 mesiacov**. Ak sa rozhodnete pre svojpomocnú výstavbu, počítajte s tým, že sa tento čas minimálne zdvojnásobí (často trvá 2 až 3 roky).
@@ -1027,8 +1027,8 @@ Zaväzujeme sa k pevnému termínu dokončenia priamo v zmluve. Zverte nám svoj
     id: 'rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet',
     title: 'Rekonštrukcia starého domu v roku 2026: Na čo myslieť a čomu sa vyhnúť',
     excerpt: 'Plánujete kúpiť starší dom a zrekonštruovať ho? Tento článok vás prevedie najčastejšími úskaliami rekonštrukcií od vlhkosti až po nečakané statické poruchy.',
-    category: 'Rekonštrukcie',
-    tags: ['Rekonštrukcia', 'Starý dom', 'Stavebné povolenie', 'Rady a tipy'],
+    category: 'Rodinné domy',
+    tags: ['Rodinné domy', 'Rekonštrukcia domu'],
     content: `Ceny novostavieb stúpajú, dobrých pozemkov v mestách je málo. Niet divu, že čoraz viac ľudí sa rozhoduje pre kúpu staršieho rodinného domu a jeho kompletnú rekonštrukciu. Môže to byť skvelá investícia do nehnuteľnosti s "dušou" a zabehnutou infraštruktúrou, ale aj priama cesta k finančnému vyčerpaniu a nervovému zrúteniu.
 
 Kde leží hranica medzi úspešnou obnovou a katastrofou? Ak plánujete **rekonštrukciu domu**, zistite, čomu sa musíte v roku 2026 nevyhnutne vyhnúť.
@@ -1120,8 +1120,8 @@ V spoločnosti **MNSP | Stavby a rekonštrukcie** máme obrovské skúsenosti s 
     id: 'zateplenie-fasady-polystyren-alebo-mineralna-vlna',
     title: 'Zateplenie fasády: Polystyrén alebo minerálna vlna? Porovnanie',
     excerpt: 'Vyberáte izoláciu pre váš dom? Pozrite si veľké porovnanie dvoch najpopulárnejších materiálov na zateplenie fasády. Aké sú ich výhody, nevýhody a rozdiely v cene?',
-    category: 'Stavebný proces',
-    tags: ['Zateplenie', 'Fasády', 'Izolácia', 'Polystyrén', 'Minerálna vlna'],
+    category: 'Stavebné procesy',
+    tags: ['Stavebné procesy', 'Rodinné domy'],
     content: `Keď príde rad na [zateplenie fasády](/sluzby/fasady), stavebníci sa najčastejšie delia na dva tábory. Jeden nedá dopustiť na biely polystyrén (EPS), druhý prísahá na vlastnosti minerálnej (kamennej) vlny. Oba materiály majú v stavebníctve v roku 2026 svoje pevné a nezastupiteľné miesto, no oba sa správajú inak a vyžadujú si odlišný technologický prístup.
 
 V spoločnosti **MNSP | Stavby a rekonštrukcie** realizujeme desiatky zateplení ročne. Pripravili sme pre vás objektívne porovnanie, ktoré vám pomôže rozhodnúť sa, čím zatepliť váš rodinný dom.
@@ -1178,8 +1178,8 @@ Hľadáte spoľahlivých majstrov na aplikáciu zatepľovacieho systému s [fin�
     id: 'stavba-domu-svojpomocne-vyhody-nevyhody',
     title: 'Stavba domu svojpomocne: Ušetríte, alebo naopak prerobíte?',
     excerpt: 'Láka vás vidina obrovských úspor pri stavbe domu vlastnými rukami? Zistili sme pre vás, aká je realita. Kde svojpomoc funguje a kde končí drahou katastrofou.',
-    category: 'Stavebný proces',
-    tags: ['Svojpomocne', 'Stavba domu', 'Rozpočet', 'Rady a tipy'],
+    category: 'Stavebné procesy',
+    tags: ['Stavebné procesy', 'Stavba domu'],
     content: `Na prvý pohľad to znie ako dokonalý plán: nakúpite materiál v akcii, pozvete partiu kamarátov z krčmy, švagra, ktorý "už voľačo muroval", a za víkend vytiahnete múry. Ušetríte desiatky tisíc eur a budete mať neopísateľný pocit zadosťučinenia. Toto je predstava, s ktorou sa mnohí púšťajú do **stavby domu svojpomocne**.
 
 Ale aká je realita v roku 2026, kedy sú technologické nároky na domy (štandard A0, tepelné čerpadlá, rekuperácia) vyššie ako kedykoľvek predtým? Poďme sa objektívne pozrieť na výhody, riziká a na to, či sa vôbec ešte oplatí stavať dom vlastnými rukami.
@@ -1242,7 +1242,7 @@ Zverte svoj projekt profesionálom a venujte sa tomu, čo viete robiť najlepši
     title: 'Murovaný dom vs. drevodom: Ktorá voľba je pre vás lepšia?',
     excerpt: 'Večná dilema stavebníkov. Porovnali sme klasické murované domy a moderné drevostavby z hľadiska životnosti, rýchlosti výstavby, ceny a akumulácie tepla.',
     category: 'Rodinné domy',
-    tags: ['Murovaný dom', 'Drevodom', 'Porovnanie', 'Hrubá stavba'],
+    tags: ['Rodinné domy', 'Stavba domu'],
     content: `Pri rozhodovaní o [stavbe domu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom) patrí výber konštrukčného materiálu medzi najdôležitejšie strategické kroky. Stále viac ľudí zvažuje ako alternatívu ku klasickej tehle drevostavbu. 
 
 Hoci naša spoločnosť **MNSP | Stavby a rekonštrukcie** je špecialistom predovšetkým na poctivé murované a [monolitické konštrukcie](/sluzby/monoliticke-konstrukcie), v tomto článku sa na oba varianty pozrieme prísne objektívnymi očami. 
@@ -1305,8 +1305,8 @@ Ak je vaším favoritom klasika, poctivé materiály a dlhovekosť, v **MNSP | S
     id: 'zelena-strecha-na-rodinnom-dome',
     title: 'Zelená strecha na rodinnom dome: Výhody, nevýhody a údržba',
     excerpt: 'Vegetačné zelené strechy sú v roku 2026 obrovským trendom. Zlepšujú mikroklímu, chránia dom pred prehrievaním, no majú aj svoje špecifiká a vyššie nároky na statiku.',
-    category: 'Zaujímavosti',
-    tags: ['Zelená strecha', 'Ekológia', 'Hrubá stavba', 'Izolácia'],
+    category: 'Rodinné domy',
+    tags: ['Technológie', 'Rodinné domy'],
     content: `Pri pohľade na moderné štvrte rodinných domov si v roku 2026 nemožno nevšimnúť rastúci trend – namiesto čiernych škridiel alebo plechu vidíte na mnohých domoch (ale aj na prístreškoch či garážach) kvitnúce záhrady. **Zelené (vegetačné) strechy** už dávno nie sú len výsadou ekologických nadšencov, ale racionálnym a vysoko funkčným architektonickým prvkom.
 
 Aké sú reálne výhody zelenej strechy, aké obmedzenia prináša a prečo musíte o jej realizácii rozhodnúť ešte pred vypracovaním projektu?
@@ -1353,8 +1353,8 @@ V spoločnosti **MNSP | Stavby a rekonštrukcie** máme s realizáciou náročn�
     id: 'rekuperacia-v-rodinnom-dome-oplati-sa',
     title: 'Rekuperácia v rodinnom dome: Oplatí sa investícia do riadeného vetrania?',
     excerpt: 'Čerstvý vzduch bez tepelných strát. Zistite, ako funguje rekuperácia, prečo je v moderných novostavbách takmer nevyhnutnosťou a aké sú jej skutočné výhody.',
-    category: 'Technológie',
-    tags: ['Rekuperácia', 'Vetranie', 'Novostavba', 'Energie'],
+    category: 'Rodinné domy',
+    tags: ['Technológie', 'Rodinné domy'],
     content: `Pri plánovaní moderného bývania sa čoraz častejšie skloňuje slovo **rekuperácia**. Pre niekoho je to zbytočný luxus, pre iného absolútna nevyhnutnosť, bez ktorej si [novostavbu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom) ani nevie predstaviť. 
 
 Čo to vlastne tá rekuperácia je, ako funguje a oplatí sa do nej v roku 2026 investovať? V **MNSP | Stavby a rekonštrukcie** vám prinášame prehľadný pohľad na túto technológiu.
@@ -1414,8 +1414,8 @@ Ak plánujete stavbu rodinného domu, radi vám v **MNSP | Stavby a rekonštrukc
     id: 'tepelne-cerpadlo-v-rodinnom-dome',
     title: 'Tepelné čerpadlo v rodinnom dome: Oplatí sa táto investícia?',
     excerpt: 'Tepelné čerpadlo je dnes najpopulárnejším zdrojom tepla v novostavbách. Ako funguje, aké sú jeho výhody a nevýhody a prečo ho kombinovať s podlahovým kúrením?',
-    category: 'Technológie',
-    tags: ['Tepelné čerpadlo', 'Kúrenie', 'Novostavba', 'Energie'],
+    category: 'Rodinné domy',
+    tags: ['Technológie', 'Rodinné domy'],
     content: `Pri rozhodovaní o spôsobe vykurovania [novostavby](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom) je **tepelné čerpadlo v rodinnom dome** jednou z najčastejších a najrozumnejších volieb. Zabezpečí vám nielen teplo v zime, ale aj ohrev teplej úžitkovej vody a v letných mesiacoch dokáže dom dokonca efektívne chladiť.
 
 Aké sú však reálne výhody tohto zariadenia, s čím musíte počítať pri inštalácii a prečo je to dnes zlatý štandard pre energetickú triedu A0?
@@ -1451,8 +1451,8 @@ Ak plánujete stavbu rodinného domu, obráťte sa na odborníkov z **MNSP | Sta
     id: 'kolko-stoji-rekonstrukcia-domu-v-roku-2026',
     title: 'Koľko stojí rekonštrukcia domu v roku 2026? Kompletný prehľad cien',
     excerpt: 'Plánujete obnovu staršieho domu? Pripravili sme pre vás detailný rozpočet. Zistite, aká je reálna cena rekonštrukcie domu a na čom sa dá ušetriť.',
-    category: 'Rekonštrukcie',
-    tags: ['Rozpočet', 'Cena', 'Rekonštrukcia', 'Financie'],
+    category: 'Rodinné domy',
+    tags: ['Rekonštrukcia domu', 'Rodinné domy'],
     content: `Kúpa staršieho domu a jeho obnova je pre mnohých cestou k vysnívanému bývaniu. Často však narazia na krutú realitu, keď zistia, že **cena rekonštrukcie domu** sa môže vyšplhať až k cene [novej stavby](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026). 
 
 V roku 2026 sa ceny stavebných materiálov a práce stabilizovali, no stále platí, že kompletná obnova si vyžaduje nemalé investície. Poďme sa spoločne s odborníkmi z **MNSP | Stavby a rekonštrukcie** pozrieť na to, koľko vás bude stáť rekonštrukcia staršieho rodinného domu (pri modelovom príklade domu s podlahovou plochou 100 m²).

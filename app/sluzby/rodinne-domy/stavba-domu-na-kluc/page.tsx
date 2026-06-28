@@ -3,8 +3,8 @@ import { getSEOTags } from "@/src/lib/seo";
 import { generateServiceSchema, DOMAIN } from '@/src/lib/schema';
 import type { Metadata } from 'next';
 
-const title = "Stavba domu na kľúč";
-const description = "Komplexná výstavba moderných rodinných domov s dôrazom na udržateľnosť a precíznosť.";
+const title = "Stavba domu na kľúč | Výstavba rodinných domov | MNSP";
+const description = "Realizujeme výstavbu rodinných domov na kľúč od projektu až po kolaudáciu. Rodinné domy s dôrazom na udržateľnosť a precíznosť.";
 
 const seo = getSEOTags(
     title,
@@ -86,7 +86,7 @@ export default function StavbaDomuNaKlucPage() {
       serviceSlug="stavba-domu-na-kluc"
       ctaTitle="Plánujete výstavbu rodinného domu na kľúč?"
       ctaSubtitle="Nechajte nám na seba kontakt a naši inžinieri sa s vami spoja s návrhom realizácie."
-      blogFilterCategory="Pasívny dom"
+      blogFilterCategory="Stavba domu"
       minSize={80}
       maxSize={400}
       stepSize={5}

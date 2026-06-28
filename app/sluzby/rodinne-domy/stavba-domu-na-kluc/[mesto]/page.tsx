@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  const title = `Stavba domu na kľúč ${city.locative} | Kvalitne a profesionálne`;
+  const title = `Stavba domu na kľúč ${city.locative} | MNSP`;
   const description = `Staviame moderné rodinné domy na kľúč. Profesionálna realizácia priamo pre obyvateľov v oblasti ${city.name} a okolí. Kontaktujte nás pre nezáväznú cenovú ponuku.`;
 
   return getSEOTags(title, description, `/sluzby/rodinne-domy/stavba-domu-na-kluc/${citySlug}`);

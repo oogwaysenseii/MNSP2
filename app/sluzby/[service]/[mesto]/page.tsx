@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  const title = `${service.name} v ${city.locative} | Kvalitne a profesionálne`;
+  const title = `${service.name} v ${city.locative} | MNSP`;
   const description = `${service.description} Profesionálna realizácia služby ${service.name.toLowerCase()} priamo pre obyvateľov v oblasti ${city.name} a okolí. Kontaktujte nás pre nezáväznú cenovú ponuku.`;
 
   return getSEOTags(title, description, `/sluzby/${serviceSlug}/${citySlug}`);

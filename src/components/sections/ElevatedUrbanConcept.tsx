@@ -11,7 +11,7 @@ export function ElevatedUrbanConcept() {
       <div className="absolute inset-0 bg-stone-900/10 opacity-30 bg-[radial-gradient(#1f2937_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] pointer-events-none" />
       <div className="absolute -top-40 -right-40 w-96 h-96 bg-amber-500/10  blur-3xl pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className=" mx-auto px-10 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           
           <div className="space-y-6">
