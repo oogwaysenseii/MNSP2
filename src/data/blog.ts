@@ -10,7 +10,7 @@ export const blogPostsData: BlogPost[] = [
     date: '27. Jún 2026',
     publishedAt: '2026-06-27T08:00:00+01:00',
     updatedAt: '2026-06-27T08:00:00+01:00',
-    imageUrl: '/Blog/kolko-stoji-stavba-domu-v-roku-2026.png',
+    imageUrl: '/Blog/kolko-stoji-stavba-domu-v-roku-2026.webp',
     content: `Stavba rodinného domu je pre väčšinu ľudí najväčšou investíciou v živote. Najčastejšia otázka, ktorú v **MNSP | Stavby a rekonštrukcie** od našich klientov dostávame už na prvom stretnutí, znie jasne: *"Koľko stojí stavba rodinného domu?"* 
 
 V roku 2026 vstupuje do cenotvorby viacero faktorov – od sprísnených energetických noriem (A0) až po ceny stavebných materiálov a moderné technológie. Poďme sa férovo a detailne pozrieť na to, ako vyzerá reálny rozpočet na stavbu domu v súčasnosti, či už plánujete hrubú stavbu alebo **stavbu domu na kľúč**.
@@ -263,7 +263,7 @@ Ak hľadáte spoľahlivého partnera, ktorý vás prevedie celým procesom a zre
     date: '12. Jún 2026',
     publishedAt: '2026-06-12T08:00:00+01:00',
     updatedAt: '2026-06-12T08:00:00+01:00',
-    imageUrl: '/images/blog/house2.jpg'
+    imageUrl: '/Blog/stavba-domu-v-roku-2026.webp'
   },
   {
     id: 'dom-na-kluc-alebo-hruba-stavba-kompletne-porovnanie',
@@ -397,7 +397,7 @@ V **MNSP | Stavby a rekonštrukcie** vám ponúkame obe cesty. Zastávame férov
     date: '05. Jún 2026',
     publishedAt: '2026-06-05T08:00:00+01:00',
     updatedAt: '2026-06-05T08:00:00+01:00',
-    imageUrl: '/images/blog/house3.jpg'
+    imageUrl: '/Blog/stavba-na-kluc-vs-hruba-stavba.webp'
   },
   {
     id: 'ako-si-vybrat-stavebnu-firmu-12-veci-ktore-rozhoduju',
@@ -510,7 +510,7 @@ V spoločnosti **MNSP | Stavby a rekonštrukcie** staviame na otvorenej komunik�
     date: '02. Jún 2026',
     publishedAt: '2026-06-02T08:00:00+01:00',
     updatedAt: '2026-06-02T08:00:00+01:00',
-    imageUrl: '/images/blog/house1.jpg'
+    imageUrl: '/Blog/ako-si-vybrat-stavebnu-firmu.webp'
   },
   {
     id: 'najcastejsie-chyby-pri-stavbe-rodinneho-domu',
@@ -617,7 +617,7 @@ Ak nechcete riskovať peniaze, čas a nervy s neoverenými partiami majstrov, zv
     date: '30. Máj 2026',
     publishedAt: '2026-05-30T08:00:00+01:00',
     updatedAt: '2026-05-30T08:00:00+01:00',
-    imageUrl: '/images/blog/house2.jpg'
+    imageUrl: '/Blog/najcastejsie-chyby-pri-stavbe-rodinneho-domu.webp'
   },
   {
     id: 'ako-pripravit-pozemok-na-stavbu-rodinneho-domu',
@@ -714,7 +714,7 @@ Spoločnosť **MNSP | Stavby a rekonštrukcie** disponuje vlastnou technikou a s
     date: '25. Máj 2026',
     publishedAt: '2026-05-25T08:00:00+01:00',
     updatedAt: '2026-05-25T08:00:00+01:00',
-    imageUrl: '/images/blog/house3.jpg'
+    imageUrl: '/Blog/ako-pripravit-pozemok-na-stavbu-rodinneho-domu.webp'
   },
   {
     id: 'ako-sa-robia-zaklady-domu-kompletny-sprievodca',
@@ -814,7 +814,7 @@ V **MNSP | Stavby a rekonštrukcie** berieme základy doslova ako posvätnú vec
     date: '20. Máj 2026',
     publishedAt: '2026-05-20T08:00:00+01:00',
     updatedAt: '2026-05-20T08:00:00+01:00',
-    imageUrl: '/images/blog/house4.jpg'
+    imageUrl: '/Blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca.webp'
   },
   {
     id: 'stavebne-povolenie-krok-za-krokom-v-roku-2026',
@@ -921,7 +921,7 @@ Keď konečne držíte v rukách právoplatné povolenie, ten najväčší papie
     date: '15. Máj 2026',
     publishedAt: '2026-05-15T08:00:00+01:00',
     updatedAt: '2026-05-15T08:00:00+01:00',
-    imageUrl: '/images/blog/house1.jpg'
+    imageUrl: '/Blog/stavebne-povolenie-krok-za-krokom-v-roku-2026.webp'
   },
   {
     id: 'kolko-trva-stavba-rodinneho-domu',
@@ -1021,7 +1021,7 @@ Zaväzujeme sa k pevnému termínu dokončenia priamo v zmluve. Zverte nám svoj
     date: '10. Máj 2026',
     publishedAt: '2026-05-10T08:00:00+01:00',
     updatedAt: '2026-05-10T08:00:00+01:00',
-    imageUrl: '/images/blog/house2.jpg'
+    imageUrl: '/Blog/kolko-trva-stavba-rodinneho-domu.webp'
   },
   {
     id: 'rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet',
@@ -1114,7 +1114,7 @@ V spoločnosti **MNSP | Stavby a rekonštrukcie** máme obrovské skúsenosti s 
     date: '05. Máj 2026',
     publishedAt: '2026-05-05T08:00:00+01:00',
     updatedAt: '2026-05-05T08:00:00+01:00',
-    imageUrl: '/images/blog/house3.jpg'
+    imageUrl: '/Blog/rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet.webp'
   },
   {
     id: 'zateplenie-fasady-polystyren-alebo-mineralna-vlna',
@@ -1172,7 +1172,7 @@ Hľadáte spoľahlivých majstrov na aplikáciu zatepľovacieho systému s [fin�
     date: '30. Apríl 2026',
     publishedAt: '2026-04-30T08:00:00+01:00',
     updatedAt: '2026-04-30T08:00:00+01:00',
-    imageUrl: '/images/blog/house4.jpg'
+    imageUrl: '/Blog/zateplenie-fasady-polystyren-alebo-mineralna-vlna.webp'
   },
   {
     id: 'stavba-domu-svojpomocne-vyhody-nevyhody',
@@ -1235,7 +1235,7 @@ Zverte svoj projekt profesionálom a venujte sa tomu, čo viete robiť najlepši
     date: '20. Apríl 2026',
     publishedAt: '2026-04-20T08:00:00+01:00',
     updatedAt: '2026-04-20T08:00:00+01:00',
-    imageUrl: '/images/blog/house1.jpg'
+    imageUrl: '/Blog/stavba-domu-svojpomocne-vyhody-nevyhody.webp'
   },
   {
     id: 'murovany-dom-vs-drevodom-porovnanie',
@@ -1299,7 +1299,7 @@ Ak je vaším favoritom klasika, poctivé materiály a dlhovekosť, v **MNSP | S
     date: '15. Apríl 2026',
     publishedAt: '2026-04-15T08:00:00+01:00',
     updatedAt: '2026-04-15T08:00:00+01:00',
-    imageUrl: '/images/blog/house2.jpg'
+    imageUrl: '/Blog/murovany-dom-vs-drevodom-porovnanie.webp'
   },
   {
     id: 'zelena-strecha-na-rodinnom-dome',
@@ -1347,7 +1347,7 @@ V spoločnosti **MNSP | Stavby a rekonštrukcie** máme s realizáciou náročn�
     date: '05. Apríl 2026',
     publishedAt: '2026-04-05T08:00:00+01:00',
     updatedAt: '2026-04-05T08:00:00+01:00',
-    imageUrl: '/images/blog/house3.jpg'
+    imageUrl: '/Blog/zelena-strecha-na-rodinnom-dome.webp'
   },
   {
     id: 'rekuperacia-v-rodinnom-dome-oplati-sa',
