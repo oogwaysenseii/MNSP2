@@ -72,17 +72,21 @@ export function Header() {
           onClick={handleNavClick}
           className="flex items-center gap-2.5 group cursor-pointer text-left"
         >
-          <div className="p-2 bg-zinc-950 text-amber-500  font-bold group-hover:scale-105 transition-transform">
-            <HardHat className="w-5 h-5" />
+          <div className=" text-amber-500  font-bold group-hover:scale-105 transition-transform">
+            <img
+                src={isSolid ? "/mnsp-logo-mark-light.svg" : "/mnsp-logo-mark-dark.svg"}
+                alt="MNSP Logo"
+                className="w-10 h-10"
+            />
           </div>
           <div>
             <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight block">
-              M<span className="text-amber-500">NSP</span>
+              MN<span className="text-amber-500">SP</span>
             </span>
             <span className={`text-[9px] font-mono tracking-widest block uppercase ${
               isSolid ? 'text-zinc-500' : 'text-zinc-300'
             }`}>
-              Stavebná firma
+              Pozemné staviteľstvo
             </span>
           </div>
         </Link>
