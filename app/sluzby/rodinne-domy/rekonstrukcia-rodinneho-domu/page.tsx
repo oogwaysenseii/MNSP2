@@ -26,7 +26,7 @@ export default function RekonstrukciaDomuPage() {
             }}
         />
       <RodinneDomyServiceDetail
-      title="Rekonštrukcia rodinného domu"
+      title="Rekonštrukcia rodinného domu – Kompletné rekonštrukcie | MNSP"
       breadcrumbTitle="Rekonštrukcia domu"
       subtitle1="Zrekonštruujte si svoj vysnívaný dom bez námahy."
       subtitle2="Projekt vám vypracujeme, dom vám zrekonštruujeme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás."

@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  const title = `Rodinné domy v ${city.locative} | Výstavba a rekonštrukcie`;
+  const title = `Rodinné domy ${city.name} | Výstavba a rekonštrukcie | MNSP`;
   const description = `Špecializujeme sa na výstavbu rodinných domov na kľúč a komplexné rekonštrukcie v lokalite ${city.name} a okolí.`;
 
   return getSEOTags(title, description, `/sluzby/rodinne-domy/${citySlug}`);
