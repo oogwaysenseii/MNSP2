@@ -50,24 +50,24 @@ export const projectsData: Project[] = [
   {
     id: 'rekonstrukcia-rodinneho-domu-hrinova',
     title: 'Rekonštrukcia rodinného domu Hriňová',
-    description: 'Dodávka a realizácia monolitických železobetónových konštrukcií a pilierov na rozostavanom úseku bratislavského obchvatu.',
+    description: '',
     category: 'residential',
     location: 'Hriňová',
     year: 2025,
-    duration: '12 mesiacov',
-    budgetString: '€ 2.8M',
+    duration: '',
+    budgetString: '',
     imageUrl: '/kompletna-rekonstrukcia-domu-hrinova.webp'
   },
 
   {
     id: 'monoliticka-stropna-doska-stozok',
     title: 'Monolitická stropná doska Stožok',
-    description: 'Dodávka a realizácia monolitických železobetónových konštrukcií a pilierov na rozostavanom úseku bratislavského obchvatu.',
+    description: '',
     category: 'residential',
     location: 'Bratislava',
     year: 2022,
-    duration: '12 mesiacov',
-    budgetString: '€ 2.8M',
+    duration: '',
+    budgetString: '',
     imageUrl: '/monolit-stozok/Monolit-Stozok-1536x1152.jpg'
   },
 

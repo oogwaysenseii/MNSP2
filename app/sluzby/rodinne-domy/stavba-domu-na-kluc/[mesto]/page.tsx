@@ -131,12 +131,22 @@ export default async function StavbaLocationPage({ params }: PageProps) {
   );
 
   const whyUsSection = (
-      <div className="bg-white border border-zinc-200 p-8 sm:p-10 text-center h-full flex flex-col justify-center space-y-6">
-        <ShieldCheck className="w-12 h-12 text-amber-600 mx-auto" />
-        <h2 className="text-2xl font-display font-extrabold text-zinc-900">Prečo zveriť stavbu domu nám?</h2>
-        <p className="text-zinc-600 text-sm leading-relaxed max-w-md mx-auto">
-          Stavba domu v oblasti {city.name} by nemala byť stresom, ale radostným očakávaním. V MNSP sme priamo zhotoviteľmi stavieb. Máme vlastných majstrov, vlastné technológie a na rozdiel od sprostredkovateľských firiem dokážeme priamo kontrolovať každý detail stavby a ručiť za dohodnutý rozpočet. Zabezpečujeme kvalitnú a precíznu prácu, na ktorú sa môžete dlhé roky spoľahnúť.
-        </p>
+      <div className="bg-white border border-zinc-200 p-6 sm:p-8 h-full flex flex-col justify-center">
+        <div className="text-center space-y-2 mb-6">
+          <ShieldCheck className="w-10 h-10 sm:w-12 sm:h-12 text-amber-600 mx-auto" />
+          <h2 className="text-2xl font-display font-extrabold text-zinc-900">Prečo zveriť stavbu domu nám?</h2>
+          <p className="text-zinc-600 text-sm leading-relaxed max-w-md mx-auto">
+            Zabezpečujeme kompletný stavebný servis pre oblasť {city.name}. Zameriavame sa na detail a kvalitné remeselné spracovanie pre bezstarostný priebeh vašej stavby.
+          </p>
+        </div>
+        <ul className="text-zinc-700 text-sm font-medium leading-relaxed max-w-lg mx-auto grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 w-full text-left">
+          <li className="flex items-start gap-2.5"><CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" /><span>Vlastná mechanizácia</span></li>
+          <li className="flex items-start gap-2.5"><CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" /><span>Koordinácia všetkých profesií</span></li>
+          <li className="flex items-start gap-2.5"><CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" /><span>Pravidelné reporty klientovi</span></li>
+          <li className="flex items-start gap-2.5"><CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" /><span>Technický stavebný dozor</span></li>
+          <li className="flex items-start gap-2.5"><CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" /><span>Odovzdanie kompletnej dokumentácie</span></li>
+          <li className="flex items-start gap-2.5"><CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" /><span>Záručný servis</span></li>
+        </ul>
       </div>
   );
 
