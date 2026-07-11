@@ -49,7 +49,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'rekonstrukcia-rodinneho-domu-hrinova',
-    title: 'Rekonštrukcia rodidnného domu Hriňová',
+    title: 'Rekonštrukcia rodinného domu Hriňová',
     description: 'Dodávka a realizácia monolitických železobetónových konštrukcií a pilierov na rozostavanom úseku bratislavského obchvatu.',
     category: 'residential',
     location: 'Hriňová',
