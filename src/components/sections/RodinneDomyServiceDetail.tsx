@@ -111,7 +111,7 @@ export function RodinneDomyServiceDetail({
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-black/30" />
           </div>
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-12 pt-32">
+          <div className="relative z-10 w-full max-w-8xl mx-auto px-6 pb-12 pt-32">
             {/* Breadcrumbs Row */}
             <div className="flex flex-wrap items-center gap-1.5 text-xs text-amber-500 font-mono font-bold tracking-wider mb-6">
               <Link href="/" className="hover:underline hover:text-white transition-colors">
@@ -144,7 +144,7 @@ export function RodinneDomyServiceDetail({
         </div>
 
         {/* BACK NAVIGATION BUTTON FLOATING */}
-        <div className="max-w-7xl mx-auto px-6 pt-8">
+        <div className="max-w-8xl mx-auto px-6 pt-8">
           <Link
               href="/sluzby/rodinne-domy"
               className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-wider text-zinc-500 hover:text-zinc-950 uppercase border border-zinc-200/80 px-4 py-2.5 hover:bg-neutral-50 transition-colors"
@@ -156,7 +156,7 @@ export function RodinneDomyServiceDetail({
 
 
         {/* 2. OVERVIEW BODY GRID */}
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pt-12">
+        <div className="max-w-8xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pt-12">
           {/* LEFT COLUMN: OVERVIEW & STAGES (8 COLS) */}
           <div className="lg:col-span-8 space-y-12">
             <div className="space-y-6">
@@ -237,7 +237,7 @@ export function RodinneDomyServiceDetail({
                 Ako to prebieha ?
               </span>
                 <h4 className="text-xl sm:text-2xl font-display font-extrabold text-zinc-900 tracking-tight">
-                  Priebeh výstavby rodinného domu
+                  Priebeh realizácie projektu
                 </h4>
               </div>
 
@@ -285,10 +285,10 @@ export function RodinneDomyServiceDetail({
             <div className="bg-zinc-950 text-white p-6 sm:p-7 space-y-8 shadow-2xl  border border-zinc-800">
               <div className="space-y-1">
               <span className="text-[10px] font-mono text-amber-500 tracking-widest uppercase block font-bold">
-                ROZPOČTOVÁ MATRICA
+                ROZPOČTOVÁ KALKULAČKA
               </span>
                 <h4 className="text-xl font-display font-extrabold tracking-tight text-white">
-                  Indikatívny odhad nákladov
+                  Orientačný odhad nákladov
                 </h4>
               </div>
 
@@ -296,7 +296,7 @@ export function RodinneDomyServiceDetail({
               <div className="space-y-4">
                 <div className="flex justify-between items-end text-sm font-mono text-zinc-300">
                 <span className="text-xs text-zinc-400 uppercase tracking-widest">
-                  PLOVHA V M²
+                  PLOCHA V M²
                 </span>
                   <span className="text-lg text-white font-bold">
                   {projectSize} m²
@@ -471,7 +471,7 @@ export function RodinneDomyServiceDetail({
 
         {/* WHY US & LOCATIONS (SIDE BY SIDE ON LARGE SCREENS) */}
         {(whyChooseUs || serviceSlug) && (
-            <div className="max-w-7xl mx-auto px-6 mt-16 mb-16">
+            <div className="max-w-8xl mx-auto px-6 mt-16 mb-16">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
 
                 {/* LEFT BOX: WHY US */}
