@@ -232,7 +232,7 @@ export default function ResidentialHubPage() {
 
         {/* 5. BLOG SECTION */}
         <div>
-          <BlogSection compact={true} filterCategory="Pasívny dom" />
+          <BlogSection compact={true} filterCategory="Rodinné domy" />
         </div>
 
         {/* 6. LOCATIONS & WHY US BLOCK */}

@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import { ShieldCheck, CheckCircle2 } from "lucide-react";
 
 const title = "Rekonštrukcia rodinného domu | Kompletné rekonštrukcie | MNSP";
-const description = "Sanácia statiky, zatepľovanie a komplexné rekonštrukcie pre staršie nehnuteľnosti.";
+const description = "Zrekonštruujeme váš dom bez starostí. Realizujeme čiastočné aj kompletné rekonštrukcie rodinných domov.";
 
 const seo = getSEOTags(
     title,

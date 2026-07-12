@@ -175,26 +175,26 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
               "Zatepľovanie a celkové obnovenie historickej či pôvodnej fasády"
             ]}
             stages={[
-              {
-                step: "01",
-                title: "Technická obhliadka",
-                desc: "Naši inžinieri osobne skontrolujú statiku a technický stav objektu priamo v "+city.locative+".",
-              },
-              {
-                step: "02",
-                title: "Projekt a rozpočet",
-                desc: "Pripravíme štúdiu a rozpočet, pri komplikovaných rekonštrukciách zohľadňujeme aj havarijné položky.",
-              },
-              {
-                step: "03",
-                title: "Búracie práce",
-                desc: "Demontáž pôvodných prvkov podľa projektu s dôkladnou evakuáciou a triedením odpadu.",
-              },
-              {
-                step: "04",
-                title: "Nová výstavba",
-                desc: "Realizácia nadstavieb, prístavieb, nové inštalácie z kvalitných materiálov k predaniu.",
-              },
+                {
+                    step: "01",
+                    title: "Konzultácia a obhliadka",
+                    desc: "Na základe obhliadky objektu a vašich požiadaviek navrhneme optimálne riešenie a pripravíme cenovú ponuku.",
+                },
+                {
+                    step: "02",
+                    title: "Návrh rekonštrukcie",
+                    desc: "Vypracujeme plán prác, navrhneme technické riešenia a pomôžeme s potrebnou dokumentáciou.",
+                },
+                {
+                    step: "03",
+                    title: "Realizácia rekonštrukcie",
+                    desc: "Zabezpečíme odborné stavebné práce vrátane búrania, úprav dispozície, výmeny rozvodov a modernizácie priestoro",
+                },
+                {
+                    step: "04",
+                    title: "Dokončenie a odovzdanie",
+                    desc: "Po ukončení všetkých prác vám odovzdáme zrekonštruovaný objekt pripravený na komfortné a bezproblémové užívanie.",
+                },
             ]}
             equipment={[
               "Búracie roboty Husqvarna",
@@ -204,18 +204,18 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
               "Odvlhčovacie turbíny",
             ]}
             options={[
-              {
-                label: "Čiastočná rekonštrukcia (Nové jadro, čiastkové podlahy, sanita, omietky)",
-                premiumModifier: 1.0,
-              },
-              {
-                label: "Kompletný upgrade (Všetky inžinierske siete, zateplenie striech a fasád, hliník)",
-                premiumModifier: 1.25,
-              },
-              {
-                label: "Prestavba na pasív/nízkoenergetiku (+ Smart technológie a TČ)",
-                premiumModifier: 1.50,
-              },
+                {
+                    label: "Čiastočná rekonštrukcia (Interiérové omietky, potery, okná, podlahy a maľby)",
+                    premiumModifier: 1.0,
+                },
+                {
+                    label: "Kompletná rekonštrukcia (Nová statika, kompletná výmena rozvodov, strecha a zateplenie)",
+                    premiumModifier: 2.5,
+                },
+                {
+                    label: "Prémiová rekonštrukcia (Prémiové materiály, inteligentná elektroinštalácia, dizajnové riešenia)",
+                    premiumModifier: 3.67,
+                },
             ]}
             category="residential"
             serviceSlug="rekonstrukcia-rodinneho-domu"
@@ -223,11 +223,12 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
             whyChooseUs={whyUsSection}
             ctaTitle={`Máte záujem o rekonštrukciu domu v ${city.locative}?`}
             ctaSubtitle="Spojte sa s našim tímom a dohodnite si termín technickej obhliadky na mieste."
+            blogFilterCategory="Rekonštrukcia domu"
             minSize={50}
             maxSize={300}
             stepSize={5}
             defaultSize={120}
-            baseRate={950}
+            baseRate={300}
             customLocationTop={LocationSpecificTop}
             locationFilter={city.name}
         />

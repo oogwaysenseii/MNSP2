@@ -156,7 +156,7 @@ export function RodinneDomyServiceDetail({
 
 
         {/* 2. OVERVIEW BODY GRID */}
-        <div className="max-w-8xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pt-12">
+        <div className="max-w-7.5xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pt-12">
           {/* LEFT COLUMN: OVERVIEW & STAGES (8 COLS) */}
           <div className="lg:col-span-8 space-y-12">
             <div className="space-y-6">
@@ -282,7 +282,7 @@ export function RodinneDomyServiceDetail({
           {/* RIGHT COLUMN: CALC & QUICK INFO (4 COLS) */}
           <div className="lg:col-span-4 space-y-8">
             {/* DIVISION SPEC CALCULATOR */}
-            <div className="bg-zinc-950 text-white p-6 sm:p-7 space-y-8 shadow-2xl  border border-zinc-800">
+            <div className="bg-zinc-950 text-white p-6 sm:p-7 space-y-8 border border-zinc-800">
               <div className="space-y-1">
               <span className="text-[10px] font-mono text-amber-500 tracking-widest uppercase block font-bold">
                 ROZPOČTOVÁ KALKULAČKA

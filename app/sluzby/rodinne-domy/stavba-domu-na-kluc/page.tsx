@@ -117,18 +117,18 @@ export default function StavbaDomuNaKlucPage() {
               "Priemyselné miešačky zmesí",
             ]}
             options={[
-              {
-                label: "Ekonomický variant",
-                premiumModifier: 1.0,
-              },
-              {
-                label: "Zlatá stredná cesta",
-                premiumModifier: 1.25,
-              },
-              {
-                label: "Prémiový variant",
-                premiumModifier: 1.45,
-              },
+                {
+                    label: "Ekonomický variant (Funkčné materiály, efektívne dispozičné riešenie a základný štandard vybavenia.)",
+                    premiumModifier: 1.0,
+                },
+                {
+                    label: "Zlatá stredná cesta (Kvalitné materiály, moderné technológie a vyšší komfort bývania.)",
+                    premiumModifier: 1.25,
+                },
+                {
+                    label: "Prémiový variant (Prémiové materiály, individuálne riešenia, inteligentná domácnosť a luxusné vybavenie.)",
+                    premiumModifier: 1.45,
+                },
             ]}
             category="residential"
             serviceSlug="stavba-domu-na-kluc"
@@ -141,7 +141,7 @@ export default function StavbaDomuNaKlucPage() {
             maxSize={400}
             stepSize={5}
             defaultSize={140}
-            baseRate={1700} // 1350e/m2 na kluc
+            baseRate={1400} // 1350e/m2 na kluc
         />
       </>
   );

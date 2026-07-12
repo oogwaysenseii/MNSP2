@@ -204,15 +204,15 @@ export default async function StavbaLocationPage({ params }: PageProps) {
             ]}
             options={[
               {
-                label: "Ekonomický variant",
+                label: "Ekonomický variant (Funkčné materiály, efektívne dispozičné riešenie a základný štandard vybavenia.)",
                 premiumModifier: 1.0,
               },
               {
-                label: "Zlatá stredná cesta",
+                label: "Zlatá stredná cesta (Kvalitné materiály, moderné technológie a vyšší komfort bývania.)",
                 premiumModifier: 1.25,
               },
               {
-                label: "Prémiový variant",
+                label: "Prémiový variant (Prémiové materiály, individuálne riešenia, inteligentná domácnosť a luxusné vybavenie.)",
                 premiumModifier: 1.45,
               },
             ]}
@@ -222,11 +222,12 @@ export default async function StavbaLocationPage({ params }: PageProps) {
             whyChooseUs={whyUsSection}
             ctaTitle={`Plánujete výstavbu rodinného domu na kľúč v ${city.locative}?`}
             ctaSubtitle="Nechajte nám na seba kontakt a naši inžinieri sa s vami spoja s návrhom realizácie."
+            blogFilterCategory="Stavba domu"
             minSize={80}
             maxSize={400}
             stepSize={5}
             defaultSize={140}
-            baseRate={1350}
+            baseRate={1400}
             customLocationTop={LocationSpecificTop}
             locationFilter={city.name}
         />
