@@ -147,7 +147,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
       
       <div className="bg-white text-zinc-900 py-16 sm:py-24 border-t border-zinc-200">
-        <div className="max-w-4xl mx-auto px-6 space-y-8">
+        <div className=" mx-auto px-6 space-y-8">
           
           {/* BREADCRUMBS */}
           <nav className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-zinc-500 uppercase overflow-x-auto whitespace-nowrap pb-2 scrollbar-hide">
