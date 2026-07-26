@@ -16,9 +16,9 @@ export function CTA({
                       pageName = "Neznáma stránka"
                     }: CTAProps) {
   return (
-      <section className="bg-white sm:py-32 relative border-t border-white/5">
+      <section className="bg-white relative border-t border-white/5">
         <div className=" mx-auto px-6  relative z-10">
-          <div className="bg-zinc-900 border border-white/10 p-8 sm:p-12 md:p-16 lg:p-20 flex flex-col lg:flex-row gap-16 lg:gap-20 items-center w-full">
+          <div className="bg-zinc-950 border border-white/10 p-8  flex flex-col lg:flex-row gap-16 lg:gap-20 items-center w-full">
 
             {/* Left Column - Text */}
             <div className="w-full lg:w-[60%] space-y-8">
