@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export function ElevatedUrbanConcept() {
   return (
-    <section className="bg-zinc-950 py-12 sm:py-16 relative overflow-hidden">
+    <section className="bg-zinc-950 py-12 sm:py-16 relative hidden overflow-hidden">
       {/* Background patterns */}
       <div className="absolute inset-0 bg-stone-900/10 opacity-30 bg-[radial-gradient(#1f2937_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] pointer-events-none" />
       <div className="absolute -top-40 -right-40 w-96 h-96 bg-amber-500/10  blur-3xl pointer-events-none" />

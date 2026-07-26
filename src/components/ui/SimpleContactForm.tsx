@@ -57,15 +57,14 @@ export function SimpleContactForm({
 
   return (
       <form onSubmit={handleSubmit} className="space-y-4 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="space-y-1">
+        <div className="grid grid-cols-1 gap-5">
+          <div className="space-y-2">
             <label
                 htmlFor="phone"
-                className="text-[10px] font-mono tracking-widest uppercase text-zinc-400 font-bold ml-1"
+                className="text-sm font-medium text-zinc-400"
             >
               Telefónne číslo *
             </label>
-
             <input
                 type="tel"
                 id="phone"
@@ -73,35 +72,34 @@ export function SimpleContactForm({
                 required
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full bg-white border border-white/10 px-4 py-3 text-black placeholder:text-zinc-500 focus:outline-none focus:border-amber-500 transition-colors"
+                className="w-full bg-white border border-zinc-200 px-4 py-3.5 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all "
                 placeholder="+421 900 000 000"
             />
           </div>
 
-          <div className="space-y-1">
+          <div className="space-y-2">
             <label
                 htmlFor="email"
-                className="text-[10px] font-mono tracking-widest uppercase text-zinc-400 font-bold ml-1"
+                className="text-sm font-medium text-zinc-400"
             >
               E-mail
             </label>
-
             <input
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full bg-white border border-white/10 px-4 py-3 text-black placeholder:text-zinc-500 focus:outline-none focus:border-amber-500 transition-colors"
+                className="w-full bg-white border border-zinc-200 px-4 py-3.5 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all "
                 placeholder="jan.novak@example.com"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
           <button
               type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 px-8 py-3 bg-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-wider hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/10 cursor-pointer"
+              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-amber-500 text-white font-medium text-sm hover:bg-amber-400 transition-colors cursor-pointer "
           >
             Odoslať
             <ArrowRight className="w-4 h-4 ml-1" />
@@ -109,9 +107,9 @@ export function SimpleContactForm({
 
           <Link
               href="/kalkulacka"
-              className="w-full inline-flex items-center justify-center gap-2 py-3 bg-transparent border border-white/20 text-white font-bold text-xs uppercase tracking-wider hover:bg-white/10 transition-colors cursor-pointer"
+              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent border border-zinc-700 text-white font-medium text-sm hover:border-amber-500 hover:text-amber-500 transition-colors cursor-pointer "
           >
-            Rozpočtová kalkulačka
+            Kalkulačka
             <Calculator className="w-4 h-4 ml-1" />
           </Link>
         </div>

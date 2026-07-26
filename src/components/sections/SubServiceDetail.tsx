@@ -189,7 +189,7 @@ export function SubServiceDetail({
   return (
     <div className="bg-white min-h-screen pt-24 sm:pt-32 pb-24 text-zinc-900 border-t border-zinc-200">
       {/* 1. HERO SHOWCASE BREADCRUMBS */}
-      <div className="max-w-7xl mx-auto px-6 mb-12 sm:mb-16">
+      <div className=" mx-auto px-6 mb-12 sm:mb-16">
         <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-zinc-400 mb-6 uppercase">
           <Link href="/" className="hover:text-amber-600 transition-colors">
             Domov
@@ -228,7 +228,7 @@ export function SubServiceDetail({
       </div>
 
       {/* 2. SPLIT LAYOUT FOR CONTENT */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className=" mx-auto pb-10 px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         {/* LEFT COMPONENT: CORE SPECS AND CONTENT (7/12 cols) */}
         <div className="lg:col-span-7 space-y-10 sm:space-y-12 text-left">
           <div className="space-y-4">
@@ -511,7 +511,7 @@ export function SubServiceDetail({
       <BlogSection filterCategory={serviceTagMap[serviceId]} compact={true} />
 
       {/* LOCATIONS & WHY US SECTION */}
-      <div className="max-w-7xl mx-auto px-6 mt-16 mb-16">
+      <div className=" mx-auto px-6 ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           <div className="bg-white border border-zinc-200 p-6 sm:p-8 h-full flex flex-col justify-center">
             <div className="text-center space-y-2 mb-6">

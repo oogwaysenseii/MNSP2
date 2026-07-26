@@ -238,7 +238,7 @@ export default async function GenericServicePage({ params }: PageProps) {
   );
 
   const GenericFaq = (
-    <div className="max-w-7xl mx-auto px-6 mt-16 space-y-8">
+    <div className="  px-6 space-y-8">
       <div className="bg-zinc-950 text-white p-8 rounded-xl relative overflow-hidden border border-zinc-800 shadow-xl">
         <div className="absolute top-0 right-0 p-8 opacity-10">
           <ShieldCheck className="w-48 h-48" />
@@ -250,7 +250,7 @@ export default async function GenericServicePage({ params }: PageProps) {
           <div className="space-y-4">
             <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-xl shadow-lg">
               <h3 className="font-bold text-amber-500 mb-2">
-                Koľko stojí {service.name.toLowerCase()}?
+                Aká je cena za {service.name.toLowerCase()}?
               </h3>
               <p className="text-zinc-300 text-sm leading-relaxed">
                 Každý projekt vyhodnocujeme individuálne a cena závisí od viacerých faktorov vrátane náročnosti, veľkosti aj použitého materiálu. Radi vám vypracujeme nezáväznú cenovú ponuku. Použite náš orientačný kalkulátor vyššie pre rýchly prehľad.
