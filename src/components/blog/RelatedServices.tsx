@@ -33,9 +33,9 @@ export function RelatedServices({ content, tags }: RelatedServicesProps) {
   if (matchedServices.length === 0) return null;
 
   return (
-    <div className="mt-12 bg-white border border-zinc-200 rounded-xl p-6 sm:p-8 shadow-sm">
+    <div className="mt-12 bg-white border border-zinc-200  p-6 sm:p-8 shadow-sm">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center">
+        <div className="w-10 h-10  bg-amber-50 flex items-center justify-center">
           <Wrench className="w-5 h-5 text-amber-600" />
         </div>
         <h3 className="text-xl font-display font-bold text-zinc-950">Súvisiace služby</h3>
@@ -45,7 +45,7 @@ export function RelatedServices({ content, tags }: RelatedServicesProps) {
           <Link 
             key={idx} 
             href={service.url}
-            className="group flex items-center justify-between p-4 bg-zinc-50 border border-zinc-200 hover:border-amber-300 hover:bg-amber-50/30 rounded-lg transition-all"
+            className="group flex items-center justify-between p-4 bg-zinc-50 border border-zinc-200 hover:border-amber-300 hover:bg-amber-50/30  transition-all"
           >
             <span className="font-bold text-zinc-900 text-sm group-hover:text-amber-700 transition-colors">
               {service.name}

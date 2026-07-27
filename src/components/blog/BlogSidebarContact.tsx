@@ -11,7 +11,7 @@ export function BlogSidebarContact() {
   };
 
   return (
-    <div className="bg-zinc-50 border border-zinc-200 rounded-xl p-6 shadow-sm">
+    <div className="bg-zinc-50 border border-zinc-200  p-6 shadow-sm">
       <h3 className="text-xl font-display font-extrabold text-zinc-950 mb-4">
         Potrebujete poradiť?
       </h3>
@@ -27,7 +27,7 @@ export function BlogSidebarContact() {
             id="sidebar-name" 
             placeholder="Vaše meno" 
             required
-            className="w-full px-3 py-2 text-sm bg-white border border-zinc-200 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+            className="w-full px-3 py-2 text-sm bg-white border border-zinc-200  focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
           />
         </div>
         <div>
@@ -37,7 +37,7 @@ export function BlogSidebarContact() {
             id="sidebar-email" 
             placeholder="E-mail" 
             required
-            className="w-full px-3 py-2 text-sm bg-white border border-zinc-200 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+            className="w-full px-3 py-2 text-sm bg-white border border-zinc-200  focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
           />
         </div>
         <div>
@@ -47,12 +47,12 @@ export function BlogSidebarContact() {
             rows={3} 
             placeholder="Ako vám môžeme pomôcť?" 
             required
-            className="w-full px-3 py-2 text-sm bg-white border border-zinc-200 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all resize-none"
+            className="w-full px-3 py-2 text-sm bg-white border border-zinc-200  focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all resize-none"
           ></textarea>
         </div>
         <button 
           type="submit"
-          className="w-full bg-amber-600 hover:bg-amber-700 text-white font-mono font-bold text-xs uppercase tracking-wider py-2.5 rounded-md transition-colors flex items-center justify-center gap-2"
+          className="w-full bg-amber-600 hover:bg-amber-700 text-white font-mono font-bold text-xs uppercase tracking-wider py-2.5  transition-colors flex items-center justify-center gap-2"
         >
           Odoslať <Send className="w-3.5 h-3.5" />
         </button>
@@ -61,19 +61,19 @@ export function BlogSidebarContact() {
       <div className="space-y-4 pt-6 border-t border-zinc-200">
         <h4 className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider mb-2">Kontakty</h4>
         <a href="tel:+421900000000" className="flex items-center gap-3 text-sm text-zinc-700 hover:text-amber-600 transition-colors">
-          <div className="w-8 h-8 bg-white border border-zinc-200 rounded-full flex items-center justify-center shrink-0">
+          <div className="w-8 h-8 bg-white border border-zinc-200  flex items-center justify-center shrink-0">
             <Phone className="w-3.5 h-3.5 text-zinc-500" />
           </div>
           <span>+421 900 000 000</span>
         </a>
         <a href="mailto:info@mnsp.sk" className="flex items-center gap-3 text-sm text-zinc-700 hover:text-amber-600 transition-colors">
-          <div className="w-8 h-8 bg-white border border-zinc-200 rounded-full flex items-center justify-center shrink-0">
+          <div className="w-8 h-8 bg-white border border-zinc-200  flex items-center justify-center shrink-0">
             <Mail className="w-3.5 h-3.5 text-zinc-500" />
           </div>
           <span>info@mnsp.sk</span>
         </a>
         <div className="flex items-center gap-3 text-sm text-zinc-700">
-          <div className="w-8 h-8 bg-white border border-zinc-200 rounded-full flex items-center justify-center shrink-0">
+          <div className="w-8 h-8 bg-white border border-zinc-200  flex items-center justify-center shrink-0">
             <MapPin className="w-3.5 h-3.5 text-zinc-500" />
           </div>
           <span>Bratislava, Slovensko</span>

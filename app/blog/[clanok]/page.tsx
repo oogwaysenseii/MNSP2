@@ -147,7 +147,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
       
       <div className="bg-white text-zinc-900 py-16 sm:py-24 border-t border-zinc-200">
-        <div className=" mx-auto px-6 space-y-8">
+        <div className="max-w-[1500px] mx-auto px-6 space-y-8">
           
           {/* BREADCRUMBS */}
           <nav className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-zinc-500 uppercase overflow-x-auto whitespace-nowrap pb-2 scrollbar-hide">
@@ -161,7 +161,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* POST HEADER CONTAINER */}
           <div className="space-y-6">
             <div className="flex flex-wrap gap-4 items-center text-xs font-mono font-bold tracking-wider text-zinc-400 border-b border-zinc-100 pb-4">
-              <span className="text-amber-600 uppercase bg-amber-50 px-2.5 py-1 rounded">{post.category}</span>
+              <span className="text-amber-600 uppercase bg-amber-50 px-2.5 py-1 ">{post.category}</span>
               <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> {post.date}</span>
               <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> {readTime}</span>
               <span className="flex items-center gap-1.5"><FileText className="w-3.5 h-3.5" /> {wordCount} slov</span>
@@ -177,7 +177,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
 
           {/* LARGE PHOTO IMMERSE */}
-          <div className="relative aspect-[21/9] rounded-xl overflow-hidden border border-zinc-200 shadow-md">
+          <div className="relative aspect-[21/9] overflow-hidden border border-zinc-200 shadow-md">
             <Image
               src={post.imageUrl}
               alt={post.title}
@@ -199,7 +199,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="order-1 lg:order-2 lg:col-span-8 w-full">
 
               {/* EDITORIAL REVIEWS CONTENT MULTI PARAGRAPHS */}
-              <div className="prose max-w-none text-zinc-800 text-sm sm:text-base leading-relaxed font-sans prose-headings:font-display prose-headings:font-bold prose-a:text-amber-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:shadow-sm">
+              <div className="prose max-w-none text-zinc-800 text-sm sm:text-base leading-relaxed font-sans prose-headings:font-display prose-headings:font-bold prose-a:text-amber-600 prose-a:no-underline hover:prose-a:underline  prose-img:shadow-sm">
                 <div className="markdown-body">
                   <Markdown 
                     remarkPlugins={[remarkGfm]} 
@@ -209,7 +209,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     ]}
                     components={{
                       img: ({node, ...props}) => (
-                        <span className="relative block w-full aspect-video my-8 rounded-xl overflow-hidden bg-zinc-100 border border-zinc-200">
+                        <span className="relative block w-full aspect-video my-8 overflow-hidden bg-zinc-100 border border-zinc-200">
                           <Image 
                             src={String(props.src || '')} 
                             alt={String(props.alt || '')} 
@@ -232,7 +232,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {/* TAGS */}
               <div className="mt-8 flex flex-wrap gap-2">
                 {post.tags.map((tg) => (
-                  <span key={tg} className="px-3.5 py-1 bg-zinc-100 border border-zinc-200 text-xs font-medium text-zinc-600 rounded">
+                  <span key={tg} className="px-3.5 py-1 bg-zinc-100 border border-zinc-200 text-xs font-medium text-zinc-600 ">
                     #{tg}
                   </span>
                 ))}
@@ -253,7 +253,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* PREVIOUS / NEXT ARTICLE */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-16 pt-8 border-t border-zinc-200">
             {prevPost ? (
-              <Link href={`/blog/${prevPost.id}`} className="group p-6 bg-zinc-50 border border-zinc-200 rounded-xl hover:border-amber-300 hover:bg-amber-50/50 transition-all text-left">
+              <Link href={`/blog/${prevPost.id}`} className="group p-6 bg-zinc-50 border border-zinc-200  hover:border-amber-300 hover:bg-amber-50/50 transition-all text-left">
                 <span className="text-xs font-mono text-zinc-500 font-bold uppercase tracking-wider mb-2 block flex items-center gap-1">
                   <ChevronLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" /> Predchádzajúci článok
                 </span>
@@ -262,7 +262,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             ) : <div />}
             
             {nextPost ? (
-              <Link href={`/blog/${nextPost.id}`} className="group p-6 bg-zinc-50 border border-zinc-200 rounded-xl hover:border-amber-300 hover:bg-amber-50/50 transition-all text-right">
+              <Link href={`/blog/${nextPost.id}`} className="group p-6 bg-zinc-50 border border-zinc-200 hover:border-amber-300 hover:bg-amber-50/50 transition-all text-right">
                 <span className="text-xs font-mono text-zinc-500 font-bold uppercase tracking-wider mb-2 block flex justify-end items-center gap-1">
                   Nasledujúci článok <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </span>

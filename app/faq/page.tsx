@@ -11,7 +11,7 @@ export const metadata = {
 export default function FAQPage() {
   return (
     <div className="bg-white min-h-screen pt-24 sm:pt-32 pb-24 text-zinc-900 border-t border-zinc-200">
-      <div className="max-w-3xl mx-auto px-6 mb-12 sm:mb-16">
+      <div className="max-w-[1500px] mx-auto px-6 mb-12 sm:mb-16">
         <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-zinc-400 mb-6 uppercase">
           <Link href="/" className="hover:text-amber-600 transition-colors">
             Domov
@@ -30,7 +30,7 @@ export default function FAQPage() {
 
       <FAQAccordion />
 
-      <div className="max-w-3xl mx-auto px-6 mt-16">
+      <div className="max-w-[1500px] mx-auto px-6 mt-16">
         <div className="bg-zinc-50 border border-zinc-200 p-8 text-center rounded-xl">
           <MessageSquare className="w-8 h-8 text-amber-500 mx-auto mb-4" />
           <h2 className="text-2xl font-display font-bold text-zinc-900 mb-2">

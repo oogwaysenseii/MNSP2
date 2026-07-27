@@ -66,7 +66,7 @@ export function FAQAccordion() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-6 space-y-12">
+    <div className="max-w-[1500px] mx-auto px-6 space-y-12">
       {faqs.map((group, gIdx) => (
         <div key={gIdx}>
           <h2 className="text-xl font-display font-bold text-zinc-900 mb-6 pb-2 border-b border-zinc-200">

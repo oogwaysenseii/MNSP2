@@ -39,7 +39,7 @@ export default function ContactPageContent() {
 
   return (
     <div className="bg-white text-zinc-900 py-16 sm:py-24 pt-32 sm:pt-40">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-[1500px] mx-auto px-6">
         
         {/* TOP INTRO */}
         <div className="text-center space-y-4 mb-16 sm:mb-20">
@@ -62,7 +62,7 @@ export default function ContactPageContent() {
             </h3>
 
             {/* Selected Office Details Block */}
-            <div className="bg-zinc-50 border border-zinc-200 rounded-xl p-6 sm:p-8 space-y-6">
+            <div className="bg-zinc-50 border border-zinc-200 p-6 sm:p-8 space-y-6">
               <div className="space-y-4 text-xs sm:text-sm">
                 
                 <div className="flex items-start gap-3">
@@ -105,7 +105,7 @@ export default function ContactPageContent() {
 
               {/* Coordinator citation */}
               <div className="border-t border-zinc-200 pt-5 flex items-center gap-3">
-                <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-ping shrink-0" />
+                <div className="w-2.5 h-2.5 bg-emerald-500  animate-ping shrink-0" />
                 <p className="text-[11px] font-mono text-zinc-500">
                   Zodpovedný vedúci: <span className="text-zinc-900 font-bold">{currentOfficeDetails.manager}</span>
                 </p>
@@ -126,7 +126,7 @@ export default function ContactPageContent() {
         </div>
 
         {/* SECTION B: DETAILED CONTRACTING FAQS SYSTEM */}
-        <div className="border-t border-zinc-200 pt-20 max-w-4xl mx-auto space-y-12">
+        <div className="border-t border-zinc-200 pt-20 max-w-[1500px] mx-auto space-y-12">
           
           <div className="text-center space-y-3.5">
             <span className="text-xs font-mono tracking-widest text-amber-600 font-bold uppercase block">
@@ -141,20 +141,20 @@ export default function ContactPageContent() {
           </div>
 
           {/* FAQ Accordion List */}
-          <div className="grid grid-cols-1 gap-4 pt-4 text-left">
+          <div className=" grid grid-cols-1 gap-4 pt-4 text-left">
             {faqs.map((faq, fIdx) => {
               const isOpen = openFaqIndex === fIdx;
               return (
                 <div
                   key={fIdx}
-                  className="bg-zinc-50 hover:bg-neutral-50/50 rounded-xl border border-zinc-200 overflow-hidden transition-all duration-300"
+                  className="bg-zinc-50 hover:bg-neutral-50/50  border border-zinc-200 overflow-hidden transition-all duration-300"
                 >
                   <button
                     onClick={() => setOpenFaqIndex(isOpen ? null : fIdx)}
                     className="w-full flex items-center justify-between p-5 text-left font-display font-extrabold text-zinc-950 text-sm sm:text-base tracking-tight cursor-pointer"
                   >
                     <span className="pr-4">{faq.question}</span>
-                    <span className="p-1 bg-white border border-zinc-200 rounded text-zinc-500 shrink-0">
+                    <span className="p-1 bg-white border border-zinc-200  text-zinc-500 shrink-0">
                       {isOpen ? <Minus className="w-4 h-4 text-amber-600" /> : <Plus className="w-4 h-4" />}
                     </span>
                   </button>

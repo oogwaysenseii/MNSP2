@@ -21,7 +21,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   return (
     <div className="pt-32 pb-16">
-      <Container className="max-w-[1000px]">
+      <Container className="max-w-[1500px]">
         <Link href="/portfolio" className="inline-flex items-center text-sm font-semibold text-gray-500 hover:text-amber-600 transition-colors mb-8 group">
           <ChevronLeft className="w-4 h-4 mr-1 transform transition-transform group-hover:-translate-x-1" />
           Späť na portfólio
@@ -38,7 +38,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </h1>
         </div>
         
-        <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-12 shadow-2xl">
+        <div className="relative w-full aspect-video overflow-hidden mb-12 shadow-2xl">
           <Image 
             src={project.imageUrl} 
             alt={project.title} 
@@ -53,7 +53,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             {project.description}
           </p>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-y border-gray-100 bg-gray-50/50 px-8 rounded-xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-y border-gray-100 bg-gray-50/50 px-8 ">
             <div>
               <p className="text-xs font-mono uppercase tracking-widest text-gray-400 mb-2">Rozpočet</p>
               <p className="font-bold text-xl text-black">{project.budgetString}</p>

@@ -34,7 +34,7 @@ export function RelatedArticles({ currentPostId, category, tags, allPosts }: Rel
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {related.map(post => (
           <Link href={`/blog/${post.id}`} key={post.id} className="group block">
-            <div className="relative h-48 rounded-xl overflow-hidden mb-4 shadow-sm group-hover:shadow-md transition-all">
+            <div className="relative h-48  overflow-hidden mb-4 shadow-sm group-hover:shadow-md transition-all">
               <Image 
                 src={post.imageUrl}
                 alt={post.title}
