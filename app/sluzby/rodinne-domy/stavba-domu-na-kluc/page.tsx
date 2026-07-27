@@ -19,7 +19,7 @@ export default function StavbaDomuNaKlucPage() {
   const jsonLd = generateServiceSchema(title, description, `${DOMAIN}/sluzby/rodinne-domy/stavba-domu-na-kluc`);
 
   const faqSection = (
-      <div className="max-w-7xl mx-auto px-6 mt-16 mb-10 space-y-8">
+      <div className="max-w-[1500px] mx-auto px-6 mt-16 mb-10 space-y-8">
         <div className="space-y-4 text-center">
           <span className="text-xs font-mono tracking-widest text-amber-600 font-bold uppercase">Časté otázky</span>
           <h2 className="text-3xl font-display font-extrabold text-zinc-900">Otázky a odpovede o stavbe na kľúč</h2>

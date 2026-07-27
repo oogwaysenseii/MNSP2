@@ -38,9 +38,9 @@ export function Hero() {
   }, [headlines.length]);
 
   return (
-    <div id="hero" className="relative w-full h-[750px] overflow-hidden bg-zinc-950 text-white">
+    <div id="hero" className="relative w-full h-[750px] overflow-hidden bg-zinc-950 text-white ">
       {/* 1. TIMELAPSE VIDEO BACKGROUND */}
-      <div className="absolute inset-0 z-0">
+      <div className=" absolute inset-0 z-0">
         <video
           autoPlay
           loop
@@ -50,12 +50,12 @@ export function Hero() {
           src="vystavba-a-rekonstrukcie-budov.mp4"
         />
         {/* Subtle high-end radial lighting overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-zinc-950/80" />
+        <div className=" absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-zinc-950/80" />
         <div className="absolute inset-0 bg-zinc-950/20 backdrop-brightness-[0.85]" />
       </div>
 
       {/* 2. MAIN CONTENT GRID (SXS DESIGN) */}
-      <div className="relative z-10 w-full  mx-auto px-10 flex flex-col justify-end  pt-32">
+      <div className="max-w-[1500px] relative z-10 w-full  mx-auto px-10 flex flex-col justify-end  pt-32">
         
         {/* TOP COMPACT METRICS */}
         <div className="hidden lg:grid grid-cols-3 gap-6 max-w-3xl pb-10 mb-auto">

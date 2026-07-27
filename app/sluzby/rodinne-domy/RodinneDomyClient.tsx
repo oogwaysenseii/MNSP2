@@ -37,8 +37,8 @@ export default function ResidentialHubPage() {
         />
 
         {/* 1. IMMERSIVE HERO WITH CATEGORY BANNER */}
-        <div className="relative h-[50vh] min-h-[400px] bg-zinc-950 text-white overflow-hidden flex items-end">
-          <div className="absolute inset-0">
+        <div className=" relative h-[50vh] min-h-[400px] bg-zinc-950 text-white overflow-hidden flex items-end">
+          <div className=" absolute inset-0">
             <img
                 src="/rodinne-domy/rodinne-domy.webp"
                 alt="Stavba a rekonštrukcia rodinných domov"
@@ -47,7 +47,7 @@ export default function ResidentialHubPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-950/40 to-zinc-950/70" />
           </div>
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 space-y-4 pt-32">
+          <div className="max-w-[1500px] relative z-10 w-full  mx-auto px-6 pb-16 space-y-4 pt-32">
             <div className="inline-block px-3 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[10px] font-mono tracking-widest uppercase ">
               Rodinné domy
             </div>
@@ -61,7 +61,7 @@ export default function ResidentialHubPage() {
         </div>
 
         {/* 2. SERVICES SPLIT SECTION */}
-        <div className="max-w-7xl mx-auto px-6 mt-10 mb-10">
+        <div className="max-w-[1500px] mx-auto px-6 mt-10 mb-10">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-10">
             <h2 className="text-3xl md:text-4xl font-display font-extrabold text-zinc-950 tracking-tight">
               Naše služby pre rodinné domy
@@ -188,8 +188,8 @@ export default function ResidentialHubPage() {
         </div>
 
         {/* 3. SEO FOCUSED CONTENT SECTION */}
-        <div className="bg-zinc-100 py-20 border-y border-zinc-200">
-          <div className="max-w-4xl mx-auto px-6 space-y-12">
+        <div className=" bg-zinc-100 py-20 border-y border-zinc-200">
+          <div className="max-w-[1500px] mx-auto px-6 space-y-12">
             <div className="space-y-4">
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-zinc-900 tracking-tight">
                 Spoľahlivý partner pre vaše bývanie
@@ -236,7 +236,7 @@ export default function ResidentialHubPage() {
         </div>
 
         {/* 6. LOCATIONS & WHY US BLOCK */}
-        <div className="max-w-7xl mx-auto px-6 mt-16 mb-16">
+        <div className="max-w-[1500px] mx-auto px-6 mt-16 mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
             <div className="bg-white border border-zinc-200 p-6 sm:p-8 h-full flex flex-col justify-center">
               <div className="text-center space-y-2 mb-6">
