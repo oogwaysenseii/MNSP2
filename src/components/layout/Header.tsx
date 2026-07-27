@@ -74,21 +74,12 @@ export function Header() {
         >
           <div className=" text-amber-500  font-bold group-hover:scale-105 transition-transform">
             <img
-                src={isSolid ? "/mnsp-logo-mark-light.svg" : "/mnsp-logo-mark-dark.svg"}
+                src={isSolid ? "/mnsp-logo-mark-light.png" : "/mnsp-logo-mark-dark.png"}
                 alt="MNSP Logo"
-                className="w-10 h-10"
+                className="w-40 h-10"
             />
           </div>
-          <div>
-            <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight block">
-              MN<span className="text-amber-500">SP</span>
-            </span>
-            <span className={`text-[9px] font-mono tracking-widest block uppercase ${
-              isSolid ? 'text-zinc-500' : 'text-zinc-300'
-            }`}>
-              Pozemné staviteľstvo
-            </span>
-          </div>
+
         </Link>
 
         {/* DESKTOP NAVIGATION MENU */}

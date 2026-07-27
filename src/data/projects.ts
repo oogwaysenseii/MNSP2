@@ -10,6 +10,14 @@ export interface Project {
   duration: string;
   budgetString: string;
   imageUrl: string;
+  // Extended premium fields
+  gallery?: { url: string; caption?: string }[];
+  contentSections?: { title: string; content: string }[];
+  specs?: { label: string; value: string }[];
+  services?: string[];
+  challenges?: { challenge: string; solution: string }[];
+  timeline?: { date: string; title: string; description: string }[];
+  testimonial?: { quote: string; author: string; role: string; company?: string };
 }
 
 export const projectsData: Project[] = [
@@ -23,7 +31,57 @@ export const projectsData: Project[] = [
     year: 2026,
     duration: '18 mesiacov',
     budgetString: '€ 4.5M',
-    imageUrl: '/Domov-socialnych-sluzieb-Detva.webp'
+    imageUrl: '/Domov-socialnych-sluzieb-Detva.webp',
+    gallery: [
+      { url: '/Domov-socialnych-sluzieb-Detva.webp', caption: 'Pohľad na hlavný vchod' },
+      { url: '/Domov-socialnych-sluzieb-Detva.webp', caption: 'Detail fasády a obkladu' },
+      { url: '/Domov-socialnych-sluzieb-Detva.webp', caption: 'Okolitá parková úprava' }
+    ],
+    contentSections: [
+      {
+        title: 'Zámer projektu',
+        content: 'Cieľom projektu bolo vybudovať moderné, bezpečné a komfortné ubytovanie pre seniorov s dôrazom na bezbariérový prístup a komunitný spôsob života. Areál pozostáva z troch samostatných pavilónov prepojených presklenou chodbou.'
+      },
+      {
+        title: 'Stavebné riešenie',
+        content: 'Pri výstavbe boli použité prémiové materiály s ohľadom na energetickú udržateľnosť. Obvodové plášte sú zateplené nadštandardnou vrstvou minerálnej vlny, okná disponujú trojsklom a o vykurovanie sa starajú tepelné čerpadlá doplnené solárnymi panelmi na streche.'
+      }
+    ],
+    specs: [
+      { label: 'Zastavaná plocha', value: '1 250 m²' },
+      { label: 'Úžitková plocha', value: '3 800 m²' },
+      { label: 'Počet lôžok', value: '120' },
+      { label: 'Energetická trieda', value: 'A0' }
+    ],
+    services: [
+      'Generálna dodávka stavby',
+      'Zemné práce a zakladanie',
+      'Monolitické konštrukcie',
+      'Inžinierske siete',
+      'Sadové úpravy'
+    ],
+    challenges: [
+      {
+        challenge: 'Náročné svahovité podložie vyžadovalo špeciálny prístup k zakladaniu stavby a vybudovanie robustných oporných múrov.',
+        solution: 'Navrhli a zrealizovali sme systém mikropilót a železobetónových oporných stien, ktoré stabilizovali svah a zabezpečili trvalú bezpečnosť objektu.'
+      },
+      {
+        challenge: 'Zabezpečenie plynulej dodávky materiálu v obytnej štvrti s úzkymi prístupovými cestami.',
+        solution: 'Zaviedli sme prísny logistický plán a just-in-time dodávky s využitím menších vozidiel, čím sme minimalizovali dopady na lokálnu komunitu.'
+      }
+    ],
+    timeline: [
+      { date: 'Marec 2024', title: 'Začiatok zemných prác', description: 'Odstránenie pôvodných objektov a príprava staveniska.' },
+      { date: 'Júl 2024', title: 'Dokončenie hrubej stavby', description: 'Ukončenie monolitických prác a zastrešenie objektov.' },
+      { date: 'Február 2025', title: 'Fasády a interiéry', description: 'Montáž technológií, sadrokartónov a zateplenie fasády.' },
+      { date: 'September 2025', title: 'Odovzdanie diela', description: 'Kolaudácia a slávnostné otvorenie zariadenia.' }
+    ],
+    testimonial: {
+      quote: 'Spolupráca s MNSP bola na vysokej profesionálnej úrovni. Oceňujem proaktívny prístup pri riešení technických výziev a dodržanie harmonogramu aj napriek náročným podmienkam na stavenisku.',
+      author: 'Ing. arch. Peter Kováč',
+      role: 'Hlavný architekt',
+      company: 'Mesto Detva'
+    }
   },
   {
     id: 'rekonstrukcia-novohradskeho-muzea-lucenec',
