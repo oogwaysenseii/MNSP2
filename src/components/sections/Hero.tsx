@@ -55,7 +55,7 @@ export function Hero() {
       </div>
 
       {/* 2. MAIN CONTENT GRID (SXS DESIGN) */}
-      <div className="max-w-[1500px] relative z-10 w-full  mx-auto px-10 flex flex-col justify-end  pt-32">
+      <div className="max-w-[1500px] relative z-10 w-full  mx-auto px-4 sm:px-8 flex flex-col justify-end  pt-32">
         
         {/* TOP COMPACT METRICS */}
         <div className="hidden lg:grid grid-cols-3 gap-6 max-w-3xl pb-10 mb-auto">
