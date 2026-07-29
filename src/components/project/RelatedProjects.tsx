@@ -4,17 +4,6 @@ import { Project, projectsData } from '@/src/data/projects';
 import { Container } from '@/src/components/ui/Container';
 import { MapPin, Calendar } from 'lucide-react';
 
-const getCategoryLabel = (cat: string) => {
-  switch (cat) {
-    case 'residential': return 'Rodinné domy';
-    case 'renovations': return 'Rekonštrukcie';
-    case 'commercial': return 'Komerčné priestory';
-    case 'industrial': return 'Priemyselné stavby';
-    case 'civil': return 'Inžinierske stavby';
-    default: return 'Projekt';
-  }
-};
-
 export function RelatedProjects({ currentProject }: { currentProject: Project }) {
   // Find related projects (same category, excluding current)
   let related = projectsData
@@ -52,7 +41,7 @@ export function RelatedProjects({ currentProject }: { currentProject: Project })
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <div className="absolute top-3 left-3 bg-black/90 text-white text-[10px] font-mono tracking-wider font-bold uppercase px-2 py-1">
-                      {getCategoryLabel(proj.category)}
+                      {proj.category}
                     </div>
                     <div className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-white text-[10px] px-2 py-1 flex items-center gap-1">
                       <MapPin className="w-3 h-3 text-amber-400" />
