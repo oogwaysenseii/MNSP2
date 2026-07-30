@@ -217,7 +217,7 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
                     premiumModifier: 3.67,
                 },
             ]}
-            category="residential"
+            category="Rodinné domy"
             serviceSlug="rekonstrukcia-rodinneho-domu"
             citySlug={city.slug}
             whyChooseUs={whyUsSection}

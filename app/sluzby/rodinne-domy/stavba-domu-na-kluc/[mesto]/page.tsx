@@ -216,7 +216,7 @@ export default async function StavbaLocationPage({ params }: PageProps) {
                 premiumModifier: 1.45,
               },
             ]}
-            category="residential"
+            category="Rodinné domy"
             serviceSlug="stavba-domu-na-kluc"
             citySlug={city.slug}
             whyChooseUs={whyUsSection}

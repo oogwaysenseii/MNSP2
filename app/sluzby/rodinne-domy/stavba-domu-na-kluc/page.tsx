@@ -130,7 +130,7 @@ export default function StavbaDomuNaKlucPage() {
                     premiumModifier: 1.45,
                 },
             ]}
-            category="residential"
+            category="Rodinné domy"
             serviceSlug="stavba-domu-na-kluc"
             ctaTitle="Plánujete výstavbu rodinného domu na kľúč?"
             ctaSubtitle="Nechajte nám na seba kontakt a naši inžinieri sa s vami spoja s návrhom realizácie."

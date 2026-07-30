@@ -129,7 +129,7 @@ export default function RekonstrukciaDomuPage() {
                         premiumModifier: 3.67,
                     },
                 ]}
-                category="residential"
+                category="Rodinné domy"
                 serviceSlug="rekonstrukcia-rodinneho-domu"
                 ctaTitle="Plánujete rekonštrukciu staršieho rodinného domu?"
                 ctaSubtitle="Nechajte nám na seba kontakt a posúdime stav vašej nehnuteľnosti a navrhneme optimálne riešenie."
