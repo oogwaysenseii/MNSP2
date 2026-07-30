@@ -224,7 +224,7 @@ export default function ResidentialHubPage() {
 
         {/* 4. COMPLETED PAST PROJECTS IN THIS DIVISION */}
         <Projects
-            defaultCategory="residential"
+            defaultCategory="Rodinné domy"
             hideFilters={true}
             titleSk="Realizácie rodinných domov"
             subtitleSk="Prehľad zrealizovaných a prebiehajúcich projektov výstavby a rekonštrukcií rodinných domov."
