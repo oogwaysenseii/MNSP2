@@ -47,55 +47,53 @@ export default function ConstructionCalculator({ children }: { children?: React.
   };
 
   // Calculation logic
-  const calculateTotal = () => {
-    // Total usable area (roughly factoring floors and basement)
-    const multiplierFloors = floors + (hasUnderground ? 0.8 : 0); // basement is usually cheaper than full above-ground floor per m2
-    const totalCalcArea = area * multiplierFloors;
+  const getCalculatedItems = () => {
+    const items: { name: string; cost: number; percentage: number }[] = [];
+    const standardMultiplier = STANDARDS.find((s) => s.id === standard)?.multiplier || 1;
+    let totalBaseCost = 0;
 
-    let baseCost = 0;
-    SERVICES.forEach(service => {
-      if (selectedServices.includes(service.id)) {
-        baseCost += service.basePricePerM2 * totalCalcArea;
+    SERVICES.forEach((service) => {
+      if (!selectedServices.includes(service.id)) return;
+
+      let multiplier = 1;
+
+      if (service.id === "zaklady") {
+        multiplier = 1;
+        if (hasUnderground) multiplier += 1.2;
+      } else if (service.id === "strecha") {
+        multiplier = 1;
+      } else if (service.id === "stropy") {
+        multiplier = floors;
+        if (hasUnderground) multiplier += 1;
+      } else {
+        multiplier = floors;
+        if (hasUnderground) multiplier += 0.5;
       }
+
+      const cost = service.basePricePerM2 * multiplier * area * standardMultiplier;
+      totalBaseCost += cost;
+      items.push({ name: service.name, cost, percentage: 0 });
     });
 
-    const standardMultiplier = STANDARDS.find(s => s.id === standard)?.multiplier || 1;
-    return {
-      price: Math.round(baseCost * standardMultiplier),
-      totalCalcArea
-    };
+    if (totalBaseCost > 0) {
+      items.forEach((item) => {
+        item.percentage = Math.round((item.cost / totalBaseCost) * 100);
+      });
+    }
+
+    return { items, totalBaseCost };
   };
+
+  const { items: breakdown, totalBaseCost: totalPrice } = getCalculatedItems();
+  const totalCalcArea = area * (floors + (hasUnderground ? 0.8 : 0));
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('sk-SK', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(price);
   };
 
-  const { price: totalPrice, totalCalcArea } = calculateTotal();
   const rangeMin = Math.round((totalPrice * 0.95) / 1000) * 1000;
   const rangeMax = Math.round((totalPrice * 1.08) / 1000) * 1000;
   const pricePerM2 = totalCalcArea > 0 ? Math.round(totalPrice / totalCalcArea) : 0;
-
-  const getBreakdown = () => {
-    let currentTotal = 0;
-    const items: {name: string, cost: number}[] = [];
-
-    SERVICES.forEach(service => {
-      if (selectedServices.includes(service.id)) {
-        const cost = service.basePricePerM2;
-        items.push({ name: service.name, cost });
-        currentTotal += cost;
-      }
-    });
-
-    if (currentTotal === 0) return [];
-
-    return items.map(item => ({
-      name: item.name,
-      percentage: Math.round((item.cost / currentTotal) * 100)
-    }));
-  };
-
-  const breakdown = getBreakdown();
 
   return (
       <div className="bg-zinc-50 py-10">
@@ -242,65 +240,67 @@ export default function ConstructionCalculator({ children }: { children?: React.
             </div>
 
             {/* RIGHT CONTENT: Sticky Summary */}
-            <div className="lg:col-span-4 relative">
-              <div className="sticky top-24 space-y-6">
-                <div className="bg-zinc-50 text-amber-500  shadow-2xl overflow-hidden border border-zinc-800">
+            <div className="lg:col-span-4 relative h-full">
+              <div className="sticky top-20 space-y-4">
+                <div className="bg-zinc-50 text-amber-500 shadow-2xl overflow-hidden border border-zinc-800">
                   {/* Top Banner */}
-                  <div className="bg-zinc-950 px-6 py-4 flex items-center gap-3">
-                    <Calculator className="w-5 h-5 text-amber-500" />
-                    <h3 className="font-bold text-sm uppercase tracking-widest text-amber-500">Orientačný rozpočet</h3>
+                  <div className="bg-zinc-950 px-5 py-3 flex items-center gap-3">
+                    <Calculator className="w-4 h-4 text-amber-500" />
+                    <h3 className="font-bold text-xs uppercase tracking-widest text-amber-500">Orientačný rozpočet</h3>
                   </div>
 
-                  <div className="p-6 sm:p-8 space-y-8">
+                  <div className="p-5 space-y-5">
                     <div>
-                    <span className="text-xs font-mono tracking-widest uppercase font-bold text-black block mb-4">
+                    <span className="text-[10px] font-mono tracking-widest uppercase font-bold text-black block mb-2">
                       Odhadovaný rozsah
                     </span>
-                      <div className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-display font-extrabold text-amber-500 tracking-tight leading-tight flex items-center gap-2 flex-wrap">
+                      <div className="text-2xl sm:text-3xl font-display font-extrabold text-amber-500 tracking-tight leading-tight flex items-center gap-1.5 flex-wrap">
                         <span>{formatPrice(rangeMin)}</span>
-                        <span className="text-zinc-400 font-medium px-1">—</span>
+                        <span className="text-zinc-400 font-medium px-0.5">—</span>
                         <span>{formatPrice(rangeMax)}</span>
                       </div>
-                      <div className="mt-4 inline-flex items-center bg-amber-100 text-amber-900 font-mono font-bold px-3 py-1.5 text-sm">
+                      <div className="mt-2.5 inline-flex items-center bg-amber-100 text-amber-900 font-mono font-bold px-2 py-1 text-xs">
                         ≈ {new Intl.NumberFormat('sk-SK').format(pricePerM2)} €/m²
                       </div>
-                      <p className="text-xs text-zinc-500 mt-5 leading-relaxed">
-                        Uvedená cena je len informatívna. Presná kalkulácia závisí od projektovej dokumentácie, dostupnosti a svahovitosti terénu.
+                      <p className="text-[11px] text-zinc-500 mt-3 leading-relaxed">
+                        Uvedená cena je len informatívna. Presná kalkulácia závisí od projektovej dokumentácie.
                       </p>
                     </div>
 
                     {breakdown.length > 0 && (
-                        <div className="space-y-4 pt-6 border-t border-zinc-200">
-                    <span className="text-xs font-mono tracking-widest uppercase font-bold text-black block mb-4">
+                        <div className="space-y-3 pt-4 border-t border-zinc-200">
+                    <span className="text-[10px] font-mono tracking-widest uppercase font-bold text-black block mb-2">
                       Približné rozloženie nákladov
                     </span>
-                          {breakdown.map((item, idx) => (
-                              <div key={idx} className="space-y-2">
-                                <div className="flex justify-between text-xs">
-                                  <span className="text-zinc-600 font-medium">{item.name}</span>
-                                  <span className="font-bold text-zinc-950">{item.percentage}%</span>
+                          <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                            {breakdown.map((item, idx) => (
+                                <div key={idx} className="space-y-1">
+                                  <div className="flex justify-between text-[10px]">
+                                    <span className="text-zinc-600 font-medium truncate pr-2" title={item.name}>{item.name}</span>
+                                    <span className="font-bold text-zinc-950">{item.percentage}%</span>
+                                  </div>
+                                  <div className="w-full h-1 bg-zinc-200 overflow-hidden">
+                                    <div className="h-full bg-amber-500" style={{ width: `${item.percentage}%` }}></div>
+                                  </div>
                                 </div>
-                                <div className="w-full h-1.5 bg-zinc-200 overflow-hidden">
-                                  <div className="h-full bg-amber-500" style={{ width: `${item.percentage}%` }}></div>
-                                </div>
-                              </div>
-                          ))}
+                            ))}
+                          </div>
                         </div>
                     )}
 
-                    <div className="pt-6 border-t border-zinc-200">
-                      <div className="bg-white p-6 border border-zinc-200 shadow-sm">
-                        <p className="text-sm text-zinc-950 font-bold mb-4">Získajte detailný rozpis na e-mail:</p>
-                        <ul className="text-xs text-zinc-600 mb-6 space-y-2.5 font-medium">
-                          <li className="flex gap-2.5 items-center"><Check className="w-4 h-4 text-amber-500"/> PDF cenová ponuka</li>
-                          <li className="flex gap-2.5 items-center"><Check className="w-4 h-4 text-amber-500"/> Presný rozpis položiek</li>
-                          <li className="flex gap-2.5 items-center"><Check className="w-4 h-4 text-amber-500"/> Časový harmonogram</li>
+                    <div className="pt-4 border-t border-zinc-200">
+                      <div className="bg-white p-4 border border-zinc-200 shadow-sm">
+                        <p className="text-xs text-zinc-950 font-bold mb-3">Získajte detailný rozpis na e-mail:</p>
+                        <ul className="text-[11px] text-zinc-600 mb-4 space-y-1.5 font-medium flex flex-wrap gap-x-4 gap-y-1.5">
+                          <li className="flex gap-1.5 items-center"><Check className="w-3 h-3 text-amber-500"/> PDF ponuka</li>
+                          <li className="flex gap-1.5 items-center"><Check className="w-3 h-3 text-amber-500"/> Rozpis položiek</li>
+                          <li className="flex gap-1.5 items-center"><Check className="w-3 h-3 text-amber-500"/> Harmonogram</li>
                         </ul>
-                        <form className="space-y-3" onSubmit={(e) => { e.preventDefault(); alert('Ďakujeme! Ponuku sme odoslali na váš e-mail.'); }}>
-                          <input type="email" placeholder="Váš e-mail" required className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all placeholder:text-zinc-400" />
-                          <input type="tel" placeholder="Telefónne číslo (voliteľné)" className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all placeholder:text-zinc-400" />
-                          <button type="submit" className="flex items-center justify-center gap-2 px-6 py-4 bg-zinc-950 hover:bg-amber-500 hover:text-zinc-950 text-white font-bold uppercase tracking-wider text-xs transition-colors w-full mt-2 group">
-                            Odoslať odhad <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                        <form className="space-y-2" onSubmit={(e) => { e.preventDefault(); alert('Ďakujeme! Ponuku sme odoslali na váš e-mail.'); }}>
+                          <input type="email" placeholder="Váš e-mail" required className="w-full px-3 py-2 bg-zinc-50 border border-zinc-200 text-xs focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all placeholder:text-zinc-400" />
+                          <input type="tel" placeholder="Telefón (voliteľné)" className="w-full px-3 py-2 bg-zinc-50 border border-zinc-200 text-xs focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all placeholder:text-zinc-400" />
+                          <button type="submit" className="flex items-center justify-center gap-1.5 px-4 py-2.5 bg-zinc-950 hover:bg-amber-500 hover:text-zinc-950 text-white font-bold uppercase tracking-wider text-[10px] transition-colors w-full group">
+                            Odoslať odhad <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
                           </button>
                         </form>
                       </div>
@@ -308,9 +308,6 @@ export default function ConstructionCalculator({ children }: { children?: React.
                   </div>
                 </div>
 
-                <div className="bg-amber-50 border border-amber-200  p-6 text-xs text-amber-900 leading-relaxed font-medium">
-                  Zaujíma vás detailný rozpis? Kontaktujte našich inžinierov pre bezplatnú obhliadku a poradenstvo pre váš projekt.
-                </div>
               </div>
             </div>
 

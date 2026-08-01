@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import ConstructionCalculator from "@/src/components/calculator/ConstructionCalculator";
 import { getSEOTags } from '@/src/lib/seo';
+import Link from 'next/link';
 
 const seo = getSEOTags(
     "Cenová kalkulačka",
@@ -72,6 +73,33 @@ export default function KalkulackaPage() {
                             <p>
                                 Preto po získaní prvotného odhadu odporúčame využiť kontaktný formulár v našej kalkulačke. Pošleme vám detailnejší rozpis a radi si s vami dohodneme osobné alebo online stretnutie, kde preberieme váš projekt do najmenších detailov a pripravíme na mieru šitú ponuku.
                             </p>
+                        </div>
+                    </div>
+
+                    <div className="space-y-6 pt-10 border-t border-zinc-200">
+                        <h2 className="text-2xl font-display font-extrabold text-zinc-950">Pokračujte v prehliadaní</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                            <Link href="/sluzby" className="block p-6 bg-zinc-50 border border-zinc-200 hover:border-amber-500 transition-colors group">
+                                <h3 className="font-bold text-lg text-zinc-950 group-hover:text-amber-600 transition-colors">Naše služby &rarr;</h3>
+                                <p className="text-sm text-zinc-600 mt-2">Zistite viac o tom, čo všetko pre vás vieme zrealizovať. Od hrubej stavby až po stavbu na kľúč.</p>
+                            </Link>
+
+                            <Link href="/portfolio" className="block p-6 bg-zinc-50 border border-zinc-200 hover:border-amber-500 transition-colors group">
+                                <h3 className="font-bold text-lg text-zinc-950 group-hover:text-amber-600 transition-colors">Portfólio projektov &rarr;</h3>
+                                <p className="text-sm text-zinc-600 mt-2">Inšpirujte sa našimi dokončenými stavbami a rekonštrukciami po celom Slovensku.</p>
+                            </Link>
+
+                            <Link href="/lokality" className="block p-6 bg-zinc-50 border border-zinc-200 hover:border-amber-500 transition-colors group">
+                                <h3 className="font-bold text-lg text-zinc-950 group-hover:text-amber-600 transition-colors">Pôsobíme vo vašom regióne &rarr;</h3>
+                                <p className="text-sm text-zinc-600 mt-2">Pozrite si mapu regiónov, kde najčastejšie staviame a poskytujeme naše služby.</p>
+                            </Link>
+
+                            <Link href="/blog" className="block p-6 bg-zinc-50 border border-zinc-200 hover:border-amber-500 transition-colors group">
+                                <h3 className="font-bold text-lg text-zinc-950 group-hover:text-amber-600 transition-colors">Odborný blog &rarr;</h3>
+                                <p className="text-sm text-zinc-600 mt-2">Prečítajte si užitočné rady a tipy predtým, ako sa pustíte do samotnej výstavby.</p>
+                            </Link>
+
                         </div>
                     </div>
 
