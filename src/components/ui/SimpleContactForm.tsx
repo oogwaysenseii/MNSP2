@@ -63,7 +63,6 @@ export function SimpleContactForm({
                 htmlFor="phone"
                 className="text-sm font-medium text-zinc-400"
             >
-              Telefónne číslo *
             </label>
             <input
                 type="tel"
@@ -72,8 +71,8 @@ export function SimpleContactForm({
                 required
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full bg-white border border-zinc-200 px-4 py-3.5 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all "
-                placeholder="+421 900 000 000"
+                className="w-full bg-white border border-zinc-200 px-4 py-2 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all "
+                placeholder="Vaše telefónne číslo"
             />
           </div>
 
@@ -82,7 +81,6 @@ export function SimpleContactForm({
                 htmlFor="email"
                 className="text-sm font-medium text-zinc-400"
             >
-              E-mail
             </label>
             <input
                 type="email"
@@ -90,8 +88,8 @@ export function SimpleContactForm({
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full bg-white border border-zinc-200 px-4 py-3.5 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all "
-                placeholder="jan.novak@example.com"
+                className="w-full bg-white border border-zinc-200 px-4 py-2 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all "
+                placeholder="Váš e-mail"
             />
           </div>
         </div>

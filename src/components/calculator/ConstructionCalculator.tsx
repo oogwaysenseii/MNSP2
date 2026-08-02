@@ -4,9 +4,11 @@ import { useState } from "react";
 import {
   ArrowRight,
   Check,
-  Calculator
+  Calculator,
+  Calendar
 } from "lucide-react";
 import Link from "next/link";
+import { SimpleContactForm } from "@/src/components/ui/SimpleContactForm";
 
 type ServiceInfo = {
   id: string;
@@ -86,6 +88,10 @@ export default function ConstructionCalculator({ children }: { children?: React.
 
   const { items: breakdown, totalBaseCost: totalPrice } = getCalculatedItems();
   const totalCalcArea = area * (floors + (hasUnderground ? 0.8 : 0));
+
+  const currentDate = new Date();
+  const rawMonthYear = new Intl.DateTimeFormat('sk-SK', { month: 'long', year: 'numeric' }).format(currentDate);
+  const currentMonthYear = rawMonthYear.charAt(0).toUpperCase() + rawMonthYear.slice(1);
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('sk-SK', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(price);
@@ -262,9 +268,7 @@ export default function ConstructionCalculator({ children }: { children?: React.
                       <div className="mt-2.5 inline-flex items-center bg-amber-100 text-amber-900 font-mono font-bold px-2 py-1 text-xs">
                         ≈ {new Intl.NumberFormat('sk-SK').format(pricePerM2)} €/m²
                       </div>
-                      <p className="text-[11px] text-zinc-500 mt-3 leading-relaxed">
-                        Uvedená cena je len informatívna. Presná kalkulácia závisí od projektovej dokumentácie.
-                      </p>
+
                     </div>
 
                     {breakdown.length > 0 && (
@@ -291,23 +295,28 @@ export default function ConstructionCalculator({ children }: { children?: React.
                     <div className="pt-4 border-t border-zinc-200">
                       <div className="bg-white p-4 border border-zinc-200 shadow-sm">
                         <p className="text-xs text-zinc-950 font-bold mb-3">Získajte detailný rozpis na e-mail:</p>
-                        <ul className="text-[11px] text-zinc-600 mb-4 space-y-1.5 font-medium flex flex-wrap gap-x-4 gap-y-1.5">
+                        <ul className="text-[9px] text-zinc-600 mb-4 space-y-1.5 font-medium flex flex-wrap gap-x-4 gap-y-1.5">
                           <li className="flex gap-1.5 items-center"><Check className="w-3 h-3 text-amber-500"/> PDF ponuka</li>
                           <li className="flex gap-1.5 items-center"><Check className="w-3 h-3 text-amber-500"/> Rozpis položiek</li>
                           <li className="flex gap-1.5 items-center"><Check className="w-3 h-3 text-amber-500"/> Harmonogram</li>
                         </ul>
-                        <form className="space-y-2" onSubmit={(e) => { e.preventDefault(); alert('Ďakujeme! Ponuku sme odoslali na váš e-mail.'); }}>
-                          <input type="email" placeholder="Váš e-mail" required className="w-full px-3 py-2 bg-zinc-50 border border-zinc-200 text-xs focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all placeholder:text-zinc-400" />
-                          <input type="tel" placeholder="Telefón (voliteľné)" className="w-full px-3 py-2 bg-zinc-50 border border-zinc-200 text-xs focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all placeholder:text-zinc-400" />
-                          <button type="submit" className="flex items-center justify-center gap-1.5 px-4 py-2.5 bg-zinc-950 hover:bg-amber-500 hover:text-zinc-950 text-white font-bold uppercase tracking-wider text-[10px] transition-colors w-full group">
-                            Odoslať odhad <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
-                          </button>
-                        </form>
+                        <SimpleContactForm pageName="Kalkulačka - Odhad rozpočtu" />
                       </div>
+                    </div>
+
+                    <div className="pt-4 border-t border-zinc-200 flex items-center justify-between text-[10px] text-zinc-500 font-medium">
+                  <span className="flex items-center gap-1.5">
+                    <Calendar className="w-3 h-3" />
+                    Ceny aktualizované:
+                  </span>
+                      <span className="font-bold text-zinc-900" suppressHydrationWarning>{currentMonthYear}</span>
                     </div>
                   </div>
                 </div>
 
+                <div className="bg-amber-50 border border-amber-200 p-4 text-[11px] text-amber-900 leading-relaxed font-medium mt-4">
+                  Zaujíma vás detailný rozpis? Kontaktujte našich inžinierov pre bezplatnú obhliadku a poradenstvo pre váš projekt.
+                </div>
               </div>
             </div>
 

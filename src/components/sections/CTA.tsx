@@ -23,10 +23,10 @@ export function CTA({
             {/* Left Column - Text */}
             <div className="w-full lg:w-[60%] space-y-8">
               <div className="space-y-6">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white leading-[1.1] tracking-tight">
+                <h2 className="text-3xl sm:text-3xl md:text-4xl font-semibold text-white leading-[1.1] tracking-tight">
                   {title}
                 </h2>
-                <p className="text-amber-500 font-medium text-lg leading-relaxed max-w-xl border-l pl-5">
+                <p className="text-amber-500 font-medium text-md leading-relaxed max-w-xl border-l pl-5">
                   {subtitle}
                 </p>
               </div>
