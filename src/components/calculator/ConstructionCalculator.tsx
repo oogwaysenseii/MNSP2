@@ -17,15 +17,16 @@ type ServiceInfo = {
 };
 
 const SERVICES: ServiceInfo[] = [
-  { id: "zaklady", name: "Základy a základová doska", basePricePerM2: 150 },
-  { id: "murivo", name: "Murovacie práce (Hrubá stavba)", basePricePerM2: 250 },
-  { id: "stropy", name: "Stropy a vence", basePricePerM2: 120 },
-  { id: "strecha", name: "Strecha a krov", basePricePerM2: 180 },
+  { id: "zaklady", name: "Základy a základová doska", basePricePerM2: 165 },
+  { id: "murivo", name: "Murovacie práce (Hrubá stavba)", basePricePerM2: 225 },
+  { id: "stropy", name: "Stropy a vence", basePricePerM2: 135 },
+  { id: "strecha", name: "Strecha a krov", basePricePerM2: 200 },
   { id: "okna", name: "Okná a exteriérové dvere", basePricePerM2: 140 },
-  { id: "fasada", name: "Zateplenie a fasáda", basePricePerM2: 130 },
-  { id: "rozvody", name: "Rozvody (Elektro, Voda, Kúrenie)", basePricePerM2: 160 },
-  { id: "omietky", name: "Vnútorné omietky a potery", basePricePerM2: 90 },
-  { id: "interier", name: "Interiér (Podlahy, obklady, sanita)", basePricePerM2: 220 }
+  { id: "fasada", name: "Zateplenie a fasáda", basePricePerM2: 115 },
+  { id: "rozvody", name: "Rozvody (Elektro, Voda, Kúrenie)", basePricePerM2: 220 },
+  { id: "omietky", name: "Vnútorné omietky a potery", basePricePerM2: 80 },
+  { id: "sadrokarton", name: "Sadrokartónové stropy", basePricePerM2: 60 },
+  { id: "interier", name: "Interiér (Podlahy, obklady, sanita)", basePricePerM2: 300 }
 ];
 
 const STANDARDS = [
@@ -64,7 +65,7 @@ export default function ConstructionCalculator({ children }: { children?: React.
         if (hasUnderground) multiplier += 1.2;
       } else if (service.id === "strecha") {
         multiplier = 1;
-      } else if (service.id === "stropy") {
+      } else if (service.id === "stropy" || service.id === "sadrokarton") {
         multiplier = floors;
         if (hasUnderground) multiplier += 1;
       } else {
@@ -247,18 +248,18 @@ export default function ConstructionCalculator({ children }: { children?: React.
 
             {/* RIGHT CONTENT: Sticky Summary */}
             <div className="lg:col-span-4 relative h-full">
-              <div className="sticky top-20 space-y-4">
+              <div className="sticky top-19 space-y-4">
                 <div className="bg-zinc-50 text-amber-500 shadow-2xl overflow-hidden border border-zinc-800">
                   {/* Top Banner */}
                   <div className="bg-zinc-950 px-5 py-3 flex items-center gap-3">
                     <Calculator className="w-4 h-4 text-amber-500" />
-                    <h3 className="font-bold text-xs uppercase tracking-widest text-amber-500">Orientačný rozpočet</h3>
+                    <h3 className="font-bold text-xs uppercase tracking-widest text-white">Orientačný rozpočet</h3>
                   </div>
 
                   <div className="p-5 space-y-5">
                     <div>
                     <span className="text-[10px] font-mono tracking-widest uppercase font-bold text-black block mb-2">
-                      Odhadovaný rozsah
+                      Odhadovaný rozsah nákladov:
                     </span>
                       <div className="text-2xl sm:text-3xl font-display font-extrabold text-amber-500 tracking-tight leading-tight flex items-center gap-1.5 flex-wrap">
                         <span>{formatPrice(rangeMin)}</span>
@@ -294,13 +295,13 @@ export default function ConstructionCalculator({ children }: { children?: React.
 
                     <div className="pt-4 border-t border-zinc-200">
                       <div className="bg-white p-4 border border-zinc-200 shadow-sm">
-                        <p className="text-xs text-zinc-950 font-bold mb-3">Získajte detailný rozpis na e-mail:</p>
-                        <ul className="text-[9px] text-zinc-600 mb-4 space-y-1.5 font-medium flex flex-wrap gap-x-4 gap-y-1.5">
-                          <li className="flex gap-1.5 items-center"><Check className="w-3 h-3 text-amber-500"/> PDF ponuka</li>
+                        <p className="text-xs text-zinc-950 font-bold mb-3">Získajte cenovú ponuku na mieru</p>
+                        <ul className="text-[10px] text-zinc-600 mb-4 space-y-1.5 font-medium flex flex-wrap gap-x-2 gap-y-1.5">
+                          <li className="flex gap-1.5 items-center"><Check className="w-3 h-3 text-amber-500"/> Celková suma</li>
                           <li className="flex gap-1.5 items-center"><Check className="w-3 h-3 text-amber-500"/> Rozpis položiek</li>
                           <li className="flex gap-1.5 items-center"><Check className="w-3 h-3 text-amber-500"/> Harmonogram</li>
                         </ul>
-                        <SimpleContactForm pageName="Kalkulačka - Odhad rozpočtu" />
+                        <SimpleContactForm pageName="Kalkulačka - Odhad rozpočtu" hideCalculatorLink={true} />
                       </div>
                     </div>
 

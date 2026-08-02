@@ -6,8 +6,10 @@ import Link from 'next/link';
 
 export function SimpleContactForm({
                                     pageName,
+                                    hideCalculatorLink = false,
                                   }: {
   pageName: string;
+  hideCalculatorLink?: boolean;
 }) {
   const [formData, setFormData] = useState({
     email: '',
@@ -72,7 +74,7 @@ export function SimpleContactForm({
                 value={formData.phone}
                 onChange={handleChange}
                 className="w-full bg-white border border-zinc-200 px-4 py-2 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all "
-                placeholder="Vaše telefónne číslo"
+                placeholder="Vaše tel. číslo:"
             />
           </div>
 
@@ -89,12 +91,12 @@ export function SimpleContactForm({
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full bg-white border border-zinc-200 px-4 py-2 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all "
-                placeholder="Váš e-mail"
+                placeholder="Váš e-mail:"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+        <div className={`grid grid-cols-1 ${hideCalculatorLink ? '' : 'sm:grid-cols-2'} gap-4 mt-5`}>
           <button
               type="submit"
               className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-amber-500 text-white font-medium text-sm hover:bg-amber-400 transition-colors cursor-pointer "
@@ -103,13 +105,15 @@ export function SimpleContactForm({
             <ArrowRight className="w-4 h-4 ml-1" />
           </button>
 
-          <Link
-              href="/kalkulacka"
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent border border-zinc-700 text-white font-medium text-sm hover:border-amber-500 hover:text-amber-500 transition-colors cursor-pointer "
-          >
-            Kalkulačka
-            <Calculator className="w-4 h-4 ml-1" />
-          </Link>
+          {!hideCalculatorLink && (
+              <Link
+                  href="/kalkulacka"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent border border-zinc-700 text-white font-medium text-sm hover:border-amber-500 hover:text-amber-500 transition-colors cursor-pointer "
+              >
+                Kalkulačka
+                <Calculator className="w-4 h-4 ml-1" />
+              </Link>
+          )}
         </div>
       </form>
   );
