@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
+    "@next/third-parties": "^16.3.0",
     "@tailwindcss/vite": "^4.1.14",
     "@vitejs/plugin-react": "^5.0.4",
     "date-fns": "^4.4.0",

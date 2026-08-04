@@ -16,7 +16,7 @@ export function Hero() {
     {
       badge: 'Výstavba a rekonštrukcie rodinných domov',
       title: 'Rodinné domy',
-      description: 'Postavte alebo zrekonštruujte si svoj vysnívaný dom bez námahy. Projekt vám vypracujeme, stavbu zrealizujeme a s formalitami vám pomôžeme albo ich rovno vybavíme za vás.'
+      description: 'Postavte alebo zrekonštruujte si svoj vysnívaný dom bez námahy. Projekt vám vypracujeme, stavbu zrealizujeme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás.'
     },
     {
       badge: 'Záruka dodržania termínov',
@@ -85,7 +85,7 @@ export function Hero() {
             </div>
             <div>
               <p className="text-xs text-zinc-300 font-medium">{'Odbornosť'}</p>
-              <p className="text-sm font-semibold text-white">{'Spoľahlivý presonál'}</p>
+              <p className="text-sm font-semibold text-white">{'Spoľahlivý personál'}</p>
             </div>
           </motion.div>
 

@@ -104,7 +104,7 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
             {/* TOP HEADER */}
             <div className="space-y-4 text-center">
             <span className="text-xs font-mono tracking-widest text-amber-600 font-bold uppercase">
-              {badge || 'STAVEBNÝ ŽURNÁL APEX'}
+              {badge || 'BLOG | MNSP'}
             </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight text-neutral-950">
                 {title || 'Technické postupy a stavebné správy'}

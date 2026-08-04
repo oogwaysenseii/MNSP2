@@ -61,7 +61,7 @@ export default function SluzbyPage() {
       <div className="max-w-[1400px] mx-auto px-6">
         <div className="mb-14 space-y-3">
           <span className="text-xs font-mono tracking-widest text-amber-600 font-bold uppercase block">
-            MASTERSKÉ REMESLÁ
+            OBBORNÉ PRÁCE A REMESLÁ
           </span>
           <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-neutral-950 tracking-tight">
             Špeciálne Stavebné Služby
@@ -93,7 +93,7 @@ export default function SluzbyPage() {
                         </div>
                       </div>
                       <span className="text-[10px] font-mono font-medium text-zinc-400">
-                        TRADE // {tag}
+                        Služba // {tag}
                       </span>
                     </div>
 

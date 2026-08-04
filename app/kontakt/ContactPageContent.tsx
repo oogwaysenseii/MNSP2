@@ -11,7 +11,7 @@ export default function ContactPageContent() {
   const currentOfficeDetails = {
     city: 'Zvolen',
     address: 'Jozefa Kozáčeka 829/2',
-    coordinates: '960 01, Zvolens',
+    coordinates: '960 01, Zvolen',
     phone: '+421 950 699 585',
     email: 'info@mnsp.sk',
     hours: 'Po - Pia • 7:00 - 18:00',

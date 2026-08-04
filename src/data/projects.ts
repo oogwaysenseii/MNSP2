@@ -1,4 +1,4 @@
-export type ServiceCategory = 'Rodinné domy' | 'Rezidenčné budovy' | 'Komerčná výstavba' | 'Priemyselné objekty' | 'Občianské stavby';
+export type ServiceCategory = 'Rodinné domy' | 'Rezidenčné budovy' | 'Komerčná výstavba' | 'Priemyselné objekty' | 'Občianske stavby';
 
 export interface Project {
   id: string;
@@ -26,7 +26,7 @@ export const projectsData: Project[] = [
     id: 'rekonstrukcia-domovu-socialnych-sluzieb-detva',
     title: 'Zariadenie sociálnych služieb Detva',
     description: 'Výstavba 3 bytových domov vrátane inžinierskych sietí, opornej steny a podzemného parkovania pre obyvateľov.',
-    category: 'Občianské stavby',
+    category: 'Občianske stavby',
     location: 'Detva',
     year: 2026,
     duration: '18 mesiacov',
@@ -87,7 +87,7 @@ export const projectsData: Project[] = [
     id: 'rekonstrukcia-novohradskeho-muzea-lucenec',
     title: 'Novohradské múzeum a galéria Lučenec',
     description: 'Realizácia základov, oporných múrov a monolitických konštrukcií pre novú rozsiahlu skladovú halu a prľahlé administratívne priestory.',
-    category: 'Občianské stavby',
+    category: 'Občianske stavby',
     location: 'Lučenec',
     year: 2025,
     duration: '6 mesiacov',
@@ -98,7 +98,7 @@ export const projectsData: Project[] = [
     id: 'rekonstrukcia-domovu-dochodcov-senior-active-hrinova-n-o',
     title: 'Zariadenie pre seniorov a domov sociálnych služieb SENIOR ACTIVE Hriňová',
     description: 'Rekonštrukcia a modernizácia kancelárskych priestorov na 3 podlažiach do prémiového štandardu s využitím moderných materiálov.',
-    category: 'Občianské stavby',
+    category: 'Občianske stavby',
     location: 'Hriňová',
     year: 2025,
     duration: '4 mesiace',
@@ -108,7 +108,7 @@ export const projectsData: Project[] = [
   {
     id: 'rekonstrukcia-rodinneho-domu-hrinova',
     title: 'Rekonštrukcia rodinného domu Hriňová',
-    description: 'Kompletná rekonštrukcia rodiného domu. Rekonštrukcia interiéru a exteriéru.',
+    description: 'Kompletná rekonštrukcia rodinného domu. Rekonštrukcia interiéru a exteriéru.',
     category: 'Rodinné domy',
     location: 'Hriňová',
     year: 2025,

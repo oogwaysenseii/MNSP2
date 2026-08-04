@@ -3,6 +3,8 @@ import './globals.css';
 import { Header } from '@/src/components/layout/Header';
 import { Footer } from '@/src/components/layout/Footer';
 import { generateLocalBusinessSchema } from '@/src/lib/schema';
+import { GoogleTagManager } from '@next/third-parties/google';
+
 
 import { COMPANY_NAME, DOMAIN } from '@/src/lib/schema';
 
@@ -59,6 +61,9 @@ export default function RootLayout({
         </main>
         <Footer />
       </body>
+
+      <GoogleTagManager gtmId="GTM-XXXXXXX" />
+
     </html>
   );
 }

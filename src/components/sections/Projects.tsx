@@ -20,7 +20,7 @@ export function Projects({
                            defaultCategory = 'all',
                            hideFilters = false,
                            titleSk = 'Realizované projekty',
-                           subtitleSk = 'Prehľad zrealizovaných a prebiehajúich projektov.',
+                           subtitleSk = 'Prehľad zrealizovaných a prebiehajúcich projektov.',
                            viewMode = 'carousel',
                            locationFilter = 'all'
                          }: ProjectsSectionProps = {}) {
@@ -104,7 +104,7 @@ export function Projects({
               <div className="flex flex-col gap-4 mb-10 border-b border-gray-100 pb-6 overflow-hidden">
                 {/* Categories */}
                 <div className="flex overflow-x-auto gap-2 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                  {(['all', 'Rodinné domy', 'Rezidenčné budovy', 'Komerčná výstavba', 'Priemyselné objekty', 'Občianské stavby'] as const).map((cat) => (
+                  {(['all', 'Rodinné domy', 'Rezidenčné budovy', 'Komerčná výstavba', 'Priemyselné objekty', 'Občianske stavby'] as const).map((cat) => (
                       <button
                           key={cat}
                           onClick={() => setSelectedCategory(cat)}
