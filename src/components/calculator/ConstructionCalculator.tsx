@@ -100,7 +100,8 @@ export default function ConstructionCalculator({ children }: { children?: React.
 
   const rangeMin = Math.round((totalPrice * 0.95) / 1000) * 1000;
   const rangeMax = Math.round((totalPrice * 1.08) / 1000) * 1000;
-  const pricePerM2 = totalCalcArea > 0 ? Math.round(totalPrice / totalCalcArea) : 0;
+  const pricePerM2Min = totalCalcArea > 0 ? Math.round(rangeMin / totalCalcArea) : 0;
+  const pricePerM2Max = totalCalcArea > 0 ? Math.round(rangeMax / totalCalcArea) : 0;
 
   return (
       <div className="bg-zinc-50 py-10">
@@ -142,16 +143,16 @@ export default function ConstructionCalculator({ children }: { children?: React.
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
                   <div className="space-y-4">
                     <label className="font-bold text-zinc-950 block">Počet nadzemných podlaží</label>
-                    <div className="flex gap-3">
-                      {[1, 2, 3].map(num => (
+                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                      {[1, 2, 3, 4, 5, 6].map(num => (
                           <button
                               key={num}
                               onClick={() => setFloors(num)}
-                              className={`flex-1 py-3 text-center  border font-semibold text-sm transition-colors cursor-pointer ${
+                              className={`flex-1 py-2 sm:py-3 text-center border font-semibold text-sm transition-colors cursor-pointer ${
                                   floors === num ? "bg-zinc-950 border-zinc-950 text-white" : "bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-300"
                               }`}
                           >
-                            {num} {num === 1 ? 'Podlažie' : 'Podlažia'}
+                            {num} {num === 1 ? 'Pod.' : 'Podl.'}
                           </button>
                       ))}
                     </div>
@@ -266,8 +267,14 @@ export default function ConstructionCalculator({ children }: { children?: React.
                         <span className="text-zinc-400 font-medium px-0.5">—</span>
                         <span>{formatPrice(rangeMax)}</span>
                       </div>
-                      <div className="mt-2.5 inline-flex items-center bg-amber-100 text-amber-900 font-mono font-bold px-2 py-1 text-xs">
-                        ≈ {new Intl.NumberFormat('sk-SK').format(pricePerM2)} €/m²
+                      <div className="mt-2.5 inline-flex items-center gap-2">
+                        <div className="bg-amber-100 text-amber-900 font-mono font-bold px-2 py-1 text-xs">
+                          {new Intl.NumberFormat('sk-SK').format(pricePerM2Min)} €/m²
+                        </div>
+                        <span className="text-zinc-400 font-medium px-0.5">—</span>
+                        <div className="bg-amber-100 text-amber-900 font-mono font-bold px-2 py-1 text-xs">
+                          {new Intl.NumberFormat('sk-SK').format(pricePerM2Max)} €/m²
+                        </div>
                       </div>
 
                     </div>

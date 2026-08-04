@@ -75,10 +75,9 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-100 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between">
-          <p>&copy; {new Date().getFullYear()} Stavebná firma. Všetky práva vyhradené.</p>
+          <p>&copy; {new Date().getFullYear()} MNSP | Stavby a rekonštrukcie</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link href="/ochrana-sukromia" className="hover:text-amber-600 transition-colors">Ochrana súkromia</Link>
-            <Link href="/obchodne-podmienky" className="hover:text-amber-600 transition-colors">Podmienky</Link>
           </div>
         </div>
       </Container>

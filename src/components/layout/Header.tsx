@@ -76,7 +76,11 @@ export function Header() {
             <img
                 src={isSolid ? "/mnsp-logo-mark-light.png" : "/mnsp-logo-mark-dark.png"}
                 alt="MNSP Logo"
-                className="w-40 h-15"
+                style={{
+                  height: "60px",
+                  width: "auto",
+                  maxWidth: "none",
+                }}
             />
           </div>
 
