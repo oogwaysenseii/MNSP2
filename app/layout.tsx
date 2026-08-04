@@ -60,9 +60,10 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-      </body>
 
-      <GoogleTagManager gtmId="GTM-XXXXXXX" />
+        <GoogleTagManager gtmId="GTM-KRQHW2J" />
+
+      </body>
 
     </html>
   );
