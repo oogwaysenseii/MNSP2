@@ -7,8 +7,6 @@ import Link from 'next/link';
 
 export function Hero() {
   const [isPlaying, setIsPlaying] = useState(true);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isMuted, setIsMuted] = useState(true);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   // Background quotes/headlines that fade in/out on top of the timelapse
@@ -19,14 +17,14 @@ export function Hero() {
       description: 'Postavte alebo zrekonštruujte si svoj vysnívaný dom bez námahy. Projekt vám vypracujeme, stavbu zrealizujeme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás.'
     },
     {
-      badge: 'Záruka dodržania termínov',
+      badge: 'Termíny dohodnuté v zmluve',
       title: 'Komplexná výstavba a obnova budov',
       description: 'Zabezpečujeme komplexnú výstavbu, rekonštrukcie a modernizácie budov. Či už sa púšťate do rezidenčného, obchodného alebo priemyselného projektu, máme schopnosti a skúsenosti aby sme zaistili úspech v každej fáze.'
     },
     {
-      badge: 'Certifikát kvality ISO 9001',
+      badge: 'Od projektu po kolaudáciu',
       title: 'Staviame vaše sny na pevných základoch',
-      description: 'Od rodinných domov až po rozsiahle stavebné realizácie. Prinášame skúsenosti, profesionálny prístup a zodpovedné vedenie projektov v každej fáze výstavby..'
+      description: 'Od rodinných domov až po rozsiahle stavebné realizácie. Prinášame skúsenosti, profesionálny prístup a zodpovedné vedenie projektov v každej fáze výstavby.'
     }
   ];
 
@@ -44,10 +42,13 @@ export function Hero() {
         <video
           autoPlay
           loop
-          muted={isMuted}
+          muted
           playsInline
+          preload="metadata"
+          poster="/hero-poster.jpg"
+          aria-hidden="true"
           className="w-full h-full object-cover opacity-65 transition-opacity duration-1000"
-          src="vystavba-a-rekonstrukcie-budov.mp4"
+          src="/vystavba-a-rekonstrukcie-budov.mp4"
         />
         {/* Subtle high-end radial lighting overlay */}
         <div className=" absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-zinc-950/80" />
@@ -125,9 +126,9 @@ export function Hero() {
                 <span className=" inline-flex items-center gap-1.5 px-3 py-1 bg-amber-500/90 text-zinc-950 text-xs font-mono font-bold tracking-wider">
                   {headlines[currentSlideIndex].badge}
                 </span>
-                <p className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight text-white leading-tight">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight text-white leading-tight">
                   {headlines[currentSlideIndex].title}
-                </p>
+                </h2>
                 <p className="text-zinc-300 text-sm sm:text-base max-w-xl font-sans tracking-wide leading-relaxed">
                   {headlines[currentSlideIndex].description}
                 </p>
@@ -156,7 +157,7 @@ export function Hero() {
 
           {/* TIMELAPSE PAUSE CONTROLLER */}
           <div className="lg:col-span-4 flex justify-start lg:justify-end">
-            <div className="flex items-center gap-4 bg-zinc-900/80 backdrop-blur-sm px-4 py-2 border border-zinc-850">
+            <div className="flex items-center gap-4 bg-zinc-900/80 backdrop-blur-sm px-4 py-2 border border-zinc-800">
               <button
                 onClick={() => {
                   const videoElement = document.querySelector('video');
@@ -170,7 +171,8 @@ export function Hero() {
                   }
                 }}
                 className="p-1.5 bg-zinc-800 hover:bg-zinc-700 text-white transition-colors cursor-pointer"
-                title={isPlaying ? "Pause Real Timelapse" : "Play Real Timelapse"}
+                title={isPlaying ? 'Pozastaviť video' : 'Prehrať video'}
+                aria-label={isPlaying ? 'Pozastaviť video' : 'Prehrať video'}
               >
                 {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
               </button>

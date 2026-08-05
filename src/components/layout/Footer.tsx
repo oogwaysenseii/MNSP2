@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Container } from '../ui/Container';
+import { BUSINESS } from '@/src/lib/schema';
 
 export function Footer() {
   return (
@@ -70,6 +71,14 @@ export function Footer() {
                 960 01 Zvolen<br />
                 Slovensko
               </li>
+              {/* TODO: fill BUSINESS.ico / BUSINESS.dic in src/lib/schema.ts.
+                  Required on the website by §3a Obchodného zákonníka. */}
+              {BUSINESS.ico && (
+                <li className="pt-2 text-xs text-gray-400">
+                  {BUSINESS.legalName}<br />
+                  IČO: {BUSINESS.ico}{BUSINESS.dic ? ` · DIČ: ${BUSINESS.dic}` : ''}
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -78,6 +87,7 @@ export function Footer() {
           <p>&copy; {new Date().getFullYear()} MNSP | Stavby a rekonštrukcie</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link href="/ochrana-sukromia" className="hover:text-amber-600 transition-colors">Ochrana súkromia</Link>
+            <Link href="/obchodne-podmienky" className="hover:text-amber-600 transition-colors">Obchodné podmienky</Link>
           </div>
         </div>
       </Container>

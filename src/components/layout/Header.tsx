@@ -5,14 +5,14 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ChevronDown, ChevronRight, HardHat, Phone, ArrowUpRight } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { sluzby } from '@/src/data/sluzby';
+import { BUILDING_SERVICES, TRADE_SERVICES } from '@/src/data/services';
 
 // Split sluzby into categories for the dropdown matching the styling requested
 const topServices: Array<{ name: string; href: string; highlight?: boolean }> = [
   { name: 'Všetky služby', href: '/sluzby', highlight: true },
-  ...sluzby.slice(0, 5).map(s => ({ name: s.name, href: `/sluzby/${s.id}` }))
+  ...BUILDING_SERVICES.map(s => ({ name: s.name, href: `/sluzby/${s.slug}` }))
 ];
-const secondaryServices = sluzby.slice(5).map(s => ({ name: s.name, href: `/sluzby/${s.id}` }));
+const secondaryServices = TRADE_SERVICES.map(s => ({ name: s.name, href: `/sluzby/${s.slug}` }));
 
 const mainLinks = [
   { name: 'Domov', href: '/' },

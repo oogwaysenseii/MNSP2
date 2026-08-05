@@ -1,12 +1,12 @@
 import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
-import { getCityBySlug, CITIES } from '@/src/data/cities';
+import { getCityBySlug, CITIES, capitalize } from '@/src/data/cities';
 import { getServiceBySlug, SERVICES } from '@/src/data/services';
 import { getSEOTags } from '@/src/lib/seo';
 import { Metadata } from 'next';
 import { SubServiceDetail, SubServiceKey } from '@/src/components/sections/SubServiceDetail';
 import { MapPin, CheckCircle2, ShieldCheck } from 'lucide-react';
-import { generateServiceAndLocalBusinessSchema, DOMAIN } from '@/src/lib/schema';
+import { generateServicePageSchema, DOMAIN } from '@/src/lib/schema';
 
 interface PageProps {
   params: Promise<{ service: string; mesto: string }>;
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  const title = `${service.name} v ${city.locative} | Kvalitne a profesionálne`;
+  const title = `${service.name} ${city.locative} | Kvalitne a profesionálne`;
   const description = `${service.description} Profesionálna realizácia služby ${service.name.toLowerCase()} priamo pre obyvateľov v oblasti ${city.name} a okolí. Kontaktujte nás pre nezáväznú cenovú ponuku.`;
 
   return getSEOTags(title, description, `/sluzby/${serviceSlug}/${citySlug}`);
@@ -63,11 +63,11 @@ export default async function ServiceLocationPage({ params }: PageProps) {
     notFound();
   }
 
-  const jsonLd = generateServiceAndLocalBusinessSchema(
-    `${service.name} v ${city.locative}`,
+  const jsonLd = generateServicePageSchema(
+    `${service.name} ${city.locative}`,
     `${service.description} Profesionálna realizácia služby ${service.name.toLowerCase()} priamo pre obyvateľov v oblasti ${city.name} a okolí.`,
     `${DOMAIN}/sluzby/${service.slug}/${city.slug}`,
-    city.slug
+    city.name
   );
 
   let serviceIdForComponent: SubServiceKey;
@@ -95,7 +95,7 @@ export default async function ServiceLocationPage({ params }: PageProps) {
       </div>
       <div className="bg-zinc-50 p-6 sm:p-8 space-y-6">
         <p className="text-zinc-700 leading-relaxed text-sm sm:text-base font-medium">
-          V {city.locative} realizujeme odborné práce zamerané na {service.name.toLowerCase()}. Naše stavebné kapacity pokrývajú celé mesto a priľahlé oblasti. Zabezpečujeme plynulý chod prác a profesionálne riešenia.
+          {capitalize(city.locative)} realizujeme odborné práce zamerané na {service.name.toLowerCase()}. Naše stavebné kapacity pokrývajú celé mesto a priľahlé oblasti. Zabezpečujeme plynulý chod prác a profesionálne riešenia.
         </p>
 
         {city.surrounding && city.surrounding.length > 0 && (
@@ -105,7 +105,7 @@ export default async function ServiceLocationPage({ params }: PageProps) {
             </strong>
             <ul className="flex flex-wrap gap-2">
               {city.surrounding.map((mun, idx) => (
-                <li key={idx} className="text-xs bg-zinc-150 px-3 py-1.5 text-zinc-700 border border-zinc-200">
+                <li key={idx} className="text-xs bg-zinc-100 px-3 py-1.5 text-zinc-700 border border-zinc-200">
                   {mun}
                 </li>
               ))}
@@ -114,7 +114,7 @@ export default async function ServiceLocationPage({ params }: PageProps) {
         )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-zinc-200/60">
-          <div className="bg-white p-4 border border-zinc-150">
+          <div className="bg-white p-4 border border-zinc-200">
             <span className="block text-[10px] font-mono tracking-widest text-zinc-400 uppercase mb-1">
               Logistika a sieť
             </span>
@@ -126,7 +126,7 @@ export default async function ServiceLocationPage({ params }: PageProps) {
             </p>
           </div>
 
-          <div className="bg-white p-4 border border-zinc-150">
+          <div className="bg-white p-4 border border-zinc-200">
             <span className="block text-[10px] font-mono tracking-widest text-zinc-400 uppercase mb-1">
               Územné plánovanie
             </span>
@@ -155,7 +155,7 @@ export default async function ServiceLocationPage({ params }: PageProps) {
           <div className="space-y-4">
             <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-xl">
               <h3 className="font-bold text-amber-500 mb-2">
-                Koľko stojí {service.name.toLowerCase()} v {city.locative}?
+                Koľko stojí {service.name.toLowerCase()} {city.locative}?
               </h3>
               <p className="text-zinc-300 text-sm leading-relaxed">
                 Celková cena závisí od veľkosti a špecifikácií projektu. Sme k dispozícii pre osobné obhliadky a nacenenie na mieru priamo u vás v lokalite {city.name}. Využívame optimalizovanú logistiku aby sme zamedzili navýšeným režijným nákladom.

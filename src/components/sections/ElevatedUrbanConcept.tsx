@@ -18,11 +18,11 @@ export function ElevatedUrbanConcept() {
             <div className="space-y-3">
               <span className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 text-amber-500 text-[10px] font-mono font-bold uppercase tracking-widest  border border-amber-500/20">
                 <span className="w-1.5 h-1.5 bg-amber-500  animate-pulse" />
-                {"ELEVATED URBAN DEVELOPEMENT"}
+                {"ELEVATED URBAN DEVELOPMENT"}
               </span>
               
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold text-white leading-tight tracking-tight">
-                {"Revolučný koncept efektívneho využitia prakovacích plôch"}
+                {"Revolučný koncept efektívneho využitia parkovacích plôch"}
               </h2>
               
               <p className="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-lg">
@@ -76,7 +76,7 @@ export function ElevatedUrbanConcept() {
                <span className="text-amber-500 text-[10px] font-mono tracking-widest font-bold uppercase shadow-sm">
                  {"Budúcnosť stavebníctva"}
                </span>
-               <p className="text-white font-display font-bold text-lg">ELEVATED URBAN DEVELOPEMENT</p>
+               <p className="text-white font-display font-bold text-lg">ELEVATED URBAN DEVELOPMENT</p>
             </div>
           </Link>
           

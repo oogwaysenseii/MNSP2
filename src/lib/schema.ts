@@ -1,40 +1,197 @@
-export const COMPANY_NAME = "MNSP | Stavby a rekonštrukcie";
-export const DOMAIN = "https://www.mnsp.sk"; // Replace with actual domain if known
+export const COMPANY_NAME = 'MNSP | Stavby a rekonštrukcie';
+export const DOMAIN = 'https://www.mnsp.sk';
 
-export const LOCATIONS = {
-  Zvolen: {
-    name: "MNSP | Stavby a rekonštrukcie - Zvolen",
-    address: "Janka Jesenského 4773/89",
-    city: "Zvolen",
-    zip: "960 01",
-    phone: "0950 699 585"
-  },
-  Hrinova: {
-    name: "MNSP | Stavby a rekonštrukcie",
-    address: "Partizánska 1601/23",
-    city: "Hriňová",
-    zip: "962 05",
-    phone: "0950 699 585"
-  },
-  BanskaBystrica: {
-    name: "MNSP | Stavby a rekonštrukcie - Banská Bystrica",
-    address: "Medený Hámor",
-    city: "Banská Bystrica",
-    zip: "974 01",
-    phone: "0950 699 585"
-  }
+/**
+ * THREE real branches, each with its own Google Business Profile.
+ *
+ * Rules that keep this valid rather than spammy:
+ *  - `name`, `streetAddress`, `zip` and `phone` must match that branch's GBP
+ *    CHARACTER FOR CHARACTER. Any drift is a NAP-consistency problem.
+ *  - Each branch needs its own page at `pagePath`. That page is what you set
+ *    as the website URL in the corresponding GBP.
+ *  - Only those branch pages emit LocalBusiness. Service and city pages emit
+ *    Organization with areaServed — they are not physical locations.
+ *
+ * TODO before deploy — verify against the live GBPs:
+ *  [ ] Zvolen street address. schema.ts previously said Janka Jesenského
+ *      4773/89; the footer and contact page say Jozefa Kozáčeka 829/2.
+ *      Whichever is on the GBP wins, and the other must be updated everywhere.
+ *  [ ] Banská Bystrica — "Medený Hámor" has no street number.
+ *  [ ] Per-branch phone numbers, if the branches have distinct lines.
+ *  [ ] IČO / DIČ from the Obchodný register.
+ */
+
+export const BUSINESS = {
+  legalName: 'MNSP s.r.o.', // TODO: confirm exact name in Obchodný register
+  ico: '', // TODO — required on the website by §3a Obchodného zákonníka
+  dic: '',
+  email: 'info@mnsp.sk',
+  mainPhone: '+421950699585',
+} as const;
+
+export type Branch = {
+  key: string;
+  /** Must match the GBP business name exactly. */
+  name: string;
+  streetAddress: string;
+  city: string;
+  zip: string;
+  phone: string;
+  /** Dedicated page for this branch — set as website URL in its GBP. */
+  pagePath: string;
+  lat?: number;
+  lng?: number;
 };
 
+export const BRANCHES: Record<string, Branch> = {
+  zvolen: {
+    key: 'zvolen',
+    name: 'MNSP | Stavby a rekonštrukcie – Zvolen',
+    streetAddress: 'Jozefa Kozáčeka 829/2', // TODO: confirm against GBP
+    city: 'Zvolen',
+    zip: '960 01',
+    phone: '+421950699585',
+    pagePath: '/kontakt/zvolen',
+  },
+  hrinova: {
+    key: 'hrinova',
+    name: 'MNSP | Stavby a rekonštrukcie – Hriňová',
+    streetAddress: 'Partizánska 1601/23',
+    city: 'Hriňová',
+    zip: '962 05',
+    phone: '+421950699585',
+    pagePath: '/kontakt/hrinova',
+  },
+  'banska-bystrica': {
+    key: 'banska-bystrica',
+    name: 'MNSP | Stavby a rekonštrukcie – Banská Bystrica',
+    streetAddress: 'Medený Hámor', // TODO: add street number from GBP
+    city: 'Banská Bystrica',
+    zip: '974 01',
+    phone: '+421950699585',
+    pagePath: '/kontakt/banska-bystrica',
+  },
+};
+
+/** Headquarters — the entity that owns the brand and the site. */
+export const HQ_BRANCH_KEY = 'zvolen';
+
+const ORG_ID = `${DOMAIN}/#organization`;
+const branchId = (b: Branch) => `${DOMAIN}${b.pagePath}#localbusiness`;
+
+function postalAddress(b: Branch) {
+  return {
+    '@type': 'PostalAddress',
+    streetAddress: b.streetAddress,
+    addressLocality: b.city,
+    postalCode: b.zip,
+    addressCountry: 'SK',
+  };
+}
+
+function openingHours() {
+  return {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '07:00',
+    closes: '18:00',
+  };
+}
+
+/* ------------------------------------------------------------------ */
+/* Organization — site-wide, and the provider on every service page    */
+/* ------------------------------------------------------------------ */
+
 export function generateOrganizationSchema() {
+  const hq = BRANCHES[HQ_BRANCH_KEY];
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': ORG_ID,
     name: COMPANY_NAME,
+    legalName: BUSINESS.legalName,
     url: DOMAIN,
-    logo: `${DOMAIN}/logo.png`, // Assuming a generic logo URL
-    telephone: '0950 699 585',
+    logo: `${DOMAIN}/logo.png`,
+    telephone: BUSINESS.mainPhone,
+    email: BUSINESS.email,
+    address: postalAddress(hq),
+    ...(BUSINESS.ico ? { identifier: BUSINESS.ico, vatID: BUSINESS.dic } : {}),
+    // Ties all three profiles to one brand.
+    subOrganization: Object.values(BRANCHES).map((b) => ({ '@id': branchId(b) })),
   };
 }
+
+/* ------------------------------------------------------------------ */
+/* LocalBusiness — ONLY on the three dedicated branch pages            */
+/* ------------------------------------------------------------------ */
+
+export function generateBranchSchema(branchKey: string) {
+  const b = BRANCHES[branchKey];
+  if (!b) return null;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'GeneralContractor',
+    '@id': branchId(b),
+    name: b.name,
+    legalName: BUSINESS.legalName,
+    parentOrganization: { '@id': ORG_ID },
+    url: `${DOMAIN}${b.pagePath}`,
+    image: `${DOMAIN}/og-image.jpg`,
+    telephone: b.phone,
+    email: BUSINESS.email,
+    address: postalAddress(b),
+    openingHoursSpecification: openingHours(),
+    ...(b.lat && b.lng
+      ? { geo: { '@type': 'GeoCoordinates', latitude: b.lat, longitude: b.lng } }
+      : {}),
+  };
+}
+
+/* ------------------------------------------------------------------ */
+/* Service pages — Organization as provider, town as areaServed        */
+/* ------------------------------------------------------------------ */
+
+export function generateServiceSchema(
+  serviceName: string,
+  serviceDescription: string,
+  serviceUrl: string,
+  areaServed?: string,
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: serviceName,
+    description: serviceDescription,
+    provider: { '@id': ORG_ID },
+    url: serviceUrl,
+    ...(areaServed ? { areaServed: { '@type': 'City', name: areaServed } } : {}),
+  };
+}
+
+/**
+ * Replaces the old generateServiceAndLocalBusinessSchema.
+ *
+ * The old version picked a branch by substring match and silently defaulted
+ * to Hriňová — so pages for Lučenec, Poltár, Rimavská Sobota and five other
+ * towns all claimed a Hriňová street address. A service page is not an
+ * office; it emits Organization + Service + areaServed instead.
+ */
+export function generateServicePageSchema(
+  serviceName: string,
+  serviceDescription: string,
+  serviceUrl: string,
+  areaServed?: string,
+) {
+  return [
+    generateOrganizationSchema(),
+    generateServiceSchema(serviceName, serviceDescription, serviceUrl, areaServed),
+  ];
+}
+
+/* ------------------------------------------------------------------ */
+/* Helpers                                                             */
+/* ------------------------------------------------------------------ */
 
 export function generateWebSiteSchema() {
   return {
@@ -42,58 +199,54 @@ export function generateWebSiteSchema() {
     '@type': 'WebSite',
     name: COMPANY_NAME,
     url: DOMAIN,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${DOMAIN}/blog?q={search_term_string}`
-      },
-      'query-input': 'required name=search_term_string'
-    }
+    inLanguage: 'sk-SK',
+    publisher: { '@id': ORG_ID },
   };
 }
 
-export function generateLocalBusinessSchema(locationKey?: keyof typeof LOCATIONS | string) {
-  let loc = LOCATIONS.Hrinova; // Default
-  if (locationKey) {
-      if (locationKey.toLowerCase().includes('zvolen')) loc = LOCATIONS.Zvolen;
-      else if (locationKey.toLowerCase().includes('bystrica') || locationKey.toLowerCase().includes('bb')) loc = LOCATIONS.BanskaBystrica;
-  }
-
+export function generateBreadcrumbSchema(items: { name: string; path: string }[]) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    name: loc.name,
-    image: `${DOMAIN}/logo.png`,
-    '@id': `${DOMAIN}/#localbusiness-${loc.city.toLowerCase().replace(/\s+/g, '-')}`,
-    url: DOMAIN,
-    telephone: loc.phone,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: loc.address,
-      addressLocality: loc.city,
-      postalCode: loc.zip,
-      addressCountry: 'SK'
-    }
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: `${DOMAIN}${item.path}`,
+    })),
   };
 }
 
-export function generateServiceSchema(serviceName: string, serviceDescription: string, serviceUrl: string) {
+export function generateFaqSchema(faq: readonly { q: string; a: string }[]) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: serviceName,
-    description: serviceDescription,
-    provider: {
-      '@type': 'Organization',
-      name: COMPANY_NAME,
-    },
-    url: serviceUrl,
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
   };
 }
 
-export function generateServiceAndLocalBusinessSchema(serviceName: string, serviceDescription: string, serviceUrl: string, locationKey: string) {
-  const localBusiness = generateLocalBusinessSchema(locationKey);
-  const service = generateServiceSchema(serviceName, serviceDescription, serviceUrl);
-  return [localBusiness, service];
+/**
+ * Nearest branch — for "kontaktujte našu pobočku" UI on city pages.
+ * Presentational only. Do NOT use this to emit a LocalBusiness address on a
+ * page that is not that branch's own page.
+ */
+export function nearestBranchKey(citySlug: string): string {
+  const NEAREST: Record<string, string> = {
+    zvolen: 'zvolen',
+    'banska-bystrica': 'banska-bystrica',
+    brezno: 'banska-bystrica',
+    'ziar-nad-hronom': 'zvolen',
+    'banska-stiavnica': 'zvolen',
+    krupina: 'zvolen',
+    detva: 'hrinova',
+    hrinova: 'hrinova',
+    poltar: 'hrinova',
+    lucenec: 'hrinova',
+    'rimavska-sobota': 'hrinova',
+  };
+  return NEAREST[citySlug] ?? HQ_BRANCH_KEY;
 }

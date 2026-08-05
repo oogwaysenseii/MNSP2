@@ -97,6 +97,7 @@ export function RodinneDomyServiceDetail({
 
   const gradeModifier = options[selectedSpecIndex]?.premiumModifier || 1.0;
   const calculatedEstimate = Math.round(projectSize * baseRate * gradeModifier);
+  const pricePerM2 = Math.round(baseRate * gradeModifier);
 
   return (
       <div className="bg-white text-zinc-900  pt-18">
@@ -350,6 +351,9 @@ export function RodinneDomyServiceDetail({
               </span>
                 <span className="text-3xl font-display font-extrabold text-amber-400 block">
                 {calculatedEstimate.toLocaleString("sk-SK")} €*
+              </span>
+                <span className="block text-xs font-mono text-zinc-400 mt-1">
+                ≈ {pricePerM2.toLocaleString("sk-SK")} €/m²
               </span>
                 <span className="block text-xs font-mono text-zinc-500 italic leading-relaxed pt-2 border-t border-zinc-800 mt-2">
                 *Indikatívna cena v závislosti od konkrétnych požiadaviek, svahovitosti a výberu materiálov.

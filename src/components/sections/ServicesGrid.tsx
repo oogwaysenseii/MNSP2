@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '../ui/Container';
-import { sluzby } from '@/src/data/sluzby';
+import { BUILDING_SERVICES } from '@/src/data/services';
 
 export function ServicesGrid({ hideAllLink = false }: { hideAllLink?: boolean }) {
   return (
@@ -10,16 +10,16 @@ export function ServicesGrid({ hideAllLink = false }: { hideAllLink?: boolean })
 
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-          {sluzby.slice(0, 5).map((sluzba) => (
+          {BUILDING_SERVICES.map((sluzba) => (
             <Link 
-              key={sluzba.id} 
-              href={`/sluzby/${sluzba.id}`}
+              key={sluzba.slug} 
+              href={`/sluzby/${sluzba.slug}`}
               className="group flex flex-col bg-white border border-gray-200 transition-all duration-500 hover:border-amber-500 hover:shadow-2xl h-full relative"
             >
               {/* Image Container - Fixed height to ensure rendering regardless of aspect ratio support */}
               <div className="relative w-full h-48 lg:h-56 overflow-hidden bg-gray-200">
                 <Image
-                  src={sluzba.imageUrl || `https://picsum.photos/seed/${sluzba.id}/600/400`}
+                  src={sluzba.imageUrl!}
                   alt={sluzba.name}
                   fill
                   quality={100}

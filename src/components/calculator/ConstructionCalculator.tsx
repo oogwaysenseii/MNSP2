@@ -10,30 +10,9 @@ import {
 import Link from "next/link";
 import { SimpleContactForm } from "@/src/components/ui/SimpleContactForm";
 
-type ServiceInfo = {
-  id: string;
-  name: string;
-  basePricePerM2: number;
-};
+import { TURNKEY_LINES, STANDARDS } from "@/src/data/pricing";
 
-const SERVICES: ServiceInfo[] = [
-  { id: "zaklady", name: "Základy a základová doska", basePricePerM2: 165 },
-  { id: "murivo", name: "Murovacie práce (Hrubá stavba)", basePricePerM2: 225 },
-  { id: "stropy", name: "Stropy a vence", basePricePerM2: 135 },
-  { id: "strecha", name: "Strecha a krov", basePricePerM2: 200 },
-  { id: "okna", name: "Okná a exteriérové dvere", basePricePerM2: 140 },
-  { id: "fasada", name: "Zateplenie a fasáda", basePricePerM2: 115 },
-  { id: "rozvody", name: "Rozvody (Elektro, Voda, Kúrenie)", basePricePerM2: 220 },
-  { id: "omietky", name: "Vnútorné omietky a potery", basePricePerM2: 80 },
-  { id: "sadrokarton", name: "Sadrokartónové stropy", basePricePerM2: 60 },
-  { id: "interier", name: "Interiér (Podlahy, obklady, sanita)", basePricePerM2: 300 }
-];
-
-const STANDARDS = [
-  { id: "basic", name: "Ekonomický štandard", multiplier: 0.85, desc: "Základné overené materiály so zameraním na cenu." },
-  { id: "standard", name: "Zlatá stredná cesta", multiplier: 1.0, desc: "Moderné kvalitné materiály, výborný pomer cena / výkon." },
-  { id: "premium", name: "Prémiové riešenia", multiplier: 1.35, desc: "Najvyššia kvalita, nadštandardné technológie (smart dom)." }
-];
+const SERVICES = TURNKEY_LINES;
 
 export default function ConstructionCalculator({ children }: { children?: React.ReactNode }) {
   // State
@@ -143,7 +122,7 @@ export default function ConstructionCalculator({ children }: { children?: React.
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
                   <div className="space-y-4">
                     <label className="font-bold text-zinc-950 block">Počet nadzemných podlaží</label>
-                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                    <div className="grid grid-cols-3 gap-2">
                       {[1, 2, 3, 4, 5, 6].map(num => (
                           <button
                               key={num}

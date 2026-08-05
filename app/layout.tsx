@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Header } from '@/src/components/layout/Header';
 import { Footer } from '@/src/components/layout/Footer';
-import { generateLocalBusinessSchema } from '@/src/lib/schema';
 import { GoogleTagManager } from '@next/third-parties/google';
 
 

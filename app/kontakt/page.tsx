@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import ContactPageContent from './ContactPageContent';
 import { getSEOTags } from '@/src/lib/seo';
-import { generateOrganizationSchema, generateLocalBusinessSchema } from '@/src/lib/schema';
+import { generateOrganizationSchema, generateBranchSchema } from '@/src/lib/schema';
 
 export const metadata: Metadata = getSEOTags(
   "Kontakt",
@@ -12,9 +12,9 @@ export const metadata: Metadata = getSEOTags(
 export default function Page() {
   const jsonLd = [
     generateOrganizationSchema(),
-    generateLocalBusinessSchema('Zvolen'),
-    generateLocalBusinessSchema('Hrinova'),
-    generateLocalBusinessSchema('BanskaBystrica'),
+    generateBranchSchema('zvolen'),
+    generateBranchSchema('hrinova'),
+    generateBranchSchema('banska-bystrica'),
   ];
 
     return (

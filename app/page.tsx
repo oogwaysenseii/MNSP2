@@ -5,7 +5,7 @@ import { ServicesGrid } from '@/src/components/sections/ServicesGrid';
 import { ElevatedUrbanConcept } from '@/src/components/sections/ElevatedUrbanConcept';
 import { Projects } from '@/src/components/sections/Projects';
 import { CTA } from '@/src/components/sections/CTA';
-import { generateOrganizationSchema, generateWebSiteSchema, generateLocalBusinessSchema, DOMAIN } from '@/src/lib/schema';
+import { generateOrganizationSchema, generateWebSiteSchema, DOMAIN } from '@/src/lib/schema';
 
 export const metadata: Metadata = {
   alternates: {
@@ -17,9 +17,6 @@ export default function Home() {
     const jsonLd = [
         generateOrganizationSchema(),
         generateWebSiteSchema(),
-        generateLocalBusinessSchema('Zvolen'),
-        generateLocalBusinessSchema('Hrinova'),
-        generateLocalBusinessSchema('BanskaBystrica'),
     ];
 
     return (

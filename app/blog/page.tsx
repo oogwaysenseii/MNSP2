@@ -1,5 +1,5 @@
 import BlogSection from '@/src/components/sections/BlogSection';
-import { generateLocalBusinessSchema } from '@/src/lib/schema';
+import { generateOrganizationSchema } from '@/src/lib/schema';
 import { blogPostsData } from '@/src/data/blog';
 import { getSEOTags } from '@/src/lib/seo';
 import { Metadata } from 'next';
@@ -14,7 +14,7 @@ export default function BlogPage() {
   const schemaData = {
     "@context": "https://schema.org",
     "@graph": [
-      generateLocalBusinessSchema(),
+      generateOrganizationSchema(),
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
