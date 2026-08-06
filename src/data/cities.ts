@@ -9,6 +9,9 @@ export const CITIES = [
     genitive: 'Zvolena',
     kraj: 'banskobystricky',
     surrounding: ['Sliač', 'Kováčová', 'Lieskovec', 'Očová', 'Budča'],
+        /** One-line summary for the /lokality hub cards. */
+    shortIntro:
+      'Naša centrála. Zvolenská kotlina má stabilné podložie a dobrý prístup k inžinierskym sieťam — technika aj tímy sídlia priamo tu.',
     metaDescription:
       'Stavebná firma so sídlom vo Zvolene. Staviame rodinné domy na kľúč, realizujeme hrubé stavby, rekonštrukcie, fasády a kompletné stavebné práce.',
     intro: [
@@ -41,6 +44,9 @@ export const CITIES = [
     genitive: 'Banskej Bystrice',
     kraj: 'banskobystricky',
     surrounding: ['Badín', 'Selce', 'Slovenská Ľupča', 'Harmanec', 'Tajov', 'Kynceľová'],
+        /** One-line summary for the /lokality hub cards. */
+    shortIntro:
+      'Členitý a svahovitý terén, ktorý si vyžaduje špecifický prístup k zakladaniu — mikropiloty, oporné múry a zosilnené základové pásy.',
     metaDescription:
       'Stavebná firma pre Banskú Bystricu a okolie. Zakladanie stavieb na svahovitých pozemkoch, výstavba domov na kľúč, rekonštrukcie a zateplenie fasád.',
     intro: [
@@ -73,6 +79,9 @@ export const CITIES = [
     genitive: 'Detvy',
     kraj: 'banskobystricky',
     surrounding: ['Hriňová', 'Kriváň', 'Vígľaš', 'Stožok', 'Dúbravy'],
+        /** One-line summary for the /lokality hub cards. */
+    shortIntro:
+      'Podpoľanie s rozptýleným osídlením na lazoch. Úzke prístupové cesty, tvrdšie podložie a dôraz na kvalitné zateplenie.',
     metaDescription:
       'Stavebná firma pre Detvu a Podpoľanie. Výstavba domov na kľúč, hrubé stavby, zateplenie a rekonštrukcie prispôsobené podhorským podmienkam.',
     intro: [
@@ -105,6 +114,9 @@ export const CITIES = [
     genitive: 'Hriňovej',
     kraj: 'banskobystricky',
     surrounding: ['Detva', 'Látky', 'Klokoč', 'Stožok', 'Vígľašská Huta-Kalinka'],
+        /** One-line summary for the /lokality hub cards. */
+    shortIntro:
+      'Laznícke osídlenie v 625 m n. m. Svahovité pozemky, plytké skalnaté podložie a kratšia stavebná sezóna.',
     metaDescription:
       'Stavebná firma pre Hriňovú a okolie Podpoľania. Rekonštrukcie rodinných domov, hrubé stavby, zateplenie a stavby na svahovitých lazníckych pozemkoch.',
     intro: [
@@ -137,6 +149,9 @@ export const CITIES = [
     genitive: 'Krupiny',
     kraj: 'banskobystricky',
     surrounding: ['Bzovík', 'Dudince', 'Hontianske Nemce', 'Sebechleby', 'Devičie'],
+        /** One-line summary for the /lokality hub cards. */
+    shortIntro:
+      'Krupinská planina a Hont. Nová zástavba popri obnove starých hospodárstiev a vinohradníckych domov.',
     metaDescription:
       'Stavebná firma pre Krupinu a región Hont. Výstavba rodinných domov, obnova hospodárskych usadlostí, napojenie na siete a autonómne riešenia.',
     intro: [
@@ -169,6 +184,9 @@ export const CITIES = [
     genitive: 'Banskej Štiavnice',
     kraj: 'banskobystricky',
     surrounding: ['Štiavnické Bane', 'Banská Belá', 'Svätý Anton', 'Ilija', 'Podhorie'],
+        /** One-line summary for the /lokality hub cards. */
+    shortIntro:
+      'Pamiatková rezervácia so strmým terénom a tvrdým podložím. Postup pri obnove konzultujeme s pamiatkovým úradom.',
     metaDescription:
       'Stavebné práce a rekonštrukcie v Banskej Štiavnici. Obnova baníckych domov v pamiatkovej rezervácii, zakladanie na strmých pozemkoch, oporné múry.',
     intro: [
@@ -201,6 +219,9 @@ export const CITIES = [
     genitive: 'Žiaru nad Hronom',
     kraj: 'banskobystricky',
     surrounding: ['Lutila', 'Lovča', 'Trnavá Hora', 'Hliník nad Hronom', 'Vyhne'],
+        /** One-line summary for the /lokality hub cards. */
+    shortIntro:
+      'Rovinatý a dobre prístupný terén, ktorý umožňuje rýchlejšiu a cenovo dostupnejšiu výstavbu než okolité kopcovité regióny.',
     metaDescription:
       'Stavebná firma pre Žiar nad Hronom a okolie. Staviame rodinné domy na kľúč na rovinatých pozemkoch, realizujeme zateplenie a rekonštrukcie.',
     intro: [
@@ -233,6 +254,9 @@ export const CITIES = [
     genitive: 'Brezna',
     kraj: 'banskobystricky',
     surrounding: ['Valaská', 'Podbrezová', 'Čierny Balog', 'Polomka', 'Beňuš'],
+        /** One-line summary for the /lokality hub cards. */
+    shortIntro:
+      'Horehronie s tuhšími zimami. Krov dimenzujeme na vysoké snehové zaťaženie a mokré procesy plánujeme do teplých mesiacov.',
     metaDescription:
       'Stavebná firma pre Brezno a Horehronie. Staviame domy dimenzované na snehové zaťaženie, so zateplením prispôsobeným dlhej horskej zime.',
     intro: [
@@ -265,6 +289,9 @@ export const CITIES = [
     genitive: 'Lučenca',
     kraj: 'banskobystricky',
     surrounding: ['Vidiná', 'Halič', 'Tomášovce', 'Lovinobaňa', 'Rapovce'],
+        /** One-line summary for the /lokality hub cards. */
+    shortIntro:
+      'Rovinatý terén a ílovité podložie. Zakladanie je jednoduchšie, riešime skôr letné prehrievanie a odizolovanie starších domov.',
     metaDescription:
       'Stavebná firma pre Lučenec a Novohrad. Staviame bungalovy na rovinatých pozemkoch, obnovujeme staršie tehlové domy, realizujeme fasády a základy.',
     intro: [
@@ -297,6 +324,9 @@ export const CITIES = [
     genitive: 'Poltára',
     kraj: 'banskobystricky',
     surrounding: ['Kokava nad Rimavicou', 'Utekáč', 'Kalinovo', 'Málinec', 'Zlatno'],
+        /** One-line summary for the /lokality hub cards. */
+    shortIntro:
+      'Rozhranie Ipeľskej pahorkatiny a podhoria. Na odľahlejších pozemkoch vopred preverujeme možnosti napojenia na siete.',
     metaDescription:
       'Stavebná firma pre Poltár a okolie. Výstavba rodinných domov, prístavby a rekonštrukcie v obciach s obmedzenou infraštruktúrou.',
     intro: [
@@ -329,6 +359,9 @@ export const CITIES = [
     genitive: 'Rimavskej Soboty',
     kraj: 'banskobystricky',
     surrounding: ['Jesenské', 'Ožďany', 'Hnúšťa', 'Tisovec', 'Bátka'],
+        /** One-line summary for the /lokality hub cards. */
+    shortIntro:
+      'Rimavská kotlina, jedna z najteplejších oblastí Slovenska. Pri novostavbách riešime tienenie, pri obnove gemerské „kocky“.',
     metaDescription:
       'Stavebná firma pre Rimavskú Sobotu a Gemer. Staviame bungalovy v Rimavskej kotline, rekonštruujeme staršie domy a realizujeme zateplenie fasád.',
     intro: [
@@ -369,6 +402,8 @@ export type City = {
   kraj: string;
   surrounding: readonly string[];
   metaDescription: string;
+  /** One-line summary for the /lokality hub cards. */
+  shortIntro: string;
   intro: readonly string[];
   priorityServices: readonly ServiceSlug[];
   faq: readonly { q: string; a: string }[];

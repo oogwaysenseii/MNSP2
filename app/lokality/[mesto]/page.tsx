@@ -1,4 +1,10 @@
 import { getSEOTags } from '@/src/lib/seo';
+import {
+  generateServicePageSchema,
+  generateBreadcrumbSchema,
+  generateFaqSchema,
+  DOMAIN,
+} from '@/src/lib/schema';
 import { Metadata } from 'next';
 import { getCityBySlug, CITIES } from '@/src/data/cities';
 import { LocationsSection } from '@/src/components/sections/LocationsSection';
@@ -33,76 +39,29 @@ export default async function DynamicPage({ params }: { params: Promise<{ mesto:
     notFound();
   }
 
-  const jsonLdLocalBusiness = {
-    "@context": "https://schema.org",
-    "@type": "GeneralContractor",
-    "name": `MNSP - Stavebná firma ${city.name}`,
-    "image": "https://www.mnsp.sk/og-image.jpg",
-    "url": `https://www.mnsp.sk/lokality/${city.slug}`,
-    "telephone": "+421950699585",
-    "email": "info@mnsp.sk",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Jozefa Kozáčeka 829/2",
-      "addressLocality": "Zvolen",
-      "postalCode": "960 01",
-      "addressCountry": "SK"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": city.name
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday"
-      ],
-      "opens": "07:00",
-      "closes": "18:00"
-    }
-  };
-
-  const jsonLdBreadcrumb = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Domov",
-        "item": "https://www.mnsp.sk/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Lokality",
-        "item": "https://www.mnsp.sk/lokality"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": city.name,
-        "item": `https://www.mnsp.sk/lokality/${city.slug}`
-      }
-    ]
-  };
-
-  const jsonLdFaq = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": city.faq.map(item => ({
-      "@type": "Question",
-      "name": item.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.a
-      }
-    }))
-  };
+  /**
+   * These pages are not physical offices — only the three branch pages are.
+   *
+   * This previously emitted a GeneralContractor per city, each with the Zvolen
+   * street address but a different `name` ("MNSP - Stavebná firma Detva",
+   * "... Lučenec", ...). That's 11 businesses at one address with 11 names,
+   * none matching a Google Business Profile — a NAP-consistency problem.
+   * Now: one Organization, with the town as areaServed.
+   */
+  const jsonLd = [
+    generateBreadcrumbSchema([
+      { name: 'Domov', path: '/' },
+      { name: 'Lokality', path: '/lokality' },
+      { name: city.name, path: `/lokality/${city.slug}` },
+    ]),
+    ...generateServicePageSchema(
+      `Stavebná firma ${city.name}`,
+      city.metaDescription,
+      `${DOMAIN}/lokality/${city.slug}`,
+      city.name,
+    ),
+    generateFaqSchema(city.faq),
+  ];
 
   const SERVICES_MAP: Record<string, { icon: any; title: string; desc: string; link: string }> = {
     'rodinne-domy': { icon: Home, title: 'Rodinné domy', desc: `Výstavba na kľúč aj rekonštrukcie rodinných domov ${city.locative}.`, link: `/sluzby/rodinne-domy/${city.slug}` },
@@ -131,9 +90,10 @@ export default async function DynamicPage({ params }: { params: Promise<{ mesto:
 
   return (
       <>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdLocalBusiness) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }} />
+        <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
         <div className="bg-white pt-24 pb-20">
           <div className="max-w-7xl mx-auto px-6 mb-12">

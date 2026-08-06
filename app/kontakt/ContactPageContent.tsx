@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Mail, Phone, MapPin, Clock, Plus, Minus, Landmark, ShieldCheck, HelpCircle } from 'lucide-react';
+import Link from 'next/link';
 import FullContactForm from '@/src/components/sections/FullContactForm';
 import { BRANCHES } from '@/src/lib/schema';
 
@@ -126,21 +127,25 @@ export default function ContactPageContent() {
             {/* Other branches */}
             <div className="space-y-3">
               <h3 className="text-xs font-mono text-zinc-500 font-bold tracking-widest uppercase">
-                Ďalšie pobočky
+                Naše pobočky
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {Object.values(BRANCHES)
-                  .filter((b) => b.key !== 'zvolen')
-                  .map((b) => (
-                    <div key={b.key} className="bg-white border border-zinc-200 p-4 text-xs">
-                      <span className="block font-bold text-zinc-900 mb-1">{b.city}</span>
-                      <span className="block text-zinc-500 leading-relaxed">
-                        {b.streetAddress}
-                        <br />
-                        {b.zip} {b.city}
-                      </span>
-                    </div>
-                  ))}
+                {Object.values(BRANCHES).map((b) => (
+                  <Link
+                    key={b.key}
+                    href={b.pagePath}
+                    className="group bg-white border border-zinc-200 p-4 text-xs hover:border-amber-500 transition-colors"
+                  >
+                    <span className="block font-bold text-zinc-900 group-hover:text-amber-600 transition-colors mb-1">
+                      {b.city}
+                    </span>
+                    <span className="block text-zinc-500 leading-relaxed">
+                      {b.streetAddress}
+                      <br />
+                      {b.zip} {b.city}
+                    </span>
+                  </Link>
+                ))}
               </div>
             </div>
 
@@ -151,7 +156,7 @@ export default function ContactPageContent() {
             <h2 className="text-xs font-mono text-zinc-500 font-bold tracking-widest uppercase mb-8">
               2. Kontaktný formulár
             </h2>
-            <FullContactForm />
+            <FullContactForm pageName="Kontakt" />
           </div>
 
         </div>

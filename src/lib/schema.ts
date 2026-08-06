@@ -39,6 +39,12 @@ export type Branch = {
   phone: string;
   /** Dedicated page for this branch — set as website URL in its GBP. */
   pagePath: string;
+  /** Short label used in headings, e.g. "Centrála" / "Pobočka". */
+  role: string;
+  /** One paragraph: what this branch covers and why it's there. */
+  intro: string;
+  /** Districts and towns served from this branch. */
+  areaServed: readonly string[];
   lat?: number;
   lng?: number;
 };
@@ -52,6 +58,10 @@ export const BRANCHES: Record<string, Branch> = {
     zip: '960 01',
     phone: '+421950699585',
     pagePath: '/kontakt/zvolen',
+    role: 'Centrála',
+    intro:
+      'Zvolen je naším domovským mestom — sídli tu vedenie firmy, technika aj kmeňové stavebné tímy. Odtiaľto koordinujeme väčšinu zákaziek a odtiaľto vyrážame na obhliadky. Ak neviete, kam sa obrátiť, začnite tu.',
+    areaServed: ['Zvolen', 'Sliač', 'Kováčová', 'Očová', 'Budča', 'Krupina', 'Banská Štiavnica', 'Žiar nad Hronom'],
   },
   hrinova: {
     key: 'hrinova',
@@ -61,6 +71,10 @@ export const BRANCHES: Record<string, Branch> = {
     zip: '962 05',
     phone: '+421950699585',
     pagePath: '/kontakt/hrinova',
+    role: 'Pobočka',
+    intro:
+      'Z Hriňovej obsluhujeme Podpoľanie a juh kraja. Je to región s lazníckym osídlením, svahovitými pozemkami a horšie dostupnými stavbami — mať tímy priamo tu znamená kratšie výjazdy a lepšiu znalosť terénu.',
+    areaServed: ['Hriňová', 'Detva', 'Kriváň', 'Stožok', 'Dúbravy', 'Lučenec', 'Poltár', 'Rimavská Sobota'],
   },
   'banska-bystrica': {
     key: 'banska-bystrica',
@@ -70,6 +84,10 @@ export const BRANCHES: Record<string, Branch> = {
     zip: '974 01',
     phone: '+421950699585',
     pagePath: '/kontakt/banska-bystrica',
+    role: 'Pobočka',
+    intro:
+      'Banskobystrická pobočka pokrýva krajské mesto a smer na Horehronie. Terén je tu členitý a svahovitý, čo kladie vyššie nároky na zakladanie stavieb a oporné konštrukcie.',
+    areaServed: ['Banská Bystrica', 'Badín', 'Selce', 'Slovenská Ľupča', 'Brezno', 'Valaská', 'Podbrezová'],
   },
 };
 

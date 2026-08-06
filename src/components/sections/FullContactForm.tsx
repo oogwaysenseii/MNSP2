@@ -27,7 +27,7 @@ const INITIAL = {
  * wired in; the message field now asks people to mention documents so we can
  * request them by e-mail.
  */
-export default function FullContactForm() {
+export default function FullContactForm({ pageName = 'Kontakt' }: { pageName?: string } = {}) {
   const [formData, setFormData] = useState(INITIAL);
   const [honeypot, setHoneypot] = useState('');
   const [status, setStatus] = useState<Status>('idle');
@@ -51,7 +51,7 @@ export default function FullContactForm() {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, company: honeypot }),
+        body: JSON.stringify({ ...formData, company: honeypot, pageName }),
       });
       const data = await response.json();
 

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { DOMAIN } from '@/src/lib/schema';
+import { DOMAIN, BRANCHES } from '@/src/lib/schema';
 import { CITIES } from '@/src/data/cities';
 import { SERVICES } from '@/src/data/services';
 import { REDIRECTED } from '@/src/data/service-component-keys';
@@ -28,6 +28,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${DOMAIN}/lokality`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${DOMAIN}/kalkulacka`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${DOMAIN}/kontakt`, lastModified: now, changeFrequency: 'yearly', priority: 0.8 },
+    // Branch pages — each is the website URL of a Google Business Profile.
+    ...Object.values(BRANCHES).map((b) => ({
+      url: `${DOMAIN}${b.pagePath}`,
+      lastModified: now,
+      changeFrequency: 'yearly' as const,
+      priority: 0.7,
+    })),
     { url: `${DOMAIN}/o-nas`, lastModified: now, changeFrequency: 'yearly', priority: 0.7 },
     { url: `${DOMAIN}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${DOMAIN}/faq`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
