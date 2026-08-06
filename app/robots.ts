@@ -1,11 +1,15 @@
-import { siteMetadata } from '@/src/data/metadata';
+import type { MetadataRoute } from 'next';
+import { DOMAIN } from '@/src/lib/schema';
 
-export default function robots() {
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
       allow: '/',
+      // API endpoints have nothing to index.
+      disallow: ['/api/'],
     },
-    sitemap: `${siteMetadata.siteUrl}/sitemap.xml`,
+    sitemap: `${DOMAIN}/sitemap.xml`,
+    host: DOMAIN,
   };
 }
