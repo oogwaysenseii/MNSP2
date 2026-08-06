@@ -72,22 +72,22 @@ export const RENOVATION_RATE_PER_M2 = 300;
 
 export const RENOVATION_STANDARDS = [
   {
-    id: 'basic',
-    name: 'Ekonomický variant',
+    id: 'ciastocna',
+    name: 'Čiastočná rekonštrukcia',
     multiplier: 1.0,
-    desc: 'Funkčné materiály, efektívne dispozičné riešenie a základný štandard vybavenia.',
+    desc: 'Interiérové omietky, potery, okná, podlahy a maľby',
   },
   {
-    id: 'standard',
-    name: 'Zlatá stredná cesta',
-    multiplier: 1.25,
-    desc: 'Kvalitné materiály, moderné technológie a vyšší komfort bývania.',
+    id: 'kompletna',
+    name: 'Kompletná rekonštrukcia',
+    multiplier: 2.5,
+    desc: 'Zmeny statiky, kompletná výmena rozvodov, strecha a zateplenie',
   },
   {
-    id: 'premium',
-    name: 'Prémiový variant',
-    multiplier: 1.45,
-    desc: 'Prémiové materiály, individuálne riešenia, inteligentná domácnosť a luxusné vybavenie.',
+    id: 'premiova',
+    name: 'Prémiová rekonštrukcia',
+    multiplier: 3.67,
+    desc: 'Prémiové materiály, inteligentná elektroinštalácia, dizajnové riešenia',
   },
 ] as const;
 

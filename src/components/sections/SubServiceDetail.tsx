@@ -187,9 +187,9 @@ export function SubServiceDetail({
   );
 
   return (
-    <div className="bg-white min-h-screen pt-24 sm:pt-32 pb-24 text-zinc-900 border-t border-zinc-200">
+    <div className="bg-white min-h-screen pt-10 pb-10 text-zinc-900 border-t border-zinc-200">
       {/* 1. HERO SHOWCASE BREADCRUMBS */}
-      <div className=" mx-auto px-6 mb-12 sm:mb-16">
+      <div className=" mx-auto px-6 mb-5">
         <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-zinc-400 mb-6 uppercase">
           <Link href="/" className="hover:text-amber-600 transition-colors">
             Domov
@@ -228,16 +228,15 @@ export function SubServiceDetail({
       </div>
 
       {/* 2. SPLIT LAYOUT FOR CONTENT */}
-      <div className=" mx-auto pb-10 px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className="max-w-[1500px] mx-auto pb-10 px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         {/* LEFT COMPONENT: CORE SPECS AND CONTENT (7/12 cols) */}
-        <div className="lg:col-span-7 space-y-10 sm:space-y-12 text-left">
+        <div className="lg:col-span-8 space-y-10 sm:space-y-12 text-left">
           <div className="space-y-4">
             <span className="text-xs font-mono bg-amber-500/10 text-amber-700 font-bold tracking-widest px-3 py-1  uppercase inline-block">
               ŠPECIALIZOVANÉ REMESLO
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight text-zinc-950 leading-tight">
-              {title}{" "}
-              {cityName ? `v lokalite ${cityName}` : ""}
+              {title}
             </h1>
             <p className="text-zinc-600 text-base sm:text-lg leading-relaxed whitespace-pre-wrap">
               {description}
@@ -305,7 +304,7 @@ export function SubServiceDetail({
         </div>
 
         {/* RIGHT COMPONENT: IMAGE HERO & PRICING ESTIMATOR (5/12 cols) */}
-        <div className="lg:col-span-5 space-y-8 sticky top-28">
+        <div className="lg:col-span-4 space-y-8 sticky top-28">
           {/* Beautiful Header showcase Image Slider */}
           <div className="h-64 sm:h-80  overflow-hidden shadow-md relative group">
             <AnimatePresence mode="wait">

@@ -45,7 +45,7 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
 
   if (compact) {
     return (
-        <div className="max-w-[1500px] mx-auto px-6  border-t border-zinc-200 pt-16 ">
+        <div className="max-w-[1500px] mx-auto px-6  border-t border-zinc-200 pt-10 ">
           <div className="flex justify-between items-end mb-10">
             <div className="space-y-4">
             <span className="text-xs font-mono font-bold text-amber-500 tracking-wider uppercase block">

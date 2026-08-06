@@ -12,7 +12,7 @@ import {
 import { getSEOTags } from '@/src/lib/seo';
 import { RodinneDomyServiceDetail } from '@/src/components/sections/RodinneDomyServiceDetail';
 import { Metadata } from 'next';
-import { CheckCircle2, ShieldCheck, MapPin, HelpCircle } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, MapPin } from 'lucide-react';
 import {
   generateServicePageSchema,
   generateBreadcrumbSchema,
@@ -145,30 +145,24 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
   );
 
   const LocationFaq = (
-    <section className="bg-zinc-50 border-t border-zinc-200 py-20">
-      <div className="max-w-[1500px] mx-auto px-6">
-        <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-zinc-900 mb-3 flex items-center gap-2">
-          <HelpCircle className="w-6 h-6 text-amber-600" />
-          Časté otázky — {city.name}
+    <div className="max-w-[1500px] mx-auto px-6 mt-16 mb-10 space-y-8">
+      <div className="space-y-4 text-center">
+        <span className="text-xs font-mono tracking-widest text-amber-600 font-bold uppercase">
+          Časté otázky
+        </span>
+        <h2 className="text-3xl font-display font-extrabold text-zinc-900">
+          Otázky a odpovede — {city.name}
         </h2>
-        <p className="text-zinc-500 text-sm mb-8 leading-relaxed">
-          Ak medzi nimi nenájdete tú svoju, zavolajte nám.
-        </p>
-        <div className="divide-y divide-zinc-200 border-y border-zinc-200">
-          {angle.faq.map((item) => (
-            <details key={item.q} className="group py-1">
-              <summary className="cursor-pointer py-5 font-bold text-zinc-900 text-sm sm:text-base list-none flex items-start justify-between gap-4 hover:text-amber-600 transition-colors">
-                <span>{item.q}</span>
-                <span className="text-amber-600 shrink-0 mt-0.5 transition-transform group-open:rotate-45 text-xl leading-none">
-                  +
-                </span>
-              </summary>
-              <div className="pb-5 pr-8 text-zinc-600 text-sm leading-relaxed">{item.a}</div>
-            </details>
-          ))}
-        </div>
       </div>
-    </section>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
+        {angle.faq.map((item) => (
+          <div key={item.q} className="bg-zinc-50 border border-zinc-200 p-6 space-y-3">
+            <h3 className="font-bold text-zinc-900">{item.q}</h3>
+            <p className="text-sm text-zinc-600 leading-relaxed">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 
   const whyUsSection = (

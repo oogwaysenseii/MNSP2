@@ -510,3 +510,151 @@ export function rekonstrukciaLocalAngle(
 
   return { body: parts.join(' '), faq };
 }
+
+/* ------------------------------------------------------------------ */
+/* Remaining branching trades                                          */
+/* ------------------------------------------------------------------ */
+
+export function monolitickeKonstrukcie(c: CityConditions, cityLoc: string): LocalAngle {
+  const parts: string[] = [];
+
+  if (c.terrain === 'steep') {
+    parts.push(
+      `Monolitické konštrukcie ${cityLoc} sa najčastejšie týkajú oporných stien a kaskádových základov — svahovitý terén si ich vyžaduje takmer vždy, keď sa stavia na väčšom prevýšení. Debnenie navrhujeme podľa výšky steny a tlaku zeminy, nie podľa toho, čo je práve na sklade.`,
+    );
+  } else {
+    parts.push(
+      `Na rovinatých pozemkoch ${cityLoc} tvoria monolitické konštrukcie najmä stropné dosky, vence a schodiská. Rovný terén umožňuje jednoduchšie postavenie debnenia a plynulú betonáž bez prekládky čerpadla.`,
+    );
+  }
+
+  const season = seasonNote(c);
+  if (season) {
+    parts.push(
+      `Betón je mokrý proces, ktorý potrebuje na zretie teplotu nad nulou. V tejto oblasti preto betonáže plánujeme do teplých mesiacov a technologické prestávky zahrnieme do harmonogramu vopred.`,
+    );
+  }
+
+  if (c.access === 'difficult') {
+    parts.push(
+      `Betón sa k stavbe musí dostať bez prerušenia — pri úzkych alebo strmých prístupových cestách ${cityLoc} preto vopred overujeme, či sa domiešavač a čerpadlo dostanú na miesto, prípadne riešime prekládku.`,
+    );
+  }
+
+  return {
+    body: parts.join(' '),
+    faq: [
+      {
+        q: c.terrain === 'steep'
+          ? `Realizujete oporné múry na svahovitých pozemkoch ${cityLoc}?`
+          : `Aké monolitické konštrukcie najčastejšie realizujete ${cityLoc}?`,
+        a: c.terrain === 'steep'
+          ? 'Áno, na svahovitom teréne sú oporné železobetónové steny bežnou súčasťou stavby. Návrh výstuže aj hrúbky steny vždy prechádza statikom podľa výšky a tlaku zeminy.'
+          : 'Najčastejšie stropné dosky, vence, preklady a schodiská. Pri väčších rozpätiach riešime aj prievlaky a stĺpy podľa statického návrhu.',
+      },
+    ],
+  };
+}
+
+export function murarskePrace(c: CityConditions, cityLoc: string): LocalAngle {
+  const parts: string[] = [];
+
+  if (c.climate === 'cold-wet' || c.altitude >= 500) {
+    parts.push(
+      `Pri murovaní ${cityLoc} má voľba obvodového muriva väčší dopad na budúce účty za kúrenie než v teplejších okresoch — vykurovacia sezóna je tu dlhšia. Odporúčame preto hrubšie tvarovky alebo murivo doplnené o kvalitnejšie zateplenie.`,
+    );
+  } else if (c.climate === 'hot-dry') {
+    parts.push(
+      `${capitalizeFirst(cityLoc)} sa pri obvodovom murive oplatí myslieť aj na letné prehrievanie. Materiály s vyššou akumulačnou schopnosťou udržia v dome znesiteľnú teplotu aj počas horúcich dní, ktoré tu bývajú výrazne dlhšie než na severe kraja.`,
+    );
+  } else {
+    parts.push(
+      `Murárske práce ${cityLoc} realizujeme z pálenej tehly aj z presného pórobetónu, podľa projektu a požiadaviek na tepelný odpor. Prvý rad zakladáme nivelákom — od jeho presnosti závisí rovinnosť celej stavby.`,
+    );
+  }
+
+  const season = seasonNote(c);
+  if (season) {
+    parts.push(
+      `Murovacie malty a lepidlá majú svoju minimálnu teplotu spracovania, preto hrubú stavbu ${cityLoc} plánujeme mimo mrazivého obdobia.`,
+    );
+  }
+
+  return {
+    body: parts.join(' '),
+    faq: [
+      {
+        q: `Z akého materiálu murujete ${cityLoc}?`,
+        a: 'Z pálenej brúsenej tehly aj z presného pórobetónu — voľba závisí od projektu, požadovaného tepelného odporu a od rozpočtu. Po obhliadke vám povieme, čo dáva v konkrétnom prípade väčší zmysel.',
+      },
+    ],
+  };
+}
+
+export function buracieprace(c: CityConditions, cityLoc: string): LocalAngle {
+  const parts: string[] = [];
+
+  if (c.access === 'difficult') {
+    parts.push(
+      `Pri búracích prácach ${cityLoc} býva náročnejšie odviezť sutinu než ju vyprodukovať. Prístupovú cestu pre kontajner a nákladné auto overujeme vopred a pri úzkych úsekoch volíme menšie kontajnery s častejším odvozom.`,
+    );
+  } else {
+    parts.push(
+      `Prístup k objektom ${cityLoc} býva bezproblémový, takže kontajner na sutinu pristavíme priamo k stavbe a odvoz riešime priebežne — bez toho, aby sa odpad hromadil na pozemku.`,
+    );
+  }
+
+  if (c.heritage) {
+    parts.push(
+      `Časť zástavby spadá pod pamiatkovú ochranu, kde búranie podlieha osobitným podmienkam. Rozsah zásahu preto konzultujeme s pamiatkovým úradom ešte pred začatím prác.`,
+    );
+  }
+
+  parts.push(
+    `Pred búraním vždy overíme odpojenie inžinierskych sietí a pri zásahu do nosných konštrukcií necháme postup posúdiť statikom — poradie búrania rozhoduje o tom, či zvyšok objektu ostane stabilný.`,
+  );
+
+  return {
+    body: parts.join(' '),
+    faq: [
+      {
+        q: `Zabezpečujete odvoz a likvidáciu sutiny ${cityLoc}?`,
+        a: 'Áno, súčasťou ponuky býva kompletné nakladanie so stavebným odpadom — pristavenie kontajnera, triedenie recyklovateľných materiálov a legálna likvidácia na skládke.',
+      },
+    ],
+  };
+}
+
+/* ------------------------------------------------------------------ */
+/* Resolver used by /sluzby/[service]/[mesto]                          */
+/* ------------------------------------------------------------------ */
+
+export function getServiceLocalAngle(
+  serviceSlug: string,
+  serviceName: string,
+  c: CityConditions,
+  cityLoc: string,
+  distanceKm: number,
+): LocalAngle {
+  switch (serviceSlug) {
+    case 'zakladanie-stavieb':
+      return zakladanieStavieb(c, cityLoc);
+    case 'tesarske-prace':
+      return tesarskePrace(c, cityLoc);
+    case 'fasady':
+      return fasady(c, cityLoc);
+    case 'vykopove-zemne-prace':
+      return vykopoveZemnePrace(c, cityLoc);
+    case 'monoliticke-konstrukcie':
+      return monolitickeKonstrukcie(c, cityLoc);
+    case 'murarske-prace':
+      return murarskePrace(c, cityLoc);
+    case 'buracie-prace':
+      return buracieprace(c, cityLoc);
+    default:
+      // Trades whose method genuinely doesn't vary by location — see
+      // SERVICE_DIFFERENTIATES. Differentiate honestly on logistics instead
+      // of inventing terrain-based technical variation.
+      return genericLocalAngle(serviceName, cityLoc, distanceKm, c);
+  }
+}
