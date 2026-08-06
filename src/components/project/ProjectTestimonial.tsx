@@ -2,11 +2,16 @@ import { Project } from '@/src/data/projects';
 import { Container } from '@/src/components/ui/Container';
 import { Quote } from 'lucide-react';
 
+/**
+ * Renders only when a project actually has a consented testimonial.
+ * The section used to carry Tailwind `hidden`, which hides it visually but
+ * still ships the quote in the HTML — no good for an unverified attribution.
+ */
 export function ProjectTestimonial({ project }: { project: Project }) {
   if (!project.testimonial) return null;
 
   return (
-    <section className="hidden py-24 bg-zinc-950 text-white">
+    <section className="py-24 bg-zinc-950 text-white">
       <Container className="max-w-[1500px]">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <Quote className="w-12 h-12 text-amber-500/50 mx-auto" />

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Mail, Phone, MapPin, Clock, Plus, Minus, Landmark, ShieldCheck, HelpCircle } from 'lucide-react';
 import FullContactForm from '@/src/components/sections/FullContactForm';
+import { BRANCHES } from '@/src/lib/schema';
 
 export default function ContactPageContent() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
@@ -15,25 +16,30 @@ export default function ContactPageContent() {
     phone: '+421 950 699 585',
     email: 'info@mnsp.sk',
     hours: 'Po - Pia • 7:00 - 18:00',
-    manager: ''
   };
 
+  /**
+   * TODO — the previous answers asserted a 25-year warranty on structural work,
+   * that "all" buildings reach energy class A0, and a real-time client portal
+   * showing the itemised budget. None could be verified. Rewritten to what can
+   * be stood behind; restore specifics once confirmed.
+   */
   const faqs = [
     {
-      question: 'Ako funguje proces realizácie stavby na kľúč pod jednou zmluvou?',
-      answer: 'Náš integrovaný model spája projekčnú prípravu s priamou stavebnou realizáciou. Nemusíte samostatne najímať architekta a následne stavebnú firmu, kde by ste bojovali s prekročením rozpočtu. Naši autorizovaní inžinieri a remeselníci spolupracujú od prvého dňa, čo urýchľuje stavebné povolenia a garantuje zmluvne dohodnutú cenu.'
+      question: 'Ako prebieha spolupráca od prvého kontaktu po odovzdanie?',
+      answer: 'Začíname obhliadkou a konzultáciou priamo na mieste. Na jej základe pripravíme cenovú ponuku s položkovým rozpisom — vidíte, čo koľko stojí, nie jedno číslo na konci. Ak sa dohodneme, podpíšeme zmluvu o dielo s harmonogramom a platobnými etapami. Počas realizácie máte prideleného stavbyvedúceho, ktorý je vaším kontaktným človekom.'
     },
     {
-      question: 'Spĺňajú vaše stavby slovenské a európske energetické kritériá?',
-      answer: 'Áno, všetky nami realizované obytné budovy spĺňajú aktuálnu najprísnejšiu triedu energetickej hospodárnosti A0. Používame výhradne overené zatepľovacie systémy, certifikované tvárnice so skvelou akumuláciou tepla, hliníkové okná s trojsklom a inteligentné systémy núteného vetrania (rekuperácia) pre zdravé bývanie.'
+      question: 'Aký energetický štandard dosahujú vaše stavby?',
+      answer: 'Nové rodinné domy realizujeme v súlade s aktuálnymi požiadavkami na energetickú hospodárnosť budov. Konkrétna trieda závisí od projektu — od skladby obvodového plášťa, okien a zdroja tepla. Pri návrhu vám vieme poradiť, čo sa reálne oplatí a kde sa investícia do úspor vráti, a čo je už len drahšie číslo v projekte.'
     },
     {
-      question: 'Aké záruky poskytujete na nosné konštrukcie a monolitický betón?',
-      answer: 'Na statiku stavby, základovú dosku, železobetónové piloty a nosné steny poskytujeme nadštandardnú záruku 25 rokov. Pred každou betonážou prísne odoberáme kontrolné kocky a laboratórne overujeme pevnosť betónových zmesí a správnosť uloženia armatúry.'
+      question: 'Ako kontrolujete kvalitu nosných konštrukcií a betónu?',
+      answer: 'Pred betonážou odoberáme kontrolné vzorky a overujeme pevnosť betónovej zmesi aj správnosť uloženia armatúry. Návrh nosných konštrukcií vždy prechádza statikom. Záruka na dielo je uvedená v zmluve a jej rozsah zodpovedá typu prác — iná je pri nosných konštrukciách a iná pri povrchových úpravách.'
     },
     {
-      question: 'Môžem si počas rekonštrukcie alebo hrubej stavby meniť materiály?',
-      answer: 'Určite áno. Počas celej výstavby máte prideleného stavebného dozora a prístup do klientskeho rozhrania, kde vidíte položkový rozpočet v reálnom čase. Akékoľvek zmeny materiálov, obkladov či rozloženia priečok spoločne zapíšeme a premietneme do dodatku s okamžitým prepočítaním nákladov.'
+      question: 'Môžem si počas stavby meniť materiály alebo rozsah prác?',
+      answer: 'Áno. Drobné zmeny riešime priebežne, zásadné zmeny nosných konštrukcií si však vyžadujú zmenu stavebného povolenia. Každú zmenu rozsahu zapíšeme do písomného dodatku s prepočítaním nákladov, takže vopred viete, čo to znamená pre cenu aj pre termín. To, čo je v pôvodnej položkovej ponuke, sa nemení.'
     }
   ];
 
@@ -47,9 +53,11 @@ export default function ContactPageContent() {
             KONTAKTUJTE NÁS
           </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight text-neutral-950">
-            Dohodnite si nezáväznú konzultáciu.          </h1>
-          <p className="text-zinc-650 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Kontaktujte nás telefonicky, e-mailom alebo prostredníctvom formulára.          </p>
+            Dohodnite si nezáväznú konzultáciu.
+          </h1>
+          <p className="text-zinc-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+            Kontaktujte nás telefonicky, e-mailom alebo prostredníctvom formulára.
+          </p>
         </div>
 
         {/* SECTION A: DETAILED CONTROLLER GRID */}
@@ -57,9 +65,9 @@ export default function ContactPageContent() {
           
           {/* LEFT OFFICE CONTACT DECK (5 COLS) */}
           <div className="lg:col-span-5 space-y-8">
-            <h3 className="text-xs font-mono text-zinc-400 font-bold tracking-widest uppercase">
-              1. NAŠA CENTRÁLA
-            </h3>
+            <h2 className="text-xs font-mono text-zinc-500 font-bold tracking-widest uppercase">
+              1. Naša centrála
+            </h2>
 
             {/* Selected Office Details Block */}
             <div className="bg-zinc-50 border border-zinc-200 p-6 sm:p-8 space-y-6">
@@ -76,7 +84,7 @@ export default function ContactPageContent() {
                 <div className="flex items-start gap-3 border-t border-zinc-200/60 pt-4">
                   <Phone className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                   <div>
-                    <span className="block text-zinc-400 font-mono text-[10px]">PRIAMA LINKA DOPYTU</span>
+                    <span className="block text-zinc-500 font-mono text-[10px]">Priama linka</span>
                     <a href={`tel:${currentOfficeDetails.phone}`} className="font-bold text-zinc-900 hover:text-amber-600 transition-colors">
                       {currentOfficeDetails.phone}
                     </a>
@@ -86,7 +94,7 @@ export default function ContactPageContent() {
                 <div className="flex items-start gap-3 border-t border-zinc-200/60 pt-4">
                   <Mail className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                   <div>
-                    <span className="block text-zinc-400 font-mono text-[10px]">STAVEBNÁ KOREŠPONDENCIA</span>
+                    <span className="block text-zinc-500 font-mono text-[10px]">E-mail</span>
                     <a href={`mailto:${currentOfficeDetails.email}`} className="font-bold text-zinc-900 hover:text-amber-500 transition-colors">
                       {currentOfficeDetails.email}
                     </a>
@@ -96,30 +104,53 @@ export default function ContactPageContent() {
                 <div className="flex items-start gap-3 border-t border-zinc-200/60 pt-4">
                   <Clock className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                   <div>
-                    <span className="block text-zinc-400 font-mono text-[10px]">OTVÁRACÍ ČAS POBOČKY</span>
+                    <span className="block text-zinc-500 font-mono text-[10px]">Otváracie hodiny</span>
                     <span className="font-bold text-zinc-900">{currentOfficeDetails.hours}</span>
                   </div>
                 </div>
 
               </div>
 
-              {/* Coordinator citation */}
+              {/* Availability note — the previous "Zodpovedný vedúci:" line had an
+                  empty value, so it rendered a label and a pinging dot with no name. */}
               <div className="border-t border-zinc-200 pt-5 flex items-center gap-3">
-                <div className="w-2.5 h-2.5 bg-emerald-500  animate-ping shrink-0" />
+                <div className="w-2.5 h-2.5 bg-emerald-500 animate-pulse shrink-0" />
                 <p className="text-[11px] font-mono text-zinc-500">
-                  Zodpovedný vedúci: <span className="text-zinc-900 font-bold">{currentOfficeDetails.manager}</span>
+                  Na dopyty odpovedáme spravidla{' '}
+                  <span className="text-zinc-900 font-bold">do jedného pracovného dňa</span>
                 </p>
               </div>
 
+            </div>
+
+            {/* Other branches */}
+            <div className="space-y-3">
+              <h3 className="text-xs font-mono text-zinc-500 font-bold tracking-widest uppercase">
+                Ďalšie pobočky
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {Object.values(BRANCHES)
+                  .filter((b) => b.key !== 'zvolen')
+                  .map((b) => (
+                    <div key={b.key} className="bg-white border border-zinc-200 p-4 text-xs">
+                      <span className="block font-bold text-zinc-900 mb-1">{b.city}</span>
+                      <span className="block text-zinc-500 leading-relaxed">
+                        {b.streetAddress}
+                        <br />
+                        {b.zip} {b.city}
+                      </span>
+                    </div>
+                  ))}
+              </div>
             </div>
 
           </div>
 
           {/* RIGHT OFFICE ESTIMATIONS DOCKET (7 COLS) */}
           <div className="lg:col-span-7">
-            <h3 className="text-xs font-mono text-zinc-400 font-bold tracking-widest uppercase mb-8">
-              2. KONTAKTNÝ FORMULÁR
-            </h3>
+            <h2 className="text-xs font-mono text-zinc-500 font-bold tracking-widest uppercase mb-8">
+              2. Kontaktný formulár
+            </h2>
             <FullContactForm />
           </div>
 
@@ -135,7 +166,7 @@ export default function ContactPageContent() {
             <h2 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-neutral-950">
               Otázky o stavebnom procese a zmluvách
             </h2>
-            <p className="text-zinc-650 text-xs sm:text-sm max-w-lg mx-auto leading-relaxed">
+            <p className="text-zinc-600 text-xs sm:text-sm max-w-lg mx-auto leading-relaxed">
               Zrozumiteľné vysvetlenie dôležitých fáz stavby rodinného domu, overovania kvality a nárokov na bezpečnosť.
             </p>
           </div>
@@ -168,7 +199,7 @@ export default function ContactPageContent() {
                         transition={{ duration: 0.25 }}
                         className="overflow-hidden"
                       >
-                        <div className="px-5 pb-5 pt-1 text-zinc-600 text-xs sm:text-sm leading-relaxed border-t border-zinc-150">
+                        <div className="px-5 pb-5 pt-1 text-zinc-600 text-xs sm:text-sm leading-relaxed border-t border-zinc-200">
                           {faq.answer}
                         </div>
                       </motion.div>

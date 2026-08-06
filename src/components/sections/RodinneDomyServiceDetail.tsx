@@ -177,7 +177,7 @@ export function RodinneDomyServiceDetail({
             {customLocationTop}
 
             {/* CHECKMARKS FOR CAPABILITIES */}
-            <div className="bg-zinc-50 p-6 sm:p-8 border border-zinc-150 space-y-6">
+            <div className="bg-zinc-50 p-6 sm:p-8 border border-zinc-200 space-y-6">
               <h4 className="text-xs font-mono text-zinc-500 font-bold tracking-wider uppercase mb-2">
                 Hlavné benefity spolupráce s nami
               </h4>
@@ -244,7 +244,7 @@ export function RodinneDomyServiceDetail({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {stages.map((stg, iIdx) => (
-                    <div key={iIdx} className="bg-white border border-zinc-150/80 p-6 space-y-3 shadow-sm hover:shadow-md transition-shadow">
+                    <div key={iIdx} className="bg-white border border-zinc-200/80 p-6 space-y-3 shadow-sm hover:shadow-md transition-shadow">
                       <div className="flex items-center  justify-between border-b border-zinc-100 pb-3">
                     <span className="text-base font-extrabold font-display text-zinc-950">
                       {stg.title}

@@ -1,4 +1,7 @@
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import { getSEOTags } from '@/src/lib/seo';
+import { generateBreadcrumbSchema, DOMAIN } from '@/src/lib/schema';
 import { projectsData } from '@/src/data/projects';
 import { ProjectHero } from '@/src/components/project/ProjectHero';
 import { ProjectOverview } from '@/src/components/project/ProjectOverview';
@@ -18,6 +21,36 @@ export function generateStaticParams() {
   }));
 }
 
+/**
+ * These pages previously exported no metadata at all, so all eight inherited
+ * the root layout's — same generic title, no canonical, and og:url pointing at
+ * the homepage. They are the strongest proof-of-work pages on the site.
+ */
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ projekt: string }>;
+}): Promise<Metadata> {
+  const { projekt } = await params;
+  const project = projectsData.find((p) => p.id === projekt);
+  if (!project) notFound();
+
+  const locationSuffix = project.location ? ` ${project.location}` : '';
+  const title = project.title.includes(project.location ?? '')
+    ? project.title
+    : `${project.title}${locationSuffix}`;
+
+  return getSEOTags({
+    title,
+    description: project.description,
+    path: `/portfolio/${project.id}`,
+    imageUrl: project.imageUrl?.startsWith('http')
+      ? project.imageUrl
+      : `${DOMAIN}${project.imageUrl}`,
+    type: 'article',
+  });
+}
+
 export default async function ProjectDetailPage({ params }: { params: Promise<{ projekt: string }> }) {
   const resolvedParams = await params;
   const project = projectsData.find(p => p.id === resolvedParams.projekt);
@@ -26,8 +59,20 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     notFound();
   }
 
+  const jsonLd = [
+    generateBreadcrumbSchema([
+      { name: 'Domov', path: '/' },
+      { name: 'Portfólio', path: '/portfolio' },
+      { name: project.title, path: `/portfolio/${project.id}` },
+    ]),
+  ];
+
   return (
     <article className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ProjectHero project={project} />
       <ProjectOverview project={project} />
       <ProjectGallery project={project} />

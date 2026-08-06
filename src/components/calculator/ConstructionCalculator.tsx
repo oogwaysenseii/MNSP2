@@ -67,7 +67,16 @@ export default function ConstructionCalculator({ children }: { children?: React.
   };
 
   const { items: breakdown, totalBaseCost: totalPrice } = getCalculatedItems();
-  const totalCalcArea = area * (floors + (hasUnderground ? 0.8 : 0));
+  /**
+   * Floor area the price is divided by, for the €/m² figure.
+   *
+   * This previously counted a basement as 0.8 of a floor while the cost model
+   * adds only +0.5 on most line items — so adding a basement grew the divisor
+   * faster than the cost and the €/m² *fell*, making a more expensive house
+   * look cheaper per metre. A basement is a full floor of built area, so it
+   * counts as 1.
+   */
+  const totalCalcArea = area * (floors + (hasUnderground ? 1 : 0));
 
   const currentDate = new Date();
   const rawMonthYear = new Intl.DateTimeFormat('sk-SK', { month: 'long', year: 'numeric' }).format(currentDate);
@@ -105,16 +114,16 @@ export default function ConstructionCalculator({ children }: { children?: React.
                   </div>
                   <input
                       type="range"
-                      min="50"
-                      max="300"
+                      min="60"
+                      max="400"
                       step="5"
                       value={area}
                       onChange={(e) => setArea(Number(e.target.value))}
                       className="w-full accent-amber-500 h-2 bg-zinc-200 appearance-none cursor-pointer"
                   />
                   <div className="w-full flex justify-between text-xs font-mono text-zinc-400 font-bold">
-                    <span>50 m²</span>
-                    <span>300 m²</span>
+                    <span>60 m²</span>
+                    <span>400 m²</span>
                   </div>
                 </div>
 
@@ -131,7 +140,7 @@ export default function ConstructionCalculator({ children }: { children?: React.
                                   floors === num ? "bg-zinc-950 border-zinc-950 text-white" : "bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-300"
                               }`}
                           >
-                            {num} {num === 1 ? 'Pod.' : 'Podl.'}
+                            {num}{'\u00A0'}{num === 1 ? 'podlažie' : num < 5 ? 'podlažia' : 'podlaží'}
                           </button>
                       ))}
                     </div>
@@ -246,7 +255,10 @@ export default function ConstructionCalculator({ children }: { children?: React.
                         <span className="text-zinc-400 font-medium px-0.5">—</span>
                         <span>{formatPrice(rangeMax)}</span>
                       </div>
-                      <div className="mt-2.5 inline-flex items-center gap-2">
+                      <span className="text-[10px] font-mono tracking-widest uppercase font-bold text-zinc-500 block mt-4 mb-1.5">
+                        Za m² podlahovej plochy ({new Intl.NumberFormat('sk-SK').format(totalCalcArea)} m²):
+                      </span>
+                      <div className="inline-flex items-center gap-2">
                         <div className="bg-amber-100 text-amber-900 font-mono font-bold px-2 py-1 text-xs">
                           {new Intl.NumberFormat('sk-SK').format(pricePerM2Min)} €/m²
                         </div>

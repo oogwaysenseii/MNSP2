@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, MapPin, Calendar } from 'lucide-react';
@@ -13,7 +14,52 @@ interface ProjectsSectionProps {
   titleSk?: string;
   subtitleSk?: string;
   viewMode?: 'carousel' | 'grid';
+  /** Suppress the built-in h2 header (caller renders its own heading). */
+  hideHeader?: boolean;
+
   locationFilter?: string;
+}
+
+
+/**
+ * Budget and duration are optional in the project data — five of eight entries
+ * have them empty. Rendering the labels regardless left cards showing
+ * "ROZPOČET" / "TRVANIE" headings with nothing under them.
+ */
+const CATEGORY_TABS = [
+  'all',
+  'Rodinné domy',
+  'Rezidenčné budovy',
+  'Komerčná výstavba',
+  'Priemyselné objekty',
+  'Občianske stavby',
+] as const satisfies readonly (ServiceCategory | 'all')[];
+
+function ProjectMeta({ budget, duration }: { budget?: string; duration?: string }) {
+  const hasBudget = Boolean(budget?.trim());
+  const hasDuration = Boolean(duration?.trim());
+  if (!hasBudget && !hasDuration) return null;
+
+  return (
+    <div className="grid grid-cols-2 gap-2 border-t border-gray-100 pt-4 mt-auto">
+      {hasBudget && (
+        <div className="space-y-1">
+          <span className="block text-[9px] font-mono uppercase tracking-wider text-gray-400">
+            ROZPOČET
+          </span>
+          <span className="block text-sm font-bold text-black">{budget}</span>
+        </div>
+      )}
+      {hasDuration && (
+        <div className="space-y-1">
+          <span className="block text-[9px] font-mono uppercase tracking-wider text-gray-400">
+            TRVANIE
+          </span>
+          <span className="block text-sm font-bold text-black">{duration}</span>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export function Projects({
@@ -22,14 +68,22 @@ export function Projects({
                            titleSk = 'Realizované projekty',
                            subtitleSk = 'Prehľad zrealizovaných a prebiehajúcich projektov.',
                            viewMode = 'carousel',
-                           locationFilter = 'all'
+                           locationFilter = 'all',
+                           hideHeader = false
                          }: ProjectsSectionProps = {}) {
   const [selectedCategory, setSelectedCategory] = useState<ServiceCategory | 'all'>(defaultCategory);
   const [selectedLoc, setSelectedLoc] = useState<string>(locationFilter);
   const carouselRef = useRef<HTMLDivElement>(null);
 
+  // useState only reads its initial value once, so keep it in sync when the
+  // prop changes on a client-side navigation.
+  useEffect(() => setSelectedCategory(defaultCategory), [defaultCategory]);
+  useEffect(() => setSelectedLoc(locationFilter), [locationFilter]);
+
   // Extract unique locations from projects
-  const allLocations = Array.from(new Set(projectsData.map(proj => proj.location))).sort();
+  const allLocations = Array.from(
+    new Set(projectsData.map((proj) => proj.location?.trim()).filter(Boolean)),
+  ).sort();
 
   // Filter project arrays based on toggle buttons
   const filteredProjects = projectsData.filter((proj) => {
@@ -80,6 +134,7 @@ export function Projects({
         <Container className="max-w-[1500px]">
 
           {/* HEADER TOP ROW */}
+          {!hideHeader && (
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
               <h2 className="text-4xl md:text-5xl font-extrabold text-black tracking-tight">{titleSk}</h2>
@@ -98,13 +153,14 @@ export function Projects({
                 </Link>
             )}
           </div>
+          )}
 
           {/* 2. DYNAMIC INDUSTRY FILTER BAR */}
           {!hideFilters && (
               <div className="flex flex-col gap-4 mb-10 border-b border-gray-100 pb-6 overflow-hidden">
                 {/* Categories */}
                 <div className="flex overflow-x-auto gap-2 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                  {(['all', 'Rodinné domy', 'Rezidenčné budovy', 'Komerčná výstavba', 'Priemyselné objekty', 'Občianske stavby'] as const).map((cat) => (
+                  {CATEGORY_TABS.map((cat) => (
                       <button
                           key={cat}
                           onClick={() => setSelectedCategory(cat)}
@@ -206,26 +262,13 @@ export function Projects({
                               <Calendar className="w-3 h-3 text-amber-600" />
                               <span>{`Rok ${proj.year}`}</span>
                             </div>
-                            <h4 className="text-xl font-bold text-black tracking-tight mb-3 group-hover/item:text-amber-600 transition-colors">
+                            <h3 className="text-xl font-bold text-black tracking-tight mb-3 group-hover/item:text-amber-600 transition-colors">
                               {proj.title}
-                            </h4>
+                            </h3>
                             <p className="text-gray-500 text-sm line-clamp-3 mb-6 flex-1">
                               {proj.description}
                             </p>
-                            <div className="grid grid-cols-2 gap-2 border-t border-gray-100 pt-4 mt-auto">
-                              <div className="space-y-1">
-                          <span className="block text-[9px] font-mono uppercase tracking-wider text-gray-400">
-                            ROZPOČET
-                          </span>
-                                <span className="block text-sm font-bold text-black">{proj.budgetString}</span>
-                              </div>
-                              <div className="space-y-1">
-                          <span className="block text-[9px] font-mono uppercase tracking-wider text-gray-400">
-                            TRVANIE
-                          </span>
-                                <span className="block text-sm font-bold text-black">{proj.duration}</span>
-                              </div>
-                            </div>
+                            <ProjectMeta budget={proj.budgetString} duration={proj.duration} />
                           </div>
                         </Link>
                     ))}
@@ -260,26 +303,13 @@ export function Projects({
                             <Calendar className="w-3 h-3 text-amber-600" />
                             <span>{`Rok ${proj.year}`}</span>
                           </div>
-                          <h4 className="text-xl font-bold text-black tracking-tight mb-3 group-hover:text-amber-600 transition-colors">
+                          <h3 className="text-xl font-bold text-black tracking-tight mb-3 group-hover:text-amber-600 transition-colors">
                             {proj.title}
-                          </h4>
+                          </h3>
                           <p className="text-gray-500 text-sm line-clamp-3 mb-6 flex-1">
                             {proj.description}
                           </p>
-                          <div className="grid grid-cols-2 gap-2 border-t border-gray-100 pt-4 mt-auto">
-                            <div className="space-y-1">
-                        <span className="block text-[9px] font-mono uppercase tracking-wider text-gray-400">
-                          ROZPOČET
-                        </span>
-                              <span className="block text-sm font-bold text-black">{proj.budgetString}</span>
-                            </div>
-                            <div className="space-y-1">
-                        <span className="block text-[9px] font-mono uppercase tracking-wider text-gray-400">
-                          TRVANIE
-                        </span>
-                              <span className="block text-sm font-bold text-black">{proj.duration}</span>
-                            </div>
-                          </div>
+                            <ProjectMeta budget={proj.budgetString} duration={proj.duration} />
                         </div>
                       </Link>
                   ))}

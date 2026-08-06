@@ -15,7 +15,7 @@ import { BlogSidebarContact } from '@/src/components/blog/BlogSidebarContact';
 import { AuthorBox } from '@/src/components/blog/AuthorBox';
 import { RelatedArticles } from '@/src/components/blog/RelatedArticles';
 import { RelatedServices } from '@/src/components/blog/RelatedServices';
-import { BlogCTA } from '@/src/components/blog/BlogCTA';
+import { CTA } from '@/src/components/sections/CTA';
 import { extractFAQ, getWordCount, calculateReadingTime } from '@/src/lib/blogUtils';
 import { autoLinkKeywords } from '@/src/lib/blogAutoLink';
 
@@ -23,23 +23,27 @@ interface BlogPostPageProps {
   params: Promise<{ clanok: string }>;
 }
 
+export function generateStaticParams() {
+  return blogPostsData.map((post) => ({ clanok: post.id }));
+}
+
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const post = blogPostsData.find((p) => p.id === resolvedParams.clanok);
   
   if (!post) {
-    return {};
+    notFound();
   }
 
   return getSEOTags({
     title: post.title,
     description: post.excerpt,
     path: `/blog/${post.id}`,
-    imageUrl: post.imageUrl,
+    imageUrl: post.imageUrl?.startsWith('http') ? post.imageUrl : `${DOMAIN}${post.imageUrl}`,
     type: 'article',
     publishedTime: post.publishedAt,
     modifiedTime: post.updatedAt,
-    author: 'MNSP',
+    author: COMPANY_NAME,
     keywords: post.tags,
   });
 }
@@ -69,27 +73,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   
   const faqs = extractFAQ(rawContent);
 
-  const authorSchema = post.author && typeof post.author === 'object' 
+  // One author across metadata, JSON-LD and the blog index. A named Person
+  // is used only when a post actually carries one.
+  const authorSchema = post.author && typeof post.author === 'object'
     ? { "@type": "Person", "name": post.author.name, "url": post.author.url }
-    : { "@type": "Organization", "name": post.author || "MNSP Odborný Tím" };
+    : { "@id": `${DOMAIN}/#organization` };
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.excerpt,
-    "image": post.imageUrl,
+    "image": post.imageUrl?.startsWith('http') ? post.imageUrl : `${DOMAIN}${post.imageUrl}`,
     "datePublished": post.publishedAt,
     "dateModified": post.updatedAt ?? post.publishedAt,
     "author": authorSchema,
-    "publisher": {
-      "@type": "Organization",
-      "name": COMPANY_NAME,
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${DOMAIN}/logo.png`
-      }
-    },
+    "publisher": { "@id": `${DOMAIN}/#organization` },
     "url": url,
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -103,7 +102,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     "keywords": post.tags.join(", "),
     "wordCount": wordCount,
     "inLanguage": "sk-SK",
-    "articleBody": rawContent,
     "about": {
       "@type": "Thing",
       "name": post.category
@@ -192,7 +190,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             
             {/* STICKY SIDEBAR CONTACT */}
             <div className="order-2 lg:order-1 lg:col-span-4 sticky top-32 w-full">
-              <BlogSidebarContact />
+              <BlogSidebarContact pageName={post.title} />
             </div>
 
             {/* MAIN CONTENT */}
@@ -257,7 +255,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <span className="text-xs font-mono text-zinc-500 font-bold uppercase tracking-wider mb-2 block flex items-center gap-1">
                   <ChevronLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" /> Predchádzajúci článok
                 </span>
-                <h4 className="font-bold text-zinc-900 group-hover:text-amber-700 transition-colors line-clamp-2">{prevPost.title}</h4>
+                <h3 className="font-bold text-zinc-900 group-hover:text-amber-700 transition-colors line-clamp-2">{prevPost.title}</h3>
               </Link>
             ) : <div />}
             
@@ -266,13 +264,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <span className="text-xs font-mono text-zinc-500 font-bold uppercase tracking-wider mb-2 block flex justify-end items-center gap-1">
                   Nasledujúci článok <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </span>
-                <h4 className="font-bold text-zinc-900 group-hover:text-amber-700 transition-colors line-clamp-2">{nextPost.title}</h4>
+                <h3 className="font-bold text-zinc-900 group-hover:text-amber-700 transition-colors line-clamp-2">{nextPost.title}</h3>
               </Link>
             ) : <div />}
           </div>
 
           {/* CTA */}
-          <BlogCTA />
+          <CTA pageName={`Blog - ${post.title}`} />
 
         </div>
       </div>

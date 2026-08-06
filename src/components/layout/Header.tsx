@@ -124,7 +124,7 @@ export function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute left-1/2 -translate-x-1/2 mt-2 w-64  bg-white border border-zinc-150 shadow-xl py-2 z-50 text-zinc-800"
+                  className="absolute left-1/2 -translate-x-1/2 mt-2 w-64  bg-white border border-zinc-200 shadow-xl py-2 z-50 text-zinc-800"
                 >
                   {topServices.map((srv) => (
                     <Link
@@ -154,7 +154,7 @@ export function Header() {
                     <ChevronRight className="w-3.5 h-3.5" />
 
                     <div className="absolute left-full top-[-10px] ml-1 opacity-0 shadow-none pointer-events-none group-hover/trades:opacity-100 group-hover/trades:pointer-events-auto transition-opacity duration-200">
-                      <div className="w-64  bg-white border border-zinc-150 shadow-xl py-2 z-50 text-zinc-800">
+                      <div className="w-64  bg-white border border-zinc-200 shadow-xl py-2 z-50 text-zinc-800">
                         {secondaryServices.map((sec) => (
                           <Link 
                             key={sec.href}
@@ -250,7 +250,7 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="min-[850px]:hidden bg-white border-b border-zinc-150 text-zinc-900 overflow-hidden shadow-lg absolute top-full left-0 right-0 max-h-[calc(100vh-80px)] overflow-y-auto"
+            className="min-[850px]:hidden bg-white border-b border-zinc-200 text-zinc-900 overflow-hidden shadow-lg absolute top-full left-0 right-0 max-h-[calc(100vh-80px)] overflow-y-auto"
           >
             <div className="px-6 py-6 space-y-6">
               

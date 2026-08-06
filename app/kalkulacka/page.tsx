@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import ConstructionCalculator from "@/src/components/calculator/ConstructionCalculator";
 import { getSEOTags } from '@/src/lib/seo';
 import Link from 'next/link';
+import { generateBreadcrumbSchema } from '@/src/lib/schema';
 
 const seo = getSEOTags(
     "Cenová kalkulačka",
@@ -12,8 +13,17 @@ const seo = getSEOTags(
 export const metadata: Metadata = seo;
 
 export default function KalkulackaPage() {
+    const jsonLd = generateBreadcrumbSchema([
+        { name: 'Domov', path: '/' },
+        { name: 'Cenová kalkulačka', path: '/kalkulacka' },
+    ]);
+
     return (
         <main className="min-h-screen bg-white ">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             {/* HEADER SECTION */}
             <div className="bg-zinc-950 text-white py-10 mt-16 sm:mt-20">
                 <div className=" mx-auto text-center space-y-6">
@@ -37,10 +47,10 @@ export default function KalkulackaPage() {
                                 Výpočet ceny stavebných prác v našej kalkulačke vychádza z dlhodobých priemerných cien materiálov a prác na slovenskom trhu. Náš algoritmus zohľadňuje nielen základnú výmeru (zastavanú plochu a počet podlaží), ale aj konkrétne moduly, ktoré si zvolíte, a úroveň štandardu, v ktorom si prajete stavbu realizovať.
                             </p>
                             <p>
-                                Pre každú fázu výstavby, či už ide o základy, hrubú stavbu, zastrešenie alebo interiérové práce, máme definovanú základnú sadzbu za meter štvorcový úžitkovej plochy. Tieto sadzby pravidelne aktualizujeme na základe reálnych rozpočtov z našich aktuálnych projektov. Keď zadáte svoje parametre, kalkulačka spočíta náklady na všetky vybrané položky a prenásobí ich koeficientom zvoleného štandardu.
+                                Pre každú fázu výstavby, či už ide o základy, hrubú stavbu, zastrešenie alebo interiérové práce, máme definovanú základnú sadzbu za meter štvorcový. Tieto sadzby vychádzajú z rozpočtov našich vlastných realizácií — nie sú to čísla stiahnuté z internetu. Keď zadáte svoje parametre, kalkulačka spočíta náklady na všetky vybrané položky a prenásobí ich koeficientom zvoleného štandardu.
                             </p>
                             <p>
-                                Výsledkom je orientačný rozpočet vo forme cenového rozpätia, ktorý vám poskytne realistickú predstavu o finančnej náročnosti vášho zámeru ešte predtým, ako investujete do detailnej projektovej dokumentácie.
+                                Výsledkom je orientačný odhad, ktorý pre lepšiu čitateľnosť zobrazujeme ako rozpätie okolo vypočítanej sumy. Poskytne vám realistickú predstavu o finančnej náročnosti zámeru ešte predtým, ako investujete do detailnej projektovej dokumentácie. Skutočná cena je však vždy individuálna — každý projekt, pozemok aj predstava klienta sú iné.
                             </p>
                         </div>
                     </div>
@@ -87,7 +97,7 @@ export default function KalkulackaPage() {
 
                             <Link href="/portfolio" className="block p-6 bg-zinc-50 border border-zinc-200 hover:border-amber-500 transition-colors group">
                                 <h3 className="font-bold text-lg text-zinc-950 group-hover:text-amber-600 transition-colors">Portfólio projektov &rarr;</h3>
-                                <p className="text-sm text-zinc-600 mt-2">Inšpirujte sa našimi dokončenými stavbami a rekonštrukciami po celom Slovensku.</p>
+                                <p className="text-sm text-zinc-600 mt-2">Inšpirujte sa našimi dokončenými stavbami a rekonštrukciami.</p>
                             </Link>
 
                             <Link href="/lokality" className="block p-6 bg-zinc-50 border border-zinc-200 hover:border-amber-500 transition-colors group">

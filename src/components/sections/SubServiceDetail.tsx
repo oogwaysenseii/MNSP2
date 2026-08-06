@@ -254,7 +254,7 @@ export function SubServiceDetail({
               {features.map((feat, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-3 bg-zinc-50 border border-zinc-150 p-4 "
+                  className="flex items-start gap-3 bg-zinc-50 border border-zinc-200 p-4 "
                 >
                   <div className="w-6 h-6  bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0">
                     <CheckCircle className="w-4 h-4 text-amber-600" />
@@ -273,7 +273,7 @@ export function SubServiceDetail({
           </div>
 
           {/* Technical material arrays */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-zinc-50 border border-zinc-150  p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-zinc-50 border border-zinc-200  p-6">
             <div>
               <span className="block text-xs font-mono font-bold text-zinc-400 uppercase mb-3">
                 Certifikované materiály

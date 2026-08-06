@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import { Clock, ArrowRight, ArrowUpRight, Search } from 'lucide-react';
 import { blogPostsData } from '@/src/data/blog';
@@ -15,9 +16,11 @@ interface BlogSectionProps {
   subtitle?: string;
   badge?: string;
   compact?: boolean;
+  /** Suppress the built-in h2 header (caller renders its own h1). */
+  hideHeader?: boolean;
 }
 
-export default function BlogSection({ filterCategory, hideFilters, showSidebar, title, subtitle, badge, compact }: BlogSectionProps) {
+export default function BlogSection({ filterCategory, hideFilters, showSidebar, title, subtitle, badge, compact, hideHeader }: BlogSectionProps) {
   // Collect all distinct tags from our post lists
   const allTags = ['all', ...Array.from(new Set(blogPostsData.flatMap((post) => post.tags)))];
 
@@ -51,9 +54,9 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
             <span className="text-xs font-mono font-bold text-amber-500 tracking-wider uppercase block">
               {badge || "NÁŠ BLOG"}
             </span>
-              <h4 className="text-2xl sm:text-3xl font-display font-extrabold text-zinc-950 tracking-tight">
+              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-zinc-950 tracking-tight">
                 {title || "Zistite viac o našich postupoch"}
-              </h4>
+              </h3>
             </div>
             <Link
                 href="/blog"
@@ -69,17 +72,19 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
                     href={`/blog/${post.id}`}
                     className="group block bg-zinc-50 overflow-hidden border border-zinc-200"
                 >
-                  <div className="h-48 overflow-hidden">
-                    <img
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
                         src={post.imageUrl}
                         alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="p-5 space-y-2">
-                    <h5 className="font-bold text-zinc-900 group-hover:text-amber-600 transition-colors">
+                    <h4 className="font-bold text-zinc-900 group-hover:text-amber-600 transition-colors">
                       {post.title}
-                    </h5>
+                    </h4>
                     <p className="text-xs text-zinc-500 line-clamp-2">
                       {post.excerpt}
                     </p>
@@ -102,6 +107,7 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
           >
 
             {/* TOP HEADER */}
+            {!hideHeader && (
             <div className="space-y-4 text-center">
             <span className="text-xs font-mono tracking-widest text-amber-600 font-bold uppercase">
               {badge || 'BLOG | MNSP'}
@@ -109,14 +115,15 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight text-neutral-950">
                 {title || 'Technické postupy a stavebné správy'}
               </h2>
-              <p className="text-zinc-650 text-sm max-w-xl mx-auto">
-                {subtitle || 'Prečítajte si odborné materiály písané priamo našimi statikmi, inžiniermi a tými najskúsenejšími stavbyvedúcimi.'}
+              <p className="text-zinc-600 text-sm max-w-xl mx-auto">
+                {subtitle || 'Praktické rady, technické postupy a skúsenosti zo stavieb, ktoré realizujeme.'}
               </p>
             </div>
+            )}
 
             {/* SEARCH AND TAG FILTER ROW (Only shown if no sidebar and filters are not hidden) */}
             {!hideFilters && !showSidebar && (
-                <div className="flex flex-col md:flex-row gap-4 items-center justify-between border-y border-zinc-150 py-6 mb-12">
+                <div className="flex flex-col md:flex-row gap-4 items-center justify-between border-y border-zinc-200 py-6 mb-12">
 
                   {/* Tag Selection Pills */}
                   <div className="flex flex-wrap gap-2 justify-center md:justify-start">
@@ -124,7 +131,7 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
                         <button
                             key={tag}
                             onClick={() => setSelectedTag(tag)}
-                            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide capitalize cursor-pointer transition-colors ${
+                            className={`px-3.5 py-1.5 text-xs font-semibold tracking-wide capitalize cursor-pointer transition-colors ${
                                 selectedTag === tag
                                     ? 'bg-zinc-950 text-amber-400 font-bold'
                                     : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-600 border border-zinc-200/50'
@@ -145,7 +152,7 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
                         placeholder={'Hľadať v článkoch...'}
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-9 pr-4 py-2.5 bg-zinc-50 border border-zinc-200 focus:bg-white focus:border-zinc-950 rounded text-xs text-zinc-900 outline-none transition-all"
+                        className="w-full pl-9 pr-4 py-2.5 bg-zinc-50 border border-zinc-200 focus:bg-white focus:border-zinc-950 text-xs text-zinc-900 outline-none transition-all"
                     />
                   </div>
 
@@ -158,7 +165,7 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
               {/* CARDS LISTING BLOCK */}
               <div className={showSidebar ? 'lg:w-2/3' : 'w-full'}>
                 {filteredPosts.length === 0 ? (
-                    <div className="bg-zinc-50 border border-zinc-200 rounded-xl p-16 text-center text-zinc-500">
+                    <div className="bg-zinc-50 border border-zinc-200  p-16 text-center text-zinc-500">
                       <p className="text-sm font-semibold">
                         {'Nenašli sa žiadne články zodpovedajúce zadaným slovám.'}
                       </p>
@@ -168,23 +175,25 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
                       {filteredPosts.map((post) => (
                           <article
                               key={post.id}
-                              className="group bg-white rounded-xl border border-zinc-150 overflow-hidden shadow-xs hover:shadow-xl transition-all flex flex-col justify-between"
+                              className="group bg-white  border border-zinc-200 overflow-hidden shadow-xs hover:shadow-xl transition-all flex flex-col justify-between"
                           >
                             <Link href={`/blog/${post.id}`} className="block h-full flex flex-col justify-between">
                               <div>
                                 {/* Static banner photo */}
-                                <div className="h-52 overflow-hidden bg-zinc-100">
-                                  <img
+                                <div className="relative h-52 overflow-hidden bg-zinc-100">
+                                  <Image
                                       src={post.imageUrl}
                                       alt={post.title}
-                                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-all duration-300"
+                                      fill
+                                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                                      className="object-cover group-hover:scale-[1.03] transition-all duration-300"
                                   />
                                 </div>
 
                                 {/* Text info and timestamps */}
                                 <div className="p-6 space-y-4">
                                   <div className="flex gap-4 items-center text-[10px] font-mono font-bold tracking-wider text-zinc-400">
-                                    <span className="text-amber-600 bg-amber-50 px-2.5 py-0.5 rounded font-bold uppercase">{post.category}</span>
+                                    <span className="text-amber-600 bg-amber-50 px-2.5 py-0.5 font-bold uppercase">{post.category}</span>
                                     <span>•</span>
                                     <span>{post.date}</span>
                                   </div>
@@ -193,7 +202,7 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
                                     {post.title}
                                   </h3>
 
-                                  <p className="text-zinc-650 text-xs sm:text-sm leading-relaxed line-clamp-3">
+                                  <p className="text-zinc-600 text-xs sm:text-sm leading-relaxed line-clamp-3">
                                     {post.excerpt}
                                   </p>
                                 </div>
@@ -220,7 +229,7 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
 
               {/* RIGHT SIDEBAR */}
               {showSidebar && (
-                  <div className="lg:w-1/3 space-y-10 lg:pl-10 lg:border-l border-zinc-150">
+                  <div className="lg:w-1/3 space-y-10 lg:pl-10 lg:border-l border-zinc-200">
 
                     {/* Sidebar Search */}
                     <div className="space-y-4">
@@ -236,7 +245,7 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
                             placeholder={'Hľadať v článkoch...'}
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-9 pr-4 py-3 bg-zinc-50 border border-zinc-200 focus:bg-white focus:border-zinc-950 rounded text-sm text-zinc-900 outline-none transition-all"
+                            className="w-full pl-9 pr-4 py-3 bg-zinc-50 border border-zinc-200 focus:bg-white focus:border-zinc-950 text-sm text-zinc-900 outline-none transition-all"
                         />
                       </div>
                     </div>
@@ -251,7 +260,7 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
                             <button
                                 key={tag}
                                 onClick={() => setSelectedTag(tag)}
-                                className={`text-left px-4 py-2.5 rounded text-sm font-medium transition-colors ${
+                                className={`text-left px-4 py-2.5 text-sm font-medium transition-colors ${
                                     selectedTag === tag
                                         ? 'bg-zinc-950 text-white'
                                         : 'bg-zinc-50 text-zinc-600 hover:bg-zinc-100 border border-zinc-200'
@@ -264,13 +273,14 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
                     </div>
 
                     {/* Sidebar CTA */}
-                    <div className="bg-amber-50 p-6 rounded-xl border border-amber-500/20 space-y-4">
-                      <h4 className="text-sm font-bold text-amber-900">Máte projekt na diskusiu?</h4>
+                    <div className="bg-amber-50 p-6  border border-amber-500/20 space-y-4">
+                      <h3 className="text-sm font-bold text-amber-900">Plánujete stavbu alebo rekonštrukciu?</h3>
                       <p className="text-xs text-amber-800 leading-relaxed">
-                        Kontaktujte našich inžinierov a získajte bezplatnú konzultáciu ohľadom stavebných postupov a normatív.
+                        Ozvite sa nám. Po obhliadke vám pripravíme nezáväznú cenovú ponuku
+                        s položkovým rozpisom.
                       </p>
                       <a href="/kontakt" className="inline-block mt-2 text-xs font-bold text-amber-900 uppercase tracking-widest hover:text-amber-700">
-                        Kontaktovať tím &rarr;
+                        Kontaktovať nás &rarr;
                       </a>
                     </div>
                   </div>

@@ -25,7 +25,8 @@ export const projectsData: Project[] = [
   {
     id: 'rekonstrukcia-domovu-socialnych-sluzieb-detva',
     title: 'Zariadenie sociálnych služieb Detva',
-    description: 'Výstavba 3 bytových domov vrátane inžinierskych sietí, opornej steny a podzemného parkovania pre obyvateľov.',
+    // TODO: doplniť skutočný rozsah prác na tomto projekte.
+    description: 'Realizácia zariadenia sociálnych služieb vrátane inžinierskych sietí, opornej steny a spevnených plôch.',
     category: 'Občianske stavby',
     location: 'Detva',
     year: 2026,
@@ -75,18 +76,13 @@ export const projectsData: Project[] = [
       { date: 'Júl 2024', title: 'Dokončenie hrubej stavby', description: 'Ukončenie monolitických prác a zastrešenie objektov.' },
       { date: 'Február 2025', title: 'Fasády a interiéry', description: 'Montáž technológií, sadrokartónov a zateplenie fasády.' },
       { date: 'September 2025', title: 'Odovzdanie diela', description: 'Kolaudácia a slávnostné otvorenie zariadenia.' }
-    ],
-    testimonial: {
-      quote: 'Spolupráca s MNSP bola na vysokej profesionálnej úrovni. Oceňujem proaktívny prístup pri riešení technických výziev a dodržanie harmonogramu aj napriek náročným podmienkam na stavenisku.',
-      author: 'Ing. arch. Peter Kováč',
-      role: 'Hlavný architekt',
-      company: 'Mesto Detva'
-    }
+    ]
   },
   {
     id: 'rekonstrukcia-novohradskeho-muzea-lucenec',
     title: 'Novohradské múzeum a galéria Lučenec',
-    description: 'Realizácia základov, oporných múrov a monolitických konštrukcií pre novú rozsiahlu skladovú halu a prľahlé administratívne priestory.',
+    // TODO: doplniť skutočný rozsah prác na tomto projekte.
+    description: 'Stavebné práce pri obnove objektu Novohradského múzea a galérie vrátane základov, oporných múrov a monolitických konštrukcií.',
     category: 'Občianske stavby',
     location: 'Lučenec',
     year: 2025,
@@ -97,7 +93,8 @@ export const projectsData: Project[] = [
   {
     id: 'rekonstrukcia-domovu-dochodcov-senior-active-hrinova-n-o',
     title: 'Zariadenie pre seniorov a domov sociálnych služieb SENIOR ACTIVE Hriňová',
-    description: 'Rekonštrukcia a modernizácia kancelárskych priestorov na 3 podlažiach do prémiového štandardu s využitím moderných materiálov.',
+    // TODO: doplniť skutočný rozsah prác na tomto projekte.
+    description: 'Rekonštrukcia a modernizácia priestorov zariadenia pre seniorov a domova sociálnych služieb.',
     category: 'Občianske stavby',
     location: 'Hriňová',
     year: 2025,
@@ -158,7 +155,7 @@ export const projectsData: Project[] = [
     title: 'Rodinný dom Banská Bystrica',
     description: '',
     category: 'Rodinné domy',
-    location: 'Banská Bystrica  ',
+    location: 'Banská Bystrica',
     year: 2023,
     duration: '',
     budgetString: '',
