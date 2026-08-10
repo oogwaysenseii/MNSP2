@@ -16,13 +16,16 @@ export function ServicesGrid({ hideAllLink = false }: { hideAllLink?: boolean })
               href={`/sluzby/${sluzba.slug}`}
               className="group flex flex-col bg-white border border-gray-200 transition-all duration-500 hover:border-amber-500 hover:shadow-2xl h-full relative"
             >
-              {/* Image Container - Fixed height to ensure rendering regardless of aspect ratio support */}
+              {/* Image Container — fixed height so rendering doesn't depend on
+                  aspect-ratio support. The grid is 1 / 2 / 5 columns; without a
+                  `sizes` prop Next assumes 100vw and ships an image five times
+                  wider than it's displayed. quality was also pinned at 100. */}
               <div className="relative w-full h-48 lg:h-56 overflow-hidden bg-gray-200">
                 <Image
                   src={sluzba.imageUrl!}
                   alt={sluzba.name}
                   fill
-                  quality={100}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />

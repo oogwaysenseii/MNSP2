@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ChevronDown, ChevronRight, HardHat, Phone, ArrowUpRight } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { BUILDING_SERVICES, TRADE_SERVICES } from '@/src/data/services';
 
 // Split sluzby into categories for the dropdown matching the styling requested
@@ -73,14 +74,30 @@ export function Header() {
           className="flex items-center gap-2.5 group cursor-pointer text-left"
         >
           <div className=" text-amber-500  font-bold group-hover:scale-105 transition-transform">
-            <img
-                src={isSolid ? "/mnsp-logo-mark-light.png" : "/mnsp-logo-mark-dark.png"}
-                alt="MNSP Logo"
-                style={{
-                  height: "60px",
-                  width: "auto",
-                  maxWidth: "none",
-                }}
+            {/*
+              Was a raw <img> pointing at a 2172x724 PNG (388 KB) rendered at
+              315x105 — the single largest image on the site. Now a 720x240
+              WebP through next/image, which also emits width/height and
+              prevents layout shift.
+
+              Both variants render and are toggled with CSS so switching on
+              scroll doesn't trigger a new network request.
+            */}
+            <Image
+                src="/mnsp-logo-mark-dark.webp"
+                alt="MNSP | Stavby a rekonštrukcie"
+                width={315}
+                height={105}
+                priority
+                className={`h-[60px] w-auto max-w-none ${isSolid ? "hidden" : "block"}`}
+            />
+            <Image
+                src="/mnsp-logo-mark-light.webp"
+                alt="MNSP | Stavby a rekonštrukcie"
+                width={315}
+                height={105}
+                priority
+                className={`h-[60px] w-auto max-w-none ${isSolid ? "block" : "hidden"}`}
             />
           </div>
 

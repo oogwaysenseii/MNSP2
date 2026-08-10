@@ -52,7 +52,7 @@ export function Hero() {
         <link
           rel="preload"
           as="image"
-          href="/hero-poster.jpg"
+          href="/hero-poster.webp"
           fetchPriority="high"
         />
 
@@ -62,7 +62,7 @@ export function Hero() {
           muted
           playsInline
           preload="auto"
-          poster="/hero-poster.jpg"
+          poster="/hero-poster.webp"
           aria-hidden="true"
           className="w-full h-full object-cover opacity-65 transition-opacity duration-1000"
           src="/vystavba-a-rekonstrukcie-budov.mp4"

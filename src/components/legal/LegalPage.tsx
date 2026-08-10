@@ -19,7 +19,7 @@ export function LegalPage({
 }) {
   return (
     <div className="bg-white min-h-screen pt-24 sm:pt-32 pb-20 text-zinc-900 border-t border-zinc-200">
-      <div className="max-w-[1500px] mx-auto px-6">
+      <div className="max-w-3xl mx-auto px-6">
         <nav className="flex flex-wrap items-center gap-2 text-xs font-mono text-zinc-400 mb-6 uppercase">
           <Link href="/" className="hover:text-amber-600 transition-colors">
             Domov
