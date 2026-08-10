@@ -39,17 +39,35 @@ export function Hero() {
     <div id="hero" className="relative w-full h-[750px] overflow-hidden bg-zinc-950 text-white ">
       {/* 1. TIMELAPSE VIDEO BACKGROUND */}
       <div className=" absolute inset-0 z-0">
+        {/*
+          The poster is preloaded with a link tag rather than a second visual
+          layer. A `poster` attribute alone is discovered late and fetched at
+          low priority, which makes it a weak LCP candidate — but rendering an
+          <Image> behind the video meant two stacked layers at opacity-65, so
+          the still showed through the playing video as a ghost.
+
+          React hoists this link into <head>, so the poster is requested at
+          high priority without adding anything to the DOM.
+        */}
+        <link
+          rel="preload"
+          as="image"
+          href="/hero-poster.jpg"
+          fetchPriority="high"
+        />
+
         <video
           autoPlay
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
           poster="/hero-poster.jpg"
           aria-hidden="true"
           className="w-full h-full object-cover opacity-65 transition-opacity duration-1000"
           src="/vystavba-a-rekonstrukcie-budov.mp4"
         />
+
         {/* Subtle high-end radial lighting overlay */}
         <div className=" absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-zinc-950/80" />
         <div className="absolute inset-0 bg-zinc-950/20 backdrop-brightness-[0.85]" />
