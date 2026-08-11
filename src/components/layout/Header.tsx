@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ChevronDown, ChevronRight, HardHat, Phone, ArrowUpRight } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
@@ -133,16 +132,19 @@ export function Header() {
               <ChevronDown className="w-4 h-4" />
             </Link>
 
-            {/* Premium dropdown block */}
-            <AnimatePresence>
-              {isDropdownOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute left-1/2 -translate-x-1/2 mt-2 w-64  bg-white border border-zinc-200 shadow-xl py-2 z-50 text-zinc-800"
-                >
+            {/* Premium dropdown block.
+                Was a framer-motion AnimatePresence — that pulled motion/react
+                into the Header, which renders on all 285 pages, for two enter
+                transitions. CSS handles these; motion now only loads where it
+                actually earns its place. */}
+            <div
+              className={`absolute left-1/2 -translate-x-1/2 mt-2 w-64 bg-white border border-zinc-200 shadow-xl py-2 z-50 text-zinc-800 origin-top transition-all duration-150 ease-out ${
+                isDropdownOpen
+                  ? 'opacity-100 translate-y-0 pointer-events-auto'
+                  : 'opacity-0 translate-y-2.5 pointer-events-none invisible'
+              }`}
+              aria-hidden={!isDropdownOpen}
+            >
                   {topServices.map((srv) => (
                     <Link
                       key={srv.href}
@@ -188,9 +190,7 @@ export function Header() {
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            </div>
           </div>
 
           {/* Other Main Pages Links */}
@@ -261,14 +261,14 @@ export function Header() {
       </div>
 
       {/* MOBILE POPUP DRAWER NAVIGATION */}
-      <AnimatePresence>
-        {isMobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="min-[850px]:hidden bg-white border-b border-zinc-200 text-zinc-900 overflow-hidden shadow-lg absolute top-full left-0 right-0 max-h-[calc(100vh-80px)] overflow-y-auto"
-          >
+      <div
+        className={`min-[850px]:hidden bg-white border-b border-zinc-200 text-zinc-900 overflow-hidden shadow-lg absolute top-full left-0 right-0 overflow-y-auto transition-all duration-200 ease-out ${
+          isMobileOpen
+            ? 'max-h-[calc(100vh-80px)] opacity-100'
+            : 'max-h-0 opacity-0 pointer-events-none'
+        }`}
+        aria-hidden={!isMobileOpen}
+      >
             <div className="px-6 py-6 space-y-6">
               
               {/* Main Links */}
@@ -331,15 +331,13 @@ export function Header() {
               {/* Direct Telephone Access */}
               <div className="bg-neutral-50  p-4 space-y-3.5 border border-zinc-100 text-center">
                 <p className="text-xs font-medium text-zinc-500">Potrebujete poradiť s projektom?</p>
-                <a href="tel:+421900000000" className="block text-lg font-bold text-zinc-900 hover:text-amber-600">
-                  +421 900 000 000
+                <a href="tel:+421950699585" className="block text-lg font-bold text-zinc-900 hover:text-amber-600">
+                  +421 950 699 585
                 </a>
               </div>
 
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </div>
     </nav>
   );
 }
