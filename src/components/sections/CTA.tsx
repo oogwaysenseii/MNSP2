@@ -31,7 +31,7 @@ export function CTA({
                 </p>
               </div>
               {description && (
-                  <p className="text-zinc-500 text-sm leading-relaxed max-w-xl">
+                  <p className="text-zinc-300 text-sm leading-relaxed max-w-xl">
                     {description}
                   </p>
               )}

@@ -250,6 +250,9 @@ export function Header() {
           </Link>
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
+            aria-label={isMobileOpen ? 'Zavrieť menu' : 'Otvoriť menu'}
+            aria-expanded={isMobileOpen}
+            aria-controls="mobile-menu"
             className={`p-2  border transition-colors cursor-pointer ${
               isSolid ? 'border-zinc-200 hover:bg-zinc-50 text-zinc-900' : 'border-white/20 hover:bg-white/10 text-white'
             }`}
@@ -262,6 +265,7 @@ export function Header() {
 
       {/* MOBILE POPUP DRAWER NAVIGATION */}
       <div
+        id="mobile-menu"
         className={`min-[850px]:hidden bg-white border-b border-zinc-200 text-zinc-900 overflow-hidden shadow-lg absolute top-full left-0 right-0 overflow-y-auto transition-all duration-200 ease-out ${
           isMobileOpen
             ? 'max-h-[calc(100vh-80px)] opacity-100'

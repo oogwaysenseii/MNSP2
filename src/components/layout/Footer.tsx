@@ -17,54 +17,54 @@ export function Footer() {
 
           {/* Column 2: Links */}
           <div>
-            <h4 className="text-[14px] font-mono tracking-widest text-black font-bold uppercase mb-6">Rýchle odkazy</h4>
-            <ul className="space-y-3">
-              <li><Link href="/" className="hover:text-amber-600 transition-colors">Domov</Link></li>
-              <li><Link href="/sluzby" className="hover:text-amber-600 transition-colors">Služby</Link></li>
-              <li><Link href="/portfolio" className="hover:text-amber-600 transition-colors">Portfólio</Link></li>
-              <li><Link href="/blog" className="hover:text-amber-600 transition-colors">Blog</Link></li>
-              <li><Link href="/faq" className="hover:text-amber-600 transition-colors">Časté otázky (FAQ)</Link></li>
-              <li><Link href="/o-nas" className="hover:text-amber-600 transition-colors">O nás</Link></li>
-              <li><Link href="/kontakt" className="hover:text-amber-600 transition-colors">Kontakt</Link></li>
+            <h3 className="text-[14px] font-mono tracking-widest text-black font-bold uppercase mb-6">Rýchle odkazy</h3>
+            <ul className="space-y-1.5">
+              <li><Link href="/" className="inline-block py-1 hover:text-amber-600 transition-colors">Domov</Link></li>
+              <li><Link href="/sluzby" className="inline-block py-1 hover:text-amber-600 transition-colors">Služby</Link></li>
+              <li><Link href="/portfolio" className="inline-block py-1 hover:text-amber-600 transition-colors">Portfólio</Link></li>
+              <li><Link href="/blog" className="inline-block py-1 hover:text-amber-600 transition-colors">Blog</Link></li>
+              <li><Link href="/faq" className="inline-block py-1 hover:text-amber-600 transition-colors">Časté otázky (FAQ)</Link></li>
+              <li><Link href="/o-nas" className="inline-block py-1 hover:text-amber-600 transition-colors">O nás</Link></li>
+              <li><Link href="/kontakt" className="inline-block py-1 hover:text-amber-600 transition-colors">Kontakt</Link></li>
             </ul>
           </div>
 
           {/* Column 3: Services */}
           <div>
-            <h4 className="text-[14px] font-mono tracking-widest text-black font-bold uppercase mb-6">Naše služby</h4>
+            <h3 className="text-[14px] font-mono tracking-widest text-black font-bold uppercase mb-6">Naše služby</h3>
             <div className="grid grid-cols-2 gap-x-4 gap-y-2">
               <ul className="space-y-1 ">
-                <li><Link href="/sluzby/rodinne-domy" className="hover:text-amber-600 transition-colors">Rodinné domy</Link></li>
-                <li><Link href="/sluzby/komercna-vystavba" className="hover:text-amber-600 transition-colors">Komerčná výstavba</Link></li>
-                <li><Link href="/sluzby/rezidencne-budovy" className="hover:text-amber-600 transition-colors">Rezidenčné budovy</Link></li>
-                <li><Link href="/sluzby/priemyselne-objekty" className="hover:text-amber-600 transition-colors">Priemyselné objekty</Link></li>
-                <li><Link href="/sluzby/obcianske-stavby" className="hover:text-amber-600 transition-colors">Občianske stavby</Link></li>
+                <li><Link href="/sluzby/rodinne-domy" className="inline-block py-1 hover:text-amber-600 transition-colors">Rodinné domy</Link></li>
+                <li><Link href="/sluzby/komercna-vystavba" className="inline-block py-1 hover:text-amber-600 transition-colors">Komerčná výstavba</Link></li>
+                <li><Link href="/sluzby/rezidencne-budovy" className="inline-block py-1 hover:text-amber-600 transition-colors">Rezidenčné budovy</Link></li>
+                <li><Link href="/sluzby/priemyselne-objekty" className="inline-block py-1 hover:text-amber-600 transition-colors">Priemyselné objekty</Link></li>
+                <li><Link href="/sluzby/obcianske-stavby" className="inline-block py-1 hover:text-amber-600 transition-colors">Občianske stavby</Link></li>
 
               </ul>
               <ul className="space-y-2 text-[10px]">
-                <li><Link href="/sluzby/zakladanie-stavieb" className="hover:text-amber-600 transition-colors">Zakladanie stavieb</Link></li>
-                <li><Link href="/sluzby/monoliticke-konstrukcie" className="hover:text-amber-600 transition-colors">Monolitické konštr.</Link></li>
-                <li><Link href="/sluzby/murarske-prace" className="hover:text-amber-600 transition-colors">Murárske práce</Link></li>
-                <li><Link href="/sluzby/tesarske-prace" className="hover:text-amber-600 transition-colors">Tesárske práce</Link></li>
-                <li><Link href="/sluzby/omietky" className="hover:text-amber-600 transition-colors">Omietky</Link></li>
-                <li><Link href="/sluzby/potery" className="hover:text-amber-600 transition-colors">Potery</Link></li>
-                <li><Link href="/sluzby/obkladacske-prace" className="hover:text-amber-600 transition-colors">Obkladačské práce</Link></li>
-                <li><Link href="/sluzby/fasady" className="hover:text-amber-600 transition-colors">Fasády</Link></li>
-                <li><Link href="/sluzby/jadrove-vrtanie" className="hover:text-amber-600 transition-colors">Jadrové vŕtanie</Link></li>
-                <li><Link href="/sluzby/rezanie-otvorov" className="hover:text-amber-600 transition-colors">Rezanie otvorov</Link></li>
+                <li><Link href="/sluzby/zakladanie-stavieb" className="inline-block py-1 hover:text-amber-600 transition-colors">Zakladanie stavieb</Link></li>
+                <li><Link href="/sluzby/monoliticke-konstrukcie" className="inline-block py-1 hover:text-amber-600 transition-colors">Monolitické konštr.</Link></li>
+                <li><Link href="/sluzby/murarske-prace" className="inline-block py-1 hover:text-amber-600 transition-colors">Murárske práce</Link></li>
+                <li><Link href="/sluzby/tesarske-prace" className="inline-block py-1 hover:text-amber-600 transition-colors">Tesárske práce</Link></li>
+                <li><Link href="/sluzby/omietky" className="inline-block py-1 hover:text-amber-600 transition-colors">Omietky</Link></li>
+                <li><Link href="/sluzby/potery" className="inline-block py-1 hover:text-amber-600 transition-colors">Potery</Link></li>
+                <li><Link href="/sluzby/obkladacske-prace" className="inline-block py-1 hover:text-amber-600 transition-colors">Obkladačské práce</Link></li>
+                <li><Link href="/sluzby/fasady" className="inline-block py-1 hover:text-amber-600 transition-colors">Fasády</Link></li>
+                <li><Link href="/sluzby/jadrove-vrtanie" className="inline-block py-1 hover:text-amber-600 transition-colors">Jadrové vŕtanie</Link></li>
+                <li><Link href="/sluzby/rezanie-otvorov" className="inline-block py-1 hover:text-amber-600 transition-colors">Rezanie otvorov</Link></li>
               </ul>
             </div>
           </div>
 
           {/* Column 4: Contact */}
           <div>
-            <h4 className="text-[14px] font-mono tracking-widest text-black font-bold uppercase mb-6">Kontakt</h4>
-            <ul className="space-y-3">
+            <h3 className="text-[14px] font-mono tracking-widest text-black font-bold uppercase mb-6">Kontakt</h3>
+            <ul className="space-y-1.5">
               <li>
-                <a href="mailto:info@mnsp.sk" className="hover:text-amber-600 transition-colors">info@mnsp.sk</a>
+                <a href="mailto:info@mnsp.sk" className="inline-block py-1 hover:text-amber-600 transition-colors">info@mnsp.sk</a>
               </li>
               <li>
-                <a href="tel:+421950699585" className="hover:text-amber-600 transition-colors">+421 950 699 585</a>
+                <a href="tel:+421950699585" className="inline-block py-1 hover:text-amber-600 transition-colors">+421 950 699 585</a>
               </li>
               <li className="pt-2">
                 Jozefa Kozáčeka 829/2<br />
@@ -86,8 +86,8 @@ export function Footer() {
         <div className="border-t border-gray-100 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between">
           <p>&copy; {new Date().getFullYear()} MNSP | Stavby a rekonštrukcie</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/ochrana-sukromia" className="hover:text-amber-600 transition-colors">Ochrana súkromia</Link>
-            <Link href="/obchodne-podmienky" className="hover:text-amber-600 transition-colors">Obchodné podmienky</Link>
+            <Link href="/ochrana-sukromia" className="inline-block py-1 hover:text-amber-600 transition-colors">Ochrana súkromia</Link>
+            <Link href="/obchodne-podmienky" className="inline-block py-1 hover:text-amber-600 transition-colors">Obchodné podmienky</Link>
           </div>
         </div>
       </Container>

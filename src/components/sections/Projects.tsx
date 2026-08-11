@@ -44,7 +44,7 @@ function ProjectMeta({ budget, duration }: { budget?: string; duration?: string 
     <div className="grid grid-cols-2 gap-2 border-t border-gray-100 pt-4 mt-auto">
       {hasBudget && (
         <div className="space-y-1">
-          <span className="block text-[9px] font-mono uppercase tracking-wider text-gray-400">
+          <span className="block text-[9px] font-mono uppercase tracking-wider text-gray-500">
             ROZPOČET
           </span>
           <span className="block text-sm font-bold text-black">{budget}</span>
@@ -52,7 +52,7 @@ function ProjectMeta({ budget, duration }: { budget?: string; duration?: string 
       )}
       {hasDuration && (
         <div className="space-y-1">
-          <span className="block text-[9px] font-mono uppercase tracking-wider text-gray-400">
+          <span className="block text-[9px] font-mono uppercase tracking-wider text-gray-500">
             TRVANIE
           </span>
           <span className="block text-sm font-bold text-black">{duration}</span>
@@ -146,7 +146,7 @@ export function Projects({
             {viewMode === 'carousel' && (
                 <Link
                     href={`/portfolio?category=${selectedCategory}`}
-                    className="mt-6 md:mt-0 text-sm tracking-widest font-bold uppercase transition-colors shrink-0 text-amber-600 hover:text-black flex items-center group"
+                    className="mt-6 md:mt-0 text-sm tracking-widest font-bold uppercase transition-colors shrink-0 text-amber-700 hover:text-black flex items-center group"
                 >
                   Všetky projekty
                   <ChevronRight className="w-4 h-4 ml-1 transform transition-transform group-hover:translate-x-1" />
@@ -177,7 +177,7 @@ export function Projects({
 
                 {/* Locations */}
                 <div className="flex overflow-x-auto gap-2 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] items-center">
-                  <MapPin className="w-4 h-4 text-gray-400 shrink-0 mr-2" />
+                  <MapPin className="w-4 h-4 text-gray-500 shrink-0 mr-2" />
                   <button
                       onClick={() => setSelectedLoc('all')}
                       className={`shrink-0 px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer rounded-full ${
@@ -258,7 +258,7 @@ export function Projects({
                             </div>
                           </div>
                           <div className="p-6 flex flex-col flex-1 leading-relaxed bg-zinc-50 relative z-10">
-                            <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-gray-400 font-bold uppercase mb-3">
+                            <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-zinc-600 font-bold uppercase mb-3">
                               <Calendar className="w-3 h-3 text-amber-600" />
                               <span>{`Rok ${proj.year}`}</span>
                             </div>
@@ -299,7 +299,7 @@ export function Projects({
                           </div>
                         </div>
                         <div className="p-6 flex flex-col flex-1 leading-relaxed bg-zinc-50 relative z-10">
-                          <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-gray-400 font-bold uppercase mb-3">
+                          <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-zinc-600 font-bold uppercase mb-3">
                             <Calendar className="w-3 h-3 text-amber-600" />
                             <span>{`Rok ${proj.year}`}</span>
                           </div>

@@ -113,7 +113,7 @@ export function SimpleContactForm({
         <div className={`grid grid-cols-1 ${hideCalculatorLink ? '' : 'sm:grid-cols-2'} gap-4 mt-5`}>
           <button
               type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-amber-500 text-white font-medium text-sm hover:bg-amber-400 transition-colors cursor-pointer "
+              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-amber-500 text-zinc-950 font-bold text-sm hover:bg-amber-400 transition-colors cursor-pointer "
           >
             Odoslať
             <ArrowRight className="w-4 h-4 ml-1" />

@@ -54,6 +54,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="sk">
+      <head>
+        {/* Lighthouse flagged this as worth ~300 ms of LCP: GA4 resolves
+            through analytics.google.com, and the connection was only being
+            opened after gtag.js had parsed. */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://analytics.google.com" />
+      </head>
       <body className="antialiased text-gray-900 bg-white">
         <Header />
         <main className="min-h-screen">
