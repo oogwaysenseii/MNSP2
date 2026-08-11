@@ -85,16 +85,16 @@ export function Header() {
             <Image
                 src="/mnsp-logo-mark-dark.webp"
                 alt="MNSP | Stavby a rekonštrukcie"
-                width={315}
-                height={105}
+                width={252}
+                height={84}
                 priority
                 className={`h-[60px] w-auto max-w-none ${isSolid ? "hidden" : "block"}`}
             />
             <Image
                 src="/mnsp-logo-mark-light.webp"
                 alt="MNSP | Stavby a rekonštrukcie"
-                width={315}
-                height={105}
+                width={252}
+                height={84}
                 priority
                 className={`h-[60px] w-auto max-w-none ${isSolid ? "block" : "hidden"}`}
             />

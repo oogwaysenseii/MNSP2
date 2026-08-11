@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Header } from '@/src/components/layout/Header';
 import { Footer } from '@/src/components/layout/Footer';
-import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
+import { PhoneClickTracking } from '@/src/components/analytics/PhoneClickTracking';
 
 
 import { COMPANY_NAME, DOMAIN } from '@/src/lib/schema';
@@ -60,7 +61,14 @@ export default function RootLayout({
         </main>
         <Footer />
 
-        <GoogleTagManager gtmId="GTM-KRQHW2J" />
+        {/*
+          Was <GoogleTagManager gtmId="GTM-KRQHW2J" />, which loaded gtm.js
+          (119 KB) purely as a wrapper around one GA4 tag and a tel: click
+          trigger. Loading GA4 directly drops the container; the click trigger
+          is reimplemented in PhoneClickTracking.
+        */}
+        <GoogleAnalytics gaId="G-B92P56D6ZG" />
+        <PhoneClickTracking />
 
       </body>
 

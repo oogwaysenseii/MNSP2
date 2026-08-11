@@ -26,6 +26,7 @@ export function ServicesGrid({ hideAllLink = false }: { hideAllLink?: boolean })
                   alt={sluzba.name}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+                  quality={65}
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
