@@ -40,6 +40,11 @@ export function Hero() {
       {/* 1. TIMELAPSE VIDEO BACKGROUND */}
       <div className=" absolute inset-0 z-0">
         {/*
+          preload="none" so the video doesn't compete with CSS, JS and the
+          poster for bandwidth during first paint. On a throttled connection the
+          1.3 MB file was dominating LCP; now the poster paints first and the
+          video fades in behind it a moment later.
+
           The poster is preloaded with a link tag rather than a second visual
           layer. A `poster` attribute alone is discovered late and fetched at
           low priority, which makes it a weak LCP candidate — but rendering an
@@ -61,7 +66,7 @@ export function Hero() {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="none"
           poster="/hero-poster.webp"
           aria-hidden="true"
           className="w-full h-full object-cover opacity-65 transition-opacity duration-1000"
