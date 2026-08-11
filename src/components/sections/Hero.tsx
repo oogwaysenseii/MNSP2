@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Play, Pause, Award, ShieldCheck, Clock, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export function Hero() {
   const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   // Background quotes/headlines that fade in/out on top of the timelapse
@@ -35,6 +36,35 @@ export function Hero() {
     return () => clearInterval(interval);
   }, [headlines.length]);
 
+  /*
+   * The video is attached only after the page has finished loading.
+   *
+   * `preload="none"` does not work here: `autoPlay` overrides it, so the
+   * browser fetches the file during page load anyway and it competes with the
+   * CSS, JS and poster for bandwidth. Leaving `src` off until the load event
+   * is the only reliable way to keep it off the critical path.
+   *
+   * The poster paints immediately and carries LCP; the video starts a moment
+   * later. Visitors who never scroll past the fold on a slow connection still
+   * see the hero straight away.
+   */
+  useEffect(() => {
+    const attach = () => {
+      const el = videoRef.current;
+      if (!el || el.src) return;
+      el.src = '/vystavba-a-rekonstrukcie-budov.mp4';
+      el.load();
+    };
+
+    if (document.readyState === 'complete') {
+      const id = window.setTimeout(attach, 200);
+      return () => window.clearTimeout(id);
+    }
+
+    window.addEventListener('load', attach, { once: true });
+    return () => window.removeEventListener('load', attach);
+  }, []);
+
   return (
     <div id="hero" className="relative w-full h-[750px] overflow-hidden bg-zinc-950 text-white ">
       {/* 1. TIMELAPSE VIDEO BACKGROUND */}
@@ -62,6 +92,7 @@ export function Hero() {
         />
 
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
@@ -70,7 +101,6 @@ export function Hero() {
           poster="/hero-poster.webp"
           aria-hidden="true"
           className="w-full h-full object-cover opacity-65 transition-opacity duration-1000"
-          src="/vystavba-a-rekonstrukcie-budov.mp4"
         />
 
         {/* Subtle high-end radial lighting overlay */}
