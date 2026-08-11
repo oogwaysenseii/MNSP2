@@ -328,12 +328,14 @@ export function SubServiceDetail({
               <>
                 <button
                   onClick={() => setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))}
+                  aria-label="Predchádzajúca fotografia"
                   className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8  bg-black/40 text-white flex items-center justify-center hover:bg-amber-500 hover:text-zinc-950 transition-colors opacity-0 group-hover:opacity-100 cursor-pointer"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
                   onClick={() => setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))}
+                  aria-label="Ďalšia fotografia"
                   className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8  bg-black/40 text-white flex items-center justify-center hover:bg-amber-500 hover:text-zinc-950 transition-colors opacity-0 group-hover:opacity-100 cursor-pointer"
                 >
                   <ChevronRight className="w-5 h-5" />

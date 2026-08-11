@@ -218,12 +218,14 @@ export function Projects({
                       <>
                         <button
                             onClick={scrollLeft}
+                            aria-label="Predchádzajúce projekty"
                             className="absolute left-[-20px] top-1/2 -translate-y-1/2 z-50 w-12 h-12 flex items-center justify-center bg-white border border-gray-200 text-gray-600 hover:text-black hover:border-amber-500 hover:bg-amber-50 transition-all shadow-lg hidden lg:flex cursor-pointer"
                         >
                           <ChevronLeft className="w-6 h-6 ml-[-2px]" />
                         </button>
                         <button
                             onClick={scrollRight}
+                            aria-label="Ďalšie projekty"
                             className="absolute right-[-20px] top-1/2 -translate-y-1/2 z-50 w-12 h-12 flex items-center justify-center bg-white border border-gray-200 text-gray-600 hover:text-black hover:border-amber-500 hover:bg-amber-50 transition-all shadow-lg hidden lg:flex cursor-pointer"
                         >
                           <ChevronRight className="w-6 h-6 mr-[-2px]" />
