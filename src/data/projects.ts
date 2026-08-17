@@ -58,6 +58,7 @@ const PROJECT_CITY_SLUG: Record<string, string> = {
   Hriňová: 'hrinova',
   Lučenec: 'lucenec',
   'Banská Bystrica': 'banska-bystrica',
+  'Očová': 'zvolen', // ~10 km, uvedená v surrounding pre Zvolen
   Stožok: 'detva', // ~6 km
   Dúbravy: 'detva', // ~8 km
 };
@@ -134,17 +135,35 @@ export const projectsData: Project[] = [
   },
   {
     id: 'rekonstrukcia-domovu-dochodcov-senior-active-hrinova-n-o',
-    // TODO: Rekonštrukcia a modernizácia priestorov — konkrétne remeslá nie sú v popise uvedené.
+    /**
+     * TODO — doplniť rozsah (čísla služieb ako pri ostatných projektoch).
+     * Na fotografiách je jednoznačne vidieť omietky (05); ďalej maľby,
+     * kazetové podhľady a podlahové krytiny, ktoré vlastnú stránku služby
+     * nemajú. Nedopĺňam sám — z fotky sa nedá zistiť, čo robil subdodávateľ.
+     */
     realizedServices: [],
     title: 'Zariadenie pre seniorov a domov sociálnych služieb SENIOR ACTIVE Hriňová',
-    // TODO: doplniť skutočný rozsah prác na tomto projekte.
-    description: 'Rekonštrukcia a modernizácia priestorov zariadenia pre seniorov a domova sociálnych služieb.',
+    description:
+      'Rekonštrukcia a modernizácia priestorov zariadenia pre seniorov a domova sociálnych služieb — nové omietky a maľby izieb a chodieb, kazetové podhľady s novým osvetlením a podlahové krytiny. Práce prebiehali po etapách za prevádzky zariadenia.',
     category: 'Občianske stavby',
     location: 'Hriňová',
     year: 2025,
     duration: '4 mesiace',
     budgetString: '€ 450 000',
-    imageUrl: '/rekonstrukcia-domovu-dochodcov-senior-active-hrinova.webp'
+    imageUrl: '/rekonstrukcia-domovu-dochodcov-senior-active-hrinova.webp',
+    // Chronologicky podľa EXIF (17. 2. – 7. 5. 2025). Všetkých 9 fotografií
+    // má EXIF, poradie je teda presné.
+    gallery: [
+      { url: '/portfolio/senior-active-hrinova/01.webp', caption: 'Február 2025 — chodba pripravená na omietanie: zakrytie podláh, oblepenie hrán a odkryté rozvody v podhľade' },
+      { url: '/portfolio/senior-active-hrinova/02.webp', caption: 'Február 2025 — nové omietky v izbách, radiátory a okná chránené fóliou počas prác' },
+      { url: '/portfolio/senior-active-hrinova/03.webp', caption: 'Február 2025 — izba počas omietania, vpravo ešte pôvodný povrch steny' },
+      { url: '/portfolio/senior-active-hrinova/04.webp', caption: 'Február 2025 — dokončená omietka izby s pripravenými vývodmi elektroinštalácie' },
+      { url: '/portfolio/senior-active-hrinova/05.webp', caption: 'Marec 2025 — montáž rastra kazetového podhľadu a rozvodov na chodbe' },
+      { url: '/portfolio/senior-active-hrinova/06.webp', caption: 'Marec 2025 — izba po maľbe a položení novej podlahovej krytiny' },
+      { url: '/portfolio/senior-active-hrinova/07.webp', caption: 'Marec 2025 — dokončená izba s obnoveným vykurovaním a rozvodmi' },
+      { url: '/portfolio/senior-active-hrinova/08.webp', caption: 'Marec 2025 — izba po dokončení povrchových úprav' },
+      { url: '/portfolio/senior-active-hrinova/09.webp', caption: 'Máj 2025 — hotová chodba s kazetovým podhľadom, LED osvetlením a madlami, zariadenie opäť v prevádzke' },
+    ],
   },
   {
     id: 'rekonstrukcia-rodinneho-domu-hrinova',
@@ -255,16 +274,134 @@ export const projectsData: Project[] = [
 
   {
     id: 'rekonstrukcia-rodinneho-domu-detva',
-    // TODO: Kompletná rekonštrukcia — doplniť konkrétne remeslá.
+    // TODO: doplniť rozsah (čísla služieb). Na fotografiách je vidieť
+    // zatepľovanie a fasádu, omietky, podlahové vykurovanie a potery —
+    // potvrďte, čo z toho ste realizovali vy.
     realizedServices: [],
     title: 'Rekonštrukcia rodinného domu Detva',
-    description: 'Kompletná rekonštrukcia rodinného domu v Detve.',
+    description:
+      'Kompletná rekonštrukcia rodinného domu v Detve — od búracích prác a odkrytia pôvodného kamenného muriva cez nové preklady a okná, odkop po obvode so soklovou izoláciou a drenážou, zateplenie obvodového plášťa s novou fasádou, sadrokartónové podhľady a vnútorné omietky, podlahové vykurovanie s potermi až po kompletné dokončenie interiéru vrátane podláh a kuchyne na mieru.',
     category: 'Rodinné domy',
     location: 'Detva',
+    // Fotografie sú z februára 2023 až augusta 2024; pôvodne uvedený rok 2023
+    // ponechaný — potvrďte, ktorý rok sa má uvádzať ako rok realizácie.
     year: 2023,
+    // TODO: doplniť. Fotografie pokrývajú približne 18 mesiacov.
     duration: '',
     budgetString: '',
-    imageUrl: '/rekonstrukcia-domu-detva/Rekonstrukcia-domu-detva.webp'
+    imageUrl: '/rekonstrukcia-domu-detva/Rekonstrukcia-domu-detva.webp',
+    /**
+     * Chronologicky podľa EXIF — všetkých 37 fotografií má dátum, poradie je
+     * presné. Popisy bez TODO sú overené pohľadom na konkrétnu fotografiu;
+     * ostatné pomenúvajú etapu, ktorá je pre daný dátum overená zo vzorky.
+     */
+    gallery: [
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/001.webp', caption: 'Február 2023 — pôvodný stav interiéru po vyprataní a odstránení podláh' },
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/002.webp', caption: 'Február 2023 — vypratanie a odstránenie pôvodných povrchov' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/003.webp', caption: 'Február 2023 — vypratanie a odstránenie pôvodných povrchov' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/004.webp', caption: 'Február 2023 — vypratanie a odstránenie pôvodných povrchov' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/005.webp', caption: 'Február 2023 — vypratanie a odstránenie pôvodných povrchov' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/006.webp', caption: 'Február 2023 — vypratanie a odstránenie pôvodných povrchov' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/007.webp', caption: 'Február 2023 — vypratanie a odstránenie pôvodných povrchov' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/008.webp', caption: 'Február 2023 — vypratanie a odstránenie pôvodných povrchov' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/009.webp', caption: 'Február 2023 — vypratanie a odstránenie pôvodných povrchov' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/010.webp', caption: 'Marec 2023 — búracie práce a odkrývanie konštrukcií' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/011.webp', caption: 'Marec 2023 — búracie práce a odkrývanie konštrukcií' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/012.webp', caption: 'Marec 2023 — búracie práce, odkryté tehlové murivo pri pôvodnom schodisku' },
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/013.webp', caption: 'Marec 2023 — búracie práce a odkrývanie konštrukcií' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/014.webp', caption: 'Marec 2023 — búracie práce a odkrývanie konštrukcií' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/015.webp', caption: 'Marec 2023 — búracie práce a odkrývanie konštrukcií' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/016.webp', caption: 'Marec 2023 — búracie práce a odkrývanie konštrukcií' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/017.webp', caption: 'Marec 2023 — búracie práce a odkrývanie konštrukcií' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/018.webp', caption: 'Marec 2023 — búracie práce a odkrývanie konštrukcií' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/019.webp', caption: 'Marec 2023 — búracie práce a odkrývanie konštrukcií' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/020.webp', caption: 'Marec 2023 — búracie práce a odkrývanie konštrukcií' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/021.webp', caption: 'Marec 2023 — búracie práce a odkrývanie konštrukcií' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/022.webp', caption: 'Marec 2023 — búracie práce a odkrývanie konštrukcií' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/023.webp', caption: 'Marec 2023 — búracie práce a odkrývanie konštrukcií' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/024.webp', caption: 'Marec 2023 — búracie práce a odkrývanie konštrukcií' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/025.webp', caption: 'Marec 2023 — búracie práce a odkrývanie konštrukcií' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/026.webp', caption: 'Apríl 2023 — pohľad zo záhrady: nová krytina, rozšírené otvory a rozostavaná prístavba' },
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/027.webp', caption: 'Apríl 2023 — nová strešná krytina a úpravy otvorov' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/028.webp', caption: 'Júl 2023 — pôvodný dom od ulice s vybúranými okennými otvormi' },
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/029.webp', caption: 'Júl 2023 — pôvodný stav objektu pred ďalšou etapou' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/030.webp', caption: 'Júl 2023 — pôvodný stav objektu pred ďalšou etapou' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/031.webp', caption: 'Júl 2023 — pôvodný stav objektu pred ďalšou etapou' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/032.webp', caption: 'September 2023 — obnažené kamenné a tehlové murivo s novými prekladmi a osadeným oknom' },
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/033.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/034.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/035.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/036.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/037.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/038.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/039.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/040.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/041.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/042.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/043.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/044.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/045.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/046.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/047.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/048.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/049.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/050.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/051.webp', caption: 'September 2023 — obnažené murivo, nové preklady a osadzovanie okien' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/052.webp', caption: 'September 2023 — odkop po obvode, soklová XPS izolácia a nopová fólia na základoch' },
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/053.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/054.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/055.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/056.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/057.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/058.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/059.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/060.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/061.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/062.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/063.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/064.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/065.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/066.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/067.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/068.webp', caption: 'September 2023 — odkop po obvode, soklová izolácia a drenáž' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/069.webp', caption: 'November 2023 — kotvenie minerálnej vlny na obvodový plášť, fasáda chránená plachtou' },
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/070.webp', caption: 'November 2023 — zatepľovanie obvodového plášťa' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/071.webp', caption: 'November 2023 — hotová základná vrstva fasády s vytiahnutými ostenami okien' },
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/072.webp', caption: 'Január 2024 — zatmelené sadrokartónové podhľady a cementové omietky stien' },
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/073.webp', caption: 'Január 2024 — sadrokartónové podhľady a vnútorné omietky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/074.webp', caption: 'Január 2024 — sadrokartónové podhľady a vnútorné omietky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/075.webp', caption: 'Január 2024 — sadrokartónové podhľady a vnútorné omietky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/076.webp', caption: 'Január 2024 — interiér pripravený na podlahy, steny po jadrovej omietke' },
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/077.webp', caption: 'Január 2024 — sadrokartónové podhľady a vnútorné omietky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/078.webp', caption: 'Január 2024 — sadrokartónové podhľady a vnútorné omietky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/079.webp', caption: 'Január 2024 — sadrokartónové podhľady a vnútorné omietky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/080.webp', caption: 'Január 2024 — systémové dosky podlahového vykurovania položené na izolácii' },
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/081.webp', caption: 'Január 2024 — príprava podlahového vykurovania' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/082.webp', caption: 'Január 2024 — príprava podlahového vykurovania' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/083.webp', caption: 'Január 2024 — príprava podlahového vykurovania' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/084.webp', caption: 'Január 2024 — príprava podlahového vykurovania' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/085.webp', caption: 'Február 2024 — rozvinuté potrubie podlahového vykurovania pred betonážou poteru' },
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/086.webp', caption: 'Február 2024 — podlahové vykurovanie pred poterom' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/087.webp', caption: 'Február 2024 — podlahové vykurovanie pred poterom' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/088.webp', caption: 'Máj 2024 — dokončená izba s položenou podlahou a vymaľovanými stenami' },
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/089.webp', caption: 'Máj 2024 — dokončovacie práce a podlahy' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/090.webp', caption: 'Máj 2024 — dokončovacie práce a podlahy' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/091.webp', caption: 'Máj 2024 — dokončovacie práce a podlahy' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/092.webp', caption: 'August 2024 — dokončený denný priestor s kuchynskou linkou na mieru' },
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/093.webp', caption: 'August 2024 — dokončený interiér po rekonštrukcii' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/094.webp', caption: 'August 2024 — dokončený interiér po rekonštrukcii' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/095.webp', caption: 'August 2024 — dokončený interiér po rekonštrukcii' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/096.webp', caption: 'August 2024 — dokončený interiér po rekonštrukcii' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/097.webp', caption: 'August 2024 — dokončený interiér po rekonštrukcii' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/098.webp', caption: 'August 2024 — dokončený interiér po rekonštrukcii' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/099.webp', caption: 'August 2024 — dokončený interiér po rekonštrukcii' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/100.webp', caption: 'August 2024 — dokončený interiér po rekonštrukcii' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/101.webp', caption: 'August 2024 — dokončený interiér po rekonštrukcii' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/102.webp', caption: 'August 2024 — dokončený interiér po rekonštrukcii' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/103.webp', caption: 'August 2024 — dokončený interiér po rekonštrukcii' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/104.webp', caption: 'August 2024 — dokončený interiér po rekonštrukcii' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/rekonstrukcia-rodinneho-domu-detva/105.webp', caption: 'August 2024 — dokončený interiér po rekonštrukcii' }, // TODO: opísať konkrétny záber
+    ],
   },
 
   {
@@ -403,6 +540,37 @@ export const projectsData: Project[] = [
       { url: '/portfolio/rodinny-dom-banska-bystrica/26.webp', caption: 'Júl 2023 — záhradná strana s dlažbou po obvode a odvodňovacím žľabom' },
       { url: '/portfolio/rodinny-dom-banska-bystrica/27.webp', caption: 'Júl 2023 — pohľad na terasu a dokončené spevnené plochy' },
       { url: '/portfolio/rodinny-dom-banska-bystrica/28.webp', caption: 'Júl 2023 — hotová fasáda, francúzske balkóny a spevnené plochy pri vstupe' },
+    ],
+  },
+
+  {
+    id: 'rekonstrukcia-interieru-ocova',
+    // Rozsah podľa klienta: služby 03, 05 a 07 v číslovaní ServicesGrid
+    // (poradie TRADE_SERVICES v services.ts).
+    realizedServices: ['murarske-prace', 'omietky', 'obkladacske-prace'],
+    title: 'Rekonštrukcia interiéru v rodinnom dome Očová',
+    description:
+      'Rekonštrukcia interiéru staršieho rodinného domu — nová kúpeľňa s veľkoformátovým obkladom, murovaným sprchovým kútom a závesnou sanitou, obnovené povrchy stien, nové podlahy a interiérové dvere v celom podlaží.',
+    category: 'Rodinné domy',
+    location: 'Očová',
+    year: 2024,
+    // TODO: doplniť. Fotografie pokrývajú január až máj 2024.
+    duration: '',
+    budgetString: '',
+    imageUrl: '/portfolio/rekonstrukcia-interieru-ocova/06.webp',
+    // Chronologicky podľa EXIF — všetkých 10 fotografií má dátum.
+    // Každý popis je overený pohľadom na konkrétnu fotografiu.
+    gallery: [
+      { url: '/portfolio/rekonstrukcia-interieru-ocova/01.webp', caption: 'Január 2024 — pôvodný stav chodby s pôvodnými dverami a dlažbou' },
+      { url: '/portfolio/rekonstrukcia-interieru-ocova/02.webp', caption: 'Január 2024 — pôvodná kuchyňa s odkrytou drevenou podlahou' },
+      { url: '/portfolio/rekonstrukcia-interieru-ocova/03.webp', caption: 'Január 2024 — izba po odstránení podlahovej krytiny pred obnovou povrchov' },
+      { url: '/portfolio/rekonstrukcia-interieru-ocova/04.webp', caption: 'Marec 2024 — obkladanie kúpeľne veľkoformátovým obkladom, pripravená podomietková nádržka' },
+      { url: '/portfolio/rekonstrukcia-interieru-ocova/05.webp', caption: 'Marec 2024 — kúpeľňa počas obkladania s novým oknom a sadrokartónovým podhľadom' },
+      { url: '/portfolio/rekonstrukcia-interieru-ocova/06.webp', caption: 'Máj 2024 — hotová kúpeľňa so sprchovým kútom, výklenkami a závesným WC' },
+      { url: '/portfolio/rekonstrukcia-interieru-ocova/07.webp', caption: 'Máj 2024 — umývadlová zostava so zrkadlom a pohľad do chodby' },
+      { url: '/portfolio/rekonstrukcia-interieru-ocova/08.webp', caption: 'Máj 2024 — obývacia izba s dreveným lamelovým obkladom steny a novou podlahou' },
+      { url: '/portfolio/rekonstrukcia-interieru-ocova/09.webp', caption: 'Máj 2024 — chodba po rekonštrukcii s novými dverami a vstupom do kúpeľne' },
+      { url: '/portfolio/rekonstrukcia-interieru-ocova/10.webp', caption: 'Máj 2024 — spálňa s vstavanou skriňou po dokončení' },
     ],
   }
 ];
