@@ -7,6 +7,7 @@ import { ShieldCheck, CheckCircle2 } from "lucide-react";
 import {
     WHY_US,
     RENOVATION_SCOPE,
+    RENOVATION_WORK_GROUPS,
     RENOVATION_STAGES,
     RENOVATION_EQUIPMENT,
     RENOVATION_FAQ,
@@ -89,6 +90,7 @@ export default function RekonstrukciaDomuPage() {
                 fullDesc={`Špecializujeme sa na kvalitné rekonštrukcie starších domov a budov s dôrazom na precízne spracovanie a dlhú životnosť. Zvyšujeme životnú úroveň pôvodných domov prostredníctvom moderných technológií, energetických úspor a rešpektovania statiky pôvodnej budovy.\n\nČi už potrebujete komplexné statické spevnenie nosných stien, výmenu starých inštalácií, precízne zateplenie, alebo kompletnú premenu interiérových dispozícií na kľúč, postaráme sa o celý priebeh prác.`}
                 imageUrl="/rodinne-domy/rekonstrukcia-rodinneho-domu.webp"
                 features={[...RENOVATION_SCOPE]}
+                workGroups={RENOVATION_WORK_GROUPS}
                 stages={[...RENOVATION_STAGES]}
                 equipment={[...RENOVATION_EQUIPMENT]}
                 options={RENOVATION_OPTIONS}

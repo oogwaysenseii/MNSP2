@@ -14,6 +14,7 @@ import { CTA } from "./CTA";
 import { Projects } from "./Projects";
 
 import { ServiceCategory } from "@/src/data/projects";
+import { TURNKEY_WORK_GROUPS, type WorkGroup } from "@/src/data/rodinne-domy-content";
 import { CITIES, KRAJE } from "@/src/data/cities";
 import { LocationsSection } from "@/src/components/sections/LocationsSection";
 
@@ -59,6 +60,20 @@ export interface ServiceDetailProps {
   subtitle2?: string;
   locationFilter?: string;
   citySlug?: string;
+  /**
+   * The "prehľad poskytovaných prác" breakdown. Defaults to the turnkey scope
+   * for backwards compatibility; the renovation pages pass their own, because
+   * listing "Základy / Murivo / Strechy a krovy" to someone renovating an
+   * existing house describes a different job than the one they are buying.
+   */
+  workGroups?: readonly WorkGroup[];
+  /**
+   * `'local'` on the [mesto] routes. The works breakdown, the equipment list
+   * and the article cards are identical on the parent and on all 11 city
+   * pages, so in `'local'` they give way to a link to the parent — leaving the
+   * city page made mostly of the parts that are actually about that city.
+   */
+  variant?: 'full' | 'local';
 }
 
 export function RodinneDomyServiceDetail({
@@ -90,7 +105,10 @@ export function RodinneDomyServiceDetail({
                                            subtitle2,
                                            locationFilter,
                                            citySlug,
+                                           workGroups = TURNKEY_WORK_GROUPS,
+                                           variant = 'full',
                                          }: ServiceDetailProps) {
+  const isLocal = variant === 'local';
   const [projectSize, setProjectSize] = useState(defaultSize);
   const [selectedSpecIndex, setSelectedSpecIndex] = useState(0);
   const [activeKraj, setActiveKraj] = useState("banskobystricky");
@@ -189,46 +207,47 @@ export function RodinneDomyServiceDetail({
                     </div>
                 ))}
               </div>
+              {/* Byte-identical on the parent service page and on all 11 of its
+                  city pages. Kept on the parent; the city pages link to it. */}
+              {isLocal ? (
+                <div className="mt-8 pt-8 border-t border-zinc-200">
+                  <p className="text-sm text-zinc-600 leading-relaxed">
+                    Kompletný prehľad prác, ktoré v rámci tejto služby
+                    realizujeme, aj použitú mechanizáciu nájdete na hlavnej
+                    stránke služby:{' '}
+                    <Link
+                      href={parentBreadcrumbUrl ?? `/sluzby/${serviceSlug ?? ''}`}
+                      className="text-amber-700 font-medium underline underline-offset-4 hover:text-amber-800"
+                    >
+                      {parentBreadcrumbTitle ?? breadcrumbTitle}
+                    </Link>
+                    .
+                  </p>
+                </div>
+              ) : (
               <div className="mt-8 pt-8 border-t border-zinc-200">
                 <h4 className="text-xs font-mono text-zinc-500 font-bold tracking-wider uppercase mb-6">
                   PREHĽAD NAMI POSKYTOVANÝCH STAVEBNÝCH PRÁC
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="space-y-4">
-                    <h5 className="font-display font-bold text-zinc-900 border-b border-zinc-200 pb-2">Hrubá stavba</h5>
-                    <ul className="space-y-2.5">
-                      {["Základy", "Murivo a stropné dosky", "Strechy a krovy", "Okná a brány"].map((f, i) => (
+                  {workGroups.map((group) => (
+                    <div key={group.title} className="space-y-4">
+                      <h5 className="font-display font-bold text-zinc-900 border-b border-zinc-200 pb-2">
+                        {group.title}
+                      </h5>
+                      <ul className="space-y-2.5">
+                        {group.items.map((f, i) => (
                           <li key={i} className="flex items-start gap-2 text-sm text-zinc-600">
                             <div className="w-1.5 h-1.5  bg-amber-500 mt-1.5 shrink-0" />
                             <span>{f}</span>
                           </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="space-y-4">
-                    <h5 className="font-display font-bold text-zinc-900 border-b border-zinc-200 pb-2">Interiér</h5>
-                    <ul className="space-y-2.5">
-                      {["Elektroinštalácie", "Zdravotechnika", "Omietky a potery", "Obklady a dlažby"].map((f, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-zinc-600">
-                            <div className="w-1.5 h-1.5  bg-amber-500 mt-1.5 shrink-0" />
-                            <span>{f}</span>
-                          </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="space-y-4">
-                    <h5 className="font-display font-bold text-zinc-900 border-b border-zinc-200 pb-2">Exteriér</h5>
-                    <ul className="space-y-2.5">
-                      {["Zateplenie fasády", "Zámkové dlažby", "Ploty a prístrešky"].map((f, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-zinc-600">
-                            <div className="w-1.5 h-1.5  bg-amber-500 mt-1.5 shrink-0" />
-                            <span>{f}</span>
-                          </li>
-                      ))}
-                    </ul>
-                  </div>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
               </div>
+              )}
             </div>
 
             {/* 4 STAGES PROCESS PIPELINE */}
@@ -261,7 +280,8 @@ export function RodinneDomyServiceDetail({
               </div>
             </div>
 
-            {/* SPECIFIC MACHINERY ENTOURAGE */}
+            {/* SPECIFIC MACHINERY ENTOURAGE — same list on the parent. */}
+            {!isLocal && (
             <div className="space-y-4 pt-4 border-t border-zinc-200">
               <h4 className="text-xs font-mono text-zinc-500 font-bold tracking-wider uppercase">
                 Vlastné strojné vybavenie a technológie
@@ -277,6 +297,7 @@ export function RodinneDomyServiceDetail({
                 ))}
               </div>
             </div>
+            )}
 
           </div>
 

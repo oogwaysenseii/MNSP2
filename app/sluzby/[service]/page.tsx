@@ -5,7 +5,10 @@ import { getSEOTags } from '@/src/lib/seo';
 import { Metadata } from 'next';
 import { SubServiceDetail } from '@/src/components/sections/SubServiceDetail';
 import { REDIRECTED, componentKeyFor } from '@/src/data/service-component-keys';
+import { projectsForService } from '@/src/data/projects';
 import { HardHat, CheckCircle2 } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   generateServiceSchema,
   generateBreadcrumbSchema,
@@ -163,6 +166,56 @@ export default async function GenericServicePage({ params }: PageProps) {
     </div>
   );
 
+  // Projects that tagged this trade in `realizedServices`. Renders nothing
+  // until a project is tagged, so an untagged service page is unchanged
+  // rather than showing an empty section.
+  const realizedOn = projectsForService(service.slug);
+
+  const RealizedProjects = realizedOn.length > 0 && (
+    <div className="max-w-[1500px] mx-auto px-6 mt-16">
+      <div className="border border-zinc-200 overflow-hidden shadow-sm">
+        <div className="bg-zinc-950 px-6 py-4">
+          <h2 className="text-white font-display font-medium text-lg">
+            Kde sme {service.name.toLowerCase()} realizovali
+          </h2>
+        </div>
+        <div className="bg-zinc-50 p-6 sm:p-8">
+          <p className="text-sm text-zinc-500 mb-6">
+            Referencie z našich vlastných realizácií — nie ilustračné fotografie.
+          </p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {realizedOn.map((project) => (
+              <li key={project.id}>
+                <Link
+                  href={`/portfolio/${project.id}`}
+                  className="group flex gap-3 bg-white border border-zinc-200 hover:border-amber-500 transition-colors h-full"
+                >
+                  <span className="relative w-24 shrink-0 overflow-hidden bg-zinc-100">
+                    <Image
+                      src={project.imageUrl}
+                      alt={project.title}
+                      fill
+                      sizes="96px"
+                      className="object-cover"
+                    />
+                  </span>
+                  <span className="py-3 pr-3 min-w-0">
+                    <span className="block text-sm text-zinc-900 font-medium leading-snug group-hover:text-amber-700 transition-colors">
+                      {project.title}
+                    </span>
+                    <span className="block text-[11px] text-zinc-500 mt-1">
+                      {project.location} · {project.year}
+                    </span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <script
@@ -179,6 +232,7 @@ export default async function GenericServicePage({ params }: PageProps) {
         equipment={extra.equipment}
         customLocationTop={GenericSpecificTop}
       />
+      {RealizedProjects}
       {GenericFaq}
     </>
   );

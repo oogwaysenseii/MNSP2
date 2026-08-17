@@ -13,7 +13,7 @@ import { ProjectChallenges } from '@/src/components/project/ProjectChallenges';
 import { ProjectTimeline } from '@/src/components/project/ProjectTimeline';
 import { ProjectTestimonial } from '@/src/components/project/ProjectTestimonial';
 import { RelatedProjects } from '@/src/components/project/RelatedProjects';
-import { ProjectCTA } from '@/src/components/project/ProjectCTA';
+import { CTA } from '@/src/components/sections/CTA';
 
 export function generateStaticParams() {
   return projectsData.map((project) => ({
@@ -83,7 +83,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       <ProjectTimeline project={project} />
       <ProjectTestimonial project={project} />
       <RelatedProjects currentProject={project} />
-      <ProjectCTA />
+      {/* Same CTA as the homepage — it carries the contact form rather than
+          just a link to /kontakt. `pageName` goes into the lead email, so a
+          enquiry from here is attributable to the project that prompted it. */}
+      <CTA pageName={`Portfólio – ${project.title}`} />
     </article>
   );
 }

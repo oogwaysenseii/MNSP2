@@ -14,6 +14,7 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CITIES, KRAJE, getCityBySlug } from "@/src/data/cities";
+import { TRADE_SERVICES } from "@/src/data/services";
 import BlogSection from "@/src/components/sections/BlogSection";
 import { LocationsSection } from "@/src/components/sections/LocationsSection";
 
@@ -45,6 +46,16 @@ interface SubServiceDetailProps {
   citySlug?: string;
   customLocationTop?: React.ReactNode;
   customFaq?: React.ReactNode;
+  /**
+   * `'full'` on /sluzby/[service] — the canonical page for the trade itself.
+   * `'local'` on /sluzby/[service]/[mesto], where the same blocks would be a
+   * verbatim copy of the parent. Measured at ~75% duplication before this
+   * existed, which made every city page compete with its own parent as well
+   * as with its ten sibling towns. In `'local'` the shared technical payload
+   * is replaced by a link to the parent, so the city page is mostly the
+   * things that are actually about that city.
+   */
+  variant?: 'full' | 'local';
 }
 
 export function SubServiceDetail({
@@ -61,7 +72,9 @@ export function SubServiceDetail({
   citySlug,
   customLocationTop,
   customFaq,
+  variant = 'full',
 }: SubServiceDetailProps) {
+  const isLocal = variant === 'local';
   const pathname = usePathname();
   const [sizeM2, setSizeM2] = useState(150);
   const [selectedSpec, setSelectedSpec] = useState(0); 
@@ -132,19 +145,31 @@ export function SubServiceDetail({
     ],
   };
 
+  /**
+   * BlogSection filters on `post.tags`, not on `post.category`.
+   *
+   * Every value here previously named a category that exists in neither —
+   * 'Hrubé stavby', 'Statika stavieb', 'Teplotechnika', 'Búracie práce',
+   * 'Zakladanie stavieb' and 'Rekonštrukcia' appear nowhere in blog.ts. The
+   * filter therefore matched nothing and the article section rendered empty
+   * on all 16 service pages, so no service page linked to the blog at all.
+   *
+   * These are the six tags that actually exist. Adding a tag to blog.ts means
+   * it can be used here; inventing one here silently empties the section again.
+   */
   const serviceTagMap: Record<SubServiceKey, string> = {
-    zakladanie: 'Zakladanie stavieb',
-    murarske: 'Hrubé stavby',
-    tesarske: 'Hrubé stavby',
-    monoliticke: 'Statika stavieb',
-    obkladacske: 'Rekonštrukcia',
-    omietky: 'Rekonštrukcia',
-    potery: 'Hrubé stavby',
-    fasady: 'Teplotechnika',
-    vykopove: 'Zakladanie stavieb',
-    buracie: 'Búracie práce',
-    jadrove: 'Búracie práce',
-    rezanie: 'Rekonštrukcia',
+    zakladanie: 'Stavebné procesy',
+    murarske: 'Stavba domu',
+    tesarske: 'Stavba domu',
+    monoliticke: 'Stavebné procesy',
+    obkladacske: 'Rekonštrukcia domu',
+    omietky: 'Rekonštrukcia domu',
+    potery: 'Stavebné procesy',
+    fasady: 'Technológie',
+    vykopove: 'Stavebné procesy',
+    buracie: 'Rekonštrukcia domu',
+    jadrove: 'Rekonštrukcia domu',
+    rezanie: 'Rekonštrukcia domu',
   };
 
   const images = imageMap[serviceId] || imageMap.zakladanie;
@@ -272,7 +297,24 @@ export function SubServiceDetail({
             </div>
           </div>
 
-          {/* Technical material arrays */}
+          {/* Technical material arrays — identical on the parent service page,
+              so on a city page this is pure duplication. Linked instead. */}
+          {isLocal ? (
+            <div className="bg-zinc-50 border border-zinc-200 p-6">
+              <p className="text-sm text-zinc-600 leading-relaxed">
+                Použité materiály, technologické postupy a mechanizáciu, ktorú
+                pri týchto prácach nasadzujeme, popisujeme podrobne na hlavnej
+                stránke služby:{' '}
+                <Link
+                  href={`/sluzby/${serviceSlug}`}
+                  className="text-amber-700 font-medium underline underline-offset-4 hover:text-amber-800"
+                >
+                  {title}
+                </Link>
+                .
+              </p>
+            </div>
+          ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-zinc-50 border border-zinc-200  p-6">
             <div>
               <span className="block text-xs font-mono font-bold text-zinc-400 uppercase mb-3">
@@ -301,6 +343,7 @@ export function SubServiceDetail({
               </ul>
             </div>
           </div>
+          )}
         </div>
 
         {/* RIGHT COMPONENT: IMAGE HERO & PRICING ESTIMATOR (5/12 cols) */}
@@ -480,22 +523,15 @@ export function SubServiceDetail({
                 Remeslá
               </h5>
               <div className="grid grid-cols-1 gap-2 pt-2">
-                {[
-                  { name: "Monolitické konštrukcie", id: "monoliticke" },
-                  { name: "Murárske práce", id: "murarske" },
-                  { name: "Tesárske práce", id: "tesarske" },
-                  { name: "Omietky", id: "omietky" },
-                  { name: "Potery", id: "potery" },
-                  { name: "Obkladačské práce", id: "obkladacske" },
-                  { name: "Fasády", id: "fasady" },
-                  { name: "Výkopové a zemné práce", id: "vykopove" },
-                  { name: "Búracie práce", id: "buracie" },
-                  { name: "Jadrové vŕtanie", id: "jadrove" },
-                  { name: "Rezanie otvorov", id: "rezanie" }
-                ].map(r => (
+                {/* Was a hardcoded list keyed by SubServiceKey ('monoliticke',
+                    'vykopove', …) used directly as the href. Those are component
+                    keys, not route slugs, so eight of the eleven links 404'd —
+                    on 182 pages. Driven from SERVICES now, so the label and the
+                    URL come from the same record and cannot drift. */}
+                {TRADE_SERVICES.map((r) => (
                   <Link
-                    key={r.id}
-                    href={`/sluzby/${r.id}`}
+                    key={r.slug}
+                    href={`/sluzby/${r.slug}`}
                     className="text-xs text-zinc-600 hover:text-amber-600 transition-colors"
                   >
                     {r.name}
@@ -509,10 +545,15 @@ export function SubServiceDetail({
       
       {customFaq}
 
-      <BlogSection filterCategory={serviceTagMap[serviceId]} compact={true} />
+      {/* Same article cards on the parent and on all 11 city pages. Kept on the
+          parent, dropped here — it added bulk to the city page without adding
+          anything local. */}
+      {!isLocal && (
+        <BlogSection filterCategory={serviceTagMap[serviceId]} compact={true} />
+      )}
 
       {/* LOCATIONS & WHY US SECTION */}
-      <div className=" mx-auto px-6 ">
+      <div className=" mx-auto px-6 mt-10 ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           <div className="bg-white border border-zinc-200 p-6 sm:p-8 h-full flex flex-col justify-center">
             <div className="text-center space-y-2 mb-6">

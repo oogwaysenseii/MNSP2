@@ -2,6 +2,17 @@ export const COMPANY_NAME = 'MNSP | Stavby a rekonštrukcie';
 export const DOMAIN = 'https://www.mnsp.sk';
 
 /**
+ * Brand suffix for <title> only — NOT for schema.
+ *
+ * The full COMPANY_NAME is 32 characters. Appended by the layout's title
+ * template it pushed roughly half of all page titles past the ~60 characters
+ * Google renders, so the brand was truncated away on exactly the pages where
+ * it would have helped. Schema, footer and GBP keep the full legal-style name;
+ * only the title tag uses the short form.
+ */
+export const BRAND_SHORT = 'MNSP';
+
+/**
  * THREE real branches, each with its own Google Business Profile.
  *
  * Rules that keep this valid rather than spammy:

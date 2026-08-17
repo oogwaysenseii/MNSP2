@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { DOMAIN, BRANCHES } from '@/src/lib/schema';
 import { CITIES } from '@/src/data/cities';
 import { SERVICES } from '@/src/data/services';
-import { REDIRECTED } from '@/src/data/service-component-keys';
+import { REDIRECTED, hasCityPages } from '@/src/data/service-component-keys';
 import { projectsData } from '@/src/data/projects';
 import { blogPostsData } from '@/src/data/blog';
 
@@ -78,8 +78,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // `hasCityPages` keeps this in step with generateStaticParams — a service
+  // excluded from the matrix must not be advertised in the sitemap.
   const serviceCities: MetadataRoute.Sitemap = SERVICES.filter(
-    (s) => !REDIRECTED_SLUGS.includes(s.slug),
+    (s) => !REDIRECTED_SLUGS.includes(s.slug) && hasCityPages(s.slug),
   ).flatMap((service) =>
     CITIES.map((city) => ({
       url: `${DOMAIN}/sluzby/${service.slug}/${city.slug}`,

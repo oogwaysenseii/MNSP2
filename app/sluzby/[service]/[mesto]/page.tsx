@@ -2,14 +2,17 @@ import { notFound, redirect } from 'next/navigation';
 import { getCityBySlug, CITIES, capitalize } from '@/src/data/cities';
 import { getServiceBySlug, SERVICES } from '@/src/data/services';
 import { SERVICE_DETAILS } from '@/src/data/service-details';
-import { REDIRECTED, componentKeyFor } from '@/src/data/service-component-keys';
+import { REDIRECTED, componentKeyFor, hasCityPages } from '@/src/data/service-component-keys';
 import { getConditions } from '@/src/data/city-conditions';
 import { getServiceLocalAngle, SERVICE_DIFFERENTIATES } from '@/src/data/service-local-angles';
 import type { ServiceSlug } from '@/src/data/services-slugs';
 import { getSEOTags } from '@/src/lib/seo';
 import { Metadata } from 'next';
 import { SubServiceDetail } from '@/src/components/sections/SubServiceDetail';
+import { proofForServiceAndCity } from '@/src/data/projects';
 import { MapPin } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   generateServicePageSchema,
   generateBreadcrumbSchema,
@@ -25,6 +28,7 @@ export async function generateStaticParams() {
   const params: { service: string; mesto: string }[] = [];
   for (const service of SERVICES) {
     if ((REDIRECTED as readonly string[]).includes(service.slug)) continue;
+    if (!hasCityPages(service.slug)) continue;
     for (const city of CITIES) {
       params.push({ service: service.slug, mesto: city.slug });
     }
@@ -58,6 +62,13 @@ export default async function ServiceLocationPage({ params }: PageProps) {
     redirect(`/sluzby/rodinne-domy/stavba-domu-na-kluc/${citySlug}`);
   }
 
+  // Services with no per-city pages. next.config.ts 301s these at the edge;
+  // this guard covers anything that reaches the route directly, so the URL
+  // never renders a page that is no longer part of the site.
+  if (!hasCityPages(serviceSlug)) {
+    redirect(`/sluzby/${serviceSlug}`);
+  }
+
   const city = getCityBySlug(citySlug);
   const service = getServiceBySlug(serviceSlug);
   if (!city || !service) notFound();
@@ -80,6 +91,12 @@ export default async function ServiceLocationPage({ params }: PageProps) {
 
   const differentiates = SERVICE_DIFFERENTIATES[serviceSlug as ServiceSlug] ?? false;
 
+  // Real completed work, best match first: this trade in this town, then this
+  // trade anywhere, then any work in this town. The only content on this page
+  // that no competitor can copy — and for trades that genuinely don't vary by
+  // location, the only thing that makes the page local at all.
+  const localProof = proofForServiceAndCity(serviceSlug, citySlug).slice(0, 2);
+
   const faq = [
     ...angle.faq,
     {
@@ -90,7 +107,10 @@ export default async function ServiceLocationPage({ params }: PageProps) {
     },
     {
       q: `Kedy viete začať s realizáciou ${city.locative}?`,
-      a: 'Závisí to od aktuálnej vyťaženosti a rozsahu prác. Po obhliadke vám povieme konkrétny najbližší možný termín — a ak ho nedokážeme dodržať, povieme to hneď, nie až v priebehu stavby.',
+      a:
+        conditions.climate === 'cold-wet' || conditions.altitude >= 500
+          ? `Závisí to od aktuálnej vyťaženosti a rozsahu prác. ${capitalize(city.locative)} však rátajte aj s kratšou stavebnou sezónou — v nadmorskej výške okolo ${conditions.altitude} m plánujeme mokré procesy do teplejších mesiacov. Po obhliadke vám povieme konkrétny najbližší možný termín, a ak ho nedokážeme dodržať, povieme to hneď, nie až v priebehu stavby.`
+          : `Závisí to od aktuálnej vyťaženosti a rozsahu prác. Sezóna je tu pomerne dlhá, takže termín býva otázkou kapacity, nie počasia. Po obhliadke vám povieme konkrétny najbližší možný termín — a ak ho nedokážeme dodržať, povieme to hneď, nie až v priebehu stavby.`,
     },
     {
       q: `Realizujete ${service.name.toLowerCase()} aj v obciach v okolí?`,
@@ -191,6 +211,45 @@ export default async function ServiceLocationPage({ params }: PageProps) {
             </p>
           </div>
         </div>
+
+        {localProof.length > 0 && (
+          <div className="pt-6 border-t border-zinc-200/60">
+            <strong className="text-sm text-zinc-900 block mb-1">
+              {`Čo sme už postavili ${city.locative} a v okolí`}
+            </strong>
+            <p className="text-xs text-zinc-500 mb-4">
+              Referencie z tejto lokality — nie ilustračné fotografie.
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {localProof.map((project) => (
+                <li key={project.id}>
+                  <Link
+                    href={`/portfolio/${project.id}`}
+                    className="group flex gap-3 bg-white border border-zinc-200 hover:border-amber-500 transition-colors h-full"
+                  >
+                    <span className="relative w-24 shrink-0 overflow-hidden bg-zinc-100">
+                      <Image
+                        src={project.imageUrl}
+                        alt={project.title}
+                        fill
+                        sizes="96px"
+                        className="object-cover"
+                      />
+                    </span>
+                    <span className="py-3 pr-3 min-w-0">
+                      <span className="block text-sm text-zinc-900 font-medium leading-snug group-hover:text-amber-700 transition-colors">
+                        {project.title}
+                      </span>
+                      <span className="block text-[11px] text-zinc-500 mt-1">
+                        {project.location} · {project.year}
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -235,6 +294,7 @@ export default async function ServiceLocationPage({ params }: PageProps) {
         cityAccusative={city.accusative}
         citySlug={city.slug}
         customLocationTop={LocationSpecificTop}
+        variant="local"
       />
       {LocationFaq}
     </>

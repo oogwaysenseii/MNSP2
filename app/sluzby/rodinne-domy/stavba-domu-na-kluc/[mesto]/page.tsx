@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getCityBySlug, CITIES, capitalize } from '@/src/data/cities';
 import { getConditions } from '@/src/data/city-conditions';
-import { rodinneDomyLocalAngle } from '@/src/data/service-local-angles';
+import { stavbaNaKlucLocalAngle } from '@/src/data/service-local-angles';
 import { TURNKEY_RATE_PER_M2, STANDARD_OPTIONS } from '@/src/data/pricing';
 import {
   WHY_US,
@@ -48,7 +48,7 @@ export default async function StavbaLocationPage({ params }: PageProps) {
   const conditions = getConditions(city.slug);
   if (!conditions) notFound();
 
-  const angle = rodinneDomyLocalAngle(conditions, city.locative, city.genitive);
+  const angle = stavbaNaKlucLocalAngle(conditions, city.locative, city.genitive);
 
   const jsonLd = [
     generateBreadcrumbSchema([
@@ -225,6 +225,8 @@ export default async function StavbaLocationPage({ params }: PageProps) {
         whyChooseUs={whyUsSection}
         ctaTitle={`Plánujete výstavbu rodinného domu na kľúč ${city.locative}?`}
         ctaSubtitle="Nechajte nám na seba kontakt a naši inžinieri sa s vami spoja s návrhom realizácie."
+        variant="local"
+        hideBlog={true}
         blogFilterCategory="Stavba domu"
         minSize={80}
         maxSize={400}

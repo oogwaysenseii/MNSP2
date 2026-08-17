@@ -6,6 +6,7 @@ import { RENOVATION_RATE_PER_M2, RENOVATION_OPTIONS } from '@/src/data/pricing';
 import {
   WHY_US,
   RENOVATION_SCOPE,
+  RENOVATION_WORK_GROUPS,
   RENOVATION_STAGES,
   RENOVATION_EQUIPMENT,
 } from '@/src/data/rodinne-domy-content';
@@ -205,6 +206,7 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
         fullDesc={`Realizujeme kompletné alebo čiastočné rekonštrukcie rodinných domov v meste ${city.name} a okolí. Pracujeme s ohľadom na aktuálne normy, statiku a historickú hodnotu budov.\n\nSme pripravení na riadenie komplikovaných búracích prác pri starých objektoch, vstavby podkroví, sanácie muriva aj nadstavby.`}
         imageUrl="/rodinne-domy/rekonstrukcia-rodinneho-domu.webp"
         features={[...RENOVATION_SCOPE]}
+        workGroups={RENOVATION_WORK_GROUPS}
         stages={[...RENOVATION_STAGES]}
         equipment={[...RENOVATION_EQUIPMENT]}
         options={RENOVATION_OPTIONS}
@@ -214,6 +216,8 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
         whyChooseUs={whyUsSection}
         ctaTitle={`Máte záujem o rekonštrukciu domu ${city.locative}?`}
         ctaSubtitle="Spojte sa s našim tímom a dohodnite si termín technickej obhliadky na mieste."
+        variant="local"
+        hideBlog={true}
         blogFilterCategory="Rekonštrukcia domu"
         minSize={50}
         maxSize={300}

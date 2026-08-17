@@ -18,6 +18,12 @@ interface ProjectsSectionProps {
   hideHeader?: boolean;
 
   locationFilter?: string;
+  /**
+   * Restrict the grid to specific projects, by id. Used by city pages to show
+   * real work done in that town instead of the same site-wide grid that
+   * already appears on the parent service page.
+   */
+  onlyIds?: string[];
 }
 
 
@@ -69,7 +75,8 @@ export function Projects({
                            subtitleSk = 'Prehľad zrealizovaných a prebiehajúcich projektov.',
                            viewMode = 'carousel',
                            locationFilter = 'all',
-                           hideHeader = false
+                           hideHeader = false,
+                           onlyIds,
                          }: ProjectsSectionProps = {}) {
   const [selectedCategory, setSelectedCategory] = useState<ServiceCategory | 'all'>(defaultCategory);
   const [selectedLoc, setSelectedLoc] = useState<string>(locationFilter);
@@ -87,6 +94,9 @@ export function Projects({
 
   // Filter project arrays based on toggle buttons
   const filteredProjects = projectsData.filter((proj) => {
+    // An explicit id list wins over the category/location toggles.
+    if (onlyIds) return onlyIds.includes(proj.id);
+
     const projLocation = proj.location;
 
     // Check Category

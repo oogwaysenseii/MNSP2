@@ -1,26 +1,51 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Wrench } from 'lucide-react';
+import { getServiceBySlug } from '@/src/data/services';
+import type { ServiceSlug } from '@/src/data/services-slugs';
 
 interface RelatedServicesProps {
   content: string;
   tags: string[];
 }
 
-// Map keywords to specific service URLs
-const serviceMap = [
+/**
+ * Keyword → service. The trade entries carry a `slug` typed as ServiceSlug,
+ * so the URL is built from a value the compiler has checked against the real
+ * routes.
+ *
+ * Six of these previously hardcoded a shortened URL — '/sluzby/murarske',
+ * '/sluzby/vykopove', '/sluzby/monoliticke' and so on. Those are component
+ * keys, not route slugs, so every one of them 404'd from the blog articles
+ * that matched their keywords.
+ */
+type ServiceLink =
+  | { keywords: string[]; slug: ServiceSlug; name?: string }
+  | { keywords: string[]; url: string; name: string };
+
+const serviceMap: ServiceLink[] = [
   { keywords: ['rodinn', 'dom', 'dom na kľúč', 'domu na kľúč'], url: '/sluzby/rodinne-domy/stavba-domu-na-kluc', name: 'Stavba domu na kľúč' },
   { keywords: ['rekonštrukc', 'rekonštrukcia domu'], url: '/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu', name: 'Rekonštrukcia rodinného domu' },
-  { keywords: ['murár', 'hrubá stavba', 'murárske práce'], url: '/sluzby/murarske', name: 'Murárske práce' },
-  { keywords: ['fasád', 'zateplenie'], url: '/sluzby/fasady', name: 'Realizácia fasád' },
-  { keywords: ['omietk'], url: '/sluzby/omietky', name: 'Omietky' },
-  { keywords: ['poter'], url: '/sluzby/potery', name: 'Potery' },
-  { keywords: ['obklad', 'dlažb', 'kúpeľn'], url: '/sluzby/obkladacske', name: 'Obkladačské práce' },
-  { keywords: ['výkop', 'zemné práce'], url: '/sluzby/vykopove', name: 'Výkopové a zemné práce' },
-  { keywords: ['búrac', 'búranie'], url: '/sluzby/buracie', name: 'Búracie práce' },
-  { keywords: ['monolit'], url: '/sluzby/monoliticke', name: 'Monolitické konštrukcie' },
-  { keywords: ['tesár', 'krov'], url: '/sluzby/tesarske', name: 'Tesárske práce' },
+  { keywords: ['murár', 'hrubá stavba', 'murárske práce'], slug: 'murarske-prace' },
+  { keywords: ['fasád', 'zateplenie'], slug: 'fasady', name: 'Realizácia fasád' },
+  { keywords: ['omietk'], slug: 'omietky' },
+  { keywords: ['poter'], slug: 'potery' },
+  { keywords: ['obklad', 'dlažb', 'kúpeľn'], slug: 'obkladacske-prace' },
+  { keywords: ['výkop', 'zemné práce'], slug: 'vykopove-zemne-prace' },
+  { keywords: ['búrac', 'búranie'], slug: 'buracie-prace' },
+  { keywords: ['monolit'], slug: 'monoliticke-konstrukcie' },
+  { keywords: ['tesár', 'krov'], slug: 'tesarske-prace' },
 ];
+
+/** Resolve a map entry to its href and label, preferring the SERVICES record. */
+function resolve(entry: ServiceLink): { url: string; name: string } {
+  if ('url' in entry) return { url: entry.url, name: entry.name };
+  const service = getServiceBySlug(entry.slug);
+  return {
+    url: `/sluzby/${entry.slug}`,
+    name: entry.name ?? service?.name ?? entry.slug,
+  };
+}
 
 export function RelatedServices({ content, tags }: RelatedServicesProps) {
   const normalizedText = (content + ' ' + tags.join(' ')).toLowerCase();
@@ -28,7 +53,7 @@ export function RelatedServices({ content, tags }: RelatedServicesProps) {
   // Find matching services
   const matchedServices = serviceMap.filter(service => 
     service.keywords.some(keyword => normalizedText.includes(keyword))
-  ).slice(0, 3); // Max 3 services
+  ).slice(0, 3).map(resolve); // Max 3 services
 
   if (matchedServices.length === 0) return null;
 
@@ -42,8 +67,8 @@ export function RelatedServices({ content, tags }: RelatedServicesProps) {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {matchedServices.map((service, idx) => (
-          <Link 
-            key={idx} 
+          <Link
+            key={service.url}
             href={service.url}
             className="group flex items-center justify-between p-4 bg-zinc-50 border border-zinc-200 hover:border-amber-300 hover:bg-amber-50/30  transition-all"
           >

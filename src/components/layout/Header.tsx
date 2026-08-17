@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, ChevronRight, HardHat, Phone, ArrowUpRight } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
@@ -27,7 +27,49 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  
+
+  /**
+   * The dropdown used to close the instant the pointer left the trigger.
+   * Two things caused that:
+   *
+   *  1. The panel sat `mt-2` below the trigger, and that 8px gap belonged to
+   *     neither element — crossing it fired `onMouseLeave` on the wrapper.
+   *     The gap is now `pt-2` on a positioned wrapper, so it is inside the
+   *     hovered subtree and the pointer never leaves.
+   *  2. Closing was immediate, so clipping a corner on the way to a menu item
+   *     dismissed the menu. A short delay makes the path forgiving without
+   *     leaving the menu hanging around.
+   */
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openDropdown = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    setIsDropdownOpen(true);
+  };
+
+  const closeDropdownSoon = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setIsDropdownOpen(false), 220);
+  };
+
+  const closeDropdownNow = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    setIsDropdownOpen(false);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    };
+  }, []);
+
+
   const pathname = usePathname();
   let currentPage = 'other';
   if (pathname === '/') currentPage = 'home';
@@ -118,8 +160,8 @@ export function Header() {
           {/* Subpages / Services Dropdown */}
           <div
             className="relative"
-            onMouseEnter={() => setIsDropdownOpen(true)}
-            onMouseLeave={() => setIsDropdownOpen(false)}
+            onMouseEnter={openDropdown}
+            onMouseLeave={closeDropdownSoon}
           >
             <Link
               href="/sluzby"
@@ -137,11 +179,18 @@ export function Header() {
                 into the Header, which renders on all 285 pages, for two enter
                 transitions. CSS handles these; motion now only loads where it
                 actually earns its place. */}
+            {/* Positioned wrapper carries the offset as PADDING, so the space
+                between trigger and panel stays part of the hovered subtree. */}
             <div
-              className={`absolute left-1/2 -translate-x-1/2 mt-2 w-64 bg-white border border-zinc-200 shadow-xl py-2 z-50 text-zinc-800 origin-top transition-all duration-150 ease-out ${
+              className={`absolute left-1/2 -translate-x-1/2 top-full pt-2 z-50 ${
+                isDropdownOpen ? 'pointer-events-auto' : 'pointer-events-none'
+              }`}
+            >
+            <div
+              className={`w-64 bg-white border border-zinc-200 shadow-xl py-2 text-zinc-800 origin-top transition-all duration-150 ease-out ${
                 isDropdownOpen
-                  ? 'opacity-100 translate-y-0 pointer-events-auto'
-                  : 'opacity-0 translate-y-2.5 pointer-events-none invisible'
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-2.5 invisible'
               }`}
               aria-hidden={!isDropdownOpen}
             >
@@ -151,7 +200,7 @@ export function Header() {
                       href={srv.href}
                       onClick={() => {
                         handleNavClick();
-                        setIsDropdownOpen(false);
+                        closeDropdownNow();
                       }}
                       className={`w-full text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider hover:bg-neutral-50 hover:text-amber-600 transition-colors cursor-pointer block ${
                         srv.highlight ? 'text-amber-600 border-b border-zinc-100 font-extrabold pb-3 mb-1' : ''
@@ -172,7 +221,10 @@ export function Header() {
                     <span>Remeslá & Špeciálne práce</span>
                     <ChevronRight className="w-3.5 h-3.5" />
 
-                    <div className="absolute left-full top-[-10px] ml-1 opacity-0 shadow-none pointer-events-none group-hover/trades:opacity-100 group-hover/trades:pointer-events-auto transition-opacity duration-200">
+                    {/* `pl-1` rather than `ml-1`: a margin here left a 4px dead
+                        zone between this row and the submenu, so moving right
+                        onto it closed the submenu. Padding keeps it hoverable. */}
+                    <div className="absolute left-full top-[-10px] pl-1 opacity-0 shadow-none pointer-events-none group-hover/trades:opacity-100 group-hover/trades:pointer-events-auto transition-opacity duration-200">
                       <div className="w-64  bg-white border border-zinc-200 shadow-xl py-2 z-50 text-zinc-800">
                         {secondaryServices.map((sec) => (
                           <Link 
@@ -180,7 +232,7 @@ export function Header() {
                             href={sec.href}
                             onClick={() => {
                               handleNavClick();
-                              setIsDropdownOpen(false);
+                              closeDropdownNow();
                             }}
                             className="w-full text-left px-4 py-2 text-xs font-semibold hover:bg-neutral-50 hover:text-amber-600 transition-colors cursor-pointer block"
                           >
@@ -190,6 +242,7 @@ export function Header() {
                       </div>
                     </div>
                   </div>
+            </div>
             </div>
           </div>
 

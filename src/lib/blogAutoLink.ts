@@ -3,11 +3,14 @@ const keywords = [
   { match: /výstavb[aouy] domu/i, url: '/sluzby/rodinne-domy/stavba-domu-na-kluc' },
   { match: /dom[u] na kľúč/i, url: '/sluzby/rodinne-domy/stavba-domu-na-kluc' },
   { match: /rekonštrukci[aouie] domu/i, url: '/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu' },
-  { match: /murársk[eichým]+ prác[eami]*/i, url: '/sluzby/murarske' },
+  // These three previously pointed at '/sluzby/murarske' and '/sluzby/vykopove',
+  // which are SubServiceKey values rather than route slugs — so the auto-linker
+  // was generating 404s inside article bodies.
+  { match: /murársk[eichým]+ prác[eami]*/i, url: '/sluzby/murarske-prace' },
   { match: /fasád[yamiu]*/i, url: '/sluzby/fasady' },
   { match: /omietk[yamiu]*/i, url: '/sluzby/omietky' },
-  { match: /zemn[éýchými]+ prác[eami]*/i, url: '/sluzby/vykopove' },
-  { match: /výkopov[éýchými]+ prác[eami]*/i, url: '/sluzby/vykopove' },
+  { match: /zemn[éýchými]+ prác[eami]*/i, url: '/sluzby/vykopove-zemne-prace' },
+  { match: /výkopov[éýchými]+ prác[eami]*/i, url: '/sluzby/vykopove-zemne-prace' },
 ];
 
 export function autoLinkKeywords(content: string): string {

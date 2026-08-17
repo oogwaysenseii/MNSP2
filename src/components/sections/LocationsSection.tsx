@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ChevronRight, MapPin } from "lucide-react";
 import { CITIES, KRAJE } from "@/src/data/cities";
+import { hasCityPages } from "@/src/data/service-component-keys";
 
 interface LocationsSectionProps {
   serviceSlug?: string;
@@ -68,6 +69,9 @@ export function LocationsSection({
             ).map((city) => {
               const getServicePath = (slug: string) => {
                 if (!serviceSlug) return `/lokality/${city.slug}`;
+                // No per-city page for this service — point at the town hub
+                // rather than at a URL that now 301s straight back.
+                if (!hasCityPages(slug)) return `/lokality/${city.slug}`;
                 if (getBreadcrumbUrl) {
                   return citySlug
                     ? `${getBreadcrumbUrl()}/${city.slug}`

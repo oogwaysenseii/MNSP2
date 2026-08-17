@@ -203,7 +203,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     remarkPlugins={[remarkGfm]} 
                     rehypePlugins={[
                       rehypeSlug,
-                      [rehypeAutolinkHeadings, { behavior: 'append', properties: { className: ['anchor-link'] } }]
+                      // `aria-label` is required: the appended anchor contains
+                      // only an empty icon <span>, so without it every heading
+                      // permalink ships as a link with no accessible name.
+                      [
+                        rehypeAutolinkHeadings,
+                        {
+                          behavior: 'append',
+                          properties: {
+                            className: ['anchor-link'],
+                            'aria-label': 'Odkaz na túto sekciu',
+                          },
+                        },
+                      ]
                     ]}
                     components={{
                       img: ({node, ...props}) => (

@@ -109,6 +109,58 @@ export const RENOVATION_SCOPE = [
   'Zatepľovanie a celkové obnovenie historickej či pôvodnej fasády',
 ] as const;
 
+/**
+ * The "prehľad poskytovaných prác" breakdown.
+ *
+ * This was hardcoded inside RodinneDomyServiceDetail, so the renovation page
+ * advertised "Základy / Murivo a stropné dosky / Strechy a krovy" — new-build
+ * scope, on a page for people renovating an existing house. Same block on all
+ * 22 location pages under both services.
+ *
+ * Split so each service describes the work it actually does.
+ */
+export type WorkGroup = { title: string; items: readonly string[] };
+
+export const TURNKEY_WORK_GROUPS: readonly WorkGroup[] = [
+  {
+    title: 'Hrubá stavba',
+    items: ['Základy', 'Murivo a stropné dosky', 'Strechy a krovy', 'Okná a brány'],
+  },
+  {
+    title: 'Interiér',
+    items: ['Elektroinštalácie', 'Zdravotechnika', 'Omietky a potery', 'Obklady a dlažby'],
+  },
+  {
+    title: 'Exteriér',
+    items: ['Zateplenie fasády', 'Zámkové dlažby', 'Ploty a prístrešky'],
+  },
+] as const;
+
+export const RENOVATION_WORK_GROUPS: readonly WorkGroup[] = [
+  {
+    title: 'Búranie a statika',
+    items: [
+      'Búracie práce a odvoz sutiny',
+      'Zosilnenie statiky, podchytenie základov',
+      'Vybúranie a zväčšenie otvorov',
+      'Sanácia vlhkého muriva',
+    ],
+  },
+  {
+    title: 'Rozvody a interiér',
+    items: [
+      'Výmena elektroinštalácie',
+      'Výmena rozvodov vody a kúrenia',
+      'Nové omietky a potery',
+      'Obklady, dlažby a podlahy',
+    ],
+  },
+  {
+    title: 'Obvodový plášť',
+    items: ['Výmena okien a dverí', 'Zateplenie a obnova fasády', 'Rekonštrukcia strechy a krovu'],
+  },
+] as const;
+
 export const RENOVATION_STAGES = [
   {
     step: '01',

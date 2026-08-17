@@ -21,7 +21,7 @@ Povedať presnú sumu bez toho, aby sme videli projekt, je ako hádať cenu auta
 
 1. **Zastavaná a úžitková plocha:** Väčší dom automaticky neznamená lineárne vyššiu cenu, ale plocha je stále hlavným determinantom.
 2. **Architektúra a tvaroslovie:** Jednoduchý obdĺžnikový bungalov so sedlovou strechou bude vždy lacnejší ako členitý poschodový dom s plochou strechou, veľkými presklenými plochami a terasami.
-3. **Založenie stavby:** Svahovitý terén alebo zlé geologické podmienky dokážu stavbu predražiť hneď v úvode o tisíce eur. Zistiť [ako sa robia základy domu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-pre-laikov) je dôležitý krok.
+3. **Založenie stavby:** Svahovitý terén alebo zlé geologické podmienky dokážu stavbu predražiť hneď v úvode o tisíce eur. Zistiť [ako sa robia základy domu](/blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca) je dôležitý krok.
 4. **Stavebný materiál:** Výber medzi tehlou, pórobetónom či drevodomom.
 5. **Technológie:** Tepelné čerpadlo, fotovoltika, rekuperácia a inteligentná elektroinštalácia predstavujú vyššiu počiatočnú investíciu, ktorá sa vám však vráti na prevádzkových nákladoch.
 
@@ -627,7 +627,7 @@ Ak nechcete riskovať peniaze, čas a nervy s neoverenými partiami majstrov, zv
     tags: ['Stavebné procesy', 'Stavba domu'],
     content: `Kúpa vytúženej parcely je iba prvým krokom na dlhej ceste za novým domovom. Skôr než sa na mieste vyleje prvá miešačka betónu, musí prebehnúť dôkladná **príprava pozemku na stavbu**. Tento proces je často laikmi podceňovaný, avšak akékoľvek chyby v tejto fáze sa môžu nepríjemne predražiť počas realizácie základov.
 
-V tomto článku sa detailne pozrieme na to, čo všetko príprava pozemku na stavbu zahŕňa v roku 2026, od prvých geodetických meraní až po samotné [výkopové a zemné práce](/sluzby/zemne-prace).
+V tomto článku sa detailne pozrieme na to, čo všetko príprava pozemku na stavbu zahŕňa v roku 2026, od prvých geodetických meraní až po samotné [výkopové a zemné práce](/sluzby/vykopove-zemne-prace).
 
 ## 1. Administratívna príprava a geodetické zameranie
 
@@ -763,7 +763,7 @@ Tvárnice sa ukladajú na seba nasucho, do každej vrstvy sa vkladá vodorovná 
 
 Priestor, ktorý vznikol medzi stenami z DT-čiek, je potrebné vyplniť. Na to sa zvyčajne používa vykopaná hlušina z pozemku (ak je vhodná), prípadne sa dováža lomový kameň (makadam).
 
-**Kritický bod:** Tento zásyp sa musí hutniť vibračnou doskou (tzv. "žabou") po vrstvách (každých 15-20 cm). Ak sa [zemné práce](/sluzby/zemne-prace) odfláknu a zásyp sa nezhutní, po zaliatí dosky môže zemina klesnúť. Vznikne dutina, kvôli ktorej môže základová doska vo vnútri domu prasknúť.
+**Kritický bod:** Tento zásyp sa musí hutniť vibračnou doskou (tzv. "žabou") po vrstvách (každých 15-20 cm). Ak sa [zemné práce](/sluzby/vykopove-zemne-prace) odfláknu a zásyp sa nezhutní, po zaliatí dosky môže zemina klesnúť. Vznikne dutina, kvôli ktorej môže základová doska vo vnútri domu prasknúť.
 
 Na zhutnený povrch sa ukladajú ležaté rozvody kanalizácie (kanalizačné rúry) s presným spádom a zasypú sa vrstvou jemného štrku.
 

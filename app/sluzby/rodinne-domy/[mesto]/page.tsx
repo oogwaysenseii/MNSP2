@@ -22,7 +22,7 @@ import { Metadata } from 'next';
 import { Home, Hammer, ArrowRight, ShieldCheck, HardHat, CheckCircle2, MapPin } from 'lucide-react';
 import { CTA } from '@/src/components/sections/CTA';
 import { Projects } from '@/src/components/sections/Projects';
-import BlogSection from '@/src/components/sections/BlogSection';
+import { projectsInCityForCategory } from '@/src/data/projects';
 import { LocationsSection } from '@/src/components/sections/LocationsSection';
 
 interface PageProps {
@@ -38,7 +38,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const city = getCityBySlug(citySlug);
   if (!city) notFound();
 
-  const title = `Rodinné domy ${city.name} | Výstavba a rekonštrukcie`;
+  // The layout appends " | MNSP" (7 chars). Long town names — Banská
+  // Štiavnica, Rimavská Sobota, Žiar nad Hronom — pushed the full form past
+  // the ~60 characters Google renders, so the middle segment is dropped for
+  // those rather than letting the tail get truncated mid-phrase.
+  const fullTitle = `Rodinné domy ${city.name} | Výstavba a rekonštrukcie`;
+  const title =
+    fullTitle.length + 7 > 60 ? `Rodinné domy ${city.name}` : fullTitle;
   const description = `Staviame rodinné domy na kľúč a robíme komplexné rekonštrukcie ${city.locative} a okolí. Zakladanie, hrubá stavba, rozvody, fasáda aj odovzdanie hotového diela.`;
 
   return getSEOTags(title, description, `/sluzby/rodinne-domy/${citySlug}`);
@@ -53,6 +59,9 @@ export default async function RodinneDomyMestoPage({ params }: PageProps) {
   if (!conditions) notFound();
 
   const angle = rodinneDomyLocalAngle(conditions, city.locative, city.genitive);
+
+  // Real family-house work in this town. Drives the projects section below.
+  const localProof = projectsInCityForCategory(city.slug, 'Rodinné domy');
 
   const jsonLd = [
     generateBreadcrumbSchema([
@@ -252,18 +261,28 @@ export default async function RodinneDomyMestoPage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* 4. PROJECTS */}
-      <Projects
-        defaultCategory="Rodinné domy"
-        hideFilters={true}
-        titleSk="Realizácie rodinných domov"
-        subtitleSk="Prehľad zrealizovaných a prebiehajúcich projektov výstavby a rekonštrukcií rodinných domov."
-      />
+      {/* 4. PROJECTS — where we have actually built in this town, that leads.
+             The unfiltered grid is the same on all 11 city pages and on the
+             parent, so it only runs as the fallback. */}
+      {localProof.length > 0 ? (
+        <Projects
+          defaultCategory="Rodinné domy"
+          hideFilters={true}
+          onlyIds={localProof.map((p) => p.id)}
+          titleSk={`Naše realizácie ${city.locative} a v okolí`}
+          subtitleSk={`Rodinné domy, ktoré sme postavili alebo zrekonštruovali v okolí ${city.genitive} — referencie z tejto lokality, nie ilustračné fotografie.`}
+        />
+      ) : (
+        <Projects
+          defaultCategory="Rodinné domy"
+          hideFilters={true}
+          titleSk="Realizácie rodinných domov"
+          subtitleSk="Prehľad zrealizovaných a prebiehajúcich projektov výstavby a rekonštrukcií rodinných domov."
+        />
+      )}
 
-      {/* 5. BLOG */}
-      <div className="border-t border-zinc-200">
-        <BlogSection compact={true} filterCategory="Rodinné domy" />
-      </div>
+      {/* 5. BLOG — identical cards on the parent and all 11 city pages. Kept on
+             /sluzby/rodinne-domy, dropped here. */}
 
       {/* 6. WHY US + LOCATIONS */}
       <div className="max-w-[1500px] mx-auto px-6 mt-16 mb-16">

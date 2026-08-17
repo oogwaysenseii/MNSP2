@@ -65,7 +65,9 @@ export default async function DynamicPage({ params }: { params: Promise<{ mesto:
 
   const SERVICES_MAP: Record<string, { icon: any; title: string; desc: string; link: string }> = {
     'rodinne-domy': { icon: Home, title: 'Rodinné domy', desc: `Výstavba na kľúč aj rekonštrukcie rodinných domov ${city.locative}.`, link: `/sluzby/rodinne-domy/${city.slug}` },
-    'zakladanie-stavieb': { icon: Hammer, title: 'Zakladanie stavieb', desc: `Základové pásy a dosky prispôsobené podložiu v okolí ${city.genitive}.`, link: `/sluzby/zakladanie-stavieb/${city.slug}` },
+    // No per-city page for this service (see NO_CITY_PAGES) — link the parent
+    // directly rather than a URL that 301s straight back to it.
+    'zakladanie-stavieb': { icon: Hammer, title: 'Zakladanie stavieb', desc: `Základové pásy a dosky prispôsobené podložiu v okolí ${city.genitive}.`, link: `/sluzby/zakladanie-stavieb` },
     'monoliticke-konstrukcie': { icon: Hammer, title: 'Monolitické konštrukcie', desc: `Debnenie, armovanie a betonáž železobetónových konštrukcií.`, link: `/sluzby/monoliticke-konstrukcie/${city.slug}` },
     'murarske-prace': { icon: Hammer, title: 'Murárske práce', desc: `Nosné murivo, priečky a hrubé stavby ${city.locative}.`, link: `/sluzby/murarske-prace/${city.slug}` },
     'tesarske-prace': { icon: Home, title: 'Tesárske práce', desc: `Krovy a strešné konštrukcie dimenzované na miestne podmienky.`, link: `/sluzby/tesarske-prace/${city.slug}` },

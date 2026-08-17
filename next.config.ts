@@ -32,6 +32,17 @@ const nextConfig: NextConfig = {
       // currently 404. Reclaims the link equity.
       ...LEGACY_CITY_REDIRECTS,
 
+      // Services that no longer have per-city pages. These eleven URLs were
+      // generated and submitted in the sitemap, so they may be indexed —
+      // 301 to the parent service page rather than letting them 404 and
+      // discard whatever authority they picked up.
+      // Keep in step with NO_CITY_PAGES in src/data/service-component-keys.ts.
+      {
+        source: '/sluzby/zakladanie-stavieb/:mesto',
+        destination: '/sluzby/zakladanie-stavieb',
+        permanent: true,
+      },
+
       // Legacy portfolio entry that no longer exists.
       {
         source: '/portfolio/rekonstrukcia-bytu-zvolen',
