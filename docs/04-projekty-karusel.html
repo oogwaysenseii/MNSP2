@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 04 — Variant C v karuseli</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;--ease:cubic-bezier(.22,.61,.36,1)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1500px;margin:0 auto;padding:48px 32px 110px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 40px/1.1 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:76ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2.sec{font:800 13px/1 ui-sans-serif,system-ui;letter-spacing:.18em;text-transform:uppercase;
+         margin:56px 0 6px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  .seclede{font-size:14px;color:var(--muted);margin:0 0 18px;max-width:80ch}
+  .verdict{display:inline-flex;align-items:center;gap:8px;font:700 11px/1 ui-sans-serif,system-ui;
+           letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;margin:0 0 16px}
+  .bad{background:#fee2e2;color:#991b1b;border:1px solid #991b1b}
+  .ok{background:#d1fae5;color:#065f46;border:1px solid #065f46}
+  .mid{background:#fef3c7;color:#92400e;border:1px solid #92400e}
+  .where{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 8px}
+  .where div{background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);padding:14px 18px}
+  .where b{display:block;font:700 11px/1 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-6);margin-bottom:7px}
+  .where p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.55}
+  .stage{background:#fff;border:1px solid #d4d4d8;overflow:hidden}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line)}
+  th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+  th{background:#fafafa;font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:22%}
+  td code{font:500 13px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  .pick{margin-top:22px;padding:18px 22px;background:#18181b;color:#fff;font-size:15px;line-height:1.65}
+  .pick b{color:var(--amber)}
+
+  /* ============ section replica ============ */
+  .pv{background:#fff;padding:32px 0}
+  .pv .rail{padding:0 32px;position:relative}
+  .pv .hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:26px;gap:24px}
+  .pv .hdr h2{font:800 40px/1.05 inherit;letter-spacing:-.025em;color:#000;margin:0}
+  .pv .hdr a{font:700 13px/1 inherit;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-7);text-decoration:none;white-space:nowrap}
+
+  .track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;
+         scrollbar-width:none;padding-bottom:4px}
+  .track::-webkit-scrollbar{display:none}
+  .track > a{scroll-snap-align:start;flex:none}
+
+  .pc{display:block;text-decoration:none;color:inherit;position:relative;
+      transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+  .pc:hover{transform:translateY(-4px);box-shadow:0 22px 52px rgba(0,0,0,.19)}
+  .pc .tile{position:relative;height:400px;overflow:hidden;background:#e5e7eb}
+  .pc .tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.1s var(--ease)}
+  .pc:hover .tile img{transform:scale(1.07)}
+  .pc .scrim{position:absolute;inset:0;
+             background:linear-gradient(to top,rgba(0,0,0,.9) 0%,rgba(0,0,0,.5) 32%,rgba(0,0,0,0) 62%);
+             transition:opacity .5s ease}
+  .pc:hover .scrim{opacity:.92}
+  .pc .idx{position:absolute;top:18px;left:20px;z-index:2}
+  .pc .idx b{display:block;font:700 11px/1 ui-monospace,monospace;letter-spacing:.2em;color:rgba(255,255,255,.78)}
+  .pc .idx i{display:block;width:22px;height:2px;background:var(--amber);margin-top:7px;transition:width .55s var(--ease)}
+  .pc:hover .idx i{width:54px}
+  .pc .over{position:absolute;left:22px;right:22px;bottom:20px;z-index:2}
+  .pc .cat{display:block;font:700 10px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+  .pc .over h3{font:800 21px/1.26 inherit;letter-spacing:-.015em;color:#fff;margin:9px 0 0}
+  .pc .metaline{display:block;font:400 10px/1.5 ui-monospace,monospace;letter-spacing:.13em;
+                text-transform:uppercase;color:rgba(255,255,255,.74);margin:11px 0 0}
+  .pc .metaline em{font-style:normal;color:rgba(255,255,255,.34);padding:0 6px}
+  .pc .reveal{overflow:hidden;max-height:0;opacity:0;
+              transition:max-height .5s var(--ease),opacity .35s ease,margin-top .5s var(--ease)}
+  .pc:hover .reveal{max-height:34px;opacity:1;margin-top:13px}
+  .pc .reveal span{display:inline-flex;align-items:center;gap:7px;font:700 10px/1 ui-monospace,monospace;
+                   letter-spacing:.18em;text-transform:uppercase;color:#fff;
+                   border-bottom:1px solid var(--amber);padding-bottom:6px}
+  .pc .strip{border:1px solid #e5e7eb;border-top:0;padding:14px 18px;display:grid;
+             grid-template-columns:1fr 1fr;gap:8px;background:#fff;transition:border-color .45s ease}
+  .pc:hover .strip{border-color:var(--amber)}
+  .pc .strip span{display:block;font:400 9px/1.4 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#a1a1aa}
+  .pc .strip b{display:block;font:700 14px/1.3 inherit;color:#000;margin-top:4px}
+
+  /* approach widths */
+  .w3 > a{width:calc(33.333% - 16px)}
+  .peek > a{width:calc(29% - 14px)}
+
+  /* arrows */
+  .nav{display:flex;gap:10px;justify-content:flex-end;margin-top:22px}
+  .nav button{width:46px;height:46px;border:1px solid #e5e7eb;background:#fff;color:#4b5563;cursor:pointer;
+              font-size:19px;line-height:1;display:flex;align-items:center;justify-content:center;
+              transition:border-color .3s,background .3s,color .3s}
+  .nav button:hover{border-color:var(--amber);background:#fffbeb;color:#000}
+  .nav button:disabled{opacity:.32;cursor:default;border-color:#e5e7eb;background:#fff;color:#4b5563}
+
+  .sideArw{position:absolute;top:180px;z-index:20;width:46px;height:46px;border:1px solid #e5e7eb;background:#fff;
+           color:#4b5563;cursor:pointer;font-size:19px;display:flex;align-items:center;justify-content:center;
+           box-shadow:0 8px 24px rgba(0,0,0,.12);transition:border-color .3s,background .3s}
+  .sideArw:hover{border-color:var(--amber);background:#fffbeb}
+  .sideArw.l{left:12px}
+  .sideArw.r{right:12px}
+
+  .ragged{position:absolute;left:32px;right:32px;border-top:2px dashed #dc2626;pointer-events:none;z-index:30}
+  .raglabel{position:absolute;right:32px;transform:translateY(-100%);background:#dc2626;color:#fff;
+            font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.1em;text-transform:uppercase;padding:5px 8px;z-index:31}
+  @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 04 · Domovská stránka</p>
+  <h1>Variant C v karuseli</h1>
+  <p class="lede">Ukážka v návrhu 03 bola mriežka — to bola moja chyba. Domovská stránka beží
+     v režime karusela, mriežku má až stránka <code>/portfólio</code>. Dlaždica z variantu C sa do karusela
+     nedá vložiť bez úpravy: časť projektov nemá vyplnený rozpočet ani trvanie, takže spodný pás sa
+     nevykreslí a karty majú rôznu výšku. V mriežke sa to stratí, v jednom rade to bije do očí.</p>
+  <p class="status">Stav: <b>neaplikované</b> — iba návrh</p>
+
+  <div class="where" style="margin-top:34px">
+    <div><b>Domovská stránka</b><p><code>viewMode="carousel"</code> — vodorovný rad so zarážkami a šípkami.
+       Zobrazuje 1 kartu na mobile, 2 na tablete, 3 na desktope.</p></div>
+    <div><b>Stránka /portfólio</b><p><code>viewMode="grid"</code> — mriežka 1 / 2 / 3 stĺpce.
+       Tú rieši návrh 03 a funguje tam bez zmeny.</p></div>
+  </div>
+
+  <h2 class="sec">1 · Dlaždica tak, ako je</h2>
+  <p class="seclede">Dnešný karusel, iba vymenená karta. Projekty 04 až 06 nemajú vyplnený rozpočet ani
+     trvanie, takže sa im spodný pás nevykreslí. Rad je flexbox, ktorý všetky karty natiahne na výšku
+     tej najvyššej — pod ich fotkou tak zostane <b>70 px prázdnej bielej plochy</b>. Fotky sa neskončia
+     v jednej línii, hoci rámce kariet áno. Posuňte rad doprava.</p>
+  <p class="verdict bad">Nefunguje — 70 px prázdna pod polovicou kariet</p>
+  <div class="stage">
+    <div class="pv"><div class="rail">
+      <div class="hdr"><h2>Realizované projekty</h2><a href="#">Všetky projekty &rsaquo;</a></div>
+      <div style="position:relative">
+        <div class="track w3" id="t1" data-cards="strip"></div>
+        <div class="ragged" id="rag" style="display:none"></div>
+      </div>
+      <div class="nav"><button data-t="t1" data-d="-1">&#8249;</button><button data-t="t1" data-d="1">&#8250;</button></div>
+    </div></div>
+  </div>
+
+  <h2 class="sec">2 · Jednotná dlaždica — údaje na fotke</h2>
+  <p class="seclede">Spodný pás sa ruší. Rozpočet a trvanie sa presunú do monospace riadku na fotku,
+     hneď za lokalitu a rok. Kde údaj chýba, jednoducho nie je — riadok sa skráti a výška dlaždice sa nezmení.</p>
+  <p class="verdict ok">Funguje — rovnaká výška vždy</p>
+  <div class="stage">
+    <div class="pv"><div class="rail">
+      <div class="hdr"><h2>Realizované projekty</h2><a href="#">Všetky projekty &rsaquo;</a></div>
+      <div class="track w3" id="t2" data-cards="inline"></div>
+      <div class="nav"><button data-t="t2" data-d="-1">&#8249;</button><button data-t="t2" data-d="1">&#8250;</button></div>
+    </div></div>
+  </div>
+
+  <h2 class="sec">3 · Filmový pás — s náhľadom ďalšej</h2>
+  <p class="seclede">Tá istá jednotná dlaždica, len užšia, takže z pravého okraja vykúka časť ďalšej.
+     Je to najstaršia a najtichšia informácia „pokračuje to ďalej“ — spoľahlivejšia než šípky.
+     Šípky sú tu späť po stranách, prekryté nad okrajom radu.</p>
+  <p class="verdict ok">Funguje — a najlepšie napovedá</p>
+  <div class="stage">
+    <div class="pv"><div class="rail">
+      <div class="hdr"><h2>Realizované projekty</h2><a href="#">Všetky projekty &rsaquo;</a></div>
+      <div style="position:relative">
+        <button class="sideArw l" data-t="t3" data-d="-1">&#8249;</button>
+        <button class="sideArw r" data-t="t3" data-d="1">&#8250;</button>
+        <div class="track peek" id="t3" data-cards="inline"></div>
+      </div>
+    </div></div>
+  </div>
+
+  <p class="pick">Odporúčam <b>3 — filmový pás</b>. Jednotná dlaždica je nutnosť, nie voľba: bez nej sa rad
+     rozpadne vždy, keď projekt nemá vyplnený rozpočet — a taký je dnes každý druhý.
+     Náhľad ďalšej dlaždice potom pridá to, čo dnešnému karuselu chýba najviac: na prvý pohľad
+     nie je vidieť, že rad vôbec pokračuje. <b>2</b> je bezpečnejšia voľba, ak náhľad pôsobí príliš odvážne —
+     rozdiel je jediné číslo v šírke karty.</p>
+
+  <h2 class="sec">Špecifikácia — prístup 3</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Šírka dlaždice</td><td><code>calc(29% - 14px)</code> desktop — vykukne asi 40 % štvrtej.
+        Tablet <code>calc(45% - 12px)</code>, mobil <code>86%</code></td></tr>
+    <tr><td>Výška dlaždice</td><td><code>400&nbsp;px</code> desktop, <code>340&nbsp;px</code> mobil — vždy rovnaká, bez spodného pásu</td></tr>
+    <tr><td>Medzera</td><td><code>24&nbsp;px</code>, bez zmeny oproti dnešku</td></tr>
+    <tr><td>Zarážky</td><td><code>scroll-snap-type:x mandatory</code> na rade, <code>scroll-snap-align:start</code> na dlaždici — bez zmeny</td></tr>
+    <tr><td>Riadok údajov</td><td>10 px, mono, letter-spacing 0.13em, veľké písmená, <code>rgba(255,255,255,.74)</code>.
+        Oddeľovač <code>·</code> vo farbe <code>rgba(255,255,255,.34)</code>. Prázdne hodnoty sa vynechajú aj s oddeľovačom</td></tr>
+    <tr><td>Poradie údajov</td><td>Lokalita &middot; Rok &middot; Rozpočet &middot; Trvanie</td></tr>
+    <tr><td>Šípky</td><td>46 × 46 px, biele, rámik <code>#E5E7EB</code>, tieň <code>0 8px 24px rgba(0,0,0,.12)</code>,
+        prekryté 12 px nad okrajom radu, zvisle na <code>180&nbsp;px</code>. Pri prejdení jantárový rámik a podklad <code>#FFFBEB</code></td></tr>
+    <tr><td>Neaktívna šípka</td><td>Na začiatku a konci radu <code>opacity:.32</code> a bez reakcie — dnes šípky nereagujú vôbec</td></tr>
+    <tr><td>Ostatné pohyby</td><td>Bez zmeny oproti návrhu 03 — priblíženie fotky, nadvihnutie, linka pri čísle, „Zobraziť“</td></tr>
+    <tr><td>Dotknutý súbor</td><td><code>src/components/sections/Projects.tsx</code> — vetva <code>viewMode === 'carousel'</code></td></tr>
+  </table>
+
+  <h2 class="sec">Poznámky a obmedzenia</h2>
+  <ul class="flags">
+    <li><b>Spodný pás úplne zaniká.</b> Rozpočet a trvanie sa nestrácajú — presúvajú sa na fotku do riadku s lokalitou a rokom. Žiadny údaj nemizne.</li>
+    <li><b>Rozpočet a trvanie chýbajú v dátach u väčšiny projektov.</b> Z jedenástich má vyplnené oba údaje len päť; pri ostatných je v dátach poznámka <code>TODO: doplniť</code>. Tento návrh to rieši vizuálne, ale doplniť čísla je obsahová práca na vašej strane.</li>
+    <li><b>Riadok sa môže na mobile zalomiť do dvoch riadkov</b> pri dlhých hodnotách, napríklad „Banská Bystrica · Rok 2023 · € 450 000 · 18 mesiacov“. Dlaždica má na to miesto, výška sa nemení.</li>
+    <li>Rovnakú jednotnú dlaždicu odporúčam použiť aj v mriežke na <code>/portfólio</code> — inak by tá istá karta vyzerala na dvoch stránkach inak.</li>
+    <li><b>Dnešné šípky sa zobrazia len nad 1024 px a len ak sú viac než tri projekty.</b> Pri filtri na kategóriu so štyrmi projektmi teda zmiznú, hoci rad ešte pokračuje. Náhľad ďalšej dlaždice tento problém obchádza, ale samotnú podmienku by bolo dobré opraviť — samostatná drobnosť.</li>
+    <li>Neaktívne šípky na krajoch radu sú nová vlastnosť. Dnes sú šípky vždy plne viditeľné aj na konci. Ak to nechcete, vypustí sa to bez zásahu do vzhľadu.</li>
+    <li>Náhľad ďalšej dlaždice znamená, že na desktope nevidno tri celé karty, ale tri a kúsok. Ak trváte na presne troch, je to prístup 2.</li>
+  </ul>
+
+</div>
+
+<script>
+(function(){
+  var P=[
+    {n:'01',c:'Občianske stavby',t:'Zariadenie sociálnych služieb Detva',l:'Detva',y:2026,b:'€ 4.5M',d:'18 mesiacov',img:'assets/Domov-socialnych-sluzieb-Detva.webp'},
+    {n:'02',c:'Občianske stavby',t:'Novohradské múzeum a galéria Lučenec',l:'Lučenec',y:2025,b:'€ 1.2M',d:'6 mesiacov',img:'assets/Rekonstrukcia-novohradskeho-muzea-Lucenec.webp'},
+    {n:'03',c:'Občianske stavby',t:'Zariadenie pre seniorov SENIOR ACTIVE Hriňová',l:'Hriňová',y:2025,b:'€ 450 000',d:'4 mesiace',img:'assets/rekonstrukcia-domovu-dochodcov-senior-active-hrinova.webp'},
+    {n:'04',c:'Rodinné domy',t:'Rekonštrukcia rodinného domu Hriňová',l:'Hriňová',y:2025,b:'',d:'',img:'assets/kompletna-rekonstrukcia-domu-hrinova.webp'},
+    {n:'05',c:'Rodinné domy',t:'Rodinný dom Banská Bystrica',l:'Banská Bystrica',y:2023,b:'',d:'',img:'assets/rodinny-dom-banska-bystrica-slnecne-strane.webp'},
+    {n:'06',c:'Rodinné domy',t:'Hrubá stavba Dúbravy',l:'Dúbravy',y:2023,b:'',d:'',img:'assets/hruba-stavba-rd-dubravy.webp'}
+  ];
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function tile(p,mode){
+    var line=[p.l,'Rok '+p.y];
+    if(mode==='inline'){ if(p.b) line.push(p.b); if(p.d) line.push(p.d); }
+    var meta=line.map(esc).join('<em>·</em>');
+    var strip='';
+    if(mode==='strip' && (p.b||p.d)){
+      strip='<div class="strip">'+
+        (p.b?'<div><span>Rozpočet</span><b>'+esc(p.b)+'</b></div>':'')+
+        (p.d?'<div><span>Trvanie</span><b>'+esc(p.d)+'</b></div>':'')+'</div>';
+    }
+    return '<a class="pc" href="#"><div class="tile">'+
+      '<img src="'+p.img+'" alt="'+esc(p.t)+'" loading="lazy">'+
+      '<span class="scrim"></span>'+
+      '<span class="idx"><b>'+p.n+'</b><i></i></span>'+
+      '<span class="over"><span class="cat">'+esc(p.c)+'</span>'+
+      '<h3>'+esc(p.t)+'</h3>'+
+      '<span class="metaline">'+meta+'</span>'+
+      '<span class="reveal"><span>Zobraziť &rarr;</span></span>'+
+      '</span></div>'+strip+'</a>';
+  }
+  [].forEach.call(document.querySelectorAll('.track'),function(tr){
+    var mode=tr.getAttribute('data-cards');
+    tr.innerHTML=P.map(function(p){return tile(p,mode)}).join('');
+  });
+
+  function sync(id){
+    var tr=document.getElementById(id);
+    [].forEach.call(document.querySelectorAll('[data-t="'+id+'"]'),function(b){
+      var d=+b.getAttribute('data-d');
+      var max=tr.scrollWidth-tr.clientWidth-2;
+      b.disabled = d<0 ? tr.scrollLeft<=2 : tr.scrollLeft>=max;
+    });
+  }
+  [].forEach.call(document.querySelectorAll('[data-t]'),function(b){
+    b.addEventListener('click',function(){
+      var tr=document.getElementById(b.getAttribute('data-t'));
+      tr.scrollBy({left:(+b.getAttribute('data-d'))*tr.clientWidth,behavior:'smooth'});
+    });
+  });
+  ['t1','t2','t3'].forEach(function(id){
+    var tr=document.getElementById(id); if(!tr) return;
+    tr.addEventListener('scroll',function(){sync(id)});
+    sync(id);
+  });
+
+  // outline the dead space under the cards that have no bottom strip
+  var t1=document.getElementById('t1');
+  function drawGaps(){
+    [].forEach.call(t1.querySelectorAll('.gapmark'),function(e){e.remove()});
+    [].forEach.call(t1.querySelectorAll('.pc'),function(c){
+      if(c.querySelector('.strip')) return;
+      var tile=c.querySelector('.tile');
+      var h=c.offsetHeight-tile.offsetHeight;
+      if(h<8) return;
+      var m=document.createElement('span');
+      m.className='gapmark';
+      m.style.cssText='position:absolute;left:0;right:0;top:'+tile.offsetHeight+'px;height:'+h+'px;'+
+        'border:2px dashed #dc2626;background:rgba(220,38,38,.07);z-index:5;pointer-events:none;'+
+        'display:flex;align-items:center;justify-content:center;'+
+        'font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.1em;text-transform:uppercase;color:#991b1b';
+      m.textContent=h+' px prázdna';
+      c.appendChild(m);
+    });
+  }
+  if(document.readyState==='complete') drawGaps(); else window.addEventListener('load',drawGaps);
+  setTimeout(drawGaps,700);
+  window.addEventListener('resize',drawGaps);
+})();
+</script>
+</body>
+</html>

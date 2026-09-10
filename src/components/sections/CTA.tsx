@@ -18,10 +18,16 @@ export function CTA({
   return (
       <section className="bg-white relative border-t border-white/5 ">
         <div className=" mx-auto px-4 sm:px-6   relative z-10 max-w-[1500px]">
-          <div className="bg-zinc-950 border border-white/10 p-8  flex flex-col lg:flex-row gap-16 lg:gap-20 items-center w-full">
+          <div className="bg-zinc-950 border border-white/10 p-8 flex flex-col lg:flex-row gap-16 lg:gap-20 items-center w-full relative overflow-hidden">
+
+            {/* Background shapes: hazard stripe top edge + rotated square in the corner */}
+            <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+              <span className="absolute top-0 inset-x-0 h-1.5 bg-[repeating-linear-gradient(-45deg,#f59e0b_0_14px,transparent_14px_28px)]" />
+              <span className="absolute -bottom-24 -right-24 w-64 h-64 bg-zinc-900 rotate-45" />
+            </div>
 
             {/* Left Column - Text */}
-            <div className="w-full lg:w-[60%] space-y-8">
+            <div className="w-full lg:w-[60%] space-y-8 relative">
               <div className="space-y-6">
                 <h2 className="text-3xl sm:text-3xl md:text-4xl font-semibold text-white leading-[1.1] tracking-tight">
                   {title}

@@ -1,16 +1,18 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight, MapPin, Calendar } from 'lucide-react';
-import { projectsData, ServiceCategory } from '@/src/data/projects';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { motion, useReducedMotion } from 'motion/react';
+import { projectsData, ServiceCategory, Project } from '@/src/data/projects';
 import { Container } from '../ui/Container';
 
 interface ProjectsSectionProps {
   defaultCategory?: ServiceCategory | 'all';
   hideFilters?: boolean;
+  /** Slimmer filter bar: category chips only, no row labels and no location row. Used on the homepage. */
+  compactFilters?: boolean;
   titleSk?: string;
   subtitleSk?: string;
   viewMode?: 'carousel' | 'grid';
@@ -27,11 +29,6 @@ interface ProjectsSectionProps {
 }
 
 
-/**
- * Budget and duration are optional in the project data — five of eight entries
- * have them empty. Rendering the labels regardless left cards showing
- * "ROZPOČET" / "TRVANIE" headings with nothing under them.
- */
 const CATEGORY_TABS = [
   'all',
   'Rodinné domy',
@@ -41,36 +38,96 @@ const CATEGORY_TABS = [
   'Občianske stavby',
 ] as const satisfies readonly (ServiceCategory | 'all')[];
 
-function ProjectMeta({ budget, duration }: { budget?: string; duration?: string }) {
-  const hasBudget = Boolean(budget?.trim());
-  const hasDuration = Boolean(duration?.trim());
-  if (!hasBudget && !hasDuration) return null;
+
+/**
+ * Budget and duration are optional in the project data — six of eleven entries
+ * still have them empty (`TODO: doplniť`). ProjectTile drops missing values
+ * along with their separator, so a tile without them keeps the same height.
+ */
+const EASE = 'ease-[cubic-bezier(.22,.61,.36,1)]';
+
+function ProjectTile({ proj, index, sizes }: {
+  proj: Project; index: number; sizes: string;
+}) {
+  // Chýbajúce hodnoty vypadnú aj s oddeľovačom — preto .filter()
+  const meta = [
+    proj.location,
+    `Rok ${proj.year}`,
+    proj.budgetString,
+    proj.duration,
+  ].filter((v): v is string => Boolean(v && v.trim()));
 
   return (
-    <div className="grid grid-cols-2 gap-2 border-t border-gray-100 pt-4 mt-auto">
-      {hasBudget && (
-        <div className="space-y-1">
-          <span className="block text-[9px] font-mono uppercase tracking-wider text-gray-500">
-            ROZPOČET
+    <Link
+      href={`/portfolio/${proj.id}`}
+      className={`group/tile relative block transition-[transform,translate,box-shadow] duration-500 ${EASE}
+        shadow-[0_22px_52px_rgba(0,0,0,0)]
+        hover:-translate-y-1 hover:shadow-[0_22px_52px_rgba(0,0,0,0.19)]
+        motion-reduce:transition-none motion-reduce:hover:translate-y-0`}
+    >
+      <div className="relative h-[340px] lg:h-[400px] overflow-hidden bg-gray-200">
+        <Image
+          src={proj.imageUrl}
+          alt={proj.title}
+          fill
+          sizes={sizes}
+          quality={90}
+          className={`object-cover duration-[1100ms] transition-transform ${EASE}
+            group-hover/tile:scale-[1.07] motion-reduce:transition-none`}
+        />
+
+        {/* stmavenie zdola */}
+        <div className="absolute inset-0 transition-opacity duration-500
+          bg-[linear-gradient(to_top,rgba(0,0,0,.9)_0%,rgba(0,0,0,.5)_32%,transparent_62%)]
+          group-hover/tile:opacity-[0.92]" />
+
+        {/* poradové číslo + jantárová linka */}
+        <div className="absolute top-[18px] left-5 z-20">
+          <span className="block font-mono text-[11px] font-bold tracking-[0.2em] text-white/[0.78]">
+            {String(index + 1).padStart(2, '0')}
           </span>
-          <span className="block text-sm font-bold text-black">{budget}</span>
+          <span className={`mt-[7px] block h-0.5 w-[22px] bg-amber-500
+            transition-[width] duration-[550ms] ${EASE} group-hover/tile:w-[54px]`} />
         </div>
-      )}
-      {hasDuration && (
-        <div className="space-y-1">
-          <span className="block text-[9px] font-mono uppercase tracking-wider text-gray-500">
-            TRVANIE
+
+        {/* text na fotke */}
+        <div className="absolute bottom-5 left-[22px] right-[22px] z-20">
+          <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-amber-500">
+            {proj.category}
           </span>
-          <span className="block text-sm font-bold text-black">{duration}</span>
+
+          <h3 className="mt-[9px] text-[18px] lg:text-[clamp(17px,1.45vw,21px)] font-extrabold leading-[1.26] tracking-[-0.015em] text-white">
+            {proj.title}
+          </h3>
+
+          <p className="mt-[11px] font-mono text-[10px] uppercase leading-[1.5] tracking-[0.13em] text-white/[0.74]">
+            {meta.map((v, i) => (
+              <span key={v}>
+                {i > 0 && <span className="px-1.5 text-white/[0.34]">·</span>}
+                {v}
+              </span>
+            ))}
+          </p>
+
+          {/* „Zobraziť" — vysunie sa pri prejdení myšou */}
+          <div className={`max-h-0 overflow-hidden opacity-0
+            transition-[max-height,opacity,margin-top] duration-500 ${EASE}
+            group-hover/tile:mt-[13px] group-hover/tile:max-h-[34px] group-hover/tile:opacity-100`}>
+            <span className="inline-flex items-center gap-[7px] border-b border-amber-500 pb-1.5
+              font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white">
+              Zobraziť <ArrowRight className="h-3 w-3" />
+            </span>
+          </div>
         </div>
-      )}
-    </div>
+      </div>
+    </Link>
   );
 }
 
 export function Projects({
                            defaultCategory = 'all',
                            hideFilters = false,
+                           compactFilters = false,
                            titleSk = 'Realizované projekty',
                            subtitleSk = 'Prehľad zrealizovaných a prebiehajúcich projektov.',
                            viewMode = 'carousel',
@@ -81,6 +138,38 @@ export function Projects({
   const [selectedCategory, setSelectedCategory] = useState<ServiceCategory | 'all'>(defaultCategory);
   const [selectedLoc, setSelectedLoc] = useState<string>(locationFilter);
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Tailwind motion-reduce: pokrýva len CSS prechody. Nábeh dlaždíc riadi JS,
+  // takže sa musí vypnúť zvlášť — inak sa pri obmedzení pohybu stále hýbe.
+  const reduceMotion = useReducedMotion();
+  const reveal = (i: number) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 26 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, amount: 0.15 },
+          transition: { duration: 0.75, delay: i * 0.08, ease: [0.22, 0.61, 0.36, 1] as const },
+        };
+
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+
+  const updateArrows = () => {
+    const el = carouselRef.current;
+    if (!el) return;
+    setAtStart(el.scrollLeft <= 2);
+    setAtEnd(el.scrollLeft >= el.scrollWidth - el.clientWidth - 2);
+  };
+
+  // Po zmene filtra vrátiť rad na začiatok a prepočítať šípky. Sleduje sa
+  // priamo selectedCategory/selectedLoc — pri prepnutí medzi kategóriami s
+  // rovnakým počtom projektov by sa filteredProjects.length nezmenila.
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (el) el.scrollLeft = 0;
+    updateArrows();
+  }, [selectedCategory, selectedLoc]);
 
   // useState only reads its initial value once, so keep it in sync when the
   // prop changes on a client-side navigation.
@@ -167,51 +256,70 @@ export function Projects({
 
           {/* 2. DYNAMIC INDUSTRY FILTER BAR */}
           {!hideFilters && (
-              <div className="flex flex-col gap-4 mb-10 border-b border-gray-100 pb-6 overflow-hidden">
+              <div className="flex flex-col gap-5 mb-10 border-b border-gray-100 pb-6 overflow-hidden">
                 {/* Categories */}
-                <div className="flex overflow-x-auto gap-2 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                  {CATEGORY_TABS.map((cat) => (
-                      <button
-                          key={cat}
-                          onClick={() => setSelectedCategory(cat)}
-                          className={`shrink-0 px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                              selectedCategory === cat
-                                  ? 'bg-black text-amber-400 font-bold'
-                                  : 'bg-white hover:bg-gray-50 text-gray-600 font-semibold border border-gray-200'
-                          }`}
-                      >
-                        {cat === 'all' ? ('Všetky realizácie') : cat}
-                      </button>
-                  ))}
+                <div>
+                  {!compactFilters && (
+                      <span className="block text-[9px] font-mono uppercase tracking-[0.15em] text-gray-400 mb-2.5">
+                        TYP STAVBY
+                      </span>
+                  )}
+                  <div className="flex overflow-x-auto gap-2 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                    {CATEGORY_TABS.map((cat) => (
+                        <button
+                            key={cat}
+                            onClick={() => setSelectedCategory(cat)}
+                            className={`relative shrink-0 px-5 py-2.5 text-xs uppercase tracking-wider transition-all cursor-pointer ${
+                                selectedCategory === cat
+                                    ? 'bg-black text-amber-400 font-bold'
+                                    : 'bg-white text-gray-600 font-semibold border border-gray-300 hover:border-black hover:text-black'
+                            }`}
+                        >
+                          {selectedCategory === cat && (
+                              <span
+                                  aria-hidden="true"
+                                  className="absolute top-0 left-0 w-0 h-0 border-t-8 border-r-8 border-t-amber-500 border-r-transparent"
+                              />
+                          )}
+                          {cat === 'all' ? ('Všetky realizácie') : cat}
+                        </button>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Locations */}
-                <div className="flex overflow-x-auto gap-2 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] items-center">
-                  <MapPin className="w-4 h-4 text-gray-500 shrink-0 mr-2" />
-                  <button
-                      onClick={() => setSelectedLoc('all')}
-                      className={`shrink-0 px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer rounded-full ${
-                          selectedLoc === 'all'
-                              ? 'bg-gray-200 text-black shadow-inner'
-                              : 'bg-transparent hover:bg-gray-100 text-gray-500 border border-transparent hover:border-gray-200'
-                      }`}
-                  >
-                    Všetky lokality
-                  </button>
-                  {allLocations.filter(Boolean).map((loc) => (
-                      loc && <button
-                          key={loc}
-                          onClick={() => setSelectedLoc(loc)}
-                          className={`shrink-0 px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer rounded-full ${
-                              selectedLoc === loc
-                                  ? 'bg-gray-200 text-black shadow-inner'
-                                  : 'bg-transparent hover:bg-gray-100 text-gray-500 border border-transparent hover:border-gray-200'
-                          }`}
-                      >
-                        {loc}
-                      </button>
-                  ))}
+                {!compactFilters && (
+                <div>
+                  <span className="block text-[9px] font-mono uppercase tracking-[0.15em] text-gray-400 mb-2.5">
+                    LOKALITA
+                  </span>
+                  <div className="flex overflow-x-auto gap-2 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] items-center">
+                    <button
+                        onClick={() => setSelectedLoc('all')}
+                        className={`shrink-0 px-3.5 py-1.5 text-[11px] uppercase tracking-wider transition-all cursor-pointer border ${
+                            selectedLoc === 'all'
+                                ? 'bg-gray-50 text-black font-bold border-black border-l-[3px] border-l-amber-500'
+                                : 'bg-transparent text-gray-500 font-semibold border-gray-200 hover:border-gray-400 hover:text-gray-700'
+                        }`}
+                    >
+                      Všetky lokality
+                    </button>
+                    {allLocations.filter(Boolean).map((loc) => (
+                        loc && <button
+                            key={loc}
+                            onClick={() => setSelectedLoc(loc)}
+                            className={`shrink-0 px-3.5 py-1.5 text-[11px] uppercase tracking-wider transition-all cursor-pointer border ${
+                                selectedLoc === loc
+                                    ? 'bg-gray-50 text-black font-bold border-black border-l-[3px] border-l-amber-500'
+                                    : 'bg-transparent text-gray-500 font-semibold border-gray-200 hover:border-gray-400 hover:text-gray-700'
+                            }`}
+                        >
+                          {loc}
+                        </button>
+                    ))}
+                  </div>
                 </div>
+                )}
               </div>
           )}
 
@@ -222,108 +330,65 @@ export function Projects({
                   <p className="text-gray-500 text-sm font-semibold">Momentálne nemáme v tejto kategórii žiadne dokončené projekty.</p>
                 </div>
             ) : viewMode === 'carousel' ? (
-                <div className="space-y-10 group/carousel relative">
+                <div className="relative">
+                  <button
+                    onClick={scrollLeft}
+                    disabled={atStart}
+                    aria-label="Predchádzajúce projekty"
+                    className="absolute left-3 top-[185px] z-30 hidden h-[46px] w-[46px] cursor-pointer
+                      items-center justify-center border border-gray-200 bg-white text-gray-600
+                      shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-colors
+                      hover:border-amber-500 hover:bg-amber-50 hover:text-black
+                      disabled:pointer-events-none disabled:opacity-30 lg:flex"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
 
-                  {filteredProjects.length > 3 && (
-                      <>
-                        <button
-                            onClick={scrollLeft}
-                            aria-label="Predchádzajúce projekty"
-                            className="absolute left-[-20px] top-1/2 -translate-y-1/2 z-50 w-12 h-12 flex items-center justify-center bg-white border border-gray-200 text-gray-600 hover:text-black hover:border-amber-500 hover:bg-amber-50 transition-all shadow-lg hidden lg:flex cursor-pointer"
-                        >
-                          <ChevronLeft className="w-6 h-6 ml-[-2px]" />
-                        </button>
-                        <button
-                            onClick={scrollRight}
-                            aria-label="Ďalšie projekty"
-                            className="absolute right-[-20px] top-1/2 -translate-y-1/2 z-50 w-12 h-12 flex items-center justify-center bg-white border border-gray-200 text-gray-600 hover:text-black hover:border-amber-500 hover:bg-amber-50 transition-all shadow-lg hidden lg:flex cursor-pointer"
-                        >
-                          <ChevronRight className="w-6 h-6 mr-[-2px]" />
-                        </button>
-                      </>
-                  )}
+                  <button
+                    onClick={scrollRight}
+                    disabled={atEnd}
+                    aria-label="Ďalšie projekty"
+                    className="absolute right-3 top-[185px] z-30 hidden h-[46px] w-[46px] cursor-pointer
+                      items-center justify-center border border-gray-200 bg-white text-gray-600
+                      shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-colors
+                      hover:border-amber-500 hover:bg-amber-50 hover:text-black
+                      disabled:pointer-events-none disabled:opacity-30 lg:flex"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
 
                   <div
-                      ref={carouselRef}
-                      className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                    ref={carouselRef}
+                    onScroll={updateArrows}
+                    className="flex snap-x snap-mandatory gap-6 overflow-x-auto overflow-y-hidden pt-2 pb-14 -mb-10
+                      [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                   >
-                    {filteredProjects.map((proj) => (
-                        <Link
-                            key={proj.id}
-                            href={`/portfolio/${proj.id}`}
-                            className="w-[100%] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex-none bg-gray-50 border border-gray-200 overflow-hidden hover:shadow-xl hover:border-amber-500 transition-all duration-300 flex flex-col group/item snap-start"
-                        >
-                          <div className="relative h-48 sm:h-56 overflow-hidden">
-                            <Image
-                                src={proj.imageUrl}
-                                alt={proj.title}
-                                fill
-                                className="object-cover group-hover/item:scale-105 transition-transform duration-700 ease-out"
-                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            />
-                            <div className="absolute top-3 left-3 bg-black/90 text-white text-[10px] font-mono tracking-wider font-bold uppercase px-2 py-1">
-                              {proj.category}
-                            </div>
-                            <div className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-white text-[10px] px-2 py-1 flex items-center gap-1">
-                              <MapPin className="w-3 h-3 text-amber-400" />
-                              <span className="font-semibold">{proj.location}</span>
-                            </div>
-                          </div>
-                          <div className="p-6 flex flex-col flex-1 leading-relaxed bg-zinc-50 relative z-10">
-                            <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-zinc-600 font-bold uppercase mb-3">
-                              <Calendar className="w-3 h-3 text-amber-600" />
-                              <span>{`Rok ${proj.year}`}</span>
-                            </div>
-                            <h3 className="text-xl font-bold text-black tracking-tight mb-3 group-hover/item:text-amber-600 transition-colors">
-                              {proj.title}
-                            </h3>
-                            <p className="text-gray-500 text-sm line-clamp-3 mb-6 flex-1">
-                              {proj.description}
-                            </p>
-                            <ProjectMeta budget={proj.budgetString} duration={proj.duration} />
-                          </div>
-                        </Link>
+                    {filteredProjects.map((proj, i) => (
+                      <div
+                        key={proj.id}
+                        className="w-[86%] flex-none snap-start sm:w-[calc(45%-12px)] lg:w-[calc(29%-14px)]"
+                      >
+                        <motion.div {...reveal(i)}>
+                          <ProjectTile
+                            proj={proj}
+                            index={i}
+                            sizes="(max-width: 640px) 86vw, (max-width: 1024px) 45vw, 29vw"
+                          />
+                        </motion.div>
+                      </div>
                     ))}
                   </div>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {filteredProjects.map((proj) => (
-                      <Link
-                          key={proj.id}
-                          href={`/portfolio/${proj.id}`}
-                          className="bg-gray-50 border border-gray-200 overflow-hidden hover:shadow-xl hover:border-amber-500 transition-all duration-300 flex flex-col group"
-                      >
-                        <div className="relative h-48 sm:h-56 overflow-hidden">
-                          <Image
-                              src={proj.imageUrl}
-                              alt={proj.title}
-                              fill
-                              className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          />
-                          <div className="absolute top-3 left-3 bg-black/90 text-white text-[10px] font-mono tracking-wider font-bold uppercase px-2 py-1">
-                            {proj.category}
-                          </div>
-                          <div className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-white text-[10px] px-2 py-1 flex items-center gap-1">
-                            <MapPin className="w-3 h-3 text-amber-400" />
-                            <span className="font-semibold">{proj.location}</span>
-                          </div>
-                        </div>
-                        <div className="p-6 flex flex-col flex-1 leading-relaxed bg-zinc-50 relative z-10">
-                          <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-zinc-600 font-bold uppercase mb-3">
-                            <Calendar className="w-3 h-3 text-amber-600" />
-                            <span>{`Rok ${proj.year}`}</span>
-                          </div>
-                          <h3 className="text-xl font-bold text-black tracking-tight mb-3 group-hover:text-amber-600 transition-colors">
-                            {proj.title}
-                          </h3>
-                          <p className="text-gray-500 text-sm line-clamp-3 mb-6 flex-1">
-                            {proj.description}
-                          </p>
-                            <ProjectMeta budget={proj.budgetString} duration={proj.duration} />
-                        </div>
-                      </Link>
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {filteredProjects.map((proj, i) => (
+                    <motion.div key={proj.id} {...reveal(i)}>
+                      <ProjectTile
+                        proj={proj}
+                        index={i}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    </motion.div>
                   ))}
                 </div>
             )}

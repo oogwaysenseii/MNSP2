@@ -20,6 +20,10 @@ const LEGACY_CITY_REDIRECTS = [
 
 const nextConfig: NextConfig = {
   images: {
+    // Next 16 only serves qualities it can see at build time (default 75).
+    // The portfolio sources are already lossy webp, so the tiles re-encode at 90
+    // to avoid a visible second compression pass.
+    qualities: [75, 90],
     remotePatterns: [
       { protocol: 'https', hostname: 'picsum.photos', port: '', pathname: '/**' },
       { protocol: 'https', hostname: 'images.unsplash.com', port: '', pathname: '/**' },

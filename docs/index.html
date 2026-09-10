@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MNSP — Vizuálne návrhy</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;--amber:#f59e0b;--amber-6:#d97706}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:900px;margin:0 auto;padding:56px 32px 96px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 40px/1.1 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);margin:0 0 40px;max-width:66ch}
+  a.item{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid #d4d4d8;
+         padding:22px 24px;margin-bottom:12px;transition:border-color .2s,box-shadow .2s}
+  a.item:hover{border-color:var(--amber);box-shadow:0 8px 28px rgba(0,0,0,.07)}
+  .row{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+  .num{font:700 11px/1 ui-monospace,monospace;letter-spacing:.16em;color:var(--muted)}
+  h2{font:700 21px/1.25 ui-sans-serif,system-ui;margin:8px 0 6px;letter-spacing:-.01em}
+  .desc{font-size:14px;color:var(--ink-2);margin:0;max-width:60ch}
+  .pill{flex:none;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;
+        padding:7px 11px;border:1px solid}
+  .pill.open{color:#000;background:var(--amber);border-color:#000}
+  .pill.done{color:#065f46;background:#d1fae5;border-color:#065f46}
+  .queue{margin-top:44px;border-top:2px solid var(--ink);padding-top:18px}
+  .queue h3{font:800 13px/1 ui-sans-serif,system-ui;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px}
+  .queue li{font-size:14px;color:var(--ink-2);padding:9px 0;border-bottom:1px solid var(--line);list-style:none}
+  .queue ul{padding:0;margin:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">MNSP · Stavby a rekonštrukcie</p>
+  <h1>Vizuálne návrhy</h1>
+  <p class="lede">Každý návrh je samostatný súbor s porovnaním „pred / po“, očíslovanými zmenami,
+     mobilným aj desktopovým rámom a špecifikáciou pre vývoj. Nič z toho nie je aplikované v kóde,
+     kým to výslovne neodsúhlasíte.</p>
+
+  <a class="item" href="01-sluzby-hlavicka-sekcie.html">
+    <div class="row">
+      <div>
+        <p class="num">Návrh 01 · Domovská stránka</p>
+        <h2>Hlavička sekcie „Služby“</h2>
+        <p class="desc">Sekcia so službami nemá žiadny nadpis a začína 20&nbsp;px pod hero.
+           Návrh jej dopĺňa rovnakú hlavičku, akú má sekcia „Realizované projekty“ hneď pod ňou.</p>
+      </div>
+      <span class="pill open">Čaká na rozhodnutie</span>
+    </div>
+  </a>
+
+  <a class="item" href="02-projekty-styl-kariet.html">
+    <div class="row">
+      <div>
+        <p class="num">Návrh 02 · Domovská stránka</p>
+        <h2>Štýl sekcie „Realizované projekty“</h2>
+        <p class="desc">Karta projektu nesie sedem vrstiev naraz a fotka realizácie dostane najmenej priestoru.
+           Tri varianty — redakčný, tmavý katalóg a fotografia na celú plochu.</p>
+      </div>
+      <span class="pill open">Čaká na rozhodnutie</span>
+    </div>
+  </a>
+
+  <a class="item" href="03-projekty-variant-c-plny.html">
+    <div class="row">
+      <div>
+        <p class="num">Návrh 03 · Domovská stránka</p>
+        <h2>Variant C — plná verzia</h2>
+        <p class="desc">Živá sekcia v skutočnej veľkosti — fungujúce filtre, animácie pri prejdení myšou,
+           nábeh dlaždíc, prepínač mobil/desktop a kompletné časovania pre vývoj.
+           Platí pre mriežku na stránke /portfólio.</p>
+      </div>
+      <span class="pill open">Čaká na rozhodnutie</span>
+    </div>
+  </a>
+
+  <a class="item" href="04-projekty-karusel.html">
+    <div class="row">
+      <div>
+        <p class="num">Návrh 04 · Domovská stránka</p>
+        <h2>Variant C v karuseli</h2>
+        <p class="desc">Domovská stránka nie je mriežka, ale karusel — a dlaždica z návrhu 03 sa doň
+           nedá vložiť bez úpravy. Tri prístupy naživo, vrátane toho, prečo prvý nefunguje.</p>
+      </div>
+      <span class="pill open">Čaká na rozhodnutie</span>
+    </div>
+  </a>
+
+  <a class="item" href="06-cta-styl.html">
+    <div class="row">
+      <div>
+        <p class="num">Návrh 06 · Celý web</p>
+        <h2>Štýl sekcie CTA</h2>
+        <p class="desc">Sekcia s formulárom má nulové zvislé odsadenie a šesť chýb, ktoré sú prehliadnutím,
+           nie zámerom. Tri varianty naživo — dá sa v nich klikať do polí.</p>
+      </div>
+      <span class="pill open">Čaká na rozhodnutie</span>
+    </div>
+  </a>
+
+  <a class="item" href="05-implementacia-varianta-c.html" style="border-color:#065f46">
+    <div class="row">
+      <div>
+        <p class="num">Implementácia · pre vývojára</p>
+        <h2>Variant C — filmový pás</h2>
+        <p class="desc">Odsúhlasený návrh rozpísaný do krokov: presné čísla riadkov, hotový kód na skopírovanie,
+           dva latentné problémy na opravu a kontrolný zoznam pred odovzdaním.</p>
+      </div>
+      <span class="pill done">Odsúhlasené</span>
+    </div>
+  </a>
+
+  <div class="queue">
+    <h3>V poradí</h3>
+    <ul>
+      <li>Hero — pred hlavným nadpisom sú štyri vrstvy obsahu (odznaky dôvery, nadradený text, jantárový štítok, nadpis).</li>
+      <li>Hero — sekundárne tlačidlo „Zobraziť naše referencie“ takmer zaniká na tmavom videu.</li>
+      <li>Formulár po odoslaní používa systémové okno <code>alert()</code> — stav priamo vo formulári by pôsobil podstatne lepšie.</li>
+      <li>Tri z piatich fotiek na kartách služieb sú stále Unsplash placeholdery označené v dátach ako <code>TODO</code>.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 02 — Štýl sekcie Realizované projekty</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1500px;margin:0 auto;padding:48px 32px 110px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 40px/1.1 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:74ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2.sec{font:800 13px/1 ui-sans-serif,system-ui;letter-spacing:.18em;text-transform:uppercase;
+         margin:60px 0 6px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  .seclede{font-size:14px;color:var(--muted);margin:0 0 20px}
+  .quad{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:start}
+  .vhead{display:flex;align-items:baseline;gap:9px;margin:0 0 10px}
+  .vhead b{font:800 15px/1 ui-sans-serif,system-ui}
+  .vhead span{font:700 10px/1 ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .frame{position:relative;overflow:hidden;background:#fff;border:1px solid #d4d4d8}
+  .scaler{transform-origin:top left}
+  .trade{font-size:13px;line-height:1.5;color:var(--ink-2);margin:10px 0 0}
+  .rowbox{position:relative;overflow:hidden;border:1px solid #d4d4d8;background:#fff}
+  .pick{margin-top:22px;padding:18px 22px;background:#18181b;color:#fff;font-size:15px;line-height:1.6}
+  .pick b{color:var(--amber)}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line)}
+  th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+  th{background:#fafafa;font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:24%}
+  td code{font:500 13px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+
+  /* ============ shared app replica ============ */
+  .app{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .rail{width:1440px;padding:0 32px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .one{width:442px}
+  .ph{overflow:hidden;background:#e5e7eb;position:relative}
+  .ph img{width:100%;height:100%;object-fit:cover;display:block}
+
+  /* ---- TERAZ (current) ---- */
+  .t .card{border:1px solid #e5e7eb;background:#f9fafb;display:flex;flex-direction:column}
+  .t .ph{height:224px}
+  .t .badge{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.9);color:#fff;
+            font:700 10px/1 ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;padding:5px 8px}
+  .t .loc{position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,.8);color:#fff;
+          font:600 10px/1 inherit;padding:5px 8px;display:flex;align-items:center;gap:4px}
+  .t .loc i{width:9px;height:9px;background:var(--amber);display:block;clip-path:polygon(50% 100%,0 38%,50% 0,100% 38%)}
+  .t .body{padding:24px;background:#fafafa;display:flex;flex-direction:column;flex:1}
+  .t .rok{display:flex;align-items:center;gap:7px;margin-bottom:12px;
+          font:700 10px/1 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:#52525b}
+  .t .rok i{width:10px;height:10px;border:1.5px solid var(--amber-6);display:block}
+  .t h3{font:700 20px/1.25 inherit;letter-spacing:-.01em;color:#000;margin:0 0 12px}
+  .t p{font:400 14px/1.6 inherit;color:#6b7280;margin:0 0 24px;flex:1}
+  .t .meta{border-top:1px solid #f3f4f6;padding-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .t .meta span{display:block;font:400 9px/1.4 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#6b7280}
+  .t .meta b{display:block;font:700 14px/1.3 inherit;color:#000;margin-top:4px}
+
+  /* ---- A · REDAKČNÝ ---- */
+  .a .card{background:#fff;display:flex;flex-direction:column}
+  .a .ph{height:332px}
+  .a .body{padding:20px 0 0}
+  .a .cat{font:700 10px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6)}
+  .a h3{font:800 24px/1.2 inherit;letter-spacing:-.02em;color:#000;margin:10px 0 0}
+  .a p{font:400 14px/1.6 inherit;color:#6b7280;margin:12px 0 0}
+  .a .meta{margin-top:20px;border-top:1px solid #e5e7eb;padding-top:14px;
+           display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .a .meta span{display:block;font:400 9px/1.4 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#a1a1aa}
+  .a .meta b{display:block;font:700 13px/1.3 inherit;color:#000;margin-top:5px}
+
+  /* ---- B · TMAVÝ KATALÓG ---- */
+  .bsec{background:#09090b;padding:28px 0}
+  .b .card{background:#18181b;border:1px solid rgba(255,255,255,.10);display:flex;flex-direction:column;position:relative}
+  .b .notch{position:absolute;top:0;left:0;width:0;height:0;border-top:14px solid var(--amber);border-right:14px solid transparent;z-index:2}
+  .b .ph{height:280px}
+  .b .body{padding:24px}
+  .b .cat{font:700 10px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+  .b h3{font:700 20px/1.28 inherit;letter-spacing:-.01em;color:#fff;margin:12px 0 0}
+  .b .sub{font:400 10px/1 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:#71717a;margin:10px 0 0}
+  .b p{font:400 14px/1.6 inherit;color:#a1a1aa;margin:14px 0 0}
+  .b .meta{margin-top:22px;border-top:1px solid rgba(255,255,255,.08);padding-top:16px;
+           display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .b .meta span{display:block;font:400 9px/1.4 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#71717a}
+  .b .meta b{display:block;font:700 14px/1.3 inherit;color:#fff;margin-top:4px}
+
+  /* ---- C · FOTOGRAFIA NA CELÚ PLOCHU ---- */
+  .c .card{background:#fff;display:flex;flex-direction:column}
+  .c .ph{height:420px}
+  .c .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 34%,rgba(0,0,0,0) 62%)}
+  .c .idx{position:absolute;top:18px;left:18px;z-index:2}
+  .c .idx b{display:block;font:700 11px/1 ui-monospace,monospace;letter-spacing:.2em;color:rgba(255,255,255,.75)}
+  .c .idx i{display:block;width:22px;height:2px;background:var(--amber);margin-top:7px}
+  .c .over{position:absolute;left:20px;right:20px;bottom:18px;z-index:2}
+  .c .over .cat{font:700 10px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+  .c .over h3{font:800 22px/1.24 inherit;letter-spacing:-.015em;color:#fff;margin:9px 0 0}
+  .c .over .sub{font:400 10px/1 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;
+                color:rgba(255,255,255,.72);margin:11px 0 0}
+  .c .strip{border:1px solid #e5e7eb;border-top:0;padding:14px 18px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .c .strip span{display:block;font:400 9px/1.4 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#a1a1aa}
+  .c .strip b{display:block;font:700 14px/1.3 inherit;color:#000;margin-top:4px}
+
+  /* section header replica used in the full rows */
+  .hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:34px}
+  .hdr h2{font:800 48px/1.05 inherit;letter-spacing:-.025em;margin:0}
+  .hdr .sub{font:400 18px/1.55 inherit;margin:14px 0 0}
+  .hdr a{font:700 14px/1 inherit;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+  .chips{display:flex;gap:8px;margin-bottom:30px}
+  .chip{font:600 12px/1 inherit;letter-spacing:.08em;text-transform:uppercase;padding:11px 20px;border:1px solid #d1d5db;color:#4b5563;background:#fff}
+  .chip.on{background:#000;color:var(--amber);border-color:#000;font-weight:700;position:relative}
+  .chip.on i{position:absolute;top:0;left:0;width:0;height:0;border-top:8px solid var(--amber);border-right:8px solid transparent}
+  .dk .chip{border-color:rgba(255,255,255,.18);color:#a1a1aa;background:transparent}
+  .dk .chip.on{background:var(--amber);color:#000;border-color:var(--amber)}
+  .dk .chip.on i{border-top-color:#000}
+  @media (max-width:1499px){.quad{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:800px){.quad{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 02 · Domovská stránka</p>
+  <h1>Štýl sekcie „Realizované projekty“</h1>
+  <p class="lede">Karta projektu dnes nesie sedem samostatných vrstiev naraz — rámik, sivé pozadie, štítok kategórie
+     na fotke, štítok lokality na fotke, riadok s rokom, popis a dvojstĺpcovú tabuľku. Všetko súťaží o pozornosť
+     a fotka realizácie, ktorá má predávať, dostane najmenej priestoru. Tri varianty nižšie riešia to isté
+     inými prostriedkami — všetky ostávajú v existujúcom systéme: ostré rohy, čierna a jantárová,
+     monospace mikro-popisky.</p>
+  <p class="status">Stav: <b>neaplikované</b> — iba návrh</p>
+
+  <h2 class="sec">Porovnanie karty · 1440&nbsp;px</h2>
+  <p class="seclede">Rovnaký projekt, rovnaké dáta, štyri spracovania vedľa seba.</p>
+
+  <div class="quad">
+
+    <div>
+      <p class="vhead"><b>Teraz</b><span>Súčasný stav</span></p>
+      <div class="frame" style="width:340px;height:460px;max-width:100%">
+        <div class="scaler" style="transform:scale(.769)">
+          <div class="app t"><div class="one">
+            <div class="card">
+              <div class="ph">
+                <img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt="">
+                <span class="badge">Občianske stavby</span>
+                <span class="loc"><i></i>Detva</span>
+              </div>
+              <div class="body">
+                <p class="rok"><i></i>Rok 2026</p>
+                <h3>Zariadenie sociálnych služieb Detva</h3>
+                <p>Realizácia zariadenia sociálnych služieb vrátane inžinierskych sietí, opornej steny a spevnených plôch.</p>
+                <div class="meta">
+                  <div><span>Rozpočet</span><b>€ 4.5M</b></div>
+                  <div><span>Trvanie</span><b>18 mesiacov</b></div>
+                </div>
+              </div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+      <p class="trade">Sedem vrstiev na jednej karte. Fotka je nízka, rámik a sivé pozadie ju tlačia dozadu.</p>
+    </div>
+
+    <div>
+      <p class="vhead"><b>A</b><span>Redakčný</span></p>
+      <div class="frame" style="width:340px;height:460px;max-width:100%">
+        <div class="scaler" style="transform:scale(.769)">
+          <div class="app a"><div class="one">
+            <div class="card">
+              <div class="ph"><img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt=""></div>
+              <div class="body">
+                <span class="cat">Občianske stavby</span>
+                <h3>Zariadenie sociálnych služieb Detva</h3>
+                <p>Realizácia zariadenia sociálnych služieb vrátane inžinierskych sietí, opornej steny a spevnených plôch.</p>
+                <div class="meta">
+                  <div><span>Rok</span><b>2026</b></div>
+                  <div><span>Lokalita</span><b>Detva</b></div>
+                  <div><span>Rozpočet</span><b>€ 4.5M</b></div>
+                  <div><span>Trvanie</span><b>18 mes.</b></div>
+                </div>
+              </div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+      <p class="trade">Bez rámika a bez sivého pozadia. Fotka vyššia o polovicu, všetky štyri údaje v jednom riadku pod vlasovou linkou.</p>
+    </div>
+
+    <div>
+      <p class="vhead"><b>B</b><span>Tmavý katalóg</span></p>
+      <div class="frame" style="width:340px;height:460px;max-width:100%;background:#09090b;border-color:#3f3f46">
+        <div class="scaler" style="transform:scale(.769)">
+          <div class="app b" style="padding:14px"><div class="one">
+            <div class="card">
+              <span class="notch"></span>
+              <div class="ph"><img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt=""></div>
+              <div class="body">
+                <span class="cat">Občianske stavby</span>
+                <h3>Zariadenie sociálnych služieb Detva</h3>
+                <p class="sub">Detva · Rok 2026</p>
+                <p>Realizácia zariadenia sociálnych služieb vrátane inžinierskych sietí, opornej steny a spevnených plôch.</p>
+                <div class="meta">
+                  <div><span>Rozpočet</span><b>€ 4.5M</b></div>
+                  <div><span>Trvanie</span><b>18 mesiacov</b></div>
+                </div>
+              </div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+      <p class="trade">Sekcia na čiernom podklade. Fotky svietia, jantárová konečne kontrastuje. Rovnaký zárez v rohu ako filtračné čipy.</p>
+    </div>
+
+    <div>
+      <p class="vhead"><b>C</b><span>Fotografia na celú plochu</span></p>
+      <div class="frame" style="width:340px;height:460px;max-width:100%">
+        <div class="scaler" style="transform:scale(.769)">
+          <div class="app c"><div class="one">
+            <div class="card">
+              <div class="ph">
+                <img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt="">
+                <span class="scrim"></span>
+                <span class="idx"><b>01</b><i></i></span>
+                <span class="over">
+                  <span class="cat">Občianske stavby</span>
+                  <h3>Zariadenie sociálnych služieb Detva</h3>
+                  <span class="sub">Detva · Rok 2026</span>
+                </span>
+              </div>
+              <div class="strip">
+                <div><span>Rozpočet</span><b>€ 4.5M</b></div>
+                <div><span>Trvanie</span><b>18 mesiacov</b></div>
+              </div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+      <p class="trade">Fotka nesie celú kartu, text leží na nej. Číslovanie 01–03 v duchu technickej dokumentácie. Popis projektu odpadá z dlaždice.</p>
+    </div>
+
+  </div>
+
+  <h2 class="sec">A · Redakčný — celá sekcia</h2>
+  <p class="seclede">Biely podklad, bez rámikov. Ticho a priestor namiesto ohraničení.</p>
+  <div class="rowbox" style="height:466px">
+    <div class="scaler" style="transform:scale(.55)">
+      <div class="app a" style="background:#fff;padding:40px 0">
+        <div class="rail">
+          <div class="hdr">
+            <div><h2 style="color:#000">Realizované projekty</h2>
+              <p class="sub" style="color:#6b7280">Prehľad zrealizovaných a prebiehajúcich projektov.</p></div>
+            <a href="#" style="color:var(--amber-7)">Všetky projekty &rsaquo;</a>
+          </div>
+          <div class="chips">
+            <span class="chip on"><i></i>Všetky realizácie</span>
+            <span class="chip">Rodinné domy</span>
+            <span class="chip">Rezidenčné budovy</span>
+            <span class="chip">Komerčná výstavba</span>
+            <span class="chip">Priemyselné objekty</span>
+            <span class="chip">Občianske stavby</span>
+          </div>
+          <div class="cards">
+            <div class="card"><div class="ph"><img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt=""></div>
+              <div class="body"><span class="cat">Občianske stavby</span>
+                <h3>Zariadenie sociálnych služieb Detva</h3>
+                <p>Realizácia zariadenia sociálnych služieb vrátane inžinierskych sietí, opornej steny a spevnených plôch.</p>
+                <div class="meta"><div><span>Rok</span><b>2026</b></div><div><span>Lokalita</span><b>Detva</b></div>
+                <div><span>Rozpočet</span><b>€ 4.5M</b></div><div><span>Trvanie</span><b>18 mes.</b></div></div></div></div>
+            <div class="card"><div class="ph"><img src="assets/Rekonstrukcia-novohradskeho-muzea-Lucenec.webp" alt=""></div>
+              <div class="body"><span class="cat">Občianske stavby</span>
+                <h3>Novohradské múzeum a galéria Lučenec</h3>
+                <p>Stavebné práce pri obnove objektu Novohradského múzea a galérie vrátane základov, oporných múrov a monolitických konštrukcií.</p>
+                <div class="meta"><div><span>Rok</span><b>2025</b></div><div><span>Lokalita</span><b>Lučenec</b></div>
+                <div><span>Rozpočet</span><b>€ 1.2M</b></div><div><span>Trvanie</span><b>6 mes.</b></div></div></div></div>
+            <div class="card"><div class="ph"><img src="assets/rekonstrukcia-domovu-dochodcov-senior-active-hrinova.webp" alt=""></div>
+              <div class="body"><span class="cat">Občianske stavby</span>
+                <h3>Zariadenie pre seniorov SENIOR ACTIVE Hriňová</h3>
+                <p>Rekonštrukcia a modernizácia priestorov zariadenia pre seniorov a domova sociálnych služieb — nové omietky, podhľady a podlahy.</p>
+                <div class="meta"><div><span>Rok</span><b>2025</b></div><div><span>Lokalita</span><b>Hriňová</b></div>
+                <div><span>Rozpočet</span><b>€ 450 000</b></div><div><span>Trvanie</span><b>4 mes.</b></div></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec">B · Tmavý katalóg — celá sekcia</h2>
+  <p class="seclede">Sekcia sa preklopí na čiernu. Pozor: CTA hneď pod ňou je tiež tmavé.</p>
+  <div class="rowbox" style="height:435px;border-color:#3f3f46">
+    <div class="scaler" style="transform:scale(.55)">
+      <div class="app b dk bsec">
+        <div class="rail">
+          <div class="hdr">
+            <div><h2 style="color:#fff">Realizované projekty</h2>
+              <p class="sub" style="color:#a1a1aa">Prehľad zrealizovaných a prebiehajúcich projektov.</p></div>
+            <a href="#" style="color:var(--amber)">Všetky projekty &rsaquo;</a>
+          </div>
+          <div class="chips">
+            <span class="chip on"><i></i>Všetky realizácie</span>
+            <span class="chip">Rodinné domy</span>
+            <span class="chip">Rezidenčné budovy</span>
+            <span class="chip">Komerčná výstavba</span>
+            <span class="chip">Priemyselné objekty</span>
+            <span class="chip">Občianske stavby</span>
+          </div>
+          <div class="cards">
+            <div class="card"><span class="notch"></span><div class="ph"><img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt=""></div>
+              <div class="body"><span class="cat">Občianske stavby</span>
+                <h3>Zariadenie sociálnych služieb Detva</h3><p class="sub">Detva · Rok 2026</p>
+                <p>Realizácia zariadenia sociálnych služieb vrátane inžinierskych sietí, opornej steny a spevnených plôch.</p>
+                <div class="meta"><div><span>Rozpočet</span><b>€ 4.5M</b></div><div><span>Trvanie</span><b>18 mesiacov</b></div></div></div></div>
+            <div class="card"><span class="notch"></span><div class="ph"><img src="assets/Rekonstrukcia-novohradskeho-muzea-Lucenec.webp" alt=""></div>
+              <div class="body"><span class="cat">Občianske stavby</span>
+                <h3>Novohradské múzeum a galéria Lučenec</h3><p class="sub">Lučenec · Rok 2025</p>
+                <p>Stavebné práce pri obnove objektu vrátane základov, oporných múrov a monolitických konštrukcií.</p>
+                <div class="meta"><div><span>Rozpočet</span><b>€ 1.2M</b></div><div><span>Trvanie</span><b>6 mesiacov</b></div></div></div></div>
+            <div class="card"><span class="notch"></span><div class="ph"><img src="assets/rekonstrukcia-domovu-dochodcov-senior-active-hrinova.webp" alt=""></div>
+              <div class="body"><span class="cat">Občianske stavby</span>
+                <h3>Zariadenie pre seniorov SENIOR ACTIVE Hriňová</h3><p class="sub">Hriňová · Rok 2025</p>
+                <p>Rekonštrukcia a modernizácia priestorov — nové omietky, kazetové podhľady a podlahové krytiny.</p>
+                <div class="meta"><div><span>Rozpočet</span><b>€ 450 000</b></div><div><span>Trvanie</span><b>4 mesiace</b></div></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec">C · Fotografia na celú plochu — celá sekcia</h2>
+  <p class="seclede">Dlaždice namiesto kariet. Najviac priestoru pre fotky realizácií.</p>
+  <div class="rowbox" style="height:419px">
+    <div class="scaler" style="transform:scale(.55)">
+      <div class="app c" style="background:#fff;padding:40px 0">
+        <div class="rail">
+          <div class="hdr">
+            <div><h2 style="color:#000">Realizované projekty</h2>
+              <p class="sub" style="color:#6b7280">Prehľad zrealizovaných a prebiehajúcich projektov.</p></div>
+            <a href="#" style="color:var(--amber-7)">Všetky projekty &rsaquo;</a>
+          </div>
+          <div class="chips">
+            <span class="chip on"><i></i>Všetky realizácie</span>
+            <span class="chip">Rodinné domy</span>
+            <span class="chip">Rezidenčné budovy</span>
+            <span class="chip">Komerčná výstavba</span>
+            <span class="chip">Priemyselné objekty</span>
+            <span class="chip">Občianske stavby</span>
+          </div>
+          <div class="cards">
+            <div class="card"><div class="ph"><img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt="">
+              <span class="scrim"></span><span class="idx"><b>01</b><i></i></span>
+              <span class="over"><span class="cat">Občianske stavby</span>
+                <h3>Zariadenie sociálnych služieb Detva</h3><span class="sub">Detva · Rok 2026</span></span></div>
+              <div class="strip"><div><span>Rozpočet</span><b>€ 4.5M</b></div><div><span>Trvanie</span><b>18 mesiacov</b></div></div></div>
+            <div class="card"><div class="ph"><img src="assets/Rekonstrukcia-novohradskeho-muzea-Lucenec.webp" alt="">
+              <span class="scrim"></span><span class="idx"><b>02</b><i></i></span>
+              <span class="over"><span class="cat">Občianske stavby</span>
+                <h3>Novohradské múzeum a galéria Lučenec</h3><span class="sub">Lučenec · Rok 2025</span></span></div>
+              <div class="strip"><div><span>Rozpočet</span><b>€ 1.2M</b></div><div><span>Trvanie</span><b>6 mesiacov</b></div></div></div>
+            <div class="card"><div class="ph"><img src="assets/rekonstrukcia-domovu-dochodcov-senior-active-hrinova.webp" alt="">
+              <span class="scrim"></span><span class="idx"><b>03</b><i></i></span>
+              <span class="over"><span class="cat">Občianske stavby</span>
+                <h3>Zariadenie pre seniorov SENIOR ACTIVE Hriňová</h3><span class="sub">Hriňová · Rok 2025</span></span></div>
+              <div class="strip"><div><span>Rozpočet</span><b>€ 450 000</b></div><div><span>Trvanie</span><b>4 mesiace</b></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="pick">Odporúčam <b>A — Redakčný</b>. Prémiový dojem tu nespraví viac efektov, ale menej ohraničení:
+     zmizne rámik aj sivé pozadie, fotka narastie o polovicu a všetky štyri údaje sa zrovnajú do jedného
+     riadku pod vlasovou linkou. Zostáva na bielom podklade, takže nenaruší rytmus stránky ani nezrazí
+     dve tmavé plochy na seba tak ako <b>B</b>. <b>C</b> je vizuálne najsilnejšie, ale z dlaždice vypadne
+     popis projektu — má zmysel iba ak beriete fotky ako hlavný argument.</p>
+
+  <h2 class="sec">Špecifikácia — variant A</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Karta</td><td>Bez rámika, bez pozadia. Odstráni sa <code>border</code>, <code>bg-gray-50</code> aj <code>bg-zinc-50</code> na tele karty</td></tr>
+    <tr><td>Fotka</td><td>Pomer 4:3 — pri troch stĺpcoch 442 × 332 px (teraz 224 px). Pri prejdení myšou <code>scale(1.04)</code>, 700 ms</td></tr>
+    <tr><td>Kategória</td><td>Presunutá z fotky nad názov. 10 px, mono, váha 700, letter-spacing 0.18em, veľké písmená, <code>#D97706</code></td></tr>
+    <tr><td>Názov</td><td>24 px, váha 800, letter-spacing −0.02em, <code>#000000</code>, horný odstup 10 px; pri prejdení <code>#D97706</code></td></tr>
+    <tr><td>Popis</td><td>14 px, <code>#6B7280</code>, horný odstup 12 px, orezanie na 2 riadky</td></tr>
+    <tr><td>Riadok údajov</td><td>Horná vlasová linka <code>#E5E7EB</code>, odsadenie 14 px, štyri stĺpce, medzera 10 px</td></tr>
+    <tr><td>Popisky údajov</td><td>9 px, mono, letter-spacing 0.12em, veľké písmená, <code>#A1A1AA</code></td></tr>
+    <tr><td>Hodnoty údajov</td><td>13 px, váha 700, <code>#000000</code>, horný odstup 5 px</td></tr>
+    <tr><td>Rok a lokalita</td><td>Presunuté zo štítkov na fotke do riadku údajov — žiadny údaj sa nestráca</td></tr>
+    <tr><td>Medzera medzi kartami</td><td>24 px, bez zmeny</td></tr>
+    <tr><td>Zaoblenie rohov</td><td>Žiadne — nulový polomer, bez zmeny</td></tr>
+    <tr><td>Dotknutý súbor</td><td><code>src/components/sections/Projects.tsx</code> — karta v karuseli aj v mriežke</td></tr>
+  </table>
+
+  <h2 class="sec">Poznámky a obmedzenia</h2>
+  <ul class="flags">
+    <li>Žiadny údaj som neodstránil — kategória, rok a lokalita sa iba presúvajú z fotky do textu. Vo variante C vypadáva z dlaždice popis projektu; to je jediná strata obsahu a je zámerná.</li>
+    <li>Variant B postaví tmavú sekciu priamo nad tmavé CTA. Ak by ste ho chceli, CTA by potrebovalo odlíšenie — samostatný návrh.</li>
+    <li>Filtračné čipy sú vo všetkých variantoch v podobe, akú sme už odsúhlasili; vo variante B majú iba invertované farby, aby boli čitateľné na čiernej.</li>
+    <li>Ikony (kalendár, špendlík) som vo variantoch A a B nahradil textovými popiskami. Ak ich chcete zachovať, viem ich vrátiť — nezmení to rozloženie.</li>
+    <li>Karuselové šípky ostávajú bez zmeny. Ich dnešné umiestnenie na okraji kariet je samostatná drobnosť.</li>
+    <li>Šírka 442 px platí pre tri stĺpce na 1440 px. Na mobile ostáva jeden stĺpec; pomer fotky 4:3 sa nemení.</li>
+  </ul>
+
+</div>
+</body>
+</html>

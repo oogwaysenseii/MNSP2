@@ -1,6 +1,6 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { Projects } from './Projects';
 import type { ServiceCategory } from '@/src/data/projects';
 
@@ -16,16 +16,24 @@ const CATEGORIES: readonly string[] = [
  * Thin client wrapper that reads ?category= from the URL.
  *
  * The "Všetky projekty" links on carousel instances point at
- * /portfolio?category=… so the grid opens on the section the visitor came
- * from. Reading it here rather than in Projects keeps that hook off every
- * other page that renders the carousel, and reading it client-side rather
- * than via searchParams keeps /portfolio statically prerendered.
+ * /portfolio?category=… so the grid opens on the section the visitor came from.
+ *
+ * The param is read from window.location AFTER mount, deliberately. Calling
+ * useSearchParams() here opts this subtree out of static prerendering — Next
+ * ships the Suspense fallback in the HTML instead, which left /portfolio with
+ * zero project links and ~218 words for crawlers. Starting at 'all' means the
+ * full grid is in the static HTML; a deep link re-filters on hydration.
+ *
+ * Reading it in useState's initializer instead would desync server ('all') and
+ * client (filtered) and trip a hydration mismatch, so the effect is required.
  */
 export function PortfolioGrid() {
-  const searchParams = useSearchParams();
-  const raw = searchParams.get('category');
-  const initial: ServiceCategory | 'all' =
-    raw && CATEGORIES.includes(raw) ? (raw as ServiceCategory) : 'all';
+  const [category, setCategory] = useState<ServiceCategory | 'all'>('all');
 
-  return <Projects hideHeader viewMode="grid" defaultCategory={initial} />;
+  useEffect(() => {
+    const raw = new URLSearchParams(window.location.search).get('category');
+    if (raw && CATEGORIES.includes(raw)) setCategory(raw as ServiceCategory);
+  }, []);
+
+  return <Projects hideHeader viewMode="grid" defaultCategory={category} />;
 }

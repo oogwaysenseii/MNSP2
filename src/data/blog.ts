@@ -1408,7 +1408,7 @@ Ak plánujete stavbu rodinného domu, radi vám v **MNSP | Stavby a rekonštrukc
     date: '25. Marec 2026',
     publishedAt: '2026-03-25T08:00:00+01:00',
     updatedAt: '2026-03-25T08:00:00+01:00',
-    imageUrl: '/images/blog/house1.jpg'
+    imageUrl: '/Blog/rekuperacia-v-rodinnom-dome.webp'
   },
   {
     id: 'tepelne-cerpadlo-v-rodinnom-dome',
@@ -1445,7 +1445,7 @@ Ak plánujete stavbu rodinného domu, obráťte sa na odborníkov z **MNSP | Sta
     date: '10. Marec 2026',
     publishedAt: '2026-03-10T08:00:00+01:00',
     updatedAt: '2026-03-10T08:00:00+01:00',
-    imageUrl: '/images/blog/house2.jpg'
+    imageUrl: '/Blog/tepelne-cerpadlo-v-rodinnom-dome.webp'
   },
   {
     id: 'kolko-stoji-rekonstrukcia-domu-v-roku-2026',
@@ -1519,7 +1519,7 @@ Plánujete rekonštrukciu? Nenechávajte to na náhodu a nepresné odhady z inte
     date: '05. Marec 2026',
     publishedAt: '2026-03-05T08:00:00+01:00',
     updatedAt: '2026-03-05T08:00:00+01:00',
-    imageUrl: '/images/blog/house3.jpg'
+    imageUrl: '/Blog/kolko-stoji-rekonstrukcia-domu-v-roku-2026.webp'
   }
 ];
 

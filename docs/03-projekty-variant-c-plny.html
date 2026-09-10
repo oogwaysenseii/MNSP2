@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 03 — Variant C, plná verzia</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;
+        --ease:cubic-bezier(.22,.61,.36,1)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1500px;margin:0 auto;padding:48px 32px 110px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 40px/1.1 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:74ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2.sec{font:800 13px/1 ui-sans-serif,system-ui;letter-spacing:.18em;text-transform:uppercase;
+         margin:56px 0 6px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  .seclede{font-size:14px;color:var(--muted);margin:0 0 20px;max-width:78ch}
+  .hint{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);
+        border-left:3px solid var(--amber);padding:12px 16px;margin:0 0 18px;font-size:14px;color:var(--ink-2)}
+  .toolbar{display:flex;gap:8px;margin:0 0 16px;flex-wrap:wrap}
+  .tbtn{font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase;
+        padding:10px 16px;border:1px solid #d4d4d8;background:#fff;color:var(--ink-2);cursor:pointer}
+  .tbtn.on{background:#18181b;color:#fff;border-color:#18181b}
+  .stage{background:#fff;border:1px solid #d4d4d8;overflow:hidden;transition:max-width .45s var(--ease)}
+  .stage.mob{max-width:375px}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line)}
+  th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+  th{background:#fafafa;font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:22%}
+  td code{font:500 13px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  .beats{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+  .beat{background:#fff;border:1px solid var(--line);padding:16px 18px}
+  .beat b{display:block;font:700 12px/1 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-6);margin-bottom:9px}
+  .beat p{margin:0;font-size:14px;line-height:1.55;color:var(--ink-2)}
+  .beat code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+
+  /* ================= LIVE SECTION — VARIANT C ================= */
+  .pv{background:#fff;padding:40px 0}
+  .pv .rail{padding:0 32px}
+  .pv .hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:34px;gap:24px;flex-wrap:wrap}
+  .pv .hdr h2{font:800 48px/1.05 inherit;letter-spacing:-.025em;color:#000;margin:0}
+  .pv .hdr .sub{font:400 18px/1.55 inherit;color:#6b7280;margin:14px 0 0}
+  .pv .hdr a{font:700 14px/1 inherit;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-7);
+             text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:5px;transition:color .3s}
+  .pv .hdr a:hover{color:#000}
+  .pv .hdr a i{transition:transform .3s var(--ease)}
+  .pv .hdr a:hover i{transform:translateX(4px)}
+
+  .pv .chips{display:flex;gap:8px;margin-bottom:30px;overflow-x:auto;scrollbar-width:none}
+  .pv .chips::-webkit-scrollbar{display:none}
+  .pv .chip{font:600 12px/1 inherit;letter-spacing:.08em;text-transform:uppercase;padding:11px 20px;
+            border:1px solid #d1d5db;color:#4b5563;background:#fff;cursor:pointer;white-space:nowrap;
+            position:relative;transition:border-color .25s,color .25s,background .25s}
+  .pv .chip:hover{border-color:#000;color:#000}
+  .pv .chip.on{background:#000;color:var(--amber);border-color:#000;font-weight:700}
+  .pv .chip.on::before{content:"";position:absolute;top:0;left:0;width:0;height:0;
+                       border-top:8px solid var(--amber);border-right:8px solid transparent}
+
+  .pv .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+
+  .pv .slot{opacity:0;transform:translateY(26px)}
+  .pv .slot.in{opacity:1;transform:none;
+               transition:opacity .75s var(--ease),transform .75s var(--ease)}
+  .pv .slot.gone{display:none}
+
+  .pc{display:block;text-decoration:none;color:inherit;position:relative;
+      transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+  .pc:hover{transform:translateY(-4px);box-shadow:0 22px 52px rgba(0,0,0,.19)}
+
+  .pc .tile{position:relative;height:420px;overflow:hidden;background:#e5e7eb}
+  .pc .tile img{width:100%;height:100%;object-fit:cover;display:block;
+                transition:transform 1.1s var(--ease)}
+  .pc:hover .tile img{transform:scale(1.07)}
+
+  .pc .scrim{position:absolute;inset:0;
+             background:linear-gradient(to top,rgba(0,0,0,.9) 0%,rgba(0,0,0,.5) 32%,rgba(0,0,0,0) 62%);
+             transition:opacity .5s ease}
+  .pc:hover .scrim{opacity:.92}
+
+  .pc .idx{position:absolute;top:18px;left:20px;z-index:2}
+  .pc .idx b{display:block;font:700 11px/1 ui-monospace,monospace;letter-spacing:.2em;color:rgba(255,255,255,.78)}
+  .pc .idx i{display:block;width:22px;height:2px;background:var(--amber);margin-top:7px;
+             transition:width .55s var(--ease)}
+  .pc:hover .idx i{width:54px}
+
+  .pc .over{position:absolute;left:22px;right:22px;bottom:20px;z-index:2}
+  .pc .cat{display:block;font:700 10px/1 ui-monospace,monospace;letter-spacing:.18em;
+           text-transform:uppercase;color:var(--amber)}
+  .pc .over h3{font:800 22px/1.26 inherit;letter-spacing:-.015em;color:#fff;margin:9px 0 0}
+  .pc .meta{display:block;font:400 10px/1 ui-monospace,monospace;letter-spacing:.14em;
+            text-transform:uppercase;color:rgba(255,255,255,.72);margin:11px 0 0}
+  .pc .reveal{overflow:hidden;max-height:0;opacity:0;
+              transition:max-height .5s var(--ease),opacity .35s ease,margin-top .5s var(--ease)}
+  .pc:hover .reveal{max-height:34px;opacity:1;margin-top:14px}
+  .pc .reveal span{display:inline-flex;align-items:center;gap:7px;
+                   font:700 10px/1 ui-monospace,monospace;letter-spacing:.18em;
+                   text-transform:uppercase;color:#fff;border-bottom:1px solid var(--amber);padding-bottom:6px}
+
+  .pc .strip{border:1px solid #e5e7eb;border-top:0;padding:14px 18px;
+             display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#fff;
+             transition:border-color .45s ease}
+  .pc:hover .strip{border-color:var(--amber)}
+  .pc .strip span{display:block;font:400 9px/1.4 ui-monospace,monospace;letter-spacing:.12em;
+                  text-transform:uppercase;color:#a1a1aa}
+  .pc .strip b{display:block;font:700 14px/1.3 inherit;color:#000;margin-top:4px}
+
+  .pv .empty{border:1px solid #e5e7eb;background:#fff;padding:64px 24px;text-align:center}
+  .pv .empty p{margin:0;font:600 14px/1.5 inherit;color:#6b7280}
+  .pv [hidden]{display:none !important}
+  .pv .arrows{display:flex;gap:10px;justify-content:flex-end;margin-top:26px}
+  .pv .arw{width:48px;height:48px;border:1px solid #e5e7eb;background:#fff;color:#4b5563;
+           display:flex;align-items:center;justify-content:center;cursor:pointer;
+           transition:border-color .3s,color .3s,background .3s}
+  .pv .arw:hover{border-color:var(--amber);background:#fffbeb;color:#000}
+
+  .stage.mob .pv .cards{grid-template-columns:1fr}
+  .stage.mob .pv .rail{padding:0 16px}
+  .stage.mob .pv{padding:24px 0}
+  .stage.mob .pv .hdr h2{font-size:34px}
+  .stage.mob .pv .hdr .sub{font-size:16px}
+  .stage.mob .pc .tile{height:340px}
+
+  @media (max-width:1040px){.pv .cards{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:720px){.pv .cards{grid-template-columns:1fr}.pv .hdr h2{font-size:34px}}
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+    .pv .slot{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 03 · Domovská stránka</p>
+  <h1>Variant C — plná verzia</h1>
+  <p class="lede">Fotografia nesie celú kartu, text leží na nej. Nižšie je sekcia živá a v skutočnej veľkosti —
+     prejdite myšou po dlaždiciach, preklikajte filtre, prepnite na mobil. Všetky pohyby aj časovania sú tie,
+     ktoré by šli do kódu.</p>
+  <p class="status">Stav: <b>neaplikované</b> — iba návrh</p>
+
+  <h2 class="sec">Živá ukážka</h2>
+  <p class="seclede">Skutočné projekty, skutočné fotky, skutočné dáta. Filtre fungujú, dlaždice reagujú na myš.</p>
+
+  <p class="hint"><b>Vyskúšajte:</b>&nbsp; prejdite myšou po dlaždici — fotka sa priblíži, linka pri čísle sa predĺži,
+     zospodu vyjde „Zobraziť“ a spodný pás zjantárovie.</p>
+
+  <div class="toolbar">
+    <button class="tbtn on" data-w="full">Desktop</button>
+    <button class="tbtn" data-w="mob">Mobil · 375 px</button>
+    <button class="tbtn" id="replay">Prehrať nábeh znova</button>
+  </div>
+
+  <div class="stage" id="stage">
+    <div class="pv">
+      <div class="rail">
+
+        <div class="hdr">
+          <div>
+            <h2>Realizované projekty</h2>
+            <p class="sub">Prehľad zrealizovaných a prebiehajúcich projektov.</p>
+          </div>
+          <a href="#">Všetky projekty <i>&rsaquo;</i></a>
+        </div>
+
+        <div class="chips" id="chips">
+          <span class="chip on" data-cat="all">Všetky realizácie</span>
+          <span class="chip" data-cat="Rodinné domy">Rodinné domy</span>
+          <span class="chip" data-cat="Rezidenčné budovy">Rezidenčné budovy</span>
+          <span class="chip" data-cat="Komerčná výstavba">Komerčná výstavba</span>
+          <span class="chip" data-cat="Priemyselné objekty">Priemyselné objekty</span>
+          <span class="chip" data-cat="Občianske stavby">Občianske stavby</span>
+        </div>
+
+        <div class="cards" id="cards">
+
+          <div class="slot" data-cat="Občianske stavby">
+            <a class="pc" href="#">
+              <div class="tile">
+                <img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt="Zariadenie sociálnych služieb Detva">
+                <span class="scrim"></span>
+                <span class="idx"><b>01</b><i></i></span>
+                <span class="over">
+                  <span class="cat">Občianske stavby</span>
+                  <h3>Zariadenie sociálnych služieb Detva</h3>
+                  <span class="meta">Detva · Rok 2026</span>
+                  <span class="reveal"><span>Zobraziť &rarr;</span></span>
+                </span>
+              </div>
+              <div class="strip">
+                <div><span>Rozpočet</span><b>€ 4.5M</b></div>
+                <div><span>Trvanie</span><b>18 mesiacov</b></div>
+              </div>
+            </a>
+          </div>
+
+          <div class="slot" data-cat="Občianske stavby">
+            <a class="pc" href="#">
+              <div class="tile">
+                <img src="assets/Rekonstrukcia-novohradskeho-muzea-Lucenec.webp" alt="Novohradské múzeum a galéria Lučenec">
+                <span class="scrim"></span>
+                <span class="idx"><b>02</b><i></i></span>
+                <span class="over">
+                  <span class="cat">Občianske stavby</span>
+                  <h3>Novohradské múzeum a galéria Lučenec</h3>
+                  <span class="meta">Lučenec · Rok 2025</span>
+                  <span class="reveal"><span>Zobraziť &rarr;</span></span>
+                </span>
+              </div>
+              <div class="strip">
+                <div><span>Rozpočet</span><b>€ 1.2M</b></div>
+                <div><span>Trvanie</span><b>6 mesiacov</b></div>
+              </div>
+            </a>
+          </div>
+
+          <div class="slot" data-cat="Občianske stavby">
+            <a class="pc" href="#">
+              <div class="tile">
+                <img src="assets/rekonstrukcia-domovu-dochodcov-senior-active-hrinova.webp" alt="SENIOR ACTIVE Hriňová">
+                <span class="scrim"></span>
+                <span class="idx"><b>03</b><i></i></span>
+                <span class="over">
+                  <span class="cat">Občianske stavby</span>
+                  <h3>Zariadenie pre seniorov a domov sociálnych služieb SENIOR ACTIVE Hriňová</h3>
+                  <span class="meta">Hriňová · Rok 2025</span>
+                  <span class="reveal"><span>Zobraziť &rarr;</span></span>
+                </span>
+              </div>
+              <div class="strip">
+                <div><span>Rozpočet</span><b>€ 450 000</b></div>
+                <div><span>Trvanie</span><b>4 mesiace</b></div>
+              </div>
+            </a>
+          </div>
+
+          <div class="slot" data-cat="Rodinné domy">
+            <a class="pc" href="#">
+              <div class="tile">
+                <img src="assets/kompletna-rekonstrukcia-domu-hrinova.webp" alt="Rekonštrukcia rodinného domu Hriňová">
+                <span class="scrim"></span>
+                <span class="idx"><b>04</b><i></i></span>
+                <span class="over">
+                  <span class="cat">Rodinné domy</span>
+                  <h3>Rekonštrukcia rodinného domu Hriňová</h3>
+                  <span class="meta">Hriňová · Rok 2025</span>
+                  <span class="reveal"><span>Zobraziť &rarr;</span></span>
+                </span>
+              </div>
+            </a>
+          </div>
+
+          <div class="slot" data-cat="Rodinné domy">
+            <a class="pc" href="#">
+              <div class="tile">
+                <img src="assets/rodinny-dom-banska-bystrica-slnecne-strane.webp" alt="Rodinný dom Banská Bystrica">
+                <span class="scrim"></span>
+                <span class="idx"><b>05</b><i></i></span>
+                <span class="over">
+                  <span class="cat">Rodinné domy</span>
+                  <h3>Rodinný dom Banská Bystrica</h3>
+                  <span class="meta">Banská Bystrica · Rok 2023</span>
+                  <span class="reveal"><span>Zobraziť &rarr;</span></span>
+                </span>
+              </div>
+            </a>
+          </div>
+
+          <div class="slot" data-cat="Rodinné domy">
+            <a class="pc" href="#">
+              <div class="tile">
+                <img src="assets/hruba-stavba-rd-dubravy.webp" alt="Hrubá stavba Dúbravy">
+                <span class="scrim"></span>
+                <span class="idx"><b>06</b><i></i></span>
+                <span class="over">
+                  <span class="cat">Rodinné domy</span>
+                  <h3>Hrubá stavba Dúbravy</h3>
+                  <span class="meta">Dúbravy · Rok 2023</span>
+                  <span class="reveal"><span>Zobraziť &rarr;</span></span>
+                </span>
+              </div>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="empty" id="empty" hidden>
+          <p>Momentálne nemáme v tejto kategórii žiadne dokončené projekty.</p>
+        </div>
+
+        <div class="arrows" id="arrows">
+          <span class="arw">&#8249;</span>
+          <span class="arw">&#8250;</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec">Čo sa presne deje</h2>
+  <p class="seclede">Šesť pohybov. Všetky bežia na jednej krivke <code>cubic-bezier(.22,.61,.36,1)</code> —
+     rýchly začiatok, dlhé dobiehanie. To je to, čo robí pohyb drahým namiesto hravým.</p>
+  <div class="beats">
+    <div class="beat"><b>Fotka</b><p>Priblíženie na <code>scale(1.07)</code> počas <code>1100&nbsp;ms</code>. Zámerne pomalé — pri 300 ms pôsobí lacno.</p></div>
+    <div class="beat"><b>Dlaždica</b><p>Nadvihnutie o <code>4&nbsp;px</code> a tieň <code>0 22px 52px rgba(0,0,0,.19)</code>, <code>500&nbsp;ms</code>.</p></div>
+    <div class="beat"><b>Linka pri čísle</b><p>Predĺži sa z <code>22&nbsp;px</code> na <code>54&nbsp;px</code>, <code>550&nbsp;ms</code>. Drobnosť, ktorú si všimnete až podvedome.</p></div>
+    <div class="beat"><b>„Zobraziť“</b><p>Vysunie sa zospodu — <code>max-height</code> 0 → 34 px za <code>500&nbsp;ms</code>, text nabehne za <code>350&nbsp;ms</code>.</p></div>
+    <div class="beat"><b>Spodný pás</b><p>Rámik prejde zo <code>#E5E7EB</code> na jantárovú <code>#F59E0B</code> za <code>450&nbsp;ms</code> — rovnako ako dnes na kartách.</p></div>
+    <div class="beat"><b>Nábeh sekcie</b><p>Dlaždice nabehnú zdola o <code>26&nbsp;px</code> pri vstupe do obrazu, <code>750&nbsp;ms</code>, s odstupom <code>80&nbsp;ms</code> medzi nimi.</p></div>
+  </div>
+
+  <h2 class="sec">Špecifikácia</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Dlaždica</td><td>Výška <code>420&nbsp;px</code> desktop, <code>340&nbsp;px</code> mobil. Bez rámika, bez zaoblenia</td></tr>
+    <tr><td>Stmavenie</td><td><code>linear-gradient(to top, rgba(0,0,0,.9) 0%, rgba(0,0,0,.5) 32%, transparent 62%)</code></td></tr>
+    <tr><td>Poradové číslo</td><td>11 px, mono, váha 700, letter-spacing 0.2em, <code>rgba(255,255,255,.78)</code>; pod ním jantárová linka 2 px</td></tr>
+    <tr><td>Kategória</td><td>10 px, mono, váha 700, letter-spacing 0.18em, veľké písmená, <code>#F59E0B</code></td></tr>
+    <tr><td>Názov</td><td>22 px, váha 800, letter-spacing −0.015em, <code>#FFFFFF</code>, horný odstup 9 px</td></tr>
+    <tr><td>Lokalita a rok</td><td>10 px, mono, letter-spacing 0.14em, veľké písmená, <code>rgba(255,255,255,.72)</code></td></tr>
+    <tr><td>Spodný pás</td><td>Rámik 1 px <code>#E5E7EB</code> bez hornej strany, odsadenie 14/18 px, dva stĺpce</td></tr>
+    <tr><td>Popisky v páse</td><td>9 px, mono, letter-spacing 0.12em, <code>#A1A1AA</code>; hodnoty 14 px váha 700 <code>#000000</code></td></tr>
+    <tr><td>Krivka pohybu</td><td><code>cubic-bezier(.22,.61,.36,1)</code> pre všetky prechody</td></tr>
+    <tr><td>Mriežka</td><td>3 stĺpce nad 1040 px, 2 stĺpce 720–1040 px, 1 stĺpec pod 720 px; medzera 24 px</td></tr>
+    <tr><td>Obmedzený pohyb</td><td><code>prefers-reduced-motion</code> vypína všetky prechody aj nábeh</td></tr>
+    <tr><td>Dotknutý súbor</td><td><code>src/components/sections/Projects.tsx</code> — karta v karuseli aj v mriežke</td></tr>
+  </table>
+
+  <h2 class="sec">Poznámky a obmedzenia</h2>
+  <ul class="flags">
+    <li><b>Popis projektu z dlaždice vypadáva.</b> Je to jediná strata obsahu oproti dnešku a je zámerná — text zostáva na detaile projektu. Ak ho chcete zachovať, variant C stráca zmysel a lepšie sadne variant A.</li>
+    <li><b>Dlaždice 04–06 nemajú spodný pás.</b> Nie je to chyba — tieto projekty majú v dátach prázdny rozpočet aj trvanie, takže sa pás nevykreslí, presne ako to dnes robí komponent <code>ProjectMeta</code>. V mriežke preto majú rôznu výšku.</li>
+    <li><b>„Zobraziť“ pri prejdení myšou je nový prvok.</b> Text som prevzal z kariet služieb, aby nepribudlo nové slovo. Ak ho nechcete, dá sa vypustiť bez zásahu do rozloženia.</li>
+    <li>Na dotykových zariadeniach sa stavy pri prejdení myšou neuplatnia — „Zobraziť“ tam nebude vidno. Celá dlaždica je odkaz, takže to nič neblokuje.</li>
+    <li>Poradové čísla 01–06 sú poradím v zozname, nie hodnotením. Pri filtrovaní sa neprečíslujú — v ukážke ostávajú pôvodné.</li>
+    <li>Karuselové šípky som nechal v pôvodnom tvare, iba presunuté pod mriežku, aby neprekrývali okraje fotiek. Ak ich chcete ponechať po stranách, je to jednoriadková zmena.</li>
+    <li>Filtračné čipy sú presne tie, ktoré sme už odsúhlasili — bez zmeny.</li>
+  </ul>
+
+</div>
+
+<script>
+(function(){
+  var stage=document.getElementById('stage');
+  var slots=[].slice.call(document.querySelectorAll('.slot'));
+
+  function reveal(){
+    var vis=slots.filter(function(s){return !s.classList.contains('gone')});
+    vis.forEach(function(s,i){
+      s.classList.remove('in');
+      s.style.transitionDelay=(i*80)+'ms';
+    });
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ vis.forEach(function(s){ s.classList.add('in') }); });
+    });
+  }
+
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ reveal(); io.disconnect(); } });
+    },{threshold:.15});
+    io.observe(document.getElementById('cards'));
+  } else { reveal(); }
+
+  document.getElementById('chips').addEventListener('click',function(e){
+    var c=e.target.closest('.chip'); if(!c) return;
+    [].forEach.call(this.querySelectorAll('.chip'),function(x){x.classList.remove('on')});
+    c.classList.add('on');
+    var cat=c.getAttribute('data-cat');
+    slots.forEach(function(s){
+      s.classList.toggle('gone', cat!=='all' && s.getAttribute('data-cat')!==cat);
+    });
+    var n=document.querySelectorAll('.slot:not(.gone)').length;
+    document.getElementById('empty').hidden = n>0;
+    document.getElementById('cards').hidden = n===0;
+    document.getElementById('arrows').hidden = n===0;
+    reveal();
+  });
+
+  [].forEach.call(document.querySelectorAll('.tbtn[data-w]'),function(b){
+    b.addEventListener('click',function(){
+      [].forEach.call(document.querySelectorAll('.tbtn[data-w]'),function(x){x.classList.remove('on')});
+      b.classList.add('on');
+      stage.classList.toggle('mob', b.getAttribute('data-w')==='mob');
+    });
+  });
+
+  document.getElementById('replay').addEventListener('click',reveal);
+})();
+</script>
+</body>
+</html>

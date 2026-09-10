@@ -261,7 +261,15 @@ export const projectsData: Project[] = [
   {
     id: 'monoliticka-stropna-doska-stozok',
     title: 'Monolitická stropná doska Stožok',
-    description: 'Debnenie a betonáž atypickej stropnej dosky.',
+    /**
+     * POZOR — rozsah v názve je užší než to, čo fotografie dokumentujú.
+     * Doska bola realizovaná v lete 2024; fotografie z apríla až júla 2025
+     * ukazujú murivo poschodia a monolitickú konzolu prístrešku nad ňou.
+     * Ak boli aj tieto práce vaše, treba rozšíriť názov, popis aj
+     * realizedServices (napr. o murárske práce). Zatiaľ ponechané pri doske.
+     */
+    description:
+      'Debnenie, armovanie a betonáž atypickej monolitickej stropnej dosky nad prízemím rodinného domu vrátane podopretia a monolitických stĺpov.',
     // The whole project is this one trade.
     realizedServices: ['monoliticke-konstrukcie'],
     category: 'Rodinné domy',
@@ -269,7 +277,76 @@ export const projectsData: Project[] = [
     year: 2022,
     duration: '',
     budgetString: '',
-    imageUrl: '/monolit-stozok/Monolit-Stozok-1536x1152.jpg'
+    imageUrl: '/monolit-stozok/Monolit-Stozok-1536x1152.jpg',
+    /**
+     * Poradie: 01–17 sú exporty z Messengeru bez EXIF. Sú zámerne na
+     * začiatku (nie roztrúsené medzi datované) a v poradí, v akom boli
+     * očíslované v pôvodnej zložke — teda (1), (2), (3) … (18), bez (7).
+     * Pozor: NIE abecedne, to by dalo (1), (10), (11), (12), (2) …
+     * (Overené: (7).jpeg zachytáva hotovú dosku, kým (7).jpg ešte debnenie,
+     * takže rovnaké číslo neznamená rovnaký deň.)
+     * 18–58 sú zoradené presne podľa EXIF: máj–august 2024 doska,
+     * apríl–júl 2025 murivo poschodia nad ňou.
+     */
+    gallery: [
+      { url: '/portfolio/monoliticka-doska-stozok/18-ad8a9ae7.webp', caption: 'Máj 2024 — murivo prízemia vymurované na základovej doske pred debnením stropu' },
+      { url: '/portfolio/monoliticka-doska-stozok/10-1ff9d0be.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/19-b1ebcb6d.webp', caption: 'Jún 2024 — príprava debnenia stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/02-f053830e.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/03-1ecce510.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/09-91201b5e.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/11-ecedfa79.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/13-6c0f0e77.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/14-0a91c985.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/15-4128fbbf.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/16-854cfd8c.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/20-33be81d3.webp', caption: 'Jún 2024 — príprava debnenia stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/21-6b1e6141.webp', caption: 'Jún 2024 — príprava debnenia stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/22-6c48ce2f.webp', caption: 'Jún 2024 — debnenie a podopretie stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/23-011db387.webp', caption: 'Jún 2024 — debnenie a podopretie stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/24-0abca2e8.webp', caption: 'Jún 2024 — debnenie a podopretie stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/25-8fccde18.webp', caption: 'Jún 2024 — debnenie a podopretie stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/26-40134ecb.webp', caption: 'Jún 2024 — debnenie a podopretie stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/27-ded49477.webp', caption: 'Jún 2024 — debnenie a podopretie stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/28-d7e861df.webp', caption: 'Jún 2024 — debnenie a podopretie stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/01-89cf8f36.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/07-dec15498.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/08-0a365854.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/29-390c6a70.webp', caption: 'Jún 2024 — stojky a nosníky debnenia podopierajúce stropnú dosku' },
+      { url: '/portfolio/monoliticka-doska-stozok/30-abe893f5.webp', caption: 'Jún 2024 — debnenie a podopretie stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/31-3c85b71c.webp', caption: 'Jún 2024 — debnenie a podopretie stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/32-b456834f.webp', caption: 'Júl 2024 — armovanie a betonáž stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/33-b899faac.webp', caption: 'Júl 2024 — armovanie a betonáž stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/34-c78061d3.webp', caption: 'Júl 2024 — armovanie a betonáž stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/35-cb9d2089.webp', caption: 'Júl 2024 — armovanie a betonáž stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/04-f09cf7c5.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/06-b2d17783.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/12-5477f4dc.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/17-8cbc8355.webp', caption: 'Priebeh realizácie monolitickej stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/36-f834b0d6.webp', caption: 'Júl 2024 — armovanie a betonáž stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/37-a00a118d.webp', caption: 'Júl 2024 — armovanie a betonáž stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/38-35daec03.webp', caption: 'Júl 2024 — armovanie a betonáž stropnej dosky' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/39-b4c064a7.webp', caption: 'August 2024 — hotová monolitická stropná doska' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/40-cf0491e1.webp', caption: 'August 2024 — hotová monolitická stropná doska' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/41-1b56842b.webp', caption: 'August 2024 — hotová monolitická stropná doska' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/42-5f68013d.webp', caption: 'August 2024 — hotová monolitická stropná doska' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/43-af0e3769.webp', caption: 'August 2024 — hotová monolitická stropná doska' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/44-e608e240.webp', caption: 'August 2024 — pohľad na spodný povrch hotovej monolitickej dosky z interiéru' },
+      { url: '/portfolio/monoliticka-doska-stozok/45-e9607b77.webp', caption: 'August 2024 — hotová monolitická stropná doska' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/46-943695ae.webp', caption: 'August 2024 — hotová monolitická stropná doska' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/47-6bbfe534.webp', caption: 'August 2024 — hotová monolitická stropná doska' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/48-6bbfe534.webp', caption: 'August 2024 — hotová monolitická stropná doska' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/49-eabec8b6.webp', caption: 'August 2024 — hotová monolitická stropná doska' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/50-ca9a7d9e.webp', caption: 'August 2024 — hotová monolitická stropná doska' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/51-01e89376.webp', caption: '2025 — hrubá stavba poschodia nad monolitickou doskou' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/52-e8feba2d.webp', caption: '2025 — hrubá stavba poschodia nad monolitickou doskou' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/53-b9888aec.webp', caption: '2025 — hrubá stavba poschodia nad monolitickou doskou' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/54-51ece956.webp', caption: '2025 — hrubá stavba poschodia nad monolitickou doskou' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/55-47a2ee4c.webp', caption: '2025 — hrubá stavba poschodia nad monolitickou doskou' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/56-1492ce3f.webp', caption: '2025 — hrubá stavba poschodia nad monolitickou doskou' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/57-80b167a7.webp', caption: '2025 — hrubá stavba poschodia nad monolitickou doskou' }, // TODO: opísať konkrétny záber
+      { url: '/portfolio/monoliticka-doska-stozok/58-5d49310a.webp', caption: 'Júl 2025 — poschodie a monolitická konzola prístrešku nad vstupom' },
+    ],
   },
 
   {
@@ -571,6 +648,87 @@ export const projectsData: Project[] = [
       { url: '/portfolio/rekonstrukcia-interieru-ocova/08.webp', caption: 'Máj 2024 — obývacia izba s dreveným lamelovým obkladom steny a novou podlahou' },
       { url: '/portfolio/rekonstrukcia-interieru-ocova/09.webp', caption: 'Máj 2024 — chodba po rekonštrukcii s novými dverami a vstupom do kúpeľne' },
       { url: '/portfolio/rekonstrukcia-interieru-ocova/10.webp', caption: 'Máj 2024 — spálňa s vstavanou skriňou po dokončení' },
+    ],
+  },
+
+  {
+    id: 'rekonstrukcia-bytu-hrinova',
+    // TODO: doplniť rozsah (čísla služieb). Na fotografiách je vidieť
+    // sadrokartónové podhľady, maľby, podlahy a dekoratívny obklad steny —
+    // z toho má vlastnú stránku služby len časť. Nedopĺňam sám.
+    realizedServices: [],
+    title: 'Rekonštrukcia bytu Hriňová',
+    description:
+      'Rekonštrukcia interiéru bytu — nové podlahy v celom byte, sadrokartónové podhľady so zapustenými svietidlami a skrytým osvetlením, obnovené povrchy stien a dekoratívny kamenný obklad v chodbe.',
+    category: 'Rezidenčné budovy',
+    location: 'Hriňová',
+    year: 2025,
+    // TODO: doplniť. Fotografie sú z apríla 2022, januára 2025 a októbra 2025.
+    duration: '',
+    budgetString: '',
+    imageUrl: '/portfolio/rekonstrukcia-bytu-hrinova/08-7aa1f9fb.webp',
+    /**
+     * Chronologicky podľa EXIF — všetkých 12 fotografií má dátum.
+     * Názvy súborov obsahujú hash obsahu, takže URL sa pri prípadnom
+     * preusporiadaní zmení a prehliadač nemôže zobraziť starú fotku.
+     */
+    gallery: [
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova/01-a5a577c2.webp', caption: 'Apríl 2022 — sadrokartónový podhľad so skrytým osvetlením a štruktúrovaným stredovým panelom' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova/02-af0867d7.webp', caption: 'Január 2025 — obývacia izba s novou podlahou a osadenými bodovými svietidlami, dokončovanie elektroinštalácie' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova/03-ae6e1580.webp', caption: 'Október 2025 — izba s tmavou akcentovou stenou a pracovnou doskou pri okne' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova/04-63f9e0a6.webp', caption: 'Október 2025 — priechod do kuchyne, vpravo pôvodný stav podhľadu' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova/05-2f9bfa60.webp', caption: 'Október 2025 — pôvodná kuchynská linka a obklad pred plánovanou výmenou' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova/06-322badc0.webp', caption: 'Október 2025 — chodba s novou podlahou, vpravo pôvodný obklad' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova/07-3ac05c33.webp', caption: 'Október 2025 — izba po maľbe s dekoratívnym rámom na stene a novou podlahou' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova/08-7aa1f9fb.webp', caption: 'Október 2025 — izba so zníženým podhľadom po obvode a zapustenými svietidlami' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova/09-86686627.webp', caption: 'Október 2025 — izba s výstupom na balkón po dokončení podlahy a podhľadu' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova/10-6f795b7a.webp', caption: 'Október 2025 — prechod z pôvodnej dlažby predsiene na novú podlahu' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova/11-405c4ab7.webp', caption: 'Október 2025 — predsieň s pôvodnou dlažbou a dverami pred ďalšou etapou' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova/12-4a6a927e.webp', caption: 'Október 2025 — pohľad od vstupu na dekoratívny kamenný obklad a novú podlahu' },
+    ],
+  },
+
+  {
+    id: 'rekonstrukcia-bytu-hrinova-2024',
+    // TODO: doplniť rozsah (čísla služieb). Na fotografiách je jednoznačne
+    // vidieť obkladačské práce (kúpeľňa, WC, chodba) a omietky; ďalej maľby,
+    // podlahy, dvere a nábytok na mieru, ktoré vlastnú stránku služby nemajú.
+    realizedServices: [],
+    /**
+     * POZOR: v portfóliu je aj projekt 'rekonstrukcia-bytu-hrinova'
+     * ("Rekonštrukcia bytu Hriňová", 2025). Názvy sú takmer identické —
+     * v prehľade portfólia aj vo vyhľadávaní si budú konkurovať.
+     * Odporúčam odlíšiť, napr. podľa roku alebo rozsahu.
+     */
+    title: 'Rekonštrukcia bytu v Hriňovej',
+    description:
+      'Kompletná rekonštrukcia bytu — nová kúpeľňa a samostatné WC s veľkoformátovým obkladom, murovaným sprchovým kútom s líniovým žľabom a závesnou sanitou, veľkoformátová dlažba v chodbe a kuchyni, nové podlahy a interiérové dvere v izbách a dekoratívna stierka v obývacej časti.',
+    category: 'Rezidenčné budovy',
+    location: 'Hriňová',
+    year: 2024,
+    // TODO: doplniť. Fotografie sú z jedného obhliadkového dňa (4. 11. 2024),
+    // takže dĺžku realizácie z nich určiť nejde.
+    duration: '',
+    budgetString: '',
+    imageUrl: '/portfolio/rekonstrukcia-bytu-hrinova-2024/04-e218c965.webp',
+    /**
+     * Všetkých 12 fotografií je z 4. 11. 2024, 12:16–12:19 — jedna obhliadka
+     * hotového bytu. Poradie podľa EXIF je teda poradím obchôdzky, nie etáp.
+     * Názvy súborov obsahujú hash obsahu.
+     */
+    gallery: [
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova-2024/01-835a0579.webp', caption: 'Chodba s veľkoformátovou dlažbou, novými dverami a vstavanou skriňou' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova-2024/02-c6fbb3d7.webp', caption: 'Samostatné WC so závesnou misou a obkladom v dekore tmavého mramoru' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova-2024/03-c3f1d4d2.webp', caption: 'Kúpeľňa s umývadlovou skrinkou, zrkadlom a čiernym rebríkovým radiátorom' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova-2024/04-e218c965.webp', caption: 'Kúpeľňa so sprchovým kútom s posuvnými dverami a obkladom v dekore mramoru' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova-2024/05-db5cfe10.webp', caption: 'Detail sprchového kúta — dlažba v dekore dreva a líniový odtokový žľab' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova-2024/06-16368a86.webp', caption: 'Pohľad z kúpeľne cez nové dvere do chodby' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova-2024/07-343a78c6.webp', caption: 'Izba po rekonštrukcii s novou podlahou a interiérovými dverami' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova-2024/08-e410acfe.webp', caption: 'Obývacia časť s dekoratívnou stierkou a priechodom do kuchyne' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova-2024/09-1e895a73.webp', caption: 'Kuchyňa s dokončenými povrchmi a vývodmi pripravenými pre kuchynskú linku' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova-2024/10-edb5f3a1.webp', caption: 'Spálňa s novou podlahou a obnoveným vykurovaním' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova-2024/11-f9d8bc60.webp', caption: 'Druhá spálňa po dokončení povrchových úprav' },
+      { url: '/portfolio/rekonstrukcia-bytu-hrinova-2024/12-cf55a4fc.webp', caption: 'Chodba so vstavanou skriňou a vstupom do obytnej časti' },
     ],
   }
 ];

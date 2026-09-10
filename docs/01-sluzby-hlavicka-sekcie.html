@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 01 — Hlavička sekcie Služby</title>
+<style>
+  :root{
+    --ink:#0b0b0c; --ink-2:#3f3f46; --muted:#71717a; --line:#e4e4e7;
+    --paper:#f4f4f2; --card:#ffffff; --amber:#f59e0b; --amber-6:#d97706; --amber-7:#b45309;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1480px;margin:0 auto;padding:48px 32px 96px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6)}
+  h1{font:800 40px/1.1 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:70ch;margin:0}
+  .status{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:7px 14px;
+          background:#18181b;color:#fff;font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2.sec{font:800 13px/1 ui-sans-serif,system-ui;letter-spacing:.18em;text-transform:uppercase;
+         color:var(--ink);margin:56px 0 18px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  .pair{display:grid;grid-template-columns:auto auto;gap:24px;align-items:start;justify-content:start}
+  .col{min-width:0}
+  .col > .tag{display:flex;align-items:center;gap:8px;margin:0 0 8px}
+  .tag span{font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .tag i{width:9px;height:9px;display:block}
+  .tag i.b{background:#a1a1aa}
+  .tag i.a{background:var(--amber)}
+  .shot{position:relative;background:var(--card);border:1px solid #d4d4d8;overflow:hidden}
+  .scaler{transform-origin:top left}
+  .note{font-size:13px;color:var(--muted);margin:8px 0 0}
+
+  /* ---- app replica: real px values, scaled by transform ---- */
+  .app{width:1440px;background:#fff;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .app .heroedge{height:34px;background:#18181b}
+  .app .cont{max-width:1500px;margin:0 auto;padding-left:32px;padding-right:32px}
+  .app .grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .app .card{border:1px solid #e5e7eb;background:#fff;display:flex;flex-direction:column}
+  .app .ph{height:224px;overflow:hidden;background:#e5e7eb}
+  .app .ph img{width:100%;height:100%;object-fit:cover;display:block}
+  .app .body{padding:24px;background:#fafafa;display:flex;flex-direction:column;flex:1}
+  .app .body h3{font:700 18px/1.2 inherit;color:#000;margin:0 0 12px}
+  .app .body p{font:400 14px/1.62 inherit;color:#6b7280;margin:0 0 24px;flex:1}
+  .app .foot{border-top:1px solid #f3f4f6;padding-top:16px;display:flex;justify-content:space-between;align-items:center}
+  .app .foot span{font:700 11px/1 inherit;letter-spacing:.14em;text-transform:uppercase;color:#000}
+  .app .allold{margin-top:40px;display:flex;justify-content:flex-end}
+  .app .allold a{font:600 14px/1 inherit;color:#6b7280;text-decoration:none}
+  .app .hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px}
+  .app .eyebrow{display:block;font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;
+                text-transform:uppercase;color:#d97706;margin-bottom:12px}
+  .app .hdr h2{font:800 48px/1.05 inherit;letter-spacing:-.025em;color:#000;margin:0}
+  .app .hdr .sub{font:400 18px/1.55 inherit;color:#6b7280;margin:16px 0 0;max-width:672px}
+  .app .hdr a{font:700 14px/1 inherit;letter-spacing:.14em;text-transform:uppercase;
+              color:#b45309;text-decoration:none;white-space:nowrap;flex:none}
+  .app .padband{background:rgba(245,158,11,.18);border-bottom:1px dashed var(--amber)}
+
+  /* ---- annotation ---- */
+  .mk{position:absolute;width:30px;height:30px;border-radius:50%;background:var(--amber);
+      border:2px solid #000;color:#000;text-align:center;
+      font:800 15px/26px ui-sans-serif,system-ui;z-index:9}
+  .out{position:absolute;border:2px dashed var(--amber);z-index:8;pointer-events:none}
+  .legend{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+  .legend div{display:flex;gap:12px;align-items:flex-start}
+  .legend b{flex:none;width:26px;height:26px;border-radius:50%;background:var(--amber);border:2px solid #000;
+            color:#000;text-align:center;font:800 13px/22px ui-sans-serif,system-ui}
+  .legend p{margin:2px 0 0;font-size:14px;color:var(--ink-2)}
+
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line)}
+  th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+  th{background:#fafafa;font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:26%}
+  td code{font:500 13px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .pick{margin-top:16px;padding:16px 20px;background:#18181b;color:#fff;font-size:15px}
+  .pick b{color:var(--amber)}
+  @media (max-width:1100px){.pair,.vgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 01 · Domovská stránka</p>
+  <h1>Hlavička sekcie „Služby“</h1>
+  <p class="lede">Sekcia so službami začína 20&nbsp;px pod hero a ide rovno do piatich kariet — bez akéhokoľvek nadpisu.
+     Hneď pod ňou má sekcia „Realizované projekty“ plnú hlavičku s nadpisom, podnadpisom aj odkazom.
+     Návrh dopĺňa tú istú hlavičku aj sekcii služieb, s použitím existujúceho textu zo stránky /sluzby.</p>
+  <p class="status">Stav: <b>neaplikované</b> — iba návrh</p>
+
+  <h2 class="sec">Desktop · 1440&nbsp;px</h2>
+  <div class="pair">
+
+    <div class="col">
+      <p class="tag"><i class="b"></i><span>Pred</span></p>
+      <div class="shot" style="width:663px;height:272px;max-width:100%">
+        <div class="scaler" style="transform:scale(.46)">
+          <div class="app">
+            <div class="heroedge"></div>
+            <div style="padding-top:20px;padding-bottom:20px;border-bottom:1px solid #e5e7eb">
+              <div class="cont">
+                <div class="grid5">
+                  <div class="card"><div class="ph"><img src="assets/rodinne-domy.webp" alt=""></div>
+                    <div class="body"><h3>Rodinné domy</h3><p>Kompletná výstavba a rekonštrukcie moderných rodinných domov.</p>
+                    <div class="foot"><span>Zobraziť</span><span>&rarr;</span></div></div></div>
+                  <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop&q=80" alt=""></div>
+                    <div class="body"><h3>Rezidenčné budovy</h3><p>Komplexná výstavba bytových domov a polyfunkčných objektov.</p>
+                    <div class="foot"><span>Zobraziť</span><span>&rarr;</span></div></div></div>
+                  <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop&q=80" alt=""></div>
+                    <div class="body"><h3>Komerčná výstavba</h3><p>Administratívne budovy, sídla firiem, prevádzky, predajne a showroomy.</p>
+                    <div class="foot"><span>Zobraziť</span><span>&rarr;</span></div></div></div>
+                  <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop&q=80" alt=""></div>
+                    <div class="body"><h3>Priemyselné objekty</h3><p>Skladové haly, logistické centrá a výrobné závody.</p>
+                    <div class="foot"><span>Zobraziť</span><span>&rarr;</span></div></div></div>
+                  <div class="card"><div class="ph"><img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt=""></div>
+                    <div class="body"><h3>Občianske stavby</h3><p>Školy, zariadenia sociálnych služieb, úrady a verejné budovy.</p>
+                    <div class="foot"><span>Zobraziť</span><span>&rarr;</span></div></div></div>
+                </div>
+                <div class="allold"><a href="#">Zobraziť všetky služby &rarr;</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="note">Karty začínajú 20&nbsp;px pod hero. Odkaz „Zobraziť všetky služby“ je sivý, pod kartami vpravo.</p>
+    </div>
+
+    <div class="col">
+      <p class="tag"><i class="a"></i><span>Po úprave</span></p>
+      <div class="shot" style="width:663px;height:329px;max-width:100%">
+        <div class="scaler" style="transform:scale(.46)">
+          <div class="app">
+            <div class="heroedge"></div>
+            <div class="padband" style="height:40px"></div>
+            <div style="padding-bottom:40px;border-bottom:1px solid #e5e7eb">
+              <div class="cont">
+                <div class="hdr">
+                  <div>
+                    <span class="eyebrow">Naše služby</span>
+                    <h2>Čo pre vás postavíme</h2>
+                    <p class="sub">Staviame rodinné domy, bytovky, haly aj verejné budovy.</p>
+                  </div>
+                  <a href="#">Zobraziť všetky služby &rsaquo;</a>
+                </div>
+                <div class="grid5">
+                  <div class="card"><div class="ph"><img src="assets/rodinne-domy.webp" alt=""></div>
+                    <div class="body"><h3>Rodinné domy</h3><p>Kompletná výstavba a rekonštrukcie moderných rodinných domov.</p>
+                    <div class="foot"><span>Zobraziť</span><span>&rarr;</span></div></div></div>
+                  <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop&q=80" alt=""></div>
+                    <div class="body"><h3>Rezidenčné budovy</h3><p>Komplexná výstavba bytových domov a polyfunkčných objektov.</p>
+                    <div class="foot"><span>Zobraziť</span><span>&rarr;</span></div></div></div>
+                  <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop&q=80" alt=""></div>
+                    <div class="body"><h3>Komerčná výstavba</h3><p>Administratívne budovy, sídla firiem, prevádzky, predajne a showroomy.</p>
+                    <div class="foot"><span>Zobraziť</span><span>&rarr;</span></div></div></div>
+                  <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop&q=80" alt=""></div>
+                    <div class="body"><h3>Priemyselné objekty</h3><p>Skladové haly, logistické centrá a výrobné závody.</p>
+                    <div class="foot"><span>Zobraziť</span><span>&rarr;</span></div></div></div>
+                  <div class="card"><div class="ph"><img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt=""></div>
+                    <div class="body"><h3>Občianske stavby</h3><p>Školy, zariadenia sociálnych služieb, úrady a verejné budovy.</p>
+                    <div class="foot"><span>Zobraziť</span><span>&rarr;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="out" style="left:10px;top:29px;width:184px;height:58px"></div>
+        <span class="mk" style="left:8px;top:4px">1</span>
+        <div class="out" style="left:534px;top:64px;width:120px;height:23px"></div>
+        <span class="mk" style="left:500px;top:60px">2</span>
+        <span class="mk" style="left:300px;top:11px">3</span>
+      </div>
+      <p class="note">Hlavička dostane rovnakú váhu ako „Realizované projekty“ hneď pod ňou.</p>
+    </div>
+
+  </div>
+
+  <div class="legend">
+    <div><b>1</b><p>Pridaná hlavička sekcie — nadradený text, nadpis a podnadpis. Text je prevzatý z existujúcej stránky <code>/sluzby</code>, nič nové sa nevymýšľalo.</p></div>
+    <div><b>2</b><p>Existujúci odkaz „Zobraziť všetky služby“ presunutý spod kariet do riadku hlavičky a prefarbený na jantárovú, rovnako ako „Všetky projekty“. Odkaz sa neodstraňuje, iba premiestňuje.</p></div>
+    <div><b>3</b><p>Horné odsadenie sekcie 20&nbsp;px &rarr; 40&nbsp;px, zhodné so sekciou „Realizované projekty“ pod ňou.</p></div>
+  </div>
+
+  <h2 class="sec">Mobil · 375&nbsp;px</h2>
+  <div class="pair" style="grid-template-columns:auto auto;justify-content:start;gap:40px">
+
+    <div class="col">
+      <p class="tag"><i class="b"></i><span>Pred</span></p>
+      <div class="shot" style="width:375px;height:469px">
+        <div class="scaler" style="transform:scale(1)">
+          <div class="app" style="width:375px">
+            <div class="heroedge"></div>
+            <div style="padding:20px 16px">
+              <div class="card"><div class="ph" style="height:192px"><img src="assets/rodinne-domy.webp" alt=""></div>
+                <div class="body"><h3>Rodinné domy</h3><p>Kompletná výstavba a rekonštrukcie moderných rodinných domov.</p>
+                <div class="foot"><span>Zobraziť</span><span>&rarr;</span></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <p class="tag"><i class="a"></i><span>Po úprave</span></p>
+      <div class="shot" style="width:375px;height:688px">
+        <div class="scaler" style="transform:scale(1)">
+          <div class="app" style="width:375px">
+            <div class="heroedge"></div>
+            <div class="padband" style="height:40px"></div>
+            <div style="padding:0 16px 40px">
+              <span class="eyebrow">Naše služby</span>
+              <h2 style="font:800 36px/1.05 inherit;letter-spacing:-.025em;color:#000;margin:0">Čo pre vás postavíme</h2>
+              <p style="font:400 18px/1.55 inherit;color:#6b7280;margin:16px 0 0">Staviame rodinné domy, bytovky, haly aj verejné budovy.</p>
+              <div style="margin-top:24px"><a href="#" style="font:700 14px/1 inherit;letter-spacing:.14em;text-transform:uppercase;color:#b45309;text-decoration:none">Zobraziť všetky služby &rsaquo;</a></div>
+              <div class="card" style="margin-top:48px"><div class="ph" style="height:192px"><img src="assets/rodinne-domy.webp" alt=""></div>
+                <div class="body"><h3>Rodinné domy</h3><p>Kompletná výstavba a rekonštrukcie moderných rodinných domov.</p></div></div>
+            </div>
+          </div>
+        </div>
+        <span class="mk" style="left:8px;top:80px">1</span>
+        <span class="mk" style="left:2px;top:194px">2</span>
+        <span class="mk" style="left:8px;top:38px">3</span>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="sec">Voľba — veľkosť nadpisu</h2>
+  <div class="vgrid">
+    <div>
+      <p class="tag"><i class="a"></i><span>A — mierka sekcie Projekty</span></p>
+      <div class="shot" style="padding:28px 24px">
+        <span class="eyebrow" style="display:block;font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:#d97706;margin-bottom:12px">Naše služby</span>
+        <p style="font:800 48px/1.05 ui-sans-serif,system-ui;letter-spacing:-.025em;margin:0">Čo pre vás postavíme</p>
+        <p style="font:400 18px/1.55 ui-sans-serif,system-ui;color:#6b7280;margin:16px 0 0">Staviame rodinné domy, bytovky, haly aj verejné budovy.</p>
+      </div>
+      <p class="note">48&nbsp;px — dvojička nadpisu „Realizované projekty“ priamo pod ňou. Dve rovnocenné sekcie na jednej stránke.</p>
+    </div>
+    <div>
+      <p class="tag"><i class="b"></i><span>B — mierka stránky /sluzby</span></p>
+      <div class="shot" style="padding:28px 24px">
+        <span class="eyebrow" style="display:block;font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:#d97706;margin-bottom:12px">Naše služby</span>
+        <p style="font:800 36px/1.05 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:0">Čo pre vás postavíme</p>
+        <p style="font:400 14px/1.6 ui-sans-serif,system-ui;color:#6b7280;margin:12px 0 0">Staviame rodinné domy, bytovky, haly aj verejné budovy.</p>
+      </div>
+      <p class="note">36&nbsp;px — zhodné so stránkou /sluzby, na ktorú sekcia odkazuje. Tichšie; „Projekty“ ostávajú najhlasnejším bodom stránky.</p>
+    </div>
+  </div>
+  <p class="pick">Odporúčam <b>A</b> — obe sekcie sú na domovskej stránke hneď za sebou, takže rovnaká mierka z nich urobí jeden systém; menšia mierka patrí stránke /sluzby, kde nesúťaží s ničím.</p>
+
+  <h2 class="sec">Špecifikácia pre vývoj</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Odsadenie sekcie</td><td><code>py-10</code> — 40 px hore aj dole (teraz <code>pt-5 pb-5</code>, 20 px)</td></tr>
+    <tr><td>Blok hlavičky</td><td><code>flex flex-col md:flex-row md:items-end justify-between</code>, spodný odstup 48 px</td></tr>
+    <tr><td>Nadradený text</td><td>12 px, mono, váha 700, letter-spacing 0.16em, veľké písmená, <code>#D97706</code>, spodný odstup 12 px</td></tr>
+    <tr><td>Nadpis (variant A)</td><td>36 px, od 768 px 48 px, váha 800, letter-spacing −0.025em, <code>#000000</code></td></tr>
+    <tr><td>Podnadpis</td><td>18 px, <code>#6B7280</code>, horný odstup 16 px, max. šírka 672 px</td></tr>
+    <tr><td>Odkaz</td><td>14 px, váha 700, veľké písmená, letter-spacing 0.14em, <code>#B45309</code> → <code>#000000</code> pri prejdení myšou; ikona ChevronRight 16 px, odstup 4 px, posun 4 px vpravo pri prejdení</td></tr>
+    <tr><td>Pôvodný spodný odkaz</td><td>Ten istý prvok presunutý do hlavičky. Vykreslí sa iba tam, kde hlavička nie je — stránka /sluzby ostáva nedotknutá</td></tr>
+    <tr><td>Zaoblenie rohov</td><td>Žiadne — nulový polomer, bez zmeny</td></tr>
+    <tr><td>Dotknuté súbory</td><td><code>src/components/sections/ServicesGrid.tsx</code>, <code>app/page.tsx</code></td></tr>
+  </table>
+
+  <h2 class="sec">Poznámky a obmedzenia</h2>
+  <ul class="flags">
+    <li>Všetok text v hlavičke je doslovne prevzatý zo stránky <code>/sluzby</code> — nič som nevymýšľal. Ak má domovská stránka znieť inak, je to vaše rozhodnutie.</li>
+    <li>Ponechal som pôvodný reťazec „Zobraziť všetky služby“ namiesto skrátenia na „Všetky služby“ kvôli symetrii s „Všetky projekty“ — zmena textu patrí vám.</li>
+    <li>Sekcia <code>ElevatedUrbanConcept</code> je v kóde <code>hidden</code>. Nechal som ju tak; jej zobrazenie je obsahové, nie vizuálne rozhodnutie.</li>
+    <li>Tri z piatich fotiek kariet sú stále Unsplash placeholdery (v dátach označené <code>TODO</code>) — vizuálne to sekciu drží späť viac než čokoľvek v tomto návrhu.</li>
+    <li>Väčšie témy, ktorých som sa nedotkol: hero má pred nadpisom štyri vrstvy obsahu a sekcia CTA nemá žiadne zvislé odsadenie. Každá je samostatný návrh.</li>
+  </ul>
+
+</div>
+</body>
+</html>

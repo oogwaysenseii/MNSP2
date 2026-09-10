@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implementácia — Variant C, filmový pás</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;
+        --code-bg:#18181b;--code-fg:#e4e4e7;--add:#16a34a;--del:#dc2626}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);margin:0}
+  .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  .tagi{font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase;
+        padding:8px 13px;background:#fff;border:1px solid var(--line)}
+  .tagi b{color:var(--amber-6)}
+  h2{font:800 22px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:48px 0 6px;
+     padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;color:var(--amber-6);
+         display:block;margin-bottom:9px}
+  h3{font:700 15px/1.3 ui-sans-serif,system-ui;margin:28px 0 8px}
+  p.note{color:var(--ink-2);margin:0 0 14px}
+  code.i{font:500 13px/1.5 ui-monospace,monospace;background:#e9e9e6;padding:2px 6px;color:#18181b}
+  pre{background:var(--code-bg);color:var(--code-fg);padding:18px 20px;overflow-x:auto;margin:14px 0;
+      font:400 12.5px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;border-left:3px solid var(--amber)}
+  pre .c{color:#71717a}
+  pre .k{color:#f59e0b}
+  pre .s{color:#86efac}
+  pre .t{color:#7dd3fc}
+  .file{display:inline-flex;align-items:center;gap:8px;background:#18181b;color:#fff;
+        font:600 12px/1 ui-monospace,monospace;padding:9px 13px;margin:18px 0 0}
+  .file b{color:var(--amber)}
+  .del,.add{padding:12px 16px;margin:10px 0;font-size:14px;border-left:3px solid}
+  .del{background:#fef2f2;border-color:var(--del);color:#7f1d1d}
+  .add{background:#f0fdf4;border-color:var(--add);color:#14532d}
+  .del b,.add b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+                text-transform:uppercase;margin-bottom:7px}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px;color:#92400e}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  ol.steps{counter-reset:s;list-style:none;padding:0;margin:16px 0}
+  ol.steps li{counter-increment:s;position:relative;padding:0 0 14px 38px;font-size:14.5px;color:var(--ink-2)}
+  ol.steps li:before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:1px;
+                     font:700 11px/20px ui-monospace,monospace;color:var(--amber-6);
+                     border:1px solid var(--amber);width:24px;height:22px;text-align:center}
+  ul.check{list-style:none;padding:0;margin:14px 0}
+  ul.check li{padding:9px 0 9px 30px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.check li:before{content:"";position:absolute;left:2px;top:13px;width:13px;height:13px;border:1.5px solid #a1a1aa}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Implementácia · pre vývojára</p>
+  <h1>Variant C — filmový pás</h1>
+  <p class="lede">Presný postup, ako prepísať sekciu „Realizované projekty“ na odsúhlasený návrh:
+     jednotná fotodlaždica s údajmi na fotke, karusel s náhľadom ďalšej dlaždice a šípky
+     s neaktívnym stavom. Rovnaká dlaždica sa použije aj v mriežke na <code class="i">/portfólio</code>.</p>
+
+  <div class="meta">
+    <span class="tagi">Súbor: <b>src/components/sections/Projects.tsx</b></span>
+    <span class="tagi">Rozsah: <b>1 súbor</b></span>
+    <span class="tagi">Bez zmeny dát</span>
+    <span class="tagi">Bez novej závislosti</span>
+  </div>
+
+  <h2><span class="no">Krok 01</span>Upratať importy a zmazať ProjectMeta</h2>
+  <p class="note">Po prepise sa <code class="i">MapPin</code> aj <code class="i">Calendar</code> prestanú
+     používať — dnes sú len v štítkoch na fotke a v riadku s rokom, ktoré zanikajú.
+     Pribudne <code class="i">ArrowRight</code> pre „Zobraziť“.</p>
+
+  <div class="file">📄 <b>Projects.tsx</b> · riadok 7</div>
+<pre><span class="c">// PRED</span>
+<span class="k">import</span> { ChevronLeft, ChevronRight, MapPin, Calendar } <span class="k">from</span> <span class="s">'lucide-react'</span>;
+
+<span class="c">// PO</span>
+<span class="k">import</span> { ChevronLeft, ChevronRight, ArrowRight } <span class="k">from</span> <span class="s">'lucide-react'</span>;</pre>
+
+  <p class="note">Na riadku 8 pridajte do importu typ <code class="i">Project</code> — nová dlaždica ho potrebuje:</p>
+<pre><span class="k">import</span> { projectsData, ServiceCategory, <span class="t">Project</span> } <span class="k">from</span> <span class="s">'@/src/data/projects'</span>;</pre>
+
+  <div class="del"><b>Zmazať</b>
+    Celú funkciu <code>ProjectMeta</code> — <b>riadky 46 až 71</b>. Po prepise ju nič nevolá,
+    rozpočet a trvanie sa presúvajú do riadku údajov na fotke.</div>
+
+  <div class="warn"><b>Nezmažte komentár na riadkoch 32–36</b>
+    Komentár, ktorý popisuje prázdny rozpočet a trvanie, je omylom umiestnený nad
+    <code>CATEGORY_TABS</code>, hoci sa týka <code>ProjectMeta</code>. Zmazať treba <b>len</b> funkciu
+    od riadku 46. Samotný komentár je po tejto zmene neplatný (a navyše hovorí o „ôsmich záznamoch“,
+    dnes ich je jedenásť) — presuňte ho preč alebo zmažte samostatne, ale nesiahajte pritom
+    na <code>CATEGORY_TABS</code> pod ním.</div>
+
+  <h2><span class="no">Krok 02</span>Pridať komponent ProjectTile</h2>
+  <p class="note">Jedna dlaždica pre karusel aj mriežku. Vložte ju na miesto zmazaného
+     <code class="i">ProjectMeta</code>, teda nad <code class="i">export function Projects</code>.</p>
+
+  <div class="warn"><b>Kľúčové rozhodnutie</b>
+    Dlaždica má <b>pevnú výšku</b> a <b>žiadny spodný pás</b>. Práve preto sa rad nerozpadne,
+    keď projekt nemá vyplnený rozpočet ani trvanie — chýbajúca hodnota len skráti riadok údajov.</div>
+
+  <div class="file">📄 <b>Projects.tsx</b> · nový komponent</div>
+<pre><span class="k">const</span> EASE = <span class="s">'ease-[cubic-bezier(.22,.61,.36,1)]'</span>;
+
+<span class="k">function</span> <span class="t">ProjectTile</span>({ proj, index, sizes }: {
+  proj: Project; index: <span class="t">number</span>; sizes: <span class="t">string</span>;
+}) {
+  <span class="c">// Chýbajúce hodnoty vypadnú aj s oddeľovačom — preto .filter()</span>
+  <span class="k">const</span> meta = [
+    proj.location,
+    <span class="s">`Rok ${proj.year}`</span>,
+    proj.budgetString,
+    proj.duration,
+  ].filter((v): v is <span class="t">string</span> =&gt; <span class="t">Boolean</span>(v &amp;&amp; v.trim()));
+
+  <span class="k">return</span> (
+    &lt;Link
+      href={<span class="s">`/portfolio/${proj.id}`</span>}
+      className={<span class="s">`group/tile relative block transition-[transform,box-shadow] duration-500 ${EASE}
+        hover:-translate-y-1 hover:shadow-[0_22px_52px_rgba(0,0,0,0.19)]
+        motion-reduce:transition-none motion-reduce:hover:translate-y-0`</span>}
+    &gt;
+      &lt;div className=<span class="s">"relative h-[340px] lg:h-[400px] overflow-hidden bg-gray-200"</span>&gt;
+        &lt;Image
+          src={proj.imageUrl}
+          alt={proj.title}
+          fill
+          sizes={sizes}
+          quality={<span class="t">70</span>}
+          className={<span class="s">`object-cover duration-[1100ms] transition-transform ${EASE}
+            group-hover/tile:scale-[1.07] motion-reduce:transition-none`</span>}
+        /&gt;
+
+        <span class="c">{/* stmavenie zdola */}</span>
+        &lt;div className=<span class="s">"absolute inset-0 transition-opacity duration-500
+          bg-[linear-gradient(to_top,rgba(0,0,0,.9)_0%,rgba(0,0,0,.5)_32%,transparent_62%)]
+          group-hover/tile:opacity-[0.92]"</span> /&gt;
+
+        <span class="c">{/* poradové číslo + jantárová linka */}</span>
+        &lt;div className=<span class="s">"absolute top-[18px] left-5 z-20"</span>&gt;
+          &lt;span className=<span class="s">"block font-mono text-[11px] font-bold tracking-[0.2em] text-white/[0.78]"</span>&gt;
+            {<span class="t">String</span>(index + <span class="t">1</span>).padStart(<span class="t">2</span>, <span class="s">'0'</span>)}
+          &lt;/span&gt;
+          &lt;span className={<span class="s">`mt-[7px] block h-0.5 w-[22px] bg-amber-500
+            transition-[width] duration-[550ms] ${EASE} group-hover/tile:w-[54px]`</span>} /&gt;
+        &lt;/div&gt;
+
+        <span class="c">{/* text na fotke */}</span>
+        &lt;div className=<span class="s">"absolute bottom-5 left-[22px] right-[22px] z-20"</span>&gt;
+          &lt;span className=<span class="s">"block font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-amber-500"</span>&gt;
+            {proj.category}
+          &lt;/span&gt;
+
+          &lt;h3 className=<span class="s">"mt-[9px] text-[21px] font-extrabold leading-[1.26] tracking-[-0.015em] text-white"</span>&gt;
+            {proj.title}
+          &lt;/h3&gt;
+
+          &lt;p className=<span class="s">"mt-[11px] font-mono text-[10px] uppercase leading-[1.5] tracking-[0.13em] text-white/[0.74]"</span>&gt;
+            {meta.map((v, i) =&gt; (
+              &lt;span key={v}&gt;
+                {i &gt; <span class="t">0</span> &amp;&amp; &lt;span className=<span class="s">"px-1.5 text-white/[0.34]"</span>&gt;·&lt;/span&gt;}
+                {v}
+              &lt;/span&gt;
+            ))}
+          &lt;/p&gt;
+
+          <span class="c">{/* „Zobraziť" — vysunie sa pri prejdení myšou */}</span>
+          &lt;div className={<span class="s">`max-h-0 overflow-hidden opacity-0
+            transition-[max-height,opacity,margin-top] duration-500 ${EASE}
+            group-hover/tile:mt-[13px] group-hover/tile:max-h-[34px] group-hover/tile:opacity-100`</span>}&gt;
+            &lt;span className=<span class="s">"inline-flex items-center gap-[7px] border-b border-amber-500 pb-1.5
+              font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white"</span>&gt;
+              Zobraziť &lt;ArrowRight className=<span class="s">"h-3 w-3"</span> /&gt;
+            &lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/Link&gt;
+  );
+}</pre>
+
+  <h2><span class="no">Krok 03</span>Sledovať pozíciu posunu pre šípky</h2>
+  <p class="note">Dnes sú šípky vždy rovnako aktívne, aj na konci radu. Pridajte dva stavy a jednu funkciu
+     hneď k existujúcemu <code class="i">carouselRef</code>.</p>
+
+<pre><span class="k">const</span> [atStart, setAtStart] = useState(<span class="t">true</span>);
+<span class="k">const</span> [atEnd, setAtEnd] = useState(<span class="t">false</span>);
+
+<span class="k">const</span> updateArrows = () =&gt; {
+  <span class="k">const</span> el = carouselRef.current;
+  <span class="k">if</span> (!el) <span class="k">return</span>;
+  setAtStart(el.scrollLeft &lt;= <span class="t">2</span>);
+  setAtEnd(el.scrollLeft &gt;= el.scrollWidth - el.clientWidth - <span class="t">2</span>);
+};
+
+<span class="c">// Po zmene filtra vráťte rad na začiatok a prepočítajte šípky.</span>
+<span class="c">// Bez toho zostane rad posunutý tam, kde bol, a pri kratšom</span>
+<span class="c">// zozname sa môže tváriť ako prázdny.</span>
+useEffect(() =&gt; {
+  <span class="k">const</span> el = carouselRef.current;
+  <span class="k">if</span> (el) el.scrollLeft = <span class="t">0</span>;
+  updateArrows();
+}, [selectedCategory, selectedLoc]);</pre>
+
+  <div class="warn"><b>Prečo nie <code>filteredProjects.length</code></b>
+    Pri prepnutí medzi dvoma kategóriami s rovnakým počtom projektov by sa dĺžka nezmenila
+    a efekt by nezbehol. Preto sa sleduje priamo <code>selectedCategory</code> a <code>selectedLoc</code>.</div>
+
+  <h2><span class="no">Krok 04</span>Prepísať karusel</h2>
+  <p class="note">Nahraďte celý blok <code class="i">viewMode === 'carousel'</code>, teda riadky 246–310.</p>
+
+  <div class="warn"><b>Dva latentné problémy, ktoré sa tu opravia</b>
+    Šípky mali v triedach naraz <code>flex</code> aj <code>hidden lg:flex</code> — dve pravidlá pre
+    <code>display</code>, o výsledku rozhodovalo poradie v CSS. A podmienka
+    <code>filteredProjects.length &gt; 3</code> šípky skryla pri štyroch projektoch v jednej kategórii,
+    hoci rad ešte pokračoval. Nahrádza ju neaktívny stav.</div>
+
+  <div class="file">📄 <b>Projects.tsx</b> · vetva karusela</div>
+<pre>) : viewMode === <span class="s">'carousel'</span> ? (
+    &lt;div className=<span class="s">"relative"</span>&gt;
+      &lt;button
+        onClick={scrollLeft}
+        disabled={atStart}
+        aria-label=<span class="s">"Predchádzajúce projekty"</span>
+        className=<span class="s">"absolute left-3 top-[177px] z-30 hidden h-[46px] w-[46px] cursor-pointer
+          items-center justify-center border border-gray-200 bg-white text-gray-600
+          shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-colors
+          hover:border-amber-500 hover:bg-amber-50 hover:text-black
+          disabled:pointer-events-none disabled:opacity-30 lg:flex"</span>
+      &gt;
+        &lt;ChevronLeft className=<span class="s">"h-5 w-5"</span> /&gt;
+      &lt;/button&gt;
+
+      &lt;button
+        onClick={scrollRight}
+        disabled={atEnd}
+        aria-label=<span class="s">"Ďalšie projekty"</span>
+        className=<span class="s">"absolute right-3 top-[177px] z-30 hidden h-[46px] w-[46px] cursor-pointer
+          items-center justify-center border border-gray-200 bg-white text-gray-600
+          shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-colors
+          hover:border-amber-500 hover:bg-amber-50 hover:text-black
+          disabled:pointer-events-none disabled:opacity-30 lg:flex"</span>
+      &gt;
+        &lt;ChevronRight className=<span class="s">"h-5 w-5"</span> /&gt;
+      &lt;/button&gt;
+
+      &lt;div
+        ref={carouselRef}
+        onScroll={updateArrows}
+        className=<span class="s">"flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2
+          [&amp;::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"</span>
+      &gt;
+        {filteredProjects.map((proj, i) =&gt; (
+          &lt;div
+            key={proj.id}
+            className=<span class="s">"w-[86%] flex-none snap-start sm:w-[calc(45%-12px)] lg:w-[calc(29%-14px)]"</span>
+          &gt;
+            &lt;ProjectTile
+              proj={proj}
+              index={i}
+              sizes=<span class="s">"(max-width: 640px) 86vw, (max-width: 1024px) 45vw, 29vw"</span>
+            /&gt;
+          &lt;/div&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/div&gt;</pre>
+
+  <h3>Odkiaľ sa berie náhľad ďalšej dlaždice</h3>
+  <table>
+    <tr><th>Rozlíšenie</th><th>Šírka dlaždice</th><th>Vidno</th></tr>
+    <tr><td>do 640 px</td><td><code>86%</code></td><td>1 celá + náhľad druhej</td></tr>
+    <tr><td>640–1024 px</td><td><code>calc(45% - 12px)</code></td><td>2 celé + náhľad tretej</td></tr>
+    <tr><td>nad 1024 px</td><td><code>calc(29% - 14px)</code></td><td>3 celé + zhruba tretina štvrtej</td></tr>
+  </table>
+  <p class="note">Percento je zámerne pod <code class="i">33.333%</code> — ten zvyšok je presne ten kúsok
+     ďalšej fotky, ktorý hovorí „pokračuje to“. Ak by ste chceli presne tri celé dlaždice bez náhľadu,
+     vráťte <code class="i">lg:w-[calc(33.333%-16px)]</code> a nič iné sa nemení.</p>
+
+  <h2><span class="no">Krok 05</span>Prepísať mriežku</h2>
+  <p class="note">Vetva <code class="i">else</code>, riadky 311–350. Tá istá dlaždica, len bez posúvania.
+     Medzera sa zjednotí z <code class="i">gap-8</code> na <code class="i">gap-6</code>, aby mriežka
+     a karusel dýchali rovnako.</p>
+
+<pre>) : (
+    &lt;div className=<span class="s">"grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"</span>&gt;
+      {filteredProjects.map((proj, i) =&gt; (
+        &lt;ProjectTile
+          key={proj.id}
+          proj={proj}
+          index={i}
+          sizes=<span class="s">"(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"</span>
+        /&gt;
+      ))}
+    &lt;/div&gt;
+)}</pre>
+
+  <h2><span class="no">Krok 06</span>Voliteľné — nábeh dlaždíc</h2>
+  <p class="note">V ukážke dlaždice nabiehali zdola s odstupom. Projekt už má
+     <code class="i">motion</code> v závislostiach (používa ju <code class="i">Hero.tsx</code>),
+     takže netreba nič inštalovať. Ak nábeh nechcete, tento krok preskočte — na zvyšku nezávisí.</p>
+
+<pre><span class="k">import</span> { motion } <span class="k">from</span> <span class="s">'motion/react'</span>;
+
+<span class="c">// obaľte ProjectTile v mriežke aj v karuseli:</span>
+&lt;motion.div
+  initial={{ opacity: <span class="t">0</span>, y: <span class="t">26</span> }}
+  whileInView={{ opacity: <span class="t">1</span>, y: <span class="t">0</span> }}
+  viewport={{ once: <span class="t">true</span>, amount: <span class="t">0.15</span> }}
+  transition={{ duration: <span class="t">0.75</span>, delay: i * <span class="t">0.08</span>, ease: [<span class="t">.22</span>, <span class="t">.61</span>, <span class="t">.36</span>, <span class="t">1</span>] }}
+&gt;
+  &lt;ProjectTile ... /&gt;
+&lt;/motion.div&gt;</pre>
+
+  <div class="warn"><b>Pozor pri karuseli</b>
+    V karuseli dajte <code>motion.div</code> <b>dovnútra</b> existujúceho
+    <code>div</code> so šírkou a <code>snap-start</code>, nie namiesto neho.
+    Inak sa pokazí šírka dlaždice aj zarážky.</div>
+
+  <h2><span class="no">Krok 07</span>Čo sa nemení</h2>
+  <ol class="steps">
+    <li>Filtračné čipy — kategórie aj lokality, vrátane <code class="i">compactFilters</code> na domovskej stránke.</li>
+    <li>Hlavička sekcie, odkaz „Všetky projekty“ a prázdny stav pri kategórii bez projektov.</li>
+    <li>Logika filtrovania, <code class="i">onlyIds</code>, <code class="i">locationFilter</code> aj <code class="i">defaultCategory</code>.</li>
+    <li>Funkcie <code class="i">scrollLeft</code> a <code class="i">scrollRight</code> — posúvajú o <code class="i">clientWidth</code>, čo pri náhľade funguje správne.</li>
+    <li>Dáta projektov. Žiadna zmena v <code class="i">src/data/projects.ts</code>.</li>
+  </ol>
+
+  <h2><span class="no">Krok 08</span>Kontrola pred odovzdaním</h2>
+  <ul class="check">
+    <li>Na domovskej stránke vidno tri celé dlaždice a kúsok štvrtej.</li>
+    <li>Ľavá šípka je na začiatku neaktívna, pravá na konci radu tiež.</li>
+    <li>Po filtrovaní na kategóriu sa stav šípok prepočíta a rad skočí na začiatok.</li>
+    <li>Dlaždice projektov bez rozpočtu a trvania majú <b>rovnakú výšku</b> ako ostatné (napr. „Hrubá stavba Dúbravy“).</li>
+    <li>Riadok údajov na takej dlaždici končí rokom a nemá visiaci oddeľovač <code class="i">·</code>.</li>
+    <li>Pri prejdení myšou: fotka sa priblíži, dlaždica sa nadvihne, linka pri čísle sa predĺži, vysunie sa „Zobraziť“.</li>
+    <li>Na <code class="i">/portfólio</code> vyzerá dlaždica identicky ako na domovskej stránke.</li>
+    <li>Na mobile je jedna dlaždica na šírku 86 % a posúvanie prstom funguje so zarážkami.</li>
+    <li>Pri zapnutom obmedzení pohybu v systéme sa nič nehýbe.</li>
+    <li><code class="i">npm run build</code> prejde — po zmazaní <code class="i">ProjectMeta</code> nesmú zostať nepoužité importy.</li>
+  </ul>
+
+  <h2><span class="no">Poznámka</span>Nesúvisí s kódom</h2>
+  <p class="note">Z jedenástich projektov má vyplnený rozpočet aj trvanie len päť; pri ostatných je
+     v dátach <code class="i">TODO: doplniť</code>. Tento návrh chýbajúce údaje zvládne bez toho, aby
+     sa rozsypal, ale dlaždice s nimi pôsobia podstatne presvedčivejšie. Doplnenie čísel je
+     obsahová práca, nie vývojárska.</p>
+
+</div>
+</body>
+</html>

@@ -35,10 +35,24 @@ export async function generateMetadata({
   const project = projectsData.find((p) => p.id === projekt);
   if (!project) notFound();
 
-  const locationSuffix = project.location ? ` ${project.location}` : '';
-  const title = project.title.includes(project.location ?? '')
-    ? project.title
-    : `${project.title}${locationSuffix}`;
+  /**
+   * Append the town only when the title doesn't already name it.
+   *
+   * A plain `includes()` fails on inflected forms: a title reading
+   * "Rekonštrukcia bytu v Hriňovej" (locative) does not contain "Hriňová"
+   * (nominative), so the location got appended twice —
+   * "Rekonštrukcia bytu v Hriňovej Hriňová".
+   *
+   * Comparing on the stem — the name minus its trailing vowel — covers the
+   * Slovak cases that appear in titles: Hriňová→Hriňov(ej), Detva→Detv(e),
+   * Dúbravy→Dúbrav, Banská Bystrica→Banská Bystric(i). Names ending in a
+   * consonant (Lučenec, Stožok) are unchanged and still match exactly.
+   */
+  const location = project.location ?? '';
+  const stem = location.replace(/[aáäeéiíyýoôóuú]+$/i, '') || location;
+  const titleNamesLocation =
+    stem.length > 0 && project.title.toLowerCase().includes(stem.toLowerCase());
+  const title = titleNamesLocation ? project.title : `${project.title} ${location}`.trim();
 
   return getSEOTags({
     title,
