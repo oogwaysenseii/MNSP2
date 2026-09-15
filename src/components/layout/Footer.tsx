@@ -2,92 +2,118 @@ import Link from 'next/link';
 import { Container } from '../ui/Container';
 import { BUSINESS } from '@/src/lib/schema';
 
+/**
+ * Explicit stack rather than `font-mono`: --font-mono in globals.css resolves
+ * through an undefined --font-jetbrains-mono, which makes the whole declaration
+ * invalid at computed-value time, so `font-mono` silently renders as sans.
+ */
+const MONO = 'font-[family-name:ui-monospace,SFMono-Regular,Menlo,monospace]';
+
+/** Popisok stĺpca — jantárová značka + monospace nadpis. */
+function ColHead({ children }: { children: React.ReactNode }) {
+  return (
+    <h3 className={`mb-6 ${MONO} text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-950`}>
+      <span className="mr-[9px] inline-block h-0.5 w-[18px] align-middle bg-[#f68c05]" />
+      {children}
+    </h3>
+  );
+}
+
+const LINK = 'inline-block py-1 transition-colors hover:text-[#b45309]';
+
 export function Footer() {
   return (
-    <footer className="border-t border-gray-200 py-16 text-sm text-gray-500 mt-12 bg-white">
+    <footer className="border-t border-gray-200 bg-white pt-[72px] text-sm text-zinc-600">
       <Container className="max-w-[1500px]">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_0.5fr_1.5fr_1fr] gap-10 lg:gap-16">
-          {/* Column 1: Description */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-black tracking-tight mb-6">MNSP | Stavby a rekonštrukcie</h3>
-            <p className="leading-relaxed">
-              Poskytujeme komplexné stavebné služby od návrhu až po realizáciu na kľúč, s dôrazom na kvalitu, inováciu a detail.
+
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2
+          lg:grid-cols-[1.4fr_1fr_1.3fr_1.1fr] lg:gap-14">
+
+          {/* 1 — značka */}
+          <div>
+            <p className="m-0 text-2xl font-black tracking-[0.03em] text-zinc-950">MNSP</p>
+            <span className={`mt-2 block ${MONO} text-[9px] font-bold uppercase
+              tracking-[0.24em] text-[#b45309]`}>
+              Stavby a rekonštrukcie
+            </span>
+            <p className="mt-[18px] max-w-[30rem] leading-[1.7] text-zinc-500">
+              Poskytujeme komplexné stavebné služby od návrhu až po realizáciu na kľúč,
+              s dôrazom na kvalitu, inováciu a detail.
             </p>
           </div>
 
-          {/* Column 2: Links */}
+          {/* 2 — rýchle odkazy */}
           <div>
-            <h3 className="text-[14px] font-mono tracking-widest text-black font-bold uppercase mb-6">Rýchle odkazy</h3>
-            <ul className="space-y-1.5">
-              <li><Link href="/" className="inline-block py-1 hover:text-amber-600 transition-colors">Domov</Link></li>
-              <li><Link href="/sluzby" className="inline-block py-1 hover:text-amber-600 transition-colors">Služby</Link></li>
-              <li><Link href="/portfolio" className="inline-block py-1 hover:text-amber-600 transition-colors">Portfólio</Link></li>
-              <li><Link href="/blog" className="inline-block py-1 hover:text-amber-600 transition-colors">Blog</Link></li>
-              <li><Link href="/faq" className="inline-block py-1 hover:text-amber-600 transition-colors">Časté otázky (FAQ)</Link></li>
-              <li><Link href="/o-nas" className="inline-block py-1 hover:text-amber-600 transition-colors">O nás</Link></li>
-              <li><Link href="/kontakt" className="inline-block py-1 hover:text-amber-600 transition-colors">Kontakt</Link></li>
+            <ColHead>Rýchle odkazy</ColHead>
+            <ul>
+              <li><Link href="/" className={LINK}>Domov</Link></li>
+              <li><Link href="/sluzby" className={LINK}>Služby</Link></li>
+              <li><Link href="/portfolio" className={LINK}>Portfólio</Link></li>
+              <li><Link href="/blog" className={LINK}>Blog</Link></li>
+              <li><Link href="/faq" className={LINK}>Časté otázky</Link></li>
+              <li><Link href="/o-nas" className={LINK}>O nás</Link></li>
+              <li><Link href="/kontakt" className={LINK}>Kontakt</Link></li>
             </ul>
           </div>
 
-          {/* Column 3: Services */}
+          {/* 3 — služby, obe úrovne rovnako veľké */}
           <div>
-            <h3 className="text-[14px] font-mono tracking-widest text-black font-bold uppercase mb-6">Naše služby</h3>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-              <ul className="space-y-1 ">
-                <li><Link href="/sluzby/rodinne-domy" className="inline-block py-1 hover:text-amber-600 transition-colors">Rodinné domy</Link></li>
-                <li><Link href="/sluzby/komercna-vystavba" className="inline-block py-1 hover:text-amber-600 transition-colors">Komerčná výstavba</Link></li>
-                <li><Link href="/sluzby/rezidencne-budovy" className="inline-block py-1 hover:text-amber-600 transition-colors">Rezidenčné budovy</Link></li>
-                <li><Link href="/sluzby/priemyselne-objekty" className="inline-block py-1 hover:text-amber-600 transition-colors">Priemyselné objekty</Link></li>
-                <li><Link href="/sluzby/obcianske-stavby" className="inline-block py-1 hover:text-amber-600 transition-colors">Občianske stavby</Link></li>
-
+            <ColHead>Naše služby</ColHead>
+            <div className="grid grid-cols-2 gap-x-6">
+              <ul>
+                <li><Link href="/sluzby/rodinne-domy" className={LINK}>Rodinné domy</Link></li>
+                <li><Link href="/sluzby/komercna-vystavba" className={LINK}>Komerčná výstavba</Link></li>
+                <li><Link href="/sluzby/rezidencne-budovy" className={LINK}>Rezidenčné budovy</Link></li>
+                <li><Link href="/sluzby/priemyselne-objekty" className={LINK}>Priemyselné objekty</Link></li>
+                <li><Link href="/sluzby/obcianske-stavby" className={LINK}>Občianske stavby</Link></li>
               </ul>
-              <ul className="space-y-2 text-[10px]">
-                <li><Link href="/sluzby/zakladanie-stavieb" className="inline-block py-1 hover:text-amber-600 transition-colors">Zakladanie stavieb</Link></li>
-                <li><Link href="/sluzby/monoliticke-konstrukcie" className="inline-block py-1 hover:text-amber-600 transition-colors">Monolitické konštr.</Link></li>
-                <li><Link href="/sluzby/murarske-prace" className="inline-block py-1 hover:text-amber-600 transition-colors">Murárske práce</Link></li>
-                <li><Link href="/sluzby/tesarske-prace" className="inline-block py-1 hover:text-amber-600 transition-colors">Tesárske práce</Link></li>
-                <li><Link href="/sluzby/omietky" className="inline-block py-1 hover:text-amber-600 transition-colors">Omietky</Link></li>
-                <li><Link href="/sluzby/potery" className="inline-block py-1 hover:text-amber-600 transition-colors">Potery</Link></li>
-                <li><Link href="/sluzby/obkladacske-prace" className="inline-block py-1 hover:text-amber-600 transition-colors">Obkladačské práce</Link></li>
-                <li><Link href="/sluzby/fasady" className="inline-block py-1 hover:text-amber-600 transition-colors">Fasády</Link></li>
-                <li><Link href="/sluzby/jadrove-vrtanie" className="inline-block py-1 hover:text-amber-600 transition-colors">Jadrové vŕtanie</Link></li>
-                <li><Link href="/sluzby/rezanie-otvorov" className="inline-block py-1 hover:text-amber-600 transition-colors">Rezanie otvorov</Link></li>
+              <ul>
+                <li><Link href="/sluzby/zakladanie-stavieb" className={LINK}>Zakladanie stavieb</Link></li>
+                <li><Link href="/sluzby/monoliticke-konstrukcie" className={LINK}>Monolitické konštr.</Link></li>
+                <li><Link href="/sluzby/murarske-prace" className={LINK}>Murárske práce</Link></li>
+                <li><Link href="/sluzby/tesarske-prace" className={LINK}>Tesárske práce</Link></li>
+                <li><Link href="/sluzby/omietky" className={LINK}>Omietky</Link></li>
               </ul>
             </div>
           </div>
 
-          {/* Column 4: Contact */}
+          {/* 4 — kontakt a firemné údaje */}
           <div>
-            <h3 className="text-[14px] font-mono tracking-widest text-black font-bold uppercase mb-6">Kontakt</h3>
-            <ul className="space-y-1.5">
+            <ColHead>Kontakt</ColHead>
+            <ul>
               <li>
-                <a href="mailto:info@mnsp.sk" className="inline-block py-1 hover:text-amber-600 transition-colors">info@mnsp.sk</a>
+                <a href="mailto:info@mnsp.sk"
+                   className="inline-block py-1 font-semibold text-zinc-950 transition-colors hover:text-[#b45309]">
+                  info@mnsp.sk
+                </a>
               </li>
               <li>
-                <a href="tel:+421950699585" className="inline-block py-1 hover:text-amber-600 transition-colors">+421 950 699 585</a>
+                <a href="tel:+421950699585"
+                   className="inline-block py-1 font-semibold text-zinc-950 transition-colors hover:text-[#b45309]">
+                  +421 950 699 585
+                </a>
               </li>
-              <li className="pt-2">
-                Jozefa Kozáčeka 829/2<br />
-                960 01 Zvolen<br />
-                Slovensko
-              </li>
-              {/* TODO: fill BUSINESS.ico / BUSINESS.dic in src/lib/schema.ts.
-                  Required on the website by §3a Obchodného zákonníka. */}
-              {BUSINESS.ico && (
-                <li className="pt-2 text-xs text-gray-400">
-                  {BUSINESS.legalName}<br />
-                  IČO: {BUSINESS.ico}{BUSINESS.dic ? ` · DIČ: ${BUSINESS.dic}` : ''}
-                </li>
-              )}
             </ul>
+
+            <address className="mt-[14px] not-italic leading-[1.8] text-zinc-500">
+              Jozefa Kozáčeka 829/2<br />960 01 Zvolen<br />Slovensko
+            </address>
+
+            {/* Povinné podľa §3a Obchodného zákonníka — nikdy nezabaliť do podmienky. */}
+            <p className={`mt-[18px] ${MONO} text-xs leading-[1.7] text-zinc-500`}>
+              {BUSINESS.legalName}<br />
+              IČO: {BUSINESS.ico} · DIČ: {BUSINESS.dic}
+            </p>
           </div>
         </div>
 
-        <div className="border-t border-gray-100 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between">
-          <p>&copy; {new Date().getFullYear()} MNSP | Stavby a rekonštrukcie</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/ochrana-sukromia" className="inline-block py-1 hover:text-amber-600 transition-colors">Ochrana súkromia</Link>
-            <Link href="/obchodne-podmienky" className="inline-block py-1 hover:text-amber-600 transition-colors">Obchodné podmienky</Link>
+        {/* spodná linka */}
+        <div className="mt-16 flex flex-col items-center justify-between gap-4
+          border-t border-zinc-200 py-[26px] text-[13px] text-zinc-500 md:flex-row md:gap-0">
+          <p className="m-0">&copy; {new Date().getFullYear()} {BUSINESS.legalName}</p>
+          <div className="flex gap-6">
+            <Link href="/ochrana-sukromia" className={LINK}>Ochrana súkromia</Link>
+            <Link href="/obchodne-podmienky" className={LINK}>Obchodné podmienky</Link>
           </div>
         </div>
       </Container>

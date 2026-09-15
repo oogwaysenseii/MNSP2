@@ -14,7 +14,7 @@ export function CTA({
   title = "Plánujete stavbu či rekonštrukciu?",
   subtitle = "Vypracujeme vám detailnú cenovú ponuku, vďaka ktorej získate úplný prehľad o nákladoch a platobných podmienkach.",
   description = "Stačí ak nám zanecháte vaše údaje a my vás budeme kontaktovať.",
-  eyebrow = "Nezáväzná cenová ponuka",
+  eyebrow = "Cenová ponuka",
   pageName = "Neznáma stránka",
 }: CTAProps) {
   return (

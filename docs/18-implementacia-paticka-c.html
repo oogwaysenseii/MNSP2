@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implementácia — Pätička (variant C)</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;--logo:#f68c05}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1120px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);margin:0;max-width:80ch}
+  .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  .tagi{font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase;
+        padding:8px 13px;background:#fff;border:1px solid var(--line)}
+  .tagi b{color:var(--amber-6)}
+  h2{font:800 22px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:46px 0 6px;
+     padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;color:var(--amber-6);
+         display:block;margin-bottom:9px}
+  p.note{color:var(--ink-2);margin:0 0 14px}
+  code.i{font:500 13px/1.5 ui-monospace,monospace;background:#e9e9e6;padding:2px 6px;color:#18181b}
+  pre{background:#18181b;color:#e4e4e7;padding:18px 20px;overflow-x:auto;margin:14px 0;
+      font:400 12.5px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;border-left:3px solid var(--amber)}
+  pre .c{color:#71717a} pre .k{color:#f59e0b} pre .s{color:#86efac} pre .t{color:#7dd3fc}
+  .file{display:inline-flex;align-items:center;gap:8px;background:#18181b;color:#fff;
+        font:600 12px/1 ui-monospace,monospace;padding:9px 13px;margin:18px 0 0}
+  .file b{color:var(--amber)}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#92400e}
+  .legalbox{background:#fef2f2;border:1px solid #dc2626;border-left:3px solid #dc2626;
+            padding:14px 18px;margin:16px 0;font-size:14px;color:#7f1d1d}
+  .legalbox b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+              text-transform:uppercase;margin-bottom:7px;color:#991b1b}
+  .good{background:#f0fdf4;border:1px solid #16a34a;border-left:3px solid #16a34a;
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#14532d}
+  .good b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#166534}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:28%}
+  td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  ul.check{list-style:none;padding:0;margin:14px 0}
+  ul.check li{padding:9px 0 9px 30px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.check li:before{content:"";position:absolute;left:2px;top:13px;width:13px;height:13px;border:1.5px solid #a1a1aa}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  .demo{border:1px solid #d4d4d8;margin:16px 0}
+  .demo .above{background:#09090b;color:#52525b;padding:12px 22px;font:700 10px/1 ui-monospace,monospace;
+               letter-spacing:.16em;text-transform:uppercase}
+  .g{display:grid;gap:1px;background:#e4e4e7}
+  .g > div{background:#fff;padding:18px 20px;font:400 12px/1.5 ui-monospace,monospace;color:#71717a}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g1{grid-template-columns:1fr}
+  .cap{font:700 10px/1 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;
+       color:var(--muted);margin:14px 0 6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Implementácia · pre vývojára</p>
+  <h1>Pätička — variant C, technický list</h1>
+  <p class="lede">Pätička ako tabuľka vo výkrese: štyri bunky oddelené vlasovými linkami,
+     monospace popisky s číslami a firemné údaje vysadené ako dátový list.</p>
+
+  <div class="meta">
+    <span class="tagi">Súbory: <b>2</b></span>
+    <span class="tagi">Footer.tsx: <b>96 riadkov → prepis</b></span>
+    <span class="tagi">Bez novej závislosti</span>
+    <span class="tagi">Bez zmeny odkazov</span>
+  </div>
+
+  <div class="legalbox"><b>Toto nie je dizajnová úloha — je to povinnosť</b>
+    <code>BUSINESS.ico</code> je v <code>schema.ts</code> prázdny reťazec a celý blok s firemnými
+    údajmi je obalený v <code>{BUSINESS.ico &amp;&amp; …}</code>. Podmienka je vždy nepravdivá,
+    takže sa na webe nezobrazuje nič — hoci <b>§3a Obchodného zákonníka to vyžaduje</b>.
+    Vo variante C sú tieto údaje navyše nosným prvkom štvrtej bunky, takže bez nich
+    pätička nedáva zmysel ani vizuálne.
+  </div>
+
+  <h2><span class="no">Krok 01</span>Doplniť firemné údaje</h2>
+  <p class="note">Hodnoty musí dodať klient, vrátane potvrdenia presného názvu v obchodnom registri —
+     dnes je v kóde označený ako neoverený.</p>
+
+  <div class="file">📄 <b>src/lib/schema.ts</b> · riadky 35–41</div>
+<pre><span class="c">// PRED</span>
+legalName: <span class="s">'MNSP s.r.o.'</span>, <span class="c">// TODO: confirm exact name in Obchodný register</span>
+ico: <span class="s">''</span>,  <span class="c">// TODO — required by §3a</span>
+dic: <span class="s">''</span>,
+
+<span class="c">// PO</span>
+legalName: <span class="s">'MNSP s.r.o.'</span>,   <span class="c">// overené v ORSR</span>
+ico: <span class="s">'12345678'</span>,
+dic: <span class="s">'2023456789'</span>,</pre>
+
+  <h2><span class="no">Krok 02</span>Ako urobiť vlasové linky</h2>
+  <p class="note">Toto je jediné miesto, kde sa kód zámerne líši od ukážky. V ukážke mala každá
+     bunka <code class="i">border-right</code> a posledná ho nemala. To funguje pri štyroch stĺpcoch,
+     ale rozpadne sa, len čo sa mriežka zlomí na dva stĺpce alebo na jeden — zrazu treba riešiť,
+     ktorá bunka je posledná v riadku a ktorá je v poslednom riadku.</p>
+
+  <div class="good"><b>Namiesto rámikov použite medzeru v mriežke</b>
+    Mriežka dostane <code>gap-px</code> a podklad <code>bg-zinc-200</code>, bunky sú
+    <code>bg-white</code>. Sivý podklad presvitá cez medzeru a tvorí dokonalé 1 px linky —
+    pri štyroch stĺpcoch, dvoch aj jednom, bez jedinej výnimky v kóde.
+  </div>
+
+  <p class="cap">Ako sa to správa pri zmene šírky</p>
+  <div class="demo">
+    <div class="above">↑ sekcia CTA (tmavá)</div>
+    <div style="border-top:2px solid var(--logo)">
+      <div class="g g4"><div>01</div><div>02</div><div>03</div><div>04</div></div>
+    </div>
+    <div style="padding:8px 20px;font:700 9px/1 ui-monospace,monospace;letter-spacing:.14em;color:#a1a1aa;background:#fafafa">Nad 1024 px — štyri bunky</div>
+    <div class="g g2"><div>01</div><div>02</div><div>03</div><div>04</div></div>
+    <div style="padding:8px 20px;font:700 9px/1 ui-monospace,monospace;letter-spacing:.14em;color:#a1a1aa;background:#fafafa">768–1024 px — dve bunky</div>
+    <div class="g g1"><div>01</div><div>02</div><div>03</div><div>04</div></div>
+    <div style="padding:8px 20px;font:700 9px/1 ui-monospace,monospace;letter-spacing:.14em;color:#a1a1aa;background:#fafafa">Mobil — jedna bunka</div>
+  </div>
+  <p class="note" style="font-size:13.5px">Štyri bunky sa delia na 4, 2 aj 1 stĺpec bezo zvyšku,
+     takže nikdy nevznikne prázdne miesto, cez ktoré by presvital sivý podklad ako plocha.
+     Toto prestane platiť, ak niekedy pribudne piata bunka.</p>
+
+  <h2><span class="no">Krok 03</span>Prepísať pätičku</h2>
+  <p class="note">Celý obsah <code class="i">Footer.tsx</code> sa nahrádza. Odkazy, adresa
+     aj texty ostávajú presne také, aké sú dnes.</p>
+
+  <div class="file">📄 <b>src/components/layout/Footer.tsx</b> — celý obsah</div>
+<pre><span class="k">import</span> Link <span class="k">from</span> <span class="s">'next/link'</span>;
+<span class="k">import</span> { BUSINESS } <span class="k">from</span> <span class="s">'@/src/lib/schema'</span>;
+
+<span class="k">const</span> LINK = <span class="s">'inline-block py-1 transition-colors hover:text-[#b45309]'</span>;
+
+<span class="c">/** Číslovaný popisok bunky. */</span>
+<span class="k">function</span> <span class="t">CellHead</span>({ n, children }: { n: <span class="t">string</span>; children: <span class="t">React</span>.ReactNode }) {
+  <span class="k">return</span> (
+    &lt;h3 className=<span class="s">"mb-4 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-400"</span>&gt;
+      &lt;span className=<span class="s">"mr-2 text-[#b45309]"</span>&gt;{n}&lt;/span&gt;{children}
+    &lt;/h3&gt;
+  );
+}
+
+<span class="k">export function</span> <span class="t">Footer</span>() {
+  <span class="k">return</span> (
+    &lt;footer className=<span class="s">"border-t-2 border-[#f68c05] bg-white text-[13.5px] text-zinc-600"</span>&gt;
+      &lt;div className=<span class="s">"mx-auto max-w-[1500px]"</span>&gt;
+
+        <span class="c">{/* Linky medzi bunkami robí gap-px cez sivý podklad. */}</span>
+        &lt;div className=<span class="s">"grid gap-px border-b border-zinc-200 bg-zinc-200
+          md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.4fr_1.2fr]"</span>&gt;
+
+          <span class="c">{/* — značka — */}</span>
+          &lt;div className=<span class="s">"bg-white px-8 py-[34px]"</span>&gt;
+            &lt;p className=<span class="s">"m-0 text-2xl font-black tracking-[0.03em] text-zinc-950"</span>&gt;MNSP&lt;/p&gt;
+            &lt;span className=<span class="s">"mt-1.5 block font-mono text-[9px] font-bold uppercase
+              tracking-[0.24em] text-[#b45309]"</span>&gt;
+              Stavby a rekonštrukcie
+            &lt;/span&gt;
+            &lt;p className=<span class="s">"mt-[18px] leading-[1.7] text-zinc-500"</span>&gt;
+              Poskytujeme komplexné stavebné služby od návrhu až po realizáciu na kľúč,
+              s dôrazom na kvalitu, inováciu a detail.
+            &lt;/p&gt;
+          &lt;/div&gt;
+
+          <span class="c">{/* — 01 rýchle odkazy — */}</span>
+          &lt;div className=<span class="s">"bg-white px-8 py-[34px]"</span>&gt;
+            &lt;<span class="t">CellHead</span> n=<span class="s">"01"</span>&gt;Rýchle odkazy&lt;/<span class="t">CellHead</span>&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;Link href=<span class="s">"/"</span> className={LINK}&gt;Domov&lt;/Link&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;Link href=<span class="s">"/sluzby"</span> className={LINK}&gt;Služby&lt;/Link&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;Link href=<span class="s">"/portfolio"</span> className={LINK}&gt;Portfólio&lt;/Link&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;Link href=<span class="s">"/blog"</span> className={LINK}&gt;Blog&lt;/Link&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;Link href=<span class="s">"/faq"</span> className={LINK}&gt;Časté otázky&lt;/Link&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;Link href=<span class="s">"/o-nas"</span> className={LINK}&gt;O nás&lt;/Link&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;Link href=<span class="s">"/kontakt"</span> className={LINK}&gt;Kontakt&lt;/Link&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+
+          <span class="c">{/* — 02 služby, obe úrovne rovnako veľké — */}</span>
+          &lt;div className=<span class="s">"bg-white px-8 py-[34px]"</span>&gt;
+            &lt;<span class="t">CellHead</span> n=<span class="s">"02"</span>&gt;Naše služby&lt;/<span class="t">CellHead</span>&gt;
+            &lt;div className=<span class="s">"grid grid-cols-2 gap-x-5"</span>&gt;
+              &lt;ul&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/rodinne-domy"</span> className={LINK}&gt;Rodinné domy&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/komercna-vystavba"</span> className={LINK}&gt;Komerčná výstavba&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/rezidencne-budovy"</span> className={LINK}&gt;Rezidenčné budovy&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/priemyselne-objekty"</span> className={LINK}&gt;Priemyselné objekty&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/obcianske-stavby"</span> className={LINK}&gt;Občianske stavby&lt;/Link&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;ul&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/zakladanie-stavieb"</span> className={LINK}&gt;Zakladanie stavieb&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/monoliticke-konstrukcie"</span> className={LINK}&gt;Monolitické konštr.&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/murarske-prace"</span> className={LINK}&gt;Murárske práce&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/tesarske-prace"</span> className={LINK}&gt;Tesárske práce&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/omietky"</span> className={LINK}&gt;Omietky&lt;/Link&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          <span class="c">{/* — 03 kontakt a údaje, ako dátový list — */}</span>
+          &lt;div className=<span class="s">"bg-white px-8 py-[34px]"</span>&gt;
+            &lt;<span class="t">CellHead</span> n=<span class="s">"03"</span>&gt;Kontakt a údaje&lt;/<span class="t">CellHead</span>&gt;
+            &lt;dl className=<span class="s">"grid grid-cols-[auto_1fr] gap-x-3.5 gap-y-[7px]
+              font-mono text-[12.5px] leading-[1.7]"</span>&gt;
+              &lt;dt className=<span class="s">"uppercase tracking-[0.1em] text-zinc-400"</span>&gt;Tel&lt;/dt&gt;
+              &lt;dd className=<span class="s">"m-0 text-zinc-950"</span>&gt;
+                &lt;a href=<span class="s">"tel:+421950699585"</span> className=<span class="s">"transition-colors hover:text-[#b45309]"</span>&gt;
+                  +421 950 699 585
+                &lt;/a&gt;
+              &lt;/dd&gt;
+
+              &lt;dt className=<span class="s">"uppercase tracking-[0.1em] text-zinc-400"</span>&gt;Mail&lt;/dt&gt;
+              &lt;dd className=<span class="s">"m-0 text-zinc-950"</span>&gt;
+                &lt;a href=<span class="s">"mailto:info@mnsp.sk"</span> className=<span class="s">"transition-colors hover:text-[#b45309]"</span>&gt;
+                  info@mnsp.sk
+                &lt;/a&gt;
+              &lt;/dd&gt;
+
+              &lt;dt className=<span class="s">"uppercase tracking-[0.1em] text-zinc-400"</span>&gt;Sídlo&lt;/dt&gt;
+              &lt;dd className=<span class="s">"m-0 text-zinc-950"</span>&gt;Jozefa Kozáčeka 829/2&lt;br /&gt;960 01 Zvolen&lt;/dd&gt;
+
+              &lt;dt className=<span class="s">"uppercase tracking-[0.1em] text-zinc-400"</span>&gt;Firma&lt;/dt&gt;
+              &lt;dd className=<span class="s">"m-0 text-zinc-950"</span>&gt;{BUSINESS.legalName}&lt;/dd&gt;
+
+              <span class="c">{/* Povinné podľa §3a — nikdy nezabaliť do podmienky. */}</span>
+              &lt;dt className=<span class="s">"uppercase tracking-[0.1em] text-zinc-400"</span>&gt;IČO&lt;/dt&gt;
+              &lt;dd className=<span class="s">"m-0 text-zinc-950"</span>&gt;{BUSINESS.ico}&lt;/dd&gt;
+
+              &lt;dt className=<span class="s">"uppercase tracking-[0.1em] text-zinc-400"</span>&gt;DIČ&lt;/dt&gt;
+              &lt;dd className=<span class="s">"m-0 text-zinc-950"</span>&gt;{BUSINESS.dic}&lt;/dd&gt;
+            &lt;/dl&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        <span class="c">{/* spodná linka */}</span>
+        &lt;div className=<span class="s">"flex flex-col items-center justify-between gap-3 px-8 py-5
+          font-mono text-xs tracking-[0.06em] text-zinc-500 md:flex-row md:gap-0"</span>&gt;
+          &lt;span&gt;&amp;copy; {<span class="k">new</span> <span class="t">Date</span>().getFullYear()} {BUSINESS.legalName}&lt;/span&gt;
+          &lt;span className=<span class="s">"flex gap-6"</span>&gt;
+            &lt;Link href=<span class="s">"/ochrana-sukromia"</span> className=<span class="s">"transition-colors hover:text-[#b45309]"</span>&gt;
+              Ochrana súkromia
+            &lt;/Link&gt;
+            &lt;Link href=<span class="s">"/obchodne-podmienky"</span> className=<span class="s">"transition-colors hover:text-[#b45309]"</span>&gt;
+              Obchodné podmienky
+            &lt;/Link&gt;
+          &lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;
+  );
+}</pre>
+
+  <div class="warn"><b>Štyri veci, ktoré v tom prepise zámerne zanikli</b>
+    <p style="margin:0 0 6px"><code>Container</code> sa už nepoužíva. Bunky musia siahať až po okraj
+       mriežky, inak by linky nedosadli na kraj — vnútorný odstup rieši <code>px-8</code> na bunke,
+       ktorý zodpovedá 32 px odsadeniu <code>Container</code>-a, takže text ostáva zarovnaný
+       so zvyškom stránky.</p>
+    <p style="margin:0 0 6px"><code>mt-12</code> na pätičke — vytváral 48 px bielej medzery
+       medzi tmavým CTA a pätičkou, čím by jantárová linka zhora stratila zmysel.</p>
+    <p style="margin:0 0 6px"><code>text-[10px]</code> na druhom zozname služieb — obe úrovne
+       sú teraz 13.5 px.</p>
+    <p style="margin:0">Podmienka <code>{BUSINESS.ico &amp;&amp; …}</code> — firemné údaje sa
+       vykresľujú vždy.</p>
+  </div>
+
+  <h2><span class="no">Krok 04</span>Presné hodnoty</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Podklad a linka</td><td><code>#FFFFFF</code>, horná linka 2 px <code>#F68C05</code>. Bez horného odstupu</td></tr>
+    <tr><td>Mriežka</td><td><code>1.5fr 1fr 1.4fr 1.2fr</code> nad 1024 px, dva stĺpce 768–1024 px, jeden pod tým</td></tr>
+    <tr><td>Vlasové linky</td><td><code>gap-px</code> + podklad <code>#E4E4E7</code>, bunky <code>#FFFFFF</code>. Spodná linka pásma <code>border-b</code> rovnakej farby</td></tr>
+    <tr><td>Odsadenie bunky</td><td>34 px zvislo, 32 px vodorovne — zhodné s odsadením <code>Container</code>-a</td></tr>
+    <tr><td>Popisky buniek</td><td>11 px, mono, váha 700, letter-spacing 0.2em, veľké písmená, <code>#A1A1AA</code>; číslo pred nimi <code>#B45309</code>, odstup 8 px</td></tr>
+    <tr><td>Značka</td><td>24 px, váha 900, letter-spacing 0.03em, <code>#09090B</code></td></tr>
+    <tr><td>Podtitul značky</td><td>9 px, mono, váha 700, letter-spacing 0.24em, veľké písmená, <code>#B45309</code></td></tr>
+    <tr><td>Odkazy</td><td>13.5 px, <code>#52525B</code>, zvislé odsadenie 4 px; pri prejdení <code>#B45309</code></td></tr>
+    <tr><td>Dátový list</td><td>Mriežka <code>auto 1fr</code>, medzera 7 px zvisle / 14 px vodorovne, mono 12.5 px. Popisky <code>#A1A1AA</code> veľkými, hodnoty <code>#09090B</code></td></tr>
+    <tr><td>Spodná linka</td><td>Odsadenie 20 px zvislo / 32 px vodorovne, mono 12 px, <code>#71717A</code>, letter-spacing 0.06em</td></tr>
+    <tr><td>Jantárová na bielej</td><td>Text a odkazy <code>#B45309</code> (5,3 : 1). Svetlá <code>#F68C05</code> len na hornej linke</td></tr>
+  </table>
+
+  <h2><span class="no">Krok 05</span>Kontrola pred odovzdaním</h2>
+  <ul class="check">
+    <li>Jantárová linka sedí priamo pod tmavým CTA, bez bielej medzery nad ňou.</li>
+    <li>Vlasové linky medzi bunkami sú presne 1 px a rovnako silné vodorovne aj zvislo.</li>
+    <li>Pri zmenšovaní okna cez 1024 px a 768 px linky nikde nezmiznú ani sa nezdvoja.</li>
+    <li>Text v prvej bunke je zvisle zarovnaný s obsahom stránky nad pätičkou.</li>
+    <li>Obidva zoznamy služieb majú rovnakú veľkosť písma.</li>
+    <li>Riadky IČO a DIČ sú viditeľné a majú hodnoty — na každej podstránke.</li>
+    <li>Popisky v dátovom liste sú zarovnané vľavo a hodnoty tvoria jeden zvislý stĺpec.</li>
+    <li>Pri prejdení myšou odkazy jantárovejú na <code class="i">#B45309</code>, nie na svetlú oranžovú.</li>
+    <li><code class="i">npm run build</code> prejde; <code class="i">Container</code> už nie je importovaný.</li>
+  </ul>
+
+  <h2><span class="no">Poznámky</span>Na doplnenie</h2>
+  <ul class="flags">
+    <li><b>Druhý zoznam služieb je skrátený z desiatich na päť.</b> Odkazy Potery, Obkladačské práce, Fasády, Jadrové vŕtanie a Rezanie otvorov z pätičky miznú; dostupné sú zo stránky <code>/sluzby</code>. Ak ich potrebujete kvôli interným odkazom pre vyhľadávače, vrátia sa a bunka bude vyššia.</li>
+    <li><b>Štyri bunky sú tu podmienka, nie náhoda.</b> Delia sa na 4, 2 aj 1 stĺpec bezo zvyšku. Keby niekedy pribudla piata, v dvojstĺpcovom režime vznikne prázdne miesto, cez ktoré presvitá sivý podklad — vtedy treba buď doplniť šiestu bunku, alebo prejsť na rámiky.</li>
+    <li><b>Adresa nie je v <code>&lt;address&gt;</code>.</b> Vo variante C je súčasťou dátového listu ako riadok „Sídlo“, takže sémanticky patrí do <code>&lt;dd&gt;</code>. Ak by ste chceli <code>&lt;address&gt;</code>, treba ho vnoriť dovnútra toho <code>&lt;dd&gt;</code>.</li>
+    <li><b>Prechod z tmavého CTA na bielu pätičku je tvrdá hrana.</b> Jantárová linka z nej robí zámer, ale hrana to stále je. Uvidíte to až na skutočnej stránke.</li>
+    <li><b>Značka je len text.</b> Kým nie je rozhodnuté logo, symbol do pätičky nedávam — pridá sa neskôr do prvej bunky bez zásahu do mriežky.</li>
+  </ul>
+
+</div>
+</body>
+</html>

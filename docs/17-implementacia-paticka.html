@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implementácia — Pätička (variant A)</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;--logo:#f68c05}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1120px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);margin:0;max-width:80ch}
+  .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  .tagi{font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase;
+        padding:8px 13px;background:#fff;border:1px solid var(--line)}
+  .tagi b{color:var(--amber-6)}
+  h2{font:800 22px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:46px 0 6px;
+     padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;color:var(--amber-6);
+         display:block;margin-bottom:9px}
+  p.note{color:var(--ink-2);margin:0 0 14px}
+  code.i{font:500 13px/1.5 ui-monospace,monospace;background:#e9e9e6;padding:2px 6px;color:#18181b}
+  pre{background:#18181b;color:#e4e4e7;padding:18px 20px;overflow-x:auto;margin:14px 0;
+      font:400 12.5px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;border-left:3px solid var(--amber)}
+  pre .c{color:#71717a} pre .k{color:#f59e0b} pre .s{color:#86efac} pre .t{color:#7dd3fc}
+  .file{display:inline-flex;align-items:center;gap:8px;background:#18181b;color:#fff;
+        font:600 12px/1 ui-monospace,monospace;padding:9px 13px;margin:18px 0 0}
+  .file b{color:var(--amber)}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#92400e}
+  .legalbox{background:#fef2f2;border:1px solid #dc2626;border-left:3px solid #dc2626;
+            padding:14px 18px;margin:16px 0;font-size:14px;color:#7f1d1d}
+  .legalbox b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+              text-transform:uppercase;margin-bottom:7px;color:#991b1b}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:28%}
+  td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  ul.check{list-style:none;padding:0;margin:14px 0}
+  ul.check li{padding:9px 0 9px 30px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.check li:before{content:"";position:absolute;left:2px;top:13px;width:13px;height:13px;border:1.5px solid #a1a1aa}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Implementácia · pre vývojára</p>
+  <h1>Pätička — variant A, svetlý sokel</h1>
+  <p class="lede">Rovnaké štyri stĺpce ako dnes, len upratané: jantárová linka zhora, značky pri
+     nadpisoch, obe úrovne služieb v jednej veľkosti a riadok s firemnými údajmi, ktorý sa konečne
+     naozaj vykreslí.</p>
+
+  <div class="meta">
+    <span class="tagi">Súbory: <b>2</b></span>
+    <span class="tagi">Footer.tsx: <b>96 riadkov → prepis</b></span>
+    <span class="tagi">Bez novej závislosti</span>
+    <span class="tagi">Bez zmeny odkazov</span>
+  </div>
+
+  <div class="legalbox"><b>Toto nie je dizajnová úloha — je to povinnosť</b>
+    <code>BUSINESS.ico</code> je v <code>schema.ts</code> prázdny reťazec a celý blok s firemnými
+    údajmi je obalený v <code>{BUSINESS.ico &amp;&amp; …}</code>. Podmienka je vždy nepravdivá,
+    takže sa na webe nezobrazuje nič — hoci <b>§3a Obchodného zákonníka to vyžaduje</b>.
+    Bez doplnenia týchto údajov nemá zmysel pätičku nasadzovať.
+  </div>
+
+  <h2><span class="no">Krok 01</span>Doplniť firemné údaje</h2>
+  <p class="note">Bez tohto kroku sa ďalej nedá pokračovať. Hodnoty musí dodať klient —
+     vrátane potvrdenia presného názvu v obchodnom registri, ktorý je dnes v kóde označený
+     ako neoverený.</p>
+
+  <div class="file">📄 <b>src/lib/schema.ts</b> · riadky 35–41</div>
+<pre><span class="c">// PRED</span>
+<span class="k">export const</span> BUSINESS = {
+  legalName: <span class="s">'MNSP s.r.o.'</span>, <span class="c">// TODO: confirm exact name in Obchodný register</span>
+  ico: <span class="s">''</span>,  <span class="c">// TODO — required by §3a</span>
+  dic: <span class="s">''</span>,
+  ...
+}
+
+<span class="c">// PO — doplniť skutočné hodnoty</span>
+<span class="k">export const</span> BUSINESS = {
+  legalName: <span class="s">'MNSP s.r.o.'</span>,   <span class="c">// overené v ORSR</span>
+  ico: <span class="s">'12345678'</span>,
+  dic: <span class="s">'2023456789'</span>,
+  ...
+}</pre>
+
+  <h2><span class="no">Krok 02</span>Prepísať pätičku</h2>
+  <p class="note">Celý obsah <code class="i">Footer.tsx</code> sa nahrádza. Všetky odkazy,
+     adresa aj texty ostávajú presne také, aké sú dnes.</p>
+
+  <div class="file">📄 <b>src/components/layout/Footer.tsx</b> — celý obsah</div>
+<pre><span class="k">import</span> Link <span class="k">from</span> <span class="s">'next/link'</span>;
+<span class="k">import</span> { Container } <span class="k">from</span> <span class="s">'../ui/Container'</span>;
+<span class="k">import</span> { BUSINESS } <span class="k">from</span> <span class="s">'@/src/lib/schema'</span>;
+
+<span class="c">/** Popisok stĺpca — jantárová značka + monospace nadpis. */</span>
+<span class="k">function</span> <span class="t">ColHead</span>({ children }: { children: <span class="t">React</span>.ReactNode }) {
+  <span class="k">return</span> (
+    &lt;h3 className=<span class="s">"mb-6 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-950"</span>&gt;
+      &lt;span className=<span class="s">"mr-[9px] inline-block h-0.5 w-[18px] align-middle bg-[#f68c05]"</span> /&gt;
+      {children}
+    &lt;/h3&gt;
+  );
+}
+
+<span class="k">const</span> LINK = <span class="s">'inline-block py-1 transition-colors hover:text-[#b45309]'</span>;
+
+<span class="k">export function</span> <span class="t">Footer</span>() {
+  <span class="k">return</span> (
+    &lt;footer className=<span class="s">"border-t-2 border-[#f68c05] bg-white pt-[72px] text-sm text-zinc-600"</span>&gt;
+      &lt;Container className=<span class="s">"max-w-[1500px]"</span>&gt;
+
+        &lt;div className=<span class="s">"grid grid-cols-1 gap-10 md:grid-cols-2
+          lg:grid-cols-[1.4fr_1fr_1.3fr_1.1fr] lg:gap-14"</span>&gt;
+
+          <span class="c">{/* 1 — značka */}</span>
+          &lt;div&gt;
+            &lt;p className=<span class="s">"m-0 text-2xl font-black tracking-[0.03em] text-zinc-950"</span>&gt;MNSP&lt;/p&gt;
+            &lt;span className=<span class="s">"mt-2 block font-mono text-[9px] font-bold uppercase
+              tracking-[0.24em] text-[#b45309]"</span>&gt;
+              Stavby a rekonštrukcie
+            &lt;/span&gt;
+            &lt;p className=<span class="s">"mt-[18px] max-w-[30rem] leading-[1.7] text-zinc-500"</span>&gt;
+              Poskytujeme komplexné stavebné služby od návrhu až po realizáciu na kľúč,
+              s dôrazom na kvalitu, inováciu a detail.
+            &lt;/p&gt;
+          &lt;/div&gt;
+
+          <span class="c">{/* 2 — rýchle odkazy */}</span>
+          &lt;div&gt;
+            &lt;<span class="t">ColHead</span>&gt;Rýchle odkazy&lt;/<span class="t">ColHead</span>&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;Link href=<span class="s">"/"</span> className={LINK}&gt;Domov&lt;/Link&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;Link href=<span class="s">"/sluzby"</span> className={LINK}&gt;Služby&lt;/Link&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;Link href=<span class="s">"/portfolio"</span> className={LINK}&gt;Portfólio&lt;/Link&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;Link href=<span class="s">"/blog"</span> className={LINK}&gt;Blog&lt;/Link&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;Link href=<span class="s">"/faq"</span> className={LINK}&gt;Časté otázky&lt;/Link&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;Link href=<span class="s">"/o-nas"</span> className={LINK}&gt;O nás&lt;/Link&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;Link href=<span class="s">"/kontakt"</span> className={LINK}&gt;Kontakt&lt;/Link&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+
+          <span class="c">{/* 3 — služby, obe úrovne rovnako veľké */}</span>
+          &lt;div&gt;
+            &lt;<span class="t">ColHead</span>&gt;Naše služby&lt;/<span class="t">ColHead</span>&gt;
+            &lt;div className=<span class="s">"grid grid-cols-2 gap-x-6"</span>&gt;
+              &lt;ul&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/rodinne-domy"</span> className={LINK}&gt;Rodinné domy&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/komercna-vystavba"</span> className={LINK}&gt;Komerčná výstavba&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/rezidencne-budovy"</span> className={LINK}&gt;Rezidenčné budovy&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/priemyselne-objekty"</span> className={LINK}&gt;Priemyselné objekty&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/obcianske-stavby"</span> className={LINK}&gt;Občianske stavby&lt;/Link&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;ul&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/zakladanie-stavieb"</span> className={LINK}&gt;Zakladanie stavieb&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/monoliticke-konstrukcie"</span> className={LINK}&gt;Monolitické konštr.&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/murarske-prace"</span> className={LINK}&gt;Murárske práce&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/tesarske-prace"</span> className={LINK}&gt;Tesárske práce&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link href=<span class="s">"/sluzby/omietky"</span> className={LINK}&gt;Omietky&lt;/Link&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          <span class="c">{/* 4 — kontakt a firemné údaje */}</span>
+          &lt;div&gt;
+            &lt;<span class="t">ColHead</span>&gt;Kontakt&lt;/<span class="t">ColHead</span>&gt;
+            &lt;ul&gt;
+              &lt;li&gt;
+                &lt;a href=<span class="s">"mailto:info@mnsp.sk"</span>
+                   className=<span class="s">"inline-block py-1 font-semibold text-zinc-950 transition-colors hover:text-[#b45309]"</span>&gt;
+                  info@mnsp.sk
+                &lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;a href=<span class="s">"tel:+421950699585"</span>
+                   className=<span class="s">"inline-block py-1 font-semibold text-zinc-950 transition-colors hover:text-[#b45309]"</span>&gt;
+                  +421 950 699 585
+                &lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+
+            &lt;address className=<span class="s">"mt-[14px] not-italic leading-[1.8] text-zinc-500"</span>&gt;
+              Jozefa Kozáčeka 829/2&lt;br /&gt;960 01 Zvolen&lt;br /&gt;Slovensko
+            &lt;/address&gt;
+
+            <span class="c">{/* Povinné podľa §3a Obchodného zákonníka — nikdy nezabaliť do podmienky. */}</span>
+            &lt;p className=<span class="s">"mt-[18px] font-mono text-xs leading-[1.7] text-zinc-500"</span>&gt;
+              {BUSINESS.legalName}&lt;br /&gt;
+              IČO: {BUSINESS.ico} · DIČ: {BUSINESS.dic}
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        <span class="c">{/* spodná linka */}</span>
+        &lt;div className=<span class="s">"mt-16 flex flex-col items-center justify-between gap-4
+          border-t border-zinc-200 py-[26px] text-[13px] text-zinc-500 md:flex-row md:gap-0"</span>&gt;
+          &lt;p className=<span class="s">"m-0"</span>&gt;&amp;copy; {<span class="k">new</span> <span class="t">Date</span>().getFullYear()} {BUSINESS.legalName}&lt;/p&gt;
+          &lt;div className=<span class="s">"flex gap-6"</span>&gt;
+            &lt;Link href=<span class="s">"/ochrana-sukromia"</span> className={LINK}&gt;Ochrana súkromia&lt;/Link&gt;
+            &lt;Link href=<span class="s">"/obchodne-podmienky"</span> className={LINK}&gt;Obchodné podmienky&lt;/Link&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/Container&gt;
+    &lt;/footer&gt;
+  );
+}</pre>
+
+  <div class="warn"><b>Tri veci, ktoré v tom prepise zámerne zanikli</b>
+    <p style="margin:0 0 6px"><code>mt-12</code> na pätičke — vytváral 48 px bielej medzery medzi
+       tmavým CTA a pätičkou, čím by jantárová linka zhora stratila zmysel.</p>
+    <p style="margin:0 0 6px"><code>text-[10px]</code> na druhom zozname služieb — obe úrovne
+       sú teraz 14 px.</p>
+    <p style="margin:0">Podmienka <code>{BUSINESS.ico &amp;&amp; …}</code> — firemné údaje sa vykresľujú
+       vždy. Práve tá podmienka spôsobila, že povinný údaj rok ticho chýbal.</p>
+  </div>
+
+  <h2><span class="no">Krok 03</span>Presné hodnoty</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Podklad a linka</td><td><code>#FFFFFF</code>, horná linka 2 px <code>#F68C05</code>. Bez horného odstupu, aby linka sedela hneď pod CTA</td></tr>
+    <tr><td>Odsadenie</td><td>Hore 72 px; spodná linka má 26 px zvislo</td></tr>
+    <tr><td>Mriežka</td><td><code>1.4fr 1fr 1.3fr 1.1fr</code>, medzera 56 px. Do 1024 px dva stĺpce, na mobile jeden</td></tr>
+    <tr><td>Značka</td><td>24 px, váha 900, letter-spacing 0.03em, <code>#09090B</code></td></tr>
+    <tr><td>Podtitul značky</td><td>9 px, mono, váha 700, letter-spacing 0.24em, veľké písmená, <code>#B45309</code></td></tr>
+    <tr><td>Popis</td><td>14 px, riadkovanie 1.7, <code>#71717A</code>, max. šírka 30 rem</td></tr>
+    <tr><td>Nadpisy stĺpcov</td><td>11 px, mono, váha 700, letter-spacing 0.2em, veľké písmená, <code>#09090B</code>; pred nimi značka 18 × 2 px <code>#F68C05</code> s odstupom 9 px</td></tr>
+    <tr><td>Odkazy</td><td>14 px, <code>#52525B</code>, zvislé odsadenie 4 px; pri prejdení myšou <code>#B45309</code></td></tr>
+    <tr><td>Obe úrovne služieb</td><td>Rovnaká veľkosť 14 px. Druhý zoznam skrátený na päť položiek</td></tr>
+    <tr><td>E-mail a telefón</td><td>14 px, váha 600, <code>#09090B</code> — jediné zvýraznené odkazy v pätičke</td></tr>
+    <tr><td>Adresa</td><td><code>&lt;address&gt;</code> s <code>not-italic</code>, riadkovanie 1.8, <code>#71717A</code></td></tr>
+    <tr><td>Firemné údaje</td><td>12 px, mono, riadkovanie 1.7, <code>#71717A</code>. Vykresľujú sa vždy</td></tr>
+    <tr><td>Spodná linka</td><td>Horný odstup 64 px, linka 1 px <code>#E4E4E7</code>, text 13 px <code>#71717A</code></td></tr>
+    <tr><td>Jantárová na bielej</td><td>Text a odkazy <code>#B45309</code> (5,3 : 1). Svetlá <code>#F68C05</code> len na linke a značkách</td></tr>
+  </table>
+
+  <h2><span class="no">Krok 04</span>Kontrola pred odovzdaním</h2>
+  <ul class="check">
+    <li>Jantárová linka sedí priamo pod tmavým CTA, bez bielej medzery nad ňou.</li>
+    <li>Obidva zoznamy služieb majú rovnakú veľkosť písma.</li>
+    <li>Riadok s IČO a DIČ je na stránke viditeľný — na každej podstránke.</li>
+    <li>E-mail a telefón sú tmavé a tučné, ostatné odkazy sivé.</li>
+    <li>Pri prejdení myšou odkazy jantárovejú na <code class="i">#B45309</code>, nie na svetlú oranžovú.</li>
+    <li>„Časté otázky“ sa v stĺpci nezalamuje do dvoch riadkov.</li>
+    <li>Pod 1024 px sú dva stĺpce, na mobile jeden — nič sa nepretína.</li>
+    <li><code class="i">npm run build</code> prejde; <code class="i">BUSINESS</code> je stále importovaný a používaný.</li>
+  </ul>
+
+  <h2><span class="no">Poznámky</span>Na doplnenie</h2>
+  <ul class="flags">
+    <li><b>Druhý zoznam služieb je skrátený z desiatich na päť.</b> Zvyšných päť odkazov (Potery, Obkladačské práce, Fasády, Jadrové vŕtanie, Rezanie otvorov) z pätičky mizne. Sú dostupné zo stránky <code>/sluzby</code>. Ak ich potrebujete kvôli interným odkazom pre vyhľadávače, vrátia sa — stĺpec bude vyšší a mriežku treba dorovnať.</li>
+    <li><b>Nadpisy stĺpcov ostávajú <code>&lt;h3&gt;</code>.</b> V predošlom dokumente som to uviedol medzi chybami — pri spätnom pohľade to chyba nie je: čítačkám obrazovky to pomáha preskakovať medzi blokmi pätičky. Nechal som to tak.</li>
+    <li><b>Prechod z tmavého CTA na bielu pätičku je tvrdá hrana.</b> Jantárová linka z nej robí zámer, ale hrana to stále je. Uvidíte to až v skutočnej stránke — ak bude prekážať, riešenie je tenký sivý pás medzi nimi.</li>
+    <li><b>Adresu som zabalil do <code>&lt;address&gt;</code></b> namiesto položky zoznamu. Je to sémanticky správnejšie a vizuálne identické; <code>not-italic</code> ruší predvolenú kurzívu prehliadača.</li>
+    <li><b>Značka je len text.</b> Kým nie je rozhodnuté logo, symbol do pätičky nedávam — pridá sa neskôr vedľa nápisu MNSP bez zásahu do rozloženia.</li>
+  </ul>
+
+</div>
+</body>
+</html>

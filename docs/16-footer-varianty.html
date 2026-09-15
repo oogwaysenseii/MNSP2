@@ -6,7 +6,7 @@
 <title>Návrh 16 — Pätička, varianty</title>
 <style>
   :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
-        --amber:#f59e0b;--amber-6:#d97706;--logo:#f68c05}
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;--logo:#f68c05}
   *{box-sizing:border-box}
   body{margin:0;background:var(--paper);color:var(--ink);
        font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -38,95 +38,89 @@
   ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
   .pick{margin-top:22px;padding:18px 22px;background:#18181b;color:#fff;font-size:15px;line-height:1.7}
   .pick b{color:var(--amber)}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:18px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#92400e}
   table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
   th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
   th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
   td:first-child{font-weight:600;width:26%}
   td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
 
-  /* ============= shared footer replica ============= */
-  .ft{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  /* ============= shared footer replica — all light ============= */
+  .ft{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:#fff}
   .ft .rail{max-width:1500px;margin:0 auto;padding:0 32px}
   .ft a{text-decoration:none;color:inherit;transition:color .22s}
+  .ft a:hover{color:var(--amber-7)}
   .ft h4{font:700 11px/1 ui-monospace,monospace;letter-spacing:.2em;text-transform:uppercase;margin:0 0 20px}
   .ft ul{list-style:none;margin:0;padding:0}
   .ft li{padding:5px 0}
-  .ft .brandline{font:900 24px/1 ui-sans-serif,system-ui;letter-spacing:.03em}
+  .ft .brandline{font:900 24px/1 ui-sans-serif,system-ui;letter-spacing:.03em;color:#09090b}
+  .ft .tag{font:700 9px/1 ui-monospace,monospace;letter-spacing:.24em;text-transform:uppercase;color:var(--amber-7)}
+  .todo{color:var(--amber-7);border-bottom:1px dashed var(--amber-7);font-weight:600}
 
   /* ---------- NOW ---------- */
-  .now{background:#fff;border-top:1px solid #e5e7eb;padding:64px 0;color:#6b7280;font-size:14px}
+  .now{border-top:1px solid #e5e7eb;padding:64px 0;color:#6b7280;font-size:14px}
   .now .cols{display:grid;grid-template-columns:1fr .5fr 1.5fr 1fr;gap:64px}
   .now h4{color:#000;font-size:14px;letter-spacing:.15em}
-  .now .brandline{font:700 20px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;color:#000;margin:0 0 24px}
-  .now a:hover{color:var(--amber-6)}
+  .now .brandline{font:700 20px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:0 0 24px}
   .now .svc{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px}
   .now .tiny li{font-size:10px}
   .now .bot{border-top:1px solid #f3f4f6;margin-top:64px;padding-top:32px;display:flex;
             justify-content:space-between;align-items:center}
 
-  /* ---------- A · ČIERNY SOKEL ---------- */
-  .va{background:#09090b;padding:72px 0 0;color:#a1a1aa;font-size:14px}
+  /* ---------- A · SVETLÝ SOKEL ---------- */
+  .va{padding:72px 0 0;color:#52525b;font-size:14px;border-top:2px solid var(--logo)}
   .va .cols{display:grid;grid-template-columns:1.4fr 1fr 1.3fr 1.1fr;gap:56px}
-  .va h4{color:#fff}
+  .va h4{color:#09090b}
   .va h4 span{display:inline-block;width:18px;height:2px;background:var(--logo);margin-right:9px;vertical-align:middle}
-  .va .brandline{color:#fff;margin:0 0 16px}
-  .va .tag{font:700 9px/1 ui-monospace,monospace;letter-spacing:.24em;text-transform:uppercase;color:var(--logo)}
+  .va .brandline{margin:0 0 16px}
   .va p.desc{margin:18px 0 0;line-height:1.7;color:#71717a;max-width:30rem}
-  .va a:hover{color:var(--logo)}
   .va .svc{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
   .va .addr{color:#71717a;line-height:1.8;margin-top:14px}
-  .va .legal{margin-top:18px;font:400 12px/1.7 ui-monospace,monospace;color:#52525b}
-  .va .bot{border-top:1px solid #27272a;margin-top:64px;padding:26px 0;display:flex;
-           justify-content:space-between;align-items:center;font-size:13px;color:#52525b}
-  .va .bot a:hover{color:var(--logo)}
+  .va .legal{margin-top:18px;font:400 12px/1.7 ui-monospace,monospace;color:#71717a}
+  .va .bot{border-top:1px solid #e5e7eb;margin-top:64px;padding:26px 0;display:flex;
+           justify-content:space-between;align-items:center;font-size:13px;color:#71717a}
 
   /* ---------- B · DVOJPÁSMO ---------- */
-  .vb{background:#09090b;color:#a1a1aa;font-size:14px}
-  .vb .top{padding:76px 0 60px;border-bottom:1px solid #27272a}
+  .vb{color:#52525b;font-size:14px;border-top:2px solid var(--logo)}
+  .vb .top{padding:76px 0 60px;border-bottom:1px solid #e5e7eb}
   .vb .topgrid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:start}
-  .vb .big{font:900 44px/1.05 ui-sans-serif,system-ui;letter-spacing:-.03em;color:#fff;margin:0}
-  .vb .tag{display:block;margin-top:16px;font:700 9px/1 ui-monospace,monospace;
-           letter-spacing:.24em;text-transform:uppercase;color:var(--logo)}
+  .vb .big{font:900 44px/1.05 ui-sans-serif,system-ui;letter-spacing:-.03em;color:#09090b;margin:0}
+  .vb .tag{display:block;margin-top:16px}
   .vb .contact{display:grid;grid-template-columns:1fr 1fr;gap:34px}
-  .vb .contact h4{color:#52525b}
-  .vb .contact .v{font:600 19px/1.35 ui-sans-serif,system-ui;color:#fff}
-  .vb .contact .v a:hover{color:var(--logo)}
+  .vb .contact h4{color:#a1a1aa}
+  .vb .contact .v{font:600 19px/1.35 ui-sans-serif,system-ui;color:#09090b}
   .vb .contact .s{font-size:13.5px;line-height:1.75;color:#71717a}
   .vb .mid{padding:48px 0 44px}
   .vb .midgrid{display:grid;grid-template-columns:1fr 1.6fr 1fr;gap:56px}
-  .vb h4{color:#fff}
-  .vb a:hover{color:var(--logo)}
+  .vb h4{color:#09090b}
   .vb .svc{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
-  .vb .bot{border-top:1px solid #27272a;padding:24px 0;display:flex;
-           justify-content:space-between;align-items:center;font-size:13px;color:#52525b}
-  .vb .bot a:hover{color:var(--logo)}
+  .vb .bot{border-top:1px solid #e5e7eb;padding:24px 0;display:flex;
+           justify-content:space-between;align-items:center;font-size:13px;color:#71717a}
 
   /* ---------- C · TECHNICKÝ LIST ---------- */
-  .vc{background:#09090b;color:#a1a1aa;font-size:13.5px;
-      border-top:2px solid var(--logo)}
+  .vc{color:#52525b;font-size:13.5px;border-top:2px solid var(--logo)}
   .vc .rail{padding:0}
-  .vc .band{display:grid;grid-template-columns:1.5fr 1fr 1.4fr 1.2fr;border-bottom:1px solid #27272a}
-  .vc .cell{padding:34px 30px;border-right:1px solid #27272a}
+  .vc .band{display:grid;grid-template-columns:1.5fr 1fr 1.4fr 1.2fr;border-bottom:1px solid #e5e7eb}
+  .vc .cell{padding:34px 30px;border-right:1px solid #e5e7eb}
   .vc .cell:last-child{border-right:0}
-  .vc .cell h4{color:#52525b;margin-bottom:16px}
-  .vc .cell h4 em{font-style:normal;color:var(--logo);margin-right:8px}
-  .vc .brandline{color:#fff;margin:0 0 6px}
-  .vc .tag{font:700 9px/1 ui-monospace,monospace;letter-spacing:.24em;text-transform:uppercase;color:var(--logo)}
+  .vc .cell h4{color:#a1a1aa;margin-bottom:16px}
+  .vc .cell h4 em{font-style:normal;color:var(--amber-7);margin-right:8px}
+  .vc .brandline{margin:0 0 6px}
   .vc p.desc{margin:18px 0 0;line-height:1.7;color:#71717a}
-  .vc a:hover{color:var(--logo)}
   .vc .svc{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
   .vc .dl{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font:400 12.5px/1.7 ui-monospace,monospace}
-  .vc .dl dt{color:#52525b;text-transform:uppercase;letter-spacing:.1em}
-  .vc .dl dd{margin:0;color:#e4e4e7}
+  .vc .dl dt{color:#a1a1aa;text-transform:uppercase;letter-spacing:.1em}
+  .vc .dl dd{margin:0;color:#09090b}
   .vc .bot{display:flex;justify-content:space-between;align-items:center;
-           padding:20px 30px;font:400 12px/1 ui-monospace,monospace;color:#52525b;letter-spacing:.06em}
-  .vc .bot a:hover{color:var(--logo)}
-  .todo{color:#b45309;border-bottom:1px dashed #b45309}
+           padding:20px 30px;font:400 12px/1 ui-monospace,monospace;color:#71717a;letter-spacing:.06em}
 
   @media (max-width:1100px){
     .now .cols,.va .cols,.vb .topgrid,.vb .midgrid{grid-template-columns:1fr 1fr;gap:40px}
     .vc .band{grid-template-columns:1fr 1fr}
-    .vc .cell{border-bottom:1px solid #27272a}
+    .vc .cell{border-bottom:1px solid #e5e7eb}
   }
 </style>
 </head>
@@ -135,10 +129,18 @@
 
   <p class="kicker">Návrh 16 · Celý web</p>
   <h1>Pätička</h1>
-  <p class="lede">Pätička je na každej stránke a dnes je biela — čiže web sa končí svetlou plochou
-     hneď pod tmavým CTA. Tri varianty, všetky tmavé, všetky s rovnakým obsahom ako dnes.
-     Nič som nepridal ani neuberal, len preskladal. Odkazy fungujú pri prejdení myšou.</p>
+  <p class="lede">Tri varianty, všetky na bielej, všetky s rovnakým obsahom ako dnes.
+     Nič som nepridal ani neuberal, len preskladal a opravil to, čo je pokazené.
+     Odkazy fungujú pri prejdení myšou.</p>
   <p class="status">Stav: <b>neaplikované</b> — iba návrh</p>
+
+  <div class="warn"><b>Jedna vec, ktorá sa na bielej mení</b>
+    Jantárová <code>#F68C05</code> má na bielej kontrast asi 2,5 : 1 — na text je to málo.
+    V odkazoch a popiskoch preto používam tmavšiu <code>#B45309</code> (5,3 : 1).
+    Svetlá jantárová ostáva len na linkách a značkách, kde o čitateľnosť nejde.
+    Zhora som každej pätičke dal 2 px jantárovú linku — po tmavom CTA je prechod na bielu
+    inak dosť tvrdý a linka z neho spraví zámer.
+  </div>
 
   <h2><span class="no">Rozbor</span>Čo som našiel v kóde</h2>
   <div class="bugs">
@@ -155,12 +157,12 @@
     <div class="bug"><b>Stĺpec 0.5fr</b>
       <p>Mriežka je <code>1fr .5fr 1.5fr 1fr</code>. Úzky stĺpec s rýchlymi odkazmi je o polovicu
          užší než ostatné, takže „Časté otázky (FAQ)“ sa v ňom zalamuje.</p></div>
-    <div class="bug"><b>Biela pätička pod čiernym CTA</b>
-      <p>Stránka sa končí svetlou plochou hneď po tmavom bloku. Pätička tak nepôsobí ako
-         sokel stránky, ale ako čosi, čo za ňou ešte pokračuje.</p></div>
     <div class="bug"><b>Žiadna značka</b>
       <p>V pätičke je len textový nadpis „MNSP | Stavby a rekonštrukcie“. Hlavička značku má,
          pätička nie — pritom práve tam sa bežne uzatvára identita stránky.</p></div>
+    <div class="bug"><b>Nadpis stĺpca je h3</b>
+      <p>Popisky stĺpcov sú <code>&lt;h3&gt;</code> s veľkosťou 14 px. V osnove stránky tak
+         vyzerajú ako plnohodnotné nadpisy, hoci sú to len návestia zoznamov.</p></div>
   </div>
 
   <!-- ================= NOW ================= -->
@@ -203,10 +205,10 @@
   <p class="trade">Všimnite si druhý stĺpec služieb — je polovičnou veľkosťou oproti susednému. A chýbajúci riadok s IČO.</p>
 
   <!-- ================= A ================= -->
-  <h2><span class="no">Variant A</span>Čierny sokel</h2>
-  <p class="seclede">Rovnaké štyri stĺpce, ale na čiernej. Stránka tak končí jednou tmavou plochou,
-     ktorá plynulo nadväzuje na CTA. Nadpisy dostanú jantárovú značku, obe úrovne služieb rovnakú
-     veľkosť a pribudne riadok s IČO. Najmenší zásah do štruktúry.</p>
+  <h2><span class="no">Variant A</span>Svetlý sokel</h2>
+  <p class="seclede">Rovnaké štyri stĺpce, len upratané. Zhora jantárová linka, nadpisy dostanú
+     jantárovú značku, obe úrovne služieb rovnakú veľkosť a pribudne riadok s IČO.
+     Najmenší zásah do štruktúry — ak nechcete meniť to, na čo sú ľudia zvyknutí, je to toto.</p>
   <div class="stage">
     <div class="above">↑ sekcia CTA (tmavá)</div>
     <div class="ft va"><div class="rail">
@@ -233,8 +235,8 @@
         </div>
         <div>
           <h4><span></span>Kontakt</h4>
-          <ul><li><a href="#" style="color:#fff;font-weight:600">info@mnsp.sk</a></li>
-              <li><a href="#" style="color:#fff;font-weight:600">+421 950 699 585</a></li></ul>
+          <ul><li><a href="#" style="color:#09090b;font-weight:600">info@mnsp.sk</a></li>
+              <li><a href="#" style="color:#09090b;font-weight:600">+421 950 699 585</a></li></ul>
           <p class="addr" style="margin:14px 0 0">Jozefa Kozáčeka 829/2<br>960 01 Zvolen<br>Slovensko</p>
           <p class="legal">MNSP s.r.o.<br>IČO: <span class="todo">doplniť</span> · DIČ: <span class="todo">doplniť</span></p>
         </div>
@@ -245,8 +247,6 @@
       </div>
     </div></div>
   </div>
-  <p class="trade">Skrátil som druhý zoznam služieb na päť položiek, aby stĺpce boli rovnako vysoké.
-     Zvyšných päť odkazov nezaniká — patria na stránku <code>/sluzby</code>, kde aj tak sú.</p>
 
   <!-- ================= B ================= -->
   <h2><span class="no">Variant B</span>Dvojpásmo</h2>
@@ -350,22 +350,24 @@
 
   <p class="pick">Odporúčam <b>C — technický list</b>. Je to jediný variant, ktorý hovorí rovnakým
      jazykom ako zvyšok webu — monospace popisky, číslovanie, vlasové linky, ostré delenie —
-     a jediný, v ktorom IČO a DIČ vyzerajú ako zámer. <b>B</b> je najlepšie, ak je cieľom, aby ľudia
-     v pätičke našli telefón — má ho vysadený veľkým a je to najčastejší dôvod, prečo sa tam
-     vôbec scrolluje. <b>A</b> berte ako minimum: aj keby ste štruktúru nechali presne tak, ako je,
-     tá 10 px chyba a chýbajúce IČO sa musia opraviť tak či tak.</p>
+     a jediný, v ktorom IČO a DIČ vyzerajú ako zámer. Na bielej mu navyše vlasové linky sadnú
+     ešte lepšie než na čiernej, lebo mriežka je čitateľnejšia. <b>B</b> je najlepšie, ak je cieľom,
+     aby ľudia v pätičke našli telefón — má ho vysadený veľkým a je to najčastejší dôvod,
+     prečo sa tam vôbec scrolluje. <b>A</b> berte ako minimum: aj keby ste štruktúru nechali
+     presne tak, ako je, tá 10 px chyba a chýbajúce IČO sa musia opraviť tak či tak.</p>
 
   <h2><span class="no">Hodnoty</span>Špecifikácia — variant C</h2>
   <table>
     <tr><th>Prvok</th><th>Hodnota</th></tr>
-    <tr><td>Podklad</td><td><code>#09090B</code>, horná linka 2 px <code>#F68C05</code></td></tr>
-    <tr><td>Mriežka</td><td>Štyri bunky <code>1.5fr 1fr 1.4fr 1.2fr</code>, oddelené 1 px <code>#27272A</code>. Pod 1100 px dve bunky vedľa seba</td></tr>
+    <tr><td>Podklad</td><td><code>#FFFFFF</code>, horná linka 2 px <code>#F68C05</code></td></tr>
+    <tr><td>Mriežka</td><td>Štyri bunky <code>1.5fr 1fr 1.4fr 1.2fr</code>, oddelené 1 px <code>#E5E7EB</code>. Pod 1100 px dve bunky vedľa seba</td></tr>
     <tr><td>Odsadenie bunky</td><td>34 px zvislo, 30 px vodorovne</td></tr>
-    <tr><td>Popisky stĺpcov</td><td>11 px, mono, váha 700, letter-spacing 0.2em, veľké písmená, <code>#52525B</code>; číslo pred nimi <code>#F68C05</code></td></tr>
-    <tr><td>Odkazy</td><td>13.5 px, <code>#A1A1AA</code>; pri prejdení myšou <code>#F68C05</code>, prechod 220 ms</td></tr>
+    <tr><td>Popisky stĺpcov</td><td>11 px, mono, váha 700, letter-spacing 0.2em, veľké písmená, <code>#A1A1AA</code>; číslo pred nimi <code>#B45309</code></td></tr>
+    <tr><td>Odkazy</td><td>13.5 px, <code>#52525B</code>; pri prejdení myšou <code>#B45309</code>, prechod 220 ms</td></tr>
     <tr><td>Obe úrovne služieb</td><td>Rovnaká veľkosť. Dnešných <code>text-[10px]</code> na druhom zozname zaniká</td></tr>
-    <tr><td>Dátový list</td><td>Dvojstĺpcová definičná mriežka, mono 12.5 px; popisky <code>#52525B</code>, hodnoty <code>#E4E4E7</code></td></tr>
-    <tr><td>Spodná linka</td><td>Odsadenie 20/30 px, mono 12 px, <code>#52525B</code></td></tr>
+    <tr><td>Dátový list</td><td>Dvojstĺpcová definičná mriežka, mono 12.5 px; popisky <code>#A1A1AA</code>, hodnoty <code>#09090B</code></td></tr>
+    <tr><td>Spodná linka</td><td>Odsadenie 20/30 px, mono 12 px, <code>#71717A</code></td></tr>
+    <tr><td>Jantárová na bielej</td><td>Text a odkazy <code>#B45309</code>. Svetlá <code>#F68C05</code> len na linkách a značkách, nie na texte</td></tr>
     <tr><td>Dotknuté súbory</td><td><code>src/components/layout/Footer.tsx</code>; <code>src/lib/schema.ts</code> kvôli IČO a DIČ</td></tr>
   </table>
 
@@ -374,7 +376,7 @@
     <li><b>IČO a DIČ musíte doplniť vy.</b> V ukážkach je na ich mieste zvýraznené „doplniť“ — sú to údaje, ktoré si nemôžem vymyslieť, a zároveň ich web zo zákona musí uvádzať. Zároveň treba potvrdiť presný názov v obchodnom registri; v <code>schema.ts</code> je pri <code>legalName</code> poznámka, že to overené nie je.</li>
     <li><b>Druhý zoznam služieb som skrátil z desiatich na päť.</b> Robí to stĺpce rovnako vysoké. Ak tých desať odkazov potrebujete kvôli vyhľadávačom, vrátia sa — stĺpec bude vyšší a treba s tým v rozložení počítať.</li>
     <li><b>Variant B pridáva stĺpec „Pôsobíme v“.</b> Nie sú to nové stránky — <code>/lokality/…</code> na webe už existujú. Ale je to nový blok v pätičke, takže to schváľte.</li>
-    <li><b>Všetky tri sú tmavé.</b> Znamená to, že stránka od CTA nadol je súvisle čierna. Považujem to za správne — sokel stránky — ale je to výrazná zmena oproti dnešnej bielej.</li>
+    <li><b>Prechod z tmavého CTA na bielu pätičku ostáva tvrdý.</b> Jantárová linka zhora z neho robí zámer, ale je to stále hrana čierna–biela. Ak by to prekážalo, riešenie je buď tenký sivý pás medzi nimi, alebo vrátiť sa k tmavej pätičke.</li>
     <li>Značku som do pätičky nedal ako symbol, len ako meno. Kým nie je rozhodnuté logo, bolo by predčasné ho tam osádzať.</li>
   </ul>
 
