@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implementácia — Sekcia Služby (D3 + M2)</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;--logo:#f68c05}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1120px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);margin:0;max-width:80ch}
+  .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  .tagi{font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase;
+        padding:8px 13px;background:#fff;border:1px solid var(--line)}
+  .tagi b{color:var(--amber-6)}
+  h2{font:800 22px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:46px 0 6px;
+     padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;color:var(--amber-6);
+         display:block;margin-bottom:9px}
+  p.note{color:var(--ink-2);margin:0 0 14px}
+  code.i{font:500 13px/1.5 ui-monospace,monospace;background:#e9e9e6;padding:2px 6px;color:#18181b}
+  pre{background:#18181b;color:#e4e4e7;padding:18px 20px;overflow-x:auto;margin:14px 0;
+      font:400 12.5px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;border-left:3px solid var(--amber)}
+  pre .c{color:#71717a} pre .k{color:#f59e0b} pre .s{color:#86efac} pre .t{color:#7dd3fc}
+  .file{display:inline-flex;align-items:center;gap:8px;background:#18181b;color:#fff;
+        font:600 12px/1 ui-monospace,monospace;padding:9px 13px;margin:18px 0 0}
+  .file b{color:var(--amber)}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#92400e}
+  .bad{background:#fef2f2;border:1px solid #dc2626;border-left:3px solid #dc2626;
+       padding:14px 18px;margin:16px 0;font-size:14px;color:#7f1d1d}
+  .bad b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+         text-transform:uppercase;margin-bottom:7px;color:#991b1b}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:28%}
+  td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  ul.check{list-style:none;padding:0;margin:14px 0}
+  ul.check li{padding:9px 0 9px 30px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.check li:before{content:"";position:absolute;left:2px;top:13px;width:13px;height:13px;border:1.5px solid #a1a1aa}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Implementácia · pre vývojára</p>
+  <h1>Sekcia Služby — D3 s označením M2</h1>
+  <p class="lede">Fotodlaždica s čiernym pásom: názov a pôvodný popis vidno vždy, oba údaje
+     zo <code class="i">highlights</code> sa vysunú pri prejdení myšou. Rodinné domy dostanú
+     jantárový štvorec s ikonou vpravo hore.</p>
+
+  <div class="meta">
+    <span class="tagi">Súbory: <b>4</b></span>
+    <span class="tagi">ServicesGrid.tsx: <b>70 riadkov → prepis</b></span>
+    <span class="tagi">Bez novej závislosti</span>
+    <span class="tagi">Texty bez zmeny</span>
+  </div>
+
+  <div class="bad"><b>Najprv toto — inak sa efekt nespustí</b>
+    Obal na vysúvanie <b>musí byť blokový prvok</b>. Ak to bude <code>&lt;span&gt;</code>,
+    <code>max-height</code> ani <code>overflow</code> sa naň nepoužijú — pri riadkových prvkoch
+    tieto vlastnosti nič nerobia. Efekt potom ticho zlyhá: obsah je stále viditeľný a nikto
+    si nevšimne, že sa nič neskrýva. Presne to sa mi v ukážke stalo. Použite
+    <code>&lt;div&gt;</code>, alebo <code>&lt;span className="block"&gt;</code>.
+  </div>
+
+  <h2><span class="no">Krok 01</span>Doplniť pole do dát</h2>
+  <p class="note">Označenie nesmie byť naviazané na slug v komponente — pri zmene ponuky by ho
+     nikto nenašiel. Patrí do dát.</p>
+
+  <div class="file">📄 <b>src/data/services.ts</b> · typ <code>Service</code>, riadky 22–31</div>
+<pre><span class="k">export type</span> <span class="t">Service</span> = {
+  slug: <span class="t">string</span>;
+  name: <span class="t">string</span>;
+  description: <span class="t">string</span>;
+  tier: <span class="t">ServiceTier</span>;
+  highlights: <span class="k">readonly</span> <span class="t">string</span>[];
+  imageUrl?: <span class="t">string</span>;
+  <span class="c">/** Zvýrazní službu ako našu špecializáciu. Očakáva sa najviac jedna. */</span>
+  featured?: <span class="t">boolean</span>;
+};</pre>
+
+  <p class="note">A pri Rodinných domoch pridať <code class="i">featured: true</code>:</p>
+<pre>{
+  slug: <span class="s">'rodinne-domy'</span>,
+  name: <span class="s">'Rodinné domy'</span>,
+  description: <span class="s">'Kompletná výstavba a rekonštrukcie moderných rodinných domov.'</span>,
+  tier: <span class="s">'building'</span>,
+  imageUrl: <span class="s">'/rodinne-domy/rodinne-domy.webp'</span>,
+  highlights: [<span class="s">'Stavba na kľúč'</span>, <span class="s">'Hrubá stavba aj rekonštrukcia'</span>],
+  <span class="k">featured</span>: <span class="t">true</span>,
+},</pre>
+
+  <h2><span class="no">Krok 02</span>Prepísať mriežku</h2>
+  <p class="note">Celý obsah <code class="i">ServicesGrid.tsx</code> sa nahrádza. Texty služieb,
+     odkazy aj poradie ostávajú presne také, aké sú dnes.</p>
+
+  <div class="file">📄 <b>src/components/sections/ServicesGrid.tsx</b> — celý obsah</div>
+<pre><span class="k">import</span> Link <span class="k">from</span> <span class="s">'next/link'</span>;
+<span class="k">import</span> Image <span class="k">from</span> <span class="s">'next/image'</span>;
+<span class="k">import</span> { ChevronRight, Star } <span class="k">from</span> <span class="s">'lucide-react'</span>;
+<span class="k">import</span> { Container } <span class="k">from</span> <span class="s">'../ui/Container'</span>;
+<span class="k">import</span> { BUILDING_SERVICES } <span class="k">from</span> <span class="s">'@/src/data/services'</span>;
+
+<span class="k">const</span> EASE = <span class="s">'ease-[cubic-bezier(.22,.61,.36,1)]'</span>;
+
+<span class="k">export function</span> <span class="t">ServicesGrid</span>({ showHeader = <span class="t">false</span> }: { showHeader?: <span class="t">boolean</span> }) {
+  <span class="k">return</span> (
+    &lt;section className=<span class="s">"border-b border-gray-200 bg-white py-10"</span>&gt;
+      &lt;Container className=<span class="s">"max-w-[1500px]"</span>&gt;
+
+        {showHeader &amp;&amp; (
+          &lt;div className=<span class="s">"mb-9 flex flex-wrap items-end justify-between gap-6"</span>&gt;
+            &lt;div&gt;
+              &lt;span className=<span class="s">"mb-3 block font-mono text-xs font-bold uppercase
+                tracking-[0.2em] text-[#b45309]"</span>&gt;
+                Naše služby
+              &lt;/span&gt;
+              &lt;h2 className=<span class="s">"text-[34px] font-extrabold leading-[1.05] tracking-[-0.025em]
+                text-zinc-950 lg:text-[44px]"</span>&gt;
+                Čo pre vás postavíme
+              &lt;/h2&gt;
+              &lt;p className=<span class="s">"mt-3.5 max-w-[40rem] text-[17px] leading-[1.55] text-gray-500"</span>&gt;
+                Staviame rodinné domy, bytovky, haly aj verejné budovy.
+              &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;Link href=<span class="s">"/sluzby"</span>
+              className=<span class="s">"group flex items-center whitespace-nowrap text-[13px] font-bold
+                uppercase tracking-[0.14em] text-[#b45309] transition-colors hover:text-zinc-950"</span>&gt;
+              Zobraziť všetky služby
+              &lt;ChevronRight className=<span class="s">"ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"</span> /&gt;
+            &lt;/Link&gt;
+          &lt;/div&gt;
+        )}
+
+        &lt;div className=<span class="s">"grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"</span>&gt;
+          {BUILDING_SERVICES.map((sluzba, i) =&gt; (
+            &lt;Link
+              key={sluzba.slug}
+              href={<span class="s">`/sluzby/${sluzba.slug}`</span>}
+              className={<span class="s">`group/tile relative block transition-[transform,box-shadow] duration-500 ${EASE}
+                hover:-translate-y-1 hover:shadow-[0_22px_52px_rgba(0,0,0,0.19)]
+                motion-reduce:transition-none motion-reduce:hover:translate-y-0`</span>}
+            &gt;
+              &lt;div className=<span class="s">"relative h-[320px] overflow-hidden bg-gray-200"</span>&gt;
+                &lt;Image
+                  src={sluzba.imageUrl!}
+                  alt={sluzba.name}
+                  fill
+                  sizes=<span class="s">"(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"</span>
+                  quality={<span class="t">70</span>}
+                  className={<span class="s">`object-cover transition-transform duration-[1100ms] ${EASE}
+                    group-hover/tile:scale-[1.07] motion-reduce:transition-none`</span>}
+                /&gt;
+
+                <span class="c">{/* poradové číslo */}</span>
+                &lt;span className=<span class="s">"absolute left-4 top-4 z-30 font-mono text-[11px] font-bold
+                  tracking-[0.2em] text-white/80"</span>&gt;
+                  {<span class="t">String</span>(i + <span class="t">1</span>).padStart(<span class="t">2</span>, <span class="s">'0'</span>)}
+                &lt;/span&gt;
+
+                <span class="c">{/* označenie špecializácie — len tam, kde featured */}</span>
+                {sluzba.featured &amp;&amp; (
+                  &lt;span
+                    className=<span class="s">"absolute right-3.5 top-3.5 z-30 flex h-[30px] w-[30px]
+                      items-center justify-center bg-[#f68c05]"</span>
+                    title=<span class="s">"Naša špecializácia"</span>
+                  &gt;
+                    &lt;Star className=<span class="s">"h-3.5 w-3.5 text-zinc-950"</span> fill=<span class="s">"currentColor"</span> aria-hidden=<span class="s">"true"</span> /&gt;
+                    &lt;span className=<span class="s">"sr-only"</span>&gt;Naša špecializácia&lt;/span&gt;
+                  &lt;/span&gt;
+                )}
+
+                <span class="c">{/* pás */}</span>
+                &lt;div className=<span class="s">"absolute inset-x-0 bottom-0 z-20 bg-black/[0.82] px-[18px] py-4"</span>&gt;
+                  &lt;span className=<span class="s">"mb-2.5 block h-0.5 w-[26px] bg-[#f68c05]"</span> /&gt;
+
+                  &lt;h3 className=<span class="s">"text-[17px] font-extrabold leading-[1.25]
+                    tracking-[-0.01em] text-white"</span>&gt;
+                    {sluzba.name}
+                  &lt;/h3&gt;
+
+                  &lt;p className=<span class="s">"mt-2.5 text-[13px] leading-[1.55] text-white/[0.74]"</span>&gt;
+                    {sluzba.description}
+                  &lt;/p&gt;
+
+                  <span class="c">{/* MUSÍ byť div — na span sa max-height neuplatní */}</span>
+                  &lt;div className={<span class="s">`max-h-0 overflow-hidden opacity-0
+                    transition-[max-height,opacity,margin-top] duration-[450ms] ${EASE}
+                    group-hover/tile:mt-2.5 group-hover/tile:max-h-[64px] group-hover/tile:opacity-100`</span>}&gt;
+                    {sluzba.highlights.map((h) =&gt; (
+                      &lt;span key={h}
+                        className=<span class="s">"relative block pl-3.5 font-mono text-[10px] uppercase
+                          leading-[1.8] tracking-[0.1em] text-white/[0.72]
+                          before:absolute before:left-0 before:top-2 before:h-px before:w-2
+                          before:bg-[#f68c05] before:content-['']"</span>&gt;
+                        {h}
+                      &lt;/span&gt;
+                    ))}
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/Link&gt;
+          ))}
+        &lt;/div&gt;
+      &lt;/Container&gt;
+    &lt;/section&gt;
+  );
+}</pre>
+
+  <h2><span class="no">Krok 03</span>Upraviť obe volania</h2>
+  <p class="note">Vlastnosť <code class="i">hideAllLink</code> zaniká — odkaz „Zobraziť všetky služby“
+     sa presunul do hlavičky, takže ho riadi tá istá vlastnosť. Stránka <code class="i">/sluzby</code>
+     si hlavičku rieši sama, takže tam netreba nič odovzdať.</p>
+<pre><span class="c">// app/page.tsx · riadok 33</span>
+&lt;ServicesGrid /&gt;            <span class="c">// PRED</span>
+&lt;ServicesGrid showHeader /&gt; <span class="c">// PO</span>
+
+<span class="c">// app/sluzby/page.tsx · riadok 80</span>
+&lt;ServicesGrid hideAllLink /&gt; <span class="c">// PRED</span>
+&lt;ServicesGrid /&gt;             <span class="c">// PO</span></pre>
+
+  <div class="warn"><b>Tri veci, ktoré v tom prepise zámerne zanikli</b>
+    <p style="margin:0 0 6px"><code>pt-5 pb-5</code> (20 px) → <code>py-10</code> (40 px),
+       aby sekcia sedela s Projektmi.</p>
+    <p style="margin:0 0 6px">Biele telo karty so sivým pozadím <code>bg-zinc-50</code>,
+       rámik a spodný riadok „ZOBRAZIŤ →“ — celý text je teraz na fotke.</p>
+    <p style="margin:0">Prázdny riadok po nadpise, ktorý v kóde ostal po niekdajšej hlavičke.</p>
+  </div>
+
+  <h2><span class="no">Krok 04</span>Presné hodnoty</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Odsadenie sekcie</td><td><code>py-10</code> — 40 px (teraz 20 px)</td></tr>
+    <tr><td>Mriežka</td><td>5 stĺpcov nad 1024 px, 2 stĺpce 640–1024 px, 1 pod tým. Medzera 16 px (teraz 12 px)</td></tr>
+    <tr><td>Dlaždica</td><td>Výška 320 px, bez rámika a bez zaoblenia</td></tr>
+    <tr><td>Pás</td><td><code>rgba(0,0,0,0.82)</code>, odsadenie 16 px zvislo / 18 px vodorovne, prisadnutý k spodku</td></tr>
+    <tr><td>Jantárová linka</td><td>26 × 2 px, <code>#F68C05</code>, spodný odstup 10 px. Viditeľná vždy</td></tr>
+    <tr><td>Názov</td><td>17 px, váha 800, riadkovanie 1.25, letter-spacing −0.01em, biely</td></tr>
+    <tr><td>Popis</td><td>13 px, riadkovanie 1.55, <code>rgba(255,255,255,.74)</code>, horný odstup 10 px. Text nezmenený</td></tr>
+    <tr><td>Údaje pri prejdení</td><td>10 px, mono, riadkovanie 1.8, letter-spacing 0.1em, veľké písmená, <code>rgba(255,255,255,.72)</code>; odsadenie zľava 14 px, pred textom pomlčka 8 × 1 px <code>#F68C05</code></td></tr>
+    <tr><td>Vysúvanie</td><td><code>max-h-0</code> → <code>max-h-[64px]</code>, 450 ms, krivka <code>cubic-bezier(.22,.61,.36,1)</code></td></tr>
+    <tr><td>Označenie (M2)</td><td>30 × 30 px, <code>#F68C05</code>, vpravo hore 14 px od okrajov. Ikona <code>Star</code> 14 px, <code>fill="currentColor"</code>, čierna</td></tr>
+    <tr><td>Vrstvenie</td><td>Pás <code>z-20</code>, číslo a označenie <code>z-30</code> — aby ich pás neprekryl</td></tr>
+    <tr><td>Fotka</td><td><code>sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"</code>, <code>quality={70}</code></td></tr>
+  </table>
+
+  <h2><span class="no">Krok 05</span>Kontrola pred odovzdaním</h2>
+  <ul class="check">
+    <li>Bez prejdenia myšou je na karte vidieť linku, názov aj celý popis.</li>
+    <li>Pri prejdení myšou sa vysunú oba údaje s jantárovými pomlčkami — a pri odídení sa zase schovajú. Ak sú vidieť stále, obal nie je blokový.</li>
+    <li>Jantárový štvorec s hviezdou je iba pri Rodinných domoch, nikde inde.</li>
+    <li>Štvorec ani poradové číslo nie sú prekryté pásom.</li>
+    <li>Čítačka obrazovky prečíta pri tej karte „Naša špecializácia“.</li>
+    <li>Pás je pri každej karte inak vysoký (36–43 % fotky) — dlaždice ostávajú rovnako vysoké.</li>
+    <li>Na <code class="i">/sluzby</code> sa hlavička nezobrazí a stránka má svoju vlastnú.</li>
+    <li>Pod 1024 px sú dva stĺpce, na mobile jeden; text sa nepretína.</li>
+    <li>Pri zapnutom obmedzení pohybu sa nič nehýbe.</li>
+    <li><code class="i">npm run build</code> prejde — <code class="i">hideAllLink</code> sa už nikde neodovzdáva.</li>
+  </ul>
+
+  <h2><span class="no">Poznámky</span>Na doplnenie</h2>
+  <ul class="flags">
+    <li><b>Označenie M2 je len ikona, takže samo o sebe nič nehovorí.</b> Vybrali ste ho aj s vedomím, že mu návštevník bez vysvetlenia neporozumie. V kóde má aspoň <code>title</code> a skrytý text pre čítačky obrazovky — vizuálne to ale ostáva nemé. Ak sa to ukáže ako problém, prechod na štítok s textom je zmena jedného prvku.</li>
+    <li><b>Slovo „Naša špecializácia“ v skrytom texte je moja formulácia.</b> Nahraďte ho vlastným znením.</li>
+    <li><b>Údaje sú stále len na prejdenie myšou</b>, takže na mobile ich nikto neuvidí. Popis a názov tam ale sú, čo je oproti dnešku rovnaké.</li>
+    <li><b>Pás zakryje 36 až 43 % fotky</b> podľa dĺžky popisu — pri prejdení myšou ešte o 64 px viac. Pri výbere fotiek treba rátať s tým, že spodná polovica bude zakrytá.</li>
+    <li><b>Ak označíte ako špecializáciu viac služieb, prestane to niečo znamenať.</b> Typ to nezakazuje, komentár v dátach na to upozorňuje.</li>
+    <li>Tri z piatich fotiek sú stále Unsplash placeholdery označené v dátach ako <code>TODO</code>. Pri fotkách cez celú dlaždicu to bude vidieť viac než dnes.</li>
+  </ul>
+
+</div>
+</body>
+</html>

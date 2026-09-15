@@ -30,7 +30,7 @@ export default function Home() {
             />
 
             <Hero />
-            <ServicesGrid />
+            <ServicesGrid showHeader />
             <ElevatedUrbanConcept />
             <CTA pageName="MNSP - Domovská stránka" />
 

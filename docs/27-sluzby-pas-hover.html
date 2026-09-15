@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 27 — Pás rovnakej výšky s vysúvaním</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;--logo:#f68c05;
+        --ease:cubic-bezier(.22,.61,.36,1)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1460px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:84ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2{font:800 22px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:52px 0 6px;
+     padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;color:var(--amber-6);
+         display:block;margin-bottom:9px}
+  .seclede{font-size:14.5px;color:var(--ink-2);margin:0 0 18px;max-width:88ch}
+  .stage{border:1px solid #d4d4d8;overflow:hidden;background:#fff}
+  .hint{display:flex;gap:10px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);
+        padding:12px 16px;margin:0 0 16px;font-size:14px;color:var(--ink-2)}
+  .good{background:#f0fdf4;border:1px solid #16a34a;border-left:3px solid #16a34a;
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#14532d}
+  .good b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#166534}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:18px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#92400e}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:28%}
+  td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  pre{background:#18181b;color:#e4e4e7;padding:16px 18px;overflow-x:auto;margin:12px 0;
+      font:400 12.5px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;border-left:3px solid var(--amber)}
+  pre .c{color:#71717a} pre .a{color:#86efac}
+  .btn{font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase;
+       padding:9px 14px;border:1px solid #d4d4d8;background:#fff;cursor:pointer;margin:0 0 14px}
+  .btn.on{background:#18181b;color:#fff;border-color:#18181b}
+
+  /* ============ tile ============ */
+  .sv{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:#fff;padding:36px 0}
+  .sv .rail{padding:0 32px}
+  .sv a{text-decoration:none;color:inherit}
+  .sv .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .c{position:relative;display:block;box-shadow:0 22px 52px rgba(0,0,0,0);
+     transition:transform .5s var(--ease),translate .5s var(--ease),box-shadow .5s var(--ease)}
+  .c:hover{transform:translateY(-4px);box-shadow:0 22px 52px rgba(0,0,0,.19)}
+  .ph{position:relative;height:340px;overflow:hidden;background:#e5e7eb}
+  .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.1s var(--ease)}
+  .c:hover img{transform:scale(1.07)}
+  .num{position:absolute;top:16px;left:16px;z-index:30;
+       font:700 11px/1 ui-monospace,monospace;letter-spacing:.2em;color:#fff;
+       text-shadow:0 1px 3px rgba(0,0,0,.55)}
+  .star{position:absolute;top:14px;right:14px;z-index:30;width:30px;height:30px;
+        background:var(--logo);display:flex;align-items:center;justify-content:center}
+
+  /* pás: pevná pokojová výška, rastie hore pri prejdení myšou */
+  .bar{position:absolute;left:0;right:0;bottom:0;z-index:20;padding:16px 18px;
+       min-height:178px;transition:min-height .45s var(--ease);background:rgba(244,244,245,.92);display:flex;flex-direction:column}
+  .rule{display:block;width:26px;height:2px;background:var(--amber-7);margin:0 0 10px;flex:none}
+  .bar h4{font-weight:800;font-size:17px;line-height:1.25;letter-spacing:-.01em;color:#09090b;margin:0;flex:none}
+  .desc{display:block;font-weight:400;font-size:13px;line-height:1.55;color:#3f3f46;margin:10px 0 0;flex:none}
+  .hl{display:block;flex:none;overflow:hidden;max-height:0;opacity:0;
+      transition:max-height .45s var(--ease),opacity .3s ease,margin-top .45s var(--ease)}
+  .c:hover .bar, .sim .bar{min-height:229px}
+  .c:hover .hl, .sim .hl{max-height:46px;opacity:1;margin-top:10px}
+  .hl span{display:block;position:relative;padding-left:14px;
+           font:400 10px/1.8 ui-monospace,monospace;letter-spacing:.1em;
+           text-transform:uppercase;color:#52525b}
+  .hl span:before{content:"";position:absolute;left:0;top:8px;width:8px;height:1px;background:var(--amber-7)}
+  .go{margin-top:auto;padding-top:12px;border-top:1px solid #d4d4d8;
+      display:flex;align-items:center;justify-content:space-between;flex:none}
+  .go b{font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.16em;text-transform:uppercase;
+        color:#09090b;transition:color .3s}
+  .go i{font-style:normal;color:#09090b;transition:color .3s,transform .3s var(--ease)}
+  .c:hover .go b,.sim .go b{color:var(--amber-7)}
+  .c:hover .go i,.sim .go i{color:var(--amber-7);transform:translateX(4px)}
+
+  @media (max-width:1240px){.sv .grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 27 · Domovská stránka a /sluzby</p>
+  <h1>Pás rovnakej výšky — aj s vysúvaním</h1>
+  <p class="lede">Údaje ostávajú na vysúvanie a pás má napriek tomu na všetkých dlaždiciach
+     rovnakú výšku. Riešenie je v tom, čo „rovnaká výška“ znamená.</p>
+  <p class="status">Stav: <b>neaplikované</b> — iba návrh</p>
+
+  <div class="good"><b>Prečo to predsa ide</b>
+    <p style="margin:0 0 8px">Minule som napísal, že pevná výška vysúvanie ruší. To platí len
+      pre <b>nemennú</b> výšku. Vy ste chceli, aby boli dlaždice <b>navzájom rovnaké</b> —
+      a to je iná požiadavka.</p>
+    <p style="margin:0 0 8px">Pás je prisadnutý k spodku, takže keď obsah narastie, <b>rastie smerom
+      nahor cez fotku</b>, nie nadol. Namiesto <code>height</code> sa použije <code>min-height</code> —
+      a to <b>dvakrát</b>: 178 px v pokoji a 229 px pri prejdení myšou.
+      Namerané: v oboch stavoch sú všetky pásy presne rovnaké a nič nepretečie.</p>
+    <p style="margin:0;padding-top:10px;border-top:1px solid #86efac">
+      <b style="display:inline;text-transform:none;letter-spacing:0;font-size:14px">Prečo nestačí samotné vysúvanie:</b>
+      <code>max-height</code> je strop, nie pevná výška. Údaje sa pri každej službe zalomia inak,
+      takže bez druhého <code>min-height</code> mali pásy pri prejdení myšou 209 až 229 px —
+      rozdiel 20 px, ktorý bolo vidieť. Preto je aj stav pri prejdení pripnutý na 229 px.
+    </p>
+  </div>
+
+  <h2><span class="no">Živá ukážka</span>Ako sa to správa</h2>
+  <p class="hint"><b>Prejdite myšou po ktorejkoľvek dlaždici</b> — pás vyrastie nahor,
+     tlačidlo ostane dole a údaje sa vysunú medzi popis a tlačidlo.</p>
+  <p><button class="btn" id="sim">Ukázať všetky naraz v stave „pri prejdení myšou“</button></p>
+
+  <div class="stage"><div class="sv" id="sec"><div class="rail"><div class="grid">
+    <a class="c" href="#"><div class="ph"><img src="assets/rodinne-domy.webp" alt="">
+      <span class="num">01</span>
+      <span class="star"><svg width="14" height="14" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0 L6.2 3.5 L10 3.5 L6.9 5.8 L8.1 9.4 L5 7.2 L1.9 9.4 L3.1 5.8 L0 3.5 L3.8 3.5 Z" fill="#09090b"/></svg></span>
+      <span class="bar"><span class="rule"></span><h4>Rodinné domy</h4>
+        <span class="desc">Kompletná výstavba a rekonštrukcie moderných rodinných domov.</span>
+        <span class="hl"><span>Stavba na kľúč</span><span>Hrubá stavba aj rekonštrukcia</span></span>
+        <span class="go"><b>Zobraziť</b><i>→</i></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop&q=80" alt="">
+      <span class="num">02</span>
+      <span class="bar"><span class="rule"></span><h4>Rezidenčné budovy</h4>
+        <span class="desc">Komplexná výstavba bytových domov a polyfunkčných objektov.</span>
+        <span class="hl"><span>Bytové a polyfunkčné domy</span><span>Koordinácia všetkých profesií</span></span>
+        <span class="go"><b>Zobraziť</b><i>→</i></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop&q=80" alt="">
+      <span class="num">03</span>
+      <span class="bar"><span class="rule"></span><h4>Komerčná výstavba</h4>
+        <span class="desc">Administratívne budovy, sídla firiem, prevádzky, predajne a showroomy.</span>
+        <span class="hl"><span>Prevádzky a predajne</span><span>Realizácia počas prevádzky</span></span>
+        <span class="go"><b>Zobraziť</b><i>→</i></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop&q=80" alt="">
+      <span class="num">04</span>
+      <span class="bar"><span class="rule"></span><h4>Priemyselné objekty</h4>
+        <span class="desc">Skladové haly, logistické centrá a výrobné závody.</span>
+        <span class="hl"><span>Haly a sklady</span><span>Základy a monolitické konštrukcie</span></span>
+        <span class="go"><b>Zobraziť</b><i>→</i></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt="">
+      <span class="num">05</span>
+      <span class="bar"><span class="rule"></span><h4>Občianske stavby</h4>
+        <span class="desc">Školy, zariadenia sociálnych služieb, úrady a verejné budovy.</span>
+        <span class="hl"><span>Zariadenia sociálnych služieb</span><span>Verejné obstarávanie</span></span>
+        <span class="go"><b>Zobraziť</b><i>→</i></span></span></div></a>
+  </div></div></div></div>
+
+  <h2><span class="no">Kľúč</span>Jedno slovo v kóde</h2>
+  <p class="seclede">Celý rozdiel oproti minulému návrhu je <code>min-height</code> namiesto
+     <code>height</code>. Pri <code>height</code> by obsah pretiekol; pri <code>min-height</code>
+     sa pás natiahne presne o toľko, koľko treba — a keďže je prisadnutý k spodku, natiahne sa nahor.</p>
+<pre><span class="c">/* pás */</span>
+&lt;div className="absolute inset-x-0 bottom-0 z-20 flex flex-col
+<span class="a">  min-h-[178px] group-hover/tile:min-h-[229px]</span>
+  transition-[min-height] duration-[450ms] ease-[cubic-bezier(.22,.61,.36,1)]
+  bg-zinc-100/[0.92] px-[18px] py-4"&gt;
+
+<span class="c">/* 178 = najdlhší popis + tlačidlo. 229 = to isté plus dva údaje.
+   Obe sú min-height, nie height — pri height by dlhší text pretiekol.
+   Bez toho druhého majú pásy pri prejdení myšou 209–229 px. */</span>
+
+  <h2><span class="no">Hodnoty</span>Špecifikácia</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Dlaždica</td><td>340 px</td></tr>
+    <tr><td>Pás — pokoj</td><td><code>min-height: 178px</code>. Všetky dlaždice rovnako</td></tr>
+    <tr><td>Pás — pri prejdení</td><td><code>min-height: 229px</code>. Rastie nahor cez fotku, nie nadol. Prechod 450 ms</td></tr>
+    <tr><td>Rozloženie pásu</td><td><code>flex flex-col</code>; tlačidlo odtlačené nadol cez <code>margin-top:auto</code></td></tr>
+    <tr><td>Vysúvanie údajov</td><td><code>max-h-0</code> → <code>max-h-[46px]</code> plus horný odstup 10 px, 450 ms, krivka <code>cubic-bezier(.22,.61,.36,1)</code></td></tr>
+    <tr><td>Údaje</td><td>10 px, mono, riadkovanie 1.8, <code>#52525B</code>; pomlčka 8 × 1 px <code>#B45309</code></td></tr>
+    <tr><td>Riadok Zobraziť</td><td>Horná linka 1 px <code>#D4D4D8</code>, odsadenie zhora 12 px; text 11 px váha 700, <code>#09090B</code> → <code>#B45309</code> pri prejdení; šípka sa posunie o 4 px</td></tr>
+    <tr><td>Obal vysúvania</td><td><b>Musí byť blokový prvok.</b> Na <code>&lt;span&gt;</code> sa <code>max-height</code> ani <code>overflow</code> neuplatnia</td></tr>
+    <tr><td>Zvyšok</td><td>Podklad, linka, názov, popis, číslo aj štítok bez zmeny oproti návrhu 26</td></tr>
+  </table>
+
+  <h2><span class="no">Poznámky</span>Obmedzenia</h2>
+  <ul class="flags">
+    <li><b>Pri prejdení myšou zakryje pás 67 % fotky</b> (229 z 340 px). V pokoji je to 52 %. Je to cena za to, že popis aj údaje sú na jednej karte.</li>
+    <li><b>Na mobile sa údaje neukážu.</b> Prejdenie myšou sa tam nestane — názov, popis aj tlačidlo tam ale sú, takže karta je aj tak úplná.</li>
+    <li><b><code>min-height</code>, nie <code>height</code>.</b> Keby niekedy pribudla služba s dlhším popisom, pevná výška by pretiekla; <code>min-height</code> sa prispôsobí. Pásy potom prestanú byť navzájom rovnaké — ale až vtedy, a je to menšie zlo než pretečený text.</li>
+    <li><b>Hodnota 229 px je naviazaná na dnešné texty.</b> Je to najvyšší pás, aký súčasných päť služieb potrebuje. Ak pribudne služba s dlhším popisom alebo s tromi údajmi, bude treba to číslo prepočítať — inak sa pásy pri prejdení myšou opäť rozídu. Pretiecť nemôžu, lebo je to <code>min-height</code>.</li>
+    <li>Tri z piatich fotiek sú stále Unsplash placeholdery.</li>
+  </ul>
+
+</div>
+
+<script>
+document.getElementById('sim').addEventListener('click', function () {
+  var on = document.getElementById('sec').classList.toggle('sim');
+  this.classList.toggle('on', on);
+  this.textContent = on
+    ? 'Vrátiť do pokojového stavu'
+    : 'Ukázať všetky naraz v stave „pri prejdení myšou“';
+});
+</script>
+</body>
+</html>

@@ -27,6 +27,8 @@ export type Service = {
   highlights: readonly string[];
   /** Only used by tier 'building'. TODO marks a stock photo awaiting a real one. */
   imageUrl?: string;
+  /** Zvýrazní službu ako našu špecializáciu. Očakáva sa najviac jedna. */
+  featured?: boolean;
 };
 
 export const SERVICES: readonly Service[] = [
@@ -38,6 +40,7 @@ export const SERVICES: readonly Service[] = [
     tier: 'building',
     imageUrl: '/rodinne-domy/rodinne-domy.webp',
     highlights: ['Stavba na kľúč', 'Hrubá stavba aj rekonštrukcia'],
+    featured: true,
   },
   {
     slug: 'rezidencne-budovy',

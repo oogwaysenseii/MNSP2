@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 24 — Služby, svetlý pás</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;--logo:#f68c05;
+        --ease:cubic-bezier(.22,.61,.36,1)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1460px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:84ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2{font:800 22px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:54px 0 6px;
+     padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;color:var(--amber-6);
+         display:block;margin-bottom:9px}
+  .seclede{font-size:14.5px;color:var(--ink-2);margin:0 0 18px;max-width:88ch}
+  .tag{display:inline-flex;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+       text-transform:uppercase;padding:6px 11px;margin:0 0 14px;border:1px solid}
+  .t-am{background:#fef3c7;color:#92400e;border-color:#92400e}
+  .t-gr{background:#d1fae5;color:#065f46;border-color:#065f46}
+  .stage{border:1px solid #d4d4d8;overflow:hidden;background:#fff}
+  .trade{font-size:13.5px;line-height:1.55;color:var(--ink-2);margin:12px 0 0;max-width:80ch}
+  .hint{display:flex;gap:10px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);
+        padding:12px 16px;margin:0 0 16px;font-size:14px;color:var(--ink-2)}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:18px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#92400e}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  .pick{margin-top:24px;padding:18px 22px;background:#18181b;color:#fff;font-size:15px;line-height:1.7}
+  .pick b{color:var(--amber)}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:28%}
+  td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+
+  /* ============ tile ============ */
+  .sv{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:#fff;padding:36px 0}
+  .sv .rail{padding:0 32px}
+  .sv a{text-decoration:none;color:inherit}
+  .sv .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .c{position:relative;display:block;box-shadow:0 22px 52px rgba(0,0,0,0);
+     transition:transform .5s var(--ease),translate .5s var(--ease),box-shadow .5s var(--ease)}
+  .c:hover{transform:translateY(-4px);box-shadow:0 22px 52px rgba(0,0,0,.19)}
+  .ph{position:relative;height:320px;overflow:hidden;background:#e5e7eb}
+  .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.1s var(--ease)}
+  .c:hover img{transform:scale(1.07)}
+  .num{position:absolute;top:16px;left:16px;z-index:30;
+       font:700 11px/1 ui-monospace,monospace;letter-spacing:.2em;color:rgba(255,255,255,.8)}
+  .star{position:absolute;top:14px;right:14px;z-index:30;width:30px;height:30px;
+        background:var(--logo);display:flex;align-items:center;justify-content:center}
+  .bar{position:absolute;left:0;right:0;bottom:0;z-index:20;padding:16px 18px}
+  .rule{display:block;width:26px;height:2px;margin:0 0 10px}
+  .bar h4{font-weight:800;font-size:17px;line-height:1.25;letter-spacing:-.01em;margin:0}
+  .desc{display:block;font-weight:400;font-size:13px;line-height:1.55;margin:10px 0 0}
+  .reveal{display:block;overflow:hidden;max-height:0;opacity:0;
+          transition:max-height .45s var(--ease),opacity .3s ease,margin-top .45s var(--ease)}
+  .c:hover .reveal{max-height:64px;opacity:1;margin-top:10px}
+  .reveal span{display:block;position:relative;padding-left:14px;
+               font:400 10px/1.8 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase}
+  .reveal span:before{content:"";position:absolute;left:0;top:8px;width:8px;height:1px}
+
+  /* ---- TERAZ · čierny pás ---- */
+  .now .bar{background:rgba(0,0,0,.82)}
+  .now .rule{background:var(--logo)}
+  .now .bar h4{color:#fff}
+  .now .desc{color:rgba(255,255,255,.74)}
+  .now .reveal span{color:rgba(255,255,255,.72)}
+  .now .reveal span:before{background:var(--logo)}
+
+  /* ---- G1 · biely závoj ---- */
+  .g1 .bar{background:rgba(255,255,255,.88)}
+  .g1 .rule{background:var(--amber-7)}
+  .g1 .bar h4{color:#09090b}
+  .g1 .desc{color:#3f3f46}
+  .g1 .reveal span{color:#52525b}
+  .g1 .reveal span:before{background:var(--amber-7)}
+
+  /* ---- G2 · sivý závoj ---- */
+  .g2 .bar{background:rgba(244,244,245,.92)}
+  .g2 .rule{background:var(--amber-7)}
+  .g2 .bar h4{color:#09090b}
+  .g2 .desc{color:#3f3f46}
+  .g2 .reveal span{color:#52525b}
+  .g2 .reveal span:before{background:var(--amber-7)}
+
+  /* ---- G3 · plná svetlá ---- */
+  .g3 .bar{background:#fafafa}
+  .g3 .rule{background:var(--amber-7)}
+  .g3 .bar h4{color:#000}
+  .g3 .desc{color:#6b7280}
+  .g3 .reveal span{color:#6b7280}
+  .g3 .reveal span:before{background:var(--amber-7)}
+
+  @media (max-width:1240px){.sv .grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 24 · Domovská stránka a /sluzby</p>
+  <h1>Svetlý pás s čiernym textom</h1>
+  <p class="lede">To isté rozloženie, aké je teraz nasadené — len pás nie je čierny, ale svetlý,
+     a text čierny. Bližšie k pôvodným kartám, kde bolo telo v <code>zinc-50</code> a nadpis čierny.
+     Tri odtiene. Prejdite dlaždice myšou.</p>
+  <p class="status">Stav: <b>neaplikované</b> — iba návrh</p>
+
+  <div class="warn"><b>Na svetlom podklade sa musí zmeniť jantárová</b>
+    <code>#F68C05</code> má na bielej kontrast asi 2,5 : 1 — na linku nad názvom to stačí
+    (je to čistá grafika), ale na pomlčky pri údajoch nie. Vo všetkých troch variantoch
+    preto používam tmavšiu <code>#B45309</code> (5,3 : 1). Jantárový štvorec s hviezdou
+    ostáva svetlý, ten je na fotke, nie na páse.
+  </div>
+
+  <!-- ============ NOW ============ -->
+  <h2><span class="no">Teraz</span>Čierny pás — nasadené</h2>
+  <div class="stage"><div class="sv now"><div class="rail"><div class="grid">
+    <a class="c" href="#"><div class="ph"><img src="assets/rodinne-domy.webp" alt="">
+      <span class="num">01</span>
+      <span class="star"><svg width="14" height="14" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0 L6.2 3.5 L10 3.5 L6.9 5.8 L8.1 9.4 L5 7.2 L1.9 9.4 L3.1 5.8 L0 3.5 L3.8 3.5 Z" fill="#09090b"/></svg></span>
+      <span class="bar"><span class="rule"></span><h4>Rodinné domy</h4>
+      <span class="desc">Kompletná výstavba a rekonštrukcie moderných rodinných domov.</span>
+      <span class="reveal"><span>Stavba na kľúč</span><span>Hrubá stavba aj rekonštrukcia</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop&q=80" alt="">
+      <span class="num">02</span>
+      <span class="bar"><span class="rule"></span><h4>Rezidenčné budovy</h4>
+      <span class="desc">Komplexná výstavba bytových domov a polyfunkčných objektov.</span>
+      <span class="reveal"><span>Bytové a polyfunkčné domy</span><span>Koordinácia všetkých profesií</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop&q=80" alt="">
+      <span class="num">03</span>
+      <span class="bar"><span class="rule"></span><h4>Komerčná výstavba</h4>
+      <span class="desc">Administratívne budovy, sídla firiem, prevádzky, predajne a showroomy.</span>
+      <span class="reveal"><span>Prevádzky a predajne</span><span>Realizácia počas prevádzky</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop&q=80" alt="">
+      <span class="num">04</span>
+      <span class="bar"><span class="rule"></span><h4>Priemyselné objekty</h4>
+      <span class="desc">Skladové haly, logistické centrá a výrobné závody.</span>
+      <span class="reveal"><span>Haly a sklady</span><span>Základy a monolitické konštrukcie</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt="">
+      <span class="num">05</span>
+      <span class="bar"><span class="rule"></span><h4>Občianske stavby</h4>
+      <span class="desc">Školy, zariadenia sociálnych služieb, úrady a verejné budovy.</span>
+      <span class="reveal"><span>Zariadenia sociálnych služieb</span><span>Verejné obstarávanie</span></span></span></div></a>
+  </div></div></div></div>
+
+  <!-- ============ G1 ============ -->
+  <h2><span class="no">G1</span>Biely závoj</h2>
+  <p class="tag t-am">Krytie 88 % — fotka presvitá</p>
+  <p class="seclede">Biely pás s krytím 88 %, takže pod ním jemne presvitá fotka. Text čierny.
+     Najsvetlejší zo všetkých troch a najbližšie k tomu, ako pás pôsobí ako závoj, nie ako doska.</p>
+  <div class="stage"><div class="sv g1"><div class="rail"><div class="grid">
+    <a class="c" href="#"><div class="ph"><img src="assets/rodinne-domy.webp" alt="">
+      <span class="num">01</span>
+      <span class="star"><svg width="14" height="14" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0 L6.2 3.5 L10 3.5 L6.9 5.8 L8.1 9.4 L5 7.2 L1.9 9.4 L3.1 5.8 L0 3.5 L3.8 3.5 Z" fill="#09090b"/></svg></span>
+      <span class="bar"><span class="rule"></span><h4>Rodinné domy</h4>
+      <span class="desc">Kompletná výstavba a rekonštrukcie moderných rodinných domov.</span>
+      <span class="reveal"><span>Stavba na kľúč</span><span>Hrubá stavba aj rekonštrukcia</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop&q=80" alt="">
+      <span class="num">02</span>
+      <span class="bar"><span class="rule"></span><h4>Rezidenčné budovy</h4>
+      <span class="desc">Komplexná výstavba bytových domov a polyfunkčných objektov.</span>
+      <span class="reveal"><span>Bytové a polyfunkčné domy</span><span>Koordinácia všetkých profesií</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop&q=80" alt="">
+      <span class="num">03</span>
+      <span class="bar"><span class="rule"></span><h4>Komerčná výstavba</h4>
+      <span class="desc">Administratívne budovy, sídla firiem, prevádzky, predajne a showroomy.</span>
+      <span class="reveal"><span>Prevádzky a predajne</span><span>Realizácia počas prevádzky</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop&q=80" alt="">
+      <span class="num">04</span>
+      <span class="bar"><span class="rule"></span><h4>Priemyselné objekty</h4>
+      <span class="desc">Skladové haly, logistické centrá a výrobné závody.</span>
+      <span class="reveal"><span>Haly a sklady</span><span>Základy a monolitické konštrukcie</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt="">
+      <span class="num">05</span>
+      <span class="bar"><span class="rule"></span><h4>Občianske stavby</h4>
+      <span class="desc">Školy, zariadenia sociálnych služieb, úrady a verejné budovy.</span>
+      <span class="reveal"><span>Zariadenia sociálnych služieb</span><span>Verejné obstarávanie</span></span></span></div></a>
+  </div></div></div></div>
+
+  <!-- ============ G2 ============ -->
+  <h2><span class="no">G2</span>Sivý závoj</h2>
+  <p class="tag t-gr">Krytie 92 % — najistejší kontrast</p>
+  <p class="seclede">Svetlosivý pás (<code>zinc-100</code>) s krytím 92 %. O odtieň tmavší
+     a hutnejší než G1, takže text drží aj nad svetlou oblohou. Najbližšie k pôvodným kartám,
+     ktoré mali telo v sivej.</p>
+  <div class="stage"><div class="sv g2"><div class="rail"><div class="grid">
+    <a class="c" href="#"><div class="ph"><img src="assets/rodinne-domy.webp" alt="">
+      <span class="num">01</span>
+      <span class="star"><svg width="14" height="14" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0 L6.2 3.5 L10 3.5 L6.9 5.8 L8.1 9.4 L5 7.2 L1.9 9.4 L3.1 5.8 L0 3.5 L3.8 3.5 Z" fill="#09090b"/></svg></span>
+      <span class="bar"><span class="rule"></span><h4>Rodinné domy</h4>
+      <span class="desc">Kompletná výstavba a rekonštrukcie moderných rodinných domov.</span>
+      <span class="reveal"><span>Stavba na kľúč</span><span>Hrubá stavba aj rekonštrukcia</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop&q=80" alt="">
+      <span class="num">02</span>
+      <span class="bar"><span class="rule"></span><h4>Rezidenčné budovy</h4>
+      <span class="desc">Komplexná výstavba bytových domov a polyfunkčných objektov.</span>
+      <span class="reveal"><span>Bytové a polyfunkčné domy</span><span>Koordinácia všetkých profesií</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop&q=80" alt="">
+      <span class="num">03</span>
+      <span class="bar"><span class="rule"></span><h4>Komerčná výstavba</h4>
+      <span class="desc">Administratívne budovy, sídla firiem, prevádzky, predajne a showroomy.</span>
+      <span class="reveal"><span>Prevádzky a predajne</span><span>Realizácia počas prevádzky</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop&q=80" alt="">
+      <span class="num">04</span>
+      <span class="bar"><span class="rule"></span><h4>Priemyselné objekty</h4>
+      <span class="desc">Skladové haly, logistické centrá a výrobné závody.</span>
+      <span class="reveal"><span>Haly a sklady</span><span>Základy a monolitické konštrukcie</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt="">
+      <span class="num">05</span>
+      <span class="bar"><span class="rule"></span><h4>Občianske stavby</h4>
+      <span class="desc">Školy, zariadenia sociálnych služieb, úrady a verejné budovy.</span>
+      <span class="reveal"><span>Zariadenia sociálnych služieb</span><span>Verejné obstarávanie</span></span></span></div></a>
+  </div></div></div></div>
+
+  <!-- ============ G3 ============ -->
+  <h2><span class="no">G3</span>Plná svetlá</h2>
+  <p class="tag t-gr">Bez priesvitu — presne ako pôvodné karty</p>
+  <p class="seclede">Nepriehľadný pás v <code>zinc-50</code> — presne tá farba, akú mali telá
+     pôvodných kariet. Fotka pod ním vôbec nepresvitá, takže je to jediný variant, pri ktorom
+     text vyzerá rovnako na každej fotke bez výnimky.</p>
+  <div class="stage"><div class="sv g3"><div class="rail"><div class="grid">
+    <a class="c" href="#"><div class="ph"><img src="assets/rodinne-domy.webp" alt="">
+      <span class="num">01</span>
+      <span class="star"><svg width="14" height="14" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0 L6.2 3.5 L10 3.5 L6.9 5.8 L8.1 9.4 L5 7.2 L1.9 9.4 L3.1 5.8 L0 3.5 L3.8 3.5 Z" fill="#09090b"/></svg></span>
+      <span class="bar"><span class="rule"></span><h4>Rodinné domy</h4>
+      <span class="desc">Kompletná výstavba a rekonštrukcie moderných rodinných domov.</span>
+      <span class="reveal"><span>Stavba na kľúč</span><span>Hrubá stavba aj rekonštrukcia</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop&q=80" alt="">
+      <span class="num">02</span>
+      <span class="bar"><span class="rule"></span><h4>Rezidenčné budovy</h4>
+      <span class="desc">Komplexná výstavba bytových domov a polyfunkčných objektov.</span>
+      <span class="reveal"><span>Bytové a polyfunkčné domy</span><span>Koordinácia všetkých profesií</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop&q=80" alt="">
+      <span class="num">03</span>
+      <span class="bar"><span class="rule"></span><h4>Komerčná výstavba</h4>
+      <span class="desc">Administratívne budovy, sídla firiem, prevádzky, predajne a showroomy.</span>
+      <span class="reveal"><span>Prevádzky a predajne</span><span>Realizácia počas prevádzky</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop&q=80" alt="">
+      <span class="num">04</span>
+      <span class="bar"><span class="rule"></span><h4>Priemyselné objekty</h4>
+      <span class="desc">Skladové haly, logistické centrá a výrobné závody.</span>
+      <span class="reveal"><span>Haly a sklady</span><span>Základy a monolitické konštrukcie</span></span></span></div></a>
+    <a class="c" href="#"><div class="ph"><img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt="">
+      <span class="num">05</span>
+      <span class="bar"><span class="rule"></span><h4>Občianske stavby</h4>
+      <span class="desc">Školy, zariadenia sociálnych služieb, úrady a verejné budovy.</span>
+      <span class="reveal"><span>Zariadenia sociálnych služieb</span><span>Verejné obstarávanie</span></span></span></div></a>
+  </div></div></div></div>
+
+  <p class="pick">Odporúčam <b>G2 — sivý závoj</b>. Priesvit ešte cítiť, takže pás nepôsobí
+     ako nalepená doska, ale sivá ho drží dosť hutný na to, aby čierny text sedel aj nad svetlou
+     oblohou — a práve svetlá obloha je na vašich fotkách najčastejší spodný motív.
+     <b>G3</b> je najbezpečnejšie: bez priesvitu vyzerá text rovnako na každej fotke, ale dlaždica
+     sa opticky rozpadne na fotku a štítok pod ňou. <b>G1</b> je najkrajšie, kým nenarazí
+     na presvetlenú fotku — tam prvý stratí kontrast.</p>
+
+  <h2><span class="no">Hodnoty</span>Špecifikácia — G2</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Pás</td><td><code>rgba(244,244,245,0.92)</code> — v Tailwinde <code>bg-zinc-100/90</code>. Odsadenie a poloha bez zmeny</td></tr>
+    <tr><td>Linka nad názvom</td><td>26 × 2 px, <code>#B45309</code> (nie svetlá jantárová)</td></tr>
+    <tr><td>Názov</td><td>17 px, váha 800, letter-spacing −0.01em, <code>#09090B</code></td></tr>
+    <tr><td>Popis</td><td>13 px, riadkovanie 1.55, <code>#3F3F46</code> (zinc-700)</td></tr>
+    <tr><td>Údaje pri prejdení</td><td>10 px, mono, <code>#52525B</code> (zinc-600); pomlčka pred textom <code>#B45309</code></td></tr>
+    <tr><td>Poradové číslo</td><td>Bez zmeny — biele na fotke, mimo pásu</td></tr>
+    <tr><td>Štítok špecializácie</td><td>Bez zmeny — jantárový štvorec <code>#F68C05</code> s čiernou hviezdou, na fotke</td></tr>
+    <tr><td>Zvyšok</td><td>Výška dlaždice, vysúvanie, tieň aj priblíženie fotky bez zmeny</td></tr>
+  </table>
+
+  <h2><span class="no">Poznámky</span>Obmedzenia</h2>
+  <ul class="flags">
+    <li><b>Jantárová v páse musí stmavnúť na <code>#B45309</code>.</b> Svetlá <code>#F68C05</code> má na svetlom podklade kontrast pod 3 : 1, čo pri 1 px pomlčke znamená, že ju prakticky nevidno.</li>
+    <li><b>Kontrast závisí od fotky.</b> Pri G1 a G2 presvitá podklad, takže nad presvetlenou oblohou bude text slabší než nad tmavou strechou. G3 tento problém nemá vôbec.</li>
+    <li><b>Svetlý pás na svetlej stránke oslabí hranu dlaždice.</b> Čierny pás fungoval aj ako ukončenie karty; svetlý splynie s bielym podkladom sekcie. Ak to bude rušiť, pomôže vlasová linka <code>#E4E4E7</code> po obvode dlaždice.</li>
+    <li><b>Poradové číslo ostáva biele na fotke.</b> Nad svetlou oblohou bude slabo čitateľné — pri čiernom páse to bolo menej vidno, lebo oko šlo skôr na pás. Ak bude vadiť, treba ho stmaviť alebo presunúť do pásu.</li>
+    <li>Tri z piatich fotiek sú stále Unsplash placeholdery.</li>
+  </ul>
+
+</div>
+</body>
+</html>

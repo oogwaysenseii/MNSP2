@@ -77,7 +77,7 @@ export default function Page() {
             </p>
           </div>
         </div>
-        <ServicesGrid hideAllLink />
+        <ServicesGrid />
       </div>
 
       {/* SECTION 2 — TRADES */}

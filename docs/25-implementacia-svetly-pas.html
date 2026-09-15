@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implementácia — Svetlý pás (G2)</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;--logo:#f68c05}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1060px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);margin:0;max-width:80ch}
+  .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  .tagi{font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase;
+        padding:8px 13px;background:#fff;border:1px solid var(--line)}
+  .tagi b{color:var(--amber-6)}
+  h2{font:800 22px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:44px 0 6px;
+     padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;color:var(--amber-6);
+         display:block;margin-bottom:9px}
+  p.note{color:var(--ink-2);margin:0 0 14px}
+  code.i{font:500 13px/1.5 ui-monospace,monospace;background:#e9e9e6;padding:2px 6px;color:#18181b}
+  pre{background:#18181b;color:#e4e4e7;padding:18px 20px;overflow-x:auto;margin:14px 0;
+      font:400 12.5px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;border-left:3px solid var(--amber)}
+  pre .c{color:#71717a} pre .k{color:#f59e0b} pre .s{color:#86efac} pre .d{color:#fca5a5} pre .a{color:#86efac}
+  .file{display:inline-flex;align-items:center;gap:8px;background:#18181b;color:#fff;
+        font:600 12px/1 ui-monospace,monospace;padding:9px 13px;margin:18px 0 0}
+  .file b{color:var(--amber)}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#92400e}
+  .opt{background:#fff;border:1px solid var(--line);border-left:3px solid #a1a1aa;
+       padding:14px 18px;margin:16px 0;font-size:14px;color:var(--ink-2)}
+  .opt b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+         text-transform:uppercase;margin-bottom:7px;color:var(--muted)}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:9px 14px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  td.ln{font:700 12px/1.5 ui-monospace,monospace;color:var(--muted);width:60px}
+  ul.check{list-style:none;padding:0;margin:14px 0}
+  ul.check li{padding:9px 0 9px 30px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.check li:before{content:"";position:absolute;left:2px;top:13px;width:13px;height:13px;border:1.5px solid #a1a1aa}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Implementácia · pre vývojára</p>
+  <h1>Svetlý pás — variant G2</h1>
+  <p class="lede">Pás na dlaždiciach služieb sa mení z čierneho na svetlosivý a text z bieleho
+     na čierny. Je to <b>šesť deklarácií v jednom súbore</b> — rozloženie, animácie ani texty
+     sa nedotýkajú.</p>
+
+  <div class="meta">
+    <span class="tagi">Súbor: <b>1</b></span>
+    <span class="tagi">Zmien: <b>6</b></span>
+    <span class="tagi">Bez zmeny štruktúry</span>
+    <span class="tagi">Bez zmeny textov</span>
+  </div>
+
+  <div class="warn"><b>Prečo sa mení aj jantárová</b>
+    <code>#F68C05</code> má na svetlom podklade kontrast asi 2,5 : 1. Pri linke nad názvom
+    by to ešte prešlo, ale pomlčka pred údajom je 1 px vysoká — pri tomto kontraste ju
+    prakticky nevidno. V páse preto ide tmavšia <code>#B45309</code> (5,3 : 1).
+    <b>Jantárový štvorec s hviezdou sa nemení</b> — ten je na fotke, nie na páse.
+    <p style="margin:10px 0 0;padding-top:10px;border-top:1px solid #fcd34d">
+      <b style="display:inline;text-transform:none;letter-spacing:0;font-size:14px">Pozor na hromadné nahradenie:</b>
+      <code>bg-[#f68c05]</code> je v súbore <b>dvakrát</b> — na riadku 92 (linka v páse, mení sa)
+      a na riadku 82 (štvorec špecializácie, <b>nemení sa</b>). Nahradiť treba iba ten na riadku 92.
+    </p>
+  </div>
+
+  <h2><span class="no">Krok 01</span>Šesť zmien v páse</h2>
+  <p class="note">Všetky v <code class="i">ServicesGrid.tsx</code>, v bloku s komentárom
+     <code class="i">{/* pás */}</code>. Čísla riadkov zodpovedajú nasadenej verzii.</p>
+
+  <table>
+    <tr><th>Riadok</th><th>Prvok</th><th>Pred → Po</th></tr>
+    <tr><td class="ln">91</td><td>Podklad pásu</td><td><code>bg-black/[0.82]</code> → <code>bg-zinc-100/[0.92]</code></td></tr>
+    <tr><td class="ln">92</td><td>Linka nad názvom</td><td><code>bg-[#f68c05]</code> → <code>bg-[#b45309]</code></td></tr>
+    <tr><td class="ln">95</td><td>Názov</td><td><code>text-white</code> → <code>text-zinc-950</code></td></tr>
+    <tr><td class="ln">99</td><td>Popis</td><td><code>text-white/[0.74]</code> → <code>text-zinc-700</code></td></tr>
+    <tr><td class="ln">110</td><td>Údaje</td><td><code>text-white/[0.72]</code> → <code>text-zinc-600</code></td></tr>
+    <tr><td class="ln">112</td><td>Pomlčka pri údaji</td><td><code>before:bg-[#f68c05]</code> → <code>before:bg-[#b45309]</code></td></tr>
+  </table>
+
+  <div class="file">📄 <b>src/components/sections/ServicesGrid.tsx</b> · riadky 91–116</div>
+<pre>{<span class="c">/* pás */</span>}
+<span class="d">- &lt;div className="absolute inset-x-0 bottom-0 z-20 bg-black/[0.82] px-[18px] py-4"&gt;</span>
+<span class="a">+ &lt;div className="absolute inset-x-0 bottom-0 z-20 bg-zinc-100/[0.92] px-[18px] py-4"&gt;</span>
+
+<span class="d">-   &lt;span className="mb-2.5 block h-0.5 w-[26px] bg-[#f68c05]" /&gt;</span>
+<span class="a">+   &lt;span className="mb-2.5 block h-0.5 w-[26px] bg-[#b45309]" /&gt;</span>
+
+    &lt;h3 className="text-[17px] font-extrabold leading-[1.25]
+<span class="d">-     tracking-[-0.01em] text-white"&gt;</span>
+<span class="a">+     tracking-[-0.01em] text-zinc-950"&gt;</span>
+      {sluzba.name}
+    &lt;/h3&gt;
+
+<span class="d">-   &lt;p className="mt-2.5 text-[13px] leading-[1.55] text-white/[0.74]"&gt;</span>
+<span class="a">+   &lt;p className="mt-2.5 text-[13px] leading-[1.55] text-zinc-700"&gt;</span>
+      {sluzba.description}
+    &lt;/p&gt;
+
+    {<span class="c">/* MUSÍ byť div — na span sa max-height neuplatní */</span>}
+    &lt;div className={`max-h-0 overflow-hidden opacity-0
+      transition-[max-height,opacity,margin-top] duration-[450ms] ${EASE}
+      group-hover/tile:mt-2.5 group-hover/tile:max-h-[64px] group-hover/tile:opacity-100`}&gt;
+      {sluzba.highlights.map((h) =&gt; (
+        &lt;span key={h}
+          className={`relative block pl-3.5 ${MONO} text-[10px] uppercase
+<span class="d">-           leading-[1.8] tracking-[0.1em] text-white/[0.72]</span>
+<span class="a">+           leading-[1.8] tracking-[0.1em] text-zinc-600</span>
+            before:absolute before:left-0 before:top-2 before:h-px before:w-2
+<span class="d">-           before:bg-[#f68c05] before:content-['']`}&gt;</span>
+<span class="a">+           before:bg-[#b45309] before:content-['']`}&gt;</span>
+          {h}
+        &lt;/span&gt;
+      ))}
+    &lt;/div&gt;
+  &lt;/div&gt;</pre>
+
+  <h2><span class="no">Krok 02</span>Dve veci, ktoré svetlý pás odhalí</h2>
+
+  <div class="opt"><b>Voliteľné · hrana dlaždice</b>
+    <p style="margin:0 0 10px">Čierny pás fungoval aj ako ukončenie karty. Svetlý splynie
+       s bielym podkladom sekcie, takže dlaždica stratí spodnú hranu. Ak to bude rušiť,
+       stačí vlasová linka po obvode:</p>
+<pre style="margin:0"><span class="a">+ &lt;div className="relative h-[320px] overflow-hidden bg-gray-200 ring-1 ring-zinc-200"&gt;</span></pre>
+    <p style="margin:10px 0 0"><code>ring</code> a nie <code>border</code> zámerne — rámik by
+       zmenil vnútorný rozmer a fotka by sa o 2 px zmenšila.</p>
+  </div>
+
+  <div class="opt"><b>Voliteľné · poradové číslo</b>
+    <p style="margin:0 0 10px">Číslo vľavo hore ostáva biele na fotke. Pri čiernom páse to
+       nevadilo, lebo oko šlo najprv na pás; teraz je vystavenejšie a nad svetlou oblohou
+       bude slabé. Buď ho stmaviť, alebo mu pridať vlastný podklad:</p>
+<pre style="margin:0"><span class="c">// varianta 1 — tmavšie číslo</span>
+<span class="d">- text-white/80</span>
+<span class="a">+ text-white [text-shadow:0_1px_3px_rgba(0,0,0,.55)]</span>
+
+<span class="c">// varianta 2 — vlastný podklad</span>
+<span class="a">+ bg-black/55 px-1.5 py-1</span></pre>
+    <p style="margin:10px 0 0">Odporúčam variantu 1 — tieň je nenápadnejší než štvorček
+       a nepridáva do rohu ďalší tvar vedľa jantárového štítku.</p>
+  </div>
+
+  <h2><span class="no">Krok 03</span>Presné hodnoty</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Pás</td><td><code>rgba(244,244,245,0.92)</code> — <code>bg-zinc-100/[0.92]</code>. Poloha, odsadenie aj vrstvenie bez zmeny</td></tr>
+    <tr><td>Linka nad názvom</td><td>26 × 2 px, <code>#B45309</code></td></tr>
+    <tr><td>Názov</td><td>17 px, váha 800, letter-spacing −0.01em, <code>#09090B</code> (<code>zinc-950</code>)</td></tr>
+    <tr><td>Popis</td><td>13 px, riadkovanie 1.55, <code>#3F3F46</code> (<code>zinc-700</code>)</td></tr>
+    <tr><td>Údaje</td><td>10 px, mono, <code>#52525B</code> (<code>zinc-600</code>); pomlčka 8 × 1 px <code>#B45309</code></td></tr>
+    <tr><td>Štítok špecializácie</td><td><b>Bez zmeny</b> — <code>#F68C05</code> s čiernou hviezdou, je na fotke</td></tr>
+    <tr><td>Poradové číslo</td><td>Bez zmeny, ak neprijmete voliteľný krok vyššie</td></tr>
+    <tr><td>Animácie, výška, tieň</td><td>Bez zmeny</td></tr>
+  </table>
+
+  <h2><span class="no">Krok 04</span>Kontrola</h2>
+  <ul class="check">
+    <li>Názov aj popis sú čitateľné na všetkých piatich fotkách — hlavne tam, kde je pri spodku svetlá obloha.</li>
+    <li>Pomlčky pri údajoch sú po prejdení myšou viditeľné, nie len tušené.</li>
+    <li>Jantárový štvorec s hviezdou ostal svetlý a je stále len pri Rodinných domoch.</li>
+    <li>Pás stále nechá tušiť fotku pod sebou — nie je to nepriehľadná doska.</li>
+    <li>Vysúvanie údajov funguje rovnako ako predtým.</li>
+    <li>Spodná hrana dlaždice je rozoznateľná od bieleho podkladu sekcie — ak nie, príde na rad voliteľný <code class="i">ring-1</code>.</li>
+    <li>Na <code class="i">/sluzby</code> vyzerajú dlaždice rovnako ako na domovskej stránke.</li>
+  </ul>
+
+  <h2><span class="no">Poznámky</span>Na doplnenie</h2>
+  <ul class="flags">
+    <li><b>Kontrast teraz závisí od fotky.</b> Pás má krytie 92 %, takže podklad presvitá — nad presvetlenou oblohou bude text o niečo slabší než nad tmavou strechou. Ak by to niekde nestačilo, riešenie je <code>bg-zinc-50</code> bez priesvitu (variant G3), nie tmavší text.</li>
+    <li><b>Svetlý pás zmenšuje rozdiel medzi službami a projektmi.</b> Dlaždice projektov majú tmavé prekrytie; služby budú mať svetlé. Je to dobré — dve susedné sekcie prestanú vyzerať rovnako.</li>
+    <li><b>Konštantu <code>MONO</code> nechajte tak, ako je.</b> Zistenie, že <code>font-mono</code> kvôli nedefinovanej <code>--font-jetbrains-mono</code> ticho padá na bezpätkové písmo, platí aj pre pätičku a CTA — ak sa tam budú nasadzovať moje špecifikácie, treba použiť ten istý zápis.</li>
+    <li>Tri z piatich fotiek sú stále Unsplash placeholdery označené v dátach ako <code>TODO</code>.</li>
+  </ul>
+
+</div>
+</body>
+</html>
