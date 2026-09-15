@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 08 — CTA kompaktná čierna</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--ease:cubic-bezier(.22,.61,.36,1)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1340px;margin:0 auto;padding:48px 32px 110px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 40px/1.1 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:78ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2.sec{font:800 13px/1 ui-sans-serif,system-ui;letter-spacing:.18em;text-transform:uppercase;
+         margin:54px 0 6px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  .seclede{font-size:14px;color:var(--muted);margin:0 0 16px;max-width:84ch}
+  .tag{display:inline-flex;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+       text-transform:uppercase;padding:6px 11px;margin:0 0 14px;background:#fef3c7;color:#92400e;border:1px solid #92400e}
+  .stage{border:1px solid #d4d4d8;background:#fff;overflow:hidden}
+  .hint{display:flex;gap:10px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);
+        padding:12px 16px;margin:0 0 16px;font-size:14px;color:var(--ink-2)}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#92400e}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:11px 15px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:24%}
+  td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  .pick{margin-top:20px;padding:18px 22px;background:#18181b;color:#fff;font-size:15px;line-height:1.65}
+  .pick b{color:var(--amber)}
+  .neighbour{background:#fff;padding:14px 24px;font:700 10px/1 ui-monospace,monospace;
+             letter-spacing:.16em;text-transform:uppercase;color:#a1a1aa;border-bottom:1px solid #e5e7eb}
+  .neighbour.foot{background:#18181b;color:#52525b;border:0;border-top:1px solid #27272a}
+  .measure{display:inline-flex;gap:18px;margin:0 0 14px;font:700 10px/1 ui-monospace,monospace;
+           letter-spacing:.14em;text-transform:uppercase;color:#71717a}
+  .measure b{color:var(--amber-6)}
+
+  /* ================= compact black CTA ================= */
+  .cta{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .cta .band{background:#fff;padding:80px 0}
+  .cta .outer{padding:0 32px}
+  .cta .card{background:#09090b;position:relative;overflow:hidden;
+             display:flex;gap:64px;align-items:center;padding:48px 56px}
+  .cta .col1{width:57%;position:relative;z-index:3}
+  .cta .eyebrow{display:block;font:700 10px/1 ui-monospace,monospace;letter-spacing:.2em;
+                text-transform:uppercase;color:var(--amber)}
+  .cta h2{font-weight:800;font-size:38px;line-height:1.08;letter-spacing:-.028em;color:#fff;margin:16px 0 0}
+  .cta .amb{color:var(--amber);font-weight:500;font-size:16px;line-height:1.55;
+            border-left:2px solid var(--amber);padding-left:18px;margin:20px 0 0;max-width:34rem}
+  .cta .desc{color:#a1a1aa;font-weight:400;font-size:13.5px;line-height:1.6;margin:16px 0 0;max-width:32rem}
+
+  .cta .formcol{width:43%;position:relative;z-index:3}
+  .cta input{font:inherit;width:100%;outline:none;background:#fff;border:1px solid #fff;
+             padding:15px 18px;color:#18181b;font-size:15px;transition:box-shadow .2s,border-color .2s}
+  .cta input::placeholder{color:#a1a1aa}
+  .cta input:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,158,11,.45)}
+  .cta .fld{margin-bottom:14px}
+  .cta .btns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+  .cta button{font:inherit;cursor:pointer;border:0;display:inline-flex;align-items:center;
+              justify-content:center;gap:8px;transition:background .25s,border-color .25s,color .25s}
+  .cta .send{background:var(--amber);color:#09090b;font-weight:700;font-size:14px;padding:15px 20px}
+  .cta .send:hover{background:#fbbf24}
+  .cta .calc{background:transparent;border:1px solid #3f3f46;color:#fff;font-weight:500;font-size:14px;padding:15px 20px}
+  .cta .calc:hover{border-color:var(--amber);color:var(--amber)}
+  .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+      clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+  /* ---- S1 · ROHOVÉ ZÁTVORKY ---- */
+  .s1 .shapes{position:absolute;inset:0;pointer-events:none;z-index:1}
+  .s1 .gridbg{position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.032) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.032) 1px,transparent 1px);
+    background-size:44px 44px}
+  .s1 .br{position:absolute;width:46px;height:46px}
+  .s1 .br.tl{top:18px;left:18px;border-top:1px solid rgba(245,158,11,.75);border-left:1px solid rgba(245,158,11,.75)}
+  .s1 .br.tr{top:18px;right:18px;border-top:1px solid rgba(245,158,11,.75);border-right:1px solid rgba(245,158,11,.75)}
+  .s1 .br.bl{bottom:18px;left:18px;border-bottom:1px solid rgba(245,158,11,.75);border-left:1px solid rgba(245,158,11,.75)}
+  .s1 .br.brr{bottom:18px;right:18px;border-bottom:1px solid rgba(245,158,11,.75);border-right:1px solid rgba(245,158,11,.75)}
+
+  /* ---- S2 · SÚSTREDNÉ ŠTVORCE ---- */
+  .s2 .shapes{position:absolute;inset:0;pointer-events:none;z-index:1}
+  .s2 .sq{position:absolute;top:50%;right:-150px;transform:translateY(-50%) rotate(45deg);border:1px solid}
+  .s2 .sq.a{width:190px;height:190px;border-color:rgba(245,158,11,.42)}
+  .s2 .sq.b{width:330px;height:330px;border-color:rgba(245,158,11,.22)}
+  .s2 .sq.c{width:470px;height:470px;border-color:rgba(245,158,11,.11)}
+  .s2 .sq.d{width:610px;height:610px;border-color:rgba(255,255,255,.06)}
+
+  /* ---- S3 · KLIN A VLASOVÉ LINKY ---- */
+  .s3 .shapes{position:absolute;inset:0;pointer-events:none;z-index:1}
+  .s3 .wedge{position:absolute;inset:0;left:auto;width:46%;
+             background:linear-gradient(115deg,transparent 0%,rgba(245,158,11,.13) 55%,rgba(245,158,11,.03) 100%);
+             clip-path:polygon(28% 0,100% 0,100% 100%,0 100%)}
+  .s3 .rule{position:absolute;top:-30%;height:160%;width:1px;background:rgba(255,255,255,.07);
+            transform:rotate(18deg)}
+  .s3 .rule.r1{right:34%}
+  .s3 .rule.r2{right:28%;background:rgba(245,158,11,.22)}
+  .s3 .rule.r3{right:20%}
+
+  @media (max-width:1040px){
+    .cta .card{flex-direction:column;align-items:flex-start;gap:36px;padding:40px 28px}
+    .cta .col1,.cta .formcol{width:100%}
+    .cta h2{font-size:30px}
+    .cta .band{padding:56px 0}
+    .s2 .sq{right:-260px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 08 · Celý web</p>
+  <h1>CTA — kompaktná čierna</h1>
+  <p class="lede">Variant D bez fotky: čistá čierna, nižšia karta, biele polia bez popiskov.
+     Keďže „prémiové tvary“ sa dajú urobiť niekoľkými spôsobmi, sú tu tri — všetky na rovnakej
+     kompaktnej karte, takže sa líši iba pozadie. Sekcie sú živé, dá sa klikať do polí.</p>
+  <p class="status">Stav: <b>neaplikované</b> — iba návrh</p>
+
+  <p class="measure" style="margin-top:28px">Výška karty <b>~300 px</b> · predtým 520 px · odsadenie sekcie <b>80 px</b></p>
+
+  <h2 class="sec">S1 · Rohové zátvorky</h2>
+  <p class="seclede">Štyri tenké jantárové zátvorky v rohoch ako orezové značky na výkrese, plus sotva
+     viditeľná mriežka. Najtichšie z trojice — tvar je tu len rámovanie, pozornosť drží text.</p>
+  <p class="tag">Najzdržanlivejšie</p>
+  <div class="stage">
+    <div class="neighbour">↑ sekcia realizované projekty</div>
+    <div class="cta s1"><div class="band"><div class="outer">
+      <div class="card">
+        <div class="shapes">
+          <span class="gridbg"></span>
+          <span class="br tl"></span><span class="br tr"></span>
+          <span class="br bl"></span><span class="br brr"></span>
+        </div>
+        <div class="col1">
+          <span class="eyebrow">Nezáväzná cenová ponuka</span>
+          <h2>Plánujete stavbu či rekonštrukciu?</h2>
+          <p class="amb">Vypracujeme vám detailnú cenovú ponuku, vďaka ktorej získate úplný prehľad o nákladoch a platobných podmienkach.</p>
+          <p class="desc">Stačí ak nám zanecháte vaše údaje a my vás budeme kontaktovať.</p>
+        </div>
+        <div class="formcol">
+          <div class="fld"><label class="sr" for="s1a">Telefónne číslo</label>
+            <input id="s1a" type="tel" placeholder="Vaše tel. číslo:"></div>
+          <div class="fld"><label class="sr" for="s1b">E-mail</label>
+            <input id="s1b" type="email" placeholder="Váš e-mail:"></div>
+          <div class="btns">
+            <button class="send" type="button">Odoslať →</button>
+            <button class="calc" type="button">Kalkulačka</button>
+          </div>
+        </div>
+      </div>
+    </div></div></div>
+    <div class="neighbour foot">↓ pätička</div>
+  </div>
+
+  <h2 class="sec">S2 · Sústredné štvorce</h2>
+  <p class="seclede">Štyri otočené štvorce vychádzajúce z pravého okraja, jantárové a postupne slabnúce.
+     Dávajú čiernej hĺbku a ťahajú oko presne tam, kde je formulár.</p>
+  <p class="tag">Najviac hĺbky</p>
+  <div class="stage">
+    <div class="neighbour">↑ sekcia realizované projekty</div>
+    <div class="cta s2"><div class="band"><div class="outer">
+      <div class="card">
+        <div class="shapes">
+          <span class="sq d"></span><span class="sq c"></span>
+          <span class="sq b"></span><span class="sq a"></span>
+        </div>
+        <div class="col1">
+          <span class="eyebrow">Nezáväzná cenová ponuka</span>
+          <h2>Plánujete stavbu či rekonštrukciu?</h2>
+          <p class="amb">Vypracujeme vám detailnú cenovú ponuku, vďaka ktorej získate úplný prehľad o nákladoch a platobných podmienkach.</p>
+          <p class="desc">Stačí ak nám zanecháte vaše údaje a my vás budeme kontaktovať.</p>
+        </div>
+        <div class="formcol">
+          <div class="fld"><label class="sr" for="s2a">Telefónne číslo</label>
+            <input id="s2a" type="tel" placeholder="Vaše tel. číslo:"></div>
+          <div class="fld"><label class="sr" for="s2b">E-mail</label>
+            <input id="s2b" type="email" placeholder="Váš e-mail:"></div>
+          <div class="btns">
+            <button class="send" type="button">Odoslať →</button>
+            <button class="calc" type="button">Kalkulačka</button>
+          </div>
+        </div>
+      </div>
+    </div></div></div>
+    <div class="neighbour foot">↓ pätička</div>
+  </div>
+
+  <h2 class="sec">S3 · Klin a vlasové linky</h2>
+  <p class="seclede">Mäkký jantárový klin z pravej strany a tri šikmé vlasové linky, jedna z nich jantárová.
+     Najdynamickejšie — čierna prestane byť plochá a dostane smer.</p>
+  <p class="tag">Najvýraznejšie</p>
+  <div class="stage">
+    <div class="neighbour">↑ sekcia realizované projekty</div>
+    <div class="cta s3"><div class="band"><div class="outer">
+      <div class="card">
+        <div class="shapes">
+          <span class="wedge"></span>
+          <span class="rule r1"></span><span class="rule r2"></span><span class="rule r3"></span>
+        </div>
+        <div class="col1">
+          <span class="eyebrow">Nezáväzná cenová ponuka</span>
+          <h2>Plánujete stavbu či rekonštrukciu?</h2>
+          <p class="amb">Vypracujeme vám detailnú cenovú ponuku, vďaka ktorej získate úplný prehľad o nákladoch a platobných podmienkach.</p>
+          <p class="desc">Stačí ak nám zanecháte vaše údaje a my vás budeme kontaktovať.</p>
+        </div>
+        <div class="formcol">
+          <div class="fld"><label class="sr" for="s3a">Telefónne číslo</label>
+            <input id="s3a" type="tel" placeholder="Vaše tel. číslo:"></div>
+          <div class="fld"><label class="sr" for="s3b">E-mail</label>
+            <input id="s3b" type="email" placeholder="Váš e-mail:"></div>
+          <div class="btns">
+            <button class="send" type="button">Odoslať →</button>
+            <button class="calc" type="button">Kalkulačka</button>
+          </div>
+        </div>
+      </div>
+    </div></div></div>
+    <div class="neighbour foot">↓ pätička</div>
+  </div>
+
+  <p class="pick">Odporúčam <b>S2 — sústredné štvorce</b>. Nadväzujú na jantárový zárez na filtračných
+     čipoch aj na číslovanie dlaždíc, dávajú čiernej hĺbku bez toho, aby si pýtali pozornosť,
+     a ich ťažisko je presne pod formulárom. <b>S1</b> je najbezpečnejšie a najlepšie zostarne.
+     <b>S3</b> vyzerá najdrahšie na prvý pohľad, ale ten klin je najbližšie k „efektu“ — na bloku,
+     ktorý sa opakuje na každej podstránke, sa to môže ohrať.</p>
+
+  <div class="warn"><b>Jedna vec, ktorú som spravil inak, než ste povedali</b>
+    Popisky polí som zo vzhľadu odstránil, ako ste chceli — ale ponechal som ich v kóde ako
+    <code>sr-only</code>, teda neviditeľné pre oko a čitateľné pre čítačky obrazovky. Vizuálne je to
+    presne to, čo ste chceli (vidno len biele polia so zástupným textom), ale polia neostanú
+    nepomenované. Ak ich chcete zmazať úplne, stačí povedať — je to jeden riadok.
+  </div>
+
+  <h2 class="sec">Špecifikácia</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Odsadenie sekcie</td><td><code>py-20</code> — 80 px hore aj dole (teraz 0). Mobil <code>py-14</code> (56 px)</td></tr>
+    <tr><td>Karta</td><td><code>#09090B</code>, odsadenie 48 px zvislo / 56 px vodorovne, bez rámika, <code>overflow:hidden</code>. Výsledná výška ~300 px</td></tr>
+    <tr><td>Stĺpce</td><td>Text 57 %, formulár 43 %, medzera 64 px, zvislé zarovnanie na stred</td></tr>
+    <tr><td>Nadradený text</td><td>10 px, mono, váha 700, letter-spacing 0.2em, veľké písmená, <code>#F59E0B</code></td></tr>
+    <tr><td>Nadpis</td><td>38 px, váha 800, letter-spacing −0.028em, <code>#FFFFFF</code>, horný odstup 16 px</td></tr>
+    <tr><td>Podnadpis</td><td>16 px, váha 500, <code>#F59E0B</code>, ľavá linka 2 px, odsadenie zľava 18 px</td></tr>
+    <tr><td>Popis</td><td>13.5 px, <code>#A1A1AA</code>, horný odstup 16 px</td></tr>
+    <tr><td>Polia</td><td>Biele pozadie <code>#FFFFFF</code>, rámik 1 px biely, odsadenie 15/18 px, text <code>#18181B</code> 15 px</td></tr>
+    <tr><td>Zástupný text</td><td><code>#A1A1AA</code> — pôvodné „Vaše tel. číslo:“ a „Váš e-mail:“</td></tr>
+    <tr><td>Pole pri písaní</td><td>Rámik <code>#F59E0B</code> a prstenec <code>0 0 0 3px rgba(245,158,11,.45)</code></td></tr>
+    <tr><td>Popisky polí</td><td>Vizuálne skryté (<code>sr-only</code>), zostávajú v DOM kvôli čítačkám obrazovky</td></tr>
+    <tr><td>Odstup polí</td><td>14 px medzi poľami, 20 px nad tlačidlami</td></tr>
+    <tr><td>Tlačidlá</td><td>Dva stĺpce, medzera 14 px. Odoslať <code>#F59E0B</code> na <code>#09090B</code>; Kalkulačka priehľadná, rámik <code>#3F3F46</code></td></tr>
+    <tr><td>Tvary (S2)</td><td>Štyri štvorce otočené o 45°, <code>right:-120px</code>, zvisle na stred. Veľkosti 300/420/540/660 px, jantárová <code>.30 / .16 / .08</code> a biela <code>.05</code></td></tr>
+    <tr><td>Vrstvenie</td><td>Tvary <code>z-index:1</code>, obsah <code>z-index:3</code>, <code>pointer-events:none</code> na tvaroch</td></tr>
+    <tr><td>Zaoblenie rohov</td><td>Žiadne — nulový polomer</td></tr>
+    <tr><td>Dotknuté súbory</td><td><code>src/components/sections/CTA.tsx</code>, <code>src/components/ui/SimpleContactForm.tsx</code></td></tr>
+  </table>
+
+  <h2 class="sec">Poznámky a obmedzenia</h2>
+  <ul class="flags">
+    <li><b>Zástupný text ostáva pôvodný</b> („Vaše tel. číslo:“, „Váš e-mail:“). Keďže popisky nie sú vidno, je to jediné, čo pole pomenúva — preto som ho nemenil na príklady ako v predchádzajúcich návrhoch.</li>
+    <li><b>Biele polia sú na čiernej najkontrastnejší prvok karty</b> — kontrastnejší než jantárové tlačidlo. Je to zámer (formulár je cieľ sekcie), ale znamená to, že prázdny formulár vizuálne prekričí nadpis.</li>
+    <li><b>Nadradený text „Nezáväzná cenová ponuka“ je stále moja formulácia.</b> Schváľte ju alebo dajte vlastnú.</li>
+    <li><b>Popis a podnadpis som mierne skrátil</b> (z podnadpisu vypadlo „pre váš projekt“), aby sa karta zmestila do ~300 px. Ak trváte na pôvodnom znení, karta narastie asi o 24 px.</li>
+    <li>Výstražný pruh z dnešnej verzie tu nie je — tvary na pozadí a pruh by si konkurovali.</li>
+    <li><b>Formulár stále hlási výsledok cez <code>alert()</code>.</b> Platí pre všetky varianty; stav priamo vo formulári je samostatný návrh.</li>
+    <li>Telefón je povinný, e-mail nie — bez popiskov to nie je vidieť vôbec. Ak to chcete odlíšiť, dá sa hviezdičkou v zástupnom texte.</li>
+  </ul>
+
+</div>
+</body>
+</html>

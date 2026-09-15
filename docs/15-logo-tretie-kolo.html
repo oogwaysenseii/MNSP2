@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 15 — Logo, tretie kolo</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--logo:#f68c05}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1280px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:82ch;margin:0}
+  .brief{margin:24px 0 0;padding:18px 22px;background:#18181b;color:#fff;font-size:15px;line-height:1.7;max-width:82ch}
+  .brief b{color:var(--amber)}
+  h2{font:800 22px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:56px 0 6px;
+     padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;color:var(--amber-6);
+         display:block;margin-bottom:9px}
+  .seclede{font-size:14.5px;color:var(--ink-2);margin:0 0 20px;max-width:86ch}
+  .panelset{display:grid;grid-template-columns:1.25fr 1fr;border:1px solid #d4d4d8}
+  .pl{background:#fff;padding:40px 32px;display:flex;align-items:center;justify-content:center}
+  .pd{background:#09090b;padding:40px 32px;display:flex;align-items:center;justify-content:center}
+  .lock{display:flex;align-items:center;gap:20px}
+  .lock .wm{display:block;font:900 32px/1 ui-sans-serif,system-ui;letter-spacing:.04em}
+  .lock .sl{display:block;margin-top:8px;font:700 8.5px/1 ui-monospace,monospace;
+            letter-spacing:.235em;color:var(--logo)}
+  .sizes{display:grid;grid-template-columns:repeat(3,auto);gap:30px;align-items:end;
+         justify-content:start;margin-top:16px;padding:18px 22px;background:#fff;border:1px solid #d4d4d8}
+  .sizes.dark{background:#09090b;border-color:#3f3f46}
+  .sizes .cell{text-align:center}
+  .sizes .cell p{margin:9px 0 0;font:700 9px/1 ui-monospace,monospace;letter-spacing:.14em;
+                 text-transform:uppercase;color:var(--muted)}
+  .sizes.dark .cell p{color:#52525b}
+  .trade{font-size:13.5px;line-height:1.55;color:var(--ink-2);margin:12px 0 0;max-width:74ch}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:18px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#92400e}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  .pick{margin-top:24px;padding:18px 22px;background:#18181b;color:#fff;font-size:15px;line-height:1.7}
+  .pick b{color:var(--amber)}
+  .plate{display:inline-flex;align-items:center;background:#09090b;padding:16px 26px;gap:0}
+  .plate .t{font:900 40px/1 ui-sans-serif,system-ui;letter-spacing:.02em;color:var(--logo)}
+  .plate.inv{background:var(--logo)}
+  .plate.inv .t{color:#09090b}
+  @media (max-width:960px){.panelset{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <!-- heavy drawn M, filled -->
+  <path id="Mheavy" d="M8 88 L8 12 L30 12 L50 44 L70 12 L92 12 L92 88 L70 88 L70 52 L59 70 L41 70 L30 52 L30 88 Z"/>
+
+  <!-- vertical machined cut -->
+  <mask id="cut">
+    <rect width="100" height="100" fill="#fff"/>
+    <rect x="48.6" y="0" width="2.8" height="100" fill="#000"/>
+  </mask>
+
+  <!-- M knockout for the chamfered plate -->
+  <mask id="plateM">
+    <path d="M18 0 H82 L100 18 V82 L82 100 H18 L0 82 V18 Z" fill="#fff"/>
+    <g transform="translate(20,20) scale(0.6)"><use href="#Mheavy" fill="#000"/></g>
+  </mask>
+
+  <symbol id="kA" viewBox="0 0 100 100">
+    <use href="#Mheavy" fill="var(--logo)" mask="url(#cut)"/>
+  </symbol>
+
+  <symbol id="kB" viewBox="0 0 100 100">
+    <path d="M18 0 H82 L100 18 V82 L82 100 H18 L0 82 V18 Z"
+          fill="var(--logo)" mask="url(#plateM)"/>
+  </symbol>
+</defs></svg>
+
+<div class="wrap">
+
+  <p class="kicker">Návrh 15 · Značka, tretie kolo</p>
+  <h1>Ťažké a priemyselné</h1>
+  <p class="lede">Podľa zadania: nová značka bez väzby na dnešný tvar, a ťažká — hmota, kontrast,
+     oceľ a betón. Žiadne strechy, žiadne šípky, žiadne tenké čiary. Písmeno M je tu po prvý raz
+     skutočne nakreslené ako plný tvar s hrúbkou drieku, nie ako lomená čiara.</p>
+
+  <p class="brief">Čo som oproti predošlým kolám zmenil: <b>M má hmotu.</b> Driek má šírku 22 z výšky 76,
+     čiže takmer tretinu — to je váha, akú majú priemyselné a šablónové písma. Predtým to bola
+     čiara s rovnomernou hrúbkou, a preto to pôsobilo lacno vedľa vášho dnešného plného bloku.</p>
+
+  <!-- ============ A ============ -->
+  <h2><span class="no">Koncept A</span>Rezané M</h2>
+  <p class="seclede">Plné oranžové M s jedným zvislým rezom v osi. Rez prechádza presne cez vrchol
+     vnútorného klinu, takže značka vyzerá ako dva zvarené kusy plechu — spoj je detail,
+     nie ozdoba. Pri malej veľkosti rez zmizne a zostane plné M.</p>
+  <div class="panelset">
+    <div class="pl"><span class="lock">
+      <svg style="width:74px;height:74px" aria-label="MNSP"><use href="#kA"/></svg>
+      <span><span class="wm" style="color:#09090b">MNSP</span><span class="sl">STAVBY A REKONŠTRUKCIE</span></span>
+    </span></div>
+    <div class="pd"><span class="lock">
+      <svg style="width:74px;height:74px" aria-label="MNSP"><use href="#kA"/></svg>
+      <span><span class="wm" style="color:#fff">MNSP</span><span class="sl">STAVBY A REKONŠTRUKCIE</span></span>
+    </span></div>
+  </div>
+  <div class="sizes">
+    <span class="cell"><svg style="width:64px;height:64px"><use href="#kA"/></svg><p>64 px</p></span>
+    <span class="cell"><svg style="width:40px;height:40px"><use href="#kA"/></svg><p>40 px · hlavička</p></span>
+    <span class="cell"><svg style="width:32px;height:32px"><use href="#kA"/></svg><p>32 px · favicon</p></span>
+  </div>
+  <p class="trade">Rez je vyrezaný, takže preberá farbu podkladu — na bielej biely, na čiernej čierny.
+     Na fotke by bol neistý, preto by tam išla plná verzia bez rezu.</p>
+
+  <!-- ============ B ============ -->
+  <h2><span class="no">Koncept B</span>Zrezaná doska</h2>
+  <p class="seclede">Plná oranžová doska so zrazenými rohmi a vyrezaným M. Zrazený roh je to,
+     čo z obyčajného štvorca spraví obrobený diel — tak vyzerajú štítky na strojoch a bezpečnostné
+     tabuľky. Hmota je tu maximálna a tvar drží aj v tej najmenšej veľkosti.</p>
+  <div class="panelset">
+    <div class="pl"><span class="lock">
+      <svg style="width:74px;height:74px" aria-label="MNSP"><use href="#kB"/></svg>
+      <span><span class="wm" style="color:#09090b">MNSP</span><span class="sl">STAVBY A REKONŠTRUKCIE</span></span>
+    </span></div>
+    <div class="pd"><span class="lock">
+      <svg style="width:74px;height:74px" aria-label="MNSP"><use href="#kB"/></svg>
+      <span><span class="wm" style="color:#fff">MNSP</span><span class="sl">STAVBY A REKONŠTRUKCIE</span></span>
+    </span></div>
+  </div>
+  <div class="sizes">
+    <span class="cell"><svg style="width:64px;height:64px"><use href="#kB"/></svg><p>64 px</p></span>
+    <span class="cell"><svg style="width:40px;height:40px"><use href="#kB"/></svg><p>40 px · hlavička</p></span>
+    <span class="cell"><svg style="width:32px;height:32px"><use href="#kB"/></svg><p>32 px · favicon</p></span>
+  </div>
+  <div class="sizes dark">
+    <span class="cell"><svg style="width:64px;height:64px"><use href="#kB"/></svg><p>64 px</p></span>
+    <span class="cell"><svg style="width:40px;height:40px"><use href="#kB"/></svg><p>40 px · hlavička</p></span>
+    <span class="cell"><svg style="width:32px;height:32px"><use href="#kB"/></svg><p>32 px · favicon</p></span>
+  </div>
+  <p class="trade">Vyrezané M znamená, že písmeno je na čiernej čierne a na bielej biele — značka
+     sa nikdy neprefarbuje a nepotrebuje svetlú a tmavú mutáciu. To je pri takto ťažkom tvare dôležité.</p>
+
+  <!-- ============ C ============ -->
+  <h2><span class="no">Koncept C</span>Štítok</h2>
+  <p class="seclede">Žiadny symbol. Značkou je samotné meno, vysadené v maximálnej váhe na plnej
+     čiernej doske — výrobný štítok, nie logo. Najviac hmoty zo všetkého, čo som zatiaľ ukázal,
+     a jediný koncept, ktorý sa nedá s nikým zameniť, lebo nestojí na tvare, ale na mene.</p>
+  <div class="panelset">
+    <div class="pl">
+      <span style="text-align:center">
+        <span class="plate"><span class="t">MNSP</span></span>
+        <span class="sl" style="margin-top:12px;letter-spacing:.2em;color:var(--logo)">STAVBY A REKONŠTRUKCIE</span>
+      </span>
+    </div>
+    <div class="pd">
+      <span style="text-align:center">
+        <span class="plate inv"><span class="t">MNSP</span></span>
+        <span class="sl" style="margin-top:12px;letter-spacing:.2em;color:var(--logo)">STAVBY A REKONŠTRUKCIE</span>
+      </span>
+    </div>
+  </div>
+  <p class="trade">Na tmavom podklade sa doska preklopí do oranžovej s čiernym nápisom — dve verzie,
+     obe plné. Pre favicon by sa použilo len M z dosky, prípadne koncept B.</p>
+
+  <p class="pick">Odporúčam <b>B — zrezanú dosku</b>. Má najviac hmoty, zrazené rohy jej dávajú
+     charakter, ktorý obyčajný štvorec nemá, vyrezané M ju zbavuje potreby dvoch farebných mutácií
+     a ako jediná drží plnú silu aj pri 32 px. <b>A</b> je elegantnejšie a ak chcete značku bez
+     podkladu — teda samotné písmeno — je to ono, len počítajte s plnou verziou pre fotky.
+     <b>C</b> berte ako doplnok k jednému z nich: doska na dokumenty, faktúry a plachty,
+     symbol na web a favicon.</p>
+
+  <div class="warn"><b>Čo je stále nedotiahnuté</b>
+    M je nakreslené geometricky presne, ale ešte nie opticky. Pri takto ťažkých tvaroch treba
+    driek o niečo zúžiť v miestach, kde sa stretáva s diagonálou, inak sa spoj opticky „zatučnie“.
+    To sa robí v krivkách pri veľkej veľkosti. Nápis MNSP je systémové písmo vo váhe 900 —
+    finálna značka potrebuje vybrané alebo dokreslené písmo.
+  </div>
+
+  <h2><span class="no">Poznámky</span>Obmedzenia</h2>
+  <ul class="flags">
+    <li><b>Toto je úplne nová značka.</b> Podľa zadania nemá väzbu na dnešný šikmý blok ani na malé „m“. Znamená to prekresliť všetko, kde je logo — plachty, autá, pečiatky, dokumenty, profily na sieťach.</li>
+    <li><b>Oranžová ostáva.</b> Je to jediná vec, ktorú som z dnešnej značky ponechal, a zámerne — je to to, podľa čoho vás ľudia poznajú na diaľku. Použil som <code>#F68C05</code> z dnešného loga; treba ju zjednotiť s <code>#F59E0B</code> na webe.</li>
+    <li><b>Koncept A má vyrezaný rez</b>, ktorý preberá farbu podkladu. Na fotke alebo farebnej ploche sa stratí — tam by išla plná verzia bez rezu.</li>
+    <li><b>Koncept C potrebuje dve farebné verzie</b> (čierna doska s oranžovým nápisom a naopak). To je bežné, ale treba to vedieť dopredu.</li>
+    <li>Nič som si o firme nevymyslel — žiadny rok založenia, žiadne certifikáty ani čísla.</li>
+  </ul>
+
+</div>
+</body>
+</html>

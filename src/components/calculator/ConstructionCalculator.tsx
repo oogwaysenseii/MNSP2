@@ -299,7 +299,7 @@ export default function ConstructionCalculator({ children }: { children?: React.
                           <li className="flex gap-1.5 items-center"><Check className="w-3 h-3 text-amber-500"/> Rozpis položiek</li>
                           <li className="flex gap-1.5 items-center"><Check className="w-3 h-3 text-amber-500"/> Harmonogram</li>
                         </ul>
-                        <SimpleContactForm pageName="Kalkulačka - Odhad rozpočtu" hideCalculatorLink={true} />
+                        <SimpleContactForm pageName="Kalkulačka - Odhad rozpočtu" hideCalculatorLink={true} surface="light" />
                       </div>
                     </div>
 

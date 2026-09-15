@@ -32,8 +32,9 @@ export default function Home() {
             <Hero />
             <ServicesGrid />
             <ElevatedUrbanConcept />
-            <Projects compactFilters />
             <CTA pageName="MNSP - Domovská stránka" />
+
+            <Projects compactFilters />
         </>
     );
 }

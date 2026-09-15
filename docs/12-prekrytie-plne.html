@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 12 — Plné prekrytie bez prechodu</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--ease:cubic-bezier(.22,.61,.36,1)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1180px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:80ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2{font:800 22px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:46px 0 6px;
+     padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;color:var(--amber-6);
+         display:block;margin-bottom:9px}
+  h3.sub{font:800 13px/1 ui-sans-serif,system-ui;letter-spacing:.18em;text-transform:uppercase;
+         margin:40px 0 6px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  .seclede{font-size:14px;color:var(--muted);margin:0 0 18px;max-width:84ch}
+  p.note{color:var(--ink-2);margin:0 0 14px}
+  code.i{font:500 13px/1.5 ui-monospace,monospace;background:#e9e9e6;padding:2px 6px;color:#18181b}
+  .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+  .cap{margin:0 0 9px}
+  .cap b{display:block;font:800 15px/1.2 ui-sans-serif,system-ui}
+  .cap span{display:block;font:700 10px/1.4 ui-monospace,monospace;letter-spacing:.14em;
+            text-transform:uppercase;color:var(--muted);margin-top:5px}
+  .trade{font-size:13px;line-height:1.5;color:var(--ink-2);margin:10px 0 0}
+  pre{background:#18181b;color:#e4e4e7;padding:18px 20px;overflow-x:auto;margin:14px 0;
+      font:400 12.5px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;border-left:3px solid var(--amber)}
+  pre .c{color:#71717a} pre .s{color:#86efac} pre .k{color:#f59e0b}
+  .file{display:inline-flex;align-items:center;gap:8px;background:#18181b;color:#fff;
+        font:600 12px/1 ui-monospace,monospace;padding:9px 13px;margin:18px 0 0}
+  .file b{color:var(--amber)}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#92400e}
+  .del{background:#fef2f2;border-left:3px solid #dc2626;padding:12px 16px;margin:10px 0;font-size:14px;color:#7f1d1d}
+  .del b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:30%}
+  td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  ul.check{list-style:none;padding:0;margin:14px 0}
+  ul.check li{padding:9px 0 9px 30px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.check li:before{content:"";position:absolute;left:2px;top:13px;width:13px;height:13px;border:1.5px solid #a1a1aa}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  .pick{margin-top:20px;padding:18px 22px;background:#18181b;color:#fff;font-size:15px;line-height:1.65}
+  .pick b{color:var(--amber)}
+
+  /* ============ tile ============ */
+  .pc{display:block;text-decoration:none;color:inherit;position:relative;
+      transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+  .pc:hover{transform:translateY(-4px);box-shadow:0 22px 52px rgba(0,0,0,.19)}
+  .pc .tile{position:relative;height:400px;overflow:hidden;background:#e5e7eb}
+  .pc .tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.1s var(--ease)}
+  .pc:hover .tile img{transform:scale(1.07)}
+  .pc .idx{position:absolute;top:18px;left:20px;z-index:4}
+  .pc .idx b{display:block;font:700 11px/1 ui-monospace,monospace;letter-spacing:.2em;color:rgba(255,255,255,.78)}
+  .pc .idx i{display:block;width:22px;height:2px;background:var(--amber);margin-top:7px;transition:width .55s var(--ease)}
+  .pc:hover .idx i{width:54px}
+  .pc .cat{display:block;font:700 10px/1 ui-monospace,monospace;letter-spacing:.18em;
+           text-transform:uppercase;color:var(--amber)}
+  .pc h3{font-weight:800;font-size:21px;line-height:1.26;letter-spacing:-.015em;color:#fff;margin:9px 0 0}
+  .pc .metaline{display:block;font:400 10px/1.5 ui-monospace,monospace;letter-spacing:.13em;
+                text-transform:uppercase;color:rgba(255,255,255,.74);margin:11px 0 0}
+  .pc .metaline em{font-style:normal;color:rgba(255,255,255,.34);padding:0 6px}
+  .pc .reveal{overflow:hidden;max-height:0;opacity:0;
+              transition:max-height .5s var(--ease),opacity .35s ease,margin-top .5s var(--ease)}
+  .pc:hover .reveal{max-height:34px;opacity:1;margin-top:13px}
+  .pc .reveal span{display:inline-flex;align-items:center;gap:7px;font:700 10px/1 ui-monospace,monospace;
+                   letter-spacing:.18em;text-transform:uppercase;color:#fff;
+                   border-bottom:1px solid var(--amber);padding-bottom:6px}
+  .pc .over{position:absolute;left:22px;right:22px;bottom:20px;z-index:3}
+  .scrim{position:absolute;z-index:2}
+
+  /* P1 — plný pás, pevná výška */
+  .p1 .scrim{left:0;right:0;bottom:0;height:50%;background:rgba(0,0,0,.82)}
+  /* P2 — plný panel podľa textu */
+  .p2 .over{position:absolute;left:0;right:0;bottom:0;z-index:3;
+            padding:20px 22px;background:rgba(0,0,0,.82)}
+  /* P3 — plné stmavenie celej dlaždice */
+  .p3 .scrim{inset:0;background:rgba(0,0,0,.42)}
+
+  @media (max-width:900px){.row3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 12 · Domovská stránka a /portfólio</p>
+  <h1>Plné prekrytie, bez prechodu</h1>
+  <p class="lede">Namiesto zmäkčeného prechodu plná plocha s ostrou hranou. Sedí to do systému —
+     na celom webe nie je jediný zaoblený roh ani rozmazaná hrana. Tri spôsoby, ako to spraviť.
+     Dlaždice sú živé, prejdite po nich myšou.</p>
+  <p class="status">Stav: <b>neaplikované</b> — iba návrh</p>
+
+  <h3 class="sub">Bežný prípad — dvojriadkový názov</h3>
+  <div class="row3">
+    <div>
+      <p class="cap"><b>P1</b><span>Plný pás, pevná výška</span></p>
+      <a class="pc p1" href="#"><div class="tile">
+        <img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt="">
+        <span class="scrim"></span><span class="idx"><b>01</b><i></i></span>
+        <span class="over"><span class="cat">Občianske stavby</span>
+          <h3>Zariadenie sociálnych služieb Detva</h3>
+          <span class="metaline">Detva<em>·</em>Rok 2026<em>·</em>€ 4.5M</span>
+          <span class="reveal"><span>Zobraziť →</span></span></span>
+      </div></a>
+      <p class="trade">Pás 50 % výšky s ostrou hranou. Hrana je vždy na tom istom mieste, nech je text akýkoľvek dlhý — čiže polovica dlaždice je tmavá aj pri krátkom názve.</p>
+    </div>
+
+    <div>
+      <p class="cap"><b>P2</b><span>Panel podľa textu</span></p>
+      <a class="pc p2" href="#"><div class="tile">
+        <img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt="">
+        <span class="idx"><b>01</b><i></i></span>
+        <span class="over"><span class="cat">Občianske stavby</span>
+          <h3>Zariadenie sociálnych služieb Detva</h3>
+          <span class="metaline">Detva<em>·</em>Rok 2026<em>·</em>€ 4.5M</span>
+          <span class="reveal"><span>Zobraziť →</span></span></span>
+      </div></a>
+      <p class="trade">Panel je presne taký vysoký ako text plus 20 px. Hrana sa hýbe podľa obsahu.</p>
+    </div>
+
+    <div>
+      <p class="cap"><b>P3</b><span>Celá dlaždica</span></p>
+      <a class="pc p3" href="#"><div class="tile">
+        <img src="assets/Domov-socialnych-sluzieb-Detva.webp" alt="">
+        <span class="scrim"></span><span class="idx"><b>01</b><i></i></span>
+        <span class="over"><span class="cat">Občianske stavby</span>
+          <h3>Zariadenie sociálnych služieb Detva</h3>
+          <span class="metaline">Detva<em>·</em>Rok 2026<em>·</em>€ 4.5M</span>
+          <span class="reveal"><span>Zobraziť →</span></span></span>
+      </div></a>
+      <p class="trade">Rovnomerné stmavenie celej fotky, žiadna hrana. Text je čitateľný všade, fotka je ale všade tmavšia.</p>
+    </div>
+  </div>
+
+  <h3 class="sub">Záťažový prípad — trojriadkový názov, prejdite myšou</h3>
+  <p class="seclede">Toto je ten istý najdlhší názov v dátach. Pri prejdení myšou sa vysunie „Zobraziť“
+     a text narastie o 47 px — vtedy sa ukáže, ktoré riešenie drží.</p>
+  <div class="row3">
+    <div>
+      <p class="cap"><b>P1</b><span>Plný pás, pevná výška</span></p>
+      <a class="pc p1" href="#"><div class="tile">
+        <img src="assets/rekonstrukcia-domovu-dochodcov-senior-active-hrinova.webp" alt="">
+        <span class="scrim"></span><span class="idx"><b>03</b><i></i></span>
+        <span class="over"><span class="cat">Občianske stavby</span>
+          <h3>Zariadenie pre seniorov a domov sociálnych služieb SENIOR ACTIVE Hriňová</h3>
+          <span class="metaline">Hriňová<em>·</em>Rok 2025<em>·</em>€ 450 000</span>
+          <span class="reveal"><span>Zobraziť →</span></span></span>
+      </div></a>
+      <p class="trade">Pri 46 % kategória pri hoveri vyskočila nad hranu. Aby sa zmestila, musí mať pás 50 % — a to je polovica fotky tmavá stále, aj keď je názov krátky.</p>
+    </div>
+
+    <div>
+      <p class="cap"><b>P2</b><span>Panel podľa textu</span></p>
+      <a class="pc p2" href="#"><div class="tile">
+        <img src="assets/rekonstrukcia-domovu-dochodcov-senior-active-hrinova.webp" alt="">
+        <span class="idx"><b>03</b><i></i></span>
+        <span class="over"><span class="cat">Občianske stavby</span>
+          <h3>Zariadenie pre seniorov a domov sociálnych služieb SENIOR ACTIVE Hriňová</h3>
+          <span class="metaline">Hriňová<em>·</em>Rok 2025<em>·</em>€ 450 000</span>
+          <span class="reveal"><span>Zobraziť →</span></span></span>
+      </div></a>
+      <p class="trade">Panel narástol spolu s textom a hrana sa posunula. Nič nevyskočí von, nič netreba dolaďovať.</p>
+    </div>
+
+    <div>
+      <p class="cap"><b>P3</b><span>Celá dlaždica</span></p>
+      <a class="pc p3" href="#"><div class="tile">
+        <img src="assets/rekonstrukcia-domovu-dochodcov-senior-active-hrinova.webp" alt="">
+        <span class="scrim"></span><span class="idx"><b>03</b><i></i></span>
+        <span class="over"><span class="cat">Občianske stavby</span>
+          <h3>Zariadenie pre seniorov a domov sociálnych služieb SENIOR ACTIVE Hriňová</h3>
+          <span class="metaline">Hriňová<em>·</em>Rok 2025<em>·</em>€ 450 000</span>
+          <span class="reveal"><span>Zobraziť →</span></span></span>
+      </div></a>
+      <p class="trade">Bez hrany niet čo prasknúť. Ale zadanie bolo „stmavenie len dole za textom“ — toto ho nespĺňa.</p>
+    </div>
+  </div>
+
+  <p class="pick">Odporúčam <b>P2 — panel podľa textu</b>. Pri plnej ploche je hrana viditeľná,
+     takže pevná výška u <b>P1</b> sa musí nastaviť podľa najdlhšieho názvu — a aj tak pri hoveri
+     praskne. Mäkkému prechodu sa to odpúšťalo, ostrej hrane nie. <b>P2</b> túto otázku ruší:
+     hrana ide vždy tam, kde končí text. <b>P3</b> je najbezpečnejšie, ale stmavuje aj tam, kde
+     žiadny text nie je, čiže presne to, čo sme chceli odstrániť.</p>
+
+  <h2><span class="no">Implementácia</span>Variant P2</h2>
+  <p class="note">Rovnako ako pri návrhu 10 sa samostatná vrstva so stmavením <b>ruší</b> a farba
+     sa presunie priamo na textový blok. Ten sa roztiahne na celú šírku a odsadenie preberie zvnútra.</p>
+
+  <div class="file">📄 <b>src/components/sections/Projects.tsx</b> · komponent ProjectTile</div>
+
+  <div class="del"><b>Zmazať celý element</b>
+    Vrstvu s komentárom <code>{/* stmavenie zdola */}</code> — riadky 79 až 82 vrátane
+    <code>group-hover/tile:opacity-[0.92]</code>.</div>
+
+<pre><span class="c">// PRED — textový blok odsadený od okrajov</span>
+&lt;div className=<span class="s">"absolute bottom-5 left-[22px] right-[22px] z-20"</span>&gt;
+
+<span class="c">// PO — blok cez celú šírku, farba a odsadenie na ňom</span>
+&lt;div className=<span class="s">"absolute inset-x-0 bottom-0 z-20 bg-black/80 px-[22px] py-5"</span>&gt;</pre>
+
+  <div class="warn"><b>Prečo bg-black/80 a nie bg-zinc-950</b>
+    Potrebujeme priesvitnosť, aby cez panel bolo tušiť fotku a dlaždica nepôsobila ako dva zlepené
+    obdĺžniky. <code>bg-black/80</code> je 80 % čierna. Ak bude na niektorých fotkách text slabý,
+    zvýšte na <code>/85</code>; ak bude panel príliš ťažký, skúste <code>/72</code>.
+  </div>
+
+  <h2><span class="no">Hodnoty</span>Špecifikácia</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Umiestnenie</td><td><code>absolute inset-x-0 bottom-0</code> — cez celú šírku, prisadnuté k spodku</td></tr>
+    <tr><td>Farba</td><td><code>rgba(0,0,0,0.8)</code> — plná plocha, žiadny prechod</td></tr>
+    <tr><td>Odsadenie</td><td>20 px hore aj dole, 22 px po stranách</td></tr>
+    <tr><td>Horná hrana</td><td>Ostrá, bez prechodu. Kopíruje výšku textu</td></tr>
+    <tr><td>Výška</td><td>Text + 40 px. Na karte širokej 337 px: dvojriadkový názov 137 px (34 % dlaždice), trojriadkový 161 px (40 %), pri prejdení myšou +47 px</td></tr>
+    <tr><td>Vrstvenie</td><td><code>z-20</code>. Poradové číslo ostáva hore vľavo, mimo panela</td></tr>
+    <tr><td>Zaniká</td><td>Vrstva <code>.scrim</code> aj jej prechod krytia pri prejdení myšou</td></tr>
+    <tr><td>Dotknutý súbor</td><td><code>src/components/sections/Projects.tsx</code> — platí pre karusel aj mriežku</td></tr>
+  </table>
+
+  <h2><span class="no">Kontrola</span>Pred odovzdaním</h2>
+  <ul class="check">
+    <li>Horná hrana panela je ostrá a rovná na všetkých dlaždiciach.</li>
+    <li>Dlaždica „SENIOR ACTIVE Hriňová“ má panel vyšší než ostatné — má to tak byť.</li>
+    <li>Pri prejdení myšou panel narastie a hrana sa posunie hore; text nikdy nevyjde von.</li>
+    <li>Cez panel je stále tušiť fotku, nepôsobí ako plná čierna.</li>
+    <li>Poradové číslo vľavo hore je čitateľné — je nad panelom, nie v ňom.</li>
+    <li>To isté platí na <code class="i">/portfólio</code> v mriežke.</li>
+    <li>Na mobile pri dlaždici 340 px panel nezaberá viac než polovicu.</li>
+  </ul>
+
+  <h2><span class="no">Poznámky</span>Na doplnenie</h2>
+  <ul class="flags">
+    <li><b>Zaniká stmavovanie pri prejdení myšou</b> (<code>group-hover/tile:opacity-[0.92]</code>). Pri plnej ploche nedáva zmysel — panel sa namiesto toho zväčší, čo je výraznejšia reakcia.</li>
+    <li><b>Poradové číslo stratí podklad.</b> Doteraz mu ho dávala celoplošná vrstva. Na fotke s jasnou oblohou v ľavom hornom rohu môže byť slabšie čitateľné — týka sa to aj návrhu 10 a platí pre každé riešenie, ktoré stmavenie sťahuje dole.</li>
+    <li><b>Dlaždice budú mať rôzne vysoké panely.</b> V rade vedľa seba to je vidieť. Považujem to za správne — panel patrí textu, nie dlaždici — ale je to zmena oproti dnešku, kde je stmavenie na všetkých rovnaké.</li>
+    <li>Ak by ste chceli úplne nepriehľadný panel bez tušenia fotky, stačí <code>bg-zinc-950</code> namiesto <code>bg-black/80</code>. Vyzerá to tvrdšie a dlaždica sa opticky rozpadne na fotku a štítok.</li>
+  </ul>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 07 — CTA, prémiové varianty</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--ease:cubic-bezier(.22,.61,.36,1)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1340px;margin:0 auto;padding:48px 32px 110px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 40px/1.1 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:78ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2.sec{font:800 13px/1 ui-sans-serif,system-ui;letter-spacing:.18em;text-transform:uppercase;
+         margin:54px 0 6px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  .seclede{font-size:14px;color:var(--muted);margin:0 0 18px;max-width:84ch}
+  .tag{display:inline-flex;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+       text-transform:uppercase;padding:6px 11px;margin:0 0 14px;background:#fef3c7;color:#92400e;border:1px solid #92400e}
+  .stage{border:1px solid #d4d4d8;background:#fff;overflow:hidden}
+  .hint{display:flex;gap:10px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);
+        padding:12px 16px;margin:0 0 16px;font-size:14px;color:var(--ink-2)}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:11px 15px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:24%}
+  td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  .pick{margin-top:20px;padding:18px 22px;background:#18181b;color:#fff;font-size:15px;line-height:1.65}
+  .pick b{color:var(--amber)}
+  .neighbour{background:#fff;padding:16px 24px;font:700 10px/1 ui-monospace,monospace;
+             letter-spacing:.16em;text-transform:uppercase;color:#a1a1aa;border-bottom:1px solid #e5e7eb}
+  .neighbour.foot{background:#18181b;color:#52525b;border:0;border-top:1px solid #27272a}
+
+  /* ============== shared ============== */
+  .cta{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .cta input{font:inherit;width:100%;outline:none}
+  .cta button{font:inherit;cursor:pointer;border:0;display:inline-flex;align-items:center;
+              justify-content:center;gap:8px;transition:background .25s,border-color .25s,color .25s}
+  .lab{display:block;font:700 9px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase}
+  .eyebrow{display:block;font:700 10px/1 ui-monospace,monospace;letter-spacing:.2em;
+           text-transform:uppercase;color:var(--amber)}
+
+  /* ---- D · FOTOGRAFICKÁ ---- */
+  .vd .band{background:#fff;padding:96px 0}
+  .vd .outer{padding:0 32px}
+  .vd .card{position:relative;overflow:hidden;min-height:520px;display:flex;align-items:center}
+  .vd .bg{position:absolute;inset:0}
+  .vd .bg img{width:100%;height:100%;object-fit:cover;display:block}
+  .vd .scrim{position:absolute;inset:0;
+    background:linear-gradient(to right,rgba(0,0,0,.96) 0%,rgba(0,0,0,.88) 38%,rgba(0,0,0,.55) 70%,rgba(0,0,0,.42) 100%)}
+  .vd .inner{position:relative;z-index:2;display:flex;gap:72px;align-items:center;padding:72px;width:100%}
+  .vd .col1{width:56%}
+  .vd h2{font-weight:800;font-size:46px;line-height:1.05;letter-spacing:-.028em;color:#fff;margin:22px 0 0}
+  .vd .amb{color:var(--amber);font-weight:500;font-size:17px;line-height:1.6;border-left:2px solid var(--amber);
+           padding-left:20px;margin:26px 0 0;max-width:34rem}
+  .vd .desc{color:#d4d4d8;font-weight:400;font-size:14px;line-height:1.65;margin:24px 0 0;max-width:32rem}
+  .vd .panel{width:44%;background:#09090b;border:1px solid rgba(255,255,255,.12);padding:40px 36px;
+             box-shadow:0 30px 70px rgba(0,0,0,.5)}
+  .vd .panel .lab{color:#71717a;margin-bottom:9px}
+  .vd .fld{margin-bottom:22px}
+  .vd input{background:#18181b;border:1px solid #3f3f46;padding:14px 16px;color:#fff;transition:border-color .25s}
+  .vd input::placeholder{color:#52525b}
+  .vd input:focus{border-color:var(--amber)}
+  .vd .send{background:var(--amber);color:#09090b;font-weight:700;font-size:14px;padding:15px 24px;width:100%}
+  .vd .send:hover{background:#fbbf24}
+  .vd .calc{background:transparent;border:1px solid #3f3f46;color:#fff;font-weight:500;font-size:14px;
+            padding:15px 24px;width:100%;margin-top:12px}
+  .vd .calc:hover{border-color:var(--amber);color:var(--amber)}
+
+  /* ---- E · VEĽKÝ FORMÁT ---- */
+  .ve .band{background:#09090b;padding:120px 0}
+  .ve .outer{padding:0 48px;max-width:1400px;margin:0 auto}
+  .ve h2{font-weight:800;font-size:76px;line-height:.98;letter-spacing:-.035em;color:#fff;margin:26px 0 0;max-width:16ch}
+  .ve .amb{color:var(--amber);font-weight:500;font-size:19px;line-height:1.55;margin:30px 0 0;max-width:46ch}
+  .ve .desc{color:#71717a;font-weight:400;font-size:14px;line-height:1.6;margin:18px 0 0;max-width:46ch}
+  .ve .formrow{display:grid;grid-template-columns:1fr 1fr auto;gap:28px;align-items:end;
+               margin-top:72px;padding-top:40px;border-top:1px solid #27272a}
+  .ve .lab{color:#52525b;margin-bottom:14px}
+  .ve input{background:transparent;border:0;border-bottom:1px solid #3f3f46;padding:0 0 14px;
+            color:#fff;font-size:19px;transition:border-color .3s}
+  .ve input::placeholder{color:#3f3f46}
+  .ve input:focus{border-bottom-color:var(--amber)}
+  .ve .send{background:var(--amber);color:#09090b;font-weight:700;font-size:14px;padding:17px 38px;white-space:nowrap}
+  .ve .send:hover{background:#fbbf24}
+  .ve .calcline{margin-top:28px;font-weight:400;font-size:13px;line-height:1;color:#52525b}
+  .ve .calcline a{color:#a1a1aa;text-decoration:none;border-bottom:1px solid #3f3f46;padding-bottom:3px;
+                  transition:color .25s,border-color .25s}
+  .ve .calcline a:hover{color:var(--amber);border-color:var(--amber)}
+
+  /* ---- F · VÝKRESOVÁ MRIEŽKA ---- */
+  .vf .band{background:#fff;padding:96px 0}
+  .vf .outer{padding:0 32px}
+  .vf .card{background:#09090b;padding:56px;position:relative;overflow:hidden;
+            display:flex;gap:64px;align-items:flex-start}
+  .vf .grid{position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:40px 40px}
+  .vf .col1{width:52%;position:relative;z-index:2}
+  .vf h2{font-weight:800;font-size:44px;line-height:1.06;letter-spacing:-.025em;color:#fff;margin:20px 0 0}
+  .vf .amb{color:var(--amber);font-weight:500;font-size:17px;line-height:1.6;margin:24px 0 0;max-width:32rem}
+  .vf .desc{color:#a1a1aa;font-weight:400;font-size:14px;line-height:1.65;margin:22px 0 0;max-width:32rem}
+  .vf .cells{width:48%;position:relative;z-index:2;border:1px solid #3f3f46;background:rgba(9,9,11,.72)}
+  .vf .cell{border-bottom:1px solid #3f3f46;padding:18px 20px;transition:background .3s}
+  .vf .cell:focus-within{background:rgba(245,158,11,.06)}
+  .vf .cell .lab{color:#71717a;margin-bottom:10px;transition:color .3s}
+  .vf .cell:focus-within .lab{color:var(--amber)}
+  .vf input{background:transparent;border:0;padding:0;color:#fff;font-size:17px}
+  .vf input::placeholder{color:#3f3f46}
+  .vf .actions{display:grid;grid-template-columns:1fr 1fr}
+  .vf .send{background:var(--amber);color:#09090b;font-weight:700;font-size:13px;padding:18px 20px;
+            border-right:1px solid #09090b}
+  .vf .send:hover{background:#fbbf24}
+  .vf .calc{background:transparent;color:#fff;font-weight:500;font-size:13px;padding:18px 20px}
+  .vf .calc:hover{background:rgba(255,255,255,.06);color:var(--amber)}
+
+  @media (max-width:1040px){
+    .vd .inner,.vf .card{flex-direction:column;gap:40px;padding:40px}
+    .vd .col1,.vd .panel,.vf .col1,.vf .cells{width:100%}
+    .ve h2{font-size:44px}
+    .ve .formrow{grid-template-columns:1fr;gap:26px}
+    .ve .band{padding:72px 0}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 07 · Celý web</p>
+  <h1>CTA — prémiové varianty</h1>
+  <p class="lede">Druhé kolo. Predchádzajúce tri varianty riešili poriadok — tieto tri riešia dojem.
+     Všetky stoja na rovnakom systéme (ostré rohy, čierna a jantárová, monospace popisky) a všetky
+     opravujú tých šesť chýb z návrhu 06. Sekcie sú živé — klikajte do polí.</p>
+  <p class="status">Stav: <b>neaplikované</b> — iba návrh</p>
+
+  <p class="hint" style="margin-top:32px"><b>Pozn.:</b>&nbsp; všetky tri majú 96–120 px zvislého odsadenia,
+     takže sa karta už nedotýka projektov nad sebou ani pätičky pod sebou.</p>
+
+  <h2 class="sec">D · Fotografická</h2>
+  <p class="seclede">Za textom je fotka skutočnej realizácie — presne tá istá reč, akú sme práve postavili
+     v sekcii projektov, len so stmavením zľava doprava namiesto zdola nahor, aby text vľavo držal
+     čitateľnosť a stavba vpravo ostala vidieť. Formulár je pevný čierny panel položený na fotke.</p>
+  <p class="tag">Najviac v súlade s novou sekciou projektov</p>
+  <div class="stage">
+    <div class="neighbour">↑ sekcia realizované projekty</div>
+    <div class="cta vd"><div class="band"><div class="outer">
+      <div class="card">
+        <div class="bg"><img src="assets/rodinny-dom-banska-bystrica-slnecne-strane.webp" alt=""><span class="scrim"></span></div>
+        <div class="inner">
+          <div class="col1">
+            <span class="eyebrow">Nezáväzná cenová ponuka</span>
+            <h2>Plánujete stavbu či rekonštrukciu?</h2>
+            <p class="amb">Vypracujeme vám detailnú cenovú ponuku, vďaka ktorej získate úplný prehľad o nákladoch a platobných podmienkach pre váš projekt.</p>
+            <p class="desc">Stačí ak nám zanecháte vaše údaje a my vás budeme kontaktovať.</p>
+          </div>
+          <div class="panel">
+            <div class="fld"><label class="lab" for="d1">Telefón</label>
+              <input id="d1" type="tel" placeholder="+421 900 000 000"></div>
+            <div class="fld"><label class="lab" for="d2">E-mail</label>
+              <input id="d2" type="email" placeholder="meno@email.sk"></div>
+            <button class="send" type="button">Odoslať →</button>
+            <button class="calc" type="button">Kalkulačka</button>
+          </div>
+        </div>
+      </div>
+    </div></div></div>
+    <div class="neighbour foot">↓ pätička</div>
+  </div>
+
+  <h2 class="sec">E · Veľký formát</h2>
+  <p class="seclede">Celá sekcia sa preklopí na čiernu a nadpis narastie na 76 px. Formulár sa scvrkne
+     na jeden riadok pod vlasovou linkou — dve polia bez rámčekov a tlačidlo. Kalkulačka klesne
+     na tichý textový odkaz. Prémiovosť tu robí veľkosť písma a množstvo prázdnej čiernej plochy.</p>
+  <p class="tag">Najtichšie a najdrahšie pôsobiace</p>
+  <div class="stage">
+    <div class="neighbour">↑ sekcia realizované projekty</div>
+    <div class="cta ve"><div class="band"><div class="outer">
+      <span class="eyebrow">Nezáväzná cenová ponuka</span>
+      <h2>Plánujete stavbu či rekonštrukciu?</h2>
+      <p class="amb">Vypracujeme vám detailnú cenovú ponuku, vďaka ktorej získate úplný prehľad o nákladoch a platobných podmienkach pre váš projekt.</p>
+      <p class="desc">Stačí ak nám zanecháte vaše údaje a my vás budeme kontaktovať.</p>
+      <div class="formrow">
+        <div><label class="lab" for="e1">Telefón</label>
+          <input id="e1" type="tel" placeholder="+421 900 000 000"></div>
+        <div><label class="lab" for="e2">E-mail</label>
+          <input id="e2" type="email" placeholder="meno@email.sk"></div>
+        <button class="send" type="button">Odoslať →</button>
+      </div>
+      <p class="calcline">Chcete si cenu odhadnúť sami? <a href="#">Otvoriť kalkulačku</a></p>
+    </div></div></div>
+    <div class="neighbour foot">↓ pätička</div>
+  </div>
+
+  <h2 class="sec">F · Výkresová mriežka</h2>
+  <p class="seclede">Pozadie karty nesie jemnú mriežku ako stavebný výkres. Formulár je tabuľka buniek
+     so spoločnými vlasovými linkami — každé pole je bunka s monospace popiskom a aktívna bunka sa
+     jemne podfarbí jantárovou. Tlačidlá tvoria poslednú bunku cez celú šírku.</p>
+  <p class="tag">Najviac „stavebná dokumentácia“</p>
+  <div class="stage">
+    <div class="neighbour">↑ sekcia realizované projekty</div>
+    <div class="cta vf"><div class="band"><div class="outer">
+      <div class="card">
+        <span class="grid"></span>
+        <div class="col1">
+          <span class="eyebrow">Nezáväzná cenová ponuka</span>
+          <h2>Plánujete stavbu či rekonštrukciu?</h2>
+          <p class="amb">Vypracujeme vám detailnú cenovú ponuku, vďaka ktorej získate úplný prehľad o nákladoch a platobných podmienkach pre váš projekt.</p>
+          <p class="desc">Stačí ak nám zanecháte vaše údaje a my vás budeme kontaktovať.</p>
+        </div>
+        <div class="cells">
+          <div class="cell"><label class="lab" for="f1">Telefón</label>
+            <input id="f1" type="tel" placeholder="+421 900 000 000"></div>
+          <div class="cell"><label class="lab" for="f2">E-mail</label>
+            <input id="f2" type="email" placeholder="meno@email.sk"></div>
+          <div class="actions">
+            <button class="send" type="button">Odoslať →</button>
+            <button class="calc" type="button">Kalkulačka</button>
+          </div>
+        </div>
+      </div>
+    </div></div></div>
+    <div class="neighbour foot">↓ pätička</div>
+  </div>
+
+  <p class="pick">Odporúčam <b>D — fotografickú</b>. Práve sme postavili sekciu projektov na fotkách
+     realizácií a na tom istom stmavení; CTA na fotke je jej prirodzené pokračovanie a posledné, čo
+     návštevník na stránke uvidí, je vaša hotová stavba — nie prázdna čierna plocha.
+     <b>E</b> je najelegantnejšie a keby web predával architektúru, volil by som ju — ale 76 px nadpis
+     a jeden riadok polí sa zopakuje na každej podstránke a časom môže pôsobiť chladne.
+     <b>F</b> je najoriginálnejšie a najbližšie k remeslu; berte ho, ak chcete, aby si web zapamätali
+     podľa detailu, nie podľa fotky.</p>
+
+  <h2 class="sec">Špecifikácia — variant D</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Odsadenie sekcie</td><td><code>py-24</code> — 96 px hore aj dole (teraz 0). Mobil <code>py-16</code></td></tr>
+    <tr><td>Karta</td><td>Minimálna výška 520 px, vnútorné odsadenie 72 px (mobil 40 px), <code>overflow:hidden</code></td></tr>
+    <tr><td>Fotka</td><td><code>object-cover</code> cez celú kartu. Next <code>&lt;Image fill&gt;</code>, <code>sizes="100vw"</code>, <code>quality={70}</code>, bez <code>priority</code></td></tr>
+    <tr><td>Stmavenie</td><td><code>linear-gradient(to right, rgba(0,0,0,.96) 0%, rgba(0,0,0,.88) 38%, rgba(0,0,0,.55) 70%, rgba(0,0,0,.42) 100%)</code> — vodorovné, nie zvislé</td></tr>
+    <tr><td>Nadradený text</td><td>10 px, mono, váha 700, letter-spacing 0.2em, veľké písmená, <code>#F59E0B</code></td></tr>
+    <tr><td>Nadpis</td><td>46 px, váha 800, letter-spacing −0.028em, <code>#FFFFFF</code>, horný odstup 22 px</td></tr>
+    <tr><td>Podnadpis</td><td>17 px, váha 500, <code>#F59E0B</code>, ľavá linka 2 px, odsadenie zľava 20 px</td></tr>
+    <tr><td>Panel formulára</td><td>Šírka 44 %, <code>#09090B</code>, rámik <code>1px rgba(255,255,255,.12)</code>, odsadenie 40/36 px, tieň <code>0 30px 70px rgba(0,0,0,.5)</code></td></tr>
+    <tr><td>Polia</td><td><code>#18181B</code>, rámik <code>#3F3F46</code>, odsadenie 14/16 px, biely text; pri písaní rámik <code>#F59E0B</code></td></tr>
+    <tr><td>Popisky polí</td><td>9 px, mono, váha 700, letter-spacing 0.18em, <code>#71717A</code> — do dnes prázdneho <code>&lt;label&gt;</code></td></tr>
+    <tr><td>Odoslať</td><td><code>#F59E0B</code> na <code>#09090B</code>, váha 700, 14 px, odsadenie 15/24 px, plná šírka</td></tr>
+    <tr><td>Kalkulačka</td><td>Pod tlačidlom (nie vedľa), odstup 12 px, priehľadné, rámik <code>#3F3F46</code></td></tr>
+    <tr><td>Zaoblenie rohov</td><td>Žiadne — nulový polomer</td></tr>
+    <tr><td>Dotknuté súbory</td><td><code>src/components/sections/CTA.tsx</code>, <code>src/components/ui/SimpleContactForm.tsx</code></td></tr>
+  </table>
+
+  <h2 class="sec">Poznámky a obmedzenia</h2>
+  <ul class="flags">
+    <li><b>Variant D potrebuje vybrať jednu fotku.</b> V ukážke je rodinný dom v Banskej Bystrici. Mala by to byť hotová a reprezentatívna realizácia — objaví sa na každej podstránke webu, takže ju uvidia všetci a stále tú istú.</li>
+    <li><b>Fotka na pozadí pridá váhu na každú stránku.</b> Je pod hero, takže nie je kritická pre prvé vykreslenie, ale patrí jej <code>loading="lazy"</code> a rozumná kvalita — pri <code>quality={70}</code> a šírke 1920 px hovoríme rádovo o 120–180 kB.</li>
+    <li><b>Nadradený text „Nezáväzná cenová ponuka“ je stále moja formulácia</b>, rovnako ako v návrhu 06. Objaví sa vo všetkých troch variantoch — schváľte ju alebo dajte vlastnú.</li>
+    <li><b>Popisky „Telefón“ a „E-mail“ pribúdajú.</b> Zaplnia dnes prázdne <code>&lt;label&gt;</code>, takže polia prestanú byť pre čítačky obrazovky nepomenované. Nie je to nový marketingový text, sú to názvy polí.</li>
+    <li><b>Vo variante E klesá kalkulačka na textový odkaz.</b> Tlačidlo nezaniká, mení sa na odkaz — ale je to oslabenie druhej cesty ku konverzii. Ak je kalkulačka dôležitá, variant E nie je správna voľba.</li>
+    <li>Výstražný pruh z dnešnej verzie nie je ani v jednom z týchto troch variantov. Fotka, veľké písmo aj mriežka sú samostatné grafické prvky — pruh navyše by si s nimi konkuroval.</li>
+    <li><b>Formulár stále hlási výsledok cez <code>alert()</code>.</b> Platí to pre všetky varianty a na takto viditeľnom mieste to pôsobí lacno. Stav priamo vo formulári je samostatný návrh.</li>
+    <li>Telefón je povinný, e-mail nie — ani v jednom variante to zatiaľ nie je vidieť.</li>
+  </ul>
+
+</div>
+</body>
+</html>

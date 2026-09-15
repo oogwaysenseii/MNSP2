@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implementácia — Prekrytie dlaždíc (O1)</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1040px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);margin:0}
+  .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  .tagi{font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase;
+        padding:8px 13px;background:#fff;border:1px solid var(--line)}
+  .tagi b{color:var(--amber-6)}
+  h2{font:800 22px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:44px 0 6px;
+     padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;color:var(--amber-6);
+         display:block;margin-bottom:9px}
+  p.note{color:var(--ink-2);margin:0 0 14px}
+  code.i{font:500 13px/1.5 ui-monospace,monospace;background:#e9e9e6;padding:2px 6px;color:#18181b}
+  pre{background:#18181b;color:#e4e4e7;padding:18px 20px;overflow-x:auto;margin:14px 0;
+      font:400 12.5px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;border-left:3px solid var(--amber)}
+  pre .c{color:#71717a} pre .s{color:#86efac} pre .k{color:#f59e0b}
+  .file{display:inline-flex;align-items:center;gap:8px;background:#18181b;color:#fff;
+        font:600 12px/1 ui-monospace,monospace;padding:9px 13px;margin:18px 0 0}
+  .file b{color:var(--amber)}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#92400e}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  .tight td:first-child{font-weight:600;width:34%}
+  .ok{color:#065f46;font-weight:700}
+  .edge{color:#92400e;font-weight:700}
+  ul.check{list-style:none;padding:0;margin:14px 0}
+  ul.check li{padding:9px 0 9px 30px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.check li:before{content:"";position:absolute;left:2px;top:13px;width:13px;height:13px;border:1.5px solid #a1a1aa}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Implementácia · pre vývojára</p>
+  <h1>Prekrytie dlaždíc — variant O1</h1>
+  <p class="lede">Stmavenie na dlaždiciach projektov sa skráti tak, aby končilo nižšie a fotka
+     ostala čistá vo vrchných dvoch tretinách. Je to zmena <b>jedného riadku</b> v jednom súbore.</p>
+
+  <div class="meta">
+    <span class="tagi">Súbor: <b>1</b></span>
+    <span class="tagi">Riadok: <b>81</b></span>
+    <span class="tagi">Zmena: <b>1 riadok</b></span>
+    <span class="tagi">Platí pre karusel aj mriežku</span>
+  </div>
+
+  <h2><span class="no">Krok 01</span>Zmeniť prechod</h2>
+  <p class="note">V komponente <code class="i">ProjectTile</code>, vo vrstve s komentárom
+     <code class="i">{/* stmavenie zdola */}</code>. Mení sa iba hodnota v <code class="i">bg-[...]</code>,
+     ostatné triedy na tom istom elemente ostávajú.</p>
+
+  <div class="file">📄 <b>src/components/sections/Projects.tsx</b> · riadok 81</div>
+<pre><span class="c">// PRED</span>
+bg-[linear-gradient(to_top,rgba(0,0,0,.9)_0%,rgba(0,0,0,.5)_32%,transparent_62%)]
+
+<span class="c">// PO</span>
+bg-[linear-gradient(to_top,rgba(0,0,0,.92)_0%,rgba(0,0,0,.6)_20%,transparent_42%)]</pre>
+
+  <p class="note">Celý element po zmene:</p>
+<pre>{<span class="c">/* stmavenie zdola */</span>}
+&lt;div className=<span class="s">"absolute inset-0 transition-opacity duration-500
+  bg-[linear-gradient(to_top,rgba(0,0,0,.92)_0%,rgba(0,0,0,.6)_20%,transparent_42%)]
+  group-hover/tile:opacity-[0.92]"</span> /&gt;</pre>
+
+  <div class="warn"><b>Podčiarknuté medzery nie sú preklep</b>
+    V Tailwinde sa v hranatých zátvorkách nesmú vyskytnúť medzery — nahrádzajú sa podčiarkovníkom.
+    Ak sa niekde omylom objaví skutočná medzera, trieda sa nevygeneruje a stmavenie zmizne úplne.
+  </div>
+
+  <h2><span class="no">Krok 02</span>Jeden hraničný prípad</h2>
+  <p class="note">Namerané priamo na bežiacej stránke pri šírke karty 337 px a výške dlaždice 400 px.
+     Čísla hovoria, kde je horná hrana textového bloku — čím vyššie percento, tým bližšie k hranici,
+     kde prechod končí.</p>
+
+  <table class="tight">
+    <tr><th>Prípad</th><th>Horná hrana textu</th><th>Prechod končí na 42 %</th></tr>
+    <tr><td>Dvojriadkový názov</td><td>29 % zdola</td><td class="ok">Bezpečne vnútri</td></tr>
+    <tr><td>Dvojriadkový, pri prejdení myšou</td><td>36 % zdola</td><td class="ok">Vnútri</td></tr>
+    <tr><td>Trojriadkový názov</td><td>35 % zdola</td><td class="ok">Vnútri</td></tr>
+    <tr><td>Trojriadkový, pri prejdení myšou</td><td>42 % zdola</td><td class="edge">Presne na hranici</td></tr>
+  </table>
+
+  <p class="note">V dátach je taký názov jeden — <i>„Zariadenie pre seniorov a domov sociálnych služieb
+     SENIOR ACTIVE Hriňová“</i>. Keď na tú dlaždicu prejdete myšou, vysunie sa „Zobraziť“, celý blok
+     sa posunie o 47 px hore a jantárový popisok kategórie skončí presne tam, kde je prechod už
+     priehľadný — teda na neupravenej fotke.</p>
+
+  <div class="warn"><b>Ak to chcete poistiť</b>
+    Posuňte koniec prechodu zo 42 % na 48 %. Fotka ostane výrazne čistejšia než dnes
+    (dnes 62 %) a aj hraničný prípad dostane rezervu:
+    <pre style="margin:12px 0 0">bg-[linear-gradient(to_top,rgba(0,0,0,.92)_0%,rgba(0,0,0,.58)_22%,transparent_48%)]</pre>
+  </div>
+
+  <h2><span class="no">Krok 03</span>Čo sa nemení</h2>
+  <table class="tight">
+    <tr><th>Vec</th><th>Stav</th></tr>
+    <tr><td>Poloha textu</td><td>Bez zmeny — <code>absolute bottom-5 left-[22px] right-[22px]</code></td></tr>
+    <tr><td>Stmavenie pri prejdení myšou</td><td>Ostáva <code>group-hover/tile:opacity-[0.92]</code></td></tr>
+    <tr><td>Ostatné animácie</td><td>Priblíženie fotky, nadvihnutie, linka pri čísle, „Zobraziť“ — bez zásahu</td></tr>
+    <tr><td>Výška dlaždice</td><td>400 px desktop, 340 px mobil — bez zmeny</td></tr>
+    <tr><td>Mriežka na /portfólio</td><td>Zmení sa spolu s karuselom, keďže obe používajú ten istý <code>ProjectTile</code></td></tr>
+  </table>
+
+  <h2><span class="no">Krok 04</span>Kontrola</h2>
+  <ul class="check">
+    <li>Vrchné dve tretiny fotky sú viditeľne svetlejšie než pred zmenou.</li>
+    <li>Názov, kategória aj riadok s údajmi ostávajú čitateľné na všetkých jedenástich dlaždiciach.</li>
+    <li>Dlaždica „SENIOR ACTIVE Hriňová“ — prejdite po nej myšou a skontrolujte, či je jantárová kategória ešte čitateľná.</li>
+    <li>Poradové číslo vľavo hore je nedotknuté (je nad prechodom, nie pod ním).</li>
+    <li>To isté platí aj na <code class="i">/portfólio</code> v mriežke.</li>
+    <li>Na mobile pri výške dlaždice 340 px sa text stále zmestí do stmavenej časti.</li>
+  </ul>
+
+  <h2><span class="no">Poznámky</span>Na doplnenie</h2>
+  <ul class="flags">
+    <li><b>Hodnoty v tabuľke platia pre kartu širokú 337 px</b> — to je karusel na bežnom notebooku. Na širšej obrazovke sú karty širšie, názvy sa zalomia do menej riadkov a hraničný prípad zmizne úplne.</li>
+    <li><b>Na mobile má dlaždica 340 px namiesto 400 px</b>, takže rovnaký text zaberá väčšie percento výšky. Karta je tam ale jedna cez celú šírku, takže sa názvy lámu do menej riadkov — v praxi to vychádza podobne. Stojí za to pozrieť sa na to na telefóne.</li>
+    <li>Zvažoval som pridať pod poradové číslo vlastný malý prechod, keďže po skrátení má menej podkladu. Na súčasných fotkách to nie je potrebné — ale ak pribudne realizácia s jasnou oblohou v ľavom hornom rohu, bude to prvé, čo bude treba doriešiť.</li>
+  </ul>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implementácia — CTA, kompaktná čierna (S3)</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--code-bg:#18181b;--code-fg:#e4e4e7}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1120px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);margin:0}
+  .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  .tagi{font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase;
+        padding:8px 13px;background:#fff;border:1px solid var(--line)}
+  .tagi b{color:var(--amber-6)}
+  h2{font:800 22px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:46px 0 6px;
+     padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;color:var(--amber-6);
+         display:block;margin-bottom:9px}
+  h3{font:700 15px/1.3 ui-sans-serif,system-ui;margin:26px 0 8px}
+  p.note{color:var(--ink-2);margin:0 0 14px}
+  code.i{font:500 13px/1.5 ui-monospace,monospace;background:#e9e9e6;padding:2px 6px;color:#18181b}
+  pre{background:var(--code-bg);color:var(--code-fg);padding:18px 20px;overflow-x:auto;margin:14px 0;
+      font:400 12.5px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;border-left:3px solid var(--amber)}
+  pre .c{color:#71717a}
+  pre .k{color:#f59e0b}
+  pre .s{color:#86efac}
+  pre .t{color:#7dd3fc}
+  .file{display:inline-flex;align-items:center;gap:8px;background:#18181b;color:#fff;
+        font:600 12px/1 ui-monospace,monospace;padding:9px 13px;margin:18px 0 0}
+  .file b{color:var(--amber)}
+  .del,.add{padding:12px 16px;margin:10px 0;font-size:14px;border-left:3px solid}
+  .del{background:#fef2f2;border-color:#dc2626;color:#7f1d1d}
+  .add{background:#f0fdf4;border-color:#16a34a;color:#14532d}
+  .del b,.add b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+                text-transform:uppercase;margin-bottom:7px}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#92400e}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:26%}
+  td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  ul.check{list-style:none;padding:0;margin:14px 0}
+  ul.check li{padding:9px 0 9px 30px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.check li:before{content:"";position:absolute;left:2px;top:13px;width:13px;height:13px;border:1.5px solid #a1a1aa}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  .stage{border:1px solid #d4d4d8;background:#fff;overflow:hidden;margin:16px 0}
+  .neighbour{background:#fff;padding:14px 24px;font:700 10px/1 ui-monospace,monospace;
+             letter-spacing:.16em;text-transform:uppercase;color:#a1a1aa;border-bottom:1px solid #e5e7eb}
+  .neighbour.foot{background:#18181b;color:#52525b;border:0;border-top:1px solid #27272a}
+
+  /* ============ live final design ============ */
+  .cta{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .cta .band{background:#fff;padding:80px 0}
+  .cta .outer{padding:0 32px}
+  .cta .card{background:#09090b;position:relative;overflow:hidden;
+             display:flex;gap:64px;align-items:center;padding:24px 28px}
+  .cta .shapes{position:absolute;inset:0;pointer-events:none;z-index:1}
+  .cta .wedge{position:absolute;inset:0;left:auto;width:46%;
+              background:linear-gradient(115deg,transparent 0%,rgba(245,158,11,.13) 55%,rgba(245,158,11,.03) 100%);
+              clip-path:polygon(28% 0,100% 0,100% 100%,0 100%)}
+  .cta .rule{position:absolute;top:-30%;height:160%;width:1px;background:rgba(255,255,255,.07);transform:rotate(18deg)}
+  .cta .rule.r1{right:34%}
+  .cta .rule.r2{right:28%;background:rgba(245,158,11,.22)}
+  .cta .rule.r3{right:20%}
+  .cta .col1{width:57%;position:relative;z-index:3}
+  .cta .eyebrow{display:block;font:700 10px/1 ui-monospace,monospace;letter-spacing:.2em;
+                text-transform:uppercase;color:var(--amber)}
+  .cta h2{font-weight:800;font-size:38px;line-height:1.08;letter-spacing:-.028em;color:#fff;margin:16px 0 0;
+          border:0;padding:0}
+  .cta .amb{color:var(--amber);font-weight:500;font-size:16px;line-height:1.55;
+            border-left:2px solid var(--amber);padding-left:18px;margin:20px 0 0;max-width:34rem}
+  .cta .desc{color:#a1a1aa;font-weight:400;font-size:13.5px;line-height:1.6;margin:16px 0 0;max-width:32rem}
+  .cta .formcol{width:43%;position:relative;z-index:3}
+  .cta input{font:inherit;width:100%;outline:none;background:#fff;border:1px solid #fff;
+             padding:15px 18px;color:#18181b;font-size:15px;transition:box-shadow .2s,border-color .2s}
+  .cta input::placeholder{color:#a1a1aa}
+  .cta input:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,158,11,.45)}
+  .cta .fld{margin-bottom:14px}
+  .cta .btns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+  .cta button{font:inherit;cursor:pointer;border:0;display:inline-flex;align-items:center;
+              justify-content:center;gap:8px;transition:background .25s,border-color .25s,color .25s}
+  .cta .send{background:var(--amber);color:#09090b;font-weight:700;font-size:14px;padding:15px 20px}
+  .cta .send:hover{background:#fbbf24}
+  .cta .calc{background:transparent;border:1px solid #3f3f46;color:#fff;font-weight:500;font-size:14px;padding:15px 20px}
+  .cta .calc:hover{border-color:var(--amber);color:var(--amber)}
+  .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+      clip:rect(0 0 0 0);white-space:nowrap;border:0}
+  @media (max-width:1040px){
+    .cta .card{flex-direction:column;align-items:flex-start;gap:28px;padding:24px 20px}
+    .cta .col1,.cta .formcol{width:100%}
+    .cta h2{font-size:30px}
+    .cta .band{padding:56px 0}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Implementácia · pre vývojára</p>
+  <h1>CTA — kompaktná čierna, variant S3</h1>
+  <p class="lede">Odsúhlasený návrh: čierna karta bez fotky, klin a šikmé vlasové linky na pozadí,
+     biele polia bez viditeľných popiskov a polovičné vnútorné odsadenie oproti návrhu 08.
+     Nižšie je hotový vzhľad naživo a pod ním presný postup.</p>
+
+  <div class="meta">
+    <span class="tagi">Súbory: <b>2</b></span>
+    <span class="tagi">Výška karty: <b>~263 px</b></span>
+    <span class="tagi">Bez novej závislosti</span>
+    <span class="tagi">Bez zmeny API</span>
+  </div>
+
+  <h2><span class="no">Výsledok</span>Ako to má vyzerať</h2>
+  <p class="note">Živá ukážka — dá sa klikať do polí. Susedné pásy hore a dole ukazujú, že karta už
+     nelepí na sekciu projektov ani na pätičku.</p>
+  <div class="stage">
+    <div class="neighbour">↑ sekcia realizované projekty</div>
+    <div class="cta"><div class="band"><div class="outer">
+      <div class="card">
+        <div class="shapes">
+          <span class="wedge"></span>
+          <span class="rule r1"></span><span class="rule r2"></span><span class="rule r3"></span>
+        </div>
+        <div class="col1">
+          <span class="eyebrow">Nezáväzná cenová ponuka</span>
+          <h2>Plánujete stavbu či rekonštrukciu?</h2>
+          <p class="amb">Vypracujeme vám detailnú cenovú ponuku, vďaka ktorej získate úplný prehľad o nákladoch a platobných podmienkach.</p>
+          <p class="desc">Stačí ak nám zanecháte vaše údaje a my vás budeme kontaktovať.</p>
+        </div>
+        <div class="formcol">
+          <div class="fld"><label class="sr" for="p1">Telefónne číslo</label>
+            <input id="p1" type="tel" placeholder="Vaše tel. číslo:"></div>
+          <div class="fld"><label class="sr" for="p2">E-mail</label>
+            <input id="p2" type="email" placeholder="Váš e-mail:"></div>
+          <div class="btns">
+            <button class="send" type="button">Odoslať →</button>
+            <button class="calc" type="button">Kalkulačka</button>
+          </div>
+        </div>
+      </div>
+    </div></div></div>
+    <div class="neighbour foot">↓ pätička</div>
+  </div>
+
+  <h2><span class="no">Krok 01</span>Prepísať CTA.tsx</h2>
+  <p class="note">Celý súbor sa nahrádza. API komponentu ostáva rovnaké, pribúda iba voliteľná
+     vlastnosť <code class="i">eyebrow</code>, takže všetky existujúce volania
+     <code class="i">&lt;CTA pageName="..." /&gt;</code> fungujú bez zmeny.</p>
+
+  <div class="del"><b>Zaniká</b>
+    Výstražný pruh a otočený štvorec na pozadí, sklenený rámček okolo formulára
+    (<code>bg-zinc-900/50 backdrop-blur-md</code>), neviditeľný <code>border-t border-white/5</code>
+    na sekcii a trieda <code>text-md</code>, ktorá v Tailwinde neexistuje.</div>
+
+  <div class="file">📄 <b>src/components/sections/CTA.tsx</b> — celý obsah</div>
+<pre><span class="s">"use client"</span>;
+
+<span class="k">import</span> { SimpleContactForm } <span class="k">from</span> <span class="s">'../ui/SimpleContactForm'</span>;
+
+<span class="k">export interface</span> <span class="t">CTAProps</span> {
+  title?: <span class="t">string</span>;
+  subtitle?: <span class="t">string</span>;
+  description?: <span class="t">string</span>;
+  eyebrow?: <span class="t">string</span>;
+  pageName?: <span class="t">string</span>;
+}
+
+<span class="k">export function</span> <span class="t">CTA</span>({
+  title = <span class="s">"Plánujete stavbu či rekonštrukciu?"</span>,
+  subtitle = <span class="s">"Vypracujeme vám detailnú cenovú ponuku, vďaka ktorej získate úplný prehľad o nákladoch a platobných podmienkach."</span>,
+  description = <span class="s">"Stačí ak nám zanecháte vaše údaje a my vás budeme kontaktovať."</span>,
+  eyebrow = <span class="s">"Nezáväzná cenová ponuka"</span>,
+  pageName = <span class="s">"Neznáma stránka"</span>,
+}: <span class="t">CTAProps</span>) {
+  <span class="k">return</span> (
+    &lt;section className=<span class="s">"bg-white py-14 lg:py-20"</span>&gt;
+      &lt;div className=<span class="s">"mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8"</span>&gt;
+        &lt;div className=<span class="s">"relative flex flex-col gap-7 overflow-hidden bg-zinc-950
+          px-5 py-6 sm:px-7 lg:flex-row lg:items-center lg:gap-16"</span>&gt;
+
+          <span class="c">{/* Tvary na pozadí — klin a tri šikmé vlasové linky */}</span>
+          &lt;div aria-hidden=<span class="s">"true"</span> className=<span class="s">"pointer-events-none absolute inset-0 z-[1]"</span>&gt;
+            &lt;span className=<span class="s">"absolute inset-y-0 right-0 w-[46%]
+              [clip-path:polygon(28%_0,100%_0,100%_100%,0_100%)]
+              bg-[linear-gradient(115deg,transparent_0%,rgba(245,158,11,0.13)_55%,rgba(245,158,11,0.03)_100%)]"</span> /&gt;
+            &lt;span className=<span class="s">"absolute -top-[30%] right-[34%] h-[160%] w-px rotate-[18deg] bg-white/[0.07]"</span> /&gt;
+            &lt;span className=<span class="s">"absolute -top-[30%] right-[28%] h-[160%] w-px rotate-[18deg] bg-amber-500/20"</span> /&gt;
+            &lt;span className=<span class="s">"absolute -top-[30%] right-[20%] h-[160%] w-px rotate-[18deg] bg-white/[0.07]"</span> /&gt;
+          &lt;/div&gt;
+
+          <span class="c">{/* Text */}</span>
+          &lt;div className=<span class="s">"relative z-[3] w-full lg:w-[57%]"</span>&gt;
+            &lt;span className=<span class="s">"block font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-amber-500"</span>&gt;
+              {eyebrow}
+            &lt;/span&gt;
+
+            &lt;h2 className=<span class="s">"mt-4 text-[30px] font-extrabold leading-[1.08] tracking-[-0.028em]
+              text-white lg:text-[38px]"</span>&gt;
+              {title}
+            &lt;/h2&gt;
+
+            &lt;p className=<span class="s">"mt-5 max-w-[34rem] border-l-2 border-amber-500 pl-[18px]
+              text-base font-medium leading-[1.55] text-amber-500"</span>&gt;
+              {subtitle}
+            &lt;/p&gt;
+
+            {description &amp;&amp; (
+              &lt;p className=<span class="s">"mt-4 max-w-[32rem] text-[13.5px] leading-[1.6] text-zinc-400"</span>&gt;
+                {description}
+              &lt;/p&gt;
+            )}
+          &lt;/div&gt;
+
+          <span class="c">{/* Formulár */}</span>
+          &lt;div className=<span class="s">"relative z-[3] w-full lg:w-[43%]"</span>&gt;
+            &lt;SimpleContactForm pageName={pageName} /&gt;
+          &lt;/div&gt;
+
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  );
+}</pre>
+
+  <div class="warn"><b>Prečo z-index na oboch stĺpcoch</b>
+    Tvary majú <code>z-[1]</code>, obsah <code>z-[3]</code>. Bez toho by klin prekryl formulár —
+    je to absolútne umiestnený súrodenec, ktorý ide v poradí pred ním.
+    <code>pointer-events-none</code> zasa zabráni tomu, aby vrstva s tvarmi kradla kliky z polí.</div>
+
+  <h2><span class="no">Krok 02</span>Upraviť formulár</h2>
+  <p class="note">Menia sa tri veci: prázdne <code class="i">&lt;label&gt;</code> dostanú text a triedu
+     <code class="i">sr-only</code>, polia zbelejú a tlačidlá idú do dvoch stĺpcov s odstupom 14 px.
+     Logika odosielania, honeypot ani vlastnosť <code class="i">hideCalculatorLink</code> sa nedotýkajú.</p>
+
+  <div class="file">📄 <b>src/components/ui/SimpleContactForm.tsx</b> — telo formulára</div>
+<pre><span class="c">// Honeypot ponechajte presne tak, ako je.</span>
+
+&lt;div className=<span class="s">"space-y-3.5"</span>&gt;
+  &lt;div&gt;
+    &lt;label htmlFor=<span class="s">"phone"</span> className=<span class="s">"sr-only"</span>&gt;Telefónne číslo&lt;/label&gt;
+    &lt;input
+      type=<span class="s">"tel"</span>
+      id=<span class="s">"phone"</span>
+      name=<span class="s">"phone"</span>
+      required
+      value={formData.phone}
+      onChange={handleChange}
+      placeholder=<span class="s">"Vaše tel. číslo:"</span>
+      className=<span class="s">"w-full border border-white bg-white px-[18px] py-[15px] text-[15px]
+        text-zinc-900 outline-none transition placeholder:text-zinc-400
+        focus:border-amber-500 focus:ring-[3px] focus:ring-amber-500/45"</span>
+    /&gt;
+  &lt;/div&gt;
+
+  &lt;div&gt;
+    &lt;label htmlFor=<span class="s">"email"</span> className=<span class="s">"sr-only"</span>&gt;E-mailová adresa&lt;/label&gt;
+    &lt;input
+      type=<span class="s">"email"</span>
+      id=<span class="s">"email"</span>
+      name=<span class="s">"email"</span>
+      value={formData.email}
+      onChange={handleChange}
+      placeholder=<span class="s">"Váš e-mail:"</span>
+      className=<span class="s">"w-full border border-white bg-white px-[18px] py-[15px] text-[15px]
+        text-zinc-900 outline-none transition placeholder:text-zinc-400
+        focus:border-amber-500 focus:ring-[3px] focus:ring-amber-500/45"</span>
+    /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div className={<span class="s">`grid grid-cols-1 gap-3.5 mt-5 ${hideCalculatorLink ? '' : 'sm:grid-cols-2'}`</span>}&gt;
+  &lt;button
+    type=<span class="s">"submit"</span>
+    className=<span class="s">"inline-flex w-full cursor-pointer items-center justify-center gap-2
+      bg-amber-500 px-5 py-[15px] text-sm font-bold text-zinc-950 transition-colors hover:bg-amber-400"</span>
+  &gt;
+    Odoslať
+    &lt;ArrowRight className=<span class="s">"h-4 w-4"</span> /&gt;
+  &lt;/button&gt;
+
+  {!hideCalculatorLink &amp;&amp; (
+    &lt;Link
+      href=<span class="s">"/kalkulacka"</span>
+      className=<span class="s">"inline-flex w-full cursor-pointer items-center justify-center gap-2
+        border border-zinc-700 bg-transparent px-5 py-[15px] text-sm font-medium text-white
+        transition-colors hover:border-amber-500 hover:text-amber-500"</span>
+    &gt;
+      Kalkulačka
+      &lt;Calculator className=<span class="s">"h-4 w-4"</span> /&gt;
+    &lt;/Link&gt;
+  )}
+&lt;/div&gt;</pre>
+
+  <div class="del"><b>Zmazať</b>
+    Pôvodný obal <code>&lt;div className="grid grid-cols-1 gap-5"&gt;</code> aj vnútorné
+    <code>space-y-2</code> obaly okolo polí — nahrádza ich <code>space-y-3.5</code> vyššie.
+    Trieda <code>ml-1</code> na ikonách tiež odchádza, odstup rieši <code>gap-2</code>.</div>
+
+  <h2><span class="no">Krok 03</span>Čo sa nemení</h2>
+  <table>
+    <tr><th>Vec</th><th>Stav</th></tr>
+    <tr><td>Volania komponentu</td><td>Bez zmeny. <code>eyebrow</code> má predvolenú hodnotu, takže <code>&lt;CTA pageName="..." /&gt;</code> funguje ďalej</td></tr>
+    <tr><td>Odosielanie</td><td><code>handleSubmit</code>, <code>/api/simple-contact</code>, honeypot — bez zásahu</td></tr>
+    <tr><td>hideCalculatorLink</td><td>Funguje rovnako, len s novou medzerou</td></tr>
+    <tr><td>Povinné polia</td><td>Telefón ostáva <code>required</code>, e-mail nepovinný</td></tr>
+  </table>
+
+  <h2><span class="no">Krok 04</span>Presné hodnoty</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Odsadenie sekcie</td><td>80 px hore aj dole (<code>lg:py-20</code>), mobil 56 px (<code>py-14</code>). Teraz 0</td></tr>
+    <tr><td>Odsadenie karty</td><td><b>24 px zvislo / 28 px vodorovne</b> (<code>py-6 sm:px-7</code>), mobil 20 px vodorovne. Polovica oproti návrhu 08</td></tr>
+    <tr><td>Stĺpce</td><td>Text 57 %, formulár 43 %, medzera 64 px, zvislo na stred. Pod 1024 px pod sebou s medzerou 28 px</td></tr>
+    <tr><td>Nadradený text</td><td>10 px, mono, váha 700, letter-spacing 0.2em, veľké písmená, <code>#F59E0B</code></td></tr>
+    <tr><td>Nadpis</td><td>38 px (mobil 30 px), váha 800, riadkovanie 1.08, letter-spacing −0.028em, biely, horný odstup 16 px</td></tr>
+    <tr><td>Podnadpis</td><td>16 px, váha 500, riadkovanie 1.55, <code>#F59E0B</code>, ľavá linka 2 px, odsadenie zľava 18 px, horný odstup 20 px</td></tr>
+    <tr><td>Popis</td><td>13.5 px, riadkovanie 1.6, <code>#A1A1AA</code>, horný odstup 16 px</td></tr>
+    <tr><td>Polia</td><td>Biele pozadie aj rámik, odsadenie 15/18 px, text 15 px <code>#18181B</code>, zástupný text <code>#A1A1AA</code></td></tr>
+    <tr><td>Pole pri písaní</td><td>Rámik <code>#F59E0B</code> + prstenec 3 px <code>rgba(245,158,11,.45)</code></td></tr>
+    <tr><td>Odstupy formulára</td><td>14 px medzi poľami, 20 px nad tlačidlami, 14 px medzi tlačidlami</td></tr>
+    <tr><td>Klin</td><td>Šírka 46 % zprava, <code>clip-path:polygon(28% 0,100% 0,100% 100%,0 100%)</code>, prechod <code>115deg</code> cez <code>rgba(245,158,11,.13)</code> na 55 %</td></tr>
+    <tr><td>Vlasové linky</td><td>Tri, šírka 1 px, výška 160 %, <code>top:-30%</code>, otočenie 18°, na <code>right</code> 34 % / 28 % / 20 %. Prostredná <code>rgba(245,158,11,.22)</code>, krajné <code>rgba(255,255,255,.07)</code></td></tr>
+    <tr><td>Vrstvenie</td><td>Tvary <code>z-[1]</code> + <code>pointer-events-none</code>, oba stĺpce <code>z-[3]</code></td></tr>
+    <tr><td>Zaoblenie rohov</td><td>Žiadne — nulový polomer</td></tr>
+  </table>
+
+  <h2><span class="no">Krok 05</span>Kontrola pred odovzdaním</h2>
+  <ul class="check">
+    <li>Karta má na desktope zhruba 263 px a nedotýka sa sekcie projektov ani pätičky.</li>
+    <li>Klin ani vlasové linky neprekrývajú polia a nedá sa na ne kliknúť.</li>
+    <li>Kliknutie do poľa dá jantárový rámik aj prstenec; tabulátor prechádza telefón → e-mail → Odoslať → Kalkulačka.</li>
+    <li>Čítačka obrazovky prečíta „Telefónne číslo“ a „E-mailová adresa“, hoci popisky nie sú vidieť.</li>
+    <li>Pod 1024 px sú stĺpce pod sebou, nadpis 30 px a karta má vodorovné odsadenie 20 px.</li>
+    <li>Formulár sa odosiela rovnako ako predtým a honeypot ostal v DOM.</li>
+    <li>Na stránke s <code class="i">hideCalculatorLink</code> je tlačidlo Odoslať cez celú šírku.</li>
+    <li><code class="i">npm run build</code> prejde bez nepoužitých importov.</li>
+  </ul>
+
+  <h2><span class="no">Poznámky</span>Čo treba vedieť</h2>
+  <ul class="flags">
+    <li><b>Popisky polí sú skryté, nie zmazané.</b> Sú v DOM ako <code>sr-only</code>, takže polia nie sú pre čítačky obrazovky bezmenné. Vizuálne je to presne to, čo ste chceli — vidno len biele polia so zástupným textom.</li>
+    <li><b>Nadradený text „Nezáväzná cenová ponuka“ je moja formulácia.</b> Je to voliteľná vlastnosť komponentu, takže sa dá kedykoľvek prepísať zvonku bez zásahu do súboru.</li>
+    <li><b>Z podnadpisu vypadlo „pre váš projekt“</b>, aby karta ostala nízka. Ak sa text vráti, karta narastie asi o 24 px.</li>
+    <li><b>Odstránil som medzeru pred otáznikom</b> v nadpise. V slovenčine sa tam nedáva.</li>
+    <li><b>Formulár stále hlási výsledok cez <code>alert()</code>.</b> Nie je to vizuálna vec, ale na bloku, ktorý je na každej stránke, pôsobí systémové okno lacno. Stav priamo vo formulári je samostatný návrh.</li>
+    <li>Telefón je povinný, e-mail nie — bez viditeľných popiskov to používateľ nezistí, kým formulár neodošle. Dá sa doriešiť hviezdičkou v zástupnom texte.</li>
+  </ul>
+
+</div>
+</body>
+</html>

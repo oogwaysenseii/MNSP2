@@ -7,15 +7,30 @@ import Link from 'next/link';
 export function SimpleContactForm({
                                     pageName,
                                     hideCalculatorLink = false,
+                                    surface = 'dark',
                                   }: {
   pageName: string;
   hideCalculatorLink?: boolean;
+  /**
+   * Which background the form sits on.
+   *
+   * On the CTA card (near-black) the fields are white with a white border by
+   * design — the border just extends the fill. The calculator drops the same
+   * form onto a white card, where that border would disappear and the inputs
+   * would read as floating text. 'light' swaps in a visible zinc edge; nothing
+   * else differs.
+   */
+  surface?: 'dark' | 'light';
 }) {
   const [formData, setFormData] = useState({
     email: '',
     phone: '',
   });
   const [honeypot, setHoneypot] = useState('');
+
+  const inputClass = `w-full border ${
+    surface === 'light' ? 'border-zinc-300' : 'border-white'
+  } bg-white px-[18px] py-[15px] text-[15px] text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-amber-500 focus:ring-[3px] focus:ring-amber-500/45`;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -60,7 +75,7 @@ export function SimpleContactForm({
   };
 
   return (
-      <form onSubmit={handleSubmit} className="space-y-4 w-full">
+      <form onSubmit={handleSubmit} className="w-full">
         {/* Honeypot — hidden from people, filled by bots. */}
         <input
           type="text"
@@ -73,13 +88,11 @@ export function SimpleContactForm({
           className="hidden"
         />
 
-        <div className="grid grid-cols-1 gap-5">
-          <div className="space-y-2">
-            <label
-                htmlFor="phone"
-                className="text-sm font-medium text-zinc-400"
-            >
-            </label>
+        {/* The labels are visually hidden, not removed — the design shows only
+            placeholders, but a placeholder is not an accessible name. */}
+        <div className="space-y-3.5">
+          <div>
+            <label htmlFor="phone" className="sr-only">Telefónne číslo</label>
             <input
                 type="tel"
                 id="phone"
@@ -87,45 +100,44 @@ export function SimpleContactForm({
                 required
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full bg-white border border-zinc-200 px-4 py-2 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all "
                 placeholder="Vaše tel. číslo:"
+                className={inputClass}
             />
           </div>
 
-          <div className="space-y-2">
-            <label
-                htmlFor="email"
-                className="text-sm font-medium text-zinc-400"
-            >
-            </label>
+          <div>
+            <label htmlFor="email" className="sr-only">E-mailová adresa</label>
             <input
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full bg-white border border-zinc-200 px-4 py-2 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all "
                 placeholder="Váš e-mail:"
+                className={inputClass}
             />
           </div>
         </div>
 
-        <div className={`grid grid-cols-1 ${hideCalculatorLink ? '' : 'sm:grid-cols-2'} gap-4 mt-5`}>
+        <div className={`grid grid-cols-1 gap-3.5 mt-5 ${hideCalculatorLink ? '' : 'sm:grid-cols-2'}`}>
           <button
               type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-amber-500 text-zinc-950 font-bold text-sm hover:bg-amber-400 transition-colors cursor-pointer "
+              className="inline-flex w-full cursor-pointer items-center justify-center gap-2
+                bg-amber-500 px-5 py-[15px] text-sm font-bold text-zinc-950 transition-colors hover:bg-amber-400"
           >
             Odoslať
-            <ArrowRight className="w-4 h-4 ml-1" />
+            <ArrowRight className="h-4 w-4" />
           </button>
 
           {!hideCalculatorLink && (
               <Link
                   href="/kalkulacka"
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent border border-zinc-700 text-white font-medium text-sm hover:border-amber-500 hover:text-amber-500 transition-colors cursor-pointer "
+                  className="inline-flex w-full cursor-pointer items-center justify-center gap-2
+                    border border-zinc-700 bg-transparent px-5 py-[15px] text-sm font-medium text-white
+                    transition-colors hover:border-amber-500 hover:text-amber-500"
               >
                 Kalkulačka
-                <Calculator className="w-4 h-4 ml-1" />
+                <Calculator className="h-4 w-4" />
               </Link>
           )}
         </div>

@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 14 — Logo, druhé kolo</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--logo:#f68c05}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1280px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:80ch;margin:0}
+  .idea{margin:26px 0 0;padding:20px 24px;background:#18181b;color:#fff;font-size:16px;line-height:1.7;max-width:80ch}
+  .idea b{color:var(--amber)}
+  .idea .big{display:block;font:700 34px/1 ui-monospace,monospace;letter-spacing:.3em;color:var(--amber);margin:14px 0 10px}
+  h2{font:800 22px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:54px 0 6px;
+     padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;color:var(--amber-6);
+         display:block;margin-bottom:9px}
+  .seclede{font-size:14.5px;color:var(--ink-2);margin:0 0 20px;max-width:86ch}
+  .panelset{display:grid;grid-template-columns:1.25fr 1fr;border:1px solid #d4d4d8}
+  .pl{background:#fff;padding:38px 32px;display:flex;align-items:center;justify-content:center}
+  .pd{background:#09090b;padding:38px 32px;display:flex;align-items:center;justify-content:center}
+  .lock{display:flex;align-items:center;gap:20px}
+  .lock .wm{display:block;font:800 31px/1 ui-sans-serif,system-ui;letter-spacing:.055em}
+  .lock .sl{display:block;margin-top:8px;font:700 8.5px/1 ui-monospace,monospace;
+            letter-spacing:.235em;color:var(--logo)}
+  .sizes{display:grid;grid-template-columns:repeat(3,auto);gap:30px;align-items:end;
+         justify-content:start;margin-top:16px;padding:18px 22px;background:#fff;border:1px solid #d4d4d8}
+  .sizes.dark{background:#09090b;border-color:#3f3f46}
+  .sizes .cell{text-align:center}
+  .sizes .cell p{margin:9px 0 0;font:700 9px/1 ui-monospace,monospace;letter-spacing:.14em;
+                 text-transform:uppercase;color:var(--muted)}
+  .sizes.dark .cell p{color:#52525b}
+  .trade{font-size:13.5px;line-height:1.55;color:var(--ink-2);margin:12px 0 0;max-width:74ch}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:18px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#92400e}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  .pick{margin-top:24px;padding:18px 22px;background:#18181b;color:#fff;font-size:15px;line-height:1.7}
+  .pick b{color:var(--amber)}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:26%}
+  td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  @media (max-width:960px){.panelset{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <!-- masonry courses mask -->
+  <mask id="bond">
+    <rect width="100" height="100" fill="#fff"/>
+    <g fill="#000">
+      <rect x="0" y="41" width="100" height="2.6"/>
+      <rect x="0" y="54" width="100" height="2.6"/>
+      <rect x="0" y="67" width="100" height="2.6"/>
+      <rect x="0" y="80" width="100" height="2.6"/>
+      <rect x="24" y="43.6" width="2.6" height="10.4"/>
+      <rect x="50" y="43.6" width="2.6" height="10.4"/>
+      <rect x="76" y="43.6" width="2.6" height="10.4"/>
+      <rect x="37" y="56.6" width="2.6" height="10.4"/>
+      <rect x="63" y="56.6" width="2.6" height="10.4"/>
+      <rect x="24" y="69.6" width="2.6" height="10.4"/>
+      <rect x="50" y="69.6" width="2.6" height="10.4"/>
+      <rect x="76" y="69.6" width="2.6" height="10.4"/>
+    </g>
+  </mask>
+
+  <!-- A · dva štíty -->
+  <symbol id="cA" viewBox="0 0 100 100">
+    <path d="M11 85 L31 31 L50 70 L69 31 L89 85" fill="none" stroke="var(--logo)"
+          stroke-width="15" stroke-linejoin="miter"/>
+  </symbol>
+
+  <!-- B · pred a po -->
+  <symbol id="cB" viewBox="0 0 100 100">
+    <path d="M8 85 L29 33 L50 85 Z" fill="none" stroke="var(--logo)" stroke-width="3.4"
+          stroke-linejoin="miter" stroke-dasharray="7 4.5"/>
+    <path d="M50 85 L71 33 L92 85 Z" fill="var(--logo)"/>
+  </symbol>
+
+  <!-- C · väzba -->
+  <symbol id="cC" viewBox="0 0 100 100">
+    <path d="M11 85 L31 31 L50 70 L69 31 L89 85" fill="none" stroke="var(--logo)"
+          stroke-width="15" stroke-linejoin="miter" mask="url(#bond)"/>
+  </symbol>
+
+  <!-- D · roofline device -->
+  <symbol id="cD" viewBox="0 0 160 30">
+    <path d="M2 26 L14 6 L26 26 L38 6 L50 26 L62 6 L74 26 L86 6 L98 26 L110 6 L122 26 L134 6 L146 26 L158 6"
+          fill="none" stroke="var(--logo)" stroke-width="3.6" stroke-linejoin="miter"/>
+  </symbol>
+</defs></svg>
+
+<div class="wrap">
+
+  <p class="kicker">Návrh 14 · Značka, druhé kolo</p>
+  <h1>Logo — postavené na jednej myšlienke</h1>
+  <p class="lede">Prvé kolo bolo slabé a mali ste pravdu. Neboli to štyri návrhy, ale jeden návrh
+     v štyroch rámoch — to isté M v štvorci, v šikmom štvorci, v ráme a s bodkami. Samotné M bolo
+     lomená čiara s rovnomernou hrúbkou, čiže najprimitívnejší možný tvar písmena. A hlavne:
+     nehovorili nič o stavaní. Keby ste vymenili oranžovú, mohla ich používať akákoľvek firma na M.</p>
+
+  <p class="idea">Vynechal som pritom to najzrejmejšie.
+     <span class="big">/\/\</span>
+     Písmeno <b>M</b> sú už <b>dva štíty</b>. Tá istá čiara je zároveň meno firmy aj dve sedlové strechy.
+     Nie je to ozdoba pridaná k písmenu — je to písmeno a remeslo v jednom tvare.
+     Všetko nižšie stojí na tom.</p>
+
+  <!-- ================= A ================= -->
+  <h2><span class="no">Koncept A</span>Dva štíty</h2>
+  <p class="seclede">Základný tvar. M nakreslené ako dve strešné roviny — sklon 68°, taký, aký má
+     bežná sedlová strecha. Konce ramien sú zrezané kolmo na sklon, takže pôsobia ako odkvapová
+     hrana, nie ako useknuté písmeno. Žiadny rám, žiadny podklad, len tvar.</p>
+  <div class="panelset">
+    <div class="pl"><span class="lock">
+      <svg style="width:78px;height:78px" aria-label="MNSP"><use href="#cA"/></svg>
+      <span><span class="wm" style="color:#09090b">MNSP</span><span class="sl">STAVBY A REKONŠTRUKCIE</span></span>
+    </span></div>
+    <div class="pd"><span class="lock">
+      <svg style="width:78px;height:78px" aria-label="MNSP"><use href="#cA"/></svg>
+      <span><span class="wm" style="color:#fff">MNSP</span><span class="sl">STAVBY A REKONŠTRUKCIE</span></span>
+    </span></div>
+  </div>
+  <div class="sizes">
+    <span class="cell"><svg style="width:64px;height:64px"><use href="#cA"/></svg><p>64 px</p></span>
+    <span class="cell"><svg style="width:40px;height:40px"><use href="#cA"/></svg><p>40 px · hlavička</p></span>
+    <span class="cell"><svg style="width:32px;height:32px"><use href="#cA"/></svg><p>32 px · favicon</p></span>
+  </div>
+  <p class="trade">Drží pri 32 px, lebo je to jeden ťah bez detailu. Číta sa aj ako M, aj ako strechy —
+     a čím menšie je, tým viac prevláda M, čo je presne správne poradie.</p>
+
+  <!-- ================= B ================= -->
+  <h2><span class="no">Koncept B</span>Pred a po</h2>
+  <p class="seclede">Ten istý štít dvakrát: ľavý ako čiarkovaný obrys, pravý ako plná plocha.
+     Z výkresu sa stane stavba. Je to doslova to, čo firma robí — a je to už aj na vašej vlastnej
+     fotke pre rodinné domy, kde je ľavá polovica domu v drôtenom modeli a pravá hotová.
+     Značka to len pomenúva.</p>
+  <div class="panelset">
+    <div class="pl"><span class="lock">
+      <svg style="width:78px;height:78px" aria-label="MNSP"><use href="#cB"/></svg>
+      <span><span class="wm" style="color:#09090b">MNSP</span><span class="sl">STAVBY A REKONŠTRUKCIE</span></span>
+    </span></div>
+    <div class="pd"><span class="lock">
+      <svg style="width:78px;height:78px" aria-label="MNSP"><use href="#cB"/></svg>
+      <span><span class="wm" style="color:#fff">MNSP</span><span class="sl">STAVBY A REKONŠTRUKCIE</span></span>
+    </span></div>
+  </div>
+  <div class="sizes">
+    <span class="cell"><svg style="width:64px;height:64px"><use href="#cB"/></svg><p>64 px</p></span>
+    <span class="cell"><svg style="width:40px;height:40px"><use href="#cB"/></svg><p>40 px · hlavička</p></span>
+    <span class="cell"><svg style="width:32px;height:32px"><use href="#cB"/></svg><p>32 px · favicon</p></span>
+  </div>
+  <p class="trade">Konceptne najsilnejšie, ale čiarkovaný obrys sa pri 32 px zlieva. Pre favicon
+     by sa použil samotný plný štít — čo je legitímne, značka má aj tak mať zjednodušenú malú verziu.</p>
+
+  <!-- ================= C ================= -->
+  <h2><span class="no">Koncept C</span>Väzba</h2>
+  <p class="seclede">Rovnaké dva štíty, ale vyskladané z murovaných radov s previazanými škárami.
+     Mierka škár je zámerne veľká — pri malej veľkosti sa rady zlejú do plnej plochy a zostane
+     koncept A. Značka sa teda sama zjednodušuje podľa veľkosti.</p>
+  <div class="panelset">
+    <div class="pl"><span class="lock">
+      <svg style="width:78px;height:78px" aria-label="MNSP"><use href="#cC"/></svg>
+      <span><span class="wm" style="color:#09090b">MNSP</span><span class="sl">STAVBY A REKONŠTRUKCIE</span></span>
+    </span></div>
+    <div class="pd"><span class="lock">
+      <svg style="width:78px;height:78px" aria-label="MNSP"><use href="#cC"/></svg>
+      <span><span class="wm" style="color:#fff">MNSP</span><span class="sl">STAVBY A REKONŠTRUKCIE</span></span>
+    </span></div>
+  </div>
+  <div class="sizes">
+    <span class="cell"><svg style="width:64px;height:64px"><use href="#cC"/></svg><p>64 px</p></span>
+    <span class="cell"><svg style="width:40px;height:40px"><use href="#cC"/></svg><p>40 px · hlavička</p></span>
+    <span class="cell"><svg style="width:32px;height:32px"><use href="#cC"/></svg><p>32 px · favicon</p></span>
+  </div>
+  <p class="trade">Pozor: škáry sú vyrezané, takže na čiernom podklade sú čierne a na bielom biele —
+     značka sa mení podľa toho, na čom leží. Je to efektné, ale na fotke to začne byť neisté.</p>
+
+  <!-- ================= D ================= -->
+  <h2><span class="no">Koncept D</span>Silueta strechy</h2>
+  <p class="seclede">Nie monogram, ale pásmo. Rovnaký sklon zopakovaný do nekonečného radu striech —
+     používa sa ako linka pod nápisom, ako predel medzi sekciami, ako okraj dokumentu alebo pečiatky.
+     Značkou tu nie je symbol, ale rytmus, ktorý si človek zapamätá aj bez loga.</p>
+  <div class="panelset">
+    <div class="pl"><span style="text-align:center">
+      <span class="wm" style="color:#09090b;font-size:38px;display:block">MNSP</span>
+      <svg style="width:190px;height:24px;display:block;margin:10px auto 0" aria-hidden="true"><use href="#cD"/></svg>
+      <span class="sl" style="margin-top:10px;letter-spacing:.2em">STAVBY A REKONŠTRUKCIE</span>
+    </span></div>
+    <div class="pd"><span style="text-align:center">
+      <span class="wm" style="color:#fff;font-size:38px;display:block">MNSP</span>
+      <svg style="width:190px;height:24px;display:block;margin:10px auto 0" aria-hidden="true"><use href="#cD"/></svg>
+      <span class="sl" style="margin-top:10px;letter-spacing:.2em">STAVBY A REKONŠTRUKCIE</span>
+    </span></div>
+  </div>
+  <div class="sizes">
+    <span class="cell"><svg style="width:160px;height:24px"><use href="#cD"/></svg><p>ako linka</p></span>
+    <span class="cell"><svg style="width:90px;height:16px"><use href="#cD"/></svg><p>malá</p></span>
+  </div>
+  <p class="trade">Samo o sebe to nie je logo — nedá sa z toho spraviť favicon. Je to doplnok,
+     ktorý sa páruje s konceptom A: štít ako značka, pásmo ako výplň a predel.</p>
+
+  <p class="pick">Odporúčam <b>A ako značku</b> a <b>D ako doplnok k nej</b>. A je jeden ťah,
+     drží od plachty po favicon a nesie tú myšlienku sám — dve strechy, ktoré sú M.
+     D je to isté zopakované do pásma, takže systém drží pokope bez toho, aby ste museli
+     všade opakovať logo. <b>B</b> má najlepší príbeh a je to najsilnejší kandidát, ak vám
+     nevadí zvlášť kreslená malá verzia — a na webe, kde je priestoru dosť, by fungoval krásne.
+     <b>C</b> nechajte na tlač a plachty, kde je veľký a kde podklad poznáte.</p>
+
+  <div class="warn"><b>Čo je na tom stále nedokončené</b>
+    Toto sú koncepty, nie hotová značka. Sklony ramien, hrúbka ťahu a optické vyváženie vrcholu
+    sa dolaďujú v krivkách pri veľkej veľkosti — to, čo vidíte, je geometricky presné,
+    ale opticky ešte nie dotiahnuté. Nápis MNSP je systémové písmo, kým nepoviete, aké písmo
+    má súčasné logo.
+  </div>
+
+  <h2><span class="no">Ďalej</span>Ak niektorý smer sadne</h2>
+  <table>
+    <tr><th>Krok</th><th>Čo to znamená</th></tr>
+    <tr><td>Doladenie tvaru</td><td>Sklon, hrúbka a vrchol v krivkách; optická korekcia vrcholu, ktorý pri ostrom uhle pôsobí vždy vyššie, než je</td></tr>
+    <tr><td>Písmo nápisu</td><td>Vybrať alebo dokresliť. Ak má súčasné logo licencované písmo, použije sa ono</td></tr>
+    <tr><td>Farba</td><td>Zjednotiť <code>#F68C05</code> z loga a <code>#F59E0B</code> z webu na jednu hodnotu</td></tr>
+    <tr><td>Mutácie</td><td>Plná, kompaktná (len značka), jednofarebná čierna a biela, malá verzia pre favicon</td></tr>
+    <tr><td>Formáty</td><td>SVG ako základ, PNG 1×/2×/3×, favicon 32 a 180 px</td></tr>
+  </table>
+
+  <h2><span class="no">Poznámky</span>Obmedzenia</h2>
+  <ul class="flags">
+    <li><b>Šikmý blok zo súčasného loga zanikol.</b> V prvom kole som ho nahradil štvorcom, čo bola chyba — bol to jediný skutočne vlastný prvok značky. Tu sa nevracia ako blok, ale ako sklon: ten istý uhol drží celý koncept.</li>
+    <li><b>Malé „m“ je preč, je tam veľké M.</b> Dva štíty potrebujú dva vrcholy; malé „m“ má oblúky, ktoré tú myšlienku zabijú.</li>
+    <li><b>Koncept B potrebuje dve verzie</b> — veľkú s čiarkovaným obrysom a malú len s plným štítom. Je to bežná prax, ale je to práca navyše a treba o nej vedieť dopredu.</li>
+    <li><b>Koncept C sa mení podľa podkladu.</b> Vyrezané škáry preberajú farbu toho, na čom značka leží. Na bielej a čiernej je to v poriadku, na fotke nie.</li>
+    <li>Nič som si o firme nevymyslel — žiadny rok založenia, žiadne certifikáty. V značke je len meno a remeslo.</li>
+  </ul>
+
+</div>
+</body>
+</html>

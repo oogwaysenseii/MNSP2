@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 16 — Pätička, varianty</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--logo:#f68c05}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1400px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:82ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2{font:800 22px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:54px 0 6px;
+     padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;color:var(--amber-6);
+         display:block;margin-bottom:9px}
+  .seclede{font-size:14.5px;color:var(--ink-2);margin:0 0 18px;max-width:88ch}
+  .bugs{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:12px;margin:18px 0 0}
+  .bug{background:#fff;border:1px solid var(--line);border-left:3px solid #dc2626;padding:14px 16px}
+  .bug b{display:block;font:700 10px/1 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:#991b1b;margin-bottom:7px}
+  .bug p{margin:0;font-size:13.5px;line-height:1.55;color:var(--ink-2)}
+  .bug code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  .bug.legal{border-left-color:#b45309}
+  .bug.legal b{color:#92400e}
+  .stage{border:1px solid #d4d4d8;overflow:hidden;background:#fff}
+  .above{background:#09090b;color:#52525b;padding:14px 24px;font:700 10px/1 ui-monospace,monospace;
+         letter-spacing:.16em;text-transform:uppercase}
+  .trade{font-size:13.5px;line-height:1.55;color:var(--ink-2);margin:12px 0 0;max-width:78ch}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  .pick{margin-top:22px;padding:18px 22px;background:#18181b;color:#fff;font-size:15px;line-height:1.7}
+  .pick b{color:var(--amber)}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:26%}
+  td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+
+  /* ============= shared footer replica ============= */
+  .ft{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .ft .rail{max-width:1500px;margin:0 auto;padding:0 32px}
+  .ft a{text-decoration:none;color:inherit;transition:color .22s}
+  .ft h4{font:700 11px/1 ui-monospace,monospace;letter-spacing:.2em;text-transform:uppercase;margin:0 0 20px}
+  .ft ul{list-style:none;margin:0;padding:0}
+  .ft li{padding:5px 0}
+  .ft .brandline{font:900 24px/1 ui-sans-serif,system-ui;letter-spacing:.03em}
+
+  /* ---------- NOW ---------- */
+  .now{background:#fff;border-top:1px solid #e5e7eb;padding:64px 0;color:#6b7280;font-size:14px}
+  .now .cols{display:grid;grid-template-columns:1fr .5fr 1.5fr 1fr;gap:64px}
+  .now h4{color:#000;font-size:14px;letter-spacing:.15em}
+  .now .brandline{font:700 20px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;color:#000;margin:0 0 24px}
+  .now a:hover{color:var(--amber-6)}
+  .now .svc{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px}
+  .now .tiny li{font-size:10px}
+  .now .bot{border-top:1px solid #f3f4f6;margin-top:64px;padding-top:32px;display:flex;
+            justify-content:space-between;align-items:center}
+
+  /* ---------- A · ČIERNY SOKEL ---------- */
+  .va{background:#09090b;padding:72px 0 0;color:#a1a1aa;font-size:14px}
+  .va .cols{display:grid;grid-template-columns:1.4fr 1fr 1.3fr 1.1fr;gap:56px}
+  .va h4{color:#fff}
+  .va h4 span{display:inline-block;width:18px;height:2px;background:var(--logo);margin-right:9px;vertical-align:middle}
+  .va .brandline{color:#fff;margin:0 0 16px}
+  .va .tag{font:700 9px/1 ui-monospace,monospace;letter-spacing:.24em;text-transform:uppercase;color:var(--logo)}
+  .va p.desc{margin:18px 0 0;line-height:1.7;color:#71717a;max-width:30rem}
+  .va a:hover{color:var(--logo)}
+  .va .svc{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+  .va .addr{color:#71717a;line-height:1.8;margin-top:14px}
+  .va .legal{margin-top:18px;font:400 12px/1.7 ui-monospace,monospace;color:#52525b}
+  .va .bot{border-top:1px solid #27272a;margin-top:64px;padding:26px 0;display:flex;
+           justify-content:space-between;align-items:center;font-size:13px;color:#52525b}
+  .va .bot a:hover{color:var(--logo)}
+
+  /* ---------- B · DVOJPÁSMO ---------- */
+  .vb{background:#09090b;color:#a1a1aa;font-size:14px}
+  .vb .top{padding:76px 0 60px;border-bottom:1px solid #27272a}
+  .vb .topgrid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:start}
+  .vb .big{font:900 44px/1.05 ui-sans-serif,system-ui;letter-spacing:-.03em;color:#fff;margin:0}
+  .vb .tag{display:block;margin-top:16px;font:700 9px/1 ui-monospace,monospace;
+           letter-spacing:.24em;text-transform:uppercase;color:var(--logo)}
+  .vb .contact{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+  .vb .contact h4{color:#52525b}
+  .vb .contact .v{font:600 19px/1.35 ui-sans-serif,system-ui;color:#fff}
+  .vb .contact .v a:hover{color:var(--logo)}
+  .vb .contact .s{font-size:13.5px;line-height:1.75;color:#71717a}
+  .vb .mid{padding:48px 0 44px}
+  .vb .midgrid{display:grid;grid-template-columns:1fr 1.6fr 1fr;gap:56px}
+  .vb h4{color:#fff}
+  .vb a:hover{color:var(--logo)}
+  .vb .svc{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+  .vb .bot{border-top:1px solid #27272a;padding:24px 0;display:flex;
+           justify-content:space-between;align-items:center;font-size:13px;color:#52525b}
+  .vb .bot a:hover{color:var(--logo)}
+
+  /* ---------- C · TECHNICKÝ LIST ---------- */
+  .vc{background:#09090b;color:#a1a1aa;font-size:13.5px;
+      border-top:2px solid var(--logo)}
+  .vc .rail{padding:0}
+  .vc .band{display:grid;grid-template-columns:1.5fr 1fr 1.4fr 1.2fr;border-bottom:1px solid #27272a}
+  .vc .cell{padding:34px 30px;border-right:1px solid #27272a}
+  .vc .cell:last-child{border-right:0}
+  .vc .cell h4{color:#52525b;margin-bottom:16px}
+  .vc .cell h4 em{font-style:normal;color:var(--logo);margin-right:8px}
+  .vc .brandline{color:#fff;margin:0 0 6px}
+  .vc .tag{font:700 9px/1 ui-monospace,monospace;letter-spacing:.24em;text-transform:uppercase;color:var(--logo)}
+  .vc p.desc{margin:18px 0 0;line-height:1.7;color:#71717a}
+  .vc a:hover{color:var(--logo)}
+  .vc .svc{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+  .vc .dl{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font:400 12.5px/1.7 ui-monospace,monospace}
+  .vc .dl dt{color:#52525b;text-transform:uppercase;letter-spacing:.1em}
+  .vc .dl dd{margin:0;color:#e4e4e7}
+  .vc .bot{display:flex;justify-content:space-between;align-items:center;
+           padding:20px 30px;font:400 12px/1 ui-monospace,monospace;color:#52525b;letter-spacing:.06em}
+  .vc .bot a:hover{color:var(--logo)}
+  .todo{color:#b45309;border-bottom:1px dashed #b45309}
+
+  @media (max-width:1100px){
+    .now .cols,.va .cols,.vb .topgrid,.vb .midgrid{grid-template-columns:1fr 1fr;gap:40px}
+    .vc .band{grid-template-columns:1fr 1fr}
+    .vc .cell{border-bottom:1px solid #27272a}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 16 · Celý web</p>
+  <h1>Pätička</h1>
+  <p class="lede">Pätička je na každej stránke a dnes je biela — čiže web sa končí svetlou plochou
+     hneď pod tmavým CTA. Tri varianty, všetky tmavé, všetky s rovnakým obsahom ako dnes.
+     Nič som nepridal ani neuberal, len preskladal. Odkazy fungujú pri prejdení myšou.</p>
+  <p class="status">Stav: <b>neaplikované</b> — iba návrh</p>
+
+  <h2><span class="no">Rozbor</span>Čo som našiel v kóde</h2>
+  <div class="bugs">
+    <div class="bug"><b>Polovica odkazov je 10 px</b>
+      <p>Druhý stĺpec služieb má <code>text-[10px]</code>, kým prvý dedí 14 px. V tom istom stĺpci
+         sú vedľa seba dve veľkosti písma s rozdielom 40 %. Na preklep to vyzerá viac než na zámer.</p></div>
+    <div class="bug legal"><b>IČO sa nikdy nezobrazí</b>
+      <p>Blok s právnymi údajmi je obalený v <code>{BUSINESS.ico && …}</code>, ale v
+         <code>schema.ts</code> je <code>ico: ''</code>. Podmienka je vždy nepravdivá, takže sa
+         nevykreslí nič — hoci to <b>§3a Obchodného zákonníka vyžaduje</b>. Komentár v kóde to aj priznáva.</p></div>
+    <div class="bug"><b>17 odkazov na služby v jednom stĺpci</b>
+      <p>Najväčší blok v pätičke je zoznam odkazov. Kvôli vyhľadávačom to zmysel má, ale
+         vizuálne to pätičku premení na skládku.</p></div>
+    <div class="bug"><b>Stĺpec 0.5fr</b>
+      <p>Mriežka je <code>1fr .5fr 1.5fr 1fr</code>. Úzky stĺpec s rýchlymi odkazmi je o polovicu
+         užší než ostatné, takže „Časté otázky (FAQ)“ sa v ňom zalamuje.</p></div>
+    <div class="bug"><b>Biela pätička pod čiernym CTA</b>
+      <p>Stránka sa končí svetlou plochou hneď po tmavom bloku. Pätička tak nepôsobí ako
+         sokel stránky, ale ako čosi, čo za ňou ešte pokračuje.</p></div>
+    <div class="bug"><b>Žiadna značka</b>
+      <p>V pätičke je len textový nadpis „MNSP | Stavby a rekonštrukcie“. Hlavička značku má,
+         pätička nie — pritom práve tam sa bežne uzatvára identita stránky.</p></div>
+  </div>
+
+  <!-- ================= NOW ================= -->
+  <h2><span class="no">Teraz</span>Súčasný stav</h2>
+  <div class="stage">
+    <div class="above">↑ sekcia CTA (tmavá)</div>
+    <div class="ft now"><div class="rail">
+      <div class="cols">
+        <div>
+          <p class="brandline">MNSP | Stavby a rekonštrukcie</p>
+          <p style="margin:0;line-height:1.7">Poskytujeme komplexné stavebné služby od návrhu až po realizáciu na kľúč, s dôrazom na kvalitu, inováciu a detail.</p>
+        </div>
+        <div>
+          <h4>Rýchle odkazy</h4>
+          <ul><li><a href="#">Domov</a></li><li><a href="#">Služby</a></li><li><a href="#">Portfólio</a></li>
+              <li><a href="#">Blog</a></li><li><a href="#">Časté otázky (FAQ)</a></li><li><a href="#">O nás</a></li><li><a href="#">Kontakt</a></li></ul>
+        </div>
+        <div>
+          <h4>Naše služby</h4>
+          <div class="svc">
+            <ul><li><a href="#">Rodinné domy</a></li><li><a href="#">Komerčná výstavba</a></li><li><a href="#">Rezidenčné budovy</a></li>
+                <li><a href="#">Priemyselné objekty</a></li><li><a href="#">Občianske stavby</a></li></ul>
+            <ul class="tiny"><li><a href="#">Zakladanie stavieb</a></li><li><a href="#">Monolitické konštr.</a></li><li><a href="#">Murárske práce</a></li>
+                <li><a href="#">Tesárske práce</a></li><li><a href="#">Omietky</a></li><li><a href="#">Potery</a></li>
+                <li><a href="#">Obkladačské práce</a></li><li><a href="#">Fasády</a></li><li><a href="#">Jadrové vŕtanie</a></li><li><a href="#">Rezanie otvorov</a></li></ul>
+          </div>
+        </div>
+        <div>
+          <h4>Kontakt</h4>
+          <ul><li><a href="#">info@mnsp.sk</a></li><li><a href="#">+421 950 699 585</a></li>
+              <li style="padding-top:10px">Jozefa Kozáčeka 829/2<br>960 01 Zvolen<br>Slovensko</li></ul>
+        </div>
+      </div>
+      <div class="bot">
+        <p style="margin:0">© 2026 MNSP | Stavby a rekonštrukcie</p>
+        <p style="margin:0;display:flex;gap:24px"><a href="#">Ochrana súkromia</a><a href="#">Obchodné podmienky</a></p>
+      </div>
+    </div></div>
+  </div>
+  <p class="trade">Všimnite si druhý stĺpec služieb — je polovičnou veľkosťou oproti susednému. A chýbajúci riadok s IČO.</p>
+
+  <!-- ================= A ================= -->
+  <h2><span class="no">Variant A</span>Čierny sokel</h2>
+  <p class="seclede">Rovnaké štyri stĺpce, ale na čiernej. Stránka tak končí jednou tmavou plochou,
+     ktorá plynulo nadväzuje na CTA. Nadpisy dostanú jantárovú značku, obe úrovne služieb rovnakú
+     veľkosť a pribudne riadok s IČO. Najmenší zásah do štruktúry.</p>
+  <div class="stage">
+    <div class="above">↑ sekcia CTA (tmavá)</div>
+    <div class="ft va"><div class="rail">
+      <div class="cols">
+        <div>
+          <p class="brandline">MNSP</p>
+          <span class="tag">Stavby a rekonštrukcie</span>
+          <p class="desc">Poskytujeme komplexné stavebné služby od návrhu až po realizáciu na kľúč,
+             s dôrazom na kvalitu, inováciu a detail.</p>
+        </div>
+        <div>
+          <h4><span></span>Rýchle odkazy</h4>
+          <ul><li><a href="#">Domov</a></li><li><a href="#">Služby</a></li><li><a href="#">Portfólio</a></li>
+              <li><a href="#">Blog</a></li><li><a href="#">Časté otázky</a></li><li><a href="#">O nás</a></li><li><a href="#">Kontakt</a></li></ul>
+        </div>
+        <div>
+          <h4><span></span>Naše služby</h4>
+          <div class="svc">
+            <ul><li><a href="#">Rodinné domy</a></li><li><a href="#">Komerčná výstavba</a></li><li><a href="#">Rezidenčné budovy</a></li>
+                <li><a href="#">Priemyselné objekty</a></li><li><a href="#">Občianske stavby</a></li></ul>
+            <ul><li><a href="#">Zakladanie stavieb</a></li><li><a href="#">Monolitické konštr.</a></li><li><a href="#">Murárske práce</a></li>
+                <li><a href="#">Tesárske práce</a></li><li><a href="#">Omietky</a></li></ul>
+          </div>
+        </div>
+        <div>
+          <h4><span></span>Kontakt</h4>
+          <ul><li><a href="#" style="color:#fff;font-weight:600">info@mnsp.sk</a></li>
+              <li><a href="#" style="color:#fff;font-weight:600">+421 950 699 585</a></li></ul>
+          <p class="addr" style="margin:14px 0 0">Jozefa Kozáčeka 829/2<br>960 01 Zvolen<br>Slovensko</p>
+          <p class="legal">MNSP s.r.o.<br>IČO: <span class="todo">doplniť</span> · DIČ: <span class="todo">doplniť</span></p>
+        </div>
+      </div>
+      <div class="bot">
+        <p style="margin:0">© 2026 MNSP s.r.o.</p>
+        <p style="margin:0;display:flex;gap:24px"><a href="#">Ochrana súkromia</a><a href="#">Obchodné podmienky</a></p>
+      </div>
+    </div></div>
+  </div>
+  <p class="trade">Skrátil som druhý zoznam služieb na päť položiek, aby stĺpce boli rovnako vysoké.
+     Zvyšných päť odkazov nezaniká — patria na stránku <code>/sluzby</code>, kde aj tak sú.</p>
+
+  <!-- ================= B ================= -->
+  <h2><span class="no">Variant B</span>Dvojpásmo</h2>
+  <p class="seclede">Pätička sa rozdelí na dve pásma. Hore identita a kontakt vysadené veľké — meno,
+     telefón a e-mail sú to, čo v pätičke ľudia naozaj hľadajú. Dole kompaktné pásmo s odkazmi.
+     Poradie je podľa dôležitosti, nie podľa zvyku.</p>
+  <div class="stage">
+    <div class="above">↑ sekcia CTA (tmavá)</div>
+    <div class="ft vb">
+      <div class="top"><div class="rail">
+        <div class="topgrid">
+          <div>
+            <p class="big">MNSP</p>
+            <span class="tag">Stavby a rekonštrukcie · Zvolen</span>
+            <p style="margin:22px 0 0;line-height:1.7;color:#71717a;max-width:30rem">Poskytujeme komplexné stavebné služby
+               od návrhu až po realizáciu na kľúč, s dôrazom na kvalitu, inováciu a detail.</p>
+          </div>
+          <div class="contact">
+            <div><h4>Telefón</h4><p class="v" style="margin:0"><a href="#">+421 950 699 585</a></p></div>
+            <div><h4>E-mail</h4><p class="v" style="margin:0"><a href="#">info@mnsp.sk</a></p></div>
+            <div><h4>Adresa</h4><p class="s" style="margin:0">Jozefa Kozáčeka 829/2<br>960 01 Zvolen<br>Slovensko</p></div>
+            <div><h4>Firemné údaje</h4><p class="s" style="margin:0">MNSP s.r.o.<br>IČO: <span class="todo">doplniť</span><br>DIČ: <span class="todo">doplniť</span></p></div>
+          </div>
+        </div>
+      </div></div>
+      <div class="mid"><div class="rail">
+        <div class="midgrid">
+          <div><h4>Rýchle odkazy</h4>
+            <ul><li><a href="#">Domov</a></li><li><a href="#">Služby</a></li><li><a href="#">Portfólio</a></li>
+                <li><a href="#">Blog</a></li><li><a href="#">Časté otázky</a></li><li><a href="#">O nás</a></li><li><a href="#">Kontakt</a></li></ul></div>
+          <div><h4>Naše služby</h4>
+            <div class="svc">
+              <ul><li><a href="#">Rodinné domy</a></li><li><a href="#">Komerčná výstavba</a></li><li><a href="#">Rezidenčné budovy</a></li>
+                  <li><a href="#">Priemyselné objekty</a></li><li><a href="#">Občianske stavby</a></li></ul>
+              <ul><li><a href="#">Zakladanie stavieb</a></li><li><a href="#">Monolitické konštr.</a></li><li><a href="#">Murárske práce</a></li>
+                  <li><a href="#">Tesárske práce</a></li><li><a href="#">Omietky</a></li></ul>
+            </div></div>
+          <div><h4>Pôsobíme v</h4>
+            <ul><li><a href="#">Zvolen</a></li><li><a href="#">Detva</a></li><li><a href="#">Banská Bystrica</a></li>
+                <li><a href="#">Lučenec</a></li><li><a href="#">Hriňová</a></li></ul></div>
+        </div>
+      </div></div>
+      <div class="rail"><div class="bot">
+        <p style="margin:0">© 2026 MNSP s.r.o.</p>
+        <p style="margin:0;display:flex;gap:24px"><a href="#">Ochrana súkromia</a><a href="#">Obchodné podmienky</a></p>
+      </div></div>
+    </div>
+  </div>
+  <p class="trade">Stĺpec „Pôsobíme v“ používa lokality, ktoré už na webe existujú ako stránky
+     <code>/lokality/…</code> — nič nové, len sprístupnené z pätičky.</p>
+
+  <!-- ================= C ================= -->
+  <h2><span class="no">Variant C</span>Technický list</h2>
+  <p class="seclede">Pätička ako tabuľka vo výkrese: bunky oddelené vlasovými linkami, monospace
+     popisky s číslami, firemné údaje ako riadky dátového listu. Nadväzuje na to, čo sme už
+     postavili v projektoch a v CTA — a IČO tu nie je nutné zlo, ale prirodzená súčasť.</p>
+  <div class="stage">
+    <div class="above">↑ sekcia CTA (tmavá)</div>
+    <div class="ft vc">
+      <div class="band">
+        <div class="cell">
+          <p class="brandline">MNSP</p>
+          <span class="tag">Stavby a rekonštrukcie</span>
+          <p class="desc">Poskytujeme komplexné stavebné služby od návrhu až po realizáciu na kľúč,
+             s dôrazom na kvalitu, inováciu a detail.</p>
+        </div>
+        <div class="cell">
+          <h4><em>01</em>Rýchle odkazy</h4>
+          <ul><li><a href="#">Domov</a></li><li><a href="#">Služby</a></li><li><a href="#">Portfólio</a></li>
+              <li><a href="#">Blog</a></li><li><a href="#">Časté otázky</a></li><li><a href="#">O nás</a></li><li><a href="#">Kontakt</a></li></ul>
+        </div>
+        <div class="cell">
+          <h4><em>02</em>Naše služby</h4>
+          <div class="svc">
+            <ul><li><a href="#">Rodinné domy</a></li><li><a href="#">Komerčná výstavba</a></li><li><a href="#">Rezidenčné budovy</a></li>
+                <li><a href="#">Priemyselné objekty</a></li><li><a href="#">Občianske stavby</a></li></ul>
+            <ul><li><a href="#">Zakladanie stavieb</a></li><li><a href="#">Monolitické konštr.</a></li><li><a href="#">Murárske práce</a></li>
+                <li><a href="#">Tesárske práce</a></li><li><a href="#">Omietky</a></li></ul>
+          </div>
+        </div>
+        <div class="cell">
+          <h4><em>03</em>Kontakt a údaje</h4>
+          <dl class="dl">
+            <dt>Tel</dt><dd><a href="#">+421 950 699 585</a></dd>
+            <dt>Mail</dt><dd><a href="#">info@mnsp.sk</a></dd>
+            <dt>Sídlo</dt><dd>Jozefa Kozáčeka 829/2<br>960 01 Zvolen</dd>
+            <dt>Firma</dt><dd>MNSP s.r.o.</dd>
+            <dt>IČO</dt><dd><span class="todo">doplniť</span></dd>
+            <dt>DIČ</dt><dd><span class="todo">doplniť</span></dd>
+          </dl>
+        </div>
+      </div>
+      <div class="bot">
+        <span>© 2026 MNSP s.r.o.</span>
+        <span style="display:flex;gap:26px"><a href="#">Ochrana súkromia</a><a href="#">Obchodné podmienky</a></span>
+      </div>
+    </div>
+  </div>
+  <p class="trade">Firemné údaje sú tu vysadené ako dátový list, takže IČO a DIČ nevyzerajú ako
+     dodatok vynútený zákonom, ale ako súčasť jazyka stránky.</p>
+
+  <p class="pick">Odporúčam <b>C — technický list</b>. Je to jediný variant, ktorý hovorí rovnakým
+     jazykom ako zvyšok webu — monospace popisky, číslovanie, vlasové linky, ostré delenie —
+     a jediný, v ktorom IČO a DIČ vyzerajú ako zámer. <b>B</b> je najlepšie, ak je cieľom, aby ľudia
+     v pätičke našli telefón — má ho vysadený veľkým a je to najčastejší dôvod, prečo sa tam
+     vôbec scrolluje. <b>A</b> berte ako minimum: aj keby ste štruktúru nechali presne tak, ako je,
+     tá 10 px chyba a chýbajúce IČO sa musia opraviť tak či tak.</p>
+
+  <h2><span class="no">Hodnoty</span>Špecifikácia — variant C</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Podklad</td><td><code>#09090B</code>, horná linka 2 px <code>#F68C05</code></td></tr>
+    <tr><td>Mriežka</td><td>Štyri bunky <code>1.5fr 1fr 1.4fr 1.2fr</code>, oddelené 1 px <code>#27272A</code>. Pod 1100 px dve bunky vedľa seba</td></tr>
+    <tr><td>Odsadenie bunky</td><td>34 px zvislo, 30 px vodorovne</td></tr>
+    <tr><td>Popisky stĺpcov</td><td>11 px, mono, váha 700, letter-spacing 0.2em, veľké písmená, <code>#52525B</code>; číslo pred nimi <code>#F68C05</code></td></tr>
+    <tr><td>Odkazy</td><td>13.5 px, <code>#A1A1AA</code>; pri prejdení myšou <code>#F68C05</code>, prechod 220 ms</td></tr>
+    <tr><td>Obe úrovne služieb</td><td>Rovnaká veľkosť. Dnešných <code>text-[10px]</code> na druhom zozname zaniká</td></tr>
+    <tr><td>Dátový list</td><td>Dvojstĺpcová definičná mriežka, mono 12.5 px; popisky <code>#52525B</code>, hodnoty <code>#E4E4E7</code></td></tr>
+    <tr><td>Spodná linka</td><td>Odsadenie 20/30 px, mono 12 px, <code>#52525B</code></td></tr>
+    <tr><td>Dotknuté súbory</td><td><code>src/components/layout/Footer.tsx</code>; <code>src/lib/schema.ts</code> kvôli IČO a DIČ</td></tr>
+  </table>
+
+  <h2><span class="no">Poznámky</span>Obmedzenia</h2>
+  <ul class="flags">
+    <li><b>IČO a DIČ musíte doplniť vy.</b> V ukážkach je na ich mieste zvýraznené „doplniť“ — sú to údaje, ktoré si nemôžem vymyslieť, a zároveň ich web zo zákona musí uvádzať. Zároveň treba potvrdiť presný názov v obchodnom registri; v <code>schema.ts</code> je pri <code>legalName</code> poznámka, že to overené nie je.</li>
+    <li><b>Druhý zoznam služieb som skrátil z desiatich na päť.</b> Robí to stĺpce rovnako vysoké. Ak tých desať odkazov potrebujete kvôli vyhľadávačom, vrátia sa — stĺpec bude vyšší a treba s tým v rozložení počítať.</li>
+    <li><b>Variant B pridáva stĺpec „Pôsobíme v“.</b> Nie sú to nové stránky — <code>/lokality/…</code> na webe už existujú. Ale je to nový blok v pätičke, takže to schváľte.</li>
+    <li><b>Všetky tri sú tmavé.</b> Znamená to, že stránka od CTA nadol je súvisle čierna. Považujem to za správne — sokel stránky — ale je to výrazná zmena oproti dnešnej bielej.</li>
+    <li>Značku som do pätičky nedal ako symbol, len ako meno. Kým nie je rozhodnuté logo, bolo by predčasné ho tam osádzať.</li>
+  </ul>
+
+</div>
+</body>
+</html>

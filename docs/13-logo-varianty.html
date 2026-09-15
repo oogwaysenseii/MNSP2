@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 13 — Logo, prémiové varianty</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--logo:#f68c05}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1280px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:80ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2{font:800 22px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:52px 0 6px;
+     padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;color:var(--amber-6);
+         display:block;margin-bottom:9px}
+  .seclede{font-size:14px;color:var(--muted);margin:0 0 20px;max-width:86ch}
+  p.note{color:var(--ink-2);margin:0 0 14px}
+  code.i{font:500 13px/1.5 ui-monospace,monospace;background:#e9e9e6;padding:2px 6px;color:#18181b}
+
+  .panelset{display:grid;grid-template-columns:1.25fr 1fr;gap:0;border:1px solid #d4d4d8}
+  .pl{background:#fff;padding:36px 32px;display:flex;align-items:center;justify-content:center}
+  .pd{background:#09090b;padding:36px 32px;display:flex;align-items:center;justify-content:center}
+  .sizes{display:grid;grid-template-columns:repeat(3,auto);gap:28px;align-items:end;
+         justify-content:start;margin-top:16px;padding:18px 20px;background:#fff;border:1px solid #d4d4d8}
+  .sizes .cell{text-align:center}
+  .sizes .cell p{margin:9px 0 0;font:700 9px/1 ui-monospace,monospace;letter-spacing:.14em;
+                 text-transform:uppercase;color:var(--muted)}
+  .darkrow{background:#09090b;border-color:#3f3f46}
+  .darkrow .cell p{color:#52525b}
+  .trade{font-size:13.5px;line-height:1.55;color:var(--ink-2);margin:12px 0 0;max-width:70ch}
+  .vhead{display:flex;align-items:baseline;gap:12px;margin:0 0 4px}
+  .vhead b{font:800 19px/1.2 ui-sans-serif,system-ui}
+  .vhead span{font:700 10px/1 ui-monospace,monospace;letter-spacing:.16em;
+              text-transform:uppercase;color:var(--muted)}
+  .swatches{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 0}
+  .sw{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);padding:9px 13px}
+  .sw i{width:26px;height:26px;display:block;border:1px solid rgba(0,0,0,.14)}
+  .sw b{font:700 11px/1.3 ui-monospace,monospace;display:block}
+  .sw em{font-style:normal;font-size:11px;color:var(--muted);display:block;margin-top:3px}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#92400e}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:26%}
+  td code{font:500 12px/1.5 ui-monospace,monospace;background:#f4f4f5;padding:1px 5px}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  .pick{margin-top:22px;padding:18px 22px;background:#18181b;color:#fff;font-size:15px;line-height:1.65}
+  .pick b{color:var(--amber)}
+  .curwrap{background:#09090b;padding:28px;border:1px solid #3f3f46;display:inline-block}
+  .curwrap img{display:block;width:360px;height:auto}
+  .wm{font:800 1px/1 ui-sans-serif,system-ui}
+  @media (max-width:960px){.panelset{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <!-- M knockout mask, 100x100 -->
+  <mask id="mk100">
+    <rect width="100" height="100" fill="#fff"/>
+    <path d="M22 76V30L50 60L78 30V76" fill="none" stroke="#000" stroke-width="15" stroke-linejoin="miter"/>
+  </mask>
+  <!-- M knockout for roof block -->
+  <mask id="mkRoof">
+    <path d="M8 92V38L92 12V92Z" fill="#fff"/>
+    <path d="M28 78V46L50 66L72 46V78" fill="none" stroke="#000" stroke-width="12" stroke-linejoin="miter"/>
+  </mask>
+
+  <symbol id="v1" viewBox="0 0 100 100">
+    <path d="M8 92V38L92 12V92Z" fill="var(--logo)" mask="url(#mkRoof)"/>
+  </symbol>
+
+  <symbol id="v2" viewBox="0 0 100 100">
+    <rect width="100" height="100" fill="var(--logo)" mask="url(#mk100)"/>
+  </symbol>
+
+  <symbol id="v3" viewBox="0 0 100 100">
+    <path d="M22 78V28L50 58L78 28V78" fill="none" stroke="currentColor" stroke-width="13" stroke-linejoin="miter"/>
+    <rect x="14" y="20" width="16" height="16" fill="var(--logo)"/>
+    <rect x="70" y="20" width="16" height="16" fill="var(--logo)"/>
+    <rect x="42" y="52" width="16" height="16" fill="var(--logo)"/>
+  </symbol>
+
+  <symbol id="v4" viewBox="0 0 100 100">
+    <rect x="4" y="4" width="92" height="92" fill="none" stroke="currentColor" stroke-width="3"/>
+    <rect x="13" y="13" width="74" height="74" fill="var(--logo)"/>
+    <path d="M30 70V36L50 58L70 36V70" fill="none" stroke="#09090b" stroke-width="11" stroke-linejoin="miter"/>
+  </symbol>
+</defs></svg>
+
+<div class="wrap">
+
+  <p class="kicker">Návrh 13 · Značka</p>
+  <h1>Logo — prémiové varianty</h1>
+  <p class="lede">Štyri návrhy postavené na tom, čo už značka má: šikmá strecha, oranžová a písmeno M.
+     Všetky sú vektorové, všetky sú ukázané v troch veľkostiach na bielej aj čiernej — lebo logo
+     sa neposudzuje na plagáte, ale v hlavičke pri 40 px a vo favicone pri 32 px.</p>
+  <p class="status">Stav: <b>neaplikované</b> — iba návrh</p>
+
+  <h2><span class="no">Východisko</span>Čo má značka dnes</h2>
+  <div class="curwrap"><img src="assets/mnsp-logo-mark-dark.png" alt="Súčasné logo MNSP"></div>
+  <p class="trade" style="margin-top:14px">Šikmý oranžový blok s bielym „m“, pod ním tri úrovne textu:
+     obrysové MNSP, oranžové STAVBY A REKONŠTRUKCIE a sivé Budujeme budúcnosť.</p>
+
+  <div class="warn"><b>Tri veci, ktoré som pri rozbore našiel</b>
+    <p style="margin:0 0 8px"><b style="display:inline;text-transform:none;letter-spacing:0;font-size:14px">1. Oranžová v logu nie je oranžová na webe.</b>
+    Vzorkoval som PNG: logo je <code>#F68C05</code>, akcent na webe je <code>#F59E0B</code>.
+    Sú tak blízko, že vedľa seba v hlavičke to nevyzerá ako zámer, ale ako chyba.</p>
+    <p style="margin:0 0 8px"><b style="display:inline;text-transform:none;letter-spacing:0;font-size:14px">2. Nápis MNSP je obrysový.</b>
+    Biely obrys bez výplne zmizne pri malej veľkosti aj na svetlom podklade. V hlavičke pri 110 px je nečitateľný.</p>
+    <p style="margin:0"><b style="display:inline;text-transform:none;letter-spacing:0;font-size:14px">3. Súbory <code>mnsp-logo-mark-*.svg</code> nie sú logo.</b>
+    Obsahujú štyri farebné štvorce 2×2 — zjavne placeholder. Skutočné logo existuje len ako raster
+    (PNG/WEBP 720×240), takže sa nedá ostro zväčšiť ani prefarbiť.</p>
+  </div>
+
+  <div class="swatches">
+    <span class="sw"><i style="background:#f68c05"></i><span><b>#F68C05</b><em>oranžová v logu</em></span></span>
+    <span class="sw"><i style="background:#f59e0b"></i><span><b>#F59E0B</b><em>akcent na webe</em></span></span>
+    <span class="sw"><i style="background:#09090b"></i><span><b>#09090B</b><em>čierna sekcií</em></span></span>
+    <span class="sw"><i style="background:#ffffff"></i><span><b>#FFFFFF</b><em>podklad</em></span></span>
+  </div>
+
+  <!-- ============ V1 ============ -->
+  <h2><span class="no">Variant A</span>Strecha</h2>
+  <p class="vhead"><span>Vytesané M v šikmom bloku</span></p>
+  <p class="seclede">Najbližšie k dnešku. Blok so šikmou hranou ostáva, ale „m“ je z neho vyrezané,
+     nie vložené — takže cez písmeno vidno podklad a značka funguje na fotke rovnako ako na bielej.
+     Šikmá hrana ostáva jediným odkazom na strechu.</p>
+  <div class="panelset">
+    <div class="pl">
+      <span style="display:flex;align-items:center;gap:18px">
+        <svg style="width:76px;height:76px" aria-label="MNSP"><use href="#v1"/></svg>
+        <span>
+          <span style="display:block;font:800 30px/1 ui-sans-serif,system-ui;letter-spacing:.06em;color:#09090b">MNSP</span>
+          <span style="display:block;margin-top:7px;font:700 8.5px/1 ui-monospace,monospace;letter-spacing:.24em;color:#f68c05">STAVBY A REKONŠTRUKCIE</span>
+        </span>
+      </span>
+    </div>
+    <div class="pd">
+      <span style="display:flex;align-items:center;gap:18px">
+        <svg style="width:76px;height:76px" aria-label="MNSP"><use href="#v1"/></svg>
+        <span>
+          <span style="display:block;font:800 30px/1 ui-sans-serif,system-ui;letter-spacing:.06em;color:#fff">MNSP</span>
+          <span style="display:block;margin-top:7px;font:700 8.5px/1 ui-monospace,monospace;letter-spacing:.24em;color:#f68c05">STAVBY A REKONŠTRUKCIE</span>
+        </span>
+      </span>
+    </div>
+  </div>
+  <div class="sizes">
+    <span class="cell"><svg style="width:64px;height:64px"><use href="#v1"/></svg><p>64 px</p></span>
+    <span class="cell"><svg style="width:40px;height:40px"><use href="#v1"/></svg><p>40 px · hlavička</p></span>
+    <span class="cell"><svg style="width:32px;height:32px"><use href="#v1"/></svg><p>32 px · favicon</p></span>
+  </div>
+  <p class="trade">Pri 32 px sa šikmá hrana takmer stráca a zostane oranžový štvorec s M. Čitateľné, ale slabšie než ostatné.</p>
+
+  <!-- ============ V2 ============ -->
+  <h2><span class="no">Variant B</span>Razená doska</h2>
+  <p class="vhead"><span>M vyrezané v plnom štvorci</span></p>
+  <p class="seclede">Plný oranžový štvorec, M z neho vyrezané. Žiadna šikmina, žiadny detail navyše —
+     jeden tvar, ktorý funguje od plachty po favicon. Najbližšie k systému webu: ostré rohy,
+     žiadne zaoblenie, plná plocha bez prechodu.</p>
+  <div class="panelset">
+    <div class="pl">
+      <span style="display:flex;align-items:center;gap:18px">
+        <svg style="width:72px;height:72px" aria-label="MNSP"><use href="#v2"/></svg>
+        <span>
+          <span style="display:block;font:800 30px/1 ui-sans-serif,system-ui;letter-spacing:.06em;color:#09090b">MNSP</span>
+          <span style="display:block;margin-top:7px;font:700 8.5px/1 ui-monospace,monospace;letter-spacing:.24em;color:#f68c05">STAVBY A REKONŠTRUKCIE</span>
+        </span>
+      </span>
+    </div>
+    <div class="pd">
+      <span style="display:flex;align-items:center;gap:18px">
+        <svg style="width:72px;height:72px" aria-label="MNSP"><use href="#v2"/></svg>
+        <span>
+          <span style="display:block;font:800 30px/1 ui-sans-serif,system-ui;letter-spacing:.06em;color:#fff">MNSP</span>
+          <span style="display:block;margin-top:7px;font:700 8.5px/1 ui-monospace,monospace;letter-spacing:.24em;color:#f68c05">STAVBY A REKONŠTRUKCIE</span>
+        </span>
+      </span>
+    </div>
+  </div>
+  <div class="sizes">
+    <span class="cell"><svg style="width:64px;height:64px"><use href="#v2"/></svg><p>64 px</p></span>
+    <span class="cell"><svg style="width:40px;height:40px"><use href="#v2"/></svg><p>40 px · hlavička</p></span>
+    <span class="cell"><svg style="width:32px;height:32px"><use href="#v2"/></svg><p>32 px · favicon</p></span>
+  </div>
+  <p class="trade">Drží tvar aj pri 32 px — pri favicone je to rozhodujúce. Vyrezané M znamená, že na čiernej sekcii je písmeno čierne, na bielej biele; značka sa nikdy nemusí prefarbovať.</p>
+
+  <!-- ============ V3 ============ -->
+  <h2><span class="no">Variant C</span>Konštrukcia</h2>
+  <p class="vhead"><span>M ako nosník so spojmi</span></p>
+  <p class="seclede">M nakreslené ako nosník a v jeho troch vrcholoch oranžové štvorce — styčné plechy,
+     aké sú na oceľových konštrukciách. Jediný variant, ktorý o remesle niečo hovorí,
+     nielen ho farebne naznačuje.</p>
+  <div class="panelset">
+    <div class="pl">
+      <span style="display:flex;align-items:center;gap:18px;color:#09090b">
+        <svg style="width:76px;height:76px" aria-label="MNSP"><use href="#v3"/></svg>
+        <span>
+          <span style="display:block;font:800 30px/1 ui-sans-serif,system-ui;letter-spacing:.06em;color:#09090b">MNSP</span>
+          <span style="display:block;margin-top:7px;font:700 8.5px/1 ui-monospace,monospace;letter-spacing:.24em;color:#f68c05">STAVBY A REKONŠTRUKCIE</span>
+        </span>
+      </span>
+    </div>
+    <div class="pd">
+      <span style="display:flex;align-items:center;gap:18px;color:#fff">
+        <svg style="width:76px;height:76px" aria-label="MNSP"><use href="#v3"/></svg>
+        <span>
+          <span style="display:block;font:800 30px/1 ui-sans-serif,system-ui;letter-spacing:.06em;color:#fff">MNSP</span>
+          <span style="display:block;margin-top:7px;font:700 8.5px/1 ui-monospace,monospace;letter-spacing:.24em;color:#f68c05">STAVBY A REKONŠTRUKCIE</span>
+        </span>
+      </span>
+    </div>
+  </div>
+  <div class="sizes">
+    <span class="cell" style="color:#09090b"><svg style="width:64px;height:64px"><use href="#v3"/></svg><p>64 px</p></span>
+    <span class="cell" style="color:#09090b"><svg style="width:40px;height:40px"><use href="#v3"/></svg><p>40 px · hlavička</p></span>
+    <span class="cell" style="color:#09090b"><svg style="width:32px;height:32px"><use href="#v3"/></svg><p>32 px · favicon</p></span>
+  </div>
+  <div class="sizes darkrow">
+    <span class="cell" style="color:#fff"><svg style="width:64px;height:64px"><use href="#v3"/></svg><p>64 px</p></span>
+    <span class="cell" style="color:#fff"><svg style="width:40px;height:40px"><use href="#v3"/></svg><p>40 px · hlavička</p></span>
+    <span class="cell" style="color:#fff"><svg style="width:32px;height:32px"><use href="#v3"/></svg><p>32 px · favicon</p></span>
+  </div>
+  <p class="trade">Najslabšie pri 32 px — tri malé štvorce splynú s nosníkom. Pre favicon by potreboval zjednodušenú verziu, čo je bežná prax, ale je to práca navyše.</p>
+
+  <!-- ============ V4 ============ -->
+  <h2><span class="no">Variant D</span>Štítok</h2>
+  <p class="vhead"><span>Značka v ráme, ako výrobný štítok</span></p>
+  <p class="seclede">Oranžové pole s vyrezaným M, okolo neho tenký rám s medzerou. Odkazuje na výrobné
+     štítky na strojoch a na razítka v stavebnej dokumentácii. Z celej štvorice pôsobí najdrahšie
+     a zároveň najviac „firemne“.</p>
+  <div class="panelset">
+    <div class="pl">
+      <span style="display:flex;align-items:center;gap:18px;color:#09090b">
+        <svg style="width:74px;height:74px" aria-label="MNSP"><use href="#v4"/></svg>
+        <span>
+          <span style="display:block;font:800 30px/1 ui-sans-serif,system-ui;letter-spacing:.06em;color:#09090b">MNSP</span>
+          <span style="display:block;margin-top:7px;font:700 8.5px/1 ui-monospace,monospace;letter-spacing:.24em;color:#f68c05">STAVBY A REKONŠTRUKCIE</span>
+        </span>
+      </span>
+    </div>
+    <div class="pd">
+      <span style="display:flex;align-items:center;gap:18px;color:#fff">
+        <svg style="width:74px;height:74px" aria-label="MNSP"><use href="#v4"/></svg>
+        <span>
+          <span style="display:block;font:800 30px/1 ui-sans-serif,system-ui;letter-spacing:.06em;color:#fff">MNSP</span>
+          <span style="display:block;margin-top:7px;font:700 8.5px/1 ui-monospace,monospace;letter-spacing:.24em;color:#f68c05">STAVBY A REKONŠTRUKCIE</span>
+        </span>
+      </span>
+    </div>
+  </div>
+  <div class="sizes">
+    <span class="cell" style="color:#09090b"><svg style="width:64px;height:64px"><use href="#v4"/></svg><p>64 px</p></span>
+    <span class="cell" style="color:#09090b"><svg style="width:40px;height:40px"><use href="#v4"/></svg><p>40 px · hlavička</p></span>
+    <span class="cell" style="color:#09090b"><svg style="width:32px;height:32px"><use href="#v4"/></svg><p>32 px · favicon</p></span>
+  </div>
+  <div class="sizes darkrow">
+    <span class="cell" style="color:#fff"><svg style="width:64px;height:64px"><use href="#v4"/></svg><p>64 px</p></span>
+    <span class="cell" style="color:#fff"><svg style="width:40px;height:40px"><use href="#v4"/></svg><p>40 px · hlavička</p></span>
+    <span class="cell" style="color:#fff"><svg style="width:32px;height:32px"><use href="#v4"/></svg><p>32 px · favicon</p></span>
+  </div>
+  <p class="trade">Rám pri 32 px splýva s okrajom poľa. Rieši sa tak, že favicon je len oranžové pole s M — teda variant B.</p>
+
+  <p class="pick">Odporúčam <b>B — razenú dosku</b>. Jediný z tejto štvorice, ktorý drží od plachty
+     po 32 px favicon bez toho, aby potreboval zjednodušenú verziu, a vyrezané M znamená, že značka
+     nikdy nepotrebuje svetlú a tmavú mutáciu — pracuje s podkladom, nie proti nemu.
+     <b>D</b> vyzerá najdrahšie a je to logická nadstavba nad B (to isté pole, len v ráme),
+     takže sa dajú používať spolu: <b>D</b> na dokumenty a plachty, <b>B</b> ako favicon a v hlavičke.
+     <b>C</b> je konceptne najlepšie, ale za drobnú veľkosť platí najviac. <b>A</b> je najbezpečnejšie,
+     keďže mení najmenej — ak nechcete lámať to, čo ľudia poznajú, je to ono.</p>
+
+  <h2><span class="no">Podklady</span>Čo by bolo treba doriešiť</h2>
+  <table>
+    <tr><th>Vec</th><th>Stav</th></tr>
+    <tr><td>Farba</td><td>Zjednotiť <code>#F68C05</code> a <code>#F59E0B</code> na jednu. Odporúčam ponechať <code>#F68C05</code> z loga a prefarbiť akcenty na webe — značka je staršia než web</td></tr>
+    <tr><td>Písmo v nápise</td><td>V ukážke je systémové bezpätkové písmo. Finálna značka musí mať text preveden&yacute; do kriviek, nie závislý na písme v prehliadači</td></tr>
+    <tr><td>Formáty</td><td>SVG (základ), PNG 1×/2×/3× pre e-mail a dokumenty, ICO/PNG 32 a 180 px pre favicon a mobilnú ikonu</td></tr>
+    <tr><td>Mutácie</td><td>Plná (značka + nápis), kompaktná (len značka), jednofarebná čierna a biela pre tlač a razenie</td></tr>
+    <tr><td>Ochranná zóna</td><td>Minimálne odstup vo výške jedného ramena písmena M na každej strane</td></tr>
+  </table>
+
+  <h2><span class="no">Poznámky</span>Obmedzenia</h2>
+  <ul class="flags">
+    <li><b>Toto sú návrhy smeru, nie hotové logo.</b> Sú kreslené priamo v SVG, takže sú ostré a škálovateľné, ale finálna značka potrebuje dotiahnuť optické vyváženie ramien M a hrúbku ťahu — to sa robí na veľkých veľkostiach v krivkách.</li>
+    <li><b>Nápis „MNSP“ je v ukážke systémovým písmom.</b> Neviem, aké písmo používa súčasné logo — vyzerá na geometrický grotesk. Ak ho máte, poviete, a ukážky prekreslím v ňom.</li>
+    <li><b>Tagline „Budujeme budúcnosť“ som z lockupu vypustil.</b> Tri úrovne textu sú v hlavičke pri 40 px nečitateľné. Nezaniká — patrí na pätičku alebo na dokumenty, nie do značky.</li>
+    <li><b>Písmeno „m“ som zmenil na „M“.</b> Malé „m“ s chvostíkom v dnešnom logu pôsobí ako bublina z chatu; veľké M je stabilnejšie a lepšie znesie vyrezanie. Ak na malom „m“ trváte, viem varianty prekresliť — tvar bloku aj vyrezanie ostávajú.</li>
+    <li><b>Nič som nevymyslel okolo firmy.</b> Žiadny rok založenia, žiadne certifikáty ani čísla — v značke je len to, čo v nej je dnes.</li>
+    <li>Súbory <code>mnsp-logo-mark-dark.svg</code> a <code>-light.svg</code> v <code>public/</code> obsahujú placeholder zo štyroch štvorcov. Nič ich dnes nepoužíva (kód siaha po <code>.webp</code> a <code>.png</code>), ale mali by sa nahradiť alebo zmazať, nech si ich niekto omylom nevytiahne.</li>
+  </ul>
+
+</div>
+</body>
+</html>

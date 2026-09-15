@@ -78,7 +78,7 @@ function ProjectTile({ proj, index, sizes }: {
 
         {/* stmavenie zdola */}
         <div className="absolute inset-0 transition-opacity duration-500
-          bg-[linear-gradient(to_top,rgba(0,0,0,.9)_0%,rgba(0,0,0,.5)_32%,transparent_62%)]
+          bg-[linear-gradient(to_top,rgba(0,0,0,.92)_0%,rgba(0,0,0,.6)_20%,transparent_42%)]
           group-hover/tile:opacity-[0.92]" />
 
         {/* poradové číslo + jantárová linka */}
@@ -234,9 +234,9 @@ export function Projects({
 
           {/* HEADER TOP ROW */}
           {!hideHeader && (
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8">
             <div>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-black tracking-tight">{titleSk}</h2>
+              <h2 className="text-3xl md:text-3xl font-extrabold text-black tracking-tight">{titleSk}</h2>
               <p className="text-gray-500 mt-4 max-w-2xl text-lg">
                 {subtitleSk}
               </p>
@@ -254,9 +254,43 @@ export function Projects({
           </div>
           )}
 
+          {/* Locations */}
+          {!compactFilters && (
+              <div>
+                  <span className="block text-[9px] font-mono uppercase tracking-[0.15em] text-gray-400 mb-2.5">
+                    LOKALITA
+                  </span>
+                <div className="flex overflow-x-auto gap-2 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] items-center">
+                  <button
+                      onClick={() => setSelectedLoc('all')}
+                      className={`shrink-0 px-3.5 py-1.5 text-[11px] uppercase tracking-wider transition-all cursor-pointer border ${
+                          selectedLoc === 'all'
+                              ? 'bg-gray-50 text-black font-bold border-black border-l-[3px] border-l-amber-500'
+                              : 'bg-transparent text-gray-500 font-semibold border-gray-200 hover:border-gray-400 hover:text-gray-700'
+                      }`}
+                  >
+                    Všetky lokality
+                  </button>
+                  {allLocations.filter(Boolean).map((loc) => (
+                      loc && <button
+                          key={loc}
+                          onClick={() => setSelectedLoc(loc)}
+                          className={`shrink-0 px-3.5 py-1.5 text-[11px] uppercase tracking-wider transition-all cursor-pointer border ${
+                              selectedLoc === loc
+                                  ? 'bg-gray-50 text-black font-bold border-black border-l-[3px] border-l-amber-500'
+                                  : 'bg-transparent text-gray-500 font-semibold border-gray-200 hover:border-gray-400 hover:text-gray-700'
+                          }`}
+                      >
+                        {loc}
+                      </button>
+                  ))}
+                </div>
+              </div>
+          )}
+
           {/* 2. DYNAMIC INDUSTRY FILTER BAR */}
           {!hideFilters && (
-              <div className="flex flex-col gap-5 mb-10 border-b border-gray-100 pb-6 overflow-hidden">
+              <div className="flex flex-col gap-5   overflow-hidden">
                 {/* Categories */}
                 <div>
                   {!compactFilters && (
@@ -287,39 +321,6 @@ export function Projects({
                   </div>
                 </div>
 
-                {/* Locations */}
-                {!compactFilters && (
-                <div>
-                  <span className="block text-[9px] font-mono uppercase tracking-[0.15em] text-gray-400 mb-2.5">
-                    LOKALITA
-                  </span>
-                  <div className="flex overflow-x-auto gap-2 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] items-center">
-                    <button
-                        onClick={() => setSelectedLoc('all')}
-                        className={`shrink-0 px-3.5 py-1.5 text-[11px] uppercase tracking-wider transition-all cursor-pointer border ${
-                            selectedLoc === 'all'
-                                ? 'bg-gray-50 text-black font-bold border-black border-l-[3px] border-l-amber-500'
-                                : 'bg-transparent text-gray-500 font-semibold border-gray-200 hover:border-gray-400 hover:text-gray-700'
-                        }`}
-                    >
-                      Všetky lokality
-                    </button>
-                    {allLocations.filter(Boolean).map((loc) => (
-                        loc && <button
-                            key={loc}
-                            onClick={() => setSelectedLoc(loc)}
-                            className={`shrink-0 px-3.5 py-1.5 text-[11px] uppercase tracking-wider transition-all cursor-pointer border ${
-                                selectedLoc === loc
-                                    ? 'bg-gray-50 text-black font-bold border-black border-l-[3px] border-l-amber-500'
-                                    : 'bg-transparent text-gray-500 font-semibold border-gray-200 hover:border-gray-400 hover:text-gray-700'
-                            }`}
-                        >
-                          {loc}
-                        </button>
-                    ))}
-                  </div>
-                </div>
-                )}
               </div>
           )}
 
@@ -372,7 +373,7 @@ export function Projects({
                           <ProjectTile
                             proj={proj}
                             index={i}
-                            sizes="(max-width: 640px) 86vw, (max-width: 1024px) 45vw, 29vw"
+                            sizes="(max-width: 640px) 86vw, (max-width: 1024px) 45vw, 400px"
                           />
                         </motion.div>
                       </div>
@@ -386,7 +387,7 @@ export function Projects({
                       <ProjectTile
                         proj={proj}
                         index={i}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 460px"
                       />
                     </motion.div>
                   ))}
