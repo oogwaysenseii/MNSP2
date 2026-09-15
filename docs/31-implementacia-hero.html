@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 31 — Implementácia hero panela (variant A)</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-4:#fbbf24;--amber-6:#d97706;--amber-7:#b45309;
+        --ease:cubic-bezier(.22,.61,.36,1);
+        --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+        --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.65 var(--sans)}
+  .wrap{max-width:1180px;margin:0 auto;padding:48px 24px 120px}
+  .kicker{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 var(--sans);letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:84ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2{font:800 22px/1.25 var(--sans);letter-spacing:-.01em;margin:54px 0 6px;padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 var(--mono);letter-spacing:.16em;color:var(--amber-6);display:block;margin-bottom:9px}
+  .seclede{font-size:14.5px;color:var(--ink-2);margin:0 0 16px;max-width:92ch}
+  code.i,td code{font:500 12px/1.5 var(--mono);background:#f4f4f5;padding:1px 5px}
+  .file{display:inline-flex;align-items:center;gap:8px;background:#18181b;color:#fff;
+        font:700 11px/1 var(--mono);letter-spacing:.06em;padding:7px 11px;margin:0 0 10px}
+  .file b{color:var(--amber);font-weight:700}
+  pre{background:#18181b;color:#e4e4e7;padding:16px 18px;overflow-x:auto;margin:0 0 14px;
+      font:400 12.5px/1.72 var(--mono);border-left:3px solid var(--amber)}
+  pre.del{border-left-color:#dc2626;opacity:.92}
+  pre .c{color:#71717a} pre .a{color:#86efac} pre .r{color:#fca5a5} pre .y{color:#fcd34d}
+  pre .t{color:#7dd3fc}
+  .lbl{font:700 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+       display:block;margin:0 0 7px}
+  .lbl.rm{color:#b91c1c}
+  .lbl.add{color:#15803d}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:26%}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+          margin-bottom:7px;color:#92400e}
+  .note{background:#fff;border:1px solid var(--line);border-left:3px solid #09090b;
+        padding:14px 18px;margin:16px 0;font-size:14px;color:var(--ink-2)}
+  .note b{color:var(--ink)}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  ul.flags li b{color:var(--ink)}
+  ol.chk{list-style:none;counter-reset:c;padding:0;margin:0}
+  ol.chk li{counter-increment:c;position:relative;padding:12px 0 12px 44px;border-bottom:1px solid var(--line);
+            font-size:14px;color:var(--ink-2)}
+  ol.chk li:before{content:counter(c,decimal-leading-zero);position:absolute;left:0;top:13px;
+                   font:700 11px/1 var(--mono);letter-spacing:.1em;color:var(--amber-7);
+                   border:1px solid var(--line);padding:5px 6px;background:#fff}
+  ol.chk li b{color:var(--ink)}
+  ol.chk li em{font-style:normal;font:500 12px/1.6 var(--mono);color:var(--muted);display:block;margin-top:4px}
+  .steps{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0}
+  .steps span{font:700 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
+              background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);padding:9px 12px}
+
+  /* target render */
+  .hstage{width:100%;overflow:hidden;border:1px solid #d4d4d8;background:#09090b}
+  .hz{width:1300px;transform-origin:top left;position:relative}
+  .hero{position:relative;width:1300px;height:750px;overflow:hidden;background:#09090b;color:#fff;font-family:var(--sans)}
+  .bgimg{position:absolute;inset:0;background:url("assets/hero-poster.webp") center/cover;opacity:.65}
+  .g1{position:absolute;inset:0;background:linear-gradient(to top,#09090b,rgba(9,9,11,.4),rgba(9,9,11,.8))}
+  .g2{position:absolute;inset:0;background:rgba(9,9,11,.2)}
+  .fade{position:absolute;left:0;right:0;bottom:0;height:64px;
+        background:linear-gradient(to top,#fff,transparent);pointer-events:none;z-index:3}
+  .hero .rail{position:relative;z-index:2;width:1300px;padding:128px 32px 97px;height:750px;
+              display:flex;flex-direction:column;justify-content:flex-end}
+  .hero .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:768px;
+                 padding-bottom:40px;margin-bottom:auto}
+  .hero .met{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.1);padding:12px;
+             border:1px solid rgba(255,255,255,.15)}
+  .hero .met i{background:var(--amber);color:#09090b;padding:8px;flex:none;display:block;width:36px;height:36px}
+  .hero .met i s{display:block;width:20px;height:20px;border:2px solid #09090b;text-decoration:none}
+  .hero .met .k{font-size:12px;color:#d4d4d8;font-weight:500;display:block}
+  .hero .met .v{font-size:14px;font-weight:600;color:#fff;display:block}
+  .hero .row{display:grid;grid-template-columns:repeat(12,1fr);gap:32px;align-items:end;width:100%}
+  .hero .txt{grid-column:span 8}
+  .hero .eyebrow{font:700 16px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+                 color:var(--amber-4);margin:0 0 24px;display:block}
+  .hero .badge{display:inline-flex;padding:4px 12px;background:rgba(245,158,11,.9);color:#09090b;
+               font:700 12px/1.35 var(--mono);letter-spacing:.05em}
+  .hero .title{font:800 60px/1.25 var(--sans);letter-spacing:-.025em;margin:16px 0 0;color:#fff}
+  .hero .desc{color:#d4d4d8;font-size:16px;line-height:1.62;max-width:576px;margin:16px 0 0}
+  .hero .ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:40px}
+  .hero .c1{background:var(--amber);color:#09090b;font:600 14px/1 var(--sans);padding:14px 24px;
+            display:inline-flex;align-items:center;gap:8px}
+  .hero .c2{background:rgba(255,255,255,.1);color:#fff;font:600 14px/1 var(--sans);padding:14px 24px;
+            border:1px solid rgba(255,255,255,.25);display:inline-flex;align-items:center}
+  .hero .side{grid-column:span 4}
+  .pan{position:relative;width:100%;height:419px;overflow:hidden;background:#18181b;
+       border:1px solid rgba(255,255,255,.14)}
+  .pan img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .pan .sh{position:absolute;inset:0;z-index:2;
+           background:linear-gradient(to top,rgba(9,9,11,.6),transparent 45%)}
+  .pan .edge{position:absolute;left:0;right:0;top:0;height:3px;z-index:3;background:var(--amber)}
+  .pan .chip{position:absolute;right:12px;bottom:12px;z-index:4;display:flex;align-items:center;gap:16px;
+             background:rgba(24,24,27,.8);padding:8px 16px;border:1px solid #27272a}
+  .pan .chip s{width:28px;height:28px;background:#27272a;display:flex;align-items:center;
+               justify-content:center;color:#fff;font-size:11px;text-decoration:none}
+  .fadeimg{animation:fj .6s var(--ease)}
+  @keyframes fj{from{opacity:0}to{opacity:1}}
+  .fadein{animation:fi .5s var(--ease)}
+  @keyframes fi{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+  .ctl{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #d4d4d8;
+       padding:11px 14px;margin:16px 0 10px;flex-wrap:wrap}
+  .ctl .l{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--amber-7)}
+  .ctl button{appearance:none;border:1px solid #d4d4d8;background:#fff;cursor:pointer;
+              font:700 11px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:9px 13px}
+  .ctl button.on{background:#09090b;color:#fff;border-color:#09090b}
+  .ctl .gl{margin-left:auto;display:flex;align-items:center;gap:8px;
+           font:700 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .ctl .gl i{width:12px;height:12px;display:block;border:1px dashed #38bdf8}
+  .guide{position:absolute;z-index:6;pointer-events:none;border:1px dashed #38bdf8}
+  .guide b{position:absolute;right:4px;top:4px;font:700 9px/1 var(--mono);letter-spacing:.1em;
+           color:#7dd3fc;background:rgba(9,9,11,.8);padding:4px 6px}
+  @media(max-width:560px){.wrap{padding:28px 16px 80px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 31 · Implementácia · Hero.tsx</p>
+  <h1>Hero — obrázok slajdu v pravej bunke</h1>
+  <p class="lede">Presné kroky pre <b>variant A</b> z návrhu 30: panel 391 × 419 px zarovnaný spodkom
+     na textový stĺpec, bez popisky. Mení sa jediný súbor —
+     <code class="i">src/components/sections/Hero.tsx</code>. Žiadny komponent sa neodstraňuje:
+     ovládač videa sa presúva na panel a zostáva funkčný.</p>
+  <span class="status">Cieľ: <b>&nbsp;variant A · panel 391 × 419 px</b></span>
+
+  <div class="steps">
+    <span>01 · import</span><span>02 · dáta</span><span>03 · min-h</span>
+    <span>04 · panel</span><span>05 · ovládač</span><span>06 · mobil</span><span>07 · kontrola</span>
+  </div>
+
+  <!-- ============================================================ cieľ -->
+  <h2><span class="no">00 — CIEĽ</span>Ako to má vyzerať</h2>
+  <div class="ctl">
+    <span class="l">Slajd</span>
+    <button data-s="0" class="on">01</button><button data-s="1">02</button><button data-s="2">03</button>
+    <button id="gBtn">Ukázať textový stĺpec</button>
+    <span class="gl"><i></i>Výška textu</span>
+  </div>
+  <div class="hstage"><div class="hz" id="hz"><div class="hero" id="hero"></div></div></div>
+  <p class="seclede" style="margin-top:12px">Zapnite si obrys textového stĺpca a prepnite na slajd 01 —
+     uvidíte to jediné, čo treba pri tomto variante vyriešiť vopred. Vysvetlenie hneď nižšie.
+     <br><b>Pozor:</b> ukážka je prekreslená, nie je to bežiaca stránka — obrys ukazuje pomer, nie presné
+     pixely. Záväzné čísla sú tie v tabuľkách nižšie, odmerané na
+     <code class="i">localhost:3000</code>.</p>
+
+  <!-- ============================================================ výška -->
+  <h2><span class="no">01 — JEDINÝ HÁČIK</span>Textový stĺpec nemá stále rovnakú výšku</h2>
+  <p class="seclede">Variant A stojí na tom, že panel má výšku textového stĺpca. Odmeral som ju na
+     bežiacej stránke pri 1315 px pre všetky tri slajdy — a nie je rovnaká:</p>
+  <table>
+    <tr><th>Slajd</th><th>Nadpis</th><th>Výška textového stĺpca</th></tr>
+    <tr><td>01 · Rodinné domy</td><td>1 riadok</td><td><b>348 px</b></td></tr>
+    <tr><td>02 · Komplexná výstavba a obnova budov</td><td>2 riadky</td><td>423 px</td></tr>
+    <tr><td>03 · Staviame vaše sny na pevných základoch</td><td>2 riadky</td><td>423 px</td></tr>
+  </table>
+  <p class="seclede">Rozdiel je 75 px — presne jeden riadok nadpisu pri 60 px a
+     <code class="i">leading-tight</code>. Sú len dve možnosti a jedna z nich je zlá:</p>
+  <table>
+    <tr><th>Riešenie</th><th>Čo to robí</th><th>Verdikt</th></tr>
+    <tr><td><code>lg:h-[419px]</code><br>pevná výška</td>
+        <td>Horná hrana panela sa nikdy nepohne. Na slajde 01 vyčnieva 75 px nad text.</td>
+        <td><b>Toto použite.</b> Fotka je ťažší prvok než text — má stáť, nie skákať.</td></tr>
+    <tr><td><code>lg:self-stretch lg:h-auto</code><br>ťahá sa podľa textu</td>
+        <td>Horná hrana sedí s textom vždy — ale pri každom prepnutí slajdu poskočí o 75 px.</td>
+        <td>Nie. Poskakujúca hrana fotky každých 7 sekúnd je horšia chyba než nerovný vrch.</td></tr>
+  </table>
+  <div class="note">
+    <b>Spodné hrany sedia vždy.</b> O to sa stará <code class="i">items-end</code>, ktoré na rade
+    (riadok 163) už je. Nerovná je len horná hrana, a to len na slajde 01.
+  </div>
+
+  <h3 style="font:800 15px/1.3 var(--sans);margin:34px 0 8px;letter-spacing:-.01em">
+    Odpočítanie horného a dolného odsadenia textu</h3>
+  <p class="seclede">Výška 423 px je <em>rámček</em> textového stĺpca, nie jeho optická výška.
+    Hore aj dole treba odmerať, koľko v ňom je prázdna — a to odpočítať z výšky panela, aby sa
+    hrany naozaj kryli. Merané v prehliadači cez <code class="i">canvas.measureText()</code>
+    na skutočne vykreslenom písme, nie z tabuľky:</p>
+  <table>
+    <tr><th>Hrana</th><th>Čo tam je</th><th>Prázdno</th></tr>
+    <tr><td>Hore</td>
+        <td>Nadštítok <code>&lt;h1&gt;</code>: písmo 16 px v riadku 24 px. Polovičný preklad 1,5 px
+            + priestor medzi horným dotiahnutím a verzálkou 2 px.</td>
+        <td><b>3,5 px</b></td></tr>
+    <tr><td>Dole</td>
+        <td>Tlačidlo „Nezáväzne dopytovať cenu“ je plná plocha s <code>py-3.5</code> — jeho spodná
+            hrana <em>je</em> spodná hrana stĺpca. Žiadny preklad pod ňou nie je.</td>
+        <td><b>0 px</b></td></tr>
+  </table>
+  <pre>423 px  <span class="c">rámček textového stĺpca (2-riadkové slajdy)</span>
+ −3,5 px <span class="c">prázdno nad verzálkou nadštítku</span>
+ −0 px   <span class="c">pod tlačidlom nič nie je</span>
+<span class="a">= 419 px  výška panela  →  lg:h-[419px]</span></pre>
+  <p class="seclede">Keďže spodné hrany drží <code class="i">items-end</code>, skrátenie panela
+    o 4 px posunie jeho <em>hornú</em> hranu o 4 px nadol — presne tam, kde začínajú písmená
+    nadštítku. To je celá korekcia; nie je väčšia, lebo v tom stĺpci naozaj nie je viac prázdna.
+    Ak ste mali na mysli inú medzeru, povedzte, od čoho ju meriate, a prepočítam to.</p>
+
+  <!-- ============================================================ 02 -->
+  <h2><span class="no">02 — IMPORT</span>Jeden riadok navrch súboru</h2>
+  <span class="file">src/components/sections/Hero.tsx · <b>riadky 1–6</b></span>
+<pre>import { Play, Pause, Award, ShieldCheck, Clock, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+<span class="a">import Image from 'next/image';</span></pre>
+  <p class="seclede">Variant A nemá popisku, takže na paneli nie je žiadny text — a teda ani
+     konštanta <code class="i">MONO</code>, ktorú by si vyžiadal variant B. Nič viac sa neimportuje.</p>
+
+  <!-- ============================================================ 03 -->
+  <h2><span class="no">03 — DÁTA</span>Dva kľúče do každého slajdu</h2>
+  <span class="file">src/components/sections/Hero.tsx · <b>riadky 14–30</b></span>
+  <p class="seclede">Cesty sú existujúce súbory v <code class="i">public/</code>. Popiska sa
+     nezobrazuje, ale <code class="i">alt</code> je povinný — dávam doň názov projektu zo
+     <code class="i">src/data/projects.ts</code>, takže je vecný a nie generický.</p>
+<pre>const headlines = [
+  {
+    badge: 'Výstavba a rekonštrukcie rodinných domov',
+    title: 'Rodinné domy',
+    description: 'Postavte alebo zrekonštruujte si svoj vysnívaný dom…',
+    <span class="a">image: '/rodinny-dom-banska-bystrica-slnecne-strane.webp',
+    imageAlt: 'Rodinný dom Banská Bystrica',</span>
+  },
+  {
+    badge: 'Termíny dohodnuté v zmluve',
+    title: 'Komplexná výstavba a obnova budov',
+    description: 'Zabezpečujeme komplexnú výstavbu, rekonštrukcie…',
+    <span class="a">image: '/Domov-socialnych-sluzieb-Detva.webp',
+    imageAlt: 'Zariadenie sociálnych služieb Detva',</span>
+  },
+  {
+    badge: 'Od projektu po kolaudáciu',
+    title: 'Staviame vaše sny na pevných základoch',
+    description: 'Od rodinných domov až po rozsiahle stavebné realizácie…',
+    <span class="a">image: '/hruba-stavba-dubravy/hruba-stavba-rd-dubravy.webp',
+    imageAlt: 'Hrubá stavba Dúbravy',</span>
+  }
+];</pre>
+  <div class="note">
+    <b>Urobte <code class="i">image</code> povinným.</b> Ak sa <code class="i">headlines</code>
+    niekedy typuje, nech je <code class="i">image: string</code> bez otáznika — štvrtý slajd bez
+    obrázka by inak nechal v hero prázdny čierny obdĺžnik 391 × 419 px a pri písaní textu by si
+    toho nikto nevšimol.
+  </div>
+
+  <!-- ============================================================ 04 -->
+  <h2><span class="no">04 — VÝŠKA HERO</span>Pevná výška musí ísť preč</h2>
+  <span class="file">src/components/sections/Hero.tsx · <b>riadok 69</b></span>
+  <span class="lbl rm">Predtým</span>
+<pre class="del">&lt;div id="hero" className="relative w-full <span class="r">h-[750px]</span> overflow-hidden bg-zinc-950 text-white "&gt;</pre>
+  <span class="lbl add">Potom</span>
+<pre>&lt;div id="hero" className="relative w-full <span class="a">min-h-[750px]</span> overflow-hidden bg-zinc-950 text-white"&gt;</pre>
+  <p class="seclede">Na mobile je dnes pod tlačidlami 133 px voľných, ale pás 2 : 1 potrebuje 172 px
+     plus medzeru 32 px. S <code class="i">h-[750px]</code> by sa obsah orezal, lebo rodič má
+     <code class="i">overflow-hidden</code>.</p>
+
+  <span class="file">src/components/sections/Hero.tsx · <b>riadok 112</b></span>
+  <span class="lbl rm">Predtým</span>
+<pre class="del">&lt;div className="max-w-[1500px] relative z-10 w-full  mx-auto px-4 sm:px-8 flex flex-col justify-end  <span class="r">pt-32</span>"&gt;</pre>
+  <span class="lbl add">Potom</span>
+<pre>&lt;div className="max-w-[1500px] relative z-10 w-full mx-auto px-4 sm:px-8 flex flex-col justify-end <span class="a">pt-24 lg:pt-32</span>"&gt;</pre>
+
+  <!-- ============================================================ 05 -->
+  <h2><span class="no">05 — PANEL</span>Celá pravá bunka</h2>
+  <span class="file">src/components/sections/Hero.tsx · <b>riadky 211–234</b> — nahradiť celý blok</span>
+  <p class="seclede">Dôležité je rozdelenie na dve vrstvy: <b>prelína sa len fotka</b>, kým amber hrana
+     a ovládač videa stoja. Keby boli vnútri <code class="i">motion.div</code>, blikali by pri každom
+     slajde a ovládač by sa pri prepnutí na chvíľu stratil pod kurzorom.</p>
+<pre>{<span class="c">/* OBRÁZOK SLAJDU + OVLÁDAČ VIDEA */</span>}
+&lt;div className="lg:col-span-4 <span class="a">order-first lg:order-none</span>"&gt;
+  &lt;div className="relative <span class="y">w-full aspect-[2/1] lg:h-[419px]</span>
+    overflow-hidden border border-white/[0.14] bg-zinc-900"&gt;
+
+    {<span class="c">/* vrstva 1 — prelína sa */</span>}
+    &lt;AnimatePresence <span class="y">initial={false}</span>&gt;
+      &lt;motion.div
+        key={currentSlideIndex}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.6 }}
+        className="absolute inset-0"
+      &gt;
+        &lt;Image
+          src={headlines[currentSlideIndex].image}
+          alt={headlines[currentSlideIndex].imageAlt}
+          fill
+          <span class="y">sizes="(min-width: 1024px) 391px, 100vw"</span>
+          <span class="y">quality={90}</span>
+          priority={currentSlideIndex === 0}
+          className="object-cover"
+        /&gt;
+
+        {<span class="c">/* tienenie zdola — aby ovládač videa držal kontrast aj na svetlej fotke */</span>}
+        &lt;span className="absolute inset-0
+          bg-[linear-gradient(to_top,rgba(9,9,11,0.6),transparent_45%)]" /&gt;
+      &lt;/motion.div&gt;
+    &lt;/AnimatePresence&gt;
+
+    {<span class="c">/* vrstva 2 — stojí, neprelína sa */</span>}
+    &lt;span className="absolute inset-x-0 top-0 z-10 h-[3px] bg-amber-500" /&gt;
+
+    <span class="t">&lt;!-- ovládač videa: presne ten istý, len presunutý — viď krok 06 --&gt;</span>
+
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+  <div class="note">
+    <b><code class="i">order-first lg:order-none</code> mení len poradie na obrazovke, nie v DOM.</b>
+    Text vrátane <code class="i">&lt;h1&gt;</code> zostáva v kóde prvý, takže sa nič nemení pre SEO
+    ani pre čítačku obrazovky — na telefóne sa len zobrazí fotka nad textom.
+    <br><br>
+    Pozor: v návrhu 30 bola na mobile fotka <em>pod</em> nadštítkom „Stavebná firma | …“.
+    Takto je nad ním. Inak by sa panel musel vykresliť dvakrát — raz v ľavom stĺpci pre mobil,
+    raz v pravom pre desktop — a Next by stiahol obrázok dvakrát. Ak chcete presne poradie
+    z návrhu 30, treba <code class="i">&lt;h1&gt;</code> vybrať zo stĺpca nad celý rad; povedzte a dopíšem to.
+  </div>
+
+  <div class="warn">
+    <b><code class="i">w-full</code> nesmie zmiznúť</b>
+    Kým sú šírka aj výška určené, <code class="i">aspect-ratio</code> sa ignoruje — panel má na
+    desktope 391 × 419 px a <code class="i">lg:aspect-auto</code> netreba (overené v prehliadači).
+    Ale ak by šírka prestala byť určená — napríklad by v bunke zostal pôvodný
+    <code class="i">flex justify-end</code> z riadku 212 — pomer 2 : 1 sa zrazu uplatní na výšku
+    419 px a panel vyskočí na <b>838 × 419 px</b>, teda dvojnásobok bunky. Preto ten
+    <code class="i">flex</code> v kroku 06 musí ísť preč.
+  </div>
+
+  <!-- ============================================================ 06 -->
+  <h2><span class="no">06 — OVLÁDAČ VIDEA</span>Presunúť, nie prerobiť</h2>
+  <p class="seclede">Obsluha ostáva nedotknutá — <code class="i">document.querySelector('video')</code>
+     hľadá v celom dokumente, takže presun v strome jej nevadí. Mení sa len obal: z
+     <code class="i">flex justify-end</code> na <code class="i">absolute</code> v pravom dolnom rohu panela.</p>
+  <span class="lbl rm">Predtým — riadky 212–213</span>
+<pre class="del">&lt;div className="<span class="r">lg:col-span-4 flex justify-start lg:justify-end</span>"&gt;
+  &lt;div className="flex items-center gap-4 bg-zinc-900/80 backdrop-blur-sm px-4 py-2 border border-zinc-800"&gt;</pre>
+  <span class="lbl add">Potom — vnútri panela, hneď za amber hranou</span>
+<pre>&lt;div className="<span class="a">absolute right-3 bottom-3 z-10</span> flex items-center gap-4
+  bg-zinc-900/80 backdrop-blur-sm px-4 py-2 border border-zinc-800"&gt;
+  &lt;button
+    onClick={() =&gt; { <span class="c">/* … bez zmeny, riadky 215–225 … */</span> }}
+    className="p-1.5 bg-zinc-800 hover:bg-zinc-700 text-white transition-colors cursor-pointer"
+    title={isPlaying ? 'Pozastaviť video' : 'Prehrať video'}
+    aria-label={isPlaying ? 'Pozastaviť video' : 'Prehrať video'}
+  &gt;
+    {isPlaying ? &lt;Pause className="w-4 h-4" /&gt; : &lt;Play className="w-4 h-4" /&gt;}
+  &lt;/button&gt;
+&lt;/div&gt;</pre>
+  <p class="seclede">Ovládač sedí presne tam, kde je dnes — v pravom dolnom rohu. Rozdiel je, že
+     doteraz plával v prázdne a teraz má pod sebou fotku. <code class="i">gap-4</code> pri jedinom
+     dieťati nič nerobí; nechávam ho, aby sa blok dal porovnať s pôvodným riadok po riadku.</p>
+
+  <!-- ============================================================ 07 -->
+  <h2><span class="no">07 — MOBIL</span>Čo sa deje pod <code style="font-size:.8em">lg</code></h2>
+  <table>
+    <tr><th>Vlastnosť</th><th>&lt; 1024 px</th><th>≥ 1024 px</th></tr>
+    <tr><td>Pomer / výška</td><td><code>aspect-[2/1]</code> → 343 × 172 px pri 375 px</td>
+        <td><code>h-[419px]</code> prebije pomer (šírka aj výška sú určené) → 391 × 419 px</td></tr>
+    <tr><td>Poradie</td><td><code>order-first</code> — fotka nad textom</td><td><code>order-none</code> — pravý stĺpec</td></tr>
+    <tr><td>Medzera</td><td><code>gap-8</code> z rodičovskej mriežky (32 px) — netreba margin</td><td>to isté, vodorovne</td></tr>
+    <tr><td><code>sizes</code></td><td><code>100vw</code></td><td><code>391px</code></td></tr>
+    <tr><td>Výška hero</td><td>rastie nad 750 px (preto <code>min-h</code>)</td><td>750 px</td></tr>
+  </table>
+
+  <!-- ============================================================ 08 -->
+  <h2><span class="no">08 — KONTROLA</span>Čo odmerať, keď to beží</h2>
+  <ol class="chk">
+    <li><b>Panel má 391 × 419 px</b> pri šírke okna 1315 px.
+        <em>$0.getBoundingClientRect() na obale panela</em></li>
+    <li><b>Spodná hrana panela sedí so spodkom tlačidiel</b> — na všetkých troch slajdoch.
+        <em>panel.bottom === textColumn.bottom; robí to items-end na rade (riadok 163)</em></li>
+    <li><b>Horná hrana panela sa pri striedaní slajdov nehýbe.</b>
+        <em>ak poskakuje o 75 px, výška je auto namiesto pevných 419 px</em></li>
+    <li><b>Pri prepnutí slajdu nebliká amber hrana ani ovládač.</b>
+        <em>ak blikajú, sú omylom vnútri motion.div</em></li>
+    <li><b>Next si pýta 640w kandidáta, nie 1920w.</b>
+        <em>Network → filter _next/image → skontrolovať w= v URL; ak je veľké, chýba sizes</em></li>
+    <li><b>Produkčný build nevracia na obrázku 400.</b>
+        <em>quality musí byť 75 alebo 90 — iné hodnoty next.config nepozná</em></li>
+    <li><b>Pri 375 px sa nič neorezáva</b> a stránka nemá vodorovné rolovanie.
+        <em>scrollWidth === clientWidth na documentElement; hero smie byť vyšší ako 750 px</em></li>
+    <li><b>Tlačidlo pauzy stále zastaví video.</b>
+        <em>ikona sa musí prepnúť na Play a video.paused === true</em></li>
+    <li><b>Ovládač je čitateľný aj na najsvetlejšej fotke.</b>
+        <em>slajd 01 má svetlú oblohu v pravom dolnom rohu — kvôli tomu je tam to tienenie</em></li>
+  </ol>
+
+  <!-- ============================================================ 09 -->
+  <h2><span class="no">09 — VLAJKY</span>Otvorené rozhodnutia</h2>
+  <ul class="flags">
+    <li><b>Výber fotiek a priradenie k slajdom je môj návrh.</b> Tretí slajd je slogan, nie projekt —
+        dal som k nemu <em>Hrubá stavba Dúbravy</em>. Ak to nesedí, zmeňte tri reťazce v kroku 03,
+        nič iné.</li>
+    <li><b>Variant A nemá popisku</b>, takže názvy projektov žijú len v <code class="i">alt</code>.
+        Návštevník sa nikde nedozvie, že pozerá na konkrétnu stavbu. Bola to vaša voľba a rešpektujem ju —
+        len aby bolo jasné, čo sa tým stráca. Popiska sa dá pridať kedykoľvek neskôr, je to jeden
+        <code class="i">&lt;div&gt;</code> (návrh 30, variant B).</li>
+    <li><b>Na slajde 01 vyčnieva panel 75 px nad text.</b> Vysvetlené v kroku 01. Ak vám to
+        po nasadení bude prekážať, druhá cesta nie je pružná výška, ale skrátenie nadpisu slajdu 01
+        na dva riadky — to je zmena obsahu, nie štýlu.</li>
+    <li><b>Panel nie je odkaz.</b> Kliknutie na fotku nikam nevedie. Hero už má dve tlačidlá;
+        tretí cieľ kliknutia je rozhodnutie o obsahu.</li>
+    <li><b><code class="i">font-mono</code> na riadkoch 166 a 179 je pokazený</b> — nadštítok aj odznak
+        sa vykresľujú bezpätkovo, lebo <code class="i">--font-mono</code> vedie cez nedefinované
+        <code class="i">--font-jetbrains-mono</code>. Tejto zmeny sa to netýka (variant A nemá na paneli
+        text), ale stojí za samostatnú opravu.</li>
+    <li><b>Zmena <code class="i">h-[750px]</code> na <code class="i">min-h-[750px]</code> ovplyvní aj
+        dnešok.</b> Dlhší slajd na úzkom displeji sa prestane orezávať — je to oprava, ale viditeľná
+        aj mimo tohto návrhu.</li>
+  </ul>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var S=[
+    {badge:'Výstavba a rekonštrukcie rodinných domov',title:'Rodinné domy',
+     desc:'Postavte alebo zrekonštruujte si svoj vysnívaný dom bez námahy. Projekt vám vypracujeme, stavbu zrealizujeme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás.',
+     img:'assets/rodinny-dom-banska-bystrica-slnecne-strane.webp',alt:'Rodinný dom Banská Bystrica'},
+    {badge:'Termíny dohodnuté v zmluve',title:'Komplexná výstavba a obnova budov',
+     desc:'Zabezpečujeme komplexnú výstavbu, rekonštrukcie a modernizácie budov. Či už sa púšťate do rezidenčného, obchodného alebo priemyselného projektu, máme schopnosti a skúsenosti aby sme zaistili úspech v každej fáze.',
+     img:'assets/Domov-socialnych-sluzieb-Detva.webp',alt:'Zariadenie sociálnych služieb Detva'},
+    {badge:'Od projektu po kolaudáciu',title:'Staviame vaše sny na pevných základoch',
+     desc:'Od rodinných domov až po rozsiahle stavebné realizácie. Prinášame skúsenosti, profesionálny prístup a zodpovedné vedenie projektov v každej fáze výstavby.',
+     img:'assets/hruba-stavba-rd-dubravy.webp',alt:'Hrubá stavba Dúbravy'}
+  ];
+  var MET=[['Garancia kvality','Kvalitné služby'],['Odbornosť','Spoľahlivý personál'],
+           ['Poradenstvo','Zákaznícka podpora']];
+  var i=0,timer=null,guide=false;
+
+  function html(){
+    var s=S[i];
+    return '<div class="bgimg"></div><div class="g1"></div><div class="g2"></div>'+
+    '<div class="rail"><div class="metrics">'+MET.map(function(m){
+      return '<div class="met"><i><s></s></i><div><span class="k">'+m[0]+'</span>'+
+             '<span class="v">'+m[1]+'</span></div></div>';}).join('')+'</div>'+
+    '<div class="row"><div class="txt" id="txtcol">'+
+      '<span class="eyebrow">Stavebná firma | Výstavba a rekonštrukcie budov</span>'+
+      '<div class="fadein"><span class="badge">'+s.badge+'</span>'+
+      '<h2 class="title">'+s.title+'</h2><p class="desc">'+s.desc+'</p></div>'+
+      '<div class="ctas"><span class="c1">Nezáväzne dopytovať cenu →</span>'+
+      '<span class="c2">Zobraziť naše referencie</span></div></div>'+
+    '<div class="side"><div class="pan">'+
+      '<div class="fadeimg" style="position:absolute;inset:0">'+
+      '<img src="'+s.img+'" alt="'+s.alt+'"><span class="sh"></span></div>'+
+      '<span class="edge"></span>'+
+      '<div class="chip"><s>❙❙</s></div>'+
+    '</div></div></div></div><div class="fade"></div>';
+  }
+  function drawGuide(){
+    var hero=document.getElementById('hero');
+    var old=hero.querySelector('.guide'); if(old) old.remove();
+    if(!guide) return;
+    var t=document.getElementById('txtcol'),hr=hero.getBoundingClientRect(),tr=t.getBoundingClientRect();
+    var g=document.createElement('div');
+    g.className='guide';
+    g.style.left=(tr.left-hr.left)+'px'; g.style.top=(tr.top-hr.top)+'px';
+    g.style.width=tr.width+'px'; g.style.height=tr.height+'px';
+    g.innerHTML='<b>TEXTOVÝ STĹPEC</b>';
+    hero.appendChild(g);
+  }
+  function fit(){
+    var st=document.querySelector('.hstage'); if(!st) return;
+    var sc=st.clientWidth/1300, z=document.getElementById('hz');
+    z.style.transform='scale('+sc+')';
+    z.parentElement.style.height=Math.ceil(750*sc)+'px';
+  }
+  function render(){
+    document.getElementById('hero').innerHTML=html();
+    document.querySelectorAll('.ctl button[data-s]').forEach(function(b){
+      b.className=(+b.dataset.s===i)?'on':'';});
+    fit(); drawGuide();
+  }
+  document.querySelectorAll('.ctl button[data-s]').forEach(function(b){
+    b.onclick=function(){ i=+b.dataset.s; render(); start(); };
+  });
+  var gb=document.getElementById('gBtn');
+  gb.onclick=function(){ guide=!guide; gb.className=guide?'on':'';
+    gb.textContent=guide?'Skryť textový stĺpec':'Ukázať textový stĺpec'; drawGuide(); };
+  function start(){ if(timer) clearInterval(timer);
+    timer=setInterval(function(){ i=(i+1)%S.length; render(); },7000); }
+  window.addEventListener('resize',function(){ fit(); drawGuide(); });
+  render(); start();
+})();
+</script>
+</body>
+</html>

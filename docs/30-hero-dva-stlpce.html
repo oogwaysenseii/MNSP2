@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 30 — Hero: dva stĺpce, obrázok ku každému slajdu</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-4:#fbbf24;--amber-6:#d97706;--amber-7:#b45309;--logo:#f68c05;
+        --ease:cubic-bezier(.22,.61,.36,1);
+        --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+        --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.65 var(--sans)}
+  .wrap{max-width:1396px;margin:0 auto;padding:48px 24px 120px}
+  .kicker{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 var(--sans);letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:84ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2{font:800 22px/1.25 var(--sans);letter-spacing:-.01em;margin:56px 0 6px;padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 var(--mono);letter-spacing:.16em;color:var(--amber-6);display:block;margin-bottom:9px}
+  h3.sub{font:800 15px/1.3 var(--sans);margin:34px 0 8px;letter-spacing:-.01em}
+  .seclede{font-size:14.5px;color:var(--ink-2);margin:0 0 18px;max-width:92ch}
+  code.i,td code{font:500 12px/1.5 var(--mono);background:#f4f4f5;padding:1px 5px}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  ul.flags li b{color:var(--ink)}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:24%}
+  pre{background:#18181b;color:#e4e4e7;padding:16px 18px;overflow-x:auto;margin:12px 0;
+      font:400 12.5px/1.7 var(--mono);border-left:3px solid var(--amber)}
+  pre .c{color:#71717a} pre .a{color:#86efac}
+  .pick{background:#09090b;color:#fff;padding:20px 24px;margin:18px 0 0;display:flex;gap:18px;align-items:flex-start}
+  .pick .p1{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--amber);flex:none;padding-top:3px}
+  .pick p{margin:0;font-size:14.5px;line-height:1.65;color:#d4d4d8}
+  .pick p b{color:#fff}
+  .fx{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:14px;margin:18px 0 0}
+  .f{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:16px 18px}
+  .f .t{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;display:block}
+  .f h4{font:800 15px/1.3 var(--sans);margin:0 0 7px}
+  .f p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+  .f .m{display:block;margin-top:9px;font:700 12px/1.5 var(--mono);color:var(--ink)}
+
+  /* ========== hero stage ========== */
+  .stagehead{display:flex;align-items:baseline;gap:12px;margin:26px 0 10px}
+  .stagehead b{font:800 15px/1 var(--sans)}
+  .stagehead span{font:700 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .stagehead .tag{margin-left:auto;font:700 9px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
+                  background:#e4e4e7;color:#3f3f46;padding:5px 9px}
+  .stagehead .tag.now{background:#18181b;color:#fff}
+  .to{font-size:13px;color:var(--ink-2);margin:10px 0 0;line-height:1.6;max-width:100ch}
+  .to b{color:var(--ink)}
+
+  .hstage{width:100%;overflow:hidden;border:1px solid #d4d4d8;background:#09090b}
+  .hz{width:1300px;transform-origin:top left;position:relative}
+
+  .hero{position:relative;width:1300px;height:750px;overflow:hidden;background:#09090b;
+        color:#fff;font-family:var(--sans)}
+  .bgimg{position:absolute;inset:0;background:url("assets/hero-poster.webp") center/cover;opacity:.65}
+  .g1{position:absolute;inset:0;background:linear-gradient(to top,#09090b,rgba(9,9,11,.4),rgba(9,9,11,.8))}
+  .g2{position:absolute;inset:0;background:rgba(9,9,11,.2)}
+  .fade{position:absolute;left:0;right:0;bottom:0;height:64px;
+        background:linear-gradient(to top,#fff,transparent);pointer-events:none;z-index:3}
+  .hero .rail{position:relative;z-index:2;width:1300px;padding:128px 32px 97px;
+              height:750px;display:flex;flex-direction:column;justify-content:flex-end}
+  .hero .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:768px;
+                 padding-bottom:40px;margin-bottom:auto}
+  .hero .met{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.1);
+             padding:12px;border:1px solid rgba(255,255,255,.15)}
+  .hero .met i{background:var(--amber);color:#09090b;padding:8px;flex:none;display:block;
+               width:36px;height:36px}
+  .hero .met i s{display:block;width:20px;height:20px;border:2px solid #09090b;text-decoration:none}
+  .hero .met .k{font-size:12px;color:#d4d4d8;font-weight:500;display:block}
+  .hero .met .v{font-size:14px;font-weight:600;color:#fff;display:block}
+  .hero .row{display:grid;grid-template-columns:repeat(12,1fr);gap:32px;align-items:end;width:100%}
+  .hero .txt{grid-column:span 8}
+  .hero .eyebrow{font:700 16px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+                 color:var(--amber-4);margin:0 0 24px;display:block}
+  .hero .badge{display:inline-flex;padding:4px 12px;background:rgba(245,158,11,.9);color:#09090b;
+               font:700 12px/1.35 var(--mono);letter-spacing:.05em}
+  .hero .title{font:800 60px/1.25 var(--sans);letter-spacing:-.025em;margin:16px 0 0;color:#fff}
+  .hero .desc{color:#d4d4d8;font-size:16px;line-height:1.62;max-width:576px;margin:16px 0 0;letter-spacing:.01em}
+  .hero .ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:40px}
+  .hero .c1{background:var(--amber);color:#09090b;font:600 14px/1 var(--sans);padding:14px 24px;
+            display:inline-flex;align-items:center;gap:8px}
+  .hero .c2{background:rgba(255,255,255,.1);color:#fff;font:600 14px/1 var(--sans);padding:14px 24px;
+            border:1px solid rgba(255,255,255,.25);display:inline-flex;align-items:center}
+  .hero .side{grid-column:span 4;display:flex;justify-content:flex-end}
+  .pausechip{display:flex;align-items:center;gap:16px;background:rgba(24,24,27,.8);
+             padding:8px 16px;border:1px solid #27272a}
+  .pausebtn{width:28px;height:28px;background:#27272a;display:flex;align-items:center;
+            justify-content:center;color:#fff;font-size:11px}
+
+  /* per-slide image panel */
+  .pan{position:relative;width:100%;overflow:hidden;background:#18181b}
+  .pan img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .pan .sh{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,11,.72),transparent 55%)}
+  .pan .num{position:absolute;left:12px;top:12px;z-index:3;font:700 11px/1 var(--mono);
+            letter-spacing:.2em;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+  .pan .cap{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:13px 14px;
+            background:rgba(9,9,11,.82)}
+  .pan .cap .k{font:700 9px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+               color:var(--amber);display:block;margin-bottom:6px}
+  .pan .cap .n{font:800 14px/1.25 var(--sans);color:#fff;display:block}
+  .pan .chip{position:absolute;z-index:4}
+  .pan .amberline{position:absolute;left:0;right:0;top:0;height:3px;background:var(--amber);z-index:3}
+  .pan .amberside{position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--amber);z-index:3}
+  .pan .hzt{position:absolute;left:0;right:0;top:0;height:4px;z-index:3;
+            background:repeating-linear-gradient(-45deg,var(--amber) 0 9px,transparent 9px 18px)}
+
+  .fadein{animation:fi .5s var(--ease)}
+  @keyframes fi{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+  .fadeimg{animation:fj .6s var(--ease)}
+  @keyframes fj{from{opacity:0}to{opacity:1}}
+
+  /* empty-space marker on the BEFORE hero */
+  .voidbox{position:absolute;z-index:5;border:1px dashed #ef4444;
+           display:flex;align-items:center;justify-content:center}
+  .voidbox span{font:700 11px/1.5 var(--mono);letter-spacing:.12em;color:#fca5a5;text-align:center;
+                background:rgba(9,9,11,.75);padding:7px 11px}
+
+  /* controls */
+  .ctl{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #d4d4d8;
+       padding:12px 16px;margin:18px 0 8px;flex-wrap:wrap}
+  .ctl .l{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--amber-7)}
+  .ctl button{appearance:none;border:1px solid #d4d4d8;background:#fff;cursor:pointer;
+              font:700 11px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:9px 13px}
+  .ctl button.on{background:#09090b;color:#fff;border-color:#09090b}
+  .ctl .auto{margin-left:auto;font-size:12.5px;color:var(--muted)}
+
+  /* phones */
+  .phones{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start}
+  .ph{width:375px;flex:none}
+  .ph .pl{font:700 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+          margin-bottom:10px;display:block}
+  .scr{width:375px;height:620px;border:1px solid #d4d4d8;background:#09090b;overflow:hidden;position:relative}
+  .scr .inn{position:absolute;inset:0;overflow-y:auto}
+
+  @media(max-width:900px){.ph,.scr{width:100%}}
+  @media(max-width:560px){.wrap{padding:28px 16px 80px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 30 · Domovská stránka — Hero</p>
+  <h1>Hero: dva stĺpce, obrázok ku každému slajdu</h1>
+  <p class="lede">Pomer 2 : 1 už v hero je — mriežka má 12 stĺpcov, text sedí v ôsmich a pravé štyri
+     sú takmer prázdne. Obrázok slajdu ide presne tam, takže sa nemení rozloženie, len sa zaplní to,
+     čo je dnes prázdne. Tri varianty sa líšia výškou panela a tým, čo panel hovorí.</p>
+  <span class="status">Stav: <b>&nbsp;návrh — nič nie je aplikované v kóde</b></span>
+
+  <!-- ============================================================ 01 -->
+  <h2><span class="no">01 — VÝCHODISKO</span>Čo je dnes v pravom stĺpci</h2>
+  <p class="seclede">Merané na <code class="i">localhost:3000</code> pri šírke 1315 px.</p>
+
+  <div class="fx">
+    <div class="f">
+      <span class="t">01 · priestor</span>
+      <h4>Pravý stĺpec je zo 84 % prázdny</h4>
+      <p>Spodný rad má <code class="i">lg:grid-cols-12</code>, text je v <code class="i">col-span-8</code>
+         a v <code class="i">col-span-4</code> sedí len ovládač videa — čip široký 62 px v bunke
+         širokej 391 px.</p>
+      <span class="m">bunka: 391 px · obsah: 62 px<br>nevyužité: 329 px = 84 %</span>
+    </div>
+    <div class="f">
+      <span class="t">02 · mriežka</span>
+      <h4>Pomer 2 : 1 nie je potrebné vytvárať</h4>
+      <p>8 stĺpcov ku 4 je presne 2 : 1. Obrázok teda nepotrebuje novú mriežku — stačí ho vložiť do
+         existujúcej bunky. Ovládač videa sa presunie na obrázok, takže nezanikne.</p>
+      <span class="m">col-span-8 = 813 px<br>col-span-4 = 391 px · gap 32 px<br>v pixeloch 2,08 : 1</span>
+    </div>
+    <div class="f">
+      <span class="t">03 · výška</span>
+      <h4>Voľná výška vpravo je 423 až 525 px</h4>
+      <p>Textový stĺpec meria 423 px a rad je zarovnaný na spodok. Nad ním je pravá strana voľná až
+         po metriky (tie sú <code class="i">max-w-3xl</code>, teda len vľavo) — panel môže siahať
+         až k 128 px od vrchu.</p>
+      <span class="m">textový stĺpec: 230 → 653 px (423)<br>voľné vpravo: 128 → 653 px (525)</span>
+    </div>
+    <div class="f">
+      <span class="t">04 · pozadie</span>
+      <h4>Za textom beží mozaika klipov</h4>
+      <p>Video je koláž mnohých malých záberov pri <code class="i">opacity-65</code>. Obrázok slajdu
+         preto potrebuje pevný rám alebo hranu, inak splynie s pozadím a bude vyzerať ako ďalší
+         políčko mozaiky.</p>
+      <span class="m">video opacity .65 + dva prekryvy<br>gradient hore a 20 % čierna</span>
+    </div>
+  </div>
+
+  <!-- ============================================================ 02 -->
+  <h2><span class="no">02 — VARIANTY</span>Tri panely, tri výšky</h2>
+  <p class="seclede">Všetky štyri hero sekcie nižšie sú v skutočnej veľkosti (1300 × 750 px) a ukazujú
+     ten istý slajd. Prepínajte ich tlačidlami — alebo nechajte bežať automatiku, ktorá strieda
+     každých 7 sekúnd, presne ako dnešný <code class="i">setInterval</code>.</p>
+
+  <div class="ctl">
+    <span class="l">Slajd</span>
+    <button data-s="0" class="on">01 · Rodinné domy</button>
+    <button data-s="1">02 · Komplexná výstavba</button>
+    <button data-s="2">03 · Pevné základy</button>
+    <button id="autoBtn" class="on">Automatika beží</button>
+    <span class="auto">Pozadie je <code class="i">hero-poster.webp</code> — statická snímka z videa, nie samotné video.</span>
+  </div>
+
+  <div class="stagehead"><b>Dnes</b><span>text 8 stĺpcov · vpravo len ovládač</span>
+    <span class="tag now">Aktuálny stav</span></div>
+  <div class="hstage"><div class="hz" id="hzNow"><div class="hero" id="heroNow"></div></div></div>
+  <p class="to">Prerušovaný rám označuje priestor, ktorý je dnes prázdny. Ovládač videa v ňom pláva
+     pri pravom dolnom rohu bez väzby na čokoľvek iné.</p>
+
+  <div class="stagehead"><b>Variant A</b><span>Zarovnaný panel · 391 × 423</span><span class="tag">2 : 1</span></div>
+  <div class="hstage"><div class="hz" id="hzA"><div class="hero" id="heroA"></div></div></div>
+  <p class="to"><b>Prínos:</b> najmenší zásah — panel má presne výšku textového stĺpca, spodné hrany
+     sedia na jednej linke a nič sa v kompozícii neposúva.<br>
+     <b>Riziko:</b> vedľa 60 px nadpisu pôsobí 423 px panel skôr ako doplnok než ako druhý stĺpec.</p>
+
+  <div class="stagehead"><b>Variant B</b><span>Panel s popiskom · 391 × 463</span><span class="tag">2 : 1</span></div>
+  <div class="hstage"><div class="hz" id="hzB"><div class="hero" id="heroB"></div></div></div>
+  <p class="to"><b>Prínos:</b> popiska mení fotku z ozdoby na dôkaz — názov a lokalita idú z
+     <code class="i">src/data/projects.ts</code>, takže hero po prvý raz ukazuje konkrétnu stavbu,
+     nie ilustráciu.<br>
+     <b>Riziko:</b> popiska musí existovať pre všetky tri slajdy; tretí je slogan, nie projekt (viď vlajky).</p>
+
+  <div class="stagehead"><b>Variant C</b><span>Plný pravý stĺpec · 391 × 622</span><span class="tag">2 : 1</span></div>
+  <div class="hstage"><div class="hz" id="hzC"><div class="hero" id="heroC"></div></div></div>
+  <p class="to"><b>Prínos:</b> najsilnejší — panel siaha od linky metrík až pod spodnú hranu a číta sa
+     ako okno do stavby.<br>
+     <b>Riziko:</b> zakryje značnú časť videa a stane sa rovnocenným partnerom nadpisu namiesto opory;
+     spodná biela clona cez neho prechádza a odreže mu pätu.</p>
+
+  <div class="pick">
+    <span class="p1">Moja voľba</span>
+    <p><b>Variant B.</b> Rozdiel medzi A a B je 40 px výšky a jedna popiska — ale tá popiska je celý
+       rozdiel medzi „nejaká stavba“ a „Rodinný dom Banská Bystrica“. Hero je jediné miesto na webe,
+       kde zatiaľ nie je ani jedna konkrétna realizácia; fotka s názvom to mení bez jediného nového
+       riadku obsahu, lebo mená aj lokality už sú v dátach. <b>Variant C</b> som zvážil a odložil:
+       zakrýva pozadie, ktoré je najvýraznejšia vec na tejto stránke, a spodná biela clona
+       (<code style="background:#27272a;padding:1px 5px;font:500 12px/1.5 var(--mono);color:#e4e4e7">h-16 from-white</code>)
+       by mu prešla cez spodných 64 px.</p>
+  </div>
+
+  <!-- ============================================================ 03 -->
+  <h2><span class="no">03 — MOBIL 375 px</span>Kam ide obrázok, keď nie sú stĺpce</h2>
+  <p class="seclede">Pod <code class="i">lg</code> sa mriežka zbalí do jedného stĺpca a metriky sa skryjú
+     (<code class="i">hidden lg:grid</code>). Obrázok sa mení na pás 2 : 1 nad odznakom.</p>
+
+  <div class="phones">
+    <div class="ph">
+      <span class="pl">Dnes</span>
+      <div class="scr"><div class="inn" id="mNow"></div></div>
+      <p class="to" style="color:#71717a">Text má 128 px odsadenia zhora a pod tlačidlami zostáva
+         133 px voľných.</p>
+    </div>
+    <div class="ph">
+      <span class="pl">Návrh — pás 2 : 1 nad odznakom</span>
+      <div class="scr"><div class="inn" id="mNew"></div></div>
+      <p class="to" style="color:#71717a">Pás 343 × 172 px si vyžiada viac miesta, než je tých 133 px
+         voľných — preto <code class="i">h-[750px]</code> musí prejsť na
+         <code class="i">min-h-[750px]</code>. Viď vlajky.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================ 04 -->
+  <h2><span class="no">04 — ŠPECIFIKÁCIA</span>Variant B pre vývojára</h2>
+
+  <h3 class="sub">A · Dáta</h3>
+  <p class="seclede">Pole <code class="i">headlines</code> v <code class="i">Hero.tsx</code> dostane tri
+     nové kľúče. Obrázky aj mená sú existujúce súbory a existujúce záznamy v
+     <code class="i">src/data/projects.ts</code> — nič nové sa nevymýšľa.</p>
+  <pre><span class="c">// Hero.tsx — headlines[]</span>
+{
+  badge: 'Výstavba a rekonštrukcie rodinných domov',
+  title: 'Rodinné domy',
+  description: '…',
+  <span class="a">image: '/rodinny-dom-banska-bystrica-slnecne-strane.webp',</span>
+  <span class="a">imageTitle: 'Rodinný dom Banská Bystrica',</span>
+  <span class="a">imageMeta: 'Rodinné domy · Banská Bystrica',</span>
+}</pre>
+
+  <table>
+    <tr><th>Slajd</th><th>Obrázok</th><th>Popiska (z projects.ts)</th></tr>
+    <tr><td>01 · Rodinné domy</td><td><code>/rodinny-dom-banska-bystrica-slnecne-strane.webp</code></td>
+        <td>Rodinný dom Banská Bystrica<br>Rodinné domy · Banská Bystrica</td></tr>
+    <tr><td>02 · Komplexná výstavba a obnova budov</td><td><code>/Domov-socialnych-sluzieb-Detva.webp</code></td>
+        <td>Zariadenie sociálnych služieb Detva<br>Občianske stavby · Detva</td></tr>
+    <tr><td>03 · Staviame vaše sny na pevných základoch</td><td><code>/hruba-stavba-dubravy/hruba-stavba-rd-dubravy.webp</code></td>
+        <td>Hrubá stavba Dúbravy<br>Rodinné domy · Dúbravy</td></tr>
+  </table>
+
+  <h3 class="sub">B · Rozloženie</h3>
+  <table>
+    <tr><th>Čo</th><th>Dnes</th><th>Návrh</th></tr>
+    <tr><td>Pravá bunka</td><td><code>lg:col-span-4 flex justify-start lg:justify-end</code></td>
+        <td><code>lg:col-span-4 relative</code> — obrázok vyplní celú bunku</td></tr>
+    <tr><td>Rozmer panela</td><td>—</td><td>391 × 463 px pri 1300 px rail; v kóde
+        <code>w-full h-[463px]</code>, obrázok <code>object-cover</code></td></tr>
+    <tr><td>Zarovnanie</td><td><code>items-end</code> na rade</td>
+        <td>ostáva — panel je o 40 px vyšší, takže vystúpi nad textový stĺpec, spodné hrany sedia</td></tr>
+    <tr><td>Ovládač videa</td><td>čip 62 × 46 px pri pravom dolnom rohu bunky</td>
+        <td>ten istý čip, ale <code>absolute right-3 top-3</code> na paneli — neruší sa, len má konečne
+        kam patriť</td></tr>
+    <tr><td>Pod <code>lg</code></td><td>bunka je pod textom</td>
+        <td>panel ide <em>nad</em> odznak: <code>order-first lg:order-none</code>,
+        pomer <code>aspect-[2/1]</code></td></tr>
+  </table>
+
+  <h3 class="sub">C · Vzhľad panela</h3>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Horná hrana</td><td>výstražný pruh 4 px:
+        <code>repeating-linear-gradient(-45deg,#F59E0B 0 9px,transparent 9px 18px)</code> — tá istá
+        hrana ako v CTA a v rozpočtovej karte</td></tr>
+    <tr><td>Rám</td><td><code>border border-white/[0.14]</code> — proti mozaike v pozadí (zistenie 04)</td></tr>
+    <tr><td>Tienenie</td><td><code>bg-gradient-to-t from-[#09090B]/[0.72] to-transparent to-55%</code>
+        — aby popiska držala kontrast na svetlej fotke</td></tr>
+    <tr><td>Popiska</td><td><code>absolute inset-x-0 bottom-0 bg-[#09090B]/[0.82] px-3.5 py-[13px]</code></td></tr>
+    <tr><td>Popiska — meta</td><td>mono 9 px, <code>tracking-[0.14em]</code>, veľké písmená,
+        <code>text-[#F59E0B]</code> — amber na čiernej je 9,26 : 1</td></tr>
+    <tr><td>Popiska — názov</td><td>14 px / 800, <code>leading-[1.25]</code>, <code>text-white</code></td></tr>
+    <tr><td>Číslo slajdu</td><td>mono 11 px, <code>tracking-[0.2em]</code>, <code>left-3 top-3</code>,
+        <code>[text-shadow:0_1px_3px_rgba(0,0,0,0.6)]</code> — ako poradové čísla v ServicesGrid</td></tr>
+    <tr><td>Prechod</td><td>rovnaký <code>key={currentSlideIndex}</code> a <code>AnimatePresence</code>
+        ako text, ale obrázok len stmieva (<code>opacity</code>), neposúva sa —
+        posun 10 px vyzerá pri fotke ako trhnutie</td></tr>
+    <tr><td>Trvanie</td><td>0,6 s pre obrázok, 0,5 s pre text (text dobehne prvý)</td></tr>
+  </table>
+
+  <h3 class="sub">D · Načítanie</h3>
+  <table>
+    <tr><th>Čo</th><th>Prečo</th></tr>
+    <tr><td><code>priority</code> na obrázku prvého slajdu</td>
+        <td>je nad ohybom a súčasťou prvého vykreslenia</td></tr>
+    <tr><td><code>sizes="(min-width:1024px) 391px, 100vw"</code></td>
+        <td>bez toho si Next vypýta šírku podľa <code>vw</code> a stiahne zbytočne veľký súbor —
+        rovnaká chyba ako pôvodne v ServicesGrid</td></tr>
+    <tr><td><code>quality={90}</code></td>
+        <td>90 je v <code>next.config</code> v <code>images.qualities</code>; iná hodnota v produkcii
+        vráti 400</td></tr>
+    <tr><td>Zvyšné dva obrázky bez <code>priority</code></td>
+        <td>stiahnu sa až keď na ne príde rad — hero už dnes drží video mimo kritickej cesty
+        a nemá zmysel to pokaziť tromi fotkami naraz</td></tr>
+  </table>
+
+  <!-- ============================================================ 05 -->
+  <h2><span class="no">05 — VLAJKY</span>Čo potrebuje vaše rozhodnutie</h2>
+  <ul class="flags">
+    <li><b>Tretí slajd je slogan, nie projekt.</b> „Staviame vaše sny na pevných základoch“ nemá vlastnú
+        stavbu, tak som k nemu priradil <em>Hrubá stavba Dúbravy</em> — obsahovo sedí, ale je to moja
+        voľba. Buď ju potvrdíte, alebo tretí slajd necháme bez popisky (len fotka).</li>
+    <li><b>Výber fotiek je môj návrh.</b> Všetky tri sú existujúce súbory z portfólia a priradil som ich
+        podľa témy slajdu. Je to prvá vec, ktorú by som dal prekliknúť vám.</li>
+    <li><b>Hero má pevnú výšku <code class="i">h-[750px]</code>.</b> Na mobile pod tlačidlami zostáva
+        133 px voľných, ale pás 2 : 1 potrebuje 172 px + medzeru. Buď
+        <code class="i">min-h-[750px]</code>, alebo na mobile užší pomer (napr. 21 : 9 = 147 px).
+        Odporúčam <code class="i">min-h</code> — pevná výška aj dnes reže dlhšie slajdy na úzkych displejoch.</li>
+    <li><b>Ovládač videa som presunul, nie odstránil.</b> Sedí v pravom hornom rohu panela. Ak ho chcete
+        nechať tam, kde je, panel dostane odsadenie zdola — povedzte, ktoré je vám bližšie.</li>
+    <li><b>Mená projektov v popiskách sú len text, nie odkazy.</b> Spraviť z panela odkaz na detail
+        projektu by dávalo zmysel, ale hero už má dve tlačidlá a tretí cieľ kliknutia je rozhodnutie
+        o obsahu, nie o štýle. Ak to chcete, doplním.</li>
+    <li><b>Fotky sú tri, slajdy tri.</b> Ak neskôr pribudne štvrtý slajd, musí prísť s vlastným obrázkom
+        — inak panel ostane prázdny. Stojí za to dať <code class="i">image</code> ako povinný kľúč typu.</li>
+  </ul>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var SLIDES=[
+    {badge:'Výstavba a rekonštrukcie rodinných domov',
+     title:'Rodinné domy',
+     desc:'Postavte alebo zrekonštruujte si svoj vysnívaný dom bez námahy. Projekt vám vypracujeme, stavbu zrealizujeme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás.',
+     img:'assets/rodinny-dom-banska-bystrica-slnecne-strane.webp',
+     iTitle:'Rodinný dom Banská Bystrica', iMeta:'Rodinné domy · Banská Bystrica'},
+    {badge:'Termíny dohodnuté v zmluve',
+     title:'Komplexná výstavba a obnova budov',
+     desc:'Zabezpečujeme komplexnú výstavbu, rekonštrukcie a modernizácie budov. Či už sa púšťate do rezidenčného, obchodného alebo priemyselného projektu, máme schopnosti a skúsenosti aby sme zaistili úspech v každej fáze.',
+     img:'assets/Domov-socialnych-sluzieb-Detva.webp',
+     iTitle:'Zariadenie sociálnych služieb Detva', iMeta:'Občianske stavby · Detva'},
+    {badge:'Od projektu po kolaudáciu',
+     title:'Staviame vaše sny na pevných základoch',
+     desc:'Od rodinných domov až po rozsiahle stavebné realizácie. Prinášame skúsenosti, profesionálny prístup a zodpovedné vedenie projektov v každej fáze výstavby.',
+     img:'assets/hruba-stavba-rd-dubravy.webp',
+     iTitle:'Hrubá stavba Dúbravy', iMeta:'Rodinné domy · Dúbravy'}
+  ];
+  var METS=[['Garancia kvality','Kvalitné služby'],['Odbornosť','Spoľahlivý personál'],
+            ['Poradenstvo','Zákaznícka podpora']];
+  var i=0, auto=true, timer=null;
+
+  function bg(){return '<div class="bgimg"></div><div class="g1"></div><div class="g2"></div>';}
+  function metrics(){return '<div class="metrics">'+METS.map(function(m){
+    return '<div class="met"><i><s></s></i><div><span class="k">'+m[0]+'</span>'+
+           '<span class="v">'+m[1]+'</span></div></div>';}).join('')+'</div>';}
+  function txt(s,k){return '<div class="txt">'+
+    '<span class="eyebrow">Stavebná firma | Výstavba a rekonštrukcie budov</span>'+
+    '<div class="fadein" key="'+k+'"><span class="badge">'+s.badge+'</span>'+
+    '<h2 class="title">'+s.title+'</h2>'+
+    '<p class="desc">'+s.desc+'</p></div>'+
+    '<div class="ctas"><span class="c1">Nezáväzne dopytovať cenu →</span>'+
+    '<span class="c2">Zobraziť naše referencie</span></div></div>';}
+  function pausechip(){return '<div class="pausechip"><div class="pausebtn">❙❙</div></div>';}
+
+  /* --- panely --- */
+  function panel(s,variant,k){
+    var h = variant==='A' ? 423 : variant==='B' ? 463 : 622;
+    var edge = variant==='A' ? '<span class="amberline"></span>'
+             : variant==='B' ? '<span class="hzt"></span>'
+             : '<span class="amberside"></span>';
+    var cap = variant==='B'
+      ? '<div class="cap"><span class="k">'+s.iMeta+'</span><span class="n">'+s.iTitle+'</span></div>'
+      : '';
+    var chip = variant==='B'
+      ? '<div class="chip" style="right:12px;top:12px">'+pausechip()+'</div>'
+      : '<div class="chip" style="right:12px;bottom:12px">'+pausechip()+'</div>';
+    var num = '<span class="num">0'+(i+1)+' / 03</span>';
+    var bleed = variant==='C' ? 'margin-bottom:-97px;' : '';
+    return '<div class="pan fadeimg" data-k="'+k+'" style="height:'+h+'px;'+bleed+
+      'border:1px solid rgba(255,255,255,.14)">'+
+      '<img src="'+s.img+'" alt="'+s.iTitle+'">'+
+      '<span class="sh"></span>'+edge+(variant==='B'?num:'')+cap+chip+'</div>';
+  }
+
+  function heroHTML(variant){
+    var s=SLIDES[i], k=variant+i;
+    var side = variant==='NOW'
+      ? '<div class="side">'+pausechip()+
+        '<div class="voidbox" style="right:32px;bottom:97px;width:391px;height:423px">'+
+        '<span>391 × 423 px BUNKY<br>Z TOHO 84 % PRÁZDNYCH</span></div></div>'
+      : '<div class="side" style="display:block">'+panel(s,variant,k)+'</div>';
+    return bg()+'<div class="rail">'+metrics()+
+      '<div class="row">'+txt(s,k)+side+'</div></div><div class="fade"></div>';
+  }
+
+  /* --- mobil --- */
+  function mobHTML(withImg){
+    var s=SLIDES[i];
+    var img = withImg
+      ? '<div class="pan fadeimg" style="aspect-ratio:2/1;margin-bottom:18px;'+
+        'border:1px solid rgba(255,255,255,.14)"><img src="'+s.img+'" alt="">'+
+        '<span class="sh"></span><span class="hzt"></span>'+
+        '<span class="num">0'+(i+1)+' / 03</span>'+
+        '<div class="cap"><span class="k">'+s.iMeta+'</span><span class="n">'+s.iTitle+'</span></div>'+
+        '<div class="chip" style="right:10px;top:10px"><div class="pausechip" style="padding:6px 10px">'+
+        '<div class="pausebtn" style="width:22px;height:22px;font-size:9px">❙❙</div></div></div></div>'
+      : '';
+    return '<div style="position:relative;min-height:'+(withImg?'780px':'750px')+';overflow:hidden">'+
+      bg()+
+      '<div style="position:relative;z-index:2;padding:'+(withImg?'96px':'128px')+' 16px 0;'+
+      'display:flex;flex-direction:column;justify-content:flex-end;min-height:'+(withImg?'780px':'750px')+'">'+
+      '<div style="margin-bottom:auto"></div>'+
+      '<span style="font:700 14px/1.35 var(--mono);letter-spacing:.1em;text-transform:uppercase;'+
+        'color:#fbbf24;display:block;margin-bottom:22px">Stavebná firma | Výstavba a rekonštrukcie budov</span>'+
+      img+
+      '<div class="fadein"><span style="display:inline-block;padding:4px 12px;background:rgba(245,158,11,.9);'+
+        'color:#09090b;font:700 12px/1.35 var(--mono)">'+s.badge+'</span>'+
+      '<h2 style="font:800 36px/1.25 var(--sans);letter-spacing:-.02em;margin:16px 0 0;color:#fff">'+s.title+'</h2>'+
+      '<p style="color:#d4d4d8;font-size:14px;line-height:1.62;margin:16px 0 0">'+s.desc+'</p></div>'+
+      '<div style="display:flex;flex-wrap:wrap;gap:12px;margin:32px 0 0">'+
+        '<span style="background:#f59e0b;color:#09090b;font:600 13px/1 var(--sans);padding:13px 20px">Nezáväzne dopytovať cenu →</span>'+
+        '<span style="background:rgba(255,255,255,.1);color:#fff;font:600 13px/1 var(--sans);padding:13px 20px;'+
+          'border:1px solid rgba(255,255,255,.25)">Zobraziť naše referencie</span></div>'+
+      (withImg?'':'<div style="margin-top:26px"><div class="pausechip" style="display:inline-flex">'+
+        '<div class="pausebtn">❙❙</div></div></div>')+
+      '<div style="height:'+(withImg?'40px':'70px')+'"></div></div>'+
+      '<div class="fade"></div></div>';
+  }
+
+  function fit(){
+    var st=document.querySelector('.hstage');
+    if(!st) return;
+    var sc=st.clientWidth/1300;
+    ['hzNow','hzA','hzB','hzC'].forEach(function(id){
+      var z=document.getElementById(id);
+      z.style.transform='scale('+sc+')';
+      z.parentElement.style.height=Math.ceil(750*sc)+'px';
+    });
+  }
+
+  function render(){
+    document.getElementById('heroNow').innerHTML=heroHTML('NOW');
+    document.getElementById('heroA').innerHTML=heroHTML('A');
+    document.getElementById('heroB').innerHTML=heroHTML('B');
+    document.getElementById('heroC').innerHTML=heroHTML('C');
+    document.getElementById('mNow').innerHTML=mobHTML(false);
+    document.getElementById('mNew').innerHTML=mobHTML(true);
+    document.querySelectorAll('.ctl button[data-s]').forEach(function(b){
+      b.className=(+b.dataset.s===i)?'on':'';
+    });
+    fit();
+  }
+
+  function start(){ if(timer) clearInterval(timer);
+    timer=setInterval(function(){ i=(i+1)%SLIDES.length; render(); },7000); }
+  function stop(){ if(timer) clearInterval(timer); timer=null; }
+
+  document.querySelectorAll('.ctl button[data-s]').forEach(function(b){
+    b.onclick=function(){ i=+b.dataset.s; render(); if(auto) start(); };
+  });
+  var ab=document.getElementById('autoBtn');
+  ab.onclick=function(){
+    auto=!auto;
+    ab.className=auto?'on':'';
+    ab.textContent=auto?'Automatika beží':'Automatika stojí';
+    if(auto) start(); else stop();
+  };
+
+  window.addEventListener('resize',fit);
+  render(); start();
+})();
+</script>
+</body>
+</html>

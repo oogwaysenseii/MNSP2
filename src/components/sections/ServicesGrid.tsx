@@ -18,6 +18,23 @@ export function ServicesGrid({ showHeader = false }: { showHeader?: boolean }) {
     <section className=" bg-white mt-5 mb-15">
       <Container className="max-w-[1500px]">
 
+
+          {showHeader && (
+              <div className="mt-5 mb-2 flex flex-wrap items-end justify-between gap-6">
+            <span className={`block ${MONO} text-xs font-bold uppercase
+              tracking-[0.2em] text-[#b45309]`}>
+              Naše služby
+            </span>
+                  <Link href="/sluzby"
+                        className="group flex items-center whitespace-nowrap text-[13px] font-bold
+                uppercase tracking-[0.14em] text-[#b45309] transition-colors hover:text-zinc-950">
+                      Zobraziť všetky služby
+                      <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+              </div>
+          )}
+
+
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {BUILDING_SERVICES.map((sluzba, i) => (
             <Link
@@ -127,20 +144,6 @@ export function ServicesGrid({ showHeader = false }: { showHeader?: boolean }) {
           ))}
         </div>
 
-        {showHeader && (
-          <div className="mt-5 flex flex-wrap items-end justify-between gap-6">
-            <span className={`block ${MONO} text-xs font-bold uppercase
-              tracking-[0.2em] text-[#b45309]`}>
-              Naše služby
-            </span>
-            <Link href="/sluzby"
-              className="group flex items-center whitespace-nowrap text-[13px] font-bold
-                uppercase tracking-[0.14em] text-[#b45309] transition-colors hover:text-zinc-950">
-              Zobraziť všetky služby
-              <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
-        )}
       </Container>
     </section>
   );

@@ -2,39 +2,62 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Play, Pause, Award, ShieldCheck, Clock, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Award, ShieldCheck, Clock, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
+
+/** image je povinný — slajd bez neho nechá v hero prázdnu dieru 391 x 463 px. */
+type Slide = {
+  badge: string;
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+};
 
 export function Hero() {
-  const [isPlaying, setIsPlaying] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   // Background quotes/headlines that fade in/out on top of the timelapse
-  const headlines = [
+  const headlines: Slide[] = [
     {
       badge: 'Výstavba a rekonštrukcie rodinných domov',
       title: 'Rodinné domy',
-      description: 'Postavte alebo zrekonštruujte si svoj vysnívaný dom bez námahy. Projekt vám vypracujeme, stavbu zrealizujeme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás.'
+      description: 'Postavte alebo zrekonštruujte si svoj vysnívaný dom bez námahy. Projekt vám vypracujeme, stavbu zrealizujeme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás.',
+      image: '/rodinne-domy-hero.webp',
+      imageAlt: 'Vizualizácia rodinného domu na kľúč',
     },
     {
       badge: 'Termíny dohodnuté v zmluve',
       title: 'Komplexná výstavba a obnova budov',
-      description: 'Zabezpečujeme komplexnú výstavbu, rekonštrukcie a modernizácie budov. Či už sa púšťate do rezidenčného, obchodného alebo priemyselného projektu, máme schopnosti a skúsenosti aby sme zaistili úspech v každej fáze.'
+      description: 'Zabezpečujeme komplexnú výstavbu, rekonštrukcie a modernizácie budov. Či už sa púšťate do rezidenčného, obchodného alebo priemyselného projektu, máme schopnosti a skúsenosti aby sme zaistili úspech v každej fáze.',
+      image: '/stavby.webp',
+      imageAlt: 'Zariadenie sociálnych služieb Detva',
     },
     {
       badge: 'Od projektu po kolaudáciu',
       title: 'Staviame vaše sny na pevných základoch',
-      description: 'Od rodinných domov až po rozsiahle stavebné realizácie. Prinášame skúsenosti, profesionálny prístup a zodpovedné vedenie projektov v každej fáze výstavby.'
+      description: 'Od rodinných domov až po rozsiahle stavebné realizácie. Prinášame skúsenosti, profesionálny prístup a zodpovedné vedenie projektov v každej fáze výstavby.',
+      image: '/b036e7d2-9d83-4b37-891a-b840161516b2.webp',
+      imageAlt: 'Hrubá stavba Dúbravy',
     }
   ];
 
+  /**
+   * currentSlideIndex is in the deps on purpose: every change — auto or from
+   * the arrows — tears the timer down and starts a fresh 7s. Without it a
+   * click could be followed by an auto-advance a moment later.
+   */
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlideIndex((prev) => (prev + 1) % headlines.length);
     }, 7000);
     return () => clearInterval(interval);
-  }, [headlines.length]);
+  }, [headlines.length, currentSlideIndex]);
+
+  const goToSlide = (step: number) =>
+    setCurrentSlideIndex((prev) => (prev + step + headlines.length) % headlines.length);
 
   /*
    * The video is attached only after the page has finished loading.
@@ -66,7 +89,7 @@ export function Hero() {
   }, []);
 
   return (
-    <div id="hero" className="relative w-full h-[750px] overflow-hidden bg-zinc-950 text-white ">
+    <div id="hero" className="relative w-full min-h-[750px] overflow-hidden bg-zinc-950 text-white">
       {/* 1. TIMELAPSE VIDEO BACKGROUND */}
       <div className=" absolute inset-0 z-0">
         {/*
@@ -109,7 +132,7 @@ export function Hero() {
       </div>
 
       {/* 2. MAIN CONTENT GRID (SXS DESIGN) */}
-      <div className="max-w-[1500px] relative z-10 w-full  mx-auto px-4 sm:px-8 flex flex-col justify-end  pt-32">
+      <div className="max-w-[1500px] relative z-10 w-full  mx-auto px-4 sm:px-8 flex flex-col justify-end pt-24 lg:pt-32">
         
         {/* TOP COMPACT METRICS */}
         <div className="hidden lg:grid grid-cols-3 gap-6 max-w-3xl pb-10 mb-auto">
@@ -160,9 +183,16 @@ export function Hero() {
         </div>
 
         {/* BOTTOM HEADLINE SLIDER & FORM CTA */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end w-full">
+        {/* lg:min-h-[423px] = výška 2-riadkového slajdu. Bez nej rad meria
+            max(text, panel): 419 px na slajde 01 a 423 px na 02/03, takže sa
+            celý rad (a s ním horná hrana panela aj tlačidlá) posúval o 4 px
+            pri každom prepnutí. Panel ostáva 419 px podľa kroku 01. */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end w-full lg:min-h-[423px]">
           {/* FADING HEADLINES */}
-          <div className="lg:col-span-8 space-y-6">
+          {/* lg:self-stretch premôže items-end na rade: stĺpec má vždy výšku
+              radu, takže text začína na tom istom riadku pri každom slajde.
+              Bez toho sedí kratší slajd 01 o 75 px nižšie než 02 a 03. */}
+          <div className="lg:col-span-8 space-y-6 lg:flex lg:flex-col lg:self-stretch">
             <h1 className="text-sm sm:text-base text-amber-400 font-mono tracking-widest font-bold uppercase">
               Stavebná firma | Výstavba a rekonštrukcie budov
             </h1>
@@ -189,7 +219,10 @@ export function Hero() {
             </AnimatePresence>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-4 mt-10">
+            {/* mt-auto drží tlačidlá na spodnej hrane radu, aby ostali
+                zarovnané s panelom aj so šípkami. Voľné miesto na slajde 01
+                sa tak zbiera nad nimi, nie pod textom. */}
+            <div className="flex flex-wrap gap-4 mt-10 lg:mt-auto">
               <Link
                 id="hero-cta-contact"
                 href="/kontakt"
@@ -208,28 +241,65 @@ export function Hero() {
             </div>
           </div>
 
-          {/* TIMELAPSE PAUSE CONTROLLER */}
-          <div className="lg:col-span-4 flex justify-start lg:justify-end">
-            <div className="flex items-center gap-4 bg-zinc-900/80 backdrop-blur-sm px-4 py-2 border border-zinc-800">
-              <button
-                onClick={() => {
-                  const videoElement = document.querySelector('video');
-                  if (videoElement) {
-                    if (isPlaying) {
-                      videoElement.pause();
-                    } else {
-                      videoElement.play();
-                    }
-                    setIsPlaying(!isPlaying);
-                  }
-                }}
-                className="p-1.5 bg-zinc-800 hover:bg-zinc-700 text-white transition-colors cursor-pointer"
-                title={isPlaying ? 'Pozastaviť video' : 'Prehrať video'}
-                aria-label={isPlaying ? 'Pozastaviť video' : 'Prehrať video'}
-              >
-                {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-              </button>
+          {/* OBRÁZOK SLAJDU + OVLÁDAČ VIDEA */}
+          <div className="lg:col-span-4 order-first lg:order-none">
+            {/* posun doľava len na desktope — translate, nie margin, aby sa
+                mriežka nepočítala nanovo. Na mobile je panel na celú šírku,
+                tam by posun spôsobil vodorovné rolovanie. */}
+            <div className="relative w-full aspect-[2/1] lg:h-[419px] overflow-hidden
+              lg:-translate-x-[30px]">
 
+              {/* vrstva 1 — prelína sa */}
+              <AnimatePresence initial={false}>
+                <motion.div
+                  key={currentSlideIndex}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="absolute inset-0"
+                >
+                  {/* 391px stačí: pri paneli 419 px vysokom je najväčší cover
+                      nárok 419 x 1.5 = 629 px a 391px siahne po 640w kandidátovi.
+                      Pri pôvodných 463 px to bolo 695 px a 640w by nestačilo. */}
+                  <Image
+                    src={headlines[currentSlideIndex].image}
+                    alt={headlines[currentSlideIndex].imageAlt}
+                    fill
+                    sizes="(min-width: 1024px) 391px, 100vw"
+                    quality={90}
+                    priority={currentSlideIndex === 0}
+                    className="object-cover"
+                  />
+
+                  {/* tienenie zdola — aby ovládač videa držal kontrast aj na svetlej fotke */}
+                  <span className="absolute inset-0
+                    bg-[linear-gradient(to_top,rgba(9,9,11,0.6),transparent_45%)]" />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* šípky stoja mimo motion.div — inak by pri každom prepnutí slajdu bliknuli */}
+              <div className="absolute right-3 bottom-0 z-10 flex items-center gap-2 bg-zinc-900/80 backdrop-blur-sm px-2 py-2 border border-zinc-800">
+                <button
+                  type="button"
+                  onClick={() => goToSlide(-1)}
+                  className="p-1.5 bg-zinc-800 hover:bg-zinc-700 text-white transition-colors cursor-pointer"
+                  title="Predchádzajúci slajd"
+                  aria-label="Predchádzajúci slajd"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => goToSlide(1)}
+                  className="p-1.5 bg-zinc-800 hover:bg-zinc-700 text-white transition-colors cursor-pointer"
+                  title="Nasledujúci slajd"
+                  aria-label="Nasledujúci slajd"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

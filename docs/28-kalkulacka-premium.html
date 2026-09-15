@@ -1,0 +1,1122 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 28 — Kalkulačka: prémiový vzhľad</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;--logo:#f68c05;
+        --ease:cubic-bezier(.22,.61,.36,1);
+        --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1460px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 ui-sans-serif,system-ui;letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:84ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2{font:800 22px/1.25 ui-sans-serif,system-ui;letter-spacing:-.01em;margin:56px 0 6px;
+     padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 var(--mono);letter-spacing:.16em;color:var(--amber-6);
+         display:block;margin-bottom:9px}
+  h3.sub{font:800 15px/1.3 ui-sans-serif,system-ui;margin:30px 0 8px;letter-spacing:-.01em}
+  .seclede{font-size:14.5px;color:var(--ink-2);margin:0 0 18px;max-width:92ch}
+  .stage{border:1px solid #d4d4d8;background:#fff}
+  .hint{display:flex;gap:10px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);
+        padding:12px 16px;margin:0 0 16px;font-size:14px;color:var(--ink-2)}
+  .good{background:#f0fdf4;border:1px solid #16a34a;border-left:3px solid #16a34a;
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#14532d}
+  .good b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#166534}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:18px 0;font-size:14px;color:#78350f}
+  .warn b{display:block;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;
+          text-transform:uppercase;margin-bottom:7px;color:#92400e}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  ul.flags li b{color:var(--ink)}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:26%}
+  td code,code.i{font:500 12px/1.5 var(--mono);background:#f4f4f5;padding:1px 5px}
+  pre{background:#18181b;color:#e4e4e7;padding:16px 18px;overflow-x:auto;margin:12px 0;
+      font:400 12.5px/1.7 var(--mono);border-left:3px solid var(--amber)}
+  pre .c{color:#71717a} pre .a{color:#86efac} pre .r{color:#fca5a5}
+  .num{font-variant-numeric:tabular-nums}
+
+  /* ===== findings ===== */
+  .fx{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin:18px 0 0}
+  .f{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:16px 18px}
+  .f.crit{border-top-color:#dc2626}
+  .f .t{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;display:block}
+  .f.crit .t{color:#dc2626}
+  .f h4{font:800 15px/1.3 ui-sans-serif,system-ui;margin:0 0 7px}
+  .f p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+  .f .m{display:block;margin-top:9px;font:700 12px/1.5 var(--mono);color:var(--ink)}
+
+  /* ===== live calculator demo ===== */
+  .kal{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .ctrl{background:#fff;border:1px solid #d4d4d8;padding:22px 24px}
+  .ctrl .bar{display:grid;grid-template-columns:1.6fr 1.5fr 1fr;gap:26px;align-items:start}
+  .cl{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--amber-7);
+      display:block;margin-bottom:11px}
+
+  /* slider — sharp, filled track */
+  .sld{position:relative;height:26px;display:flex;align-items:center}
+  .sld input{-webkit-appearance:none;appearance:none;width:100%;height:6px;margin:0;
+             background:transparent;cursor:pointer}
+  .sld .track{position:absolute;left:0;right:0;height:6px;background:#e4e4e7;pointer-events:none}
+  .sld .fill{position:absolute;left:0;height:6px;background:var(--ink);pointer-events:none}
+  .sld input::-webkit-slider-runnable-track{height:6px;background:transparent}
+  .sld input::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+      width:10px;height:26px;background:var(--amber);border:0;margin-top:-10px;
+      box-shadow:0 0 0 1px #09090b;cursor:grab}
+  .sld input::-moz-range-track{height:6px;background:transparent}
+  .sld input::-moz-range-thumb{width:10px;height:26px;border-radius:0;background:var(--amber);
+      border:1px solid #09090b;cursor:grab}
+  .ends{display:flex;justify-content:space-between;font:700 10px/1 var(--mono);
+        letter-spacing:.1em;color:#a1a1aa;margin-top:9px}
+  .areaval{font:800 30px/1 ui-sans-serif,system-ui;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .areaval i{font:700 12px/1 var(--mono);font-style:normal;color:var(--muted);letter-spacing:.1em}
+
+  .seg{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid #d4d4d8}
+  .seg button{appearance:none;border:0;border-left:1px solid #e4e4e7;background:#fff;cursor:pointer;
+              padding:9px 0 8px;text-align:center;transition:background .18s var(--ease),color .18s var(--ease)}
+  .seg button:first-child{border-left:0}
+  .seg button .n{display:block;font:800 17px/1 ui-sans-serif,system-ui;font-variant-numeric:tabular-nums}
+  .seg button .u{display:block;font:700 8px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+                 color:var(--muted);margin-top:5px}
+  .seg button:hover{background:#fafafa}
+  .seg button.on{background:#09090b;color:#fff}
+  .seg button.on .u{color:rgba(255,255,255,.62)}
+  .seg.two{grid-template-columns:repeat(2,1fr)}
+  .seg.two button{padding:14px 0 13px}
+  .seg.two button .n{font-size:14px}
+
+  .mods{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}
+  .mod{appearance:none;cursor:pointer;text-align:left;padding:10px 11px;background:#fff;
+       border:1px solid #e4e4e7;border-left:3px solid #e4e4e7;font:600 11.5px/1.35 ui-sans-serif,system-ui;
+       color:#52525b;transition:all .18s var(--ease);position:relative;min-height:56px}
+  .mod:hover{border-color:#a1a1aa;border-left-color:#a1a1aa}
+  .mod.on{background:#09090b;color:#fff;border-color:#09090b;border-left-color:var(--amber)}
+  .mod .p{display:block;font:700 9px/1 var(--mono);letter-spacing:.1em;color:#a1a1aa;margin-top:6px}
+  .mod.on .p{color:var(--amber)}
+
+  .stds{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+  .std{appearance:none;cursor:pointer;text-align:left;padding:13px 14px;background:#fff;
+       border:1px solid #e4e4e7;transition:all .18s var(--ease)}
+  .std:hover{border-color:#a1a1aa}
+  .std.on{background:#09090b;border-color:#09090b;color:#fff}
+  .std .k{font:700 9px/1 var(--mono);letter-spacing:.16em;color:var(--amber-7);display:block;margin-bottom:7px}
+  .std.on .k{color:var(--amber)}
+  .std .nm{font:800 13.5px/1.25 ui-sans-serif,system-ui;display:block}
+  .std .dl{font:700 10px/1 var(--mono);letter-spacing:.06em;color:var(--muted);display:block;margin-top:6px}
+  .std.on .dl{color:rgba(255,255,255,.66)}
+
+  /* ===== variant cards ===== */
+  .vrow{display:grid;grid-template-columns:repeat(3,375px);gap:20px;margin-top:20px;align-items:start;justify-content:start}
+  .vcol .card{width:375px}
+  .vcol .vh{display:flex;align-items:baseline;gap:9px;margin-bottom:10px}
+  .vcol .vh b{font:800 13px/1 ui-sans-serif,system-ui}
+  .vcol .vh span{font:700 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .vcol .to{font-size:12.5px;color:var(--ink-2);margin:9px 0 0;line-height:1.55}
+  .vcol .to b{color:var(--ink)}
+
+  .card{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .hz{height:5px;background:repeating-linear-gradient(-45deg,var(--amber) 0 10px,transparent 10px 20px)}
+  .band{background:#09090b;color:#fff;padding:11px 16px;display:flex;align-items:center;gap:9px}
+  .band .ic{width:13px;height:13px;border:2px solid var(--amber);flex:none}
+  .band h4{margin:0;font:700 10px/1 var(--mono);letter-spacing:.17em;text-transform:uppercase}
+  .lab{font:700 9px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;display:block}
+  .big{font:800 clamp(24px,2.3vw,31px)/1.05 ui-sans-serif,system-ui;letter-spacing:-.025em;
+       font-variant-numeric:tabular-nums}
+  .big>span{white-space:nowrap}
+  .echo{display:flex;flex-wrap:wrap;gap:0}
+  .echo span{font:700 9px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;
+             padding:5px 8px;border:1px solid;white-space:nowrap;margin:0 -1px -1px 0}
+  .rows{margin-top:4px}
+  .r{display:grid;grid-template-columns:1fr auto auto;gap:9px;align-items:baseline;
+     padding:5px 0 4px;position:relative}
+  .r .nm{font:600 10.5px/1.3 ui-sans-serif,system-ui;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .r .eu{font:700 10.5px/1 var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .r .pc{font:700 9.5px/1 var(--mono);width:26px;text-align:right;font-variant-numeric:tabular-nums}
+  .r .u{position:absolute;left:0;bottom:0;height:2px}
+  .frm{padding:13px 14px}
+  .frm p{margin:0 0 9px;font:800 11.5px/1.3 ui-sans-serif,system-ui}
+  .frm .in{display:block;width:100%;padding:8px 10px;border:1px solid #d4d4d8;background:#fff;
+           font:400 11.5px/1.2 ui-sans-serif,system-ui;color:#52525b;margin-bottom:7px}
+  .frm .sb{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:10px;
+           background:var(--amber);color:#09090b;font:800 10.5px/1 ui-sans-serif,system-ui;
+           letter-spacing:.13em;text-transform:uppercase;border:0;cursor:pointer}
+  .frm .tk{display:flex;flex-wrap:wrap;gap:4px 11px;margin:0 0 10px;padding:0;list-style:none}
+  .frm .tk li{font:700 8.5px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:#71717a;
+              display:flex;align-items:center;gap:4px}
+  .frm .tk li:before{content:"";width:5px;height:5px;background:var(--amber);flex:none}
+  .foot{display:flex;justify-content:space-between;align-items:center;
+        font:700 9px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+
+  /* variant A — dark */
+  .vA{background:#09090b;border:1px solid #27272a}
+  .vA .body{padding:18px 16px}
+  .vA .lab{color:rgba(255,255,255,.55)}
+  .vA .big{color:var(--amber)}
+  .vA .dash{color:#52525b;font-weight:500;padding:0 3px}
+  .vA .chip{display:inline-block;background:rgba(245,158,11,.14);color:var(--amber);
+            font:700 10px/1 var(--mono);padding:5px 7px;border:1px solid rgba(245,158,11,.32)}
+  .vA .echo span{color:rgba(255,255,255,.72);border-color:#27272a}
+  .vA .sec{border-top:1px solid #27272a;margin-top:15px;padding-top:14px}
+  .vA .r .nm{color:rgba(255,255,255,.8)} .vA .r .eu{color:#fff} .vA .r .pc{color:var(--amber)}
+  .vA .r .u{background:rgba(255,255,255,.14)} .vA .r .u i{display:block;height:2px;background:var(--amber)}
+  .vA .frm{background:#fff}
+  .vA .foot{color:rgba(255,255,255,.45)} .vA .foot b{color:#fff}
+
+  /* variant B — sheet */
+  .vB{background:#fff;border:1px solid #d4d4d8}
+  .vB .body{padding:18px 16px}
+  .vB .lab{color:var(--amber-7)}
+  .vB .big{color:#09090b;display:inline-block;padding-bottom:5px;
+           box-shadow:inset 0 -4px 0 rgba(245,158,11,.55)}
+  .vB .dash{color:#a1a1aa;font-weight:500;padding:0 3px}
+  .vB .chip{display:inline-block;background:#fafafa;color:#09090b;
+            font:700 10px/1 var(--mono);padding:5px 7px;border:1px solid #e4e4e7}
+  .vB .echo span{color:#52525b;border-color:#e4e4e7}
+  .vB .sec{border-top:1px solid #e4e4e7;margin-top:15px;padding-top:14px}
+  .vB .r{border-bottom:1px dotted #e4e4e7}
+  .vB .r .nm{color:#3f3f46} .vB .r .eu{color:#09090b} .vB .r .pc{color:var(--amber-7)}
+  .vB .r .u{display:none}
+  .vB .frm{background:#fafafa;border:1px solid #e4e4e7}
+  .vB .foot{color:var(--muted)} .vB .foot b{color:#09090b}
+
+  /* variant C — split */
+  .vC{background:#fff;border:1px solid #d4d4d8}
+  .vC .head{background:#09090b;padding:17px 16px 18px}
+  .vC .head .lab{color:rgba(255,255,255,.55)}
+  .vC .big{color:var(--amber)}
+  .vC .dash{color:#52525b;font-weight:500;padding:0 3px}
+  .vC .chip{display:inline-block;background:rgba(245,158,11,.14);color:var(--amber);
+            font:700 10px/1 var(--mono);padding:5px 7px;border:1px solid rgba(245,158,11,.32)}
+  .vC .echo span{color:rgba(255,255,255,.72);border-color:#27272a}
+  .vC .body{padding:16px}
+  .vC .lab{color:var(--amber-7)}
+  .vC .sec{border-top:1px solid #e4e4e7;margin-top:14px;padding-top:13px}
+  .vC .sec:first-child{border-top:0;margin-top:0;padding-top:0}
+  .vC .r .nm{color:#3f3f46} .vC .r .eu{color:#09090b} .vC .r .pc{color:var(--amber-7)}
+  .vC .r .u{background:#e4e4e7} .vC .r .u i{display:block;height:2px;background:var(--amber-6)}
+  .vC .frm{background:#fafafa;border:1px solid #e4e4e7}
+  .vC .foot{color:var(--muted)} .vC .foot b{color:#09090b}
+
+  /* ===== before/after ===== */
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+  .ba .t{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+         margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .ba .t i{width:9px;height:9px;flex:none;font-style:normal}
+  .ba .t.b i{background:#a1a1aa} .ba .t.a i{background:var(--amber)}
+
+  /* faithful reproduction of the current card */
+  .old{background:#fafafa;border:1px solid #27272a;color:#f59e0b;
+       font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .old .ob{background:#09090b;padding:12px 20px;display:flex;align-items:center;gap:12px}
+  .old .ob h4{margin:0;font:700 12px/1 ui-sans-serif,system-ui;letter-spacing:.1em;
+              text-transform:uppercase;color:#fff}
+  .old .ob .ic{width:15px;height:15px;border:2px solid #f59e0b;flex:none}
+  .old .op{padding:20px}
+  .old .ol{font:700 10px/1 ui-sans-serif,system-ui;letter-spacing:.1em;text-transform:uppercase;
+           color:#000;display:block;margin-bottom:8px}
+  .old .ol.g{color:#71717a;margin-top:16px;margin-bottom:6px}
+  .old .obig{font:800 30px/1.1 ui-sans-serif,system-ui;letter-spacing:-.02em;color:#f59e0b}
+  .old .obig .d{color:#a1a1aa;font-weight:500}
+  .old .och{display:inline-block;background:#fef3c7;color:#78350f;font:700 12px/1 ui-sans-serif,system-ui;
+            padding:4px 8px}
+  .old .ogrid{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin-top:12px}
+  .old .ogrid>div{min-width:0}
+  .old .orow{font-size:10px;display:flex;justify-content:space-between;color:#52525b;min-width:0}
+  .old .orow b{color:#09090b}
+  .old .otr{height:4px;background:#e4e4e7;margin-top:4px}
+  .old .otr i{display:block;height:4px;background:#f59e0b}
+  .old .osec{border-top:1px solid #e4e4e7;margin-top:16px;padding-top:16px}
+  .old .ofoot{display:flex;justify-content:space-between;font-size:10px;color:#71717a;font-weight:500}
+  .old .ofoot b{color:#18181b}
+  .old .ellip{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:8px;min-width:0;flex:1 1 auto}
+
+  /* ===== phone ===== */
+  .phones{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start}
+  .ph{width:375px;flex:none}
+  .ph .pl{font:700 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+          color:var(--muted);margin-bottom:10px;display:block}
+  .scr{width:375px;height:600px;border:1px solid #d4d4d8;background:#fff;overflow:hidden;position:relative}
+  .scr .inner{position:absolute;inset:0;overflow-y:auto;padding-bottom:78px}
+  .stik{position:absolute;left:0;right:0;bottom:0;background:#09090b;z-index:5}
+  .stik .row{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;gap:10px}
+  .stik .lab{color:rgba(255,255,255,.5);margin-bottom:5px}
+  .stik .v{font:800 17px/1 ui-sans-serif,system-ui;color:var(--amber);letter-spacing:-.02em;
+           font-variant-numeric:tabular-nums;white-space:nowrap}
+  .stik .go{background:var(--amber);color:#09090b;font:800 9.5px/1 ui-sans-serif,system-ui;
+            letter-spacing:.11em;text-transform:uppercase;padding:10px 12px;border:0;flex:none;cursor:pointer}
+  .mp{padding:16px 14px}
+  .mp .ttl{font:800 16px/1.2 ui-sans-serif,system-ui;margin:0 0 4px;letter-spacing:-.01em}
+  .mp .sd{font-size:12px;color:var(--muted);margin:0 0 14px;line-height:1.5}
+  .mpanel{border:1px solid #e4e4e7;background:#fff;padding:15px 14px;margin-bottom:12px}
+  .mpanel .eyebrow{font:700 9px/1 var(--mono);letter-spacing:.17em;color:var(--amber-7);display:block;margin-bottom:8px}
+  .mpanel .dash{width:24px;height:2px;background:var(--amber-7);display:block;margin-bottom:9px}
+
+  .btn{font:700 11px/1 ui-sans-serif,system-ui;letter-spacing:.12em;text-transform:uppercase;
+       padding:9px 14px;border:1px solid #d4d4d8;background:#fff;cursor:pointer;margin:0 6px 14px 0}
+  .btn.on{background:#18181b;color:#fff;border-color:#18181b}
+  .pick{background:#09090b;color:#fff;padding:20px 24px;margin:18px 0 0;display:flex;gap:18px;align-items:flex-start}
+  .pick .p1{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--amber);flex:none;padding-top:3px}
+  .pick p{margin:0;font-size:14.5px;line-height:1.65;color:#d4d4d8}
+  .pick p b{color:#fff}
+  .idea{background:#fff;border:1px solid var(--line);border-left:3px solid var(--ink);padding:15px 18px;margin-bottom:10px}
+  .idea h4{margin:0 0 6px;font:800 14.5px/1.3 ui-sans-serif,system-ui;display:flex;gap:9px;align-items:baseline}
+  .idea h4 em{font:700 10px/1 var(--mono);font-style:normal;letter-spacing:.14em;color:var(--amber-7);flex:none}
+  .idea p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+  .idea .src{display:block;margin-top:8px;font:500 11.5px/1.5 var(--mono);color:var(--muted)}
+  .idea.ask{border-left-color:var(--amber)}
+  .idea.no{border-left-color:#dc2626;background:#fef2f2}
+  .idea.no h4 em{color:#dc2626}
+
+  @media(max-width:1300px){.vrow{grid-template-columns:375px}}
+  @media(max-width:1100px){.ctrl .bar{grid-template-columns:1fr}
+    .mods{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:880px){.ba{grid-template-columns:1fr}
+    .mods{grid-template-columns:repeat(2,1fr)}.stds{grid-template-columns:1fr}}
+  @media(max-width:560px){.wrap{padding:28px 16px 80px}.ph,.scr{width:100%}
+    .vrow{grid-template-columns:1fr}.vcol .card{width:100%}
+    .old,#afterMount,#cardAfter{width:100%!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 28 · /kalkulacka</p>
+  <h1>Kalkulačka — prémiový vzhľad</h1>
+  <p class="lede">Audit súčasnej kalkulačky, tri varianty výsledkového panela a zoznam toho, čo sa oplatí
+     doplniť. Všetko počíta naživo z reálnych sadzieb v <code class="i">src/data/pricing.ts</code> —
+     posúvač hore ovláda všetky tri varianty naraz.</p>
+  <span class="status">Stav: <b>&nbsp;návrh — nič nie je aplikované v kóde</b></span>
+
+  <!-- ============================================================= 01 -->
+  <h2><span class="no">01 — ZISTENIA</span>Čo som v kalkulačke nameral</h2>
+  <p class="seclede">Merané v prehliadači na <code class="i">localhost:3000/kalkulacka</code>, nie odhadom.
+     Poradie podľa dopadu.</p>
+
+  <div class="fx">
+    <div class="f crit">
+      <span class="t">01 · kritické · mobil</span>
+      <h4>Na mobile je cena až 5 759 px pod vrchom stránky</h4>
+      <p>Sekcia <code class="i">{children}</code> (SEO text) sa renderuje vnútri ľavého stĺpca, teda
+         v DOM <em>pred</em> výsledkovou kartou. Na mobile sa stĺpce zoradia pod seba a medzi
+         posledný ovládač a cenu sa vloží 3 357 px článku.</p>
+      <span class="m">vstupy končia 2 402 px → článok → cena 5 759 px<br>= 7,1 obrazovky telefónu</span>
+    </div>
+    <div class="f crit">
+      <span class="t">02 · kritické · typografia</span>
+      <h4>Všetkých 12 <code class="i">font-mono</code> prvkov sa renderuje bezpätkovo</h4>
+      <p><code class="i">--font-mono</code> v <code class="i">globals.css</code> ukazuje na
+         <code class="i">--font-jetbrains-mono</code>, ktoré nie je nikde definované — celá deklarácia je
+         neplatná a font sa dedí. Rovnaký problém má aj <code class="i">--font-display</code>.
+         Presne to isté sme riešili v ServicesGrid.</p>
+      <span class="m">nameraná rodina mono aj display aj body:<br>ui-sans-serif, system-ui, sans-serif</span>
+    </div>
+    <div class="f crit">
+      <span class="t">03 · kritické · kontrast</span>
+      <h4>Cena má kontrast 2,06 : 1</h4>
+      <p>Amber <code class="i">#F59E0B</code> na <code class="i">#FAFAFA</code>. Najdôležitejšie číslo
+         na stránke je pod hranicou čitateľnosti aj pre veľký text (potreba 3 : 1). Na čiernom
+         podklade má tá istá amber 9,26 : 1.</p>
+      <span class="m">#F59E0B na #FAFAFA → 2,06 : 1<br>#F59E0B na #09090B → 9,26 : 1</span>
+    </div>
+    <div class="f">
+      <span class="t">04 · pozostatok</span>
+      <h4>Výsledková karta je nedorobená konverzia z tmavej</h4>
+      <p>Obal má <code class="i">bg-zinc-50</code>, ale zároveň <code class="i">border-zinc-800</code> a
+         <code class="i">text-amber-500</code> — obe zvyšky po tmavej verzii. Výsledok je takmer čierny
+         1 px rám (najťažší na stránke) a zdedená amber farba textu.</p>
+      <span class="m">nameraný border-color: #27272A<br>nameraný color: #F59E0B</span>
+    </div>
+    <div class="f">
+      <span class="t">05 · tvaroslovie</span>
+      <h4>Guľatý posúvač v systéme s nulovým polomerom</h4>
+      <p>Jazdec posúvača je jediný okrúhly prvok na celej stránke. Navyše
+         <code class="i">appearance:none</code> vypína natívny vzhľad, ale žiadne
+         <code class="i">::-webkit-slider-thumb</code> pravidlo neexistuje a dráha neukazuje
+         vyplnenú časť — nevidno, koľko z rozsahu je nastavené.</p>
+      <span class="m">appearance: none · žiadny thumb štýl<br>track: plochý 8px pás zinc-200</span>
+    </div>
+    <div class="f">
+      <span class="t">06 · hierarchia</span>
+      <h4>Najdôležitejší panel má najmenej priestoru</h4>
+      <p>Vstupné panely majú 40 px vnútorného okraja a spolu 1 468 px výšky. Výsledková karta,
+         kvôli ktorej sem človek prišiel, má 20 px okraja. Hierarchia priestoru je otočená naopak.</p>
+      <span class="m">vstupy: 449 + 492 + 527 px @ p-10 (40 px)<br>karta: 793 px @ p-5 (20 px)</span>
+    </div>
+    <div class="f">
+      <span class="t">07 · čitateľnosť</span>
+      <h4>Rozpis: 10 položiek, 10 px text, 4 px pásiky, na mobile orezané</h4>
+      <p>Dva stĺpce po 10 px s <code class="i">truncate</code>. Na mobile sa názvy orezávajú
+         (overené <code class="i">scrollWidth &gt; clientWidth</code>) a jediný spôsob, ako ich prečítať,
+         je natívny tooltip z atribútu <code class="i">title</code>.</p>
+      <span class="m">10 riadkov · font-size 10px · bar 4px<br>mobil: orezané = true</span>
+    </div>
+    <div class="f">
+      <span class="t">08 · spätná väzba</span>
+      <h4>Karta nezopakuje, čo je nastavené</h4>
+      <p>Po odrolovaní k štandardu už nevidno plochu ani podlažnosť. Karta ukazuje cenu, ale nie
+         konfiguráciu, z ktorej vznikla — takže číslo nie je s čím spojiť.</p>
+      <span class="m">chýba: 120 m² · 1 podlažie · bez suterénu<br>· Zlatá stredná cesta · 10/10 modulov</span>
+    </div>
+    <div class="f">
+      <span class="t">09 · mŕtvy kód</span>
+      <h4>Zvyšky po prechode na ostré rohy</h4>
+      <p><code class="i">w-5 h-5 -sm border</code> a <code class="i">w-6 h-6&nbsp;&nbsp;border-2</code> —
+         osamotené <code class="i">-sm</code> po zmazaní <code class="i">rounded</code>. Plus
+         <code class="i">overflow-hidden</code> na tlačidle, ktoré nemá čo orezávať.</p>
+      <span class="m">riadky 191, 226, 187</span>
+    </div>
+    <div class="f">
+      <span class="t">10 · konvencia</span>
+      <h4>Číslovanie „1. 2. 3.“ nesedí so zvyškom webu</h4>
+      <p>Projekty aj Služby používajú mono <code class="i">01</code> / <code class="i">02</code> ako
+         samostatný nadpisový štítok. Kalkulačka má číslo vlepené do vety nadpisu bežným písmom.</p>
+      <span class="m">„1. Základné parametre“<br>vs. konvencia: 01 / nadpis</span>
+    </div>
+  </div>
+
+  <!-- ============================================================= 02 -->
+  <h2><span class="no">02 — ŽIVÁ UKÁŽKA</span>Ovládače: hore, tri varianty naraz</h2>
+  <p class="seclede">Toto sú prepracované vstupné ovládače (bod 05, 09, 10 vyššie). Hýbte nimi — všetky
+     tri varianty karty nižšie počítajú naživo z rovnakých sadzieb ako produkčná kalkulačka.</p>
+
+  <div class="kal">
+    <div class="ctrl">
+      <div class="bar">
+        <div>
+          <span class="cl">Zastavaná plocha — 1 podlažie</span>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:9px">
+            <span style="font:600 12.5px/1 ui-sans-serif,system-ui;color:#71717a">Posuňte jazdec</span>
+            <span class="areaval"><span id="aVal">120</span> <i>M²</i></span>
+          </div>
+          <div class="sld">
+            <span class="track"></span><span class="fill" id="aFill"></span>
+            <input type="range" min="60" max="400" step="5" value="120" id="aRange" aria-label="Zastavaná plocha">
+          </div>
+          <div class="ends"><span>60 M²</span><span>400 M²</span></div>
+        </div>
+        <div>
+          <span class="cl">Počet nadzemných podlaží</span>
+          <div class="seg" id="segFloors"></div>
+          <div style="margin-top:14px">
+            <span class="cl">Podpivničenie</span>
+            <div class="seg two" id="segUg">
+              <button data-v="1"><span class="n">Áno</span></button>
+              <button data-v="0" class="on"><span class="n">Nie</span></button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <span class="cl">Vybrané moduly</span>
+          <div style="font:800 40px/1 ui-sans-serif,system-ui;letter-spacing:-.03em;font-variant-numeric:tabular-nums">
+            <span id="modN">10</span><span style="color:#d4d4d8">/10</span>
+          </div>
+          <p style="margin:9px 0 0;font-size:12.5px;color:#71717a;line-height:1.5" id="scopeNote">
+            Plný rozsah na kľúč.
+          </p>
+          <button class="btn" id="resetBtn" style="margin-top:12px">Vrátiť východiskové</button>
+        </div>
+      </div>
+
+      <div style="margin-top:22px;padding-top:20px;border-top:1px solid #e4e4e7">
+        <span class="cl">Rozsah prác — čo má byť súčasťou stavby</span>
+        <div class="mods" id="mods"></div>
+      </div>
+
+      <div style="margin-top:20px;padding-top:20px;border-top:1px solid #e4e4e7">
+        <span class="cl">Štandard materiálov</span>
+        <div class="stds" id="stds"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================= 03 -->
+  <h2><span class="no">03 — VARIANTY</span>Tri varianty výsledkového panela</h2>
+  <p class="seclede">Rovnaké údaje, tri spôsoby podania. Šírka stĺpca je 375 px — presne toľko,
+     koľko má karta na produkčnej stránke (namerané).</p>
+
+  <div class="vrow kal">
+    <div class="vcol">
+      <div class="vh"><b>Variant A</b><span>Tmavý rozpočtový panel</span></div>
+      <div class="card vA" id="cardA">
+        <div class="hz"></div>
+        <div class="band"><span class="ic"></span><h4>Orientačný rozpočet</h4></div>
+        <div class="body">
+          <span class="lab">Odhadovaný rozsah nákladov</span>
+          <div class="big" style="margin-top:9px"><span data-f="min"></span><span class="dash">—</span><span data-f="max"></span></div>
+          <div style="margin-top:13px" class="echo" data-f="echo"></div>
+          <div class="sec">
+            <span class="lab">Za m² podlahovej plochy — <span data-f="area"></span> m²</span>
+            <div style="margin-top:9px;display:flex;align-items:center;gap:8px">
+              <span class="chip" data-f="m2min"></span><span class="dash">—</span><span class="chip" data-f="m2max"></span>
+            </div>
+          </div>
+          <div class="sec">
+            <span class="lab">Približné rozloženie nákladov</span>
+            <div class="rows" data-f="rows"></div>
+          </div>
+          <div class="sec" style="padding-top:0;border:0;margin-top:14px">
+            <div class="frm">
+              <p>Získajte cenovú ponuku na mieru</p>
+              <ul class="tk"><li>Celková suma</li><li>Rozpis položiek</li><li>Harmonogram</li></ul>
+              <span class="in">Vaše tel. číslo</span><span class="in">Váš e-mail</span>
+              <span class="sb">Odoslať →</span>
+            </div>
+          </div>
+          <div class="sec foot"><span>Ceny aktualizované</span><b data-f="upd"></b></div>
+        </div>
+      </div>
+      <p class="to"><b>Prínos:</b> cena je jediná svetlá vec v tmavom poli — maximálny kontrast
+         medzi „čo nastavujem“ a „čo to stojí“. Kontrast 9,26 : 1.<br>
+         <b>Riziko:</b> 793 px čierneho stĺpca vedľa už čiernej hlavičky stránky — veľa čiernej hmoty
+         v jednom pohľade.</p>
+    </div>
+
+    <div class="vcol">
+      <div class="vh"><b>Variant B</b><span>Rozpočtový hárok</span></div>
+      <div class="card vB" id="cardB">
+        <div class="band"><span class="ic"></span><h4>Orientačný rozpočet</h4></div>
+        <div class="body">
+          <span class="lab">Odhadovaný rozsah nákladov</span>
+          <div class="big" style="margin-top:9px"><span data-f="min"></span><span class="dash">—</span><span data-f="max"></span></div>
+          <div style="margin-top:14px" class="echo" data-f="echo"></div>
+          <div class="sec">
+            <span class="lab">Za m² podlahovej plochy — <span data-f="area"></span> m²</span>
+            <div style="margin-top:9px;display:flex;align-items:center;gap:8px">
+              <span class="chip" data-f="m2min"></span><span class="dash">—</span><span class="chip" data-f="m2max"></span>
+            </div>
+          </div>
+          <div class="sec">
+            <span class="lab">Približné rozloženie nákladov</span>
+            <div class="rows" data-f="rows"></div>
+          </div>
+          <div class="sec" style="padding-top:0;border:0;margin-top:14px">
+            <div class="frm">
+              <p>Získajte cenovú ponuku na mieru</p>
+              <ul class="tk"><li>Celková suma</li><li>Rozpis položiek</li><li>Harmonogram</li></ul>
+              <span class="in">Vaše tel. číslo</span><span class="in">Váš e-mail</span>
+              <span class="sb">Odoslať →</span>
+            </div>
+          </div>
+          <div class="sec foot"><span>Ceny aktualizované</span><b data-f="upd"></b></div>
+        </div>
+      </div>
+      <p class="to"><b>Prínos:</b> pôsobí ako rozpočet od rozpočtára — čísla v eurách pri každej položke,
+         cena v čiernej s amber podčiarknutím (kontrast 19,9 : 1).<br>
+         <b>Riziko:</b> najtichší z trojice. Cena súťaží o pozornosť s desiatimi riadkami pod ňou.</p>
+    </div>
+
+    <div class="vcol">
+      <div class="vh"><b>Variant C</b><span>Čierna hlava, biele telo</span></div>
+      <div class="card vC" id="cardC">
+        <div class="hz"></div>
+        <div class="band"><span class="ic"></span><h4>Orientačný rozpočet</h4></div>
+        <div class="head">
+          <span class="lab">Odhadovaný rozsah nákladov</span>
+          <div class="big" style="margin-top:9px"><span data-f="min"></span><span class="dash">—</span><span data-f="max"></span></div>
+          <div style="margin-top:13px;display:flex;align-items:center;gap:8px">
+            <span class="chip" data-f="m2min"></span><span class="dash">—</span><span class="chip" data-f="m2max"></span>
+          </div>
+          <div style="margin-top:14px" class="echo" data-f="echo"></div>
+        </div>
+        <div style="height:4px;background:repeating-linear-gradient(-45deg,#f59e0b 0 9px,#09090b 9px 18px)"></div>
+        <div class="body">
+          <div class="sec">
+            <span class="lab" style="display:flex;justify-content:space-between;gap:10px"><span>Približné rozloženie nákladov</span><span style="color:inherit;opacity:.7"><span data-f="area"></span> M² PODL. PLOCHY</span></span>
+            <div class="rows" data-f="rows"></div>
+          </div>
+          <div class="sec" style="padding-top:0;border:0;margin-top:14px">
+            <div class="frm">
+              <p>Získajte cenovú ponuku na mieru</p>
+              <ul class="tk"><li>Celková suma</li><li>Rozpis položiek</li><li>Harmonogram</li></ul>
+              <span class="in">Vaše tel. číslo</span><span class="in">Váš e-mail</span>
+              <span class="sb">Odoslať →</span>
+            </div>
+          </div>
+          <div class="sec foot"><span>Ceny aktualizované</span><b data-f="upd"></b></div>
+        </div>
+      </div>
+      <p class="to"><b>Prínos:</b> čierna presne tam, kde je číslo, biela tam, kde je detail.
+         Cena aj €/m² sú v hlave, takže na mobile stačí vidieť prvých 190 px karty.<br>
+         <b>Riziko:</b> dvojfarebná karta má viac dielov, ktoré treba držať v poriadku.</p>
+    </div>
+  </div>
+
+  <div class="pick">
+    <span class="p1">Moja voľba</span>
+    <p><b>Variant C.</b> Stránka <code style="background:#27272a;padding:1px 5px;font:500 12px/1.5 var(--mono);color:#e4e4e7">/kalkulacka</code>
+       už má na vrchu celoplošný čierny pruh s nadpisom. Variant A by pod neho postavil ďalších
+       793 px čiernej v tom istom pohľade a stránka by sa stala tmavou — to nie je polepšenie,
+       to je iný web. Variant B rieši kontrast správne, ale cena v ňom prestane byť hrdinom.
+       <b>C dáva čiernu iba tam, kde je číslo</b>, a zvyšok karty necháva svetlý ako vstupné panely.
+       Navyše hlava C obsahuje cenu aj €/m² v prvých 190 px — to je presne to, čo sa zmestí do
+       mobilnej lišty zo sekcie 05.</p>
+  </div>
+
+  <!-- ============================================================= 04 -->
+  <h2><span class="no">04 — PREDTÝM / POTOM</span>Súčasná karta vedľa varianty C</h2>
+  <p class="seclede">Rovnaká šírka (375 px), rovnaké nastavenie, rovnaké čísla. Ľavá strana je verná
+     reprodukcia toho, čo je dnes v kóde — vrátane čierneho rámu a amber ceny na takmer bielej.</p>
+
+  <div class="ba kal">
+    <div>
+      <div class="t b"><i></i>Predtým — dnešný stav</div>
+      <div class="old" id="oldCard" style="width:375px;max-width:100%">
+        <div class="ob"><span class="ic"></span><h4>Orientačný rozpočet</h4></div>
+        <div class="op">
+          <span class="ol">Odhadovaný rozsah nákladov:</span>
+          <div class="obig"><span data-f="min"></span> <span class="d">—</span> <span data-f="max"></span></div>
+          <span class="ol g">Za m² podlahovej plochy (<span data-f="area"></span> m²):</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="och" data-f="m2min"></span><span style="color:#a1a1aa">—</span><span class="och" data-f="m2max"></span>
+          </div>
+          <div class="osec">
+            <span class="ol">Približné rozloženie nákladov</span>
+            <div class="ogrid" data-f="oldrows"></div>
+          </div>
+          <div class="osec">
+            <div style="background:#fff;border:1px solid #e4e4e7;padding:16px">
+              <p style="margin:0 0 12px;font:700 12px/1.3 ui-sans-serif,system-ui;color:#09090b">Získajte cenovú ponuku na mieru</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px 8px;margin-bottom:14px;font-size:10px;color:#52525b;font-weight:500">
+                <span>✓ Celková suma</span><span>✓ Rozpis položiek</span><span>✓ Harmonogram</span>
+              </div>
+              <div style="border:1px solid #d4d4d8;padding:9px 11px;font-size:12px;color:#a1a1aa;margin-bottom:8px">Vaše tel. číslo</div>
+              <div style="border:1px solid #d4d4d8;padding:9px 11px;font-size:12px;color:#a1a1aa;margin-bottom:12px">Váš e-mail</div>
+              <div style="background:#f59e0b;color:#fff;text-align:center;padding:12px;font:700 13px/1 ui-sans-serif,system-ui">Odoslať →</div>
+            </div>
+          </div>
+          <div class="osec ofoot"><span>Ceny aktualizované:</span><b data-f="upd"></b></div>
+        </div>
+      </div>
+      <p class="to" style="color:#71717a">Čierny 1 px rám okolo svetlej karty · amber cena na 2,06 : 1 ·
+         desať položiek v dvoch stĺpcoch po 10 px · žiadne zhrnutie konfigurácie ·
+         všetky mono štítky bezpätkovo.</p>
+    </div>
+    <div>
+      <div class="t a"><i></i>Potom — variant C</div>
+      <div id="afterMount" style="width:375px;max-width:100%"></div>
+      <p class="to" style="color:#71717a">Cena v amber na čiernej (9,26 : 1) · zhrnutie konfigurácie hneď
+         pod cenou · rozpis v jednom stĺpci s eurami aj percentami · skutočný monospace ·
+         ostrý rám bez zvyškov po tmavej verzii.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================= 05 -->
+  <h2><span class="no">05 — MOBIL 375 px</span>Cena, ktorú vidno hneď</h2>
+  <p class="seclede">Najväčší problém kalkulačky nie je vzhľad — je to poradie. Nameral som 5 759 px
+     od vrchu stránky po prvé zobrazenie ceny. Riešenie má dve časti a ani jedna nič neodstraňuje.</p>
+
+  <div class="phones kal">
+    <div class="ph">
+      <span class="pl">Dnes — vstupy, potom 3 357 px článku, až potom cena</span>
+      <div class="scr">
+        <div class="inner" style="background:#fafafa">
+          <div class="mp">
+            <div style="background:#09090b;color:#fff;margin:-16px -14px 14px;padding:22px 14px;text-align:center">
+              <div style="font:800 26px/1.15 ui-sans-serif,system-ui;letter-spacing:-.02em">Cenová kalkulačka</div>
+            </div>
+            <div class="mpanel">
+              <div class="ttl" style="font-size:15px">1. Základné parametre</div>
+              <p class="sd">Zadajte plochu jedného podlažia a zvoľte typ podlažnosti vášho projektu.</p>
+              <div style="display:flex;justify-content:space-between;align-items:flex-end">
+                <span style="font:700 13px/1.3 ui-sans-serif,system-ui">Zastavaná plocha<br>(1 podlažie)</span>
+                <span style="font:800 26px/1 ui-sans-serif,system-ui">120 <span style="font-size:14px;color:#a1a1aa">m²</span></span>
+              </div>
+              <div style="height:8px;background:#e4e4e7;margin:14px 0 8px;position:relative">
+                <span style="position:absolute;left:17%;top:-3px;width:14px;height:14px;border-radius:50%;background:#f59e0b"></span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:10px;color:#a1a1aa;font-weight:700">
+                <span>60 m²</span><span>400 m²</span></div>
+            </div>
+            <div class="mpanel" style="text-align:center;color:#a1a1aa;font-size:12px;padding:30px 14px">
+              … 2 ďalšie panely …
+            </div>
+            <div class="mpanel" style="padding:20px 14px">
+              <div style="font:800 17px/1.25 ui-sans-serif,system-ui;margin-bottom:8px">Ako počítame cenu vašej stavby?</div>
+              <p style="margin:0;font-size:12px;color:#71717a;line-height:1.6">Výpočet ceny stavebných prác v našej
+                 kalkulačke vychádza z dlhodobých priemerných cien materiálov a prác na slovenskom trhu…</p>
+              <div style="margin-top:16px;padding:26px 0;text-align:center;border-top:1px dashed #d4d4d8;
+                          font:700 10px/1.6 var(--mono);color:#dc2626;letter-spacing:.1em">
+                ↓ 3 357 PX ČLÁNKU ↓<br><span style="color:#a1a1aa">POTOM AŽ CENA</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="to" style="color:#71717a">Človek nastaví plochu, číslo sa niekde zmení — ale on o tom nevie.
+         Nič nenaznačuje, že výsledok vôbec existuje.</p>
+    </div>
+
+    <div class="ph">
+      <span class="pl">Návrh — lišta s cenou, karta hneď za vstupmi</span>
+      <div class="scr">
+        <div class="inner">
+          <div class="mp">
+            <div style="background:#09090b;color:#fff;margin:-16px -14px 14px;padding:22px 14px">
+              <span style="font:700 9px/1 var(--mono);letter-spacing:.18em;color:#f59e0b;display:block;margin-bottom:9px">NEZÁVÄZNÝ ODHAD</span>
+              <div style="font:800 26px/1.12 ui-sans-serif,system-ui;letter-spacing:-.025em">Cenová kalkulačka</div>
+            </div>
+            <div class="mpanel">
+              <span class="eyebrow">01</span>
+              <span class="dash"></span>
+              <div class="ttl">Základné parametre</div>
+              <p class="sd">Zadajte plochu jedného podlažia a zvoľte typ podlažnosti vášho projektu.</p>
+              <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:10px">
+                <span style="font:700 12px/1.3 ui-sans-serif,system-ui">Zastavaná plocha (1 podlažie)</span>
+                <span style="font:800 24px/1 ui-sans-serif,system-ui;font-variant-numeric:tabular-nums"
+                      id="mArea">120 <i style="font:700 10px/1 var(--mono);font-style:normal;color:#71717a">M²</i></span>
+              </div>
+              <div class="sld">
+                <span class="track"></span><span class="fill" id="mFill"></span>
+                <input type="range" min="60" max="400" step="5" value="120" id="mRange" aria-label="Plocha (mobil)">
+              </div>
+              <div class="ends"><span>60 M²</span><span>400 M²</span></div>
+              <div style="margin-top:16px">
+                <span style="font:700 9px/1 var(--mono);letter-spacing:.16em;color:#b45309;display:block;margin-bottom:9px">POČET NADZEMNÝCH PODLAŽÍ</span>
+                <div class="seg" id="mSeg"></div>
+              </div>
+            </div>
+            <div class="mpanel" style="text-align:center;color:#a1a1aa;font-size:11.5px;padding:24px 14px">
+              … panel 02 Rozsah prác · panel 03 Štandard …
+            </div>
+            <div style="margin:0 0 12px">
+              <div class="card vC" id="cardM"></div>
+            </div>
+            <div class="mpanel" style="padding:20px 14px">
+              <div style="font:800 16px/1.25 ui-sans-serif,system-ui;margin-bottom:8px">Ako počítame cenu vašej stavby?</div>
+              <p style="margin:0;font-size:12px;color:#71717a;line-height:1.6">Výpočet ceny stavebných prác v našej
+                 kalkulačke vychádza z dlhodobých priemerných cien materiálov a prác…</p>
+            </div>
+          </div>
+        </div>
+        <div class="stik">
+          <div class="hz" style="height:4px"></div>
+          <div class="row">
+            <div>
+              <span class="lab">Orientačný rozpočet</span>
+              <span class="v" id="stikV"></span>
+            </div>
+            <span class="go">Zobraziť rozpis</span>
+          </div>
+        </div>
+      </div>
+      <p class="to" style="color:#71717a"><b>1.</b> Lišta dole drží cenu na očiach pri každom pohybe posúvača.
+         <b>2.</b> SEO článok sa presúva <em>za</em> výsledkovú kartu — nič sa nemaže, len sa mení poradie
+         v DOM. Cena je potom na ~2 400 px namiesto 5 759 px.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================= 06 -->
+  <h2><span class="no">06 — ČO STOJÍ ZA PRIDANIE</span>Návrhy, ktoré nevyžadujú nové dáta</h2>
+  <p class="seclede">Zoradené podľa pomeru prínos / práca. Prvých päť je čisté zobrazenie toho, čo
+     komponent už dnes počíta a zahodí.</p>
+
+  <div class="idea">
+    <h4><em>01</em> Lepkavá lišta s cenou na mobile</h4>
+    <p>Rieši namerané zistenie č. 1. Zobrazuje sa len pod <code class="i">lg</code> a len keď je
+       výsledková karta mimo obrazovky. Používa existujúci <code class="i">useState</code>, žiadne nové dáta.</p>
+    <span class="src">zdroj: rangeMin, rangeMax — už vypočítané v komponente</span>
+  </div>
+  <div class="idea">
+    <h4><em>02</em> Eurá pri každej položke rozpisu, nielen percentá</h4>
+    <p>Komponent už počíta <code class="i">item.cost</code> pre každú z 10 položiek a potom ho zahodí —
+       zobrazí len zaokrúhlené percento. „Interiér 18 %“ nikomu nič nepovie; „Interiér · 36 000 €“ áno.
+       Je to jeden <code class="i">formatPrice(item.cost)</code> navyše.</p>
+    <span class="src">zdroj: items[].cost — už existuje v getCalculatedItems()</span>
+  </div>
+  <div class="idea">
+    <h4><em>03</em> Zhrnutie konfigurácie v karte</h4>
+    <p>Riadok mono štítkov pod cenou: plocha, podlažnosť, suterén, štandard, počet modulov.
+       Spája číslo s nastavením a zároveň robí kartu použiteľnou ako screenshot, ktorý si človek pošle.</p>
+    <span class="src">zdroj: area, floors, hasUnderground, standard, selectedServices</span>
+  </div>
+  <div class="idea">
+    <h4><em>04</em> Počítadlo modulov <code class="i">07/10</code> + upozornenie na čiastočný rozsah</h4>
+    <p>Keď je odškrtnutých len časť modulov, cena už nie je cena stavby na kľúč — ale karta to nikde
+       nepovie. Počítadlo a jedna veta to narovnajú. Dôležité aj právne: je to orientačná cena
+       <em>vybraného rozsahu</em>, nie celej stavby.</p>
+    <span class="src">zdroj: selectedServices.length / TURNKEY_LINES.length</span>
+  </div>
+  <div class="idea">
+    <h4><em>05</em> Tlačidlo „Vrátiť východiskové hodnoty“</h4>
+    <p>Desať modulov sa odškrtáva jednoducho, naspäť sa to klikať nechce. Päť riadkov kódu, nastaví
+       späť počiatočný <code class="i">useState</code>.</p>
+    <span class="src">zdroj: počiatočné hodnoty už sú v komponente</span>
+  </div>
+  <div class="idea ask">
+    <h4><em>06</em> Rozdiel oproti strednému štandardu pri každom variante</h4>
+    <p>Pri „Ekonomický štandard“ ukázať <code class="i">−15 %</code>, pri „Prémiové riešenia“
+       <code class="i">+35 %</code>. Čísla sú doslova v dátach (<code class="i">multiplier</code> 0,85 / 1,0 / 1,35).
+       Robí voľbu štandardu zrozumiteľnou bez klikania sem a tam.<br>
+       <b>Potrebujem potvrdiť:</b> či chcete tieto percentá ukazovať verejne — je to priznanie
+       cenovej logiky.</p>
+    <span class="src">zdroj: STANDARDS[].multiplier v pricing.ts</span>
+  </div>
+  <div class="idea ask">
+    <h4><em>07</em> Zoskupenie 10 modulov do fáz</h4>
+    <p>Desať rovnocenných dlaždíc je dlhý zoznam. Prirodzené fázy:
+       <b>Hrubá stavba</b> (základy, murivo, stropy, strecha) · <b>Obal</b> (okná, fasáda) ·
+       <b>Technika</b> (rozvody) · <b>Interiér</b> (omietky, sadrokartón, interiér).
+       Rovnaké členenie by sa dalo použiť aj v rozpise nákladov — namiesto 10 riadkov 4 skupiny,
+       rozklikateľné na detail.<br>
+       <b>Potrebujem potvrdiť:</b> toto členenie som odvodil ja. Vyžaduje nové pole
+       <code class="i">phase</code> v <code class="i">PriceLine</code> a vaše odobrenie, či to zodpovedá
+       tomu, ako stavbu delíte v praxi.</p>
+    <span class="src">vyžaduje: nové pole phase v src/data/pricing.ts</span>
+  </div>
+  <div class="idea ask">
+    <h4><em>08</em> Tlač / uloženie zhrnutia do PDF</h4>
+    <p>Jedno <code class="i">@media print</code> pravidlo a tlačidlo <code class="i">window.print()</code>.
+       Človek si odnesie kartu s konfiguráciou a cenou — a s vaším telefónom na nej.<br>
+       <b>Pozor:</b> toto je už funkcia, nie štýl. Uvádzam ju, lebo ste si vyžiadali návrhy,
+       ale je to samostatná úloha pre vývojára.</p>
+    <span class="src">nové: tlačová šablóna karty</span>
+  </div>
+  <div class="idea no">
+    <h4><em>09</em> Čo som vedome <u>nepridal</u></h4>
+    <p>Štítok „Odporúčané“ / „Najobľúbenejšie“ / „Najčastejšia voľba“ na variante
+       <b>Zlatá stredná cesta</b>. Je to predvolená voľba a takýto odznak sa sem sám pýta —
+       ale aplikácia nikde nepočíta, ktorý variant si ľudia naozaj vyberajú. Kým mi nepoviete,
+       že také čísla máte, je to nepravdivý údaj a nedám ho tam.</p>
+    <span class="src">blokované pravidlom o poctivých štítkoch</span>
+  </div>
+
+  <div class="warn">
+    <b>Nález pri čítaní kódu — nie je to dizajn, je to pravdivosť údaja</b>
+    Riadok 81–83 počíta <code class="i">currentMonthYear</code> z <code class="i">new Date()</code> a
+    riadok 311 ho zobrazuje ako „Ceny aktualizované: <b>September 2026</b>“. To znamená, že karta
+    <em>vždy</em> tvrdí, že ceny boli aktualizované tento mesiac — aj keby sa sadzby v
+    <code class="i">pricing.ts</code> nezmenili tri roky. Návrh: pridať do
+    <code class="i">pricing.ts</code> konštantu <code class="i">PRICES_UPDATED = '2026-09'</code> a
+    zobrazovať ju. Jedna zmena, údaj je zrazu pravdivý.
+  </div>
+
+  <!-- ============================================================= 07 -->
+  <h2><span class="no">07 — ŠPECIFIKÁCIA</span>Presné hodnoty pre vývojára</h2>
+
+  <h3 class="sub">A · Spoločné opravy (platia pre ktorýkoľvek variant)</h3>
+  <table>
+    <tr><th>Čo</th><th>Dnes</th><th>Návrh</th></tr>
+    <tr><td>Monospace</td><td><code>font-mono</code> — renderuje sa bezpätkovo, 12 výskytov</td>
+        <td>explicitný stack, rovnako ako v <code>ServicesGrid.tsx</code>:<br>
+        <code>font-[family-name:ui-monospace,SFMono-Regular,Menlo,monospace]</code></td></tr>
+    <tr><td>Nadpisy panelov</td><td><code>font-display</code> — tiež neplatné, dedí sa sans</td>
+        <td>buď opraviť <code>--font-space-grotesk</code> v <code>layout.tsx</code>, alebo použiť
+        <code>font-extrabold</code> a prestať sa spoliehať na <code>font-display</code></td></tr>
+    <tr><td>Rám karty</td><td><code>border-zinc-800</code> na <code>bg-zinc-50</code></td>
+        <td><code>border-zinc-300</code> (svetlé telo) alebo <code>border-zinc-800</code> ponechať
+        len ak je telo čierne</td></tr>
+    <tr><td>Dedená farba</td><td><code>text-amber-500</code> na obale karty</td>
+        <td>odstrániť z obalu; farbu nastaviť na konkrétnych prvkoch</td></tr>
+    <tr><td>Cena</td><td><code>text-amber-500</code> na svetlom — 2,06 : 1</td>
+        <td>amber len na <code>#09090B</code> (9,26 : 1), na svetlom <code>text-zinc-950</code></td></tr>
+    <tr><td>Číslovanie</td><td>„1. Základné parametre“ v nadpise</td>
+        <td>mono štítok <code>01</code> nad nadpisom + amber čiarka 26 × 2 px,<br>
+        farba <code>#B45309</code> (5,0 : 1) — nie <code>#F59E0B</code></td></tr>
+    <tr><td>Mŕtve triedy</td><td><code>-sm</code> (r. 191, 226), <code>overflow-hidden</code> (r. 187)</td>
+        <td>zmazať</td></tr>
+    <tr><td>Poradie na mobile</td><td><code>{children}</code> je v ľavom stĺpci pred kartou</td>
+        <td><code>order-last lg:order-none</code> na obale <code>{children}</code>,<br>
+        alebo presunúť <code>{children}</code> pod celý grid</td></tr>
+  </table>
+
+  <h3 class="sub">B · Posúvač</h3>
+  <table>
+    <tr><th>Vlastnosť</th><th>Hodnota</th></tr>
+    <tr><td>Dráha</td><td>6 px, <code>#E4E4E7</code>; vyplnená časť <code>#09090B</code> (šírka = podiel rozsahu)</td></tr>
+    <tr><td>Jazdec</td><td>10 × 26 px, <code>#F59E0B</code>, <code>box-shadow:0 0 0 1px #09090B</code>, bez polomeru</td></tr>
+    <tr><td>Pseudo-prvky</td><td><code>::-webkit-slider-thumb</code> + <code>::-moz-range-thumb</code> — obe treba,
+        inak sa jazdec v Firefoxe nevykreslí</td></tr>
+    <tr><td>Krajné hodnoty</td><td>mono 10 px, <code>tracking .1em</code>, <code>#A1A1AA</code></td></tr>
+    <tr><td>Hodnota</td><td>30 px / 800, <code>tabular-nums</code>; „M²“ mono 12 px <code>#71717A</code></td></tr>
+  </table>
+
+  <h3 class="sub">C · Výsledková karta — variant C</h3>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Šírka</td><td>375 px (namerané na <code>lg:col-span-4</code> pri <code>max-w-[1500px]</code>)</td></tr>
+    <tr><td>Výstražný pruh</td><td>5 px, <code>repeating-linear-gradient(-45deg,#F59E0B 0 10px,transparent 10px 20px)</code> — rovnaký ako v CTA</td></tr>
+    <tr><td>Pás nadpisu</td><td><code>bg-[#09090B]</code>, 11 × 16 px, mono 10 px / 700, <code>tracking-[0.17em]</code></td></tr>
+    <tr><td>Hlava</td><td><code>bg-[#09090B]</code>, <code>px-4 pt-[17px] pb-[18px]</code></td></tr>
+    <tr><td>Cena</td><td><code>clamp(24px,2.3vw,31px)</code> / 800, <code>tracking-[-0.025em]</code>,
+        <code>text-[#F59E0B]</code>, <code>tabular-nums</code>, pomlčka <code>#52525B</code></td></tr>
+    <tr><td>Zalomenie ceny</td><td>obe sumy majú <code>whitespace-nowrap</code>, obal nie — pri
+        sedemciferných sumách na úzkej karte sa rozpätie zalomí pod seba namiesto pretečenia
+        (produkčný kód to dnes rieši cez <code>flex-wrap</code>, treba to zachovať)</td></tr>
+    <tr><td>€/m² čipy</td><td><code>bg-[#F59E0B]/14</code>, <code>border-[#F59E0B]/32</code>, mono 10 px, <code>text-[#F59E0B]</code></td></tr>
+    <tr><td>Zhrnutie</td><td>mono 9 px / 700, <code>tracking-[0.09em]</code>, <code>px-2 py-[5px]</code>,
+        <code>border-[#27272A]</code>, <code>-mr-px -mb-px</code> (zdieľané hrany)</td></tr>
+    <tr><td>Deliaci pruh</td><td>4 px, <code>repeating-linear-gradient(-45deg,#F59E0B 0 9px,#09090B 9px 18px)</code></td></tr>
+    <tr><td>Telo</td><td><code>bg-white</code>, <code>p-4</code>; sekcie oddelené <code>border-t border-zinc-200</code>, <code>mt-[14px] pt-[13px]</code></td></tr>
+    <tr><td>Riadok rozpisu</td><td>grid <code>1fr auto auto</code>, gap 9 px, <code>pt-[5px] pb-1</code>;
+        názov 10,5 px / 600 <code>#3F3F46</code>; suma mono 10,5 px <code>#09090B</code>;
+        percento mono 9,5 px <code>#B45309</code>, šírka 26 px, vpravo</td></tr>
+    <tr><td>Pásik pod riadkom</td><td>2 px, dráha <code>#E4E4E7</code>, výplň <code>#D97706</code>, šírka = percento</td></tr>
+    <tr><td>Štítky sekcií</td><td>mono 9 px / 700, <code>tracking-[0.16em]</code>, <code>text-[#B45309]</code>
+        na bielej / <code>text-white/55</code> na čiernej</td></tr>
+    <tr><td>Tlačidlo Odoslať</td><td><code>bg-[#F59E0B]</code>, <code>text-[#09090B]</code> — nie biely text
+        (biela na amber je 2,15 : 1; čierna je 9,26 : 1)</td></tr>
+    <tr><td>Prechody</td><td>farby 180 ms, <code>cubic-bezier(.22,.61,.36,1)</code>; čísla bez prechodu
+        (aby sa nerozmazali pri ťahaní posúvača)</td></tr>
+  </table>
+
+  <h3 class="sub">D · Mobilná lišta</h3>
+  <table>
+    <tr><th>Vlastnosť</th><th>Hodnota</th></tr>
+    <tr><td>Zobrazenie</td><td><code>lg:hidden</code> + <code>IntersectionObserver</code> na výsledkovej karte —
+        lišta zmizne, keď je karta na obrazovke</td></tr>
+    <tr><td>Pozícia</td><td><code>fixed inset-x-0 bottom-0 z-40</code>, <code>bg-[#09090B]</code>,
+        vrchný pruh 4 px výstražný</td></tr>
+    <tr><td>Obsah</td><td>vľavo mono 9 px štítok + cena 17 px / 800 amber <code>tabular-nums</code>;
+        vpravo tlačidlo <code>bg-[#F59E0B] text-[#09090B]</code>, mono 9,5 px</td></tr>
+    <tr><td>Odsadenie</td><td><code>pb-[78px]</code> na <code>&lt;main&gt;</code> pod <code>lg</code>,
+        aby lišta neprekryla pätičku</td></tr>
+    <tr><td>Bezpečná zóna</td><td><code>pb-[env(safe-area-inset-bottom)]</code> pre iPhone</td></tr>
+  </table>
+
+  <!-- ============================================================= 08 -->
+  <h2><span class="no">08 — VLAJKY</span>Čo potrebuje vaše rozhodnutie</h2>
+  <ul class="flags">
+    <li><b>„Ceny aktualizované“ zobrazuje aktuálny mesiac z <code class="i">new Date()</code>.</b>
+        Údaj je nepravdivý vždy, keď sa sadzby naozaj nezmenili. Potrebujem od vás dátum poslednej
+        revízie cien, alebo súhlas ten riadok nahradiť konštantou.</li>
+    <li><b>Odznak „Odporúčané“ na strednom variante som nedal.</b> Aplikácia nepočíta, čo si ľudia
+        vyberajú. Ak také čísla máte, štítok doplním.</li>
+    <li><b>Fázové zoskupenie modulov (Hrubá stavba / Obal / Technika / Interiér) je môj návrh.</b>
+        Potrebuje vaše potvrdenie, že zodpovedá tomu, ako stavbu delíte, a nové pole v dátach.</li>
+    <li><b>Zobrazovanie rozdielu štandardov (−15 % / +35 %)</b> odhaľuje cenovú logiku. Chcete to
+        verejne?</li>
+    <li><b>Percentá v rozpise sa zaokrúhľujú po položkách</b>, takže súčet môže dať 99 alebo 101 %.
+        Pri desiatich riadkoch to raz za čas bude vidieť. Buď to nechať, alebo dorovnať najväčšiu položku.</li>
+    <li><b>Tlač / PDF je funkcia, nie štýl.</b> Uvádzam ju len preto, že ste si vyžiadali návrhy —
+        nie je súčasťou tohto vizuálneho návrhu.</li>
+    <li><b>Presun <code class="i">{children}</code> mení poradie v DOM, nie obsah.</b> Nič sa nemaže,
+        SEO text ostáva na stránke — len sa presúva za výsledkovú kartu. Vhodné dať vedieť tomu,
+        kto sleduje SEO.</li>
+    <li><b>Nezjednotená amber.</b> Logo má <code class="i">#F68C05</code>, web
+        <code class="i">#F59E0B</code>. Držím sa <code class="i">#F59E0B</code>, lebo tú kalkulačka
+        používa dnes — ale rozhodnutie je stále otvorené (naposledy pri Službách).</li>
+  </ul>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* Rovnaké čísla ako src/data/pricing.ts */
+  var LINES=[
+    {id:'zaklady',    name:'Základy a základová doska',        p:165},
+    {id:'murivo',     name:'Murovacie práce (Hrubá stavba)',   p:225},
+    {id:'stropy',     name:'Stropy a vence',                   p:135},
+    {id:'strecha',    name:'Strecha a krov',                   p:200},
+    {id:'okna',       name:'Okná a exteriérové dvere',         p:140},
+    {id:'fasada',     name:'Zateplenie a fasáda',              p:115},
+    {id:'rozvody',    name:'Rozvody (Elektro, Voda, Kúrenie)', p:220},
+    {id:'omietky',    name:'Vnútorné omietky a potery',        p:80},
+    {id:'sadrokarton',name:'Sadrokartónové stropy',            p:60},
+    {id:'interier',   name:'Interiér (Podlahy, obklady, sanita)',p:300}
+  ];
+  var STDS=[
+    {id:'basic',   name:'Ekonomický štandard', m:0.85, desc:'Základné overené materiály'},
+    {id:'standard',name:'Zlatá stredná cesta', m:1.00, desc:'Výborný pomer cena / výkon'},
+    {id:'premium', name:'Prémiové riešenia',   m:1.35, desc:'Najvyššia kvalita, smart dom'}
+  ];
+
+  var S={area:120,floors:1,ug:false,std:'standard',sel:LINES.map(function(l){return l.id;})};
+
+  var fEur=new Intl.NumberFormat('sk-SK',{style:'currency',currency:'EUR',maximumFractionDigits:0});
+  var fNum=new Intl.NumberFormat('sk-SK');
+
+  /* presne tá istá logika ako getCalculatedItems() */
+  function calc(){
+    var sm=1; for(var i=0;i<STDS.length;i++) if(STDS[i].id===S.std) sm=STDS[i].m;
+    var items=[],total=0;
+    LINES.forEach(function(l){
+      if(S.sel.indexOf(l.id)<0) return;
+      var m;
+      if(l.id==='zaklady'){ m=1; if(S.ug) m+=1.2; }
+      else if(l.id==='strecha'){ m=1; }
+      else if(l.id==='stropy'||l.id==='sadrokarton'){ m=S.floors; if(S.ug) m+=1; }
+      else { m=S.floors; if(S.ug) m+=0.5; }
+      var c=l.p*m*S.area*sm; total+=c;
+      items.push({name:l.name,cost:c,pc:0});
+    });
+    if(total>0) items.forEach(function(it){ it.pc=Math.round(it.cost/total*100); });
+    var ca=S.area*(S.floors+(S.ug?1:0));
+    var rmin=Math.round(total*0.95/1000)*1000, rmax=Math.round(total*1.08/1000)*1000;
+    return {items:items,total:total,area:ca,min:rmin,max:rmax,
+            m2min:ca>0?Math.round(rmin/ca):0, m2max:ca>0?Math.round(rmax/ca):0};
+  }
+
+  function floorWord(n){ return n===1?'podlažie':(n<5?'podlažia':'podlaží'); }
+  function stdName(){ for(var i=0;i<STDS.length;i++) if(STDS[i].id===S.std) return STDS[i].name; return ''; }
+
+  /* --- ovládače --- */
+  var segFloors=document.getElementById('segFloors');
+  [1,2,3,4,5,6].forEach(function(n){
+    var b=document.createElement('button');
+    b.innerHTML='<span class="n">'+n+'</span><span class="u">'+floorWord(n)+'</span>';
+    b.dataset.v=n; if(n===1) b.className='on';
+    b.onclick=function(){ S.floors=n; sync(); };
+    segFloors.appendChild(b);
+  });
+  var mSeg=document.getElementById('mSeg');
+  [1,2,3,4,5,6].forEach(function(n){
+    var b=document.createElement('button');
+    b.innerHTML='<span class="n">'+n+'</span><span class="u">'+floorWord(n).slice(0,4)+'.</span>';
+    b.dataset.v=n; if(n===1) b.className='on';
+    b.onclick=function(){ S.floors=n; sync(); };
+    mSeg.appendChild(b);
+  });
+
+  document.querySelectorAll('#segUg button').forEach(function(b){
+    b.onclick=function(){ S.ug=b.dataset.v==='1'; sync(); };
+  });
+
+  var modsEl=document.getElementById('mods');
+  LINES.forEach(function(l){
+    var b=document.createElement('button');
+    b.className='mod on'; b.dataset.id=l.id;
+    b.innerHTML=l.name+'<span class="p">'+l.p+' €/M²</span>';
+    b.onclick=function(){
+      var i=S.sel.indexOf(l.id);
+      if(i<0) S.sel.push(l.id); else S.sel.splice(i,1);
+      sync();
+    };
+    modsEl.appendChild(b);
+  });
+
+  var stdsEl=document.getElementById('stds');
+  STDS.forEach(function(s,i){
+    var b=document.createElement('button');
+    b.className='std'+(s.id===S.std?' on':''); b.dataset.id=s.id;
+    b.innerHTML='<span class="k">0'+(i+1)+'</span><span class="nm">'+s.name+'</span>'+
+                '<span class="dl">'+s.desc+'</span>';
+    b.onclick=function(){ S.std=s.id; sync(); };
+    stdsEl.appendChild(b);
+  });
+
+  var aR=document.getElementById('aRange'), mR=document.getElementById('mRange');
+  aR.oninput=function(){ S.area=+aR.value; sync(); };
+  mR.oninput=function(){ S.area=+mR.value; sync(); };
+  document.getElementById('resetBtn').onclick=function(){
+    S={area:120,floors:1,ug:false,std:'standard',sel:LINES.map(function(l){return l.id;})};
+    aR.value=120; mR.value=120; sync();
+  };
+
+  /* --- vykreslenie karty --- */
+  function echoHTML(){
+    var parts=[S.area+' M² × '+S.floors, S.ug?'SO SUTERÉNOM':'BEZ SUTERÉNU',
+               stdName().toUpperCase(), S.sel.length+'/10 MODULOV'];
+    return parts.map(function(p){return '<span>'+p+'</span>';}).join('');
+  }
+  function rowsHTML(d){
+    return d.items.map(function(it){
+      return '<div class="r">'+
+        '<span class="nm" title="'+it.name+'">'+it.name+'</span>'+
+        '<span class="eu">'+fEur.format(it.cost)+'</span>'+
+        '<span class="pc">'+it.pc+'%</span>'+
+        '<span class="u" style="width:100%"><i style="width:'+it.pc+'%"></i></span>'+
+      '</div>';
+    }).join('');
+  }
+  function oldRowsHTML(d){
+    return d.items.map(function(it){
+      return '<div><div class="orow"><span class="ellip" title="'+it.name+'">'+it.name+'</span>'+
+             '<b>'+it.pc+'%</b></div><div class="otr"><i style="width:'+it.pc+'%"></i></div></div>';
+    }).join('');
+  }
+
+  var CARD_C =
+    '<div class="hz"></div>'+
+    '<div class="band"><span class="ic"></span><h4>Orientačný rozpočet</h4></div>'+
+    '<div class="head">'+
+      '<span class="lab">Odhadovaný rozsah nákladov</span>'+
+      '<div class="big" style="margin-top:9px"><span data-f="min"></span><span class="dash">—</span><span data-f="max"></span></div>'+
+      '<div style="margin-top:13px;display:flex;align-items:center;gap:8px">'+
+        '<span class="chip" data-f="m2min"></span><span class="dash">—</span><span class="chip" data-f="m2max"></span>'+
+      '</div>'+
+      '<div style="margin-top:14px" class="echo" data-f="echo"></div>'+
+    '</div>'+
+    '<div style="height:4px;background:repeating-linear-gradient(-45deg,#f59e0b 0 9px,#09090b 9px 18px)"></div>'+
+    '<div class="body">'+
+      '<div class="sec"><span class="lab" style="display:flex;justify-content:space-between;gap:10px"><span>Približné rozloženie nákladov</span><span style="color:inherit;opacity:.7"><span data-f="area"></span> M² PODL. PLOCHY</span></span>'+
+      '<div class="rows" data-f="rows"></div></div>'+
+      '<div class="sec" style="padding-top:0;border:0;margin-top:14px"><div class="frm">'+
+        '<p>Získajte cenovú ponuku na mieru</p>'+
+        '<ul class="tk"><li>Celková suma</li><li>Rozpis položiek</li><li>Harmonogram</li></ul>'+
+        '<span class="in">Vaše tel. číslo</span><span class="in">Váš e-mail</span>'+
+        '<span class="sb">Odoslať →</span></div></div>'+
+      '<div class="sec foot"><span>Ceny aktualizované</span><b data-f="upd"></b></div>'+
+    '</div>';
+
+  document.getElementById('afterMount').innerHTML='<div class="card vC" id="cardAfter">'+CARD_C+'</div>';
+  document.getElementById('cardM').innerHTML=CARD_C;
+
+  var upd=(function(){
+    var s=new Intl.DateTimeFormat('sk-SK',{month:'long',year:'numeric'}).format(new Date());
+    return s.charAt(0).toUpperCase()+s.slice(1);
+  })();
+
+  function fill(root,d){
+    if(!root) return;
+    var set=function(k,v){ root.querySelectorAll('[data-f="'+k+'"]').forEach(function(e){ e.innerHTML=v; }); };
+    set('min',fEur.format(d.min)); set('max',fEur.format(d.max));
+    set('area',fNum.format(d.area));
+    set('m2min',fNum.format(d.m2min)+' €/m²'); set('m2max',fNum.format(d.m2max)+' €/m²');
+    set('echo',echoHTML()); set('rows',rowsHTML(d)); set('oldrows',oldRowsHTML(d));
+    set('upd',upd);
+  }
+
+  function sync(){
+    var d=calc();
+    ['cardA','cardB','cardC','cardAfter','cardM','oldCard'].forEach(function(id){
+      fill(document.getElementById(id),d);
+    });
+
+    aR.value=S.area; mR.value=S.area;
+    document.getElementById('aVal').textContent=S.area;
+    document.getElementById('mArea').innerHTML=S.area+' <i style="font:700 10px/1 ui-monospace,monospace;font-style:normal;color:#71717a">M²</i>';
+    var pct=(S.area-60)/(400-60)*100;
+    document.getElementById('aFill').style.width=pct+'%';
+    document.getElementById('mFill').style.width=pct+'%';
+
+    document.querySelectorAll('#segFloors button,#mSeg button').forEach(function(b){
+      b.className=(+b.dataset.v===S.floors)?'on':'';
+    });
+    document.querySelectorAll('#segUg button').forEach(function(b){
+      b.className=((b.dataset.v==='1')===S.ug)?'on':'';
+    });
+    document.querySelectorAll('.mod').forEach(function(b){
+      b.className='mod'+(S.sel.indexOf(b.dataset.id)>=0?' on':'');
+    });
+    document.querySelectorAll('.std').forEach(function(b){
+      b.className='std'+(b.dataset.id===S.std?' on':'');
+    });
+
+    document.getElementById('modN').textContent=S.sel.length;
+    document.getElementById('scopeNote').innerHTML = S.sel.length===LINES.length
+      ? 'Plný rozsah na kľúč.'
+      : '<b style="color:#b45309">Čiastočný rozsah</b> — cena platí len pre vybrané moduly, nie pre stavbu na kľúč.';
+
+    document.getElementById('stikV').textContent=fEur.format(d.min)+' — '+fEur.format(d.max);
+  }
+
+  sync();
+})();
+</script>
+</body>
+</html>
