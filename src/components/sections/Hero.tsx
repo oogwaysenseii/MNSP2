@@ -39,7 +39,7 @@ export function Hero() {
       badge: 'Od projektu po kolaudáciu',
       title: 'Staviame vaše sny na pevných základoch',
       description: 'Od rodinných domov až po rozsiahle stavebné realizácie. Prinášame skúsenosti, profesionálny prístup a zodpovedné vedenie projektov v každej fáze výstavby.',
-      image: '/b036e7d2-9d83-4b37-891a-b840161516b2.webp',
+      image: '/2.webp',
       imageAlt: 'Hrubá stavba Dúbravy',
     }
   ];
@@ -269,7 +269,7 @@ export function Hero() {
                     sizes="(min-width: 1024px) 391px, 100vw"
                     quality={90}
                     priority={currentSlideIndex === 0}
-                    className="object-cover"
+                    className="object-contain"
                   />
 
                   {/* tienenie zdola — aby ovládač videa držal kontrast aj na svetlej fotke */}
