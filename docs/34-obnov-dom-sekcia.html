@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 34 — Sekcia Obnov dom</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;--logo:#f68c05;
+        --ease:cubic-bezier(.22,.61,.36,1);
+        --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+        --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.65 var(--sans)}
+  .wrap{max-width:1400px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 var(--sans);letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:84ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2{font:800 22px/1.25 var(--sans);letter-spacing:-.01em;margin:56px 0 6px;padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 var(--mono);letter-spacing:.16em;color:var(--amber-6);display:block;margin-bottom:9px}
+  h3.sub{font:800 15px/1.3 var(--sans);margin:32px 0 8px;letter-spacing:-.01em}
+  .seclede{font-size:14.5px;color:var(--ink-2);margin:0 0 18px;max-width:92ch}
+  code.i,td code{font:500 12px/1.5 var(--mono);background:#f4f4f5;padding:1px 5px}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:26%}
+  pre{background:#18181b;color:#e4e4e7;padding:16px 18px;overflow-x:auto;margin:12px 0;
+      font:400 12.5px/1.7 var(--mono);border-left:3px solid var(--amber)}
+  pre .c{color:#71717a} pre .a{color:#86efac} pre .r{color:#fca5a5} pre .s{color:#fcd34d}
+  .fixme{background:#fef2f2;border:1px solid #dc2626;border-left:3px solid #dc2626;
+         padding:16px 20px;margin:18px 0;font-size:14px;color:#7f1d1d}
+  .fixme b.h{display:block;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+             margin-bottom:9px;color:#b91c1c}
+  .srcbox{background:#fff;border:1px solid var(--line);border-left:3px solid #0b0b0c;padding:16px 20px;
+          margin:18px 0;font-size:14px;color:var(--ink-2)}
+  .srcbox b.h{display:block;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+              margin-bottom:9px;color:var(--ink)}
+  .srcbox a{color:var(--amber-7)}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  ul.flags li b{color:var(--ink)}
+  ul.flags li.red:before{background:#dc2626}
+  .pick{background:#09090b;color:#fff;padding:20px 24px;margin:18px 0 0;display:flex;gap:18px;align-items:flex-start}
+  .pick .p1{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--amber);flex:none;padding-top:3px}
+  .pick p{margin:0;font-size:14.5px;line-height:1.65;color:#d4d4d8}
+  .pick p b{color:#fff}
+  .vhead{display:flex;align-items:baseline;gap:12px;margin:30px 0 10px}
+  .vhead b{font:800 15px/1 var(--sans)}
+  .vhead span{font:700 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .to{font-size:13px;color:var(--ink-2);margin:12px 0 0;line-height:1.6;max-width:104ch}
+  .to b{color:var(--ink)}
+  .stage{background:#fff;border:1px solid #d4d4d8;padding:0;overflow:hidden}
+  .stage.pad{padding:26px;background:#fafafa;display:flex;justify-content:center}
+
+  /* ===================== the section itself ===================== */
+  .od{font-family:var(--sans)}
+  .od .rail{max-width:1265px;margin:0 auto;padding:0 24px}
+  .od .hz{height:5px;background:repeating-linear-gradient(-45deg,var(--amber) 0 10px,transparent 10px 20px)}
+  .od .eyebrow{font:700 10px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;display:block}
+  .od h2{font:800 28px/1.18 var(--sans);letter-spacing:-.025em;margin:0;border:0;padding:0}
+  .od .lead{font-size:15.5px;line-height:1.7;margin:14px 0 0;max-width:68ch}
+  .od .statusrow{display:flex;gap:14px;align-items:flex-start;padding:13px 16px;margin-top:22px}
+  .od .statusrow .k{font:700 9px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;flex:none}
+  .od .statusrow .v{font-size:13.5px;line-height:1.6}
+  .od .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:26px}
+  .od .fact{padding:18px 20px 18px 0}
+  .od .fact+.fact{padding-left:24px}
+  .od .fact .k{font:700 9px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:11px}
+  .od .fact .v{font:800 26px/1.05 var(--sans);letter-spacing:-.02em;font-variant-numeric:tabular-nums;display:block}
+  .od .fact .v.sm{font-size:17px;line-height:1.25}
+  .od .fact .n{font-size:12.5px;line-height:1.55;margin:9px 0 0;display:block}
+  .od .cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:26px;padding-top:24px}
+  .od .cols .h{font:700 9px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:13px}
+  .od ul.m{list-style:none;padding:0;margin:0}
+  .od ul.m li{position:relative;padding-left:20px;font-size:13.5px;line-height:1.55;margin-bottom:9px}
+  .od ul.m li:before{content:"";position:absolute;left:0;top:9px;width:9px;height:2px}
+  .od .foot{display:flex;gap:20px;align-items:flex-start;justify-content:space-between;
+            margin-top:24px;padding-top:18px;flex-wrap:wrap}
+  .od .disc{font-size:12.5px;line-height:1.6;max-width:66ch;margin:0}
+  .od .src{font:700 11px/1 var(--sans);letter-spacing:.11em;text-transform:uppercase;
+           white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+           padding:12px 16px;flex:none}
+
+  /* --- A: dark band --- */
+  .A{background:#09090b;color:#fff;padding:0 0 44px}
+  .A .top{padding-top:40px}
+  .A .eyebrow{color:var(--amber)}
+  .A h2{color:#fff}
+  .A .lead{color:rgba(255,255,255,.78)}
+  .A .statusrow{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.28)}
+  .A .statusrow .k{color:var(--amber)} .A .statusrow .v{color:rgba(255,255,255,.86)}
+  .A .facts{border-top:1px solid #27272a}
+  .A .fact{border-left:1px solid #27272a}
+  .A .fact:first-child{border-left:0;padding-left:0}
+  .A .fact .k{color:#71717a} .A .fact .v{color:#fff} .A .fact .n{color:rgba(255,255,255,.62)}
+  .A .cols{border-top:1px solid #27272a}
+  .A .cols .h{color:var(--amber)}
+  .A ul.m li{color:rgba(255,255,255,.84)} .A ul.m li:before{background:var(--amber)}
+  .A ul.m li.off{color:rgba(255,255,255,.5)} .A ul.m li.off:before{background:#52525b}
+  .A .foot{border-top:1px solid #27272a}
+  .A .disc{color:#71717a}
+  .A .src{background:var(--amber);color:#09090b}
+
+  /* --- B: light band --- */
+  .B{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:0 0 44px}
+  .B .top{padding-top:40px}
+  .B .eyebrow{color:var(--amber-7)}
+  .B h2{color:#09090b}
+  .B .lead{color:#3f3f46}
+  .B .statusrow{background:#fffbeb;border:1px solid #fcd34d;border-left:3px solid var(--amber)}
+  .B .statusrow .k{color:#92400e} .B .statusrow .v{color:#78350f}
+  .B .facts{border-top:2px solid #09090b}
+  .B .fact{border-left:1px solid var(--line)}
+  .B .fact:first-child{border-left:0;padding-left:0}
+  .B .fact .k{color:var(--amber-7)} .B .fact .v{color:#09090b} .B .fact .n{color:#52525b}
+  .B .cols{border-top:1px solid var(--line)}
+  .B .cols .h{color:var(--amber-7)}
+  .B ul.m li{color:#3f3f46} .B ul.m li:before{background:var(--amber-7)}
+  .B ul.m li.off{color:#71717a} .B ul.m li:before{background:var(--amber-7)}
+  .B ul.m li.off:before{background:#a1a1aa}
+  .B .foot{border-top:1px solid var(--line)}
+  .B .disc{color:#52525b}
+  .B .src{background:#09090b;color:#fff}
+
+  /* --- C: sidebar card --- */
+  .C{width:363px;background:#fff;border:1px solid #d4d4d8}
+  .C .in{padding:18px}
+  .C .eyebrow{color:var(--amber-7);margin-bottom:10px}
+  .C h2{font-size:18px;line-height:1.22;letter-spacing:-.015em}
+  .C .lead{font-size:13.5px;line-height:1.62;margin-top:10px;color:#3f3f46}
+  .C .statusrow{margin-top:14px;padding:11px 12px;background:#fffbeb;border:1px solid #fcd34d;
+                border-left:3px solid var(--amber);display:block}
+  .C .statusrow .k{color:#92400e;display:block;margin-bottom:6px}
+  .C .statusrow .v{color:#78350f;font-size:12.5px}
+  .C .amount{border-top:1px solid var(--line);margin-top:14px;padding-top:13px}
+  .C .amount .k{font:700 9px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+                color:var(--amber-7);display:block;margin-bottom:9px}
+  .C .amount .v{font:800 26px/1 var(--sans);letter-spacing:-.02em;font-variant-numeric:tabular-nums;display:block}
+  .C .amount .n{font-size:12px;line-height:1.55;color:#52525b;display:block;margin-top:9px}
+  .C .src{background:#09090b;color:#fff;width:100%;justify-content:center;margin-top:14px;padding:12px}
+  .C .disc{font-size:11.5px;line-height:1.55;color:#71717a;margin:12px 0 0}
+
+  /* placement mock */
+  .place{border:1px solid #d4d4d8;background:#fff;overflow:hidden}
+  .pz{width:1265px;transform-origin:top left}
+  .ph{height:260px;background:#09090b;position:relative;display:flex;align-items:flex-end}
+  .ph .t{color:#fff;font:800 42px/1.1 var(--sans);padding:0 24px 34px;letter-spacing:-.025em}
+  .pbox{background:#f4f4f5;border:1px dashed #d4d4d8;display:flex;align-items:center;justify-content:center;
+        font:700 11px/1 var(--mono);letter-spacing:.14em;color:#a1a1aa;text-transform:uppercase}
+  .pcols{display:grid;grid-template-columns:790px 363px;gap:64px;padding:36px 24px;
+         max-width:1265px;margin:0 auto}
+  .marker{background:#dc2626;color:#fff;font:700 10px/1 var(--mono);letter-spacing:.14em;
+          text-transform:uppercase;padding:8px 12px;display:inline-block;margin:0 0 0 24px}
+
+  .phones{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start}
+  .phw{width:375px;flex:none}
+  .phw .pl{font:700 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+           margin-bottom:10px;display:block}
+  .scr{width:375px;border:1px solid #d4d4d8;background:#fff;overflow:hidden}
+  .scr .od .rail{padding:0 16px}
+  .scr .od .facts{grid-template-columns:1fr}
+  .scr .od .fact{border-left:0!important;border-top:1px solid;padding:14px 0!important}
+  .scr .A .fact{border-top-color:#27272a}
+  .scr .B .fact{border-top-color:var(--line)}
+  .scr .od .cols{grid-template-columns:1fr;gap:20px}
+  .scr .od h2{font-size:23px}
+
+  @media(max-width:1340px){.stage{overflow-x:auto}}
+  @media(max-width:900px){.phw,.scr{width:100%}}
+  @media(max-width:560px){.wrap{padding:28px 16px 80px}.C{width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 34 · /sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu</p>
+  <h1>Sekcia „Obnov dom“</h1>
+  <p class="lede">Nová sekcia o štátnom príspevku na obnovu rodinného domu. Pred kreslením som si
+     overil podmienky priamo u správcu programu — a to, čo som našiel, zmenilo návrh viac
+     než čokoľvek vizuálne.</p>
+  <span class="status">Stav: <b>&nbsp;návrh — nič nie je aplikované v kóde</b></span>
+
+  <div class="fixme">
+    <b class="h">Dnes nie je otvorené žiadne kolo</b>
+    Podľa oficiálnej stránky SAŽP sa <b>prvé kolo výzvy Obnov dom mini+ uzavrelo 31. augusta 2026</b>
+    a ďalšie kolo je <b>plánované na január 2027</b>. Ku dnešnému dňu (16. 9. 2026) teda nie je kam
+    podať žiadosť.
+    <br><br>
+    To je pre návrh zásadné: sekcia, ktorá by len veľkým písmom hlásila „získajte až 11 000 €“,
+    by dnes klamala. Preto má každý variant <b>stavový riadok s dátumom</b>, ktorý sa nastavuje
+    v jednom dátovom súbore — a keď sa kolo otvorí, zmení sa jedna hodnota, nie sekcia.
+  </div>
+
+  <div class="srcbox">
+    <b class="h">Odkiaľ mám čísla</b>
+    Všetky údaje v návrhu pochádzajú z oficiálnych stránok programu, ktoré spravuje Slovenská
+    agentúra životného prostredia — <a href="https://obnovdom.sk/" target="_blank" rel="noopener">obnovdom.sk</a>
+    a <a href="https://obnovdom.sk/obnov-dom-mini-plus" target="_blank" rel="noopener">obnovdom.sk/obnov-dom-mini-plus</a>,
+    overené 16. 9. 2026. Nie sú z môjho odhadu ani z druhotných článkov.
+    <br><br>
+    <b>Napriek tomu ich pred zverejnením overte ešte raz vy.</b> Pri overovaní som narazil na rozpor:
+    stránka výzvy uvádza príspevok <b>až 11 000 €</b>, zatiaľ čo súhrn na úvodnej stránke vyznieval
+    ako <b>5 500 €</b> — čo je pravdepodobne výška zálohy, nie celého príspevku. Túto nejasnosť
+    neviem rozhodnúť a na váš web ju nedám bez vášho potvrdenia. V návrhu je uvedených 11 000 €
+    podľa stránky výzvy.
+  </div>
+
+  <!-- ============================================================ 01 -->
+  <h2><span class="no">01 — ČO SEKCIA HOVORÍ</span>Obsah pred formou</h2>
+  <p class="seclede">Toto je jediná sekcia na webe, ktorá hovorí o cudzích peniazoch a o podmienkach,
+     ktoré nestanovujete vy. Preto som ju postavil okolo troch vecí, ktoré musí povedať, aj keby
+     zmenšili jej predajnú silu.</p>
+  <table>
+    <tr><th>Musí povedať</th><th>Prečo</th></tr>
+    <tr><td>Kto program vedie</td>
+        <td>Program spravuje SAŽP, nie MNSP. Bez tejto vety sekcia vyzerá, akoby ste dotáciu dávali vy.</td></tr>
+    <tr><td>Že je príspevok podmienený príjmom</td>
+        <td>Obnov dom mini+ je pre domácnosti, ktorých ekvivalentný disponibilný príjem na člena
+        za rok 2024 nepresiahol 12 990 €. <b>Väčšina návštevníkov naň nedosiahne.</b> Sľúbiť
+        „až 11 000 €“ bez tejto podmienky je nepravdivé.</td></tr>
+    <tr><td>Aktuálny stav výzvy</td>
+        <td>Dnes je medzi kolami. Bez stavového riadku sekcia zastará v priebehu týždňov a nikto
+        si to nevšimne.</td></tr>
+    <tr><td>Že o pridelení nerozhodujete</td>
+        <td>Robíte stavebné práce a viete pripraviť podklady. Rozhoduje SAŽP. Táto veta vás chráni.</td></tr>
+  </table>
+
+  <!-- ============================================================ 02 -->
+  <h2><span class="no">02 — VARIANTY</span>Tri podania tej istej sekcie</h2>
+  <p class="seclede">A a B sú pásy na plnú šírku (1 265 px — namerané), C je karta do bočného stĺpca
+     (363 px — namerané). Skutočná veľkosť.</p>
+
+  <div class="vhead"><b>Variant A</b><span>Tmavý pás na plnú šírku</span></div>
+  <div class="stage"><div id="vA"></div></div>
+  <p class="to"><b>Prínos:</b> jednoznačne najviditeľnejší — čierny pás v strede bielej stránky sa
+     prehliadnuť nedá.<br>
+     <b>Riziko:</b> stránka už má čierne hero hore a čierne CTA dole. Tretí čierny pás v strede
+     z nej spraví pruhovanú stránku a sekcia o cudzom programe začne súťažiť s vašou vlastnou výzvou.</p>
+
+  <div class="vhead"><b>Variant B</b><span>Svetlý pás na plnú šírku</span></div>
+  <div class="stage"><div id="vB"></div></div>
+  <p class="to"><b>Prínos:</b> unesie hustý obsah — podmienku príjmu, dva zoznamy opatrení aj
+     vysvetlenie, kde končí vaša úloha. Na svetlom sa to číta, na čiernom by to bola stena textu.<br>
+     <b>Riziko:</b> tichší. Musí ho niesť výstražná hrana a čierna linka nad číslami, inak zapadne
+     medzi ostatné svetlé sekcie.</p>
+
+  <div class="vhead"><b>Variant C</b><span>Karta v bočnom stĺpci, pod kalkulačkou</span></div>
+  <div class="stage pad"><div id="vC"></div></div>
+  <p class="to"><b>Prínos:</b> stojí presne pri cene, takže si človek spojí odhad nákladov
+     s príspevkom v jednom pohľade.<br>
+     <b>Riziko:</b> do 363 px sa podmienka príjmu, zoznam opatrení ani rozdelenie úloh nezmestia.
+     Sama o sebe by sekcia sľubovala viac, než smie.</p>
+
+  <div class="pick">
+    <span class="p1">Moja voľba</span>
+    <p><b>Variant B.</b> Rozhoduje obsah, nie farba: táto sekcia musí uniesť podmienku príjmu,
+       osem podporovaných opatrení a dve vety o tom, čo nerobíte. To je veľa textu a na čiernom
+       páse (A) by z toho bola stena, ktorú nikto nedočíta — a práve tie riadky sú dôvod, prečo je
+       sekcia poctivá. <b>C samostatne nestačí</b>, lebo 363 px neunesie podmienku príjmu, a sekcia
+       bez nej sľubuje peniaze ľuďom, ktorí na ne nedosiahnu. C má zmysel len ako doplnok: dva
+       riadky pri cene, ktoré odkazujú na pás nižšie. Ak chcete oboje, poviem ako.</p>
+  </div>
+
+  <!-- ============================================================ 03 -->
+  <h2><span class="no">03 — UMIESTNENIE</span>Kam na stránke patrí</h2>
+  <p class="seclede">Namerané na bežiacej stránke pri 1 280 px: dvojstĺpec končí na 2 180 px,
+     sekcia Projekty začína na 2 220 px. Pás ide presne medzi ne — hneď za obsahom o rekonštrukcii
+     a ešte pred referenciami.</p>
+  <div class="place"><div class="pz" id="placement"></div></div>
+
+  <!-- ============================================================ 04 -->
+  <h2><span class="no">04 — MOBIL 375 px</span></h2>
+  <div class="phones">
+    <div class="phw"><span class="pl">Variant B na mobile</span>
+      <div class="scr" id="mB"></div></div>
+    <div class="phw"><span class="pl">Variant C na mobile</span>
+      <div class="scr" id="mC" style="background:#fafafa;padding:16px"></div></div>
+  </div>
+
+  <!-- ============================================================ 05 -->
+  <h2><span class="no">05 — DÁTA</span>Jeden súbor, ktorý sa udržiava</h2>
+  <p class="seclede">Celá sekcia číta z jedného objektu. Keď sa otvorí ďalšie kolo, mení sa
+     <code class="i">callOpen</code> a <code class="i">status</code> — nič iné.</p>
+<pre><span class="c">// src/data/obnov-dom.ts
+//
+// Údaje o programe Obnov dom. Zdroj: obnovdom.sk (SAŽP).
+// NEUPRAVOVAŤ bez overenia na oficiálnej stránke — sú to podmienky
+// štátneho programu, nie naše čísla.</span>
+
+export const OBNOV_DOM = {
+  <span class="c">/** true = kolo je otvorené a dá sa podať žiadosť */</span>
+  callOpen: <span class="r">false</span>,
+
+  <span class="c">/** Veta, ktorá sa zobrazí v stavovom riadku. Vždy s dátumom. */</span>
+  status:
+    'Prvé kolo výzvy Obnov dom mini+ sa uzavrelo 31. augusta 2026. '
+    + 'Ďalšie kolo je podľa SAŽP plánované na január 2027.',
+
+  <span class="c">/** Dátum, ku ktorému sme podmienky naposledy overili. */</span>
+  verifiedOn: '2026-09-16',
+
+  maxGrant: <span class="s">11000</span>,        <span class="c">// € na jeden rodinný dom — OVERIŤ (viď vlajky)</span>
+  incomeLimit: <span class="s">12990</span>,     <span class="c">// € na člena domácnosti</span>
+  incomeYear: <span class="s">2024</span>,
+  completeBy: '31. 12. 2027',
+
+  sourceUrl: 'https://obnovdom.sk/obnov-dom-mini-plus',
+} as const;
+
+<span class="c">/** Opatrenia, ktoré realizujeme my. */</span>
+export const OBNOV_DOM_OURS = [
+  'Zateplenie obvodových stien',
+  'Zateplenie stropu podkrovia',
+  'Zateplenie stropu nad pivnicou',
+  'Výmena okien a vonkajších dverí',
+  'Výmena strešnej krytiny so zateplením',
+] as const;
+
+<span class="c">/** Ďalšie podporované opatrenia. TODO: potvrdiť, ktoré z nich robíme. */</span>
+export const OBNOV_DOM_OTHERS = [
+  'Tepelné čerpadlo',
+  'Solárne kolektory',
+  'Kotol na biomasu',
+] as const;</pre>
+
+  <h3 class="sub">Stavový riadok — dva stavy</h3>
+  <table>
+    <tr><th><code>callOpen</code></th><th>Čo sa zobrazí</th></tr>
+    <tr><td><code>false</code> (dnes)</td>
+        <td>Žltý pruh so štítkom <b>STAV K 16. 9. 2026</b> a vetou zo <code>status</code>.
+        Tlačidlo vedie na obnovdom.sk s textom „Podmienky programu“.</td></tr>
+    <tr><td><code>true</code></td>
+        <td>Rovnaký pruh, ale amber a s textom o otvorenom kole; tlačidlo sa zmení na
+        „Podať žiadosť na obnovdom.sk“.</td></tr>
+  </table>
+
+  <!-- ============================================================ 06 -->
+  <h2><span class="no">06 — ŠPECIFIKÁCIA</span>Variant B</h2>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Umiestnenie</td><td>medzi dvojstĺpec a <code>&lt;Projects /&gt;</code>
+        v <code>RodinneDomyServiceDetail</code>, ako nový voliteľný prop
+        <code>subsidySection?: React.ReactNode</code> — aby ho stránka na kľúč nedostala</td></tr>
+    <tr><td>Pás</td><td><code>bg-white border-y border-zinc-200</code>, <code>pt-10 pb-11</code>;
+        navrchu výstražný pruh 5 px
+        <code>repeating-linear-gradient(-45deg,#F59E0B 0 10px,transparent 10px 20px)</code></td></tr>
+    <tr><td>Nadštítok</td><td>mono 10 px, <code>tracking-[0.2em]</code>, <code>text-[#B45309]</code></td></tr>
+    <tr><td>Nadpis</td><td><code>h2</code> 28 px / 800, <code>tracking-[-0.025em]</code></td></tr>
+    <tr><td>Úvodný odstavec</td><td>15,5 px / 1,7, <code>max-w-[68ch]</code>, <code>text-zinc-700</code></td></tr>
+    <tr><td>Stavový riadok</td><td><code>bg-amber-50 border border-amber-300 border-l-[3px] border-l-amber-500</code>,
+        <code>px-4 py-[13px]</code>; štítok mono 9 px <code>#92400E</code>, text 13,5 px <code>#78350F</code></td></tr>
+    <tr><td>Tri údaje</td><td>mriežka 3 × 1fr nad <code>border-t-2 border-zinc-950</code>;
+        deliace <code>border-l border-zinc-200</code>; hodnota 26 px / 800 <code>tabular-nums</code></td></tr>
+    <tr><td>Zoznamy opatrení</td><td>dva stĺpce; odrážka je amber čiarka 9 × 2 px <code>#B45309</code>,
+        pri „ďalších opatreniach“ <code>#A1A1AA</code> a text <code>text-zinc-500</code></td></tr>
+    <tr><td>Odkaz</td><td><code>bg-zinc-950 text-white</code>, 11 px / 700,
+        <code>tracking-[0.11em]</code>, <code>px-4 py-3</code>;
+        <code>target="_blank" rel="noopener noreferrer"</code> + ikona <code>ArrowUpRight</code></td></tr>
+    <tr><td>Odopretie</td><td>12,5 px <code>text-zinc-600</code>, <code>max-w-[66ch]</code>,
+        nad ním <code>border-t border-zinc-200</code></td></tr>
+    <tr><td>Mono</td><td>explicitný stack <code>MONO</code> ako v ServicesGrid —
+        <code>font-mono</code> na tomto webe nefunguje</td></tr>
+    <tr><td>Mobil</td><td>tri údaje na seba (<code>grid-cols-1</code>, deliaca hrana zhora namiesto zboku),
+        zoznamy pod seba, nadpis 23 px</td></tr>
+  </table>
+
+  <h3 class="sub">Schema.org</h3>
+  <p class="seclede">Stránka už generuje <code class="i">FAQPage</code> a <code class="i">Service</code>.
+     Pre túto sekciu <b>nenavrhujem žiadny nový schema typ</b> — <code class="i">GovernmentService</code>
+     by popisoval program SAŽP, nie vašu službu, a tvrdiť o ňom niečo vo vašich štruktúrovaných
+     dátach nie je vaša vec. Ak chcete, pridám do FAQ jednu otázku „Dá sa na rekonštrukciu získať
+     dotácia?“ s odpoveďou a odkazom — to je poctivé a indexovateľné.</p>
+
+  <!-- ============================================================ 07 -->
+  <h2><span class="no">07 — VLAJKY</span>Bez týchto odpovedí to nepustím do kódu</h2>
+  <ul class="flags">
+    <li class="red"><b>Potvrďte výšku príspevku.</b> Stránka výzvy uvádza 11 000 €, súhrn na
+        úvodnej stránke vyznieva ako 5 500 € (podľa druhotných zdrojov je to výška zálohy).
+        Na váš web nedám číslo, ktoré neviem rozhodnúť.</li>
+    <li class="red"><b>Potvrďte, že chcete zverejniť podmienku príjmu.</b> 12 990 € na člena
+        domácnosti za rok 2024 znamená, že väčšina návštevníkov nárok nemá. Je to nepríjemné,
+        ale bez tej vety sekcia sľubuje peniaze ľuďom, ktorí ich nedostanú. Ja ju tam nechávam.</li>
+    <li class="red"><b>Robíte tepelné čerpadlá, solárne kolektory alebo kotly na biomasu?</b>
+        Sú medzi podporovanými opatreniami. V návrhu sú uvedené sivo, ako „ďalšie podporované
+        opatrenia“ — teda bez tvrdenia, že ich robíte. Ak ich robíte, presuniem ich hore.</li>
+    <li class="red"><b>Pomáhate naozaj s podkladmi k žiadosti?</b> V texte je veta „pripravíme
+        podklady, ktoré k žiadosti potrebujete“. Ak to nerobíte, vypadne — nemôže tam zostať
+        ako ozdoba.</li>
+    <li><b>Ste v niektorom zozname SAŽP</b> (napr. zhotoviteľov alebo odborne spôsobilých osôb)?
+        Ak áno, je to najsilnejší dôvod, prečo má sekcia na vašom webe byť — a doplním to.
+        Ak nie, nechávam vetu, že sprostredkovateľom nie ste.</li>
+    <li><b>Kto bude sekciu udržiavať?</b> Program má kolá, termíny a meniace sa sumy. Dátový súbor
+        je navrhnutý tak, aby to bola jedna zmena — ale niekto ju musí spraviť. Odporúčam
+        pripomienku na január 2027, keď má byť vyhlásené ďalšie kolo.</li>
+    <li><b>Má sekcia ísť aj inam?</b> Navrhujem ju len na túto stránku. Logicky patrí aj na
+        <code class="i">/sluzby/rodinne-domy</code> a na 11 mestských stránok rekonštrukcie —
+        ale potom ju treba vykresliť zo spoločného komponentu, nie skopírovať.</li>
+    <li><b>Na stránku na kľúč nepatrí.</b> Obnov dom je o obnove existujúcich domov.
+        Preto je prop voliteľný a novostavbová stránka ho nedostane.</li>
+  </ul>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var D={
+    callOpen:false,
+    status:'Prvé kolo výzvy Obnov dom mini+ sa uzavrelo 31. augusta 2026. Ďalšie kolo je podľa SAŽP plánované na január 2027.',
+    verifiedOn:'16. 9. 2026',
+    maxGrant:'11 000 €',
+    incomeLimit:'12 990 €',
+    incomeYear:2024,
+    completeBy:'31. 12. 2027'
+  };
+  var OURS=['Zateplenie obvodových stien','Zateplenie stropu podkrovia',
+    'Zateplenie stropu nad pivnicou','Výmena okien a vonkajších dverí',
+    'Výmena strešnej krytiny so zateplením'];
+  var OTHERS=['Tepelné čerpadlo','Solárne kolektory','Kotol na biomasu'];
+
+  function statusRow(){
+    return '<div class="statusrow"><span class="k">Stav k<br>'+D.verifiedOn+'</span>'+
+      '<span class="v">'+D.status+'</span></div>';
+  }
+  function facts(){
+    return '<div class="facts">'+
+      '<div class="fact"><span class="k">Výška príspevku</span>'+
+        '<span class="v">až '+D.maxGrant+'</span>'+
+        '<span class="n">na jeden rodinný dom, v rámci výzvy Obnov dom mini+</span></div>'+
+      '<div class="fact"><span class="k">Pre koho</span>'+
+        '<span class="v sm">Príjem do '+D.incomeLimit+' na člena domácnosti za rok '+D.incomeYear+'</span>'+
+        '<span class="n">Bez overovania príjmu: domácnosti dôchodcov, domácnosti v hmotnej núdzi '+
+        'a rodiny so štyrmi a viac maloletými deťmi.</span></div>'+
+      '<div class="fact"><span class="k">Dokedy</span>'+
+        '<span class="v sm">Práce dokončené do '+D.completeBy+'</span>'+
+        '<span class="n">Termín platí pre celú obnovu, nielen pre podanie žiadosti.</span></div>'+
+    '</div>';
+  }
+  function measures(){
+    return '<div class="cols"><div><span class="h">Opatrenia, ktoré realizujeme my</span>'+
+      '<ul class="m">'+OURS.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul></div>'+
+      '<div><span class="h">Ďalšie podporované opatrenia</span>'+
+      '<ul class="m">'+OTHERS.map(function(x){return '<li class="off">'+x+'</li>';}).join('')+'</ul>'+
+      '<p class="disc" style="margin-top:12px">Tieto zabezpečuje iný dodávateľ — ak ich chcete, '+
+      'vieme vám ho odporučiť.</p></div></div>';
+  }
+  function foot(){
+    return '<div class="foot"><p class="disc">Program Obnov dom spravuje Slovenská agentúra '+
+      'životného prostredia. Nie sme sprostredkovateľom príspevku a o jeho pridelení nerozhodujeme. '+
+      'Podmienky výzvy sa menia — pred podaním žiadosti si ich overte priamo u správcu programu.</p>'+
+      '<span class="src">'+(D.callOpen?'Podať žiadosť na obnovdom.sk':'Podmienky programu')+' ↗</span></div>';
+  }
+  function band(cls){
+    return '<div class="od '+cls+'"><div class="hz"></div><div class="rail top">'+
+      '<span class="eyebrow">Obnov dom · Plán obnovy SR</span>'+
+      '<h2 style="margin-top:12px">Príspevok na obnovu rodinného domu</h2>'+
+      '<p class="lead">Časť prác, ktoré na dome robíme — zateplenie, výmena okien a dverí, '+
+      'strecha so zateplením — patrí medzi opatrenia podporované z programu Obnov dom. '+
+      'Samotnú obnovu realizujeme my a pripravíme podklady, ktoré k žiadosti potrebujete.</p>'+
+      statusRow()+facts()+measures()+foot()+'</div></div>';
+  }
+  function card(){
+    return '<div class="od C"><div class="hz"></div><div class="in">'+
+      '<span class="eyebrow">Obnov dom · Plán obnovy SR</span>'+
+      '<h2>Príspevok na obnovu domu</h2>'+
+      '<p class="lead">Zateplenie, okná aj strecha patria medzi opatrenia podporované z programu '+
+      'Obnov dom, ktorý spravuje SAŽP.</p>'+
+      statusRow()+
+      '<div class="amount"><span class="k">Výška príspevku</span>'+
+      '<span class="v">až '+D.maxGrant+'</span>'+
+      '<span class="n">Len pre domácnosti s príjmom do '+D.incomeLimit+' na člena za rok '+
+      D.incomeYear+'. Podmienky a ďalšie opatrenia nájdete nižšie na stránke.</span></div>'+
+      '<span class="src">Podmienky programu ↗</span>'+
+      '<p class="disc">Nie sme sprostredkovateľom príspevku a o jeho pridelení nerozhodujeme.</p>'+
+      '</div></div>';
+  }
+
+  document.getElementById('vA').innerHTML=band('A');
+  document.getElementById('vB').innerHTML=band('B');
+  document.getElementById('vC').innerHTML=card();
+  document.getElementById('mB').innerHTML=band('B');
+  document.getElementById('mC').innerHTML=card();
+
+  /* placement */
+  document.getElementById('placement').innerHTML=
+    '<div class="ph"><div class="t">Rekonštrukcia rodinného domu</div></div>'+
+    '<div class="pcols"><div class="pbox" style="height:420px">Obsah · rozsah prác · harmonogram</div>'+
+    '<div class="pbox" style="height:420px">Kalkulačka · menu · PDF</div></div>'+
+    '<div class="marker">← Sem ide pás (2 180 px)</div>'+
+    band('B')+
+    '<div style="padding:24px"><div class="pbox" style="height:150px">Projekty</div></div>'+
+    '<div style="padding:0 24px 24px"><div class="pbox" style="height:110px">Blog</div></div>';
+
+  function fit(){
+    var st=document.querySelector('.place'); if(!st) return;
+    var sc=Math.min(1,st.clientWidth/1265);
+    var z=document.getElementById('placement');
+    z.style.transform='scale('+sc+')';
+    z.style.transformOrigin='top left';
+    st.style.height=Math.ceil(z.offsetHeight*sc)+'px';
+  }
+  window.addEventListener('resize',fit);
+  window.addEventListener('load',fit);
+  fit();
+})();
+</script>
+</body>
+</html>

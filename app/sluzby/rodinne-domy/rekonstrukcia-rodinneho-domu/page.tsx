@@ -1,4 +1,5 @@
 import { RodinneDomyServiceDetail } from "@/src/components/sections/RodinneDomyServiceDetail";
+import { ObnovDomSection } from "@/src/components/sections/ObnovDomSection";
 import { RENOVATION_RATE_PER_M2, RENOVATION_OPTIONS } from '@/src/data/pricing';
 import { getSEOTags } from "@/src/lib/seo";
 import { generateServiceSchema, generateBreadcrumbSchema, generateFaqSchema, DOMAIN } from '@/src/lib/schema';
@@ -101,6 +102,7 @@ export default function RekonstrukciaDomuPage() {
                 blogFilterCategory="Rekonštrukcia domu"
                 customFaq={faqSection}
                 whyChooseUs={whyUsSection}
+                subsidySection={<ObnovDomSection />}
                 minSize={50}
                 maxSize={300}
                 stepSize={5}

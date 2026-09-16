@@ -89,7 +89,7 @@ export function Hero() {
   }, []);
 
   return (
-    <div id="hero" className="relative w-full min-h-[750px] overflow-hidden bg-zinc-950 text-white">
+    <div id="hero" className="relative w-full lg:min-h-[750px] overflow-hidden bg-zinc-950 text-white">
       {/* 1. TIMELAPSE VIDEO BACKGROUND */}
       <div className=" absolute inset-0 z-0">
         {/*
@@ -132,7 +132,7 @@ export function Hero() {
       </div>
 
       {/* 2. MAIN CONTENT GRID (SXS DESIGN) */}
-      <div className="max-w-[1500px] relative z-10 w-full  mx-auto px-4 sm:px-8 flex flex-col justify-end pt-24 lg:pt-32">
+      <div className="max-w-[1500px] relative z-10 w-full  mx-auto px-4 sm:px-8 flex flex-col justify-end pt-24 pb-24 lg:pt-32 lg:pb-0">
         
         {/* TOP COMPACT METRICS */}
         <div className="hidden lg:grid grid-cols-3 gap-6 max-w-3xl pb-10 mb-auto">
@@ -242,7 +242,10 @@ export function Hero() {
           </div>
 
           {/* OBRÁZOK SLAJDU + OVLÁDAČ VIDEA */}
-          <div className="lg:col-span-4 order-first lg:order-none">
+          {/* Skrytý do 1023 px vrátane — panel sa ukáže až v dvojstĺpcovom
+              rozložení od lg (1024 px). Pod tým zaberal pás 2:1 miesto nad
+              textom a hero bol zbytočne dlhý. */}
+          <div className="hidden lg:block lg:col-span-4 order-first lg:order-none">
             {/* posun doľava len na desktope — translate, nie margin, aby sa
                 mriežka nepočítala nanovo. Na mobile je panel na celú šírku,
                 tam by posun spôsobil vodorovné rolovanie. */}

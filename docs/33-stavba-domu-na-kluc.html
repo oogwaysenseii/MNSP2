@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 33 — Stránka Stavba domu na kľúč</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-4:#fbbf24;--amber-6:#d97706;--amber-7:#b45309;--logo:#f68c05;
+        --ease:cubic-bezier(.22,.61,.36,1);
+        --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+        --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.65 var(--sans)}
+  .wrap{max-width:1460px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 var(--sans);letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:84ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2{font:800 22px/1.25 var(--sans);letter-spacing:-.01em;margin:56px 0 6px;padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 var(--mono);letter-spacing:.16em;color:var(--amber-6);display:block;margin-bottom:9px}
+  h3.sub{font:800 15px/1.3 var(--sans);margin:32px 0 8px;letter-spacing:-.01em}
+  .seclede{font-size:14.5px;color:var(--ink-2);margin:0 0 18px;max-width:92ch}
+  code.i,td code{font:500 12px/1.5 var(--mono);background:#f4f4f5;padding:1px 5px}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:24%}
+  .num{font-variant-numeric:tabular-nums}
+  pre{background:#18181b;color:#e4e4e7;padding:16px 18px;overflow-x:auto;margin:12px 0;
+      font:400 12.5px/1.7 var(--mono);border-left:3px solid var(--amber)}
+  pre .c{color:#71717a} pre .a{color:#86efac} pre .r{color:#fca5a5}
+  .fixme{background:#fef2f2;border:1px solid #dc2626;border-left:3px solid #dc2626;
+         padding:16px 20px;margin:18px 0;font-size:14px;color:#7f1d1d}
+  .fixme b.h{display:block;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+             margin-bottom:9px;color:#b91c1c}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  ul.flags li b{color:var(--ink)}
+  .pick{background:#09090b;color:#fff;padding:20px 24px;margin:18px 0 0;display:flex;gap:18px;align-items:flex-start}
+  .pick .p1{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--amber);flex:none;padding-top:3px}
+  .pick p{margin:0;font-size:14.5px;line-height:1.65;color:#d4d4d8}
+  .pick p b{color:#fff}
+  .fx{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:14px;margin:18px 0 0}
+  .f{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:16px 18px}
+  .f.crit{border-top-color:#dc2626}
+  .f .t{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;display:block}
+  .f.crit .t{color:#dc2626}
+  .f h4{font:800 15px/1.3 var(--sans);margin:0 0 7px}
+  .f p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+  .f .m{display:block;margin-top:9px;font:700 12px/1.5 var(--mono);color:var(--ink)}
+
+  /* heading-outline table */
+  .out{background:#fff;border:1px solid var(--line);margin:14px 0}
+  .out .r{display:grid;grid-template-columns:46px 62px 1fr;gap:0;border-bottom:1px solid var(--line);
+          align-items:center}
+  .out .r:last-child{border-bottom:0}
+  .out .tag{font:700 11px/1 var(--mono);letter-spacing:.06em;padding:9px 0 9px 14px;color:#fff}
+  .out .t1{background:#09090b}.out .t2{background:#3f3f46}.out .t3{background:#71717a}
+  .out .t4{background:#a1a1aa}.out .t5{background:#d4d4d8;color:#3f3f46}
+  .out .px{font:700 11px/1 var(--mono);color:var(--amber-7);padding:9px 10px;text-align:right}
+  .out .tx{font-size:13px;color:var(--ink-2);padding:9px 14px 9px 4px;overflow:hidden;
+           text-overflow:ellipsis;white-space:nowrap}
+  .out .r.bad{background:#fef2f2}
+  .out .r.bad .px{color:#b91c1c}
+
+  /* frames */
+  .frames{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start}
+  .fr .cap{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+           margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .fr .cap i{width:9px;height:9px;flex:none;font-style:normal}
+  .fr .cap.b i{background:#a1a1aa}.fr .cap.a i{background:var(--amber)}
+  .scroller{border:1px solid #d4d4d8;background:#fff;height:760px;overflow-y:auto;overflow-x:hidden}
+  .shrink{overflow:hidden;position:relative}
+  .pg{width:1280px;transform-origin:top left;font-family:var(--sans)}
+
+  .pg .hdr{height:60px;background:#fff;border-bottom:1px solid #e4e4e7;display:flex;align-items:center;
+           justify-content:space-between;padding:0 26px}
+  .pg .logo{display:flex;align-items:center;gap:9px}
+  .pg .logo b{width:28px;height:28px;background:var(--logo);display:block}
+  .pg .logo span{font:800 16px/1 var(--sans)}
+  .pg .nav{display:flex;gap:16px;font:600 12px/1 var(--sans);color:#3f3f46}
+  .pg .navbtn{background:#09090b;color:#fff;font:800 10px/1 var(--sans);letter-spacing:.1em;
+              text-transform:uppercase;padding:10px 14px}
+  .pg .rail{max-width:1280px;margin:0 auto;padding:0 24px}
+  .pg .ft{background:#09090b;color:#a1a1aa;padding:28px 26px;font-size:11px}
+
+  .hero{position:relative;height:387px;background:#09090b;overflow:hidden;display:flex;align-items:flex-end}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
+  .hero .gr{position:absolute;inset:0;background:linear-gradient(to top,#09090b,rgba(9,9,11,.4),rgba(0,0,0,.3))}
+  .hero .in{position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:0 24px 48px}
+  .hero .bc{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font:700 12px/1 var(--mono);
+            letter-spacing:.08em;color:var(--amber);margin-bottom:24px}
+  .hero .bc i{color:#71717a;font-style:normal}
+  .hero .bc .cur{color:#fff}
+  .hero h1{font:800 60px/1.15 var(--sans);letter-spacing:-.025em;color:#fff;margin:0;max-width:896px}
+
+  .cols{display:grid;grid-template-columns:8fr 4fr;gap:48px;align-items:start;padding:48px 0}
+  .back{display:inline-flex;align-items:center;gap:7px;font:700 12px/1 var(--mono);letter-spacing:.08em;
+        text-transform:uppercase;color:#71717a;border:1px solid #e4e4e7;padding:10px 16px;margin-top:32px}
+
+  /* ===== BEFORE skin ===== */
+  .b1 h3.lead{font:800 30px/1.2 var(--sans);margin:0 0 24px;letter-spacing:-.02em}
+  .b1 .p1{color:#27272a;font-size:16px;font-weight:500;line-height:1.62;margin:0 0 24px}
+  .b1 .p2{color:#52525b;font-size:16px;line-height:1.62;margin:0;white-space:pre-wrap}
+  .b1 .ben{background:#fafafa;border:1px solid #e4e4e7;padding:32px;margin-top:48px}
+  .b1 .lbl{font:700 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#71717a;
+           display:block;margin-bottom:24px}
+  .b1 .bg2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .b1 .bg2 div{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#3f3f46;font-weight:500}
+  .b1 .bg2 em{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--amber-6);
+              display:block;margin-top:2px;font-style:normal}
+  .b1 .wg{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:32px;padding-top:32px;
+          border-top:1px solid #e4e4e7}
+  .b1 .wg h5{font:700 16px/1.2 var(--sans);margin:0 0 16px;padding-bottom:8px;border-bottom:1px solid #e4e4e7}
+  .b1 .wg ul{list-style:none;padding:0;margin:0}
+  .b1 .wg li{display:flex;gap:8px;align-items:flex-start;font-size:14px;color:#52525b;margin-bottom:10px}
+  .b1 .wg li s{flex:none;width:6px;height:6px;background:var(--amber);margin-top:6px;display:block;text-decoration:none}
+  .b1 .stg{margin-top:48px}
+  .b1 .stg .k{font:700 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+              color:var(--amber-6);display:block;margin-bottom:8px}
+  .b1 .stg h4{font:800 24px/1.2 var(--sans);margin:0 0 32px;letter-spacing:-.02em}
+  .b1 .stgs{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .b1 .stgs div{background:#fff;border:1px solid #e4e4e7;padding:24px}
+  .b1 .stgs .top{display:flex;justify-content:space-between;align-items:center;
+                 border-bottom:1px solid #f4f4f5;padding-bottom:12px;margin-bottom:12px}
+  .b1 .stgs .top b{font:800 16px/1.2 var(--sans)}
+  .b1 .stgs .top s{font:700 12px/1 var(--mono);color:#78350f;background:#fef3c7;padding:2px 8px;text-decoration:none}
+  .b1 .stgs p{font-size:14px;color:#52525b;line-height:1.6;margin:0}
+  .b1 .eq{margin-top:48px;padding-top:16px;border-top:1px solid #e4e4e7}
+  .b1 .eq .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .b1 .eq .chips span{background:#fafafa;border:1px solid #e4e4e7;font-size:12px;font-weight:500;
+                      color:#3f3f46;padding:6px 12px}
+  .b1 .calc{background:#09090b;border:1px solid #27272a;padding:28px;color:#fff}
+  .b1 .calc .k{font:700 10px/1 var(--mono);letter-spacing:.15em;text-transform:uppercase;
+               color:var(--amber);display:block;margin-bottom:4px}
+  .b1 .calc h4{font:800 20px/1.2 var(--sans);margin:0 0 32px;letter-spacing:-.015em}
+  .b1 .calc .row{display:flex;justify-content:space-between;align-items:flex-end;
+                 font:400 12px/1 var(--mono);color:#a1a1aa;margin-bottom:16px}
+  .b1 .calc .row b{font:700 18px/1 var(--sans);color:#fff}
+  .b1 .calc .track{height:6px;background:#27272a;position:relative;margin-bottom:8px}
+  .b1 .calc .track i{position:absolute;top:-4px;left:22%;width:14px;height:14px;border-radius:50%;background:var(--amber)}
+  .b1 .calc .ends{display:flex;justify-content:space-between;font:700 10px/1 var(--mono);color:#71717a}
+  .b1 .calc .opts{margin-top:32px}
+  .b1 .calc .opt{border:1px solid #27272a;background:#18181b;color:#d4d4d8;padding:12px;
+                 font-size:14px;line-height:1.3;margin-bottom:8px}
+  .b1 .calc .opt.on{background:var(--amber);border-color:var(--amber);color:#09090b;font-weight:700}
+  .b1 .calc .out{background:#18181b;border:1px solid #27272a;padding:20px;margin-top:32px}
+  .b1 .calc .out .big{font:800 30px/1.1 var(--sans);color:var(--amber-4);display:block;margin:8px 0 4px}
+  .b1 .calc .out .sm{font:400 12px/1.5 var(--mono);color:#a1a1aa;display:block}
+  .b1 .calc .out .it{font:italic 400 12px/1.5 var(--mono);color:#71717a;display:block;
+                     border-top:1px solid #27272a;margin-top:8px;padding-top:8px}
+  .b1 .calc .b1btn{background:#fff;color:#09090b;font:700 12px/1 var(--sans);letter-spacing:.08em;
+                   text-transform:uppercase;text-align:center;padding:14px;margin-top:24px}
+  .b1 .calc .b2btn{background:var(--amber);color:#09090b;font:700 12px/1 var(--sans);letter-spacing:.08em;
+                   text-transform:uppercase;text-align:center;padding:14px;margin-top:12px}
+  .b1 .side{background:#fafafa;border:1px solid #e4e4e7;padding:20px;margin-top:32px}
+  .b1 .side h5{font:700 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#71717a;margin:0 0 16px}
+  .b1 .side a{display:block;font-size:14px;color:#27272a;margin-bottom:8px;text-decoration:none;font-weight:500}
+  .b1 .side a.sub{font-size:12px;color:#52525b;padding-left:12px;border-left:2px solid #e4e4e7}
+  .b1 .side .rem{display:grid;gap:8px;margin-top:8px}
+  .b1 .side .rem a{font-size:12px;color:#52525b;font-weight:400;margin:0}
+  .b1 .pdf{background:#fafafa;border:1px solid #e4e4e7;padding:24px;margin-top:32px}
+  .b1 .pdf .top{display:flex;gap:16px;align-items:center;margin-bottom:16px}
+  .b1 .pdf .ic{background:#fef3c7;color:var(--amber-6);padding:12px;width:48px;height:48px;flex:none}
+  .b1 .pdf .ic s{display:block;width:22px;height:22px;border:2px solid var(--amber-6);text-decoration:none}
+  .b1 .pdf b{font:700 14px/1.2 var(--sans);display:block}
+  .b1 .pdf .mt{font:400 12px/1.4 var(--mono);color:#71717a}
+  .b1 .pdf .btn{background:#18181b;color:#fff;font:700 12px/1 var(--sans);letter-spacing:.08em;
+                text-transform:uppercase;text-align:center;padding:11px}
+  .b1 .faq{padding:56px 0 40px}
+  .b1 .faq .c{text-align:center;margin-bottom:32px}
+  .b1 .faq .c .k{font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--amber-6)}
+  .b1 .faq .c h2{font:800 30px/1.2 var(--sans);margin:12px 0 0;border:0;padding:0}
+  .b1 .faq .g{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .b1 .faq .g div{background:#fafafa;border:1px solid #e4e4e7;padding:24px}
+  .b1 .faq .g h3{font:700 16px/1.3 var(--sans);margin:0 0 12px}
+  .b1 .faq .g p{font-size:14px;color:#52525b;line-height:1.6;margin:0}
+  .b1 .cta{background:#09090b;color:#fff;padding:48px 0}
+  .b1 .cta h2{font:800 38px/1.15 var(--sans);margin:0;border:0;padding:0;max-width:640px;letter-spacing:-.02em}
+
+  /* ===== AFTER skin ===== */
+  .a1 .shead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;
+             border-bottom:2px solid #09090b;padding-bottom:12px;margin-bottom:22px}
+  .a1 .shead .n{font:700 10px/1 var(--mono);letter-spacing:.18em;color:var(--amber-7);display:block;margin-bottom:9px}
+  .a1 .shead .dash{width:26px;height:2px;background:var(--amber-7);display:block;margin-bottom:11px}
+  .a1 .shead h2{font:800 26px/1.2 var(--sans);margin:0;border:0;padding:0;letter-spacing:-.02em}
+  .a1 .lead{color:#27272a;font-size:16px;font-weight:500;line-height:1.7;margin:0 0 18px;max-width:68ch}
+  .a1 .body{color:#3f3f46;font-size:15.5px;line-height:1.78;margin:0;white-space:pre-wrap;max-width:68ch}
+  .a1 .ben{background:#fafafa;border:1px solid #e4e4e7;border-top:3px solid var(--amber-7);
+           padding:26px;margin-top:36px}
+  .a1 .lbl{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--amber-7);
+           display:block;margin-bottom:18px}
+  .a1 .bg2{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}
+  .a1 .bg2 div{position:relative;padding-left:20px;font-size:14px;color:#3f3f46;line-height:1.5;font-weight:500}
+  .a1 .bg2 div:before{content:"";position:absolute;left:0;top:9px;width:9px;height:2px;background:var(--amber-7)}
+  .a1 .wg{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px;padding-top:24px;
+          border-top:1px solid #e4e4e7}
+  .a1 .wg h5{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--amber-7);
+             margin:0 0 12px;padding-bottom:9px;border-bottom:1px solid #d4d4d8}
+  .a1 .wg ul{list-style:none;padding:0;margin:0}
+  .a1 .wg li{position:relative;padding-left:16px;font-size:13.5px;color:#3f3f46;line-height:1.5;margin-bottom:8px}
+  .a1 .wg li:before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;background:var(--amber)}
+  .a1 .stg{margin-top:40px}
+  .a1 .stgs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .a1 .stgs div{background:#fff;border:1px solid #d4d4d8;padding:20px;position:relative}
+  .a1 .stgs .n{font:700 10px/1 var(--mono);letter-spacing:.18em;color:var(--amber-7);display:block;margin-bottom:10px}
+  .a1 .stgs b{font:800 16px/1.22 var(--sans);display:block;margin-bottom:9px;letter-spacing:-.01em}
+  .a1 .stgs p{font-size:13.5px;color:#3f3f46;line-height:1.6;margin:0}
+  .a1 .eq{margin-top:36px;padding-top:22px;border-top:1px solid #e4e4e7}
+  .a1 .eq .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .a1 .eq .chips span{background:#fff;border:1px solid #d4d4d8;font:600 12px/1 var(--sans);
+                      color:#3f3f46;padding:8px 12px}
+  .a1 .calc{background:#09090b;border:1px solid #27272a;color:#fff}
+  .a1 .calc .hz{height:5px;background:repeating-linear-gradient(-45deg,var(--amber) 0 10px,transparent 10px 20px)}
+  .a1 .calc .in{padding:22px}
+  .a1 .calc .k{font:700 9px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+               color:rgba(255,255,255,.55);display:block;margin-bottom:9px}
+  .a1 .calc .track{height:6px;background:#27272a;position:relative;margin:14px 0 9px}
+  .a1 .calc .track b{position:absolute;left:0;top:0;height:6px;width:22%;background:#52525b;display:block}
+  .a1 .calc .track i{position:absolute;top:-10px;left:calc(22% - 5px);width:10px;height:26px;
+                     background:var(--amber);box-shadow:0 0 0 1px #09090b}
+  .a1 .calc .ends{display:flex;justify-content:space-between;font:700 10px/1 var(--mono);
+                  letter-spacing:.1em;color:#71717a}
+  .a1 .calc .val{font:800 26px/1 var(--sans);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .a1 .calc .val i{font:700 11px/1 var(--mono);font-style:normal;color:#71717a;letter-spacing:.1em}
+  .a1 .calc .seg{display:grid;grid-template-columns:1fr;border:1px solid #27272a;margin-top:6px}
+  .a1 .calc .seg div{border-top:1px solid #27272a;padding:11px 13px;cursor:default}
+  .a1 .calc .seg div:first-child{border-top:0}
+  .a1 .calc .seg .nm{font:800 13px/1.2 var(--sans);display:block}
+  .a1 .calc .seg .ds{font:700 10px/1.4 var(--mono);color:#71717a;display:block;margin-top:5px}
+  .a1 .calc .seg div.on{background:var(--amber);color:#09090b}
+  .a1 .calc .seg div.on .ds{color:rgba(9,9,11,.7)}
+  .a1 .calc .out{border-top:1px solid #27272a;margin-top:18px;padding-top:16px}
+  .a1 .calc .big{font:800 28px/1.05 var(--sans);color:var(--amber);font-variant-numeric:tabular-nums;
+                 display:block;margin-top:9px}
+  .a1 .calc .big s{color:#52525b;text-decoration:none;font-weight:500;padding:0 3px}
+  .a1 .calc .chip{display:inline-block;background:rgba(245,158,11,.14);color:var(--amber);
+                  font:700 10px/1 var(--mono);padding:5px 7px;border:1px solid rgba(245,158,11,.32);margin-top:12px}
+  .a1 .calc .note{font:400 11.5px/1.6 var(--sans);color:#a1a1aa;display:block;margin-top:14px;
+                  padding-top:12px;border-top:1px solid #27272a}
+  .a1 .calc .b1btn{background:var(--amber);color:#09090b;font:800 11px/1 var(--sans);letter-spacing:.13em;
+                   text-transform:uppercase;text-align:center;padding:14px;margin-top:18px}
+  .a1 .calc .b2btn{display:flex;align-items:center;justify-content:center;gap:7px;
+                   color:#fff;font:700 11px/1 var(--sans);letter-spacing:.11em;
+                   text-transform:uppercase;text-align:center;padding:13px;margin-top:9px;
+                   border:1px solid #3f3f46}
+  .a1 .side{background:#fff;border:1px solid #d4d4d8;padding:20px;margin-top:16px}
+  .a1 .side h5{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+               color:var(--amber-7);margin:0 0 14px}
+  .a1 .side a{display:block;font-size:14px;color:#27272a;margin-bottom:9px;text-decoration:none;font-weight:600}
+  .a1 .side a.sub{font-size:13px;color:#52525b;padding-left:12px;border-left:2px solid #e4e4e7;font-weight:500}
+  .a1 .side a.cur{border-left-color:var(--amber);color:#09090b;font-weight:700;background:#fafafa}
+  .a1 .side .rem{display:grid;grid-template-columns:1fr 1fr;gap:7px 14px;margin-top:10px}
+  .a1 .side .rem a{font-size:12.5px;color:#52525b;font-weight:500;margin:0}
+  .a1 .faq{padding:44px 0}
+  .a1 .faq .g{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .a1 .faq .g div{background:#fff;border:1px solid #d4d4d8;padding:22px}
+  .a1 .faq .g .q{font:800 15.5px/1.3 var(--sans);margin:0 0 10px;letter-spacing:-.01em}
+  .a1 .faq .g p{font-size:13.5px;color:#3f3f46;line-height:1.62;margin:0}
+  .a1 .cta{background:#09090b;color:#fff;padding:48px 0;position:relative}
+  .a1 .cta .hz{position:absolute;top:0;left:0;right:0;height:6px;
+               background:repeating-linear-gradient(-45deg,var(--amber) 0 12px,transparent 12px 24px)}
+  .a1 .cta h2{font:800 34px/1.15 var(--sans);margin:0;border:0;padding:0;max-width:640px;letter-spacing:-.025em}
+
+  /* variants */
+  .vstage{background:#fafafa;border:1px solid #d4d4d8;padding:26px;display:flex;justify-content:center}
+  .vwrap{width:363px}
+  .vhead{display:flex;align-items:baseline;gap:12px;margin:26px 0 10px}
+  .vhead b{font:800 15px/1 var(--sans)}
+  .vhead span{font:700 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .to{font-size:13px;color:var(--ink-2);margin:12px 0 0;line-height:1.6;max-width:100ch}
+  .to b{color:var(--ink)}
+  .vrow3{display:grid;grid-template-columns:repeat(3,415px);gap:18px;justify-content:start}
+
+  @media(max-width:1300px){.frames{grid-template-columns:minmax(0,1fr)}}
+  @media(max-width:1340px){.vrow3{grid-template-columns:415px}}
+  @media(max-width:560px){.wrap{padding:28px 16px 80px}.vwrap,.vrow3{width:100%;grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 33 · /sluzby/rodinne-domy/stavba-domu-na-kluc</p>
+  <h1>Stránka Stavba domu na kľúč</h1>
+  <p class="lede">Najdlhšia stránka webu — 37 nadpisov, vlastná kalkulačka, rozsah prác, harmonogram,
+     projekty, blog, lokality, CTA a FAQ. Obsahovo je bohatá; problém je, že nič v nej nedrží
+     poradie dôležitosti — ani nadpisy, ani ceny.</p>
+  <span class="status">Stav: <b>&nbsp;návrh — nič nie je aplikované v kóde</b></span>
+
+  <div class="fixme">
+    <b class="h">Najdôležitejšie zistenie: dve rôzne ceny za ten istý dom</b>
+    Táto stránka aj <code class="i">/kalkulacka</code> počítajú z tej istej sadzby
+    <code class="i">TURNKEY_RATE_PER_M2</code> = 1 640 €/m². Lenže <b>každá je predvolená na iný
+    štandard</b>. Tu je predvolený <b>Ekonomický štandard</b> (koeficient 0,85), v kalkulačke
+    <b>Zlatá stredná cesta</b> (1,0). Naviac tu sa výsledok zobrazuje ako jedno presné číslo
+    s hviezdičkou, tam ako zaokrúhlené rozpätie.
+    <br><br>
+    Overené kliknutím v prehliadači pri 140 m²:
+    <table style="margin:10px 0 0;background:#fff">
+      <tr><th>Kde</th><th>Predvolený štandard</th><th>Čo uvidí návštevník</th></tr>
+      <tr><td>Táto stránka</td><td>Ekonomický (0,85)</td><td class="num"><b>195 160 €*</b></td></tr>
+      <tr><td>Táto stránka po prepnutí</td><td>Zlatá stredná (1,0)</td><td class="num">229 600 €*</td></tr>
+      <tr><td><code>/kalkulacka</code></td><td>Zlatá stredná (1,0)</td><td class="num">rozpätie ≈ 218 000 — 248 000 €</td></tr>
+    </table>
+    Človek, ktorý si otvorí obe stránky, dostane za rovnaký dom <b>195 160 €</b> na jednej a
+    <b>218 000 — 248 000 €</b> na druhej. Nie je to chyba výpočtu — je to chyba predvolieb
+    a podania. Rozhodnutie je vaše (viď vlajky), ale takto to nemôže zostať.
+  </div>
+
+  <!-- ============================================================ 01 -->
+  <h2><span class="no">01 — ZISTENIA</span>Čo som na stránke nameral</h2>
+  <p class="seclede">Merané na <code class="i">localhost:3000/sluzby/rodinne-domy/stavba-domu-na-kluc</code>
+     pri 1280 px a 375 px.</p>
+
+  <div class="fx">
+    <div class="f crit">
+      <span class="t">01 · kritické · štruktúra</span>
+      <h4>Úroveň nadpisu nesúvisí s jeho veľkosťou</h4>
+      <p>Na stránke je 37 nadpisov. Prvý <code class="i">h2</code> príde až ako štrnásty v poradí.
+         Hlavný nadpis obsahu je <code class="i">h3</code>. A trikrát je
+         <code class="i">h4</code> menší než <code class="i">h5</code>, ktoré sú pod ním.</p>
+      <span class="m">h4: 12 / 12 / 24 / 12 / 20 px<br>h2: 30 / 24 / 20 / 38 / 30 px</span>
+    </div>
+    <div class="f crit">
+      <span class="t">02 · kritické · výkon</span>
+      <h4>Hero je obyčajný <code class="i">&lt;img&gt;</code>, nie <code class="i">next/image</code></h4>
+      <p>Je to LCP prvok stránky. Sťahuje sa plný súbor 1536 × 1024 do plochy 1265 × 387,
+         bez <code class="i">srcset</code>, bez <code class="i">priority</code>. Rodičovská stránka
+         <code class="i">/sluzby/rodinne-domy</code> pritom <code class="i">next/image</code> používa.</p>
+      <span class="m">zdroj 1536×1024 → plocha 1265×387<br>srcset: žiadny</span>
+    </div>
+    <div class="f crit">
+      <span class="t">03 · kritické · sľub</span>
+      <h4>Tlačidlo „Stiahnuť PDF“ nikam nevedie</h4>
+      <p>Pod nadpisom „Firemná prezentácia“ a popiskou „Stavebné portfólio (PDF, 4MB)“ je odkaz
+         s <code class="i">href="#"</code>. Sľubuje konkrétny súbor konkrétnej veľkosti, ktorý
+         neexistuje.</p>
+      <span class="m">&lt;a href="#"&gt;Stiahnuť PDF&lt;/a&gt;</span>
+    </div>
+    <div class="f">
+      <span class="t">04 · poradie</span>
+      <h4>FAQ je až za výzvou na akciu</h4>
+      <p>Poradie je Projekty → Blog → Prečo nás → <b>CTA</b> → <b>FAQ</b> → pätička. Štyri otázky
+         o termínoch, rozsahu ceny a sieťach — teda presne to, čo človek rieši <em>pred</em>
+         rozhodnutím — sú až za formulárom.</p>
+      <span class="m">CTA na 4 180 px, FAQ na 4 497 px<br>FAQ je posledná sekcia pred pätičkou</span>
+    </div>
+    <div class="f">
+      <span class="t">05 · hierarchia</span>
+      <h4>Dve hlavné tlačidlá pod sebou</h4>
+      <p>V kalkulačke sú na plnú šírku „Nezáväzná cenová ponuka“ (biela) aj „Prejsť na kalkulačku“
+         (amber). Obe vyzerajú ako hlavná akcia, takže ani jedna ňou nie je. Druhá navyše posiela
+         návštevníka preč na stránku, kde dostane iné číslo.</p>
+      <span class="m">2 × plná šírka, 2 × veľké písmená<br>biela na čiernej + amber na čiernej</span>
+    </div>
+    <div class="f">
+      <span class="t">06 · čitateľnosť</span>
+      <h4>Voľba štandardu je jedna dlhá veta v tlačidle</h4>
+      <p><code class="i">STANDARD_OPTIONS</code> skladá popisok ako
+         <code class="i">${'${name}'} (${'${desc}'})</code>, takže v tlačidle je
+         „Ekonomický štandard (Základné overené materiály so zameraním na cenu.)“ v jednom behu.
+         V <code class="i">/kalkulacka</code> je pritom názov a popis na dvoch riadkoch.</p>
+      <span class="m">tlačidlo 277 × 79 px na mobile<br>3 riadky textu bez hierarchie</span>
+    </div>
+    <div class="f">
+      <span class="t">07 · mobil</span>
+      <h4>Kalkulačka je 3 048 px pod vrchom</h4>
+      <p>Na mobile sa pravý stĺpec zloží pod celý ľavý, takže sa k odhadu ceny človek dostane
+         až po prečítaní popisu, benefitov, rozsahu prác aj harmonogramu. Rovnaký vzorec ako na
+         <code class="i">/kalkulacka</code>, len kratší.</p>
+      <span class="m">375 px: kalkulačka na 3 048 px<br>celá stránka 10 710 px</span>
+    </div>
+    <div class="f">
+      <span class="t">08 · typografia</span>
+      <h4>50 mono prvkov sa vykresľuje bezpätkovo</h4>
+      <p>Tá istá príčina ako všade inde: <code class="i">--font-mono</code> vedie cez nedefinované
+         <code class="i">--font-jetbrains-mono</code>. Drobečková navigácia, všetky štítky
+         aj čísla v kalkulačke.</p>
+      <span class="m">.font-mono × 50 → ui-sans-serif</span>
+    </div>
+    <div class="f">
+      <span class="t">09 · mŕtvy kód</span>
+      <h4>Zvyšky po prechode na ostré rohy</h4>
+      <p>Osamotené <code class="i">-lg</code> po zmazaní <code class="i">rounded-lg</code> na troch
+         miestach. A v hero je na jednom prvku naraz <code class="i">max-w-[1500px]</code>
+         aj <code class="i">max-w-8xl</code>, pričom <code class="i">8xl</code> v Tailwinde
+         štandardne neexistuje.</p>
+      <span class="m">.-lg × 3 · .max-w-8xl × 1</span>
+    </div>
+    <div class="f">
+      <span class="t">10 · drobnosti</span>
+      <h4>Medzera pred otáznikom</h4>
+      <p>Nadštítok nad harmonogramom znie „Ako to prebieha ?“. V slovenčine sa pred otáznik
+         medzera nedáva. Drobnosť, ale je to prvé, čo si všimne korektor.</p>
+      <span class="m">„Ako to prebieha ?“ → „Ako to prebieha?“</span>
+    </div>
+  </div>
+
+  <!-- ============================================================ 02 -->
+  <h2><span class="no">02 — CELÁ STRÁNKA</span>Dnes vedľa návrhu</h2>
+  <p class="seclede">Obidve stránky sú vykreslené v šírke 1 280 px a zmenšené. Rámy sa dajú rolovať
+     nezávisle. Sekcie Projekty, Blog a Lokality sú naznačené — riešia sa vo vlastných komponentoch.</p>
+
+  <div class="frames">
+    <div class="fr">
+      <div class="cap b"><i></i>Dnes</div>
+      <div class="scroller"><div class="shrink" id="shB"><div class="pg b1" id="pgB"></div></div></div>
+    </div>
+    <div class="fr">
+      <div class="cap a"><i></i>Návrh</div>
+      <div class="scroller"><div class="shrink" id="shA"><div class="pg a1" id="pgA"></div></div></div>
+    </div>
+  </div>
+
+  <h3 class="sub">Osnova nadpisov — dnes</h3>
+  <p class="seclede">Prvých pätnásť. Červené riadky sú tie, kde je nižšia úroveň väčšia než vyššia.</p>
+  <div class="out" id="outline"></div>
+
+  <div class="pick">
+    <span class="p1">Hlavná zmena</span>
+    <p><b>Veľkosť nadpisu začne zodpovedať jeho úrovni.</b> Jeden tvar hlavičky sekcie —
+       mono číslo, amber čiarka, <code style="background:#27272a;padding:1px 5px;font:500 12px/1.5 var(--mono);color:#e4e4e7">h2</code>
+       26 px, čierna linka — pre všetkých sedem sekcií; <code style="background:#27272a;padding:1px 5px;font:500 12px/1.5 var(--mono);color:#e4e4e7">h3</code>
+       16 px v kartách; a mono štítky, ktoré sú dnes <code style="background:#27272a;padding:1px 5px;font:500 12px/1.5 var(--mono);color:#e4e4e7">h4</code>
+       s 12 px, prestanú byť nadpismi — sú to popisky, nie úrovne osnovy.
+       <b>FAQ sa presúva pred CTA</b>, lebo odpovedá na to, čo človek rieši predtým, než vyplní formulár.</p>
+  </div>
+
+  <!-- ============================================================ 03 -->
+  <h2><span class="no">03 — KALKULAČKA</span>Tri varianty bočnej karty</h2>
+  <p class="seclede">Karta je to jediné interaktívne na stránke a zároveň zdroj rozporu s
+     <code class="i">/kalkulacka</code>. Skutočná veľkosť, 363 px — presne toľko má bočný stĺpec
+     pri šírke okna 1 280 px (namerané).</p>
+
+  <div class="vrow3" id="variants"></div>
+
+  <div class="pick">
+    <span class="p1">Moja voľba</span>
+    <p><b>Variant B.</b> A je len upratané dnešné podanie — stále ukazuje jedno presné číslo, takže
+       rozpor s kalkulačkou zostáva. C ide najďalej: zahodí odhad a pošle človeka rovno na
+       <code style="background:#27272a;padding:1px 5px;font:500 12px/1.5 var(--mono);color:#e4e4e7">/kalkulacka</code>
+       — čistý stav bez rozporu, ale stránka príde o jediný interaktívny prvok a o dôvod na nej
+       zostať. <b>B necháva odhad tu, ale zarovná ho s kalkulačkou</b>: rovnaká predvoľba
+       (Zlatá stredná cesta) a rovnaké podanie (zaokrúhlené rozpätie namiesto presnej sumy
+       s hviezdičkou). Dve stránky, jedno číslo.</p>
+  </div>
+
+  <!-- ============================================================ 04 -->
+  <h2><span class="no">04 — ŠPECIFIKÁCIA</span>Presné hodnoty</h2>
+
+  <h3 class="sub">A · Osnova nadpisov</h3>
+  <table>
+    <tr><th>Dnes</th><th>Návrh</th><th>Prečo</th></tr>
+    <tr><td><code>h3</code> 30 px — „Postavte si svoj vysnívaný dom…“</td>
+        <td><code>h2</code> 26 px v hlavičke sekcie</td>
+        <td>je to hlavný nadpis obsahu, má byť h2</td></tr>
+    <tr><td><code>h4</code> 12 px — „Hlavné benefity…“, „PREHĽAD…“, „Vlastné strojné vybavenie“</td>
+        <td><code>span</code> mono 10 px, <code>#B45309</code></td>
+        <td>sú to popisky bloku, nie úrovne osnovy — z osnovy vypadnú</td></tr>
+    <tr><td><code>h5</code> 16 px — „Hrubá stavba“, „Interiér“, „Exteriér“</td>
+        <td><code>h3</code>, mono 10 px veľké písmená</td>
+        <td>sú pod h2, takže h3; vizuálne sú to stĺpcové hlavičky</td></tr>
+    <tr><td><code>h4</code> 24 px — „Priebeh realizácie projektu“</td>
+        <td><code>h2</code> 26 px v hlavičke sekcie</td>
+        <td>samostatná sekcia</td></tr>
+    <tr><td><code>h4</code> 20 px — „Orientačný odhad nákladov“</td>
+        <td><code>h2</code> 18 px v karte</td>
+        <td>hlavička bočnej karty</td></tr>
+    <tr><td><code>h5</code> 10 px — „NAŠE SLUŽBY“, „Remeslá“</td>
+        <td><code>span</code> mono 10 px</td>
+        <td>popisky, nie nadpisy</td></tr>
+    <tr><td>Veľkosti <code>h2</code>: 30 / 24 / 20 / 38 / 30</td>
+        <td>všetky 26 px okrem CTA (34 px)</td>
+        <td>CTA smie byť väčšia, je to koniec stránky</td></tr>
+  </table>
+
+  <h3 class="sub">B · Poradie sekcií</h3>
+  <table>
+    <tr><th>Dnes</th><th>Návrh</th></tr>
+    <tr><td>Hero → obsah + kalkulačka → Projekty → Blog → Prečo nás + Lokality → <b>CTA</b> → <b>FAQ</b></td>
+        <td>Hero → obsah + kalkulačka → Projekty → Blog → <b>FAQ</b> → Prečo nás + Lokality → <b>CTA</b></td></tr>
+    <tr><td colspan="2" style="font-weight:400">V kóde: <code>{customFaq}</code> je na konci
+        <code>RodinneDomyServiceDetail</code> za <code>&lt;CTA /&gt;</code>. Stačí ho presunúť pred
+        blok „Prečo nás + Lokality“. Dotkne sa to <b>všetkých stránok</b>, ktoré komponent používajú
+        — obe služby aj 22 mestských stránok (viď vlajky).</td></tr>
+  </table>
+
+  <h3 class="sub">C · Hero</h3>
+  <table>
+    <tr><th>Čo</th><th>Dnes</th><th>Návrh</th></tr>
+    <tr><td>Obrázok</td><td><code>&lt;img src={imageUrl}&gt;</code></td>
+        <td><code>&lt;Image fill priority sizes="100vw" quality={90} /&gt;</code> —
+        <code>quality</code> musí byť 75 alebo 90, iné <code>next.config</code> nepozná</td></tr>
+    <tr><td>Kontajner</td><td><code>max-w-[1500px] … max-w-8xl</code> na tom istom prvku</td>
+        <td>ponechať <code>max-w-[1500px]</code>, <code>max-w-8xl</code> zmazať</td></tr>
+    <tr><td>Drobečky</td><td>mono 12 px, amber-500 na tmavej</td>
+        <td>ponechať, len skutočný monospace; oddeľovač <code>ChevronRight</code> → <code>/</code></td></tr>
+    <tr><td>Nadpis</td><td>60 px, <code>leading-tight</code></td>
+        <td>60 px, <code>tracking-[-0.025em] leading-[1.15]</code></td></tr>
+  </table>
+
+  <h3 class="sub">D · Kalkulačka — variant B</h3>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Predvoľba</td><td><code>selectedSpecIndex</code> = <b>1</b> (Zlatá stredná cesta) — zhoda s <code>/kalkulacka</code></td></tr>
+    <tr><td>Výsledok</td><td>rozpätie, nie presná suma:<br>
+        <code>min = round(odhad * 0.95 / 1000) * 1000</code><br>
+        <code>max = round(odhad * 1.08 / 1000) * 1000</code> — rovnaký vzorec ako v kalkulačke</td></tr>
+    <tr><td>Hviezdička</td><td>zrušiť — rozpätie samo hovorí, že ide o odhad; poznámku nechať ako vetu pod ním</td></tr>
+    <tr><td>Horná hrana</td><td>výstražný pruh 5 px,
+        <code>repeating-linear-gradient(-45deg,#F59E0B 0 10px,transparent 10px 20px)</code></td></tr>
+    <tr><td>Posúvač</td><td>dráha 6 px <code>#27272A</code> + vyplnená časť <code>#52525B</code>;
+        jazdec 10 × 26 px <code>#F59E0B</code>, ostrý —
+        <code>::-webkit-slider-thumb</code> aj <code>::-moz-range-thumb</code></td></tr>
+    <tr><td>Voľba štandardu</td><td>názov a popis na dvoch riadkoch:
+        <code>opt.name</code> 13 px / 800 a <code>opt.desc</code> mono 10 px —
+        vyžaduje si posielať <code>STANDARDS</code>, nie <code>STANDARD_OPTIONS</code> (viď vlajky)</td></tr>
+    <tr><td>Cena</td><td>28 px / 800, <code>text-[#F59E0B]</code>, <code>tabular-nums</code>;
+        na čiernej má amber 9,26 : 1</td></tr>
+    <tr><td>Tlačidlá</td><td>jedno hlavné: <code>bg-[#F59E0B] text-[#09090B]</code>;<br>
+        druhé ako vedľajšie: priehľadné s <code>border-zinc-700</code></td></tr>
+  </table>
+
+  <h3 class="sub">E · Ostatné</h3>
+  <table>
+    <tr><th>Čo</th><th>Návrh</th></tr>
+    <tr><td>Odrážky benefitov</td><td>kruhový <code>CheckCircle2</code> → amber čiarka
+        9 × 2 px <code>#B45309</code> (rovnako ako v ServicesGrid)</td></tr>
+    <tr><td>Karty harmonogramu</td><td>číslo <code>01</code> mono hore vľavo namiesto amber štítku vpravo;
+        <code>shadow-sm hover:shadow-md</code> zmazať — na bielom ho nevidno</td></tr>
+    <tr><td>Bočné menu</td><td>aktuálna stránka nie je odkaz — dostane amber ľavú hranu
+        a <code>aria-current="page"</code></td></tr>
+    <tr><td>Remeslá</td><td>11 odkazov v jednom stĺpci po 12 px → dva stĺpce po 12,5 px</td></tr>
+    <tr><td>Mŕtve triedy</td><td><code>-lg</code> (3×), <code>max-w-8xl</code> (1×) zmazať</td></tr>
+    <tr><td>„Ako to prebieha ?“</td><td>„Ako to prebieha?“</td></tr>
+  </table>
+
+  <!-- ============================================================ 05 -->
+  <h2><span class="no">05 — VLAJKY</span>Čo potrebuje vaše rozhodnutie</h2>
+  <ul class="flags">
+    <li><b>Ktorý štandard má byť predvolený?</b> Navrhujem Zlatú strednú cestu, aby stránka
+        nesľubovala najnižšiu cenu a kalkulačka inú. Ale je to obchodné rozhodnutie, nie dizajnové —
+        povedzte, čo je vám bližšie, a zarovnám obe stránky na to.</li>
+    <li><b>Rozpätie namiesto presnej sumy</b> znamená, že tu prestane svietiť konkrétne číslo.
+        Je to poctivejšie a zhodné s kalkulačkou, ale je to zmena v tom, čo stránka sľubuje.</li>
+    <li><b>Presun FAQ pred CTA sa dotkne 24 stránok</b> — oboch služieb aj 22 mestských variantov,
+        lebo <code class="i">customFaq</code> vykresľuje spoločný komponent. Zmena je jednoriadková,
+        dopad plošný.</li>
+    <li><b>„Stiahnuť PDF“ potrebuje buď súbor, alebo zmiznúť.</b> Nemôžem nechať tlačidlo, ktoré
+        sľubuje „PDF, 4MB“ a vedie na <code class="i">#</code>. Ak prezentáciu máte, pošlite ju;
+        ak nie, blok zatiaľ skryjem.</li>
+    <li><b>Voľba štandardu na dva riadky si vyžiada zmenu dát.</b> Dnes sa posiela
+        <code class="i">STANDARD_OPTIONS</code> so zlepeným reťazcom
+        <code class="i">name (desc)</code>. Buď komponent dostane <code class="i">STANDARDS</code>
+        a rozdelí si to sám, alebo <code class="i">Option</code> dostane dve polia. Odporúčam druhé —
+        menší zásah do ostatných volajúcich.</li>
+    <li><b><code class="i">EQUIPMENT</code> má v dátach poznámku TODO</b>, že treba potvrdiť, či je
+        to technika, ktorú naozaj vlastníte alebo pravidelne prenajímate. Nechávam zoznam
+        nedotknutý, ale tú poznámku som videl.</li>
+    <li><b>Amber ostáva nezjednotená</b> — logo <code class="i">#F68C05</code>, web
+        <code class="i">#F59E0B</code>, texty <code class="i">#B45309</code>. Držím sa doterajšieho
+        rozdelenia.</li>
+  </ul>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var RATE=1640, AREA=140;
+  var STD=[{n:'Ekonomický štandard',d:'Základné overené materiály so zameraním na cenu.',m:0.85},
+           {n:'Zlatá stredná cesta',d:'Moderné kvalitné materiály, výborný pomer cena / výkon.',m:1.0},
+           {n:'Prémiové riešenia',d:'Najvyššia kvalita, nadštandardné technológie (smart dom).',m:1.35}];
+  var BENEFITS=['Dlhoročné skúsenosti s výstavbou rodinných domov',
+    'Kompletná realizácia, všetko vybavíme za vás',
+    'Profesionálny dohľad nad každou fázou výstavby',
+    'Transparentná komunikácia a férový prístup'];
+  var WORK=[{t:'Hrubá stavba',i:['Základy','Murivo a stropné dosky','Strechy a krovy','Okná a brány']},
+            {t:'Interiér',i:['Elektroinštalácie','Zdravotechnika','Omietky a potery','Obklady a dlažby']},
+            {t:'Exteriér',i:['Zateplenie fasády','Zámkové dlažby','Ploty a prístrešky']}];
+  var STAGES=[['01','Konzultácia a cenová ponuka','Na základe vašich požiadaviek pripravíme nezáväznú konzultáciu a cenovú ponuku na mieru.'],
+    ['02','Projekt a povolenia','Plánovanie priestoru, geologické posúdenie, architektonický návrh a vybavenie stavebného povolenia.'],
+    ['03','Výstavba na kľúč','Zabezpečíme profesionálnu realizáciu stavby s dôrazom na kvalitu, presnosť a dodržiavanie termínov.'],
+    ['04','Dokončenie a odovzdanie','Po ukončení prác vám odovzdáme hotové dielo pripravené na kolaudáciu a bezproblémové užívanie.']];
+  var EQ=['Rýpadlá a bagre','Systémové lešenia','Stavebné lasery a nivelačná technika','Vibračné dosky','Miešačky a čerpadlá zmesí'];
+  var REM=['Monolitické konštrukcie','Murárske práce','Tesárske práce','Omietky','Potery',
+           'Obkladačské práce','Fasády','Výkopové a zemné práce','Búracie práce','Jadrové vŕtanie','Rezanie otvorov'];
+  var FAQ=[['Ako dlho trvá stavba domu na kľúč?','Štandardný murovaný rodinný dom dokážeme pri plynulom financovaní postaviť do 9 – 12 mesiacov, vrátane technologických prestávok na zretie materiálov.'],
+    ['Čo všetko je zahrnuté v cene?','Cena „na kľúč“ zahŕňa kompletnú realizáciu od základov po finálne povrchy – elektroinštalácie, omietky, obklady, sanitu aj vykurovanie.'],
+    ['Je možné počas stavby meniť projekt?','Drobné zmeny, ako napríklad posunutie nenosnej priečky či pridanie zásuvky, vieme flexibilne riešiť. Zásadné zmeny nosných konštrukcií si vyžadujú zmenu povolenia.'],
+    ['Zabezpečujete aj inžinierske siete?','Áno, súčasťou dodávky môže byť aj pripojenie pozemku na elektrinu, vodu, plyn a kanalizáciu, vrátane zemných prác a revíznych správ.']];
+  var FULL='Staviame rodinné domy podľa požiadaviek a potrieb našich klientov. Spolupracujeme s architektmi a inžiniermi, aby výsledok zodpovedal vašim predstavám aj vysokým nárokom na kvalitu.\n\nPri výstavbe používame výhradne kvalitné a overené materiály, dbáme na dostatočnú hydroizoláciu, poctivú tepelnú izoláciu a integráciu moderných technológií.';
+
+  var fNum=new Intl.NumberFormat('sk-SK');
+  function exact(i){return fNum.format(Math.round(AREA*RATE*STD[i].m));}
+  function range(i){var v=AREA*RATE*STD[i].m;
+    return fNum.format(Math.round(v*0.95/1000)*1000)+' — '+fNum.format(Math.round(v*1.08/1000)*1000);}
+  function perM2(i){return fNum.format(Math.round(RATE*STD[i].m));}
+
+  function hdr(){return '<div class="hdr"><div class="logo"><b></b><span>MNSP</span></div>'+
+    '<div class="nav"><span>Domov</span><span>Služby</span><span>Portfólio</span><span>Blog</span>'+
+    '<span>FAQ</span><span>O nás</span><span>Kontakt</span></div>'+
+    '<div class="navbtn">Kalkulačka ↗</div></div>';}
+  function hero(sep){return '<div class="hero"><img src="assets/stavba-domu-na-kluc.webp" alt="">'+
+    '<div class="gr"></div><div class="in"><div class="bc">'+
+    '<span>DOMOV</span><i>'+sep+'</i><span>SLUŽBY</span><i>'+sep+'</i><span>RODINNÉ DOMY</span>'+
+    '<i>'+sep+'</i><span class="cur">STAVBA DOMU NA KĽÚČ</span></div>'+
+    '<h1>Stavba domu na kľúč</h1></div></div>';}
+  function ft(){return '<div class="ft">MNSP s.r.o. · info@mnsp.sk · +421 950 699 585</div>';}
+  function ph(h,t){return '<div style="height:'+h+'px;background:#f4f4f5;border:1px dashed #d4d4d8;'+
+    'display:flex;align-items:center;justify-content:center;font:700 11px/1 var(--mono);'+
+    'letter-spacing:.14em;color:#a1a1aa;text-transform:uppercase">'+t+'</div>';}
+
+  /* ---------- BEFORE ---------- */
+  function pageB(){
+    return hdr()+hero('›')+
+    '<div class="rail"><a class="back">← SPÄŤ NA RODINNÉ DOMY</a></div>'+
+    '<div class="rail"><div class="cols"><div>'+
+      '<h3 class="lead">Postavte si svoj vysnívaný dom bez námahy.</h3>'+
+      '<p class="p1">Projekt vám vypracujeme, dom vám postavíme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás.</p>'+
+      '<p class="p2">'+FULL+'</p>'+
+      '<div class="ben"><span class="lbl">Hlavné benefity spolupráce s nami</span>'+
+        '<div class="bg2">'+BENEFITS.map(function(b){return '<div><em></em><span>'+b+'</span></div>';}).join('')+'</div>'+
+        '<div class="wg">'+WORK.map(function(g){return '<div><h5>'+g.t+'</h5><ul>'+
+          g.i.map(function(x){return '<li><s></s><span>'+x+'</span></li>';}).join('')+'</ul></div>';}).join('')+
+        '</div></div>'+
+      '<div class="stg"><span class="k">Ako to prebieha ?</span><h4>Priebeh realizácie projektu</h4>'+
+        '<div class="stgs">'+STAGES.map(function(s){return '<div><div class="top"><b>'+s[1]+'</b><s>'+s[0]+'</s></div>'+
+        '<p>'+s[2]+'</p></div>';}).join('')+'</div></div>'+
+      '<div class="eq"><span class="lbl" style="margin-bottom:0">Vlastné strojné vybavenie a technológie</span>'+
+        '<div class="chips">'+EQ.map(function(e){return '<span>'+e+'</span>';}).join('')+'</div></div>'+
+    '</div><div>'+
+      '<div class="calc"><span class="k">Rozpočtová kalkulačka</span><h4>Orientačný odhad nákladov</h4>'+
+        '<div class="row"><span>PLOCHA V M²</span><b>'+AREA+' m²</b></div>'+
+        '<div class="track"><i></i></div><div class="ends"><span>80 m²</span><span>400 m²</span></div>'+
+        '<div class="opts"><span class="k" style="color:#a1a1aa;margin-bottom:12px">Zvoľte úroveň štandardu</span>'+
+        STD.map(function(s,i){return '<div class="opt'+(i===0?' on':'')+'">'+s.n+' ('+s.d+')</div>';}).join('')+'</div>'+
+        '<div class="out"><span class="sm">PREDPOKLADANÁ INVESTÍCIA</span>'+
+        '<span class="big">'+exact(0)+' €*</span>'+
+        '<span class="sm">≈ '+perM2(0)+' €/m²</span>'+
+        '<span class="it">*Indikatívna cena v závislosti od konkrétnych požiadaviek, svahovitosti a výberu materiálov.</span></div>'+
+        '<div class="b1btn">Nezáväzná cenová ponuka</div><div class="b2btn">Prejsť na kalkulačku</div></div>'+
+      '<div class="side"><h5>NAŠE SLUŽBY</h5>'+
+        '<a>Rodinné domy</a><a class="sub">Stavba domu na kľúč</a>'+
+        '<a class="sub">Rekonštrukcia rodinného domu</a><a style="margin-top:12px">Stavebné sektory</a>'+
+        '<h5 style="margin:18px 0 8px;padding-bottom:8px;border-bottom:1px solid #e4e4e7">Remeslá</h5>'+
+        '<div class="rem">'+REM.map(function(r){return '<a>'+r+'</a>';}).join('')+'</div></div>'+
+      '<div class="pdf"><div class="top"><div class="ic"><s></s></div><div>'+
+        '<b>Firemná prezentácia</b><span class="mt">Stavebné portfólio (PDF, 4MB)</span></div></div>'+
+        '<div class="btn">Stiahnuť PDF</div></div>'+
+    '</div></div></div>'+
+    '<div class="rail" style="padding-bottom:32px">'+ph(150,'Projekty')+'</div>'+
+    '<div class="rail" style="padding-bottom:32px">'+ph(120,'Blog')+'</div>'+
+    '<div class="rail" style="padding-bottom:32px">'+ph(150,'Prečo nás + Lokality')+'</div>'+
+    '<div class="cta"><div class="rail"><h2>Plánujete výstavbu rodinného domu na kľúč?</h2></div></div>'+
+    '<div class="faq"><div class="rail"><div class="c"><span class="k">Časté otázky</span>'+
+      '<h2>Otázky a odpovede o stavbe na kľúč</h2></div>'+
+      '<div class="g">'+FAQ.map(function(f){return '<div><h3>'+f[0]+'</h3><p>'+f[1]+'</p></div>';}).join('')+
+      '</div></div></div>'+ft();
+  }
+
+  /* ---------- AFTER ---------- */
+  function shead(n,t,link){
+    return '<div class="shead"><div><span class="n">'+n+'</span><span class="dash"></span>'+
+      '<h2>'+t+'</h2></div>'+(link?'<span style="font:700 11px/1 var(--sans);letter-spacing:.12em;'+
+      'text-transform:uppercase;color:var(--amber-7);white-space:nowrap;padding-bottom:3px">'+link+'</span>':'')+'</div>';
+  }
+  function calcCard(variant){
+    var idx = variant==='A' ? 0 : 1;
+    var body;
+    if(variant==='C'){
+      body='<span class="k">Rozpočet</span>'+
+        '<h2 style="font:800 18px/1.22 var(--sans);margin:0 0 14px;letter-spacing:-.015em">Koľko bude stáť váš dom?</h2>'+
+        '<p style="font-size:13.5px;line-height:1.62;color:#a1a1aa;margin:0 0 6px">Orientačný rozpočet '+
+        'počítame z rovnakých sadzieb, aké používame v našich rozpočtoch — podľa plochy, podlažnosti, '+
+        'vybraných modulov a štandardu.</p>'+
+        '<div class="out" style="border-top:1px solid #27272a;margin-top:16px;padding-top:14px">'+
+        '<span class="k">Sadzba na kľúč · 1 podlažie</span>'+
+        '<span class="big" style="font-size:24px">'+fNum.format(RATE)+' €/m²</span>'+
+        '<span class="note" style="border:0;margin-top:9px;padding:0">Pri strednom štandarde. '+
+        'Konečná cena závisí od projektu, pozemku a výberu materiálov.</span></div>'+
+        '<div class="b1btn">Spustiť kalkulačku →</div>'+
+        '<div class="b2btn">Nezáväzná cenová ponuka</div>';
+    } else {
+      var val = variant==='A' ? exact(idx)+' €*' : range(idx)+' €';
+      var note = variant==='A'
+        ? '*Indikatívna cena v závislosti od konkrétnych požiadaviek, svahovitosti a výberu materiálov.'
+        : 'Orientačné rozpätie. Rovnaké sadzby aj rovnaká predvoľba ako v našej kalkulačke — konečná cena závisí od projektu a pozemku.';
+      body='<span class="k">Rozpočtová kalkulačka</span>'+
+        '<h2 style="font:800 18px/1.22 var(--sans);margin:0 0 20px;letter-spacing:-.015em">Orientačný odhad nákladov</h2>'+
+        '<span class="k">Zastavaná plocha</span>'+
+        '<div style="display:flex;justify-content:space-between;align-items:flex-end">'+
+        '<span style="font:600 12.5px/1 var(--sans);color:#71717a">Posuňte jazdec</span>'+
+        '<span class="val">'+AREA+' <i>M²</i></span></div>'+
+        '<div class="track"><b></b><i></i></div>'+
+        '<div class="ends"><span>80 M²</span><span>400 M²</span></div>'+
+        '<div style="margin-top:20px"><span class="k">Úroveň štandardu</span><div class="seg">'+
+        STD.map(function(s,i){return '<div'+(i===idx?' class="on"':'')+'><span class="nm">'+s.n+
+          '</span><span class="ds">'+s.d.replace(/\.$/,'')+'</span></div>';}).join('')+'</div></div>'+
+        '<div class="out"><span class="k">Predpokladaná investícia</span>'+
+        '<span class="big">'+val+'</span>'+
+        '<span class="chip">≈ '+perM2(idx)+' €/m²</span>'+
+        '<span class="note">'+note+'</span></div>'+
+        '<div class="b1btn">Nezáväzná cenová ponuka</div>'+
+        '<div class="b2btn">Podrobná kalkulačka →</div>';
+    }
+    return '<div class="calc"><div class="hz"></div><div class="in">'+body+'</div></div>';
+  }
+  function pageA(){
+    return hdr()+hero('/')+
+    '<div class="rail"><a class="back">← SPÄŤ NA RODINNÉ DOMY</a></div>'+
+    '<div class="rail"><div class="cols"><div>'+
+      shead('01','Postavte si svoj vysnívaný dom bez námahy','')+
+      '<p class="lead">Projekt vám vypracujeme, dom vám postavíme a s formalitami vám pomôžeme alebo ich rovno vybavíme za vás.</p>'+
+      '<p class="body">'+FULL+'</p>'+
+      '<div class="ben"><span class="lbl">Hlavné benefity spolupráce s nami</span>'+
+        '<div class="bg2">'+BENEFITS.map(function(b){return '<div>'+b+'</div>';}).join('')+'</div>'+
+        '<div class="wg">'+WORK.map(function(g){return '<div><h5>'+g.t+'</h5><ul>'+
+          g.i.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul></div>';}).join('')+
+        '</div></div>'+
+      '<div class="stg">'+shead('02','Priebeh realizácie projektu','')+
+        '<div class="stgs">'+STAGES.map(function(s){return '<div><span class="n">'+s[0]+'</span>'+
+        '<b>'+s[1]+'</b><p>'+s[2]+'</p></div>';}).join('')+'</div></div>'+
+      '<div class="eq"><span class="lbl" style="margin-bottom:0">Vlastné strojné vybavenie a technológie</span>'+
+        '<div class="chips">'+EQ.map(function(e){return '<span>'+e+'</span>';}).join('')+'</div></div>'+
+    '</div><div>'+
+      calcCard('B')+
+      '<div class="side"><h5>Naše služby</h5>'+
+        '<a>Rodinné domy</a><a class="sub cur">Stavba domu na kľúč</a>'+
+        '<a class="sub">Rekonštrukcia rodinného domu</a><a style="margin-top:12px">Stavebné sektory</a>'+
+        '<h5 style="margin:18px 0 0;padding-bottom:9px;border-bottom:1px solid #e4e4e7">Remeslá</h5>'+
+        '<div class="rem">'+REM.map(function(r){return '<a>'+r+'</a>';}).join('')+'</div></div>'+
+    '</div></div></div>'+
+    '<div class="rail" style="padding-bottom:32px">'+ph(150,'Projekty')+'</div>'+
+    '<div class="rail" style="padding-bottom:32px">'+ph(120,'Blog')+'</div>'+
+    '<div class="faq"><div class="rail">'+shead('05','Otázky a odpovede o stavbe na kľúč','')+
+      '<div class="g">'+FAQ.map(function(f){return '<div><p class="q">'+f[0]+'</p><p>'+f[1]+'</p></div>';}).join('')+
+      '</div></div></div>'+
+    '<div class="rail" style="padding-bottom:32px">'+ph(150,'Prečo nás + Lokality')+'</div>'+
+    '<div class="cta"><div class="hz"></div><div class="rail"><h2>Plánujete výstavbu rodinného domu na kľúč?</h2></div></div>'+
+    ft();
+  }
+
+  /* ---------- heading outline ---------- */
+  var OUTLINE=[['H1',60,'Stavba domu na kľúč',0],
+    ['H3',30,'Postavte si svoj vysnívaný dom bez námahy.',1],
+    ['H4',12,'Hlavné benefity spolupráce s nami',0],
+    ['H4',12,'PREHĽAD NAMI POSKYTOVANÝCH STAVEBNÝCH PRÁC',1],
+    ['H5',16,'Hrubá stavba',1],['H5',16,'Interiér',1],['H5',16,'Exteriér',1],
+    ['H4',24,'Priebeh realizácie projektu',0],
+    ['H4',12,'Vlastné strojné vybavenie a technológie',0],
+    ['H4',20,'Orientačný odhad nákladov',0],
+    ['H5',10,'NAŠE SLUŽBY',0],['H5',10,'Remeslá',0],['H5',14,'Firemná prezentácia',0],
+    ['H2',30,'Relevantné realizácie z portfólia',1],
+    ['H3',18.6,'Rekonštrukcia rodinného domu Hriňová',0]];
+  document.getElementById('outline').innerHTML=OUTLINE.map(function(r){
+    var lvl=r[0].toLowerCase().replace('h','t');
+    return '<div class="r'+(r[3]?' bad':'')+'"><span class="tag '+lvl+'">'+r[0]+'</span>'+
+      '<span class="px">'+r[1]+' px</span><span class="tx">'+r[2]+'</span></div>';}).join('');
+
+  /* ---------- variants ---------- */
+  document.getElementById('variants').innerHTML=['A','B','C'].map(function(v){
+    var ttl={A:['Variant A','Upratané dnešné podanie'],
+             B:['Variant B','Zhodné s kalkulačkou'],
+             C:['Variant C','Bez odhadu, len sadzba']}[v];
+    var to={A:'<b>Prínos:</b> najmenší zásah — mení sa tvaroslovie, nie obsah.<br><b>Riziko:</b> presné číslo a predvoľba Ekonomický zostávajú, takže rozpor s kalkulačkou trvá.',
+            B:'<b>Prínos:</b> rovnaká predvoľba aj rovnaké rozpätie ako <code class="i">/kalkulacka</code>. Dve stránky, jedno číslo.<br><b>Riziko:</b> stránka prestane ukazovať jednu konkrétnu sumu.',
+            C:'<b>Prínos:</b> žiadny rozpor — stránka ukáže len sadzbu 1 640 €/m² a pošle na kalkulačku.<br><b>Riziko:</b> stránka príde o jediný interaktívny prvok.'}[v];
+    return '<div><div class="vhead"><b>'+ttl[0]+'</b><span>'+ttl[1]+'</span></div>'+
+      '<div class="vstage a1"><div class="vwrap">'+calcCard(v)+'</div></div>'+
+      '<p class="to">'+to+'</p></div>';}).join('');
+
+  function fit(){
+    var col=document.querySelector('.scroller'); if(!col) return;
+    var sc=col.clientWidth/1280;
+    [['pgB','shB'],['pgA','shA']].forEach(function(p){
+      var pg=document.getElementById(p[0]), sh=document.getElementById(p[1]);
+      pg.style.transform='scale('+sc+')';
+      sh.style.width=col.clientWidth+'px';
+      sh.style.height=Math.ceil(pg.offsetHeight*sc)+'px';
+    });
+  }
+  document.getElementById('pgB').innerHTML=pageB();
+  document.getElementById('pgA').innerHTML=pageA();
+  window.addEventListener('resize',fit);
+  window.addEventListener('load',fit);
+  fit();
+})();
+</script>
+</body>
+</html>

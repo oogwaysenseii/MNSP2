@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 32 — Stránka Rodinné domy</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;--logo:#f68c05;
+        --ease:cubic-bezier(.22,.61,.36,1);
+        --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+        --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.65 var(--sans)}
+  .wrap{max-width:1460px;margin:0 auto;padding:48px 32px 120px}
+  .kicker{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 var(--sans);letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:84ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2{font:800 22px/1.25 var(--sans);letter-spacing:-.01em;margin:56px 0 6px;padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 var(--mono);letter-spacing:.16em;color:var(--amber-6);display:block;margin-bottom:9px}
+  h3.sub{font:800 15px/1.3 var(--sans);margin:32px 0 8px;letter-spacing:-.01em}
+  .seclede{font-size:14.5px;color:var(--ink-2);margin:0 0 18px;max-width:92ch}
+  code.i,td code{font:500 12px/1.5 var(--mono);background:#f4f4f5;padding:1px 5px}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:24%}
+  pre{background:#18181b;color:#e4e4e7;padding:16px 18px;overflow-x:auto;margin:12px 0;
+      font:400 12.5px/1.7 var(--mono);border-left:3px solid var(--amber)}
+  pre .c{color:#71717a} pre .a{color:#86efac} pre .r{color:#fca5a5}
+  .fixme{background:#fef2f2;border:1px solid #dc2626;border-left:3px solid #dc2626;
+         padding:14px 18px;margin:18px 0;font-size:14px;color:#7f1d1d}
+  .fixme b{display:block;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+           margin-bottom:7px;color:#b91c1c}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  ul.flags li b{color:var(--ink)}
+  .pick{background:#09090b;color:#fff;padding:20px 24px;margin:18px 0 0;display:flex;gap:18px;align-items:flex-start}
+  .pick .p1{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--amber);flex:none;padding-top:3px}
+  .pick p{margin:0;font-size:14.5px;line-height:1.65;color:#d4d4d8}
+  .pick p b{color:#fff}
+  .fx{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:14px;margin:18px 0 0}
+  .f{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:16px 18px}
+  .f.crit{border-top-color:#dc2626}
+  .f .t{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;display:block}
+  .f.crit .t{color:#dc2626}
+  .f h4{font:800 15px/1.3 var(--sans);margin:0 0 7px}
+  .f p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+  .f .m{display:block;margin-top:9px;font:700 12px/1.5 var(--mono);color:var(--ink)}
+
+  /* ===== scaled page frames ===== */
+  .frames{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start}
+  .fr .cap{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+           margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .fr .cap i{width:9px;height:9px;flex:none;font-style:normal}
+  .fr .cap.b i{background:#a1a1aa}.fr .cap.a i{background:var(--amber)}
+  .scroller{border:1px solid #d4d4d8;background:#fff;height:760px;overflow-y:auto;overflow-x:hidden}
+  .shrink{overflow:hidden;position:relative}
+  .pg{width:1280px;transform-origin:top left;font-family:var(--sans)}
+
+  /* ---- shared page chrome ---- */
+  .pg .hdr{height:60px;background:#fff;border-bottom:1px solid #e4e4e7;display:flex;align-items:center;
+           justify-content:space-between;padding:0 26px}
+  .pg .logo{display:flex;align-items:center;gap:9px}
+  .pg .logo b{width:28px;height:28px;background:var(--logo);display:block}
+  .pg .logo span{font:800 16px/1 var(--sans)}
+  .pg .nav{display:flex;gap:16px;font:600 12px/1 var(--sans);color:#3f3f46}
+  .pg .navbtn{background:#09090b;color:#fff;font:800 10px/1 var(--sans);letter-spacing:.1em;
+              text-transform:uppercase;padding:10px 14px}
+  .pg .rail{max-width:1280px;margin:0 auto;padding:0 24px}
+  .pg .ft{background:#09090b;color:#a1a1aa;padding:30px 26px;font-size:11px}
+
+  /* ---- hero (shared) ---- */
+  .hero{position:relative;height:455px;background:#09090b;overflow:hidden;display:flex;align-items:flex-end}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;opacity:.5}
+  .hero .gr{position:absolute;inset:0;background:linear-gradient(to top,#18181b,rgba(9,9,11,.4),rgba(9,9,11,.7))}
+  .hero .in{position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:0 24px 56px}
+  .hero .bdg{display:inline-block;padding:4px 12px;border:1px solid rgba(245,158,11,.2);
+             background:rgba(245,158,11,.1);color:var(--amber);font:700 10px/1.6 var(--mono);
+             letter-spacing:.15em;text-transform:uppercase}
+  .hero h1{font:800 60px/1.15 var(--sans);letter-spacing:-.025em;color:#fff;margin:16px 0 0;max-width:768px}
+  .hero p{color:#d4d4d8;font-size:16px;line-height:1.62;margin:16px 0 0;max-width:672px}
+
+  /* ============ BEFORE skin ============ */
+  .b1 .sec2{padding:40px 0}
+  .b1 .h2c{text-align:center;max-width:768px;margin:0 auto 40px}
+  .b1 .h2c h2{font:800 36px/1.2 var(--sans);margin:0 0 16px;border:0;padding:0;letter-spacing:-.02em}
+  .b1 .h2c p{color:#52525b;font-size:16px;line-height:1.62;margin:0}
+  .b1 .cards{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  .b1 .card{background:#fafafa;border:1px solid #e4e4e7;display:flex;flex-direction:column}
+  .b1 .card .ph{position:relative;height:256px;background:#09090b;overflow:hidden}
+  .b1 .card .ph img{width:100%;height:100%;object-fit:cover;object-position:center 70%;opacity:.8}
+  .b1 .card .ic{position:absolute;left:16px;top:16px;background:#fff;border:1px solid #f4f4f5;padding:12px;
+                width:48px;height:48px;display:flex;align-items:center;justify-content:center}
+  .b1 .card .ic s{display:block;width:22px;height:22px;border:2px solid var(--amber-6);text-decoration:none}
+  .b1 .card .bd{padding:32px}
+  .b1 .card h3{font:800 24px/1.2 var(--sans);margin:0 0 12px}
+  .b1 .card .d{color:#52525b;font-size:14px;line-height:1.62;margin:0 0 24px}
+  .b1 .card ul{list-style:none;padding:0;margin:0 0 32px}
+  .b1 .card li{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:#3f3f46;
+               line-height:1.55;margin-bottom:10px}
+  .b1 .card li em{flex:none;width:16px;height:16px;border-radius:50%;border:2px solid #059669;
+                  margin-top:2px;display:block;font-style:normal}
+  .b1 .card .go{font:700 12px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--amber-6)}
+  .b1 .prose{background:#f4f4f5;border-top:1px solid #e4e4e7;border-bottom:1px solid #e4e4e7;padding:80px 0}
+  .b1 .prose h2{font:700 30px/1.2 var(--sans);margin:0 0 16px;border:0;padding:0;letter-spacing:-.02em}
+  .b1 .prose p{color:#3f3f46;font-size:16px;line-height:1.62;margin:0}
+  .b1 .info{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px}
+  .b1 .info div{background:#fff;border:1px solid #e4e4e7;padding:24px}
+  .b1 .info s{display:block;width:32px;height:32px;border:2px solid #059669;margin-bottom:12px;text-decoration:none}
+  .b1 .info div:last-child s{border-color:var(--amber-6)}
+  .b1 .info h3{font:700 18px/1.25 var(--sans);margin:0 0 12px}
+  .b1 .info p{font-size:12px;line-height:1.6;color:#52525b;margin:0}
+  .b1 .proj{padding:48px 0}
+  .b1 .proj h2{font:800 30px/1.2 var(--sans);margin:0 0 8px;border:0;padding:0}
+  .b1 .proj p{color:#52525b;font-size:14px;margin:0 0 20px}
+  .b1 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+  .b1 .chips span{font:600 11px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;
+                  border:1px solid #e4e4e7;color:#71717a;padding:7px 12px}
+  .b1 .chips span:first-child{border-color:#000;border-left:3px solid var(--amber);color:#000;font-weight:700;background:#fafafa}
+  .b1 .chiplbl{font:700 9px/1 var(--mono);letter-spacing:.15em;color:#a1a1aa;display:block;margin-bottom:10px}
+  .b1 .why{display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:64px 0}
+  .b1 .why .box{background:#fff;border:1px solid #e4e4e7;padding:32px;display:flex;
+                flex-direction:column;justify-content:center}
+  .b1 .why .top{text-align:center;margin-bottom:24px}
+  .b1 .why .top s{display:block;width:48px;height:48px;border:2px solid var(--amber-6);
+                  margin:0 auto 8px;text-decoration:none}
+  .b1 .why h2{font:800 24px/1.2 var(--sans);margin:0 0 8px;border:0;padding:0}
+  .b1 .why .top p{color:#52525b;font-size:14px;line-height:1.6;margin:0 auto;max-width:448px}
+  .b1 .why ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;
+              gap:12px 24px;max-width:512px;margin:0 auto}
+  .b1 .why li{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#3f3f46;font-weight:500}
+  .b1 .why li em{flex:none;width:18px;height:18px;border-radius:50%;border:2px solid var(--amber-6);
+                 margin-top:2px;display:block;font-style:normal}
+
+  /* ============ AFTER skin ============ */
+  .a1 .shead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;
+             border-bottom:2px solid #09090b;padding-bottom:12px;margin-bottom:24px}
+  .a1 .shead .l .n{font:700 10px/1 var(--mono);letter-spacing:.18em;color:var(--amber-7);display:block;margin-bottom:9px}
+  .a1 .shead .l .dash{width:26px;height:2px;background:var(--amber-7);display:block;margin-bottom:11px}
+  .a1 .shead h2{font:800 26px/1.2 var(--sans);margin:0;border:0;padding:0;letter-spacing:-.02em}
+  .a1 .shead .r{font:700 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;
+                color:var(--amber-7);white-space:nowrap;padding-bottom:3px}
+  .a1 .sub{color:#52525b;font-size:14.5px;line-height:1.6;margin:0 0 24px;max-width:70ch}
+  .a1 .sec2{padding:44px 0}
+  .a1 .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .a1 .card{background:#fff;border:1px solid #d4d4d8;display:flex;flex-direction:column;
+            transition:box-shadow .5s var(--ease),transform .5s var(--ease);
+            box-shadow:0 22px 52px rgba(0,0,0,0)}
+  .a1 .card:hover{transform:translateY(-4px);box-shadow:0 22px 52px rgba(0,0,0,.19)}
+  .a1 .card .ph{position:relative;height:240px;background:#09090b;overflow:hidden}
+  .a1 .card .ph img{width:100%;height:100%;object-fit:cover;object-position:center 70%;
+                    transition:transform 1.1s var(--ease)}
+  .a1 .card:hover .ph img{transform:scale(1.07)}
+  .a1 .card .num{position:absolute;left:14px;top:14px;z-index:3;font:700 11px/1 var(--mono);
+                 letter-spacing:.2em;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.55)}
+  .a1 .card .edge{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--amber);z-index:3}
+  .a1 .card .bd{padding:24px;display:flex;flex-direction:column;flex:1}
+  .a1 .card .dash{width:26px;height:2px;background:var(--amber-7);display:block;margin-bottom:12px}
+  .a1 .card h3{font:800 22px/1.2 var(--sans);margin:0 0 10px;letter-spacing:-.015em}
+  .a1 .card .d{color:#3f3f46;font-size:14px;line-height:1.62;margin:0 0 20px}
+  .a1 .card ul{list-style:none;padding:0;margin:0 0 20px}
+  .a1 .card li{position:relative;padding-left:20px;font-size:13px;color:#3f3f46;line-height:1.5;margin-bottom:9px}
+  .a1 .card li:before{content:"";position:absolute;left:0;top:9px;width:9px;height:2px;background:var(--amber-7)}
+  .a1 .card .go{margin-top:auto;padding-top:14px;border-top:1px solid #e4e4e7;display:flex;
+                align-items:center;justify-content:space-between;
+                font:800 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+  .a1 .card:hover .go{color:var(--amber-7)}
+  .a1 .prose{background:#fff;border-top:1px solid #e4e4e7;border-bottom:1px solid #e4e4e7;padding:64px 0}
+  .a1 .prose .col{max-width:640px}
+  .a1 .prose p{color:#3f3f46;font-size:16px;line-height:1.78;margin:0}
+  .a1 .info{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+  .a1 .info div{background:#fafafa;border:1px solid #e4e4e7;border-top:3px solid var(--amber-7);padding:22px}
+  .a1 .info .k{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+               color:var(--amber-7);display:block;margin-bottom:10px}
+  .a1 .info h3{font:800 17px/1.25 var(--sans);margin:0 0 9px;letter-spacing:-.01em}
+  .a1 .info p{font-size:13.5px;line-height:1.62;color:#3f3f46;margin:0}
+  .a1 .proj{padding:44px 0;background:#fafafa;border-top:1px solid #e4e4e7}
+  .a1 .why{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:44px 0}
+  .a1 .why .box{background:#fff;border:1px solid #d4d4d8;padding:26px}
+  .a1 .why ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}
+  .a1 .why li{position:relative;padding-left:20px;font-size:13.5px;color:#3f3f46;line-height:1.5;font-weight:500}
+  .a1 .why li:before{content:"";position:absolute;left:0;top:9px;width:9px;height:2px;background:var(--amber-7)}
+
+  /* ===== full-size card variants ===== */
+  .vstage{background:#fff;border:1px solid #d4d4d8;padding:30px}
+  .vrow{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1232px}
+  .vhead{display:flex;align-items:baseline;gap:12px;margin:26px 0 10px}
+  .vhead b{font:800 15px/1 var(--sans)}
+  .vhead span{font:700 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .to{font-size:13px;color:var(--ink-2);margin:12px 0 0;line-height:1.6;max-width:100ch}
+  .to b{color:var(--ink)}
+
+  /* variant B — dark panel */
+  .vB .card{background:#09090b;border-color:#27272a}
+  .vB .card h3{color:#fff}
+  .vB .card .d{color:rgba(255,255,255,.76)}
+  .vB .card li{color:rgba(255,255,255,.82)}
+  .vB .card li:before{background:var(--amber)}
+  .vB .card .dash{background:var(--amber)}
+  .vB .card .go{border-top-color:#27272a;color:#fff}
+  .vB .card:hover .go{color:var(--amber)}
+  /* variant C — side by side */
+  .vC .card{flex-direction:row}
+  .vC .card .ph{height:auto;width:42%;flex:none}
+  .vC .card .edge{left:auto;right:0;top:0;bottom:0;width:3px;height:auto}
+  .vC .card .bd{width:58%}
+
+  /* phones */
+  .phones{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start}
+  .ph{width:375px;flex:none}
+  .ph .pl{font:700 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+          margin-bottom:10px;display:block}
+  .scr{width:375px;height:620px;border:1px solid #d4d4d8;background:#fff;overflow:hidden;position:relative}
+  .scr .inn{position:absolute;inset:0;overflow-y:auto}
+
+  @media(max-width:1300px){.frames{grid-template-columns:minmax(0,1fr)}}
+  @media(max-width:1000px){.vrow{grid-template-columns:1fr}}
+  @media(max-width:900px){.ph,.scr{width:100%}}
+  @media(max-width:560px){.wrap{padding:28px 16px 80px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 32 · /sluzby/rodinne-domy</p>
+  <h1>Stránka Rodinné domy</h1>
+  <p class="lede">Šesť sekcií, šesť rôznych veľkostí nadpisu a zelená farba, ktorá na tomto webe
+     inak neexistuje. Stránka má dobrý obsah — chýba jej jeden spoločný tvar sekcie a čitateľná
+     šírka textu. Nič sa neodstraňuje, všetko sa preoblieka.</p>
+  <span class="status">Stav: <b>&nbsp;návrh — nič nie je aplikované v kóde</b></span>
+
+  <div class="fixme">
+    <b>Našiel som funkčnú chybu, nie vizuálnu</b>
+    Stránka volá <code class="i">&lt;Projects hideFilters={true} /&gt;</code>, lebo je už zúžená na
+    „Rodinné domy“ a filtre tam nedávajú zmysel. V <code class="i">Projects.tsx</code> sú však stráže
+    prehodené: riadok 258 skrýva <b>lokality</b> podľa <code class="i">!compactFilters</code>
+    a riadok 292 skrýva <b>kategórie</b> podľa <code class="i">!hideFilters</code>. Stránka
+    <code class="i">compactFilters</code> neposiela, takže „TYP STAVBY“ zmizne správne, ale riadok
+    <b>„LOKALITA“ so siedmimi mestami sa zobrazuje</b> — na sekcii, ktorá si vypýtala žiadne filtre.
+    Overené v prehliadači: <code class="i">TYP STAVBY</code> nie je v texte stránky, <code class="i">LOKALITA</code> áno.
+  </div>
+
+  <!-- ============================================================ 01 -->
+  <h2><span class="no">01 — ZISTENIA</span>Čo som na stránke nameral</h2>
+  <p class="seclede">Merané na <code class="i">localhost:3000/sluzby/rodinne-domy</code> pri
+     1280 px a 375 px.</p>
+
+  <div class="fx">
+    <div class="f crit">
+      <span class="t">01 · kritické · čitateľnosť</span>
+      <h4>Odstavec má 145 znakov na riadok</h4>
+      <p>Sekcia „Spoľahlivý partner pre vaše bývanie“ beží cez celý kontajner
+         <code class="i">max-w-[1500px]</code> bez akéhokoľvek obmedzenia miery. Pohodlné čítanie
+         je 65–75 znakov. Pre porovnanie: na <code class="i">/kalkulacka</code> je to 94 a už tam
+         som to označil za kritické.</p>
+      <span class="m">šírka odstavca 1 252 px @ 16 px<br>= 145 znakov · takmer 2× odporúčané</span>
+    </div>
+    <div class="f crit">
+      <span class="t">02 · kritické · systém</span>
+      <h4>Šesť nadpisov, šesť veľkostí, striedavé zarovnanie</h4>
+      <p>Žiadne dva nadpisy sekcií nevyzerajú rovnako. Navyše sa strieda zarovnanie na stred
+         a vľavo, takže oko pri rolovaní nemá kde zachytiť rytmus.</p>
+      <span class="m">36 / 30 / 30 / 24 / 20 / 38 px<br>stred · vľavo · vľavo · stred · vľavo · vľavo</span>
+    </div>
+    <div class="f crit">
+      <span class="t">03 · kritické · farba</span>
+      <h4>Zelená — 11× na stránke, nikde inde na webe</h4>
+      <p>Paleta webu je čierna, amber a zinc. Tu pribudla <code class="i">emerald-600</code>:
+         desať kruhových odškrtávacích ikon v dvoch kartách a jedna ikona v texte. Sú to zároveň
+         najfarebnejšie prvky na stránke, takže oko ide k nim — nie k nadpisom ani k tlačidlám.</p>
+      <span class="m">.text-emerald-600 × 11<br>+ kruhový tvar v systéme s nulovým polomerom</span>
+    </div>
+    <div class="f">
+      <span class="t">04 · farba</span>
+      <h4>Dva ambery na jednej stránke</h4>
+      <p><code class="i">amber-600</code> (#D97706) 19× a <code class="i">amber-500</code> (#F59E0B)
+         12×. Plus logo má tretí odtieň <code class="i">#F68C05</code>. Na svetlom podklade je
+         navyše <code class="i">amber-500</code> príliš svetlá na text.</p>
+      <span class="m">amber-600 × 19 · amber-500 × 12<br>#F59E0B na bielej = 2,15 : 1</span>
+    </div>
+    <div class="f">
+      <span class="t">05 · typografia</span>
+      <h4>32 mono prvkov sa vykresľuje bezpätkovo</h4>
+      <p>Tá istá príčina ako v ServicesGrid a v kalkulačke: <code class="i">--font-mono</code> vedie
+         cez nedefinované <code class="i">--font-jetbrains-mono</code>, celá deklarácia je neplatná
+         a font sa dedí. Odznak v hero, oba odkazy v kartách aj štítky filtrov.</p>
+      <span class="m">.font-mono × 32 → ui-sans-serif</span>
+    </div>
+    <div class="f">
+      <span class="t">06 · veľkosť textu</span>
+      <h4>Pätnásť odstavcov je 12 px alebo menej</h4>
+      <p>Odrážky v kartách služieb aj popisy v dvoch informačných kartách sú
+         <code class="i">text-xs</code>. Stoja hneď pod 16 px odstavcom, takže pôsobia ako poznámka
+         pod čiarou — hoci je v nich rozsah služby.</p>
+      <span class="m">15 × font-size ≤ 12 px</span>
+    </div>
+    <div class="f">
+      <span class="t">07 · rytmus</span>
+      <h4>Každá sekcia má iné odsadenie</h4>
+      <p><code class="i">mt-10 mb-10</code>, potom <code class="i">py-20</code>, potom
+         <code class="i">mt-16 mb-16</code>. Medzi kartami služieb je <code class="i">gap-12</code>
+         (48 px), medzi informačnými <code class="i">gap-8</code> (32 px), v mriežke „Prečo nás“
+         zase 32 px.</p>
+      <span class="m">40 / 80 / 64 px zvislo<br>48 / 32 / 32 px vodorovne</span>
+    </div>
+    <div class="f">
+      <span class="t">08 · kompozícia</span>
+      <h4>„Prečo si vybrať nás?“ je jediný vycentrovaný blok s ikonou</h4>
+      <p>48 px ikona na stred, nadpis na stred, odstavec na stred — a hneď vedľa v tej istej
+         mriežke sekcia „Kde pôsobíme“ zarovnaná vľavo. Dva susedné boxy, dve rôzne kompozície.</p>
+      <span class="m">ShieldCheck 48 px, text-center<br>vedľa: text-align start</span>
+    </div>
+    <div class="f">
+      <span class="t">09 · tiene</span>
+      <h4>Neviditeľné <code class="i">shadow-sm</code></h4>
+      <p>Dve informačné karty sú biele s <code class="i">shadow-sm</code> na podklade
+         <code class="i">zinc-100</code>. Taký tieň na svetlom podklade nevidno — nesie ho rám,
+         nie tieň. To isté som našiel v CTA aj v kalkulačke.</p>
+      <span class="m">shadow-sm na #F4F4F5</span>
+    </div>
+    <div class="f">
+      <span class="t">10 · mobil</span>
+      <h4>Mobil je v poriadku</h4>
+      <p>Žliabok 24 px, žiadne vodorovné rolovanie, karty sa korektne skladajú pod seba.
+         Jediné, čo sa prenáša, je drobný text a zelené kruhy.</p>
+      <span class="m">375 px: gutter 24, overflow-x: nie<br>výška dokumentu 8 310 px</span>
+    </div>
+  </div>
+
+  <!-- ============================================================ 02 -->
+  <h2><span class="no">02 — CELÁ STRÁNKA</span>Dnes vedľa návrhu</h2>
+  <p class="seclede">Obidve stránky sú vykreslené v šírke 1 280 px a zmenšené, aby sa zmestili vedľa
+     seba — proporcie zostávajú nedotknuté. Rámy sa dajú rolovať nezávisle.</p>
+
+  <div class="frames">
+    <div class="fr">
+      <div class="cap b"><i></i>Dnes</div>
+      <div class="scroller"><div class="shrink" id="shB"><div class="pg b1" id="pgB"></div></div></div>
+    </div>
+    <div class="fr">
+      <div class="cap a"><i></i>Návrh</div>
+      <div class="scroller"><div class="shrink" id="shA"><div class="pg a1" id="pgA"></div></div></div>
+    </div>
+  </div>
+
+  <div class="pick">
+    <span class="p1">Hlavná zmena</span>
+    <p><b>Jeden tvar hlavičky sekcie pre všetkých šesť sekcií.</b> Mono číslo → amber čiarka 26 × 2 px
+       → nadpis 26 px / 800 vľavo → čierna linka 2 px pod celou šírkou, a vpravo voliteľný odkaz.
+       Je to presne ten tvar, ktorý už používajú Služby a Projekty, takže stránka prestane pôsobiť
+       ako samostatný web. <b>Zelená ide preč</b> — kruhové odškrtávadlá nahradí amber čiarka
+       9 × 2 px v <code style="background:#27272a;padding:1px 5px;font:500 12px/1.5 var(--mono);color:#e4e4e7">#B45309</code>,
+       tá istá, akú má ServicesGrid. A <b>odborný text dostane mieru 640 px</b> namiesto 1 252.</p>
+  </div>
+
+  <!-- ============================================================ 03 -->
+  <h2><span class="no">03 — DVE KARTY SLUŽIEB</span>Tri varianty hlavného bloku</h2>
+  <p class="seclede">Toto je jediné miesto na stránke, odkiaľ sa dá kliknúť hlbšie — na
+     <code class="i">/stavba-domu-na-kluc</code> a <code class="i">/rekonstrukcia-rodinneho-domu</code>.
+     Preto si zaslúži samostatné rozhodnutie. Skutočná veľkosť, prejdite myšou.</p>
+
+  <div class="vhead"><b>Variant A</b><span>Svetlá karta · fotka hore</span></div>
+  <div class="vstage"><div class="vrow a1 vA" id="vA"></div></div>
+  <p class="to"><b>Prínos:</b> najbližšie k dnešku — mení sa len tvaroslovie, nie rozloženie.
+     Rovnaký tvar ako dlaždice na <code class="i">/sluzby</code>, takže je stránka konzistentná
+     s domovskou.<br>
+     <b>Riziko:</b> dve veľké svetlé karty vedľa seba pôsobia pokojne až ticho.</p>
+
+  <div class="vhead"><b>Variant B</b><span>Tmavá karta · fotka hore</span></div>
+  <div class="vstage"><div class="vrow a1 vB" id="vB"></div></div>
+  <p class="to"><b>Prínos:</b> čierne karty na bielej stránke sú jednoznačne najsilnejší prvok —
+     oko ide presne tam, kam má, teda na dve jediné cesty hlbšie.<br>
+     <b>Riziko:</b> pod čiernym hero a nad čiernym CTA vznikne tretí čierny blok v krátkom slede.</p>
+
+  <div class="vhead"><b>Variant C</b><span>Svetlá karta · fotka vedľa textu</span></div>
+  <div class="vstage"><div class="vrow a1 vC" id="vC"></div></div>
+  <p class="to"><b>Prínos:</b> najnižší blok z trojice — celý zoznam rozsahu je vidieť bez rolovania
+     a fotka drží ľavú hranu ako obrazová značka.<br>
+     <b>Riziko:</b> pri dvoch kartách vedľa seba ostane na text 58 % zo 608 px, teda 352 px —
+     päť odrážok sa tam zalomí na dva riadky každá.</p>
+
+  <div class="pick">
+    <span class="p1">Moja voľba</span>
+    <p><b>Variant A.</b> B je krajší na screenshote, ale stránka má už čierne hero hore a čierne CTA
+       dole; tretí čierny blok v strede z nej spraví pruhovanú stránku a obe karty budú súťažiť
+       s hero namiesto toho, aby naň nadväzovali. C šetrí výšku, lenže práve tu na výške nezáleží —
+       zoznam rozsahu je ten obsah, kvôli ktorému človek na stránku prišiel, a v 352 px stĺpci
+       sa zdvojnásobí počet riadkov. <b>A dáva rovnaký tvar ako dlaždice služieb</b>, ktoré sme
+       dohodli v návrhu 23, takže medzi domovskou stránkou a touto nie je švík.</p>
+  </div>
+
+  <!-- ============================================================ 04 -->
+  <h2><span class="no">04 — MOBIL 375 px</span>Odrážky a veľkosť textu</h2>
+  <p class="seclede">Rozloženie na mobile je v poriadku už dnes — mení sa len to, čo je v kartách.</p>
+
+  <div class="phones">
+    <div class="ph">
+      <span class="pl">Dnes</span>
+      <div class="scr"><div class="inn" id="mB"></div></div>
+      <p class="to" style="color:#71717a">Zelené kruhy, odrážky 12 px, nadpis sekcie na stred.</p>
+    </div>
+    <div class="ph">
+      <span class="pl">Návrh</span>
+      <div class="scr"><div class="inn" id="mA"></div></div>
+      <p class="to" style="color:#71717a">Amber čiarky, odrážky 13 px, hlavička sekcie vľavo
+         s číslom a linkou.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================ 05 -->
+  <h2><span class="no">05 — ŠPECIFIKÁCIA</span>Presné hodnoty</h2>
+
+  <h3 class="sub">A · Hlavička sekcie — jeden tvar pre všetkých šesť</h3>
+  <pre><span class="c">&lt;!-- rovnaký blok v každej sekcii, mení sa len číslo, nadpis a odkaz --&gt;</span>
+&lt;div className="flex items-end justify-between gap-6 border-b-2 border-zinc-950 pb-3 mb-6"&gt;
+  &lt;div&gt;
+    &lt;span className={`block ${MONO} text-[10px] font-bold tracking-[0.18em] text-[#b45309]`}&gt;01&lt;/span&gt;
+    &lt;span className="mt-[9px] mb-[11px] block h-0.5 w-[26px] bg-[#b45309]" /&gt;
+    &lt;h2 className="text-[26px] font-extrabold leading-[1.2] tracking-[-0.02em]"&gt;Naše služby pre rodinné domy&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;Link className="whitespace-nowrap pb-[3px] text-[11px] font-bold uppercase tracking-[0.12em] text-[#b45309]"&gt;…&lt;/Link&gt;
+&lt;/div&gt;</pre>
+  <table>
+    <tr><th>Sekcia</th><th>Číslo</th><th>Dnes</th><th>Návrh</th></tr>
+    <tr><td>Naše služby pre rodinné domy</td><td>01</td><td>36 px, na stred</td><td>26 px, vľavo</td></tr>
+    <tr><td>Spoľahlivý partner pre vaše bývanie</td><td>02</td><td>30 px, vľavo</td><td>26 px, vľavo</td></tr>
+    <tr><td>Realizácie rodinných domov</td><td>03</td><td>30 px, vľavo</td><td>26 px, vľavo — cez prop <code>titleSk</code></td></tr>
+    <tr><td>Blog</td><td>04</td><td>vlastný tvar komponentu</td><td>ponechať — rieši sa v komponente, nie tu</td></tr>
+    <tr><td>Prečo si vybrať nás?</td><td>05</td><td>24 px, na stred</td><td>26 px, vľavo</td></tr>
+    <tr><td>Kde pôsobíme</td><td>06</td><td>20 px, vľavo</td><td>26 px, vľavo</td></tr>
+  </table>
+
+  <h3 class="sub">B · Zelená von, amber čiarka dnu</h3>
+  <p class="seclede">Týka sa 11 miest: päť odrážok v každej z dvoch kariet a jedna ikona
+     <code class="i">ShieldCheck</code> v informačnom bloku.</p>
+  <table>
+    <tr><th>Kde</th><th>Dnes</th><th>Návrh</th></tr>
+    <tr><td>Odrážky v kartách</td>
+        <td><code>&lt;CheckCircle2 className="w-4 h-4 text-emerald-600" /&gt;</code></td>
+        <td>bez ikony — <code>li</code> dostane<br>
+        <code>relative pl-5 before:absolute before:left-0 before:top-[9px]</code><br>
+        <code>before:h-0.5 before:w-[9px] before:bg-[#b45309] before:content-['']</code></td></tr>
+    <tr><td>Veľkosť odrážky</td><td><code>text-xs</code> (12 px)</td><td><code>text-[13px] leading-[1.5]</code></td></tr>
+    <tr><td>ShieldCheck v prose</td><td><code>text-emerald-600</code>, 32 px</td>
+        <td>nahradiť mono štítkom <code>01</code> / <code>02</code> nad nadpisom karty —
+        ikona tam nič nehovorí</td></tr>
+    <tr><td>Ikony v kartách <code>ShieldCheck</code>/<code>HardHat</code></td>
+        <td>ostávajú (sú v „Prečo nás“ a v info kartách)</td>
+        <td>ponechať, len zjednotiť na <code>#B45309</code></td></tr>
+    <tr><td>Amber</td><td><code>amber-600</code> aj <code>amber-500</code></td>
+        <td>text a čiarky na svetlom: <code>#B45309</code> (5,0 : 1);<br>
+        plochy a amber na čiernom: <code>#F59E0B</code></td></tr>
+  </table>
+
+  <h3 class="sub">C · Odborný text</h3>
+  <table>
+    <tr><th>Čo</th><th>Dnes</th><th>Návrh</th></tr>
+    <tr><td>Miera</td><td>1 252 px = 145 znakov</td><td><code>max-w-[640px]</code> ≈ 74 znakov</td></tr>
+    <tr><td>Riadkovanie</td><td><code>leading-relaxed</code> (1,62)</td><td><code>leading-[1.78]</code></td></tr>
+    <tr><td>Farba</td><td><code>text-zinc-700</code></td><td>ponechať — 10,4 : 1, v poriadku</td></tr>
+    <tr><td>Podklad</td><td><code>bg-zinc-100</code> + biele karty so <code>shadow-sm</code></td>
+        <td><code>bg-white</code> + karty <code>bg-zinc-50</code> s amber hornou hranou 3 px;
+        tieň zmazať (na svetlom ho nevidno)</td></tr>
+    <tr><td>Text v kartách</td><td><code>text-xs</code> (12 px)</td><td><code>text-[13.5px] leading-[1.62]</code></td></tr>
+  </table>
+
+  <h3 class="sub">D · Karty služieb — variant A</h3>
+  <table>
+    <tr><th>Prvok</th><th>Hodnota</th></tr>
+    <tr><td>Mriežka</td><td><code>grid-cols-1 md:grid-cols-2 gap-4</code> (dnes <code>gap-8 md:gap-12</code>)</td></tr>
+    <tr><td>Karta</td><td><code>bg-white border border-zinc-300</code>, bez zaoblenia, bez tieňa v pokoji</td></tr>
+    <tr><td>Hover</td><td><code>-translate-y-1</code> + <code>shadow-[0_22px_52px_rgba(0,0,0,0.19)]</code>,
+        500 ms; v prechode uviesť aj <code>translate</code> — Tailwind v4 kompiluje
+        <code>-translate-y-1</code> na samostatnú vlastnosť, nie na <code>transform</code></td></tr>
+    <tr><td>Fotka</td><td>výška 240 px, <code>object-cover object-[center_70%]</code>,
+        <code>group-hover:scale-[1.07]</code> 1100 ms; <code>opacity-80</code> zrušiť — fotka nemá dôvod byť vyblednutá</td></tr>
+    <tr><td>Číslo</td><td>mono 11 px <code>tracking-[0.2em]</code> vľavo hore,
+        <code>[text-shadow:0_1px_3px_rgba(0,0,0,0.55)]</code></td></tr>
+    <tr><td>Biely box s ikonou</td><td>zrušiť — nahrádza ho číslo; ikona <code>Home</code>/<code>Hammer</code>
+        sa v karte neopakuje (viď vlajky)</td></tr>
+    <tr><td>Amber hrana</td><td>3 px <code>bg-[#F59E0B]</code> na spodnej hrane fotky — oddelí ju od panela</td></tr>
+    <tr><td>Panel</td><td><code>p-6</code>, čiarka 26 × 2 px <code>#B45309</code>, nadpis 22 px / 800</td></tr>
+    <tr><td>Riadok „Zistiť viac“</td><td><code>mt-auto pt-3.5 border-t border-zinc-200</code>,
+        11 px / 800 <code>tracking-[0.14em]</code>, <code>ArrowRight</code> vpravo</td></tr>
+  </table>
+
+  <!-- ============================================================ 06 -->
+  <h2><span class="no">06 — VLAJKY</span>Čo potrebuje vaše rozhodnutie</h2>
+  <ul class="flags">
+    <li><b>Prehodené stráže v <code class="i">Projects.tsx</code> (riadky 258 a 292)</b> — na tejto
+        stránke sa kvôli tomu zobrazuje filter lokalít, hoci si vypýtala žiadne filtre. Oprava je
+        výmena dvoch podmienok, ale <em>dotkne sa všetkých stránok</em>, ktoré tie dva propy
+        používajú — vrátane domovskej, kde sme <code class="i">compactFilters</code> nasadili
+        v návrhu 05. Treba to prejsť naraz, nie potichu.</li>
+    <li><b>Biele štvorčeky s ikonou <code class="i">Home</code> a <code class="i">Hammer</code></b>
+        na fotkách kariet navrhujem zrušiť v prospech poradového čísla. Ak na ikonách trváte,
+        nechám ich — ale potom by mali byť čierne, nie biele, a bez tieňa.</li>
+    <li><b>Zelenú beriem ako omyl, nie ako zámer.</b> Ak je emerald vedomá farba pre „hotové /
+        overené“, povedzte — potom ju nezmažem, ale zavediem poriadne a použijem ju aj inde,
+        nie len tu.</li>
+    <li><b>Text som nikde nemenil</b> — iba veľkosti, farby a šírky. Formulácie ako „Prečo si
+        vybrať nás?“ zostávajú doslova.</li>
+    <li><b><code class="i">font-mono</code> je pokazený na celom webe</b> (tu 32×). Samostatná
+        oprava: buď doplniť <code class="i">--font-jetbrains-mono</code> v
+        <code class="i">layout.tsx</code>, alebo všade použiť explicitný stack ako v ServicesGrid.
+        Kým sa to nespraví, mono štítky v tomto návrhu budú vyzerať bezpätkovo.</li>
+    <li><b>Zoznam <code class="i">WHY_US</code> má poznámku v dátach</b>, že rozsah sa dohaduje
+        pri každom projekte. V návrhu zostáva bez zmeny — len chcem, aby bolo jasné, že tú
+        poznámku som videl a nespravil som z nej záruky.</li>
+  </ul>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var TURNKEY=['Základy a prípojky',
+    'Hrubá stavba (murárske práce, betonáže, strechy, okná a dvere ...)',
+    'Kompletné rozvody (kúrenie, voda, elektrina ...)',
+    'Interiér (sadrokartón, omietky, potery, inštalácie, obklady, dlažby ...)',
+    'Exteriér (fasády, zámkové dlažby, ploty, prístrešky, garáže ...)'];
+  var RENO=['Búracie práce a likvidácia odpadu',
+    'Zmeny dispozície a statické úpravy',
+    'Nové rozvody a inštalácie (kúrenie, voda, elektrina ...)',
+    'Rekonštrukcia interiéru (sadrokartón, omietky, potery, inštalácie, obklady, dlažby ...)',
+    'Rekonštrukcia exteriéru (fasády, zámkové dlažby, ploty, prístrešky, garáže ...)'];
+  var TDESC='Komplexná výstavba moderných, nízkoenergetických rodinných domov. Od základovej dosky až po odovzdanie kľúčov sa staráme o každý detail, aby ste vy nemuseli.';
+  var RDESC='Komplexné rekonštrukcie rodinných domov, renovácie historických sídiel a transformácie interiérov. Meníme staršie nehnuteľnosti na moderné, bezpečné a energeticky efektívne domovy.';
+  var WHY=['Vlastná mechanizácia a technika','Koordinácia všetkých profesií',
+    'Pravidelná komunikácia o postupe prác','Stavbyvedúci zodpovedný za dielo',
+    'Odovzdanie dokumentácie ku kolaudácii','Záruka v rozsahu dohodnutom v zmluve'];
+  var PROSE='Jadrom našej praxe v oblasti rodinných domov je odhodlanie poskytovať technickú dokonalosť a prvotriedne remeselné spracovanie. Či už staviate od základov alebo kompletne rekonštruujete starší dom, zabezpečujeme hladký priebeh stavebných prác, dodržanie rozpočtu a použitie kvalitných materiálov. Veríme, že skutočná kvalita spočíva v detailoch, ktoré na prvý pohľad nevidno: v tepelnej izolácii bez mostov, v precíznosti rozvodov a v statickej stabilite vašej stavby.';
+  var INFO=[['Statika a integrita na prvom mieste','K rodinným domom pristupujeme s rovnakými statickými kritériami ako k väčším projektom. Kvalitná výstuž, správna trieda betónu a precízne tesárske práce zaisťujú dlhodobú stabilitu.'],
+            ['Garancia termínov a kvality','Vieme, že dlhá výstavba znamená ďalšie náklady. Náš harmonogram prác a koordinácia subdodávok eliminujú prestoje a zabezpečujú odovzdanie diela načas a bez skrytých chýb.']];
+  var CARDS=[{h:'Stavba domu na kľúč',d:TDESC,f:TURNKEY,img:'assets/stavba-domu-na-kluc.webp',
+              go:'Zistiť viac o výstavbe'},
+             {h:'Rekonštrukcia domu',d:RDESC,f:RENO,img:'assets/rekonstrukcia-rodinneho-domu.webp',
+              go:'Zistiť viac o rekonštrukciách'}];
+  var LOCS=['Všetky lokality','Banská Bystrica','Detva','Dúbravy','Hriňová','Lučenec','Očová','Stožok'];
+
+  function hdr(){return '<div class="hdr"><div class="logo"><b></b><span>MNSP</span></div>'+
+    '<div class="nav"><span>Domov</span><span>Služby</span><span>Portfólio</span><span>Blog</span>'+
+    '<span>FAQ</span><span>O nás</span><span>Kontakt</span></div>'+
+    '<div class="navbtn">Kalkulačka ↗</div></div>';}
+  function hero(){return '<div class="hero"><img src="assets/rodinne-domy.webp" alt="">'+
+    '<div class="gr"></div><div class="in">'+
+    '<span class="bdg">Rodinné domy</span>'+
+    '<h1>Výstavba a rekonštrukcie rodinných domov</h1>'+
+    '<p>Od výstavby nových domov až po kompletné rekonštrukcie poskytujeme kvalitné remeselné '+
+    'spracovanie a riešenia na mieru.</p></div></div>';}
+  function ft(){return '<div class="ft">MNSP s.r.o. · info@mnsp.sk · +421 950 699 585</div>';}
+
+  /* ---------------- BEFORE ---------------- */
+  function pageB(){
+    var cards=CARDS.map(function(c){
+      return '<div class="card"><div class="ph"><img src="'+c.img+'" alt="">'+
+        '<div class="ic"><s></s></div></div><div class="bd">'+
+        '<h3>'+c.h+'</h3><p class="d">'+c.d+'</p><ul>'+
+        c.f.map(function(x){return '<li><em></em><span>'+x+'</span></li>';}).join('')+
+        '</ul><div class="go">'+c.go+' →</div></div></div>';}).join('');
+    var info=INFO.map(function(x){return '<div><s></s><h3>'+x[0]+'</h3><p>'+x[1]+'</p></div>';}).join('');
+    return hdr()+hero()+
+    '<div class="sec2"><div class="rail"><div class="h2c"><h2>Naše služby pre rodinné domy</h2>'+
+      '<p>Staviame nové rodinné domy a rekonštruujeme tie existujúce. Spájame kvalitné stavebné '+
+      'riešenia, spoľahlivú realizáciu a dôraz na dlhodobú spokojnosť klientov.</p></div>'+
+      '<div class="cards">'+cards+'</div></div></div>'+
+    '<div class="prose"><div class="rail"><h2>Spoľahlivý partner pre vaše bývanie</h2>'+
+      '<p>'+PROSE+'</p><div class="info">'+info+'</div></div></div>'+
+    '<div class="proj"><div class="rail"><h2>Realizácie rodinných domov</h2>'+
+      '<p>Prehľad zrealizovaných a prebiehajúcich projektov výstavby a rekonštrukcií rodinných domov.</p>'+
+      '<span class="chiplbl">LOKALITA</span><div class="chips">'+
+      LOCS.map(function(l){return '<span>'+l+'</span>';}).join('')+'</div>'+
+      '<div style="height:210px;background:#e4e4e7"></div></div></div>'+
+    '<div class="rail"><div class="why"><div class="box">'+
+      '<div class="top"><s></s><h2>Prečo si vybrať nás?</h2>'+
+      '<p>Stavba či rekonštrukcia rodinného domu si vyžaduje skúsenosti, odborný prístup '+
+      'a zodpovednosť. Postavíme váš dom spoľahlivo a bez starostí.</p></div>'+
+      '<ul>'+WHY.map(function(w){return '<li><em></em><span>'+w+'</span></li>';}).join('')+'</ul></div>'+
+      '<div class="box" style="display:block"><h2 style="font:800 20px/1.2 var(--sans);margin:0 0 16px">Kde pôsobíme</h2>'+
+      '<div style="height:180px;background:#f4f4f5;border:1px solid #e4e4e7"></div></div>'+
+    '</div></div>'+ft();
+  }
+
+  /* ---------------- AFTER ---------------- */
+  function shead(n,t,link){
+    return '<div class="shead"><div class="l"><span class="n">'+n+'</span>'+
+      '<span class="dash"></span><h2>'+t+'</h2></div>'+
+      (link?'<span class="r">'+link+'</span>':'')+'</div>';
+  }
+  function cardsHTML(){
+    return CARDS.map(function(c,i){
+      return '<a class="card" style="text-decoration:none;color:inherit"><div class="ph">'+
+        '<img src="'+c.img+'" alt=""><span class="num">0'+(i+1)+'</span><span class="edge"></span></div>'+
+        '<div class="bd"><span class="dash"></span><h3>'+c.h+'</h3>'+
+        '<p class="d">'+c.d+'</p><ul>'+
+        c.f.map(function(x){return '<li>'+x+'</li>';}).join('')+
+        '</ul><div class="go"><span>'+c.go+'</span><span>→</span></div></div></a>';}).join('');
+  }
+  function pageA(){
+    var info=INFO.map(function(x,i){return '<div><span class="k">0'+(i+1)+'</span><h3>'+x[0]+
+      '</h3><p>'+x[1]+'</p></div>';}).join('');
+    return hdr()+hero()+
+    '<div class="sec2"><div class="rail">'+shead('01','Naše služby pre rodinné domy','Všetky služby')+
+      '<p class="sub">Staviame nové rodinné domy a rekonštruujeme tie existujúce. Spájame kvalitné '+
+      'stavebné riešenia, spoľahlivú realizáciu a dôraz na dlhodobú spokojnosť klientov.</p>'+
+      '<div class="cards">'+cardsHTML()+'</div></div></div>'+
+    '<div class="prose"><div class="rail">'+shead('02','Spoľahlivý partner pre vaše bývanie','')+
+      '<div class="col"><p>'+PROSE+'</p></div><div class="info">'+info+'</div></div></div>'+
+    '<div class="proj"><div class="rail">'+shead('03','Realizácie rodinných domov','Všetky projekty')+
+      '<p class="sub">Prehľad zrealizovaných a prebiehajúcich projektov výstavby a rekonštrukcií '+
+      'rodinných domov.</p><div style="height:210px;background:#e4e4e7"></div></div></div>'+
+    '<div class="rail"><div class="why"><div class="box">'+
+      shead('05','Prečo si vybrať nás?','')+
+      '<p class="sub" style="margin-bottom:20px">Stavba či rekonštrukcia rodinného domu si vyžaduje '+
+      'skúsenosti, odborný prístup a zodpovednosť. Postavíme váš dom spoľahlivo a bez starostí.</p>'+
+      '<ul>'+WHY.map(function(w){return '<li>'+w+'</li>';}).join('')+'</ul></div>'+
+      '<div class="box">'+shead('06','Kde pôsobíme','')+
+      '<div style="height:180px;background:#fafafa;border:1px solid #e4e4e7"></div></div>'+
+    '</div></div>'+ft();
+  }
+
+  /* ---------------- mobile ---------------- */
+  function mobB(){
+    var c=CARDS[0];
+    return '<div style="position:relative;height:300px;background:#09090b;overflow:hidden;display:flex;align-items:flex-end">'+
+      '<img src="assets/rodinne-domy.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5" alt="">'+
+      '<div style="position:absolute;inset:0;background:linear-gradient(to top,#18181b,rgba(9,9,11,.5))"></div>'+
+      '<div style="position:relative;z-index:2;padding:0 24px 28px">'+
+      '<span style="display:inline-block;padding:4px 10px;border:1px solid rgba(245,158,11,.2);'+
+      'background:rgba(245,158,11,.1);color:#f59e0b;font:700 9px/1.6 var(--sans);letter-spacing:.15em;'+
+      'text-transform:uppercase">Rodinné domy</span>'+
+      '<h1 style="font:800 34px/1.15 var(--sans);color:#fff;margin:12px 0 0;letter-spacing:-.02em">'+
+      'Výstavba a rekonštrukcie rodinných domov</h1></div></div>'+
+      '<div style="padding:40px 24px">'+
+      '<div style="text-align:center;margin-bottom:32px">'+
+      '<h2 style="font:800 30px/1.2 var(--sans);margin:0 0 14px;letter-spacing:-.02em">Naše služby pre rodinné domy</h2>'+
+      '<p style="color:#52525b;font-size:15px;line-height:1.6;margin:0">Staviame nové rodinné domy '+
+      'a rekonštruujeme tie existujúce.</p></div>'+
+      '<div style="background:#fafafa;border:1px solid #e4e4e7">'+
+      '<div style="position:relative;height:200px;background:#09090b;overflow:hidden">'+
+      '<img src="'+c.img+'" style="width:100%;height:100%;object-fit:cover;object-position:center 70%;opacity:.8" alt="">'+
+      '<div style="position:absolute;left:14px;top:14px;background:#fff;border:1px solid #f4f4f5;'+
+      'width:44px;height:44px;display:flex;align-items:center;justify-content:center">'+
+      '<s style="width:20px;height:20px;border:2px solid #d97706;display:block;text-decoration:none"></s></div></div>'+
+      '<div style="padding:24px">'+
+      '<h3 style="font:800 22px/1.2 var(--sans);margin:0 0 10px">'+c.h+'</h3>'+
+      '<p style="color:#52525b;font-size:14px;line-height:1.6;margin:0 0 18px">'+c.d+'</p>'+
+      '<ul style="list-style:none;padding:0;margin:0 0 22px">'+
+      c.f.map(function(x){return '<li style="display:flex;gap:9px;align-items:flex-start;font-size:12px;'+
+        'color:#3f3f46;line-height:1.5;margin-bottom:9px">'+
+        '<em style="flex:none;width:16px;height:16px;border-radius:50%;border:2px solid #059669;'+
+        'margin-top:2px;display:block"></em><span>'+x+'</span></li>';}).join('')+'</ul>'+
+      '<div style="font:700 12px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:#d97706">'+
+      c.go+' →</div></div></div></div>';
+  }
+  function mobA(){
+    var c=CARDS[0];
+    return '<div style="position:relative;height:300px;background:#09090b;overflow:hidden;display:flex;align-items:flex-end">'+
+      '<img src="assets/rodinne-domy.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5" alt="">'+
+      '<div style="position:absolute;inset:0;background:linear-gradient(to top,#18181b,rgba(9,9,11,.5))"></div>'+
+      '<div style="position:relative;z-index:2;padding:0 24px 28px">'+
+      '<span style="display:inline-block;padding:4px 10px;border:1px solid rgba(245,158,11,.2);'+
+      'background:rgba(245,158,11,.1);color:#f59e0b;font:700 9px/1.6 var(--mono);letter-spacing:.15em;'+
+      'text-transform:uppercase">Rodinné domy</span>'+
+      '<h1 style="font:800 34px/1.12 var(--sans);color:#fff;margin:12px 0 0;letter-spacing:-.025em">'+
+      'Výstavba a rekonštrukcie rodinných domov</h1></div></div>'+
+      '<div style="padding:32px 24px">'+
+      '<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;'+
+      'border-bottom:2px solid #09090b;padding-bottom:12px;margin-bottom:18px">'+
+      '<div><span style="font:700 10px/1 var(--mono);letter-spacing:.18em;color:#b45309;display:block;'+
+      'margin-bottom:9px">01</span>'+
+      '<span style="width:26px;height:2px;background:#b45309;display:block;margin-bottom:11px"></span>'+
+      '<h2 style="font:800 23px/1.2 var(--sans);margin:0;letter-spacing:-.02em">Naše služby pre rodinné domy</h2></div></div>'+
+      '<p style="color:#52525b;font-size:14px;line-height:1.6;margin:0 0 20px">Staviame nové rodinné '+
+      'domy a rekonštruujeme tie existujúce.</p>'+
+      '<div style="background:#fff;border:1px solid #d4d4d8">'+
+      '<div style="position:relative;height:200px;background:#09090b;overflow:hidden">'+
+      '<img src="'+c.img+'" style="width:100%;height:100%;object-fit:cover;object-position:center 70%" alt="">'+
+      '<span style="position:absolute;left:14px;top:14px;font:700 11px/1 var(--mono);letter-spacing:.2em;'+
+      'color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.55)">01</span>'+
+      '<span style="position:absolute;left:0;right:0;bottom:0;height:3px;background:#f59e0b"></span></div>'+
+      '<div style="padding:22px">'+
+      '<span style="width:26px;height:2px;background:#b45309;display:block;margin-bottom:12px"></span>'+
+      '<h3 style="font:800 21px/1.2 var(--sans);margin:0 0 10px;letter-spacing:-.015em">'+c.h+'</h3>'+
+      '<p style="color:#3f3f46;font-size:14px;line-height:1.62;margin:0 0 18px">'+c.d+'</p>'+
+      '<ul style="list-style:none;padding:0;margin:0 0 18px">'+
+      c.f.map(function(x){return '<li style="position:relative;padding-left:20px;font-size:13px;'+
+        'color:#3f3f46;line-height:1.5;margin-bottom:9px">'+
+        '<span style="position:absolute;left:0;top:9px;width:9px;height:2px;background:#b45309"></span>'+
+        x+'</li>';}).join('')+'</ul>'+
+      '<div style="padding-top:14px;border-top:1px solid #e4e4e7;display:flex;align-items:center;'+
+      'justify-content:space-between;font:800 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase">'+
+      '<span>'+c.go+'</span><span>→</span></div></div></div></div>';
+  }
+
+  function fit(){
+    var col=document.querySelector('.scroller'); if(!col) return;
+    var sc=col.clientWidth/1280;
+    [['pgB','shB'],['pgA','shA']].forEach(function(p){
+      var pg=document.getElementById(p[0]), sh=document.getElementById(p[1]);
+      pg.style.transform='scale('+sc+')';
+      sh.style.width=col.clientWidth+'px';
+      sh.style.height=Math.ceil(pg.offsetHeight*sc)+'px';
+    });
+  }
+  document.getElementById('pgB').innerHTML=pageB();
+  document.getElementById('pgA').innerHTML=pageA();
+  document.getElementById('vA').innerHTML=cardsHTML();
+  document.getElementById('vB').innerHTML=cardsHTML();
+  document.getElementById('vC').innerHTML=cardsHTML();
+  document.getElementById('mB').innerHTML=mobB();
+  document.getElementById('mA').innerHTML=mobA();
+  window.addEventListener('resize',fit);
+  window.addEventListener('load',fit);
+  fit();
+})();
+</script>
+</body>
+</html>

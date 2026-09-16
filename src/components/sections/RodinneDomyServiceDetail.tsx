@@ -54,6 +54,11 @@ export interface ServiceDetailProps {
   customLocationTop?: React.ReactNode;
   customFaq?: React.ReactNode;
   whyChooseUs?: React.ReactNode;
+  /**
+   * Pás o dotačnom programe. Voliteľný zámerne — Obnov dom je o obnove
+   * existujúcich domov, na stránku „na kľúč“ nepatrí.
+   */
+  subsidySection?: React.ReactNode;
   parentBreadcrumbTitle?: string;
   parentBreadcrumbUrl?: string;
   subtitle1?: string;
@@ -99,6 +104,7 @@ export function RodinneDomyServiceDetail({
                                            customLocationTop,
                                            customFaq,
                                            whyChooseUs,
+                                           subsidySection,
                                            parentBreadcrumbTitle,
                                            parentBreadcrumbUrl,
                                            subtitle1,
@@ -480,6 +486,8 @@ export function RodinneDomyServiceDetail({
             </div>
           </div>
         </div>
+
+        {subsidySection}
 
         {/* 3. COMPLETED PAST PROJECTS IN THIS DIVISION */}
         <Projects
