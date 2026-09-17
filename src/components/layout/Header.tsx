@@ -125,23 +125,23 @@ export function Header() {
               scroll doesn't trigger a new network request.
             */}
             <Image
-                src="/mnsp-logo-mark-dark.webp"
+                src="/MNSP-logo-tmava.webp"
                 alt="MNSP | Stavby a rekonštrukcie"
                 width={252}
                 height={84}
                 priority
-                className={`h-[60px] w-auto max-w-none ${isSolid ? "hidden" : "block"}`}
+                className={`h-[40px] w-auto max-w-none ${isSolid ? "hidden" : "block"}`}
             />
             <Image
-                src="/mnsp-logo-mark-light.webp"
+                src="/MNSP-logo-svetla.webp"
                 alt="MNSP | Stavby a rekonštrukcie"
                 width={252}
                 height={84}
                 priority
-                className={`h-[60px] w-auto max-w-none ${isSolid ? "block" : "hidden"}`}
+                className={`h-[40px] w-auto max-w-none ${isSolid ? "block" : "hidden"}`}
             />
-          </div>
 
+          </div>
         </Link>
 
         {/* DESKTOP NAVIGATION MENU */}
