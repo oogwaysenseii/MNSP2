@@ -9,7 +9,7 @@ export const blogPostsData: BlogPost[] = [
     tags: ['Rekonštrukcia domu', 'Rodinné domy'],
     publishedAt: '2026-09-24T10:00:00+02:00',
     updatedAt: '2026-09-24T10:00:00+02:00',
-    imageUrl: '/Blog/vlhke-murivo.webp',
+    imageUrl: '/Blog/vlhke-murivo-stary-dom.webp',
     content: `Opadaná omietka pri podlahe, biele výkvety solí na stene, pleseň v rohoch miestnosti. **Vlhké murivo** je najčastejší skrytý problém starších rodinných domov – a zároveň problém, ktorý sa často rieši zle: novou omietkou alebo zateplením, ktoré vlhkosť v stene uzavrú.
 
 Hlavné pravidlo znie: **najprv odstrániť príčinu a murivo odvlhčiť, až potom omietať a zatepľovať.** V tomto článku nájdete, ako rozoznať, odkiaľ vlhkosť ide, a ako sa sanácia robí.
