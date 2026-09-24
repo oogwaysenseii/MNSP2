@@ -1528,65 +1528,105 @@ Postavíme vám hrubú stavbu alebo holodom a dokončenie necháme na vás – a
   },
   {
     id: 'murovany-dom-vs-drevodom-porovnanie',
-    title: 'Murovaný dom vs. drevodom: Ktorá voľba je pre vás lepšia?',
-    excerpt: 'Večná dilema stavebníkov. Porovnali sme klasické murované domy a moderné drevostavby z hľadiska životnosti, rýchlosti výstavby, ceny a akumulácie tepla.',
+    title: 'Murovaný dom vs. drevodom: čo si vybrať?',
+    excerpt: 'Murovaný dom alebo drevostavba: porovnanie rýchlosti výstavby, životnosti, akumulácie tepla, akustiky a ceny. Kedy sa hodí ktorý a čo si vybrať.',
     category: 'Rodinné domy',
     tags: ['Rodinné domy', 'Stavba domu'],
-    content: `Pri rozhodovaní o [stavbe domu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom) patrí výber konštrukčného materiálu medzi najdôležitejšie strategické kroky. Stále viac ľudí zvažuje ako alternatívu ku klasickej tehle drevostavbu. 
+    content: `Pri [stavbe domu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom) patrí výber konštrukčného materiálu k najdôležitejším rozhodnutiam. Stále viac ľudí zvažuje ako alternatívu ku klasickej tehle drevostavbu.
 
-Hoci naša spoločnosť **MNSP | Stavby a rekonštrukcie** je špecialistom predovšetkým na poctivé murované a [monolitické konštrukcie](/sluzby/monoliticke-konstrukcie), v tomto článku sa na oba varianty pozrieme prísne objektívnymi očami. 
+My staviame predovšetkým murované domy a [monolitické konštrukcie](/sluzby/monoliticke-konstrukcie). V tomto článku sa však na oba varianty pozrieme vecne – aby ste vedeli, čo získate a čo stratíte pri každom z nich.
 
-Aké sú výhody a nevýhody murovaných domov v porovnaní s drevodomami?
+## Porovnanie na jeden pohľad
+
+| | Murovaný dom | Montovaný drevodom |
+| :--- | :--- | :--- |
+| **Rýchlosť výstavby** | 9 – 12 mesiacov na kľúč | výrazne rýchlejšia, 3 – 4 mesiace |
+| **Životnosť** | 100 a viac rokov | približne 50 – 70 rokov podľa údržby |
+| **Akumulácia tepla** | vysoká – pomaly sa nahrieva aj chladne | nízka – rýchlo sa nahreje aj vychladne |
+| **Letné prehrievanie** | menšie | väčšie, potrebuje tienenie |
+| **Akustika** | dobrá, najmä s betónovým stropom | slabšia, najmä kročajový hluk |
+| **Zmeny počas stavby a po nej** | pomerne jednoduché | náročné |
+| **Citlivosť na vodu** | menšia | väčšia |
+| **Cena** | porovnateľná | porovnateľná, niekedy vyššia |
 
 ## 1. Rýchlosť výstavby
 
-V tomto bode **drevostavby s prehľadom vyhrávajú**. Ak sa bavíme o montovanom drevodome (panely sa vyrobia v hale a na pozemku sa len zložia žeriavom), hrubá stavba môže stáť za 3 dni. Celý dom do stavu na nasťahovanie môže byť hotový za 3 až 4 mesiace.
+V tomto bode **drevostavby vyhrávajú**. Pri montovanom drevodome sa panely vyrobia v hale a na pozemku sa len zložia žeriavom. Hrubá stavba tak môže stáť za niekoľko dní a celý dom môže byť hotový za 3 až 4 mesiace.
 
-[Murovaný dom](/blog/kolko-trva-stavba-rodinneho-domu) si naopak vyžaduje technologické prestávky. Zreje základová doska, stropy, schnú [omietky](/sluzby/omietky) a potery. Štandardná doba výstavby murovaného domu je 9 až 12 mesiacov.
+[Murovaný dom](/blog/kolko-trva-stavba-rodinneho-domu) si naopak vyžaduje technologické prestávky – zreje základová doska aj stropy, schnú [omietky](/sluzby/omietky) a potery. Murovaný dom na kľúč sa bežne stavia 9 až 12 mesiacov.
 
 ## 2. Životnosť a hodnota v čase
 
-Slováci sú konzervatívni a preferujú masívne stavby, ktoré "prežijú generácie". 
+Na Slovensku ľudia tradične uprednostňujú masívne stavby, ktoré „prežijú generácie“.
 
-*   **Murovaný dom** má preukázateľnú životnosť 100 a viac rokov. Tehla a betón sú mimoriadne odolné voči poveternostným vplyvom, hmyzu aj vode (napríklad pri zatopení sa dá tehlový dom vysušiť a opraviť). Aj z tohto dôvodu si murované domy lepšie držia svoju trhovú hodnotu a banky ich pri hypotékach akceptujú s menším rizikom.
-*   **Drevodom** má dnes udávanú životnosť okolo 50 - 70 rokov (samozrejme, závisí od údržby). Drevo je však náchylnejšie na vlhkosť, drevokazné huby a hmyz. V prípade masívneho úniku vody (napr. prasknutá trubka v podlahe) môže byť poškodenie drevenej konštrukcie fatálne.
+*   **Murovaný dom** má životnosť 100 a viac rokov. Tehla a betón dobre odolávajú poveternostným vplyvom, hmyzu aj vode – po zatopení sa murovaný dom dá vysušiť a opraviť. Aj preto si murované domy dobre držia trhovú hodnotu.
+*   **Drevodom** má dnes udávanú životnosť okolo 50 až 70 rokov, podľa údržby. Drevo je citlivejšie na vlhkosť, drevokazné huby a hmyz. Pri veľkom úniku vody, napríklad z prasknutej rúry v podlahe, môže byť poškodenie drevenej konštrukcie vážne.
 
 ## 3. Akumulácia tepla verzus rýchle vykúrenie
 
-Tieto dva typy stavieb sa v zime správajú úplne odlišne.
+V zime sa tieto dva typy stavieb správajú úplne odlišne.
 
-*   **Murovaný dom (ťažká stavba):** Tehla, pórobetón a betónové stropy majú **vysokú tepelnú akumuláciu**. Trvá dlhšie, kým dom vykúrite, ale keď už sú steny nahriate, dlho si teplo udržia. Ak vám v zime vypadne kúrenie, tehlový dom bude chladnúť niekoľko dní. Rovnako v lete masívne múry bránia rýchlemu prehriatiu interiéru.
-*   **Drevodom (ľahká stavba):** Drevostavba má **minimálnu akumuláciu**. Ak zapnete kúrenie, vzduch v miestnosti sa zohreje okamžite (čo je fajn na chate). Ak ho však vypnete, dom vychladne za pár hodín. V lete sa zas montované domy bez masívneho tienenia a klimatizácie extrémne rýchlo prehrievajú.
+*   **Murovaný dom (ťažká stavba):** Tehla, pórobetón a betónové stropy majú **vysokú tepelnú akumuláciu**. Dom sa vykuruje dlhšie, no keď sú steny nahriate, teplo dlho držia. Ak v zime vypadne kúrenie, murovaný dom chladne niekoľko dní. V lete zasa masívne múry bránia rýchlemu prehriatiu.
+*   **Drevodom (ľahká stavba):** Drevostavba má **nízku akumuláciu**. Po zapnutí kúrenia sa vzduch zohreje takmer okamžite, po vypnutí však dom vychladne za niekoľko hodín. V lete sa bez dobrého tienenia a chladenia rýchlo prehrieva.
 
 ## 4. Akustika a kročajový hluk
 
-Tu opäť platí fyzika: **hmotnosť pohlcuje zvuk**. 
+Platí fyzika: **hmotnosť pohlcuje zvuk**.
 
-Masívne tehlové steny a ťažké betónové [monolitické stropy](/sluzby/monoliticke-konstrukcie) dokonale tlmia hluk. V murovanom dome s betónovým stropom takmer nepočujete, ak niekto na poschodí chodí alebo skáče.
+Masívne murované steny a betónové [monolitické stropy](/sluzby/monoliticke-konstrukcie) hluk dobre tlmia. V murovanom dome s betónovým stropom takmer nepočujete, keď niekto chodí na poschodí.
 
-V drevodomoch je akustika (najmä tzv. kročajový hluk) jedným z najväčších problémov. Odhlučniť drevený strop medzi prízemím a poschodím je mimoriadne technologicky (aj finančne) náročné. Často je počuť každý krok a vŕzganie.
+V drevodomoch patrí akustika, najmä kročajový hluk, k najväčším slabinám. Odhlučniť drevený strop medzi prízemím a poschodím je technicky aj finančne náročné.
 
 ## 5. Zmeny počas stavby a po nej
 
-Predstavte si, že hrubá stavba už stojí, a vy sa rozhodnete posunúť okno, alebo urobiť novú elektrickú zásuvku na inej stene.
+Predstavte si, že hrubá stavba už stojí a vy sa rozhodnete posunúť okno alebo pridať zásuvku na inej stene.
 
-*   **V murovanom dome** to nie je zásadný problém. Zoberie sa fréza, drážka sa vyseká, kábel sa natiahne a znovu zamaže. Posunúť priečku z pórobetónu je otázka jedného dňa.
-*   **V montovanom drevodome** je to obrovský (často až neriešiteľný) problém. Panely sa vyrábajú vo fabrike na milimeter presne a akékoľvek rezanie do nosných stĺpikov alebo narušenie parozábrany pri prerábaní káblov môže zničiť statiku a izoláciu domu.
+*   **V murovanom dome** to nie je zásadný problém. Drážka sa vyfrézuje, kábel sa natiahne a drážka sa zamaže. Posunúť priečku z pórobetónu je otázka jedného dňa.
+*   **V montovanom drevodome** je to veľký, niekedy až neriešiteľný problém. Panely sa vyrábajú vo fabrike presne na mieru a zásah do nosných stĺpikov alebo porušenie parozábrany pri prerábaní káblov môže poškodiť statiku aj izoláciu domu.
 
 ## 6. Cena
 
-Očakávate, že drevodom je podstatne lacnejší? Možno to platilo pred 15 rokmi, ale dnes to **už nie je pravda**. 
+Čakáte, že drevodom je podstatne lacnejší? Možno to kedysi platilo, dnes to **už neplatí**.
 
-Kvalitný, certifikovaný montovaný drevodom s kvalitnými izoláciami, ktoré spĺňajú štandard A0, stojí dnes **rovnako (a v niektorých prípadoch aj viac)** ako poctivý murovaný dom. Ušetriť môžete snáď len na [základoch](/blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca), keďže drevostavba je ľahšia a nepotrebuje také masívne základové pásy.
+Kvalitný certifikovaný montovaný drevodom s izoláciami, ktoré spĺňajú triedu A0, dnes stojí porovnateľne a niekedy aj viac ako murovaný dom. Ušetriť sa dá najmä na [základoch](/blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca), pretože ľahká drevostavba nepotrebuje také masívne základové pásy.
 
-## Zhrnutie: Čo si vybrať?
+Orientačnú cenu murovaného domu si vypočítate v našej [kalkulačke](/kalkulacka) – pri dome na kľúč v strednom štandarde približne 1 640 € za m². Podrobný rozpis nájdete v článku [Koľko stojí stavba rodinného domu](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026).
 
-*   **Vyberte si drevodom, ak:** Extrémne ponáhľate s bývaním, kupujete dom na úzky, ťažko prístupný pozemok, kde sa nedostane domiešavač (a panely sa dajú poskladať), a ak vám nevadí slabšia akustika či nižšia akumulácia.
-*   **Vyberte si murovaný dom, ak:** Preferujete dlhú životnosť (dom pre ďalšie generácie), výbornú akustiku, zdravú klímu (schopnosť tehly regulovať vlhkosť) a vysokú teplotnú zotrvačnosť, ktorá zabezpečí chládok v lete a stabilné teplo v zime.
+## Čo si vybrať
 
-Ak je vaším favoritom klasika, poctivé materiály a dlhovekosť, v **MNSP | Stavby a rekonštrukcie** vám radi postavíme murovaný dom z prémiových materiálov presne podľa vašich predstáv. [Kontaktujte nás pre bezplatnú cenovú ponuku](/kontakt).`,
+*   **Drevodom zvoľte, ak:** sa s bývaním veľmi ponáhľate, nevadí vám slabšia akustika a nižšia akumulácia a počítate s dôkladným tienením v lete.
+*   **Murovaný dom zvoľte, ak:** chcete dlhú životnosť a dom pre ďalšie generácie, dobrú akustiku, stabilnú teplotu v lete aj v zime a možnosť neskôr dom jednoducho upravovať.
+
+Drevostavba sa často odporúča aj na ťažko prístupné pozemky, kam sa nedostane domiešavač. Aj na horšie dostupný pozemok sa však dá murovať – prístupovú cestu si vždy prejdeme vopred a podľa nej zvolíme techniku a spôsob dopravy betónu. S takými pozemkami máme skúsenosti napríklad na lazoch na Podpoľaní.
+
+## Často kladené otázky (FAQ)
+
+**1. Je drevodom lacnejší ako murovaný dom?**
+Dnes už spravidla nie. Kvalitný drevodom v triede A0 stojí porovnateľne a niekedy aj viac. Ušetriť sa dá najmä na základoch, keďže drevostavba je ľahšia.
+
+**2. Čo sa postaví rýchlejšie?**
+Montovaný drevodom – celý môže byť hotový za 3 až 4 mesiace. Murovaný dom na kľúč sa stavia 9 až 12 mesiacov, pretože potrebuje technologické prestávky na zretie betónu a schnutie omietok a poterov.
+
+**3. Ktorý dom vydrží dlhšie?**
+Murovaný dom má životnosť 100 a viac rokov, drevodom približne 50 až 70 rokov v závislosti od údržby. Murovaný dom je tiež menej citlivý na vlhkosť a vodu.
+
+**4. V ktorom dome je v lete chladnejšie?**
+V murovanom. Masívne múry a betónové stropy akumulujú teplo a bránia rýchlemu prehriatiu. Drevodom sa v lete bez tienenia a chladenia prehrieva rýchlejšie.
+
+**5. Dá sa murovaný dom postaviť aj na ťažko prístupnom pozemku?**
+Vo väčšine prípadov áno. Prístupovú cestu si vždy prejdeme vopred a podľa nej zvolíme veľkosť techniky a spôsob dopravy betónu, aby sa to neriešilo až v deň betonáže.
+
+## Rozhodli ste sa pre murovaný dom?
+
+Postavíme vám ho ako hrubú stavbu, holodom alebo na kľúč.
+
+**Ak už máte projekt,** pošlite nám ho spolu s adresou pozemku. Po obhliadke pripravíme nezáväznú položkovú ponuku.
+
+**Ak projekt ešte nemáte,** stačí adresa pozemku a vaša predstava o dome – veľkosť, počet podlaží a štandard. Projekt vám vypracujeme a ponuku pripravíme podľa neho.
+
+[Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-04-15T08:00:00+01:00',
-    updatedAt: '2026-04-15T08:00:00+01:00',
+    updatedAt: '2026-09-24T08:00:00+02:00',
     imageUrl: '/Blog/murovany-dom-vs-drevodom-porovnanie.webp'
   },
   {
