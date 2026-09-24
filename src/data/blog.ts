@@ -434,114 +434,145 @@ Orientačnú cenu si medzitým môžete vypočítať v [kalkulačke](/kalkulacka
   {
     id: 'ako-si-vybrat-stavebnu-firmu-12-veci-ktore-rozhoduju',
     title: 'Ako si vybrať stavebnú firmu? 12 vecí, ktoré rozhodujú',
-    excerpt: 'Výber stavebnej firmy je najdôležitejšie rozhodnutie pri stavbe domu. Zistite, na čo si dať pozor, aké otázky sa pýtať a ako odhaliť nespoľahlivých majstrov.',
+    excerpt: '12 vecí, ktoré si overiť pred podpisom zmluvy so stavebnou firmou: referencie, položkový rozpočet, zmluva o dielo, záruky a platby.',
     category: 'Stavebná firma',
     tags: ['Stavebná firma'],
-    content: `Stavba rodinného domu je pravdepodobne najväčším finančným projektom vášho života. To, či bude tento proces plynulou cestou za vysnívaným bývaním, alebo nočnou morou plnou stresu a nečakaných výdavkov, závisí od jediného rozhodnutia: **ako vybrať stavebnú firmu**, ktorá váš dom postaví. 
+    content: `Stavba rodinného domu je pre väčšinu ľudí najväčší finančný projekt v živote. To, či prebehne pokojne, alebo s nečakanými výdavkami a meškaním, vo veľkej miere závisí od toho, **ako vyberiete stavebnú firmu**, ktorá váš dom postaví.
 
-Na trhu v roku 2026 pôsobí obrovské množstvo firiem a živnostníkov. Kým niektorí dodávajú špičkovú prácu s modernými technológiami, iní lákajú na podozrivo nízke ceny, ktoré sa neskôr predražia pre skryté poplatky a nekvalitnú prácu. V tomto článku sme zhrnuli 12 kľúčových kritérií, ktoré by ste mali zvážiť pred podpisom zmluvy.
+Firiem a živnostníkov je na trhu veľa. Niektorí robia poctivú prácu, iní lákajú na nízku cenu, ktorá sa počas stavby navýši. V tomto článku nájdete 12 kritérií, ktoré si overiť pred podpisom zmluvy, a na konci zoznam otázok, ktoré si môžete zobrať na prvé stretnutie.
 
 ## 1. Referencie a reálne ukážky prác
 
-Nič nepovie o kvalite stavebnej firmy viac ako jej predchádzajúce projekty. Neuspokojte sa len s peknými fotkami na webe alebo sociálnych sieťach (aj keď sú dôležité).
+O kvalite stavebnej firmy najviac povedia jej predchádzajúce projekty. Neuspokojte sa len s peknými fotkami na webe alebo sociálnych sieťach.
 
-*   **Vyžiadajte si obhliadku:** Seriózna firma by nemala mať problém zobrať vás na práve prebiehajúcu stavbu alebo vám ukázať dom tesne pred odovzdaním. Všímajte si čistotu na stavenisku, plynulosť prác a detaily vyhotovenia.
-*   **Pýtajte sa bývalých klientov:** Získajte kontakty na majiteľov, ktorým firma stavala dom pred rokom či dvoma. Pýtajte sa, či firma dodržala rozpočet, termíny a ako sa postavila k prípadným reklamáciám.
+*   **Pýtajte sa na konkrétne stavby:** Dobrá referencia má miesto, rok a rozsah prác – nielen fotku hotového domu.
+*   **Vyžiadajte si obhliadku:** Požiadajte firmu, či vám môže ukázať rozostavanú alebo nedávno dokončenú stavbu. Všímajte si poriadok na stavenisku, plynulosť prác a detaily vyhotovenia.
+*   **Pýtajte sa bývalých klientov:** Ak je to možné, opýtajte sa majiteľov, ktorým firma stavala, či dodržala rozpočet, termíny a ako riešila prípadné reklamácie.
 
 ## 2. Transparentný položkový rozpočet
 
-Keď žiadate o cenovú ponuku, nikdy neakceptujte odpoveď typu "dom na kľúč vás bude stáť 150 000 eur". Ako vybrať stavebnú firmu, ktorá vás neoklame? Požadujte **detailný položkový rozpočet**.
+Keď žiadate o cenovú ponuku, neakceptujte odpoveď typu „dom na kľúč vás bude stáť 150 000 eur“. Požadujte **položkový rozpočet**.
 
-*   Rozpočet musí presne definovať množstvo a typ použitého materiálu (napr. nielen "tehla", ale "brúsená tehla značky X, hrúbka Y mm").
-*   Musí obsahovať cenu práce rozdelenú na jednotlivé etapy (zemné práce, [murárske práce](/sluzby/murarske-prace), [tesárske práce](/sluzby/tesarske-prace) atď.).
-*   Transparentný rozpočet vám umožní porovnať ponuky od viacerých firiem "jablká s jablkami". Často zistíte, že podozrivo lacná ponuka nezahŕňa napríklad zateplenie strechy alebo používa najlacnejšie materiály tretej triedy.
-Pre viac informácií o rozpočtovaní si prečítajte článok [koľko stojí stavba rodinného domu v roku 2026](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026).
+*   Rozpočet má presne určiť množstvo a typ materiálu (nielen „tehla“, ale konkrétny výrobok a hrúbka).
+*   Má obsahovať cenu práce rozdelenú podľa etáp (zemné práce, [murárske práce](/sluzby/murarske-prace), [tesárske práce](/sluzby/tesarske-prace) atď.).
+*   Položkový rozpočet vám umožní porovnať ponuky rôznych firiem na rovnakom základe. Často zistíte, že podozrivo lacná ponuka neobsahuje napríklad zateplenie strechy alebo počíta s najlacnejšími materiálmi.
+
+Orientačné ceny za m² nájdete v článku [Koľko stojí stavba rodinného domu v roku 2026](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026).
 
 ## 3. História a finančná stabilita firmy
 
-Overte si firmu v obchodnom registri alebo cez voľne dostupné portály (napr. Finstat.sk). 
+Overte si firmu v obchodnom registri alebo na voľne dostupných portáloch (napríklad Finstat.sk).
 
 *   Ako dlho firma pôsobí na trhu?
-*   Má nedoplatky na daniach, v sociálnej alebo zdravotnej poisťovni?
-*   Nemá za sebou históriu "zakladania a rušenia" s.r.o. spoločností? (Toto je častý znak firiem, ktoré utekajú pred reklamáciami a záväzkami).
+*   Nemá nedoplatky na daniach, v sociálnej alebo zdravotnej poisťovni?
+*   Nemá za sebou históriu zakladania a rušenia spoločností? Býva to znak firiem, ktoré sa vyhýbajú reklamáciám a záväzkom.
 
-## 4. Kvalitná Zmluva o dielo
+## 4. Kvalitná zmluva o dielo
 
-Zmluva chráni obe strany – vás aj zhotoviteľa. Nikdy nestavajte na základe ústnej dohody alebo jednoduchej objednávky. Kvalitná zmluva musí obsahovať:
+Zmluva chráni obe strany – vás aj zhotoviteľa. Nestavajte na základe ústnej dohody ani jednoduchej objednávky. Kvalitná zmluva o dielo obsahuje:
 *   Presný predmet diela (s odkazom na projektovú dokumentáciu a rozpočet).
-*   Harmonogram prác (kedy sa začne a kedy sa skončí).
-*   Konečnú cenu a platobné podmienky.
+*   Harmonogram prác – kedy sa začne a kedy sa skončí.
+*   Cenu a platobné podmienky.
 *   Záručné doby na dielo.
-*   Sankcie za nedodržanie termínov (zo strany firmy) a meškanie platieb (z vašej strany).
+*   Sankcie za nedodržanie termínov zo strany firmy aj za meškanie platieb z vašej strany.
 
 ## 5. Záruky a prístup k reklamáciám
 
-Podľa zákona je minimálna záruka na stavebné dielo 3 roky (často sa predlžuje na 5 a viac rokov na hrubú stavbu). Otázka, ako vybrať stavebnú firmu, úzko súvisí s tým, čo sa stane, keď sa niečo pokazí. Spoľahlivá firma pred problémami nezatvára oči, ale aktívne ich rieši.
+Záručná doba má byť uvedená v zmluve o dielo – minimálne v rozsahu, ktorý stanovuje zákon. Pri nosných konštrukciách sa často dohaduje dlhšia ako pri povrchových úpravách. Rovnako dôležité je, ako firma reaguje, keď sa niečo pokazí: spoľahlivá firma problém nezľahčuje, ale rieši ho.
 
 ## 6. Vlastné kapacity vs. subdodávatelia
 
-Opýtajte sa firmy, koľko má vlastných zamestnancov a ktoré činnosti rieši cez externých živnostníkov (subdodávateľov). Nie je zlé, ak si firma najíma špecialistov (napríklad na montáž tepelného čerpadla), ale kľúčové procesy ako [murárske práce](/sluzby/murarske-prace), potery či [omietky](/sluzby/omietky) by mala mať pod kontrolou prostredníctvom overených vlastných ľudí. Prílišná závislosť na cudzích partiách vedie k meškaniu a chaosu na stavbe.
+Opýtajte sa, koľko má firma vlastných ľudí a ktoré práce rieši cez subdodávateľov. Nie je zlé, ak si firma najíma špecialistov – napríklad na montáž tepelného čerpadla. Kľúčové práce ako [murárske práce](/sluzby/murarske-prace), potery či [omietky](/sluzby/omietky) by však mala mať pod kontrolou cez vlastných alebo dlhodobo overených ľudí. Príliš veľa cudzích partií vedie k meškaniu a chaosu na stavbe.
 
 ## 7. Komunikácia a profesionalita
 
-Už prvé stretnutie vám veľa napovie. Reaguje firma na maily a telefonáty? Prišiel zástupca firmy na stretnutie včas? Počúvajú vaše požiadavky, alebo vám silou-mocou tlačia svoje riešenia? Stavba domu trvá približne rok a vy budete s manažérom stavby komunikovať veľmi často. Je kľúčové, aby táto komunikácia prebiehala profesionálne, slušne a konštruktívne.
+Veľa napovie už prvé stretnutie. Reaguje firma na e-maily a telefonáty? Prišiel jej zástupca včas? Počúva vaše požiadavky, alebo vám tlačí svoje riešenia? Stavba domu trvá približne rok a so stavbyvedúcim budete komunikovať často. Pomôže, ak od začiatku viete, kto ním bude.
 
-## 8. Skúsenosti s modernými technológiami (Štandard A0)
+## 8. Skúsenosti s energeticky úspornými domami (trieda A0)
 
-V roku 2026 platia prísne normy na energetickú náročnosť budov (A0). Firma musí mať preukázateľné skúsenosti s montážou:
-*   Tepelných čerpadiel a rekuperácie.
-*   Moderných izolačných systémov ([fasády](/sluzby/fasady) a strechy).
-*   Elimináciou tepelných mostov.
-Firma "zo starej školy", ktorá neakceptuje nové technologické postupy, vám kvalitný moderný dom nepostaví.
+Novostavba musí spĺňať energetickú triedu A0. Firma by mala mať skúsenosti s:
+*   Modernými izolačnými systémami ([fasády](/sluzby/fasady) a strechy).
+*   Odstraňovaním tepelných mostov a vzduchotesnými detailmi, napríklad pri osadení okien.
+*   Koordináciou špecialistov na tepelné čerpadlá a rekuperáciu.
 
-## 9. Stavebný dozor (vaše tretie oko)
+Firma, ktorá tieto postupy nepozná, vám energeticky úsporný dom postaví len ťažko.
 
-I keď vyberiete skvelú firmu, **vždy si najmite vlastného, nezávislého stavebného dozora**. Je to investícia (cca 1500 - 3000 €), ktorá sa vám vráti v podobe pokojného spánku. Stavebný dozor kontroluje kvalitu materiálov, dodržiavanie technologických postupov a odobruje súpisy vykonaných prác pred zaplatením faktúry.
+## 9. Stavebný dozor
 
-## 10. Platobný kalendár bez obrovských záloh
+Aj keď vyberiete dobrú firmu, **najmite si vlastného, nezávislého stavebného dozora**. Stojí približne 1 500 až 3 000 € a vráti sa vám istotou, že stavba ide podľa projektu. Stavebný dozor kontroluje kvalitu materiálov, dodržiavanie technologických postupov a odsúhlasuje súpisy vykonaných prác pred zaplatením faktúry.
 
-Seriózna stavebná firma nevyžaduje platbu za celý dom vopred. Platby by mali byť rozdelené do logických celkov (etáp) – platíte za to, čo je už reálne postavené na vašom pozemku. Zálohy sú bežné len pri špecifických materiáloch vyrábaných na mieru (napr. okná, krov). 
+## 10. Platby po etapách, bez veľkých záloh
 
-## 11. Zabezpečenie na stavenisku (BOZP)
+Seriózna stavebná firma nežiada platbu za celý dom vopred. Platby majú byť rozdelené podľa etáp – platíte za to, čo je na vašom pozemku reálne postavené. Zálohy sú bežné len pri materiáloch vyrábaných na mieru, napríklad pri oknách alebo krove.
 
-Všímajte si, či firma dodržiava bezpečnosť a ochranu zdravia pri práci (BOZP). Nosenie prilieb, pracovných odevov a udržiavanie poriadku na stavenisku nie sú len estetické záležitosti. Svedčia o systéme, disciplíne a rešpekte firmy k svojim zamestnancom aj k vášmu majetku.
+## 11. Bezpečnosť a poriadok na stavenisku
 
-## 12. Prvý inštinkt
+Všímajte si, či firma dodržiava bezpečnosť a ochranu zdravia pri práci (BOZP). Prilby, pracovné odevy a poriadok na stavenisku nie sú len estetika – ukazujú, či má firma systém a rešpekt k svojim ľuďom aj k vášmu majetku.
 
-Znie to ako klišé, ale dôverujte svojej intuícii. Ak máte pri jednaní so zástupcom firmy zlý pocit, ak sa vyhýba priamym odpovediam alebo na vás tlačí, aby ste zmluvu podpísali čo najrýchlejšie "lebo zajtra už nebude miesto", radšej sa poobzrite inde.
+## 12. Prvý dojem
 
----
+Dôverujte aj svojej intuícii. Ak sa zástupca firmy vyhýba priamym odpovediam alebo na vás tlačí, aby ste zmluvu podpísali čo najskôr, „lebo zajtra už nebude miesto“, radšej sa poobzerajte inde.
+
+## Otázky na prvé stretnutie so stavebnou firmou
+
+Tento zoznam si môžete zobrať so sebou:
+
+*   Môžete mi ukázať stavby, ktoré ste robili – s miestom a rokom?
+*   Dostanem položkový rozpočet s konkrétnymi materiálmi?
+*   Kto bude na mojej stavbe stavbyvedúci?
+*   Ktoré práce robíte vlastnými ľuďmi a ktoré cez subdodávateľov?
+*   Ako budú rozdelené platby a čo sa platí vopred?
+*   Aká záruka bude v zmluve a na ktoré práce?
+*   Ako riešite zmeny počas stavby a ako sa premietnu do ceny?
+*   Kedy viete začať a ako dlho bude stavba trvať?
+*   Pomôžete s projektom a povolením stavby?
+
+## Ako to máme my
+
+Aby ste nás mohli posúdiť podľa rovnakých kritérií:
+
+*   **Ponuka:** Po obhliadke pripravíme nezáväznú položkovú ponuku.
+*   **Zmluva:** Rozsah, cena, harmonogram aj záruka sú v zmluve o dielo.
+*   **Platby:** Po etapách podľa harmonogramu, nikdy nie celá suma vopred.
+*   **Stavbyvedúci:** Za každé dielo zodpovedá konkrétny stavbyvedúci, ktorý je vaším kontaktom počas celej stavby.
+*   **Zmeny:** Každú zmenu rozsahu riešime písomným dodatkom ešte pred realizáciou.
+*   **Projekt a povolenie:** Projekt vám na želanie vypracujeme a povolenie stavby vybavíme za vás.
+*   **Referencie:** Naše stavby s miestom a rokom nájdete v [portfóliu](/portfolio).
+
+Ako stavba prebieha od pozemku po kolaudáciu, opisujeme v [sprievodcovi stavbou rodinného domu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom).
 
 ## Často kladené otázky (FAQ)
 
 **1. Čo ak mi firma sľúbi oveľa nižšiu cenu ako ostatné?**
-Buďte veľmi opatrní. V stavebníctve zázraky neexistujú. Výrazne nižšia cena zvyčajne znamená nekvalitné materiály, neskúsených (alebo načierno pracujúcich) robotníkov, alebo neúplný rozpočet, ktorý sa počas stavby navýši o desiatky percent prostredníctvom tzv. "viacprác".
+Buďte opatrní. Výrazne nižšia cena zvyčajne znamená lacnejšie materiály, menej skúsených robotníkov alebo neúplný rozpočet, ktorý sa počas stavby navýši o takzvané viacpráce. Porovnajte položkové rozpočty a zistite, čo v lacnejšej ponuke chýba.
 
 **2. Koľko firiem by som mal osloviť s projektom?**
-Odporúčame osloviť aspoň 3 až 5 firiem. Vďaka tomu získate prehľad o cenovej hladine na trhu a prístupe jednotlivých spoločností.
+Odporúčame osloviť aspoň 3 až 5 firiem. Získate tak prehľad o cenách a o prístupe jednotlivých firiem.
 
 **3. Znamená veľká firma automaticky lepšiu kvalitu?**
-Nie nevyhnutne. Veľké korporácie môžu byť menej flexibilné a pristupovať ku klientom neosobne. Menšie alebo stredné rodinné firmy, ako je aj naša spoločnosť, si naopak veľmi potrpia na osobnom prístupe a budovaní dobrého mena v regióne.
+Nie nevyhnutne. Veľké firmy môžu byť menej flexibilné a pristupovať ku klientom neosobne. Menšie firmy, ako je aj naša, si zvyčajne viac zakladajú na osobnom prístupe a na dobrom mene v regióne.
 
 **4. Môžem firmu počas výstavby vymeniť, ak nebudem spokojný?**
-Áno, ale je to mimoriadne náročné a finančne nevýhodné. Nová firma bude ťažko preberať zodpovednosť za prácu (a prípadné chyby) predchádzajúcej firmy. Preto je prevencia a správny výber na začiatku kľúčový.
+Áno, ale je to náročné a finančne nevýhodné. Nová firma len ťažko preberá zodpovednosť za prácu a prípadné chyby predchádzajúcej firmy. Preto sa oplatí venovať výberu čas hneď na začiatku.
 
 **5. Akú úlohu hrá stavebný denník?**
-Stavebný denník je kľúčový právny dokument na stavbe. Slúži na zaznamenávanie priebehu prác, počasia, odchýlok od projektu a dohody medzi vami (alebo vaším dozorom) a stavbyvedúcim. Pýtajte sa, či ho firma poctivo vedie.
+Stavebný denník je dôležitý dokument stavby. Zaznamenáva sa v ňom priebeh prác, počasie, odchýlky od projektu a dohody medzi vami, stavebným dozorom a stavbyvedúcim. Opýtajte sa, ako ho firma vedie.
 
-**6. Poskytujú stavebné firmy aj služby architekta a vybavenie povolení?**
-Niektoré firmy ponúkajú komplexné služby, tzv. inžiniering. V **MNSP** vám vieme pomôcť nielen so samotnou realizáciou, ale odporučíme vám aj overených architektov a pomôžeme s byrokraciou.
+**6. Poskytujú stavebné firmy aj projekt a vybavenie povolení?**
+Niektoré áno. My vám projekt na želanie vypracujeme a povolenie stavby vybavíme za vás, ak si to neriešite sami.
 
----
+## Hľadáte firmu na stavbu domu?
 
-## Zhrnutie
+Staviame rodinné domy na kľúč, holodomy aj hrubé stavby v Banskobystrickom kraji.
 
-Problém, **ako vybrať stavebnú firmu**, nie je neriešiteľný, no vyžaduje si čas, zdravý sedliacky rozum a dôkladné preverovanie. Zamerajte sa na transparentnosť rozpočtu, kvalitu zmluvy o dielo, reálne referencie a osobný prístup. Nenechajte sa zlákať najnižšou cenou, pretože tá sa v konečnom dôsledku môže stať tou najdrahšou voľbou.
+**Ak už máte projekt,** pošlite nám ho spolu s adresou pozemku. Po obhliadke pripravíme nezáväznú položkovú ponuku.
 
-V spoločnosti **MNSP | Stavby a rekonštrukcie** staviame na otvorenej komunikácii, precíznosti a férových podmienkach. Sme hrdí na naše realizácie a s radosťou vám ukážeme, ako pracujeme. Ak hľadáte spoľahlivého partnera pre stavbu vášho domu alebo rekonštrukciu, neváhajte nás osloviť. [Kontaktujte nás pre nezáväznú konzultáciu](/kontakt) a presvedčte sa sami o našej profesionalite.`,
+**Ak projekt ešte nemáte,** stačí adresa pozemku a vaša predstava o dome – veľkosť, počet podlaží a štandard. Projekt vám vypracujeme a ponuku pripravíme podľa neho.
+
+[Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-06-02T08:00:00+01:00',
-    updatedAt: '2026-06-02T08:00:00+01:00',
-    imageUrl: '/Blog/ako-si-vybrat-stavebnu-firmu.webp'
+    updatedAt: '2026-09-24T08:00:00+02:00',
+    imageUrl: '/Blog/vyber-stavebnej-firmy.webp'
   },
   {
     id: 'najcastejsie-chyby-pri-stavbe-rodinneho-domu',
