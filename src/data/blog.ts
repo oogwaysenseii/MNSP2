@@ -9,7 +9,7 @@ export const blogPostsData: BlogPost[] = [
     tags: ['Stavebné procesy', 'Stavba domu'],
     publishedAt: '2026-09-24T09:00:00+02:00',
     updatedAt: '2026-09-24T09:00:00+02:00',
-    imageUrl: '/rodinny-dom-banska-bystrica-slnecne-strane.webp',
+    imageUrl: '/Blog/kolaudacia-2026.webp',
     content: `Kolaudácia je posledný úradný krok stavby. Od 1. apríla 2025 platí nový stavebný zákon (č. 25/2025 Z. z.) a namiesto kolaudačného rozhodnutia dnes stavebný úrad vydáva **kolaudačné osvedčenie**. Bez neho dom nesmiete užívať, nedostanete súpisné číslo a nezapíšete ho do katastra ako dokončenú stavbu.
 
 V tomto návode nájdete, ako kolaudácia rodinného domu po novom prebieha, čo k nej treba pripraviť a čo sa mení od roku 2027.
