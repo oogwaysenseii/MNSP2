@@ -261,7 +261,7 @@ Murovaný dom na kľúč trvá pri plynulom financovaní zvyčajne 9 až 12 mesi
 Menšie úpravy, napríklad posunutie nenosnej priečky, sú zvyčajne bez problémov. Zásadné zmeny, ako veľkosť okien, nosné steny či prístavby, si vyžadujú konanie so stavebným úradom. Každú zmenu rozsahu riešime písomným dodatkom, aby ste vopred vedeli, čo znamená pre cenu aj termín.
 
 **4. Potrebujem stavebný dozor, ak staviam na kľúč s firmou?**
-Nie. Ak dom stavia stavebná firma, za odborné vedenie stavby zodpovedá jej stavbyvedúci.
+Áno, stavebný dozor je potrebný aj pri stavbe na kľúč. Dohliada na to, aby sa stavalo podľa overeného projektu, a kontroluje kvalitu a postup prác.
 
 **5. Aké sú najväčšie výzvy pri stavbe domu v roku 2026?**
 Najmä zosúladiť technológie – tepelné čerpadlo, fotovoltiku a rekuperáciu – tak, aby fungovali efektívne a dom spĺňal energetickú triedu A0.
