@@ -16,14 +16,14 @@ export const OBNOV_DOM = {
     + 'Ďalšie kolo je podľa SAŽP plánované na január 2027.',
 
   /** Kedy sme podmienky naposledy overili. Zobrazuje sa návštevníkovi. */
-  verifiedOn: '16. 9. 2026',
+  verifiedOn: '24. 9. 2026',
 
   /**
    * Maximálny príspevok v €, alebo null.
    * null = sumu sme neoverili → sekcia ju neuvedie. Radšej žiadne
    * číslo než nesprávne. Nasadzuje sa s null (viď vlajky v návrhu 38).
    */
-  maxGrant: null as number | null,
+  maxGrant: 11000 as number | null,
 
   incomeLimit: 12990,
   incomeYear: 2024,

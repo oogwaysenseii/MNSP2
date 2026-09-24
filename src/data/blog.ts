@@ -2,6 +2,105 @@ import { BlogPost } from '../types';
 
 export const blogPostsData: BlogPost[] = [
   {
+    id: 'obnov-dom-podmienky-a-postup',
+    title: 'Príspevok Obnov dom 2027: podmienky a postup',
+    excerpt: 'Kto má nárok na príspevok Obnov dom, koľko môžete dostať, ktoré práce sa dajú financovať a ako postupovať pred ďalším kolom v januári 2027.',
+    category: 'Rodinné domy',
+    tags: ['Rekonštrukcia domu', 'Rodinné domy'],
+    publishedAt: '2026-09-24T08:00:00+02:00',
+    updatedAt: '2026-09-24T08:00:00+02:00',
+    imageUrl: '/obnov-dom/opatrenia.png',
+    content: `Program **Obnov dom** prispieva majiteľom starších rodinných domov na zateplenie, výmenu okien, strechu či nové vykurovanie. Spravuje ho Slovenská agentúra životného prostredia (SAŽP) z Plánu obnovy a odolnosti SR.
+
+Prvé kolo výzvy **Obnov dom mini+** sa uzavrelo 31. augusta 2026. Ďalšie kolo je podľa SAŽP plánované na **január 2027**. Ak o obnove uvažujete, teraz je dobrý čas pripraviť sa – zistiť, či máte nárok, a nechať si navrhnúť opatrenia.
+
+*Podmienky v článku sú podľa prvého kola výzvy mini+ (overené na obnovdom.sk 24. 9. 2026). V ďalšom kole sa môžu zmeniť – pred podaním žiadosti si ich vždy overte na [stránke programu](https://obnovdom.sk/obnov-dom-mini-plus).*
+
+## Týka sa vás to?
+
+Na príspevok ste v prvom kole mali nárok, ak platí všetko z tohto zoznamu:
+
+*   Ste **vlastník alebo spoluvlastník rodinného domu** postaveného **pred rokom 2016**.
+*   Aspoň jeden zo spoluvlastníkov v dome **býva**.
+*   Ekvivalentný disponibilný **príjem domácnosti za rok 2024 nepresiahol 12 990 €** na člena domácnosti.
+
+Príjem nemuseli dokladať domácnosti, v ktorých **všetci poberajú starobný dôchodok**, domácnosti **v hmotnej núdzi** a rodiny so **štyrmi a viac maloletými deťmi**.
+
+## Koľko môžete dostať
+
+V prvom kole výzvy mini+ bol maximálny príspevok **11 000 € na domácnosť**. Celý program mal k dispozícii 186 miliónov eur pre približne 17 000 domácností.
+
+Príspevok pokrýva opatrenia, ktoré spĺňajú minimálne technické parametre výzvy (tabuľka nižšie). Práce navyše, napríklad nové omietky v interiéri, si platíte sami.
+
+## Čo sa dá z príspevku financovať
+
+| Opatrenie | Minimálny parameter výzvy | Kto ho zrealizuje |
+| :--- | :--- | :--- |
+| Zateplenie obvodového plášťa | min. 150 mm izolácie | my |
+| Zateplenie strešného plášťa | min. 250 mm pri plochej, 200 mm pri šikmej streche | my |
+| Zateplenie podlahy podkrovia | min. 260 mm | my |
+| Zateplenie stropu nevykurovaného suterénu | min. 80 mm | my |
+| Výmena okien a dverí | min. izolačné trojsklo | my |
+| Výmena strešnej krytiny | len so súčasným zateplením stropnej konštrukcie | my |
+| Tepelné čerpadlo | podľa výzvy | iný dodávateľ |
+| Solárne kolektory | podľa výzvy | iný dodávateľ |
+| Kotol na pelety alebo splyňovací kotol | podľa výzvy | iný dodávateľ |
+| Meranie a regulácia vykurovania | podľa výzvy | iný dodávateľ |
+
+Opatrenia, ktoré nerealizujeme, zabezpečuje iný dodávateľ – ak ich chcete, vieme vám ho odporučiť.
+
+## Postup krok za krokom
+
+1.  **Obhliadka domu:** Pozrieme sa na stav fasády, strechy, okien a muriva a navrhneme opatrenia, ktoré spĺňajú parametre výzvy.
+2.  **Ponuka:** Pripravíme nezáväznú položkovú ponuku s opatreniami rozdelenými tak, aby ste videli, čo pokryje príspevok.
+3.  **Žiadosť:** Žiadosť sa podáva cez [obnovdom.sk](https://obnovdom.sk/obnov-dom-mini-plus) v čase otvoreného kola. Podklady k žiadosti vám pripravíme.
+4.  **Realizácia:** Obnovu zrealizujeme my. Výzva vyžaduje, aby práce robil dodávateľ.
+5.  **Dokončenie:** V prvom kole museli byť práce dokončené do **31. 12. 2027**. Termín platí pre celú obnovu, nielen pre podanie žiadosti.
+
+Ako sa príspevok vypláca a aké doklady budete potrebovať, určuje výzva – aktuálne informácie nájdete na stránke programu.
+
+## Ako vám pomôžeme
+
+*   Posúdime dom a navrhneme opatrenia so správnymi hrúbkami izolácie a parametrami okien.
+*   Zrealizujeme [zateplenie a fasádu](/sluzby/fasady), výmenu okien a dverí aj strechu so zateplením.
+*   Pripravíme podklady k žiadosti.
+
+Nie sme sprostredkovateľom príspevku a o jeho pridelení nerozhodujeme – rozhoduje SAŽP. Viac o obnove domu nájdete na stránke [Rekonštrukcia rodinného domu](/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu).
+
+## Najčastejšie chyby
+
+*   **Svojpomoc:** Výzva vyžaduje dodávateľskú realizáciu. Práce, ktoré si urobíte sami, sa neuznajú.
+*   **Staré práce:** Uznávali sa len obnovy začaté po 1. januári 2025.
+*   **Tenšia izolácia:** Ak má izolácia menej ako minimum výzvy – napríklad fasáda pod 150 mm –, opatrenie sa neuzná.
+*   **Výmena krytiny bez zateplenia:** Samotná nová krytina podporená nie je, len spolu so zateplením stropnej konštrukcie.
+*   **Neskoré dokončenie:** Termín dokončenia platí pre celú obnovu. Pri zateplení treba počítať s tým, že mokré procesy sa robia v teplejších mesiacoch.
+
+Na čo si dať pozor pri obnove staršieho domu všeobecne, rozoberáme v článku [Rekonštrukcia starého domu: čomu sa vyhnúť](/blog/rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet) a výber izolácie v článku [Polystyrén alebo minerálna vlna](/blog/zateplenie-fasady-polystyren-alebo-mineralna-vlna).
+
+## Často kladené otázky (FAQ)
+
+**1. Kto má nárok na príspevok Obnov dom?**
+V prvom kole výzvy mini+ vlastníci rodinných domov postavených pred rokom 2016, v ktorých aspoň jeden spoluvlastník býva, s príjmom domácnosti do 12 990 € na člena za rok 2024. Príjem nemuseli dokladať domácnosti dôchodcov, domácnosti v hmotnej núdzi a rodiny so štyrmi a viac maloletými deťmi.
+
+**2. Koľko peňazí sa dá z Obnov dom získať?**
+V prvom kole výzvy mini+ až 11 000 € na domácnosť. V ďalšom kole sa suma môže zmeniť, preto si ju pred podaním žiadosti overte na stránke programu.
+
+**3. Môžem si prácu urobiť svojpomocne?**
+Nie. Výzva vyžaduje, aby opatrenia realizoval dodávateľ. Práce urobené svojpomocne sa neuznajú.
+
+**4. Kedy bude ďalšie kolo?**
+Podľa SAŽP je ďalšie kolo plánované na január 2027. Obhliadku a návrh opatrení si môžete dať urobiť už teraz, aby ste boli pripravení.
+
+**5. Pokrýva príspevok aj tepelné čerpadlo?**
+Áno, tepelné čerpadlo patrí medzi podporované opatrenia, rovnako ako solárne kolektory, kotol na biomasu či regulácia vykurovania. Tieto opatrenia zabezpečuje iný dodávateľ, ktorého vám vieme odporučiť.
+
+## Chcete sa pripraviť na ďalšie kolo?
+
+Pošlite nám adresu domu a napíšte, čo by ste chceli obnoviť. Prídeme sa pozrieť, navrhneme opatrenia, ktoré spĺňajú podmienky výzvy, a pripravíme nezáväznú položkovú ponuku.
+
+[Napíšte nám](/kontakt), čo plánujete.`,
+  },
+  {
     id: 'kolko-stoji-stavba-rodinneho-domu-v-roku-2026',
     title: 'Koľko stojí stavba rodinného domu v roku 2026?',
     excerpt: 'Ceny za m² pre hrubú stavbu, holodom aj dom na kľúč v roku 2026, príklad pre 120 m² a čo v rozpočte chýba. Z praxe v Banskobystrickom kraji.',
