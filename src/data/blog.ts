@@ -1195,7 +1195,7 @@ Termín dokončenia dohodneme v zmluve o dielo, aby ste od začiatku vedeli, ked
 [Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-05-10T08:00:00+01:00',
     updatedAt: '2026-09-24T08:00:00+02:00',
-    imageUrl: '/Blog/kolko-trva-stavba-rodinneho-domu.webp'
+    imageUrl: '/Blog/harmonogram-stavby-domu.webp'
   },
   {
     id: 'rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet',
