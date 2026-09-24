@@ -2,6 +2,122 @@ import { BlogPost } from '../types';
 
 export const blogPostsData: BlogPost[] = [
   {
+    id: 'kolaudacia-rodinneho-domu-postup',
+    title: 'Kolaudácia rodinného domu 2026: postup po novom',
+    excerpt: 'Ako po novom stavebnom zákone skolaudovať rodinný dom: doklady ku kolaudácii, lehoty, kolaudačné osvedčenie, súpisné číslo a zápis do katastra.',
+    category: 'Stavebné procesy',
+    tags: ['Stavebné procesy', 'Stavba domu'],
+    publishedAt: '2026-09-24T09:00:00+02:00',
+    updatedAt: '2026-09-24T09:00:00+02:00',
+    imageUrl: '/rodinny-dom-banska-bystrica-slnecne-strane.webp',
+    content: `Kolaudácia je posledný úradný krok stavby. Od 1. apríla 2025 platí nový stavebný zákon (č. 25/2025 Z. z.) a namiesto kolaudačného rozhodnutia dnes stavebný úrad vydáva **kolaudačné osvedčenie**. Bez neho dom nesmiete užívať, nedostanete súpisné číslo a nezapíšete ho do katastra ako dokončenú stavbu.
+
+V tomto návode nájdete, ako kolaudácia rodinného domu po novom prebieha, čo k nej treba pripraviť a čo sa mení od roku 2027.
+
+## Čo sa zmenilo oproti starému zákonu
+
+| Predtým | Dnes (zákon č. 25/2025 Z. z.) |
+| :--- | :--- |
+| kolaudačné konanie | kolaudácia s kolaudačnou obhliadkou |
+| kolaudačné rozhodnutie | kolaudačné osvedčenie |
+| stavalo sa podľa stavebného povolenia | kontroluje sa súlad s overeným projektom stavby |
+| proti rozhodnutiu sa dalo odvolať | od roku 2027 sa proti osvedčeniu odvolať nebude dať |
+
+## Postup na jeden pohľad
+
+| Krok | Kto | Lehota |
+| :--- | :--- | :--- |
+| 1. Návrh na kolaudáciu s prílohami | stavebník | po dokončení stavby |
+| 2. Oznámenie termínu obhliadky | stavebný úrad | do 7 pracovných dní od úplného návrhu |
+| 3. Kolaudačná obhliadka | stavebný úrad so stavebníkom | do 30 dní od oznámenia termínu |
+| 4. Kolaudačné osvedčenie | stavebný úrad | ak sa nezistia nedostatky |
+| 5. Súpisné a orientačné číslo | obec | po kolaudácii |
+| 6. Zápis do katastra | okresný úrad, katastrálny odbor | po pridelení čísla |
+
+Lehoty platia od podania **úplného** návrhu. Ak niektorý doklad chýba, konanie sa zdrží – preto sa oplatí mať prílohy pripravené vopred.
+
+## Čo pripraviť ku kolaudácii
+
+K návrhu na kolaudáciu sa podľa § 66 ods. 2 stavebného zákona prikladá:
+
+| Doklad | Kto ho zabezpečí |
+| :--- | :--- |
+| Stavebný denník | stavebná firma |
+| Záverečné stanovisko stavbyvedúceho o súlade s projektom | stavebná firma |
+| Dokumentácia skutočného zhotovenia stavby | stavebná firma, projektant |
+| Doklady o skúškach stavebných výrobkov | stavebná firma |
+| Revízie a merania – elektroinštalácia, plyn, bleskozvod, komín | stavebná firma, revízni technici |
+| Energetický certifikát budovy | oprávnená osoba – pri dome na kľúč ho zabezpečíme |
+| Geodetická dokumentácia a geometrický plán | geodet |
+| Záväzné stanoviská dotknutých orgánov | stavebník |
+| Potvrdenie o úhrade miestneho poplatku za rozvoj | stavebník, na obecnom úrade |
+| Protokol o odovzdaní a prevzatí stavby | stavebník a firma, ak bol spísaný |
+| Protokol o skúšobnej prevádzke | ak bola povolená |
+
+Pri dome na kľúč vám dokumentáciu ku kolaudácii odovzdáme spolu s domom – stavebný denník, stanovisko stavbyvedúceho, doklady o výrobkoch aj revízie. Na vás ostáva najmä geometrický plán od geodeta, stanoviská a miestny poplatok.
+
+## Kolaudačná obhliadka
+
+Pri obhliadke stavebný úrad overuje najmä:
+
+*   súlad stavby s overeným projektom,
+*   napojenie na inžinierske siete,
+*   bezpečnosť a požiarne riešenie,
+*   prístupovú komunikáciu,
+*   hygienické riešenie.
+
+Ak úrad zistí nedostatky, konanie spravidla preruší a určí lehotu na ich odstránenie. Po odstránení nedostatkov vydá kolaudačné osvedčenie.
+
+## Môžete v dome bývať pred kolaudáciou?
+
+Nie. Užívať dom bez kolaudačného osvedčenia je priestupok, za ktorý hrozí fyzickej osobe pokuta **30 až 15 000 €**, pri opakovaní do troch rokov až dvojnásobná.
+
+Výnimkou je **predčasné užívanie** stavby na základe rozhodnutia stavebného úradu, ak stavba spĺňa základné požiadavky, alebo **dočasné užívanie** na skúšobnú prevádzku. O obe treba požiadať vopred.
+
+## Po kolaudácii: súpisné číslo a kataster
+
+1.  Na obecnom úrade požiadate o pridelenie **súpisného a orientačného čísla**.
+2.  Na katastrálny odbor okresného úradu podáte **návrh na zápis stavby do katastra**. Prikladá sa kolaudačné osvedčenie, geometrický plán a doklad o vlastníctve pozemku.
+
+Po zápise do katastra si môžete prihlásiť trvalý pobyt a dom je úradne dokončený.
+
+## Čo sa mení od roku 2027
+
+Novela stavebného zákona má platiť čiastočne od 15. novembra 2026 a väčšinou od 1. januára 2027. Pre kolaudáciu prináša najmä:
+
+*   **Menej povinných kolaudácií:** Pri drobných stavbách, stavebných úpravách a údržbe bude môcť stavebný úrad od kolaudácie upustiť – napríklad pri výmene okien alebo zateplení. Kolaudáciu novostavieb rodinných domov novela podľa dostupných informácií neruší.
+*   **Bez odvolania:** Proti kolaudačnému osvedčeniu už nebude prípustné odvolanie, čo má konanie urýchliť.
+
+Pred podaním návrhu si preto overte aktuálne znenie zákona na stavebnom úrade. Ako vyzerá povoľovanie pred stavbou, opisujeme v článku [Stavebné povolenie krok za krokom](/blog/stavebne-povolenie-krok-za-krokom-v-roku-2026) a celú stavbu v [sprievodcovi stavbou rodinného domu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom).
+
+## Často kladené otázky (FAQ)
+
+**1. Čo je kolaudačné osvedčenie?**
+Je to dokument, ktorým stavebný úrad po kolaudačnej obhliadke potvrdí, že stavba je postavená podľa overeného projektu a je spôsobilá na užívanie. Nahradilo kolaudačné rozhodnutie podľa starého zákona.
+
+**2. Aké doklady treba ku kolaudácii rodinného domu?**
+Najmä stavebný denník, záverečné stanovisko stavbyvedúceho, dokumentáciu skutočného zhotovenia, doklady o skúškach výrobkov, revízie elektroinštalácie, plynu, bleskozvodu a komína, energetický certifikát, geometrický plán, záväzné stanoviská a potvrdenie o úhrade miestneho poplatku za rozvoj.
+
+**3. Ako dlho trvá kolaudácia?**
+Stavebný úrad oznámi termín obhliadky do 7 pracovných dní od úplného návrhu a obhliadka sa uskutoční do 30 dní od oznámenia. Ak sa nezistia nedostatky, nasleduje kolaudačné osvedčenie. Chýbajúce doklady konanie predĺžia.
+
+**4. Môžem bývať v dome pred kolaudáciou?**
+Nie, iba s povolením na predčasné alebo dočasné užívanie. Užívanie bez kolaudačného osvedčenia je priestupok s pokutou 30 až 15 000 € pre fyzickú osobu.
+
+**5. Treba po novom kolaudovať aj výmenu okien alebo zateplenie?**
+Od roku 2027 bude môcť stavebný úrad pri stavebných úpravách a údržbe od kolaudácie upustiť. Kolaudáciu novostavby rodinného domu novela podľa dostupných informácií neruší.
+
+## Staviate dom a chcete mať kolaudáciu bez starostí?
+
+Pri dome na kľúč vám spolu s domom odovzdáme dokumentáciu ku kolaudácii – stavebný denník, stanovisko stavbyvedúceho, doklady o výrobkoch aj revízie.
+
+**Ak už máte projekt,** pošlite nám ho spolu s adresou pozemku. Po obhliadke pripravíme nezáväznú položkovú ponuku.
+
+**Ak projekt ešte nemáte,** stačí adresa pozemku a vaša predstava o dome. Projekt vám vypracujeme a povolenie stavby vybavíme za vás.
+
+[Napíšte nám](/kontakt), čo plánujete.`,
+  },
+  {
     id: 'obnov-dom-podmienky-a-postup',
     title: 'Príspevok Obnov dom 2027: podmienky a postup',
     excerpt: 'Kto má nárok na príspevok Obnov dom, koľko môžete dostať, ktoré práce sa dajú financovať a ako postupovať pred ďalším kolom v januári 2027.',
