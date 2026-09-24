@@ -932,108 +932,133 @@ Robíme aj samotné [zakladanie stavieb](/sluzby/zakladanie-stavieb) ako samosta
   {
     id: 'stavebne-povolenie-krok-za-krokom-v-roku-2026',
     title: 'Stavebné povolenie krok za krokom v roku 2026',
-    excerpt: 'Vybavovanie stavebného povolenia je pre mnohých nočnou morou. Prečítajte si nášho aktuálneho sprievodcu, ako získať povolenie rýchlo, bez stresu a na čo si dať pozor.',
+    excerpt: 'Ako po novom zákone získať povolenie na rodinný dom: stavebný zámer, záväzné stanoviská, rozhodnutie a overenie projektu. S lehotami a poplatkami.',
     category: 'Stavebné procesy',
     tags: ['Stavebné procesy', 'Stavba domu'],
-    content: `Získanie **stavebného povolenia** je často považované za najdlhšiu a najstresujúcejšiu fázu celej výstavby. Mnohí stavebníci majú pocit, že bojujú s veternými mlynmi byrokracie. Rok 2026 priniesol do stavebného zákona určité zmeny smerujúce k digitalizácii a čiastočnému zrýchleniu procesov, no úradný postup si stále vyžaduje pevnú vôľu, systém a dostatok času.
+    content: `Povolenie stavby býva najdlhšou papierovou fázou celej výstavby. Od 1. apríla 2025 platí nový stavebný zákon (č. 25/2025 Z. z.) a postup pre rodinný dom sa výrazne zmenil. To, čo ľudia stále volajú **stavebné povolenie**, je dnes **rozhodnutie o stavebnom zámere** – a pred začatím stavby k nemu pribudlo **overenie projektu stavby**.
 
-Aby ste pri vybavovaní papierov nestratili hlavu, pripravili sme pre vás prehľadný návod, ako postupovať **krok za krokom**, čo všetko budete potrebovať a akým častým chybám sa vyhnúť.
+V tomto návode nájdete postup krok za krokom, čo budete potrebovať a koľko to orientačne trvá. Ak si povoľovanie nechcete vybavovať sami, vybavíme ho za vás.
 
-## 1. Územno-plánovacia informácia (ÚPI) – Váš štartovací bod
+## Čo sa zmenilo oproti starému zákonu
 
-Skôr než zaplatíte architektovi za vypracovanie projektu snov, musíte vedieť, či na vašom pozemku vôbec môže takýto dom stáť. Na miestnom obecnom alebo mestskom úrade (oddelenie územného plánovania) požiadajte o vydanie **Územno-plánovacej informácie (ÚPI)**.
+| Predtým | Dnes (zákon č. 25/2025 Z. z.) |
+| :--- | :--- |
+| územné konanie a stavebné konanie | jedno konanie o stavebnom zámere |
+| stavebné povolenie | rozhodnutie o stavebnom zámere |
+| projekt pre stavebné povolenie | stavebný zámer, potom podrobný projekt stavby |
+| stavať sa dalo po právoplatnosti povolenia | stavať sa dá až po overení projektu stavby (overovacia doložka) |
+| žiadosť sa podávala v papierovej podobe | žiadosť sa podáva elektronicky cez informačný systém URBION |
+| kolaudačné rozhodnutie | kolaudačné osvedčenie |
 
-Tento dokument je alfou a omegou. Dozviete sa z neho:
-*   Aký typ zástavby je na pozemku povolený (napr. len jednopodlažné domy so šikmou strechou).
-*   Aký je index zastavanosti (koľko % pozemku môžete zastavať).
+## Postup na jeden pohľad
+
+| Krok | Kto ho robí | Orientačne |
+| :--- | :--- | :--- |
+| 1. Územnoplánovacia informácia | vy, na obecnom úrade | pred projektom |
+| 2. Stavebný zámer | autorizovaný projektant | týždne až mesiace |
+| 3. Záväzné stanoviská a vyjadrenia | vy alebo ten, kto povolenie vybavuje | približne 30 dní |
+| 4. Vyňatie pôdy z pôdneho fondu | okresný úrad, ak je potrebné | podľa úradu |
+| 5. Žiadosť o rozhodnutie o stavebnom zámere | elektronicky cez URBION | – |
+| 6. Konanie a rozhodnutie | stavebný úrad | približne 30 až 60 dní |
+| 7. Overenie projektu stavby | stavebný úrad | približne 30 dní |
+
+Celá príprava – od projektu po overený projekt – trvá zvyčajne **3 až 6 mesiacov**, v zložitejších prípadoch aj dlhšie.
+
+## 1. Územnoplánovacia informácia – začnite ňou
+
+Skôr než zaplatíte za projekt, zistite, či na vašom pozemku môže taký dom stáť. Na obecnom alebo mestskom úrade požiadajte o **územnoplánovaciu informáciu (ÚPI)**. Dozviete sa z nej:
+
+*   Aký typ zástavby je na pozemku povolený, napríklad len jednopodlažné domy so šikmou strechou.
+*   Aký je index zastavanosti – koľko percent pozemku môžete zastavať.
 *   Aké sú predpísané odstupové vzdialenosti od susedov a od cesty.
 
-Ak by ste tento krok preskočili a architekt vám navrhne modernú "kocku" s plochou strechou tam, kde obec povoľuje len sedlové strechy, projekt vám na stavebnom úrade okamžite zamietnu a peniaze za projekt vyhodíte von oknom.
+Ak tento krok preskočíte a projektant navrhne dom s plochou strechou tam, kde obec pripúšťa len sedlové strechy, zámer v konaní neprejde a za projekt zaplatíte dvakrát.
 
-## 2. Vypracovanie projektovej dokumentácie
+## 2. Stavebný zámer
 
-Ak máte ÚPI a pozemok vyhovuje vašim zámerom, prichádza na rad projektová dokumentácia. V roku 2026 musí každý nový rodinný dom spĺňať požiadavky na **energetickú triedu A0** (budovy s takmer nulovou potrebou energie). 
+Ak pozemok vyhovuje, autorizovaný projektant vypracuje **stavebný zámer** – dokumentáciu, na základe ktorej sa o stavbe rozhoduje. Novostavba musí spĺňať energetickú triedu A0, čo musí projekt preukázať.
 
-Kvalitný projekt pre stavebné povolenie obsahuje (okrem iného):
+Projektová dokumentácia rodinného domu obsahuje najmä:
 *   Architektonicko-stavebné riešenie (pôdorysy, rezy, pohľady).
 *   Statické posúdenie.
-*   Projekt požiarnej ochrany.
-*   Projekty inštalácií (voda, kanalizácia, plyn, elektro, vykurovanie).
-*   Projekt energetického hodnotenia (preukázanie štandardu A0).
+*   Riešenie požiarnej ochrany.
+*   Riešenie inštalácií (voda, kanalizácia, plyn, elektro, vykurovanie).
+*   Energetické hodnotenie (preukázanie triedy A0).
 *   Situáciu osadenia stavby na pozemku a napojenie na inžinierske siete.
 
-*Tip:* Podrobnosti o tom, či si vybrať katalógový projekt alebo projekt na mieru, nájdete v našom článku o tom, [ako prebieha stavba domu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom).
+**S čím pomôžeme:** Projekt vám na želanie vypracujeme. Ako sa rozhodnúť medzi katalógovým projektom a projektom na mieru, opisujeme v [sprievodcovi stavbou rodinného domu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom).
 
-## 3. Získanie vyjadrení (tzv. "súhlasov" a "vyjadrovačiek")
+## 3. Záväzné stanoviská a vyjadrenia
 
-Toto je časovo najnáročnejšia časť. S hotovým projektom (alebo jeho časťou) musíte získať kladné stanoviská od viacerých inštitúcií a firiem (takzvaných dotknutých orgánov). Tieto inštitúcie majú zo zákona na vyjadrenie 30 dní (ktoré si často v plnej miere uplatnia).
+Stavebný zámer sa prerokuje s dotknutými orgánmi a správcami sietí. Ich **záväzné stanoviská a vyjadrenia** sa priložia k žiadosti. Dotknuté orgány majú na vyjadrenie spravidla 30 dní.
 
-O vyjadrenie musíte požiadať minimálne:
-*   **Správcov inžinierskych sietí:** Vodárne, elektrárne (distribučná spoločnosť), plynárne. Musia vám odsúhlasiť bod a spôsob napojenia.
-*   **Obecný/Mestský úrad:** Vyjadrenie k malému zdroju znečistenia ovzdušia (ak plánujete krb), súhlas k vjazdu na pozemok z miestnej komunikácie, súhlas k napojeniu na obecnú kanalizáciu.
-*   **Telekomunikácie:** Vyjadrenie o existencii podzemných vedení (aby ste pri výkopoch nepresekli optický kábel).
-*   **Okresný úrad (odbor starostlivosti o životné prostredie):** Vyjadrenia z hľadiska ochrany prírody, odpadového hospodárstva a ochrany poľnohospodárskeho pôdneho fondu (vyňatie pôdy).
-*   **Regionálny úrad verejného zdravotníctva (RÚVZ):** Ak je na to zákonný dôvod.
-*   **Susedov (účastníkov konania):** Susedia s vašou stavbou musia súhlasiť, resp. voči nej nesmú mať odôvodnené námietky.
+Stanoviská a vyjadrenia budete potrebovať najmä od:
+*   **Obce:** súlad s územným plánom, vjazd z miestnej komunikácie, napojenie na obecnú kanalizáciu, malý zdroj znečistenia ovzdušia (napríklad krb).
+*   **Správcov inžinierskych sietí:** vodárne, distribučná spoločnosť elektriny, plynárne – odsúhlasia bod a spôsob napojenia.
+*   **Telekomunikačných spoločností:** existencia podzemných vedení, aby sa pri výkopoch nepoškodil kábel.
+*   **Okresného úradu:** ochrana prírody, odpadové hospodárstvo, ochrana poľnohospodárskej pôdy.
+*   **Hasičov a hygieny**, ak si to stavba vyžaduje.
 
-*Dobrá rada:* Ak máte v oblasti historické pamiatky alebo sa nachádzate v ochrannom pásme lesa či železnice, zoznam inštitúcií sa ešte predĺži.
+*Dobrá rada:* Ak je pozemok v pamiatkovej zóne alebo v ochrannom pásme lesa či železnice, zoznam sa predĺži. V našom kraji to platí napríklad pre historické centrá Banskej Bystrice a Banskej Štiavnice.
 
-## 4. Vyňatie pôdy z poľnohospodárskeho pôdneho fondu (BPEJ)
+## 4. Vyňatie pôdy z poľnohospodárskeho pôdneho fondu
 
-Ak je váš pozemok v katastri vedený ako orná pôda, záhrada alebo trvalý trávny porast (a nachádza sa mimo zastavaného územia obce - tzv. extravilán, prípadne má špecifickú bonitu), musíte požiadať o jeho trvalé alebo dočasné vyňatie (odňatie) z poľnohospodárskeho pôdneho fondu pre tú časť pozemku, ktorú reálne zastaviate domom a spevnenými plochami. K tomuto procesu potrebujete súhlas pozemkového a lesného odboru okresného úradu.
+Ak je pozemok v katastri vedený ako orná pôda, záhrada alebo trvalý trávny porast a nachádza sa mimo zastavaného územia obce, prípadne má chránenú bonitu, treba požiadať o vyňatie tej časti, ktorú zastaviate domom a spevnenými plochami. Súhlas vydáva pozemkový a lesný odbor okresného úradu.
 
-## 5. Podanie žiadosti o stavebné povolenie
+## 5. Žiadosť o rozhodnutie o stavebnom zámere
 
-Máte vypracovaný projekt, získali ste všetky súhlasné vyjadrenia (bez pripomienok, alebo ste pripomienky zapracovali do projektu), máte vyriešené vyňatie pôdy a dohodli ste sa so susedmi? Gratulujeme! Môžete podať oficiálnu žiadosť na príslušný stavebný úrad.
+Keď máte stavebný zámer a všetky stanoviská, podáva sa **žiadosť o rozhodnutie o stavebnom zámere**. Po novom sa podáva elektronicky cez informačný systém Úradu pre územné plánovanie a výstavbu SR (URBION).
 
-**K žiadosti sa dokladá:**
-1.  Vyplnené tlačivo žiadosti.
-2.  List vlastníctva (dnes si ho úrad vie stiahnuť aj sám, ale kópia nezaškodí).
-3.  Projektová dokumentácia (vo viacerých vyhotoveniach, zvyčajne 2-3).
-4.  Všetky vyjadrenia dotknutých orgánov.
-5.  Doklad o zaplatení správneho poplatku.
-6.  Ak stavia firma, tak aj kópia zmluvy so zhotoviteľom. Ak staviate svojpomocne, prehlásenie osoby vykonávajúcej odborný stavebný dozor.
+**K žiadosti sa prikladá najmä:**
+1.  Stavebný zámer.
+2.  Záväzné stanoviská a vyjadrenia dotknutých orgánov a správcov sietí.
+3.  Súhlas s vyňatím pôdy, ak bol potrebný.
+4.  Doklad o zaplatení správneho poplatku.
 
-## 6. Stavebné konanie a vydanie povolenia
+## 6. Konanie a rozhodnutie o stavebnom zámere
 
-Stavebný úrad do 7 dní (ak je žiadosť úplná) oznámi začatie stavebného konania všetkým účastníkom (vám, obci, susedom). Zvyčajne sa nariadi ústne pojednávanie spojené s miestnym zisťovaním priamo na pozemku. Účastníci majú právo do určitej lehoty (zvyčajne 7 až 15 dní) podať námietky.
+Stavebný úrad – pri rodinných domoch spravidla obec – oznámi začatie konania účastníkom. Okrem vás sú nimi vlastník pozemku a vlastníci susedných pozemkov a stavieb, ktorých práva môžu byť stavbou priamo dotknuté. Okruh účastníkov je užší ako v minulosti.
 
-Ak úrad nezistí žiadne prekážky a nikto z účastníkov nepodá oprávnené námietky, stavebný úrad vydá **Stavebné povolenie**. 
+Ak je žiadosť úplná a nie sú prekážky, úrad vydá **rozhodnutie o stavebnom zámere** s podmienkami pre stavbu. Pri rodinnom dome to býva približne do 30 dní, v zložitejších prípadoch do 60 dní. Proti rozhodnutiu sa dá odvolať; stavať podľa neho môžete až po nadobudnutí právoplatnosti a overení projektu. Rozhodnutie platí dva roky od nadobudnutia právoplatnosti.
 
-*Pozor!* Ani to ešte nie je koniec. Papiere s povolením si nemôžete len tak zobrať a ísť kopať základy. Stavebné povolenie musí nadobudnúť **právoplatnosť**. To sa udeje až po uplynutí 15-dňovej lehoty na odvolanie (od doručenia poslednému účastníkovi konania). Až keď vám úrad na dokument vyznačí pečiatku o právoplatnosti, môžete začať sláviť (a kopať).
+## 7. Overenie projektu stavby
 
----
+Na základe rozhodnutia projektant spracuje podrobný **projekt stavby** a predloží ho stavebnému úradu na overenie. Úrad ho overí približne do 30 dní a vydá **overovaciu doložku**. Až potom môžete začať stavať. Ak so stavbou nezačnete do dvoch rokov od vydania doložky, stratí platnosť.
+
+Od roku 2027 prichádza novela zákona, ktorá postup ďalej upravuje. Pred podaním si preto vždy overte aktuálne znenie – alebo to nechajte na tom, kto povolenie vybavuje.
+
+Po dokončení stavby nasleduje kolaudácia, po ktorej úrad vydá **kolaudačné osvedčenie**. Ako vyzerá celá stavba medzi týmito dvoma bodmi, nájdete v [sprievodcovi stavbou](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom).
 
 ## Často kladené otázky (FAQ)
 
-**1. Ako dlho reálne trvá vybavenie stavebného povolenia v roku 2026?**
-Aj napriek snahám o zrýchlenie, v praxi trvá proces od získania ÚPI, cez projektovanie, získavanie vyjadrení až po právoplatné rozhodnutie zvyčajne **3 až 6 mesiacov**. V komplikovaných prípadoch (nesúhlas susedov, chýbajúce siete) aj rok.
+**1. Ako dlho trvá vybavenie stavebného povolenia v roku 2026?**
+Od územnoplánovacej informácie cez projekt a stanoviská až po overený projekt stavby to zvyčajne trvá 3 až 6 mesiacov. Pri nesúhlase susedov alebo chýbajúcich sieťach aj dlhšie.
 
-**2. Koľko to stojí?**
-Správny poplatok za vydanie stavebného povolenia pre rodinný dom je cca 50 €. K tomu však musíte pripočítať poplatky za rôzne vyjadrenia, poplatok za vyňatie pôdy a predovšetkým cenu samotného projektu, ktorá sa pohybuje v tisícoch eur. Viac o cenách v našom [sprievodcovi rozpočtom](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026).
+**2. Koľko stojí stavebné povolenie?**
+Správny poplatok za rozhodnutie o stavebnom zámere pre rodinný dom je približne 300 €. Oveľa väčšiu časť nákladov tvorí projekt, ktorý stojí tisíce eur, a poplatky za niektoré vyjadrenia či vyňatie pôdy.
 
-**3. Platnosť stavebného povolenia: do kedy musím začať stavať?**
-Stavebné povolenie stráca platnosť, ak so stavbou nezačnete **do 2 rokov** od dňa, keď nadobudlo právoplatnosť. Prípravu, ako je [príprava pozemku na stavbu](/blog/ako-pripravit-pozemok-na-stavbu-rodinneho-domu) a zameranie, už možno považovať za začatie stavby.
+**3. Dokedy musím začať stavať?**
+Rozhodnutie o stavebnom zámere platí dva roky od nadobudnutia právoplatnosti a overovacia doložka projektu dva roky od vydania. Ak v tejto lehote so stavbou nezačnete, platnosť stratia.
 
-**4. Oplatí sa najať si na to človeka (tzv. inžiniering)?**
-Jednoznačne áno. Ak ste pracovne vyťažení, inžinier (alebo priamo architektonická kancelária, ktorá túto službu ponúka) obehá všetky úrady za vás. Ušetríte desiatky hodín dovoleniek a množstvo nervov. Služba inžinieringu stojí zvyčajne od 800 do 1500 €.
+**4. Oplatí sa nechať si povolenie vybaviť?**
+Ak ste pracovne vyťažení, áno. Ušetríte desiatky hodín a vyhnete sa chybám v žiadosti, ktoré konanie zdržia. Pri stavbe domu vám projekt aj povolenie vieme vybaviť za vás.
 
-**5. Môžem stavať dom bez stavebného povolenia ("na čierno") a potom ho dodatočne zlegalizovať?**
-V žiadnom prípade! Nová legislatíva v roku 2026 je v tomto mimoriadne prísna. Dodatočná legalizácia je takmer nemožná a v prípade čiernej stavby vám hrozia drakonické pokuty a nariadenie odstránenia (zbúrania) stavby na vaše vlastné náklady.
+**5. Môžem začať stavať bez povolenia a dodatočne ho vybaviť?**
+Nie. Nový stavebný zákon dodatočné povolenie novej čiernej stavby neupravuje a za stavbu bez overeného projektu hrozí pokuta aj nariadenie odstránenia stavby.
 
-**6. Je potrebný súhlas suseda na stavbu domu?**
-Sused je účastníkom stavebného konania. Svoj súhlas (resp. nevznesenie námietok) vyjadruje podpisom do situácie osadenia alebo v samotnom stavebnom konaní. Ak má sused odôvodnenú námietku (napríklad, že mu dom bude tieniť, alebo nedodržíte odstupové vzdialenosti), stavebný úrad sa ňou musí zaoberať. Nemôže však stavbu blokovať bez reálneho zákonného dôvodu (napr. len z osobnej antipatie).
+**6. Potrebujem súhlas suseda?**
+Vlastník susedného pozemku alebo stavby je účastníkom konania, ak môže byť stavbou priamo dotknutý. Jeho námietkou sa úrad musí zaoberať, ak je odôvodnená – napríklad nedodržanie odstupových vzdialeností alebo tienenie. Bez zákonného dôvodu však stavbu zablokovať nemôže.
 
----
+## Chcete, aby sme povolenie vybavili za vás?
 
-## Zhrnutie
+**Ak už máte projekt,** pošlite nám ho spolu s adresou pozemku. Pripravíme nezáväznú ponuku na stavbu a dohodneme, či povolenie vybavíme my.
 
-Vybavenie **stavebného povolenia** je byrokratický maratón, na ktorý sa treba dobre pripraviť. Kľúčom k úspechu je kvalitný projekt, pevné nervy pri jednaní s úradníkmi a dokonalý poriadok v papieroch. Ak si na tento proces netrúfate sami, prenechajte ho odborníkom na inžiniering.
+**Ak projekt ešte nemáte,** stačí adresa pozemku a vaša predstava o dome – veľkosť, počet podlaží a štandard. Projekt vypracujeme, povolenie vybavíme a ponuku na stavbu pripravíme podľa neho.
 
-Keď konečne držíte v rukách právoplatné povolenie, ten najväčší papierový boj máte za sebou a môžete sa naplno vrhnúť do realizácie. Ak hľadáte spoľahlivého partnera pre samotnú výstavbu, **MNSP | Stavby a rekonštrukcie** je vám k dispozícii. [Kontaktujte nás](/kontakt) a premeníme váš projekt na skutočný domov.`,
+[Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-05-15T08:00:00+01:00',
-    updatedAt: '2026-05-15T08:00:00+01:00',
-    imageUrl: '/Blog/stavebne-povolenie-krok-za-krokom-v-roku-2026.webp'
+    updatedAt: '2026-09-24T08:00:00+02:00',
+    imageUrl: '/Blog/stavebne-povolenie-2026.webp'
   },
   {
     id: 'kolko-trva-stavba-rodinneho-domu',
