@@ -1419,65 +1419,112 @@ Zateplenie a fasádna omietka patria k mokrým procesom, ktoré potrebujú teplo
   },
   {
     id: 'stavba-domu-svojpomocne-vyhody-nevyhody',
-    title: 'Stavba domu svojpomocne: Ušetríte, alebo naopak prerobíte?',
-    excerpt: 'Láka vás vidina obrovských úspor pri stavbe domu vlastnými rukami? Zistili sme pre vás, aká je realita. Kde svojpomoc funguje a kde končí drahou katastrofou.',
+    title: 'Stavba domu svojpomocne: ušetríte, alebo prerobíte?',
+    excerpt: 'Koľko naozaj ušetríte pri stavbe domu svojpomocne, ako dlho to trvá, čo zvládnete sami a čo nechať firme. S tabuľkou prác a častými otázkami.',
     category: 'Stavebné procesy',
     tags: ['Stavebné procesy', 'Stavba domu'],
-    content: `Na prvý pohľad to znie ako dokonalý plán: nakúpite materiál v akcii, pozvete partiu kamarátov z krčmy, švagra, ktorý "už voľačo muroval", a za víkend vytiahnete múry. Ušetríte desiatky tisíc eur a budete mať neopísateľný pocit zadosťučinenia. Toto je predstava, s ktorou sa mnohí púšťajú do **stavby domu svojpomocne**.
+    content: `Na prvý pohľad to znie ako dobrý plán: nakúpite materiál v akcii, zavoláte kamarátov a švagra, ktorý „už voľačo muroval“, a cez víkendy vytiahnete múry. Ušetríte desiatky tisíc eur a budete mať dobrý pocit z vlastnej práce. S touto predstavou sa do **stavby domu svojpomocne** púšťa veľa ľudí.
 
-Ale aká je realita v roku 2026, kedy sú technologické nároky na domy (štandard A0, tepelné čerpadlá, rekuperácia) vyššie ako kedykoľvek predtým? Poďme sa objektívne pozrieť na výhody, riziká a na to, či sa vôbec ešte oplatí stavať dom vlastnými rukami.
+Aká je však realita dnes, keď musí novostavba spĺňať energetickú triedu A0 a bežnou súčasťou domu je tepelné čerpadlo či rekuperácia? Pozrime sa na výhody, riziká a na to, kedy sa svojpomoc ešte oplatí.
 
-## 1. Mýtus o ušetrených "desiatkach tisíc" eur
+## Svojpomoc v skratke
 
-Najsilnejším argumentom pre svojpomoc je úspora peňazí za prácu stavebnej firmy. Áno, z celkového rozpočtu [koľko stojí stavba rodinného domu v roku 2026](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026) tvorí cena práce zhruba 35 - 45 %. Znamená to teda, že ak stavia dom firma za 150 000 €, vy ho postavíte za 90 000 €? **Bohužiaľ, neznamená.**
+| | Svojpomocne | So stavebnou firmou |
+| :--- | :--- | :--- |
+| **Skutočná úspora** | približne 15 – 20 % | – |
+| **Trvanie** | často 2 – 3 roky | dom na kľúč 9 – 12 mesiacov |
+| **Stavebný dozor** | potrebný | potrebný |
+| **Koordinácia remeselníkov** | na vás | na stavbyvedúcom |
+| **Záruka** | rozdrobená medzi jednotlivých remeselníkov | na dielo podľa zmluvy o dielo |
 
-Zabúdate totiž na tieto faktory:
-*   **Materiál:** Stavebná firma, ktorá berie materiál po kamiónoch, má v stavebninách úplne iné zľavy (často 30-40 %) ako vy, keď si prídete kúpiť tri palety tehál.
-*   **Náradie a mechanizmy:** Musíte si požičiavať alebo kupovať náradie (miešačky, vibračné dosky, debnenie, lešenie). Požičovne stoja desiatky eur denne.
-*   **Váš čas sú peniaze:** Každá hodina strávená na stavbe je hodina, ktorú nevenujete svojej práci (kde by ste zarábali), svojej rodine alebo oddychu. Svojpomocná stavba po večeroch a víkendoch často trvá 2 až 3 roky.
+## 1. Mýtus o ušetrených desiatkach tisíc eur
 
-Vo finále sa skutočná finančná úspora pohybuje skôr na úrovni **15 - 20 %**, a to len za predpokladu, že neurobíte žiadnu drahú chybu.
+Najsilnejším argumentom pre svojpomoc je úspora za prácu stavebnej firmy. Z celkového rozpočtu [stavby rodinného domu](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026) tvorí cena práce zhruba 35 až 45 %. Znamená to, že ak firma postaví dom za 150 000 €, vy ho postavíte za 90 000 €? **Nie.**
 
-## 2. Zložitá legislatíva a stavebný dozor
+Zabúdate totiž na tieto veci:
+*   **Materiál:** Stavebná firma, ktorá nakupuje veľké množstvá, má v stavebninách iné zľavy (často 30 – 40 %) ako vy pri nákupe niekoľkých paliet tehál.
+*   **Náradie a mechanizmy:** Miešačky, vibračné dosky, debnenie či lešenie si musíte kúpiť alebo požičať. Požičovne stoja desiatky eur denne.
+*   **Váš čas:** Každá hodina na stavbe je hodina, ktorú nevenujete práci, rodine ani oddychu. Svojpomocná stavba po večeroch a víkendoch často trvá 2 až 3 roky.
 
-Ak staviate dom svojpomocne, zo zákona musíte mať zabezpečený **odborný stavebný dozor**. Ten musíte uviesť už pri žiadosti o [stavebné povolenie](/blog/stavebne-povolenie-krok-za-krokom-v-roku-2026). 
+Skutočná úspora sa preto pohybuje skôr okolo **15 až 20 %** – a to len vtedy, ak neurobíte drahú chybu.
 
-Stavebný dozor pri svojpomoci nefunguje len ako "pečiatka", ale preberá na seba obrovskú právnu zodpovednosť. Preto kvalitný dozor pre svojpomocného stavebníka nebude lacný. Taktiež musíte prísne dodržiavať bezpečnosť pri práci (BOZP). Ak sa "kamarátovi-pomocníkovi" na vašej stavbe stane úraz, zodpovednosť nesiete vy.
+## 2. Stavebný dozor, povolenia a bezpečnosť
 
-## 3. Riziko fatálnych technologických chýb
+Aj pri svojpomocnej stavbe potrebujete **stavebný dozor**. Pri svojpomoci nie je len formalitou – preberá odbornú zodpovednosť za to, že sa stavia podľa overeného projektu a správnymi postupmi. Preto kvalitný dozor pre svojpomocného stavebníka nebude najlacnejší. Postup povoľovania opisujeme v článku [Stavebné povolenie krok za krokom](/blog/stavebne-povolenie-krok-za-krokom-v-roku-2026).
 
-Kým starý dom (kocku) z kvádrov a so škridlovou strechou dokázal pred 30 rokmi s trochou snahy postaviť takmer každý, dnešné nízkoenergetické domy neodpúšťajú chyby.
+Rovnako musíte dodržiavať bezpečnosť pri práci. Ak sa pomocníkovi na vašej stavbe stane úraz, zodpovednosť nesiete vy.
+
+## 3. Riziko drahých technologických chýb
+
+Jednoduchý dom z kvádrov so škridlovou strechou pred tridsiatimi rokmi postavil s trochou snahy takmer každý. Dnešné nízkoenergetické domy chyby neodpúšťajú.
 
 Najčastejšie technologické [chyby pri stavbe domu](/blog/najcastejsie-chyby-pri-stavbe-rodinneho-domu) svojpomocne:
-*   **Tepelné mosty:** Nedôsledné obloženie prekladov, zle napojená izolácia sokla alebo neodborne namontované okná (bez použitia pások).
-*   **Hydroizolácie:** Zle navarená lepenka na základovej doske spôsobí, že vám do domu bude ťahať vlhkosť zo zeme.
-*   **Nedostatočné zhutnenie podložia:** Ak zle zhutníte násyp pod doskou, platňa môže pod váhou priečok prasknúť. Zistite viac o tom, [ako sa robia základy domu](/blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca).
-*   **Zlá koordinácia pri rekuperácii:** Zalievanie káblov a trubiek do podláh a stropov si vyžaduje milimetrovú presnosť.
+*   **Tepelné mosty:** Nedôsledne obložené preklady, zle napojená izolácia sokla alebo okná osadené bez tesniacich pások.
+*   **Hydroizolácie:** Zle navarená izolácia na základovej doske spôsobí, že do domu bude ťahať vlhkosť zo zeme.
+*   **Nedostatočné zhutnenie podložia:** Ak sa násyp pod doskou zle zhutní, doska môže pod váhou priečok prasknúť. Viac v článku [Ako sa robia základy domu](/blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca).
+*   **Zlá koordinácia pri rekuperácii:** Rozvody zaliate do podláh a stropov vyžadujú presné zameranie.
 
-## 4. Manažment ľudí – nočná mora amatéra
+## 4. Koordinácia remeselníkov
 
-Stavba domu je v prvom rade logistická operácia. Ak nestaviate systémom [dom na kľúč](/blog/dom-na-kluc-alebo-hruba-stavba-kompletne-porovnanie), meníte sa na koordinátora, ktorý musí zosúladiť partiu murárov, elektrikárov, vodárov a omietkarov.
+Stavba domu je najmä logistika. Ak nestaviate [dom na kľúč](/blog/dom-na-kluc-alebo-hruba-stavba-kompletne-porovnanie), stávate sa koordinátorom, ktorý musí zladiť murárov, elektrikárov, vodárov a omietkárov.
 
-Čo sa bežne stáva?
+Čo sa bežne stáva:
 *   Elektrikár sľúbi, že príde v pondelok. Príde vo štvrtok.
-*   Kvôli tomu omietkari odmietnu prísť, pretože musia ísť na inú stavbu, a vrátia sa k vám až o mesiac.
-*   Vy medzitým platíte prenájom lešenia, na ktorom nikto nepracuje.
-*   Ak vodár zle vyvedie trubky a murár ich obloží zle zameraným obkladom, začnú sa navzájom obviňovať ("ja to mám dobre, on to spravil zle"). Vám ostane len nefunkčná kúpeľňa a oči pre plač.
+*   Omietkári medzitým musia ísť na inú stavbu a vrátia sa až o mesiac.
+*   Vy zatiaľ platíte prenájom lešenia, na ktorom nikto nepracuje.
+*   Ak vodár zle vyvedie rúry a obkladač ich obloží, začnú sa navzájom obviňovať – a vám ostane kúpeľňa, ktorá nefunguje.
 
-## Kedy sa svojpomoc skutočne oplatí?
+Podrobný harmonogram a to, kde sa stavba najčastejšie zdrží, nájdete v článku [Koľko trvá stavba rodinného domu](/blog/kolko-trva-stavba-rodinneho-domu).
 
-Nie sme úplní odporcovia svojpomoci, ale v roku 2026 dáva zmysel iba v špecifických prípadoch:
-1.  **Ste z fachu:** Ak pracujete v stavebníctve, máte vlastné náradie a sieť spoľahlivých kolegov, ktorí vám "na oplátku" pomôžu (a vy im).
-2.  **Kombinácia (Hrubá stavba od firmy, interiéry vy):** Toto je často rozumný kompromis. Zveríte náročné a dôležité časti ([monolitické konštrukcie](/sluzby/monoliticke-konstrukcie), múry, krov, strechu) profesionálom so zárukou. A veci ako ukladanie polystyrénu do podláh, montáž sadrokartónu, malovky alebo kladenie plávajúcej podlahy si spravíte sami.
+## Čo zvládnete sami a čo nechať firme
 
-## Zhrnutie
+| Práca | Svojpomocne | Prečo |
+| :--- | :--- | :--- |
+| Maľovanie | áno | chyba sa dá ľahko opraviť |
+| Plávajúca podlaha | áno | nevyžaduje špeciálne náradie |
+| Sadrokartón | áno, so skúsenosťou | dôležitá je presnosť a správny systém |
+| Izolácia do podláh | áno, podľa projektu | dôležité je dodržať hrúbky |
+| Základy a statika | nie | chyba sa neskôr opravuje veľmi draho |
+| Hydroizolácie | nie | voda si nájde aj malú netesnosť |
+| Krov a strecha | nie | statika a zatekanie |
+| Elektroinštalácia a plyn | nie | smie ich robiť len oprávnená osoba a potrebujú revíziu |
+| Tepelné čerpadlo a rekuperácia | nie | potrebujú odborný návrh a nastavenie |
 
-Stavba domu svojpomocne pre bežného "kancelárskeho" človeka je často romantickou predstavou, ktorá narazí na tvrdú realitu nedostatku času, nervov a chýbajúcich technologických zručností. Pár ušetrených tisíc eur zvyčajne padne na opravu chýb alebo sa prejaví na vašom podlomenom zdraví či rodinných vzťahoch.
+## Kedy sa svojpomoc oplatí
 
-Zverte svoj projekt profesionálom a venujte sa tomu, čo viete robiť najlepšie, a svojej rodine. V **MNSP | Stavby a rekonštrukcie** vám ponúkame férové ceny, transparentné zmluvy a garanciu, že vaša stavba prebehne hladko a odborne. [Kontaktujte nás](/kontakt) a dohodnite si stretnutie, kde preberieme vaše možnosti.`,
+Nie sme proti svojpomoci, dnes však dáva zmysel najmä v týchto prípadoch:
+1.  **Ste z odboru:** Pracujete v stavebníctve, máte vlastné náradie a kolegov, ktorí vám pomôžu, a vy im.
+2.  **Hrubá stavba alebo holodom od firmy, zvyšok vy:** Často rozumný kompromis. Náročné a dôležité časti – [monolitické konštrukcie](/sluzby/monoliticke-konstrukcie), múry, krov a strechu – zveríte firme so zárukou. Pri holodome navyše aj rozvody, omietky, potery a fasádu. Maľovanie, sadrokartón či plávajúcu podlahu si potom urobíte sami.
+
+## Často kladené otázky (FAQ)
+
+**1. Koľko ušetrím, ak si dom postavím svojpomocne?**
+Skutočná úspora býva približne 15 až 20 %. Firma má lepšie ceny materiálu a vlastné náradie a vy musíte započítať aj požičovne a vlastný čas. Každá drahá chyba úsporu rýchlo zníži.
+
+**2. Ako dlho trvá stavba domu svojpomocne?**
+Pri práci po večeroch a víkendoch často 2 až 3 roky. Dom na kľúč so stavebnou firmou trvá zvyčajne 9 až 12 mesiacov.
+
+**3. Potrebujem pri svojpomocnej stavbe stavebný dozor?**
+Áno. Stavebný dozor dohliada na to, aby sa stavalo podľa overeného projektu a správnymi postupmi, a pri svojpomoci preberá odbornú zodpovednosť za vedenie stavby.
+
+**4. Môžem si elektroinštaláciu urobiť sám?**
+Elektroinštaláciu a plyn smie robiť len oprávnená osoba a pred kolaudáciou potrebujú revíziu. Aj pri svojpomocnej stavbe ich preto zvyčajne platíte odborníkovi.
+
+**5. Dá sa kombinovať práca firmy a svojpomoc?**
+Áno a často to je najrozumnejšia cesta. Firme zveríte hrubú stavbu alebo holodom a dokončovacie práce, ako maľovanie, sadrokartón či podlahy, si urobíte sami.
+
+## Chcete si časť stavby urobiť sami?
+
+Postavíme vám hrubú stavbu alebo holodom a dokončenie necháme na vás – alebo celý dom na kľúč, ak si to napokon rozmyslíte.
+
+**Ak už máte projekt,** pošlite nám ho spolu s adresou pozemku a napíšte, ktorú časť chcete zveriť nám. Po obhliadke pripravíme nezáväznú položkovú ponuku.
+
+**Ak projekt ešte nemáte,** stačí adresa pozemku a vaša predstava o dome. Projekt vám vypracujeme a ponuku pripravíme podľa neho.
+
+[Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-04-20T08:00:00+01:00',
-    updatedAt: '2026-04-20T08:00:00+01:00',
-    imageUrl: '/Blog/stavba-domu-svojpomocne-vyhody-nevyhody.webp'
+    updatedAt: '2026-09-24T08:00:00+02:00',
+    imageUrl: '/Blog/stavba-svojpomocne.webp'
   },
   {
     id: 'murovany-dom-vs-drevodom-porovnanie',
