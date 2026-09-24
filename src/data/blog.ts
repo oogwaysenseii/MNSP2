@@ -806,101 +806,128 @@ Najvhodnejšia je jar, marec alebo apríl, keď pôda už nie je zamrznutá. Na 
   {
     id: 'ako-sa-robia-zaklady-domu-kompletny-sprievodca',
     title: 'Ako sa robia základy domu? Kompletný sprievodca',
-    excerpt: 'Kvalitné základy sú alfou a omegou každej stavby. Prečítajte si krok za krokom, ako sa robia základy domu, prečo je dôležitý geologický prieskum a na čom nešetriť.',
+    excerpt: 'Ako sa robia základy domu krok za krokom: geologický prieskum, výkopy, pásy, sokel a doska. S cenou za m², trvaním a podložím v našom kraji.',
     category: 'Stavebné procesy',
     tags: ['Stavebné procesy', 'Stavba domu'],
-    content: `Hovorí sa, že dom je len taký pevný, ako jeho základy. A v stavebníctve to platí stonásobne. Akákoľvek chyba pri murovaní steny alebo pri ukladaní krytiny sa dá relatívne ľahko opraviť. Ak však spravíte chybu pod zemou, jej oprava je extrémne drahá, a v niektorých prípadoch aj nemožná. Preto je otázka, **ako sa robia základy domu**, jednou z najdôležitejších, ktorú by ste si pred [stavbou domu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom) mali položiť.
+    content: `Hovorí sa, že dom je len taký pevný, aké má základy. Chybu pri murovaní steny alebo pri ukladaní krytiny sa dá relatívne ľahko opraviť. Chyba pod zemou sa však opravuje veľmi draho, niekedy vôbec. Preto sa oplatí vedieť, **ako sa robia základy domu**, ešte pred začatím [stavby domu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom).
 
-V spoločnosti **MNSP | Stavby a rekonštrukcie** kladieme na [monolitické konštrukcie](/sluzby/monoliticke-konstrukcie) a zakladanie stavieb maximálny dôraz. Poďme si krok za krokom prejsť celý proces od výkopu až po zaliatu základovú dosku.
+V **MNSP | Stavby a rekonštrukcie** robíme [monolitické konštrukcie](/sluzby/monoliticke-konstrukcie) a zakladanie stavieb vlastnými ľuďmi a vlastnou technikou. Poďme si krok za krokom prejsť celý postup od výkopu až po vyzretú základovú dosku.
 
-## 1. Geologický prieskum: Krok, ktorý nesmiete preskočiť
+## Základy v skratke
 
-Ešte predtým, ako bager zaborí lyžicu do zeme, musíte vedieť, na čom idete stavať. Geologický prieskum podložia určí únosnosť zeminy a úroveň hladiny spodnej vody. 
+| | Orientačne |
+| :--- | :--- |
+| **Cena** | približne 165 € za m² zastavanej plochy v strednom štandarde (140 – 223 € podľa štandardu) |
+| **Dom so 120 m²** | približne 19 800 € |
+| **Trvanie prác** | 2 – 4 týždne, potom technologická prestávka na zretie betónu |
+| **Najčastejší spôsob** | základové pásy, sokel z debniacich tvárnic a základová doska |
+| **Čo rozhoduje** | geologický prieskum, terén, spodná voda a nezámrzná hĺbka |
 
-Prečo je to kľúčové? Ak máte na pozemku ílovitú pôdu, ktorá v zime mrzne a dvíha sa, alebo vysokú spodnú vodu, klasické základové pásy nemusia stačiť. V takom prípade statik navrhne zakladanie na železobetónovej doske (ktorá "pláva" na povrchu) alebo pomocou hĺbkových pilót. Geológia priamo ovplyvňuje to, koľko materiálu do zeme pôjde a koľko to bude stáť.
+Cena vychádza z našej [kalkulačky](/kalkulacka) pre jednopodlažný dom bez pivnice na rovinatom pozemku. Svah, skala alebo spodná voda ju zvyšujú.
+
+## 1. Geologický prieskum: krok, ktorý sa neoplatí preskočiť
+
+Ešte predtým, ako bager zaborí lyžicu do zeme, musíte vedieť, na čom idete stavať. Geologický prieskum určí únosnosť zeminy a úroveň hladiny spodnej vody.
+
+Prečo je to dôležité? Ak máte na pozemku ílovitú pôdu, ktorá v zime mrzne a dvíha sa, alebo vysokú spodnú vodu, klasické základové pásy nemusia stačiť. Statik potom navrhne zakladanie na železobetónovej doske alebo na hĺbkových pilótach. Geológia priamo určuje, koľko materiálu pôjde do zeme a koľko to bude stáť.
+
+**S čím pomôžeme:** Geologický prieskum odporúčame pri každej novostavbe a vieme ho sprostredkovať. Jeho výsledok premietneme do návrhu základov aj do rozpočtu.
+
+### Podložie v našom kraji
+
+Aj v rámci jedného kraja sa podmienky výrazne líšia. Takto vyzerajú typické situácie, s ktorými sa stretávame – o konkrétnom pozemku však vždy rozhodne prieskum:
+
+| Oblasť | Typický terén a podložie | Na čo myslieť pri základoch |
+| :--- | :--- | :--- |
+| Zvolen, Žiar nad Hronom | rovina, štrkové podložie, pri Hrone vyššia spodná voda | hydroizolácia a spodná voda, najmä pri pivnici |
+| Banská Bystrica | členitý, svahovitý terén, zmiešané podložie | oporné múry, pri svahoch piloty alebo zosilnené pásy |
+| Detva, Hriňová, Podpoľanie | svahy a lazy, skalnaté podložie | rozbíjanie skaly pri výkope, prístup pre domiešavač |
+| Lučenec, Krupina | rovina až pahorkatina, ílovité podložie | premŕzanie a objemové zmeny ílu, dodržanie nezámrznej hĺbky |
+
+Viac o jednotlivých mestách nájdete na stránke [Kde pôsobíme](/lokality).
 
 ## 2. Výkopy základových pásov
 
-Po [príprave pozemku na stavbu](/blog/ako-pripravit-pozemok-na-stavbu-rodinneho-domu) a zameraní geodetom prichádzajú na rad bagre. Štandardný rodinný dom na Slovensku sa najčastejšie zakladá na základových pásoch.
+Po [príprave pozemku na stavbu](/blog/ako-pripravit-pozemok-na-stavbu-rodinneho-domu) a vytýčení geodetom prichádza na rad bager. Rodinný dom na Slovensku sa najčastejšie zakladá na základových pásoch.
 
-*   **Nezámrzná hĺbka:** Výkop musí siahať do takzvanej nezámrznej hĺbky, čo je na Slovensku zvyčajne 80 až 120 cm (v závislosti od nadmorskej výšky a typu zeminy). Ak by boli základy plytšie, mrznúca voda pod nimi by mohla celú stavbu nadvihnúť a roztrhnúť steny.
-*   **Šírka výkopu:** Šírka základových pásov závisí od projektu a nosnosti zeminy (zvyčajne 50 až 80 cm).
+*   **Nezámrzná hĺbka:** Výkop musí siahať do nezámrznej hĺbky, čo je na Slovensku zvyčajne 80 až 120 cm podľa nadmorskej výšky a typu zeminy. Pri plytších základoch by mrznúca voda pod nimi mohla stavbu nadvihnúť a roztrhnúť steny.
+*   **Šírka výkopu:** Šírka základových pásov závisí od projektu a únosnosti zeminy, zvyčajne 50 až 80 cm.
 
 ## 3. Uloženie bleskozvodu a ležatej kanalizácie
 
-Dno výkopu sa musí ručne dočistiť. Ešte pred liatím prvého betónu sa na dno základových pásov ukladá zemniaca pásovina pre bleskozvod. Tento krok sa nesmie vynechať, inak neprejdete kolaudáciou.
+Dno výkopu sa ručne dočistí. Ešte pred liatím prvého betónu sa na dno základových pásov ukladá zemniaca pásovina pre bleskozvod. Tento krok sa nesmie vynechať, bez neho neprejdete kolaudáciou.
 
-Zároveň sa musia presne zamerať a vyviesť prestupy pre ležatú kanalizáciu, prívod vody, elektriny a tepelného čerpadla. Prechody sa riešia pomocou plastových chráničiek (tzv. husích krkov), aby bolo možné siete v budúcnosti bezproblémovo prevliecť.
+Zároveň sa presne zamerajú a vyvedú prestupy pre ležatú kanalizáciu, prívod vody, elektriny a tepelného čerpadla. Prechody sa riešia plastovými chráničkami, aby sa siete dali v budúcnosti bez problémov pretiahnuť.
 
-## 4. Prvé betónovanie: Základové pásy
+## 4. Prvé betónovanie: základové pásy
 
 Keď sú siete a uzemnenie pripravené, do výkopov sa leje podkladový betón.
 
-*   Betón sa väčšinou leje priamo z domiešavača alebo pomocou čerpadla na betón (pumpy).
-*   Používa sa betón predpísanej triedy (napr. C16/20 alebo C20/25).
-*   Základové pásy sa zalievajú približne do úrovne terénu. Do ešte čerstvého betónu sa zapichávajú zvislé roxory (oceľové prúty), ktoré neskôr prepoja pásy s debniacimi tvárnicami.
+*   Betón sa leje priamo z domiešavača alebo čerpadlom na betón.
+*   Používa sa betón predpísanej triedy, napríklad C16/20 alebo C20/25.
+*   Základové pásy sa zalievajú približne do úrovne terénu. Do čerstvého betónu sa zapichnú zvislé oceľové prúty, ktoré neskôr prepoja pásy s debniacimi tvárnicami.
 
-## 5. Murovanie z debniacich tvárnic (DT-čiek)
+## 5. Murovanie z debniacich tvárnic
 
-Ak staviame dom, ktorého podlaha má byť nad úrovňou terénu, na základové pásy sa murujú debniace (šalovacie) tvárnice (známe aj ako DT-čka). 
+Ak má byť podlaha domu nad úrovňou terénu, na základové pásy sa murujú debniace (šalovacie) tvárnice.
 
-Tvárnice sa ukladajú na seba nasucho, do každej vrstvy sa vkladá vodorovná oceľová výstuž (roxory) a následne sa ich dutiny zalejú riedkym betónom. Tým sa vytvorí súvislý, extrémne pevný železobetónový múr (tzv. sokel). Výška tohto múru závisí od toho, ako vysoko nad terénom chcete mať podlahu domu (často sú to 2 až 4 rady DT-čiek).
+Tvárnice sa ukladajú na seba nasucho, do každej vrstvy sa vkladá vodorovná oceľová výstuž a dutiny sa zalejú betónom. Vznikne súvislý a veľmi pevný železobetónový múr – sokel. Jeho výška závisí od toho, ako vysoko nad terénom má byť podlaha domu, často sú to 2 až 4 rady tvárnic.
 
 ## 6. Zásyp a zhutnenie podložia
 
-Priestor, ktorý vznikol medzi stenami z DT-čiek, je potrebné vyplniť. Na to sa zvyčajne používa vykopaná hlušina z pozemku (ak je vhodná), prípadne sa dováža lomový kameň (makadam).
+Priestor medzi stenami z debniacich tvárnic treba vyplniť. Zvyčajne sa na to použije vykopaná zemina z pozemku, ak je vhodná, alebo sa dovezie kamenivo.
 
-**Kritický bod:** Tento zásyp sa musí hutniť vibračnou doskou (tzv. "žabou") po vrstvách (každých 15-20 cm). Ak sa [zemné práce](/sluzby/vykopove-zemne-prace) odfláknu a zásyp sa nezhutní, po zaliatí dosky môže zemina klesnúť. Vznikne dutina, kvôli ktorej môže základová doska vo vnútri domu prasknúť.
+**Kritický bod:** Zásyp sa musí hutniť vibračnou doskou po vrstvách, každých 15 až 20 cm. Ak sa [zemné práce](/sluzby/vykopove-zemne-prace) urobia nedbalo a zásyp sa nezhutní, zemina môže po zaliatí dosky klesnúť. Vznikne dutina a základová doska vo vnútri domu môže prasknúť.
 
-Na zhutnený povrch sa ukladajú ležaté rozvody kanalizácie (kanalizačné rúry) s presným spádom a zasypú sa vrstvou jemného štrku.
+Na zhutnený povrch sa ukladajú ležaté rozvody kanalizácie s presným spádom a zasypú sa vrstvou jemného štrku.
 
-## 7. Armovanie (výstuž) a betónovanie základovej dosky
+## 7. Armovanie a betónovanie základovej dosky
 
-Sme vo finále. Na zhutnený povrch a siete sa ukladajú oceľové zvárané siete (tzv. kari rohože). Tieto siete tvoria "kostru" základovej dosky a zabraňujú jej praskaniu. Siete sa musia navzájom prekrývať a musia byť podložené plastovými alebo betónovými dištančnými podložkami, aby po zaliatí ostali presne v strede betónu, nie na dne.
+Na zhutnený povrch a siete sa ukladajú oceľové zvárané siete (kari siete). Tvoria kostru základovej dosky a bránia jej praskaniu. Siete sa musia navzájom prekrývať a byť podložené dištančnými podložkami, aby po zaliatí ostali presne v strede betónu, nie na dne.
 
-Nasleduje finálne betónovanie samotnej základovej dosky (v hrúbke zvyčajne 15 cm). Betón sa vylieva pomocou pumpy, následne sa rovnomerne sťahuje (niveluje) a vibruje pomocou ponorného vibrátora, čím sa z neho dostanú vzduchové bubliny a zvýši sa jeho pevnosť.
+Nasleduje betonáž samotnej základovej dosky, zvyčajne v hrúbke 15 cm. Betón sa vylieva čerpadlom, rovnomerne sa stiahne a zhutní ponorným vibrátorom, ktorý z neho vytlačí vzduchové bubliny a zvýši jeho pevnosť.
+
+Ako to vyzerá v praxi, ukazuje fotodokumentácia našej [hrubej stavby v Dúbravách](/portfolio/hruba-stavba-dubravy) od výkopu základových rýh až po strechu.
 
 ## 8. Ošetrovanie čerstvého betónu
 
-Práca nekončí odchodom domiešavačov. Proces "zrenia" betónu si vyžaduje pozornosť. Počas horúcich letných dní je nutné dosku pravidelne polievať vodou, aby betón nepreschol príliš rýchlo a nepopraskal. 
+Práca nekončí odchodom domiešavačov. Betón počas zrenia potrebuje pozornosť. V horúcich letných dňoch treba dosku pravidelne polievať, aby nevyschla príliš rýchlo a nepopraskala.
 
-Po cca 28 dňoch dosahuje betón svoju plnú normovanú pevnosť a je pripravený na aplikáciu hydroizolácie a začiatok [murárskych prác](/sluzby/murarske-prace).
-
----
+Približne po 28 dňoch dosahuje betón plnú normovú pevnosť a je pripravený na hydroizoláciu a začiatok [murárskych prác](/sluzby/murarske-prace).
 
 ## Často kladené otázky (FAQ)
 
 **1. Koľko stoja základy domu?**
-Cena za **základy domu** sa zvyčajne pohybuje v rozmedzí od 90 do 130 € za meter štvorcový zastavanej plochy (pri štandardnom zakladaní na rovine). Pre dom so zastavanou plochou 120 m² je to zhruba 11 000 až 16 000 €. 
+Podľa našej kalkulačky približne 165 € za m² zastavanej plochy v strednom štandarde, v rozpätí 140 až 223 € podľa štandardu. Pri dome so zastavanou plochou 120 m² je to približne 19 800 €. Platí to pre rovinatý pozemok bez pivnice, svah, skala alebo spodná voda cenu zvyšujú.
 
 **2. Ako dlho trvá urobiť základy?**
-Pri dobrej organizácii, priaznivom počasí a plynulých dodávkach betónu sa štandardné základy pre rodinný dom dajú zrealizovať za 1 až 2 týždne. K tomu treba pripočítať čas technologickej prestávky na zretie betónu.
+Zemné práce a základy bežného rodinného domu trvajú pri dobrom počasí a plynulých dodávkach betónu približne 2 až 4 týždne. K tomu treba pripočítať technologickú prestávku na zretie betónu.
 
 **3. Musím základovú dosku polievať aj na jar alebo na jeseň?**
-Na jar a na jeseň, keď slnko nehreje tak agresívne, intenzívne polievanie často nie je nutné. Dôležité je zabrániť extrémnemu vysušovaniu vetrom. Ak prší, príroda to urobí za vás.
+Na jar a na jeseň, keď slnko nehreje tak silno, intenzívne polievanie často nie je potrebné. Dôležité je zabrániť rýchlemu vysušovaniu vetrom. Ak prší, príroda to urobí za vás.
 
-**4. Sú penové sklo alebo zakladanie na doske bez pásov dobré riešenie?**
-Zakladanie priamo na železobetónovej doske podloženej tepelnou izoláciou (napr. penovým sklom alebo XPS) je moderný a vysoko energeticky efektívny spôsob (ideálny pre pasívne domy). Eliminuje tepelné mosty smerom do zeme, ale je technologicky náročnejší a často finančne nákladnejší.
+**4. Je dobrým riešením zakladanie na doske bez pásov, napríklad na penovom skle?**
+Zakladanie priamo na železobetónovej doske podloženej tepelnou izoláciou, napríklad penovým sklom alebo XPS, je energeticky veľmi efektívne a hodí sa aj pre pasívne domy. Odstraňuje tepelné mosty smerom do zeme, je však technologicky náročnejšie a často drahšie.
 
 **5. Môžem si urobiť základy svojpomocne?**
-Teoreticky áno, ale úprimne to neodporúčame. Akákoľvek chyba (zlý spád kanalizácie, nedostatočne zhutnený podklad, odfláknuté železo) sa vám neskôr vráti ako bumerang. Monolitické konštrukcie patria do rúk profesionálov.
+Teoreticky áno, no neodporúčame to. Chyby ako zlý spád kanalizácie, nedostatočne zhutnený podklad alebo zle uložená výstuž sa neskôr opravujú veľmi draho. Základy patria do rúk odborníkov.
 
 **6. Prečo základová doska niekedy praskne?**
-Mikrotrhlinky na povrchu dosky (vlasové trhliny spôsobené zmršťovaním betónu pri rýchlom vyschnutí) sú zvyčajne neškodné. Široké a hlboké praskliny však značia problém – zle zhutnený podklad, chýbajúce železo v betóne, alebo použitie nekvalitnej betónovej zmesi.
+Vlasové trhlinky na povrchu, ktoré vznikajú zmršťovaním betónu pri rýchlom vysychaní, sú zvyčajne neškodné. Široké a hlboké praskliny však znamenajú problém – zle zhutnený podklad, chýbajúcu výstuž alebo nekvalitný betón.
 
 **7. Kedy sa ukladá hydroizolácia a protiradónová izolácia?**
-Aplikuje sa na čistý a vyzretý betón základovej dosky (zvyčajne formou natavenia asfaltových pásov) tesne predtým, ako sa začnú ťahať prvé rady obvodových múrov.
+Na čistý a vyzretý betón základovej dosky, zvyčajne natavením asfaltových pásov, tesne predtým, ako sa začnú murovať prvé rady obvodových múrov.
 
----
+## Máte záujem o cenovú ponuku pre svoj dom?
 
-## Zhrnutie
+**Ak už máte projekt,** pošlite nám ho spolu s adresou pozemku. Pozemok si prejdeme a po obhliadke pripravíme nezáväznú položkovú ponuku.
 
-Dúfame, že už máte lepšiu predstavu o tom, **ako sa robia základy domu**. Je to proces vyžadujúci nekompromisnú presnosť, kvalitné materiály a skúsenosti s monolitickými prácami. Podcenenie geologického prieskumu, šetrenie na oceli či nedostatočné zhutnenie podložia sa na stavbe skôr či neskôr prejavia fatálnymi následkami.
+**Ak projekt ešte nemáte,** stačí adresa pozemku a vaša predstava o dome – veľkosť, počet podlaží a štandard. Projekt vám vypracujeme a ponuku pripravíme podľa neho.
 
-V **MNSP | Stavby a rekonštrukcie** berieme základy doslova ako posvätnú vec. Naši odborníci garantujú statickú bezpečnosť, stopercentné dodržanie projektu a precízne remeselné vyhotovenie. Ak hľadáte firmu, ktorej môžete pri stavbe vášho domu dôverovať od prvého výkopu, [kontaktujte nás](/kontakt). Radi s vami preberieme váš projekt.`,
+Robíme aj samotné [zakladanie stavieb](/sluzby/zakladanie-stavieb) ako samostatnú zákazku. [Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-05-20T08:00:00+01:00',
-    updatedAt: '2026-05-20T08:00:00+01:00',
-    imageUrl: '/Blog/ako-sa-robia-zaklady-domu.webp'
+    updatedAt: '2026-09-24T08:00:00+02:00',
+    imageUrl: '/Blog/zaklady-domu.webp'
   },
   {
     id: 'stavebne-povolenie-krok-za-krokom-v-roku-2026',
