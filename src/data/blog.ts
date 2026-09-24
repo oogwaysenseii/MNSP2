@@ -683,97 +683,124 @@ Ak nechcete riskovať peniaze, čas a nervy s neoverenými partiami majstrov, zv
   {
     id: 'ako-pripravit-pozemok-na-stavbu-rodinneho-domu',
     title: 'Ako pripraviť pozemok na stavbu rodinného domu',
-    excerpt: 'Zistite, čo všetko zahŕňa príprava pozemku na stavbu, ako prebiehajú zemné práce a prečo by ste tento krok nemali podceniť.',
+    excerpt: 'Čo urobiť s pozemkom pred stavbou domu: vytýčenie, výrub, prípojky, ornica, výkopy a prístupová cesta. S orientačnými nákladmi a kontrolným zoznamom.',
     category: 'Stavebné procesy',
     tags: ['Stavebné procesy', 'Stavba domu'],
-    content: `Kúpa vytúženej parcely je iba prvým krokom na dlhej ceste za novým domovom. Skôr než sa na mieste vyleje prvá miešačka betónu, musí prebehnúť dôkladná **príprava pozemku na stavbu**. Tento proces je často laikmi podceňovaný, avšak akékoľvek chyby v tejto fáze sa môžu nepríjemne predražiť počas realizácie základov.
+    content: `Kúpa parcely je prvý krok na ceste k novému domu. Skôr než sa na pozemku vyleje prvý betón, musí prebehnúť dôkladná **príprava pozemku na stavbu**. Laici ju často podceňujú, no chyby v tejto fáze sa neskôr predražia pri základoch.
 
-V tomto článku sa detailne pozrieme na to, čo všetko príprava pozemku na stavbu zahŕňa v roku 2026, od prvých geodetických meraní až po samotné [výkopové a zemné práce](/sluzby/vykopove-zemne-prace).
+V tomto článku nájdete, čo všetko príprava pozemku zahŕňa – od vytýčenia stavby geodetom až po [výkopové a zemné práce](/sluzby/vykopove-zemne-prace) – a na konci kontrolný zoznam, čo má byť hotové pred príchodom bagra.
 
-## 1. Administratívna príprava a geodetické zameranie
+## Čo overiť ešte pred kúpou pozemku
 
-Ešte pred príchodom ťažkej techniky musíte mať v rukách platné stavebné povolenie a schválený projekt. Prvým reálnym krokom priamo na parcele je práca geodeta.
+Ak pozemok ešte len vyberáte, overte si najprv tri veci:
+
+*   **Územný plán:** Územnoplánovacia informácia (ÚPI) od obce vám povie, čo a ako veľké na pozemku smiete postaviť.
+*   **Siete a prístup:** Sú inžinierske siete na hranici pozemku a vedie k nemu vysporiadaná prístupová cesta?
+*   **Podložie a terén:** Svah, navážka alebo vysoká hladina spodnej vody výrazne predražia základy.
+
+Podrobnejšie to rozoberáme v článku [Najčastejšie chyby pri stavbe domu](/blog/najcastejsie-chyby-pri-stavbe-rodinneho-domu). Nasledujúce kroky sa týkajú pozemku, ktorý už máte a na ktorom sa chystáte stavať.
+
+## 1. Povolenie a geodetické zameranie
+
+So zemnými prácami sa začína až vtedy, keď máte rozhodnutie o stavebnom zámere a overený projekt stavby. Takto postup upravuje nový stavebný zákon (č. 25/2025 Z. z.). Prvým krokom priamo na pozemku je potom práca geodeta.
 
 ### Zameranie výškopisu a polohopisu
-Geodet zameria presné hranice pozemku podľa katastrálnej mapy. Vyhnete sa tak fatálnej [chybe pri stavbe domu](/blog/najcastejsie-chyby-pri-stavbe-rodinneho-domu), ktorou by bolo umiestnenie stavby do ochranného pásma alebo nedodržanie zákonom stanovených odstupov od susedov. 
+Geodet zameria presné hranice pozemku podľa katastrálnej mapy. Predídete tak [chybe](/blog/najcastejsie-chyby-pri-stavbe-rodinneho-domu), ktorá sa ťažko napráva – umiestneniu stavby do ochranného pásma alebo nedodržaniu predpísaných odstupov od susedov.
 
 ### Vytýčenie stavby
-Geodet na základe projektovej dokumentácie vytýči presné rohy budúcej stavby. Do zeme zatlčie drevené kolíky (tzv. lavičky), medzi ktoré sa natiahne špagát. Tento obrys slúži ako presná vodiaca os pre bagristov, ktorí budú realizovať výkopové práce.
+Geodet podľa projektovej dokumentácie vytýči presné rohy budúcej stavby. Do zeme zatlčie drevené kolíky, takzvané lavičky, medzi ktoré sa natiahne špagát. Tento obrys slúži ako vodiaca os pre strojníka pri výkopoch.
 
 ## 2. Čistenie pozemku a výrub drevín
 
-Nezriedka je kúpený pozemok zarastený náletovými drevinami, vysokou trávou alebo na ňom stoja staré hospodárske budovy. Dôkladná príprava pozemku na stavbu vyžaduje jeho kompletné vyčistenie.
+Kúpený pozemok býva zarastený náletovými drevinami a vysokou trávou, prípadne na ňom stoja staré hospodárske budovy. Pred stavbou ho treba vyčistiť.
 
-*   **Odstránenie porastu:** Krovinorezy a motorové píly pripravia cestu pre ťažkú techniku.
-*   **Výrub stromov:** Pozor, na výrub stromov s obvodom kmeňa nad 40 cm (meraných vo výške 130 cm nad zemou) zvyčajne potrebujete povolenie od obce.
-*   **Búracie práce:** Ak na pozemku stojí stará stavba, ktorú je potrebné odstrániť, vyžaduje sa povolenie na odstránenie stavby a zabezpečenie ekologickej likvidácie stavebného odpadu (sutiny). V **MNSP** dokážeme okrem novostavieb realizovať aj kompletnú [rekonštrukciu](/blog/rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet) starších objektov.
+*   **Odstránenie porastu:** Krovinorezy a motorové píly uvoľnia cestu pre techniku.
+*   **Výrub stromov:** Na výrub stromov s obvodom kmeňa nad 40 cm, meraným vo výške 130 cm nad zemou, zvyčajne potrebujete súhlas obce. Požiadajte oň včas.
+*   **Búracie práce:** Ak na pozemku stojí stará stavba, aj jej odstránenie si podľa nového stavebného zákona vyžaduje konanie na stavebnom úrade. K búraniu patrí aj odvoz a legálna likvidácia sute.
 
-*Praktický príklad:* Klient si zakúpil pozemok so zvyškami starých betónových základov. Odstránenie tohto skrytého problému hydraulickým kladivom a odvoz sutiny na skládku predĺžili prípravu o týždeň a navýšili rozpočet o 2 000 €.
+*Príklad:* Na pozemku sa pod trávou nájdu zvyšky starých betónových základov. Ich rozbitie hydraulickým kladivom a odvoz sute na skládku môže prípravu predĺžiť o týždeň a navýšiť rozpočet rádovo o tisíce eur.
+
+**S čím pomôžeme:** [Búracie práce](/sluzby/buracie-prace) robíme vlastnou technikou vrátane odvozu a likvidácie sute.
 
 ## 3. Prípojky a inžinierske siete
 
-Ak nemáte siete priamo na pozemku, ich dobudovanie je jedným z najdôležitejších krokov.
+Ak siete nie sú priamo na pozemku, ich zabezpečenie patrí k najdôležitejším krokom prípravy.
 
-*   **Dočasná elektrina:** Na stavbu potrebujete stavebný rozvádzač (tzv. antoníček). Bez elektriny nemôžu fungovať miešačky, zváračky ani iné náradie.
-*   **Stavebná voda:** Voda je nevyhnutná už pri samotnom betonárskom procese. Ak nie je k dispozícii verejný vodovod, dočasným riešením môže byť vyvŕtanie studne, ktorú neskôr využijete na zavlažovanie záhrady.
-*   **Kanalizácia:** V ideálnom prípade sa dom pripája na verejnú kanalizáciu. Alternatívou je žumpa alebo domová čistiareň odpadových vôd (ČOV).
+*   **Stavebná elektrina:** Na stavbu potrebujete stavebný rozvádzač. Bez elektriny nefungujú miešačky, zváračky ani ďalšie náradie.
+*   **Stavebná voda:** Voda je potrebná už pri betonáži. Ak nie je k dispozícii verejný vodovod, dočasným riešením môže byť studňa, ktorú neskôr využijete na zavlažovanie záhrady.
+*   **Kanalizácia:** Ideálne je napojenie na verejnú kanalizáciu. Alternatívou je žumpa alebo domová čistiareň odpadových vôd.
+
+**S čím pomôžeme:** Pri stavbe na kľúč sú prípojky súčasťou našej dodávky a výkopy pre ne robíme vlastnou technikou.
 
 ## 4. Stiahnutie ornice
 
-Keď je pozemok čistý a vytýčený, nastupuje bager. Prvým zemným zásahom je stiahnutie vrchnej vrstvy úrodnej pôdy, tzv. ornice.
+Keď je pozemok vyčistený a vytýčený, nastupuje bager. Prvým zemným zásahom je stiahnutie vrchnej vrstvy úrodnej pôdy – ornice.
 
-Ornica (zvyčajne v hrúbke 20 až 30 cm) je mimoriadne cenná pôda, ktorú by bolo hriechom zmiešať so spodnou hlušinou. Strojník ornicu opatrne zhrnie a uloží na vopred určené miesto na pozemku, tzv. deponíum. Táto zemina sa neskôr využije pri finálnych terénnych úpravách a sadových úpravách záhrady po dokončení [stavby domu na kľúč](/blog/dom-na-kluc-alebo-hruba-stavba-kompletne-porovnanie).
+Ornica, zvyčajne v hrúbke 20 až 30 cm, je cenná pôda, ktorú nemá zmysel miešať so spodnou zeminou. Strojník ju zhrnie a uloží na vopred určené miesto na pozemku, takzvané deponium. Neskôr sa využije pri terénnych a sadových úpravách po dokončení stavby.
 
 ## 5. Výkopové práce pre základy
 
-Po stiahnutí ornice sa podľa lavičiek začnú kopať samotné základové pásy. 
+Po stiahnutí ornice sa podľa lavičiek kopú základové pásy. Príprava pozemku tu plynule prechádza do hrubej stavby.
 
-Príprava pozemku na stavbu v tomto bode plynule prechádza do realizácie hrubej stavby. Výkopy pre [monolitické konštrukcie](/sluzby/monoliticke-konstrukcie) musia byť presné – steny výkopu by mali byť kolmé a dno rovné. Hĺbka závisí od nezámrznej hĺbky v danej lokalite (na Slovensku je to zvyčajne od 80 do 120 cm).
+Výkopy pre [základové konštrukcie](/sluzby/monoliticke-konstrukcie) musia byť presné – steny kolmé a dno rovné. Hĺbka závisí od nezámrznej hĺbky v danej lokalite, na Slovensku je to zvyčajne 80 až 120 cm. Ako pokračuje betonáž, opisujeme v článku [Ako sa robia základy domu](/blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca).
 
-Vykopaná zemina (hlušina) sa buď odváža na riadenú skládku, alebo sa necháva na pozemku na neskoršie vyrovnanie terénu, ak to projekt a veľkosť pozemku dovoľujú.
+Vykopaná zemina sa buď odvezie na riadenú skládku, alebo ostane na pozemku na neskoršie vyrovnanie terénu, ak to projekt a veľkosť pozemku dovoľujú.
+
+**S čím pomôžeme:** [Výkopové a zemné práce](/sluzby/vykopove-zemne-prace) robíme vlastnou technikou a so skúsenými strojníkmi.
 
 ## 6. Prístupová cesta a zázemie staveniska
 
-Na stavbu budú prichádzať ťažké nákladné autá s materiálom a domiešavače s betónom. Ak je prístup na pozemok nespevnený, po prvom daždi sa premení na neprejazdné bahnisko, v ktorom ťažké stroje zapadnú.
+Na stavbu budú chodiť nákladné autá s materiálom a domiešavače s betónom. Nespevnený prístup sa po prvom daždi zmení na blato, v ktorom ťažké stroje zapadnú.
 
-*   **Spevnenie prístupu:** Často sa realizuje vysypaním hrubého makadamu, po ktorom môžu bezpečne prejsť aj 40-tonové vozidlá.
-*   **Zázemie pre robotníkov:** Nezabudnite na prenosnú toaletu (napr. TOI TOI), prípadne menšiu stavebnú bunku alebo uzamykateľný kontajner na bezpečné skladovanie náradia.
-*   **Oplotenie:** Ak to podmienky vyžadujú (rušná ulica, ochrana materiálu pred krádežou), je vhodné pozemok aspoň provizórne oplotiť a uzamknúť.
+*   **Spevnenie prístupu:** Najčastejšie sa vysype hrubým kamenivom, po ktorom bezpečne prejdú aj ťažké nákladné vozidlá.
+*   **Zázemie pre robotníkov:** Prenosná toaleta a stavebná bunka alebo uzamykateľný kontajner na náradie.
+*   **Oplotenie:** Pri rušnej ulici alebo kvôli ochrane materiálu je vhodné pozemok aspoň provizórne oplotiť.
 
----
+V našom kraji je prístup častou témou. K lazom na Podpoľaní vedú úzke a strmé cesty, preto prístupovú cestu vždy prejdeme ešte pred cenovou ponukou a podľa nej volíme veľkosť techniky a spôsob dopravy betónu. Miestne podmienky opisujeme na stránke [Kde pôsobíme](/lokality).
+
+## Kontrolný zoznam: pred príchodom bagra
+
+*   Máte rozhodnutie o stavebnom zámere a overený projekt stavby.
+*   Stavba je vytýčená oprávneným geodetom.
+*   Máte súhlas na výrub stromov, ak ho potrebujete.
+*   Stará stavba je odstránená a suť odvezená.
+*   Na pozemku je stavebná elektrina a voda.
+*   Prístupová cesta unesie nákladné autá a domiešavač.
+*   Je určené miesto na uloženie ornice a vykopanej zeminy.
+*   Je zabezpečená toaleta a uzamykateľný sklad.
 
 ## Často kladené otázky (FAQ)
 
 **1. Koľko stojí príprava pozemku na stavbu?**
-Náklady sú veľmi individuálne. Ak máte rovinatý, čistý pozemok so sieťami, príprava vás bude stáť od 1 500 do 3 000 € (geodet, stiahnutie ornice, bunka). Ak musíte riešiť výrub, prípojky a spevnenie dlhej prístupovej cesty, náklady sa môžu vyšplhať na 5 000 až 10 000 €.
+Náklady sú individuálne. Pri rovinatom, čistom pozemku so sieťami počítajte približne s 1 500 až 3 000 € (geodet, stiahnutie ornice, zázemie staveniska). Ak treba riešiť výrub, prípojky a spevnenie dlhej prístupovej cesty, náklady môžu stúpnuť na 5 000 až 10 000 €.
 
-**2. Môžem začať so stiahnutím ornice bez stavebného povolenia?**
-Nie. Zákon hovorí jasne – akékoľvek terénne úpravy a zemné práce súvisiace s prípravou pre stavbu sa považujú za začatie stavby a vyžadujú si platné stavebné povolenie.
+**2. Môžem stiahnuť ornicu ešte pred povolením stavby?**
+Nie. Zemné práce súvisiace s prípravou stavby sa považujú za jej začatie, preto s nimi počkajte, kým máte rozhodnutie o stavebnom zámere a overený projekt stavby.
 
-**3. Kam mám dať vykopanú hlušinu, ak ju nechcem na pozemku?**
-Hlušina sa musí odviezť na oficiálnu, riadenú skládku, ktorá za uloženie zeminy účtuje poplatky (vypočítané za tonu). Často sa však dá dohodnúť s obcou alebo susedmi, ktorí práve potrebujú zaviezť nejakú nerovnosť na svojich pozemkoch.
+**3. Kam dať vykopanú zeminu, ak ju nechcem na pozemku?**
+Zemina sa odváža na riadenú skládku, ktorá za jej uloženie účtuje poplatok podľa hmotnosti. Niekedy sa dá dohodnúť s obcou alebo susedmi, ktorí potrebujú zaviezť nerovnosti na svojich pozemkoch.
 
-**4. Aký veľký bager budem potrebovať?**
-Pre stiahnutie ornice a hĺbenie základov štandardného domu je ideálny traktorbagre (napr. JCB 3CX) alebo kolesové otočné rýpadlá (okolo 8-10 ton). Mini-bagre sú vhodné skôr na menšie prípojky a stiesnené priestory.
+**4. Aký veľký bager bude potrebný?**
+Na stiahnutie ornice a výkop základov bežného domu sa používa traktorbager alebo kolesové rýpadlo okolo 8 až 10 ton. Minibager sa hodí na prípojky a stiesnené priestory. Veľkosť techniky volíme podľa prístupu na pozemok.
 
-**5. Čo robiť, ak pri výkope narazíme na skalu?**
-Vtedy nastupuje ťažšia technika. Bager sa musí vybaviť hydraulickým búracím kladivom, ktorým skalu postupne rozbije. To však výrazne spomaľuje proces a zvyšuje cenu zemných prác.
+**5. Čo ak pri výkope narazíme na skalu?**
+Vtedy treba ťažšiu techniku – bager s hydraulickým búracím kladivom, ktorým sa skala postupne rozbije. Práce sa tým spomalia a predražia. S tvrdším podložím sa stretávame napríklad v okolí Detvy a na Podpoľaní.
 
-**6. Je povinné zameranie geodetom, nemôžem si rohy odmerať sám pásmom?**
-Určite nie. Vytyčovací protokol od autorizovaného geodeta je úradný dokument, ktorý budete potrebovať ku kolaudácii. Samovoľné zameranie je protizákonné a hrozia pri ňom odchýlky, pre ktoré by ste mohli v budúcnosti čeliť súdnym sporom so susedmi.
+**6. Musí stavbu vytýčiť geodet, alebo si rohy môžem odmerať sám?**
+Stavbu má vytýčiť oprávnený geodet. Vytyčovací protokol je dokument, ktorý budete potrebovať, a pri vlastnom meraní hrozia odchýlky, ktoré môžu neskôr viesť k sporom so susedmi.
 
 **7. Kedy je najlepšie obdobie na prípravu pozemku a výkopy?**
-Najlepším obdobím je jar (marec/apríl), kedy pôda už nie je zamrznutá. Vďaka tomu môžete plynule nadviazať vylievaním základov a samotnou [stavbou domu krok za krokom](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom). Vyhnite sa obdobiam dlhotrvajúcich dažďov.
+Najvhodnejšia je jar, marec alebo apríl, keď pôda už nie je zamrznutá. Na výkopy potom plynule nadviaže betonáž základov a ďalšie kroky stavby. Vyhnite sa obdobiam dlhotrvajúcich dažďov.
 
----
+## Máte záujem o cenovú ponuku pre svoj dom?
 
-## Zhrnutie
+**Ak už máte projekt,** pošlite nám ho spolu s adresou pozemku. Pozemok si prejdeme a po obhliadke pripravíme nezáväznú položkovú ponuku.
 
-Profesionálna **príprava pozemku na stavbu** vytvára pevný základ pre celý nasledujúci stavebný proces. Zahŕňa úradné geodetické zamerania, vyčistenie parcely, zriadenie prípojok, odborné stiahnutie ornice a vytvorenie zázemia pre stavebnú techniku a pracovníkov. Neodborné a unáhlené kroky v tejto fáze sa môžu vypomstiť v podobe zbytočných zdržaní a prehnaných nákladov na sanácie chýb.
+**Ak projekt ešte nemáte,** stačí adresa pozemku a vaša predstava o dome – veľkosť, počet podlaží a štandard. Projekt vám vypracujeme a ponuku pripravíme podľa neho.
 
-Spoločnosť **MNSP | Stavby a rekonštrukcie** disponuje vlastnou technikou a skúsenými operátormi. V rámci realizácie stavieb na kľúč preberáme kompletnú zodpovednosť aj za počiatočné terénne a zemné práce. S nami máte istotu, že vaša stavba začne presne, bezpečne a načas. [Kontaktujte nás pre bezplatnú konzultáciu](/kontakt) a my pripravíme váš pozemok na zrod nového domova.`,
+[Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-05-25T08:00:00+01:00',
-    updatedAt: '2026-05-25T08:00:00+01:00',
+    updatedAt: '2026-09-24T08:00:00+02:00',
     imageUrl: '/Blog/ako-pripravit-pozemok-na-stavbu-rodinneho-domu.webp'
   },
   {
