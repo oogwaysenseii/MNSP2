@@ -429,7 +429,7 @@ Staviame všetky tri varianty – hrubú stavbu, holodom aj dom na kľúč.
 Orientačnú cenu si medzitým môžete vypočítať v [kalkulačke](/kalkulacka). [Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-06-05T08:00:00+01:00',
     updatedAt: '2026-09-24T08:00:00+02:00',
-    imageUrl: '/Blog/stavba-na-kluc-vs-hruba-stavba.webp'
+    imageUrl: '/Blog/dom-na-kluc-alebo-hruba-stavba.webp'
   },
   {
     id: 'ako-si-vybrat-stavebnu-firmu-12-veci-ktore-rozhoduju',
