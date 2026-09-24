@@ -9,7 +9,7 @@ export const blogPostsData: BlogPost[] = [
     tags: ['Rodinné domy', 'Stavba domu'],
     publishedAt: '2026-06-27T08:00:00+01:00',
     updatedAt: '2026-09-23T08:00:00+01:00',
-    imageUrl: '/Blog/kolko-stoji-stavba-domu-v-roku-2026.webp',
+    imageUrl: '/Blog/cena-stavby-domu-2026.webp',
     content: `Pri murovanom rodinnom dome na kľúč v strednom štandarde rátame v roku 2026 orientačne s **1 640 € za m² podlahovej plochy**. Jednopodlažný dom so 120 m² tak vychádza približne na 187 000 až 213 000 €. Uzavretá hrubá stavba z toho tvorí zhruba polovicu.
 
 Čísla v článku vychádzajú z tých istých položiek ako naša [cenová kalkulačka](/kalkulacka), takže si ich môžete hneď prepočítať na vlastnú plochu.
@@ -576,109 +576,124 @@ Staviame rodinné domy na kľúč, holodomy aj hrubé stavby v Banskobystrickom 
   },
   {
     id: 'najcastejsie-chyby-pri-stavbe-rodinneho-domu',
-    title: 'Najčastejšie chyby pri stavbe rodinného domu a ako sa im vyhnúť',
-    excerpt: 'Vyhnite sa drahým a časovo náročným chybám pri stavbe domu. Zhrnuli sme najčastejšie omyly, ktoré robia stavebníci, a ponúkame overené rady, ako im predísť.',
+    title: 'Najčastejšie chyby pri stavbe domu a ako sa im vyhnúť',
+    excerpt: '7 chýb, ktoré stavbu domu predražia alebo zdržia – od pozemku a projektu po rozpočet a dozor – a čo urobiť, aby ste sa im vyhli.',
     category: 'Rodinné domy',
     tags: ['Rodinné domy', 'Stavba domu'],
-    content: `Cesta k vlastnému bývaniu je často dláždená dobrými úmyslami, no v realite aj mnohými prekážkami. Z našich dlhoročných skúseností v **MNSP | Stavby a rekonštrukcie** vieme, že niektoré **chyby pri stavbe domu** sa opakujú so železnou pravideľnosťou. Tieto omyly dokážu stavbu nielen výrazne predražiť, ale aj predĺžiť a znepríjemniť samotné bývanie v novom dome.
+    content: `Z našich dlhoročných skúseností v **MNSP | Stavby a rekonštrukcie** vieme, že niektoré **chyby pri stavbe domu** sa opakujú znova a znova. Dokážu stavbu predražiť, predĺžiť a skomplikovať aj samotné bývanie v novom dome.
 
-Pripravili sme pre vás prehľad tých najčastejších zlyhaní, aby ste sa im mohli oblúkom vyhnúť.
+Pripravili sme prehľad siedmich najčastejších chýb – kedy vznikajú a ako sa im vyhnúť.
+
+## Prehľad: 7 chýb na jeden pohľad
+
+| Chyba | Kedy vzniká | Ako sa jej vyhnúť |
+| :--- | :--- | :--- |
+| 1. Nevhodný pozemok | pred kúpou | územnoplánovacia informácia, list vlastníctva, obhliadka s odborníkom |
+| 2. Podcenený projekt | pri projekte | dostatok času na projekt, úprava a osadenie katalógového projektu |
+| 3. Rozpočet bez rezervy | pri plánovaní | položkový rozpočet a rezerva 10 – 15 % |
+| 4. Šetrenie na nesprávnych miestach | pri výbere materiálov | nešetriť na tom, čo sa nedá vymeniť |
+| 5. Zlá orientácia domu | pri osadení domu | obytné miestnosti na juh, tienenie okien |
+| 6. Chýbajúca zmluva o dielo | pred začatím prác | písomná zmluva s cenou, termínmi a zárukou |
+| 7. Chýbajúci stavebný dozor | počas celej stavby | nezávislý dozor od začiatku |
 
 ## 1. Výber nevhodného pozemku
 
-Úplne prvý krok a hneď prvá veľká pasca. Veľa ľudí kupuje pozemok na základe emócií (krásny výhľad, blízkosť lesa), pričom ignorujú racionálne technické parametre.
+Hneď prvý krok býva prvou pascou. Veľa ľudí kupuje pozemok podľa emócií – pekný výhľad, blízkosť lesa – a technické parametre prehliadne.
 
-*   **Chýbajúce siete:** Ak inžinierske siete nie sú na hranici pozemku, ich dobudovanie (najmä ak ide cez cudzie pozemky) vás môže stáť aj viac ako 10 000 €.
-*   **Geologické problémy:** Kúpa lacného pozemku na svahu alebo na navážke či s vysokou hladinou spodnej vody. To enormne predražuje [zakladanie stavby](/sluzby/monoliticke-konstrukcie).
-*   **Právne vady:** Nevysporiadané prístupové cesty alebo obmedzenia v územnom pláne (napr. zákaz stavby dvojpodlažných domov v danej zóne).
+*   **Chýbajúce siete:** Ak inžinierske siete nie sú na hranici pozemku, ich predĺženie – najmä cez cudzie pozemky – môže stáť aj viac ako 10 000 €. To je iná položka ako samotné prípojky z hranice pozemku k domu.
+*   **Geologické problémy:** Lacný pozemok na svahu, na navážke alebo s vysokou hladinou spodnej vody výrazne predraží [zakladanie stavby](/sluzby/monoliticke-konstrukcie).
+*   **Právne vady:** Nevysporiadané prístupové cesty alebo obmedzenia v územnom pláne, napríklad zákaz dvojpodlažných domov v danej zóne.
 
-**Ako sa tomu vyhnúť:** Pred kúpou pozemku si vždy vyžiadajte Územno-plánovaciu informáciu (ÚPI) od obce, overte si list vlastníctva k prístupovým cestám a ideálne si prizvite na obhliadku odborníka (architekta alebo zástupcu stavebnej firmy).
+V našom kraji je rozdiel medzi pozemkami veľký: okolie Banskej Bystrice je členité a stavby tam často potrebujú oporné múry, na lazoch na Podpoľaní zasa rozhoduje prístupová cesta pre techniku. Miestne podmienky opisujeme na stránke [Kde pôsobíme](/lokality).
+
+**Ako sa tomu vyhnúť:** Pred kúpou pozemku si vyžiadajte územnoplánovaciu informáciu (ÚPI) od obce, overte si list vlastníctva k prístupovým cestám a na obhliadku si prizvite odborníka – architekta alebo zástupcu stavebnej firmy. Viac v článku [Ako pripraviť pozemok na stavbu rodinného domu](/blog/ako-pripravit-pozemok-na-stavbu-rodinneho-domu).
 
 ## 2. Podcenenie projektovej dokumentácie
 
-"Kúpime lacný projekt z katalógu a na stavbe si to už nejako upravíme." Toto je pravdepodobne jedna z najdrahších viet v slovenskom stavebníctve.
+„Kúpime lacný projekt z katalógu a na stavbe si to už nejako upravíme.“ Táto veta patrí k najdrahším v stavebníctve.
 
-Každá zmena (posunutie okna, nosnej priečky či zmena strechy), ktorú robíte za pochodu, vyžaduje improvizáciu, často zmenu stavebného povolenia a generuje dodatočné náklady. Navyše, nekvalitný alebo neúplný projekt neobsahuje detaily riešenia tepelných mostov, čo v roku 2026 pri štandarde A0 znamená zásadný problém.
+Každá zmena za pochodu – posunutie okna, nosnej steny či zmena strechy – znamená improvizáciu, často nové konanie so stavebným úradom a dodatočné náklady. Nekvalitný projekt navyše nerieši detaily tepelných mostov, čo je pri energetickej triede A0, ktorú musí novostavba spĺňať, zásadný problém.
 
-**Ako sa tomu vyhnúť:** Venujte projektu maximum času. Radšej mesiac navyše dolaďujte detaily na papieri, než by ste mali búrať už postavené steny. Ak kupujete katalógový projekt, dajte si ho profesionálne upraviť a osadiť na pozemok. Ak sa rozhodujete akou formou stavať, prečítajte si naše porovnanie: [dom na kľúč alebo hrubá stavba](/blog/dom-na-kluc-alebo-hruba-stavba-kompletne-porovnanie).
+**Ako sa tomu vyhnúť:** Venujte projektu dostatok času. Radšej mesiac navyše dolaďujte detaily na papieri, než by ste mali búrať postavené steny. Ak kupujete katalógový projekt, dajte si ho odborne upraviť a osadiť na pozemok. Ak sa ešte rozhodujete, v akom rozsahu stavať, pomôže porovnanie [dom na kľúč alebo hrubá stavba](/blog/dom-na-kluc-alebo-hruba-stavba-kompletne-porovnanie).
 
-## 3. Príliš optimistický rozpočet a absencia rezervy
+## 3. Príliš optimistický rozpočet bez rezervy
 
-Mnohí stavebníci rátajú náklady tak, že sčítajú cenu materiálov z letákov stavebnín. Zábúdajú však na dôležité položky: cena práce, doprava materiálu, prenájom lešenia, žeriav, likvidácia odpadu a najmä vonkajšie úpravy (terasa, oplotenie, chodníky, prípojky).
+Mnohí stavebníci rátajú náklady tak, že sčítajú ceny materiálov z letákov stavebnín. Zabúdajú pritom na cenu práce, dopravu materiálu, prenájom lešenia, žeriav, likvidáciu odpadu a najmä na vonkajšie úpravy – terasu, oplotenie, chodníky a prípojky.
 
-Keď uprostred stavby dôjdu peniaze, nasledujú nepríjemné kompromisy v kvalite, alebo sa stavba úplne zastaví.
+Keď uprostred stavby dôjdu peniaze, nasledujú kompromisy v kvalite alebo sa stavba zastaví.
 
-**Ako sa tomu vyhnúť:** Vždy vyžadujte položkový rozpočet. K celkovej vypočítanej sume si vždy prirátajte **rezervu 15 až 20 %** na nepredvídané výdavky a infláciu. Pozrite si náš podrobný návod [koľko stojí stavba rodinného domu](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026).
+**Ako sa tomu vyhnúť:** Vyžadujte položkový rozpočet a k celkovej sume si prirátajte **rezervu 10 až 15 %** na nepredvídané výdavky. Orientačnú cenu si môžete vypočítať v našej [kalkulačke](/kalkulacka) a čo v nej nie je, nájdete v článku [Koľko stojí stavba rodinného domu](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026).
 
 ## 4. Šetrenie na nesprávnych miestach
 
-Je prirodzené, že chcete ušetriť, ale šetriť na konštrukciách, ktoré už nikdy nevymeníte, je fatálna chyba. 
+Šetriť chce každý. Šetriť na konštrukciách, ktoré už nikdy nevymeníte, sa však nevypláca.
 
-Typické **chyby pri stavbe domu** v rámci "šetriaceho režimu":
+Typické **chyby pri stavbe domu** v „úspornom režime“:
 *   Svojpomocné vylievanie základov bez statika a geodeta.
-*   Zámena kvalitného murovacieho materiálu za lacnejší, necertifikovaný ekvivalent.
-*   Šetrenie na hrúbke zateplenia, alebo na kvalite okien, čo sa vám okamžite vráti na vysokých účtoch za vykurovanie.
+*   Zámena kvalitného murovacieho materiálu za lacnejší, necertifikovaný.
+*   Šetrenie na hrúbke zateplenia alebo na kvalite okien, ktoré sa vráti na vysokých účtoch za vykurovanie.
 
-**Ako sa tomu vyhnúť:** Šetriť môžete na veciach, ktoré sa dajú neskôr ľahko vymeniť – drahý dizajnérsky luster, prémiová kuchynská doska, alebo špičkové interiérové dvere. Na hrubej stavbe, izoláciách, streche a technológiách (vykurovanie, rekuperácia) nikdy nerobte kompromisy.
+**Ako sa tomu vyhnúť:** Šetrite na veciach, ktoré sa dajú neskôr ľahko vymeniť – dizajnové svietidlo, prémiová kuchynská doska či drahé interiérové dvere. Na hrubej stavbe, izoláciách, streche a technológiách (vykurovanie, rekuperácia) kompromisy nerobte. Ako sa robí poctivý základ, opisujeme v článku [Ako sa robia základy domu](/blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca).
 
 ## 5. Zlá orientácia domu a miestností na svetové strany
 
-Dom otočený veľkými preskleniami na sever bude v zime tmavý a chladný. Dom bez vonkajšieho tienenia s obrovskými oknami na západ sa v lete premení na neobývateľný skleník. 
+Dom otočený veľkými oknami na sever bude v zime tmavý a chladný. Dom s veľkými oknami na západ a bez vonkajšieho tienenia sa v lete prehrieva.
 
-Mnoho ľudí osádza dom na pozemok len na základe toho, ako to dobre vyzerá od ulice, a ignorujú chod slnka.
+Mnoho ľudí osádza dom na pozemok podľa toho, ako vyzerá od ulice, a chod slnka neberie do úvahy.
 
-**Ako sa tomu vyhnúť:** Dodržujte základné princípy: 
-*   **Sever:** Vstup do domu, technická miestnosť, špajza, garáž.
-*   **Východ:** Spálne (ranné slnko vás prebudí, večer nie je izba prehriata).
-*   **Juh / Juhozápad:** Obývačka, jedáleň, detské izby (najviac denného svetla).
-Nezabudnite do projektu zahrnúť exteriérové žalúzie alebo presahy strechy na zatienenie južných a západných okien počas letných horúčav.
+**Ako sa tomu vyhnúť:** Držte sa základných princípov:
+*   **Sever:** vstup do domu, technická miestnosť, špajza, garáž.
+*   **Východ:** spálne – ranné slnko vás prebudí a večer izba nie je prehriata.
+*   **Juh a juhozápad:** obývačka, jedáleň, detské izby – najviac denného svetla.
 
-## 6. Zle nastavené alebo chýbajúce zmluvy o dielo
+Do projektu zahrňte exteriérové žalúzie alebo presahy strechy, ktoré v lete zatienia južné a západné okná.
 
-Ak staviate svojpomocne a najímate si rôznych majstrov, alebo aj keď vám stavia dom jedna firma, nikdy nepracujte len na základe ústnej dohody. Zle napísaná (alebo žiadna) zmluva znamená, že nemáte v rukách žiaden nástroj na vymáhanie kvality, termínov ani pevnej ceny.
+## 6. Chýbajúca alebo zle nastavená zmluva o dielo
 
-**Ako sa tomu vyhnúť:** Každá [stavebná firma](/blog/ako-si-vybrat-stavebnu-firmu-12-veci-ktore-rozhoduju), resp. partia musí pracovať na základe riadnej Zmluvy o dielo. Tá musí špecifikovať predmet práce, termíny, cenu, platobný kalendár (nikdy neplaťte 100% vopred!) a záručné podmienky.
+Či staviate svojpomocne s rôznymi majstrami, alebo vám stavia dom jedna firma, nepracujte len na základe ústnej dohody. Bez riadnej zmluvy nemáte v rukách nástroj na vymáhanie kvality, termínov ani ceny.
 
-## 7. Absencia stavebného dozoru
+**Ako sa tomu vyhnúť:** Každá [stavebná firma](/blog/ako-si-vybrat-stavebnu-firmu-12-veci-ktore-rozhoduju) aj partia by mala pracovať na základe zmluvy o dielo. Tá určuje predmet prác, termíny, cenu, platobný kalendár a záručné podmienky. Celú sumu vopred neplaťte – platby majú byť rozdelené podľa hotových etáp.
 
-Stavebný dozor nie je len "pečiatka" pre úrad. Je to váš zástupca na stavbe. Obyčajný laik nedokáže posúdiť, či bolo správne uložené železo v základoch, či je dodržaný technologický postup pri aplikácii [omietok](/sluzby/omietky) alebo či [zateplenie fasády](/sluzby/fasady) nemá tepelné mosty. 
+## 7. Chýbajúci stavebný dozor
 
-Ak sa chyba zistí až po rokoch (napr. začne praskať stena alebo plesnivieť kút), náprava je extrémne drahá.
+Stavebný dozor nie je len „pečiatka“ pre úrad. Je to váš zástupca na stavbe. Laik nedokáže posúdiť, či bola správne uložená výstuž v základoch, či sa dodržal technologický postup pri [omietkach](/sluzby/omietky) alebo či [zateplenie fasády](/sluzby/fasady) nemá tepelné mosty.
 
-**Ako sa tomu vyhnúť:** Zazmluvnite si nezávislého, autorizovaného stavebného dozora, ideálne hneď od začiatku (už pri vyhodnocovaní cenových ponúk od firiem). Kontrola v kľúčových fázach (zakladanie, armovanie, hydroizolácie, zateplenie) vám zachráni tisíce eur.
+Ak sa chyba zistí až po rokoch – napríklad začne praskať stena alebo plesnivieť kút – oprava je veľmi drahá.
 
----
+**Ako sa tomu vyhnúť:** Zazmluvnite si nezávislého, autorizovaného stavebného dozora ideálne hneď od začiatku, už pri porovnávaní cenových ponúk. Kontrola v kľúčových fázach – zakladanie, armovanie, hydroizolácie, zateplenie – vám ušetrí tisíce eur.
+
+Celý postup stavby a to, kedy ktorá kontrola prichádza, nájdete v [sprievodcovi stavbou rodinného domu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom).
 
 ## Často kladené otázky (FAQ)
 
 **1. Dá sa postaviť dom úplne bez chýb?**
-Drobné nedokonalosti (napr. mierne nerovnosti) sa pri ručnej remeselnej práci môžu vyskytnúť vždy. Dôležité je vyhnúť sa kritickým statickým a technologickým chybám, ktoré ovplyvňujú životnosť stavby. Profesionálna firma tieto riziká minimalizuje.
+Drobné nedokonalosti, napríklad mierne nerovnosti, sa pri ručnej remeselnej práci môžu vyskytnúť vždy. Dôležité je vyhnúť sa statickým a technologickým chybám, ktoré ovplyvňujú životnosť stavby. Skúsená firma a stavebný dozor tieto riziká výrazne znižujú.
 
 **2. Ak zistím chybu na stavbe, kto za ňu zodpovedá?**
-Ak staviate s generálnym dodávateľom (dom na kľúč), za všetky vady zodpovedá táto firma, s ktorou máte podpísanú zmluvu. Ak staviate svojpomocne s viacerými partiami, je často ťažké dokázať, kto chybu spôsobil (tzv. "vyhováranie sa jedného na druhého").
+Ak vám dom stavia jedna firma na kľúč, za vady diela zodpovedá firma, s ktorou máte zmluvu o dielo. Ak staviate s viacerými partiami, býva ťažké dokázať, kto chybu spôsobil, a jeden sa často vyhovára na druhého.
 
 **3. Čo robiť, ak partia remeselníkov pokazí prácu a nechce ju opraviť?**
-Pokiaľ nemáte kvalitnú zmluvu o dielo a vyplatili ste im peniaze vopred, situácia je veľmi zložitá. Z tohto dôvodu vždy odporúčame platiť za prácu až po jej dokončení, prevzatí a odsúhlasení stavebným dozorom.
+Ak nemáte zmluvu o dielo a zaplatili ste vopred, situácia je veľmi zložitá. Preto odporúčame platiť za prácu až po jej dokončení, prevzatí a odsúhlasení stavebným dozorom.
 
-**4. Aká je najčastejšia chyba pri inštalácii technológií (napr. tepelného čerpadla)?**
-Najčastejšou chybou je nedostatočná koordinácia. Napríklad, vodár namontuje kúrenie, ale elektrikár nepripraví správne káble, prípadne chýba priestorová koordinácia s rozvodmi rekuperácie. Výsledkom sú kolízie rúr, znižovanie stropov a neefektívny chod systémov.
+**4. Aká je najčastejšia chyba pri inštalácii technológií, napríklad tepelného čerpadla?**
+Nedostatočná koordinácia. Vodár namontuje kúrenie, no elektrikár nepripraví správne káble, alebo chýba priestorová koordinácia s rozvodmi rekuperácie. Výsledkom sú kolízie rúr, znižovanie stropov a neefektívny chod systémov.
 
 **5. Môže zlý projekt predražiť dom?**
-Rozhodne áno. Projekt, ktorý je nepresný ("deravý"), spôsobuje na stavbe prestoje. Majstri musia improvizovať, spotrebuje sa viac materiálu a vznikajú takzvané viacpráce. Kvalitný realizačný projekt do detailu ušetrí v praxi nemalé peniaze.
+Áno. Nepresný projekt spôsobuje na stavbe prestoje, majstri musia improvizovať, spotrebuje sa viac materiálu a vznikajú viacpráce. Kvalitný realizačný projekt ušetrí v praxi nemalé peniaze.
 
-**6. Je chyba, ak pripojím dom k existujúcej studni namiesto obecného vodovodu?**
-Nemusí to byť chyba, pokiaľ máte oficiálny rozbor vody (a voda je pitná s dostatočnou výdatnosťou prameňa). Obecný vodovod je však vždy stabilnejšia a dlhodobo bezpečnejšia voľba, na ktorú pozerajú pozitívne aj banky pri poskytovaní hypotéky.
+**6. Je chyba napojiť dom na studňu namiesto obecného vodovodu?**
+Nemusí byť, ak máte rozbor vody, ktorý potvrdí pitnú kvalitu, a studňa má dostatočnú výdatnosť. Ak je však obecný vodovod na dosah, býva dlhodobo stabilnejším riešením. Zvážte obe možnosti ešte pri projekte.
 
----
+## Máte záujem o cenovú ponuku pre svoj dom?
 
-## Zhrnutie
+**Ak už máte projekt,** pošlite nám ho spolu s adresou pozemku. Po obhliadke pripravíme nezáväznú položkovú ponuku.
 
-Tieto a mnohé ďalšie **chyby pri stavbe domu** vznikajú zväčša z troch dôvodov: zo snahy ušetriť na nesprávnom mieste, z nedostatku času na prípravu a z výberu nespoľahlivých dodávateľov. Najlepšou ochranou je dôkladné plánovanie, kvalitný projekt a výber spoľahlivého partnera.
+**Ak projekt ešte nemáte,** stačí adresa pozemku a vaša predstava o dome – veľkosť, počet podlaží a štandard. Projekt vám vypracujeme a ponuku pripravíme podľa neho.
 
-Ak nechcete riskovať peniaze, čas a nervy s neoverenými partiami majstrov, zverte svoju stavbu do rúk profesionálov. V **MNSP | Stavby a rekonštrukcie** máme za sebou množstvo úspešných projektov a vieme presne, ako sa vyhnúť úskaliam stavebného procesu. [Kontaktujte nás](/kontakt) a postavíme vám dom, ktorý vám bude robiť radosť celé desaťročia.`,
+[Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-05-30T08:00:00+01:00',
-    updatedAt: '2026-05-30T08:00:00+01:00',
-    imageUrl: '/Blog/najcastejsie-chyby-pri-stavbe-rodinneho-domu.webp'
+    updatedAt: '2026-09-24T08:00:00+02:00',
+    imageUrl: '/Blog/chyby-pri-stavbe-domu.webp'
   },
   {
     id: 'ako-pripravit-pozemok-na-stavbu-rodinneho-domu',
@@ -1524,7 +1539,7 @@ Postavíme vám hrubú stavbu alebo holodom a dokončenie necháme na vás – a
 [Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-04-20T08:00:00+01:00',
     updatedAt: '2026-09-24T08:00:00+02:00',
-    imageUrl: '/Blog/stavba-svojpomocne.webp'
+    imageUrl: '/Blog/stavba-svojpomocne-usetrite.webp'
   },
   {
     id: 'murovany-dom-vs-drevodom-porovnanie',
@@ -1627,54 +1642,81 @@ Postavíme vám ho ako hrubú stavbu, holodom alebo na kľúč.
 [Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-04-15T08:00:00+01:00',
     updatedAt: '2026-09-24T08:00:00+02:00',
-    imageUrl: '/Blog/murovany-dom-vs-drevodom-porovnanie.webp'
+    imageUrl: '/Blog/murovany-vs-drevodom.webp'
   },
   {
     id: 'zelena-strecha-na-rodinnom-dome',
-    title: 'Zelená strecha na rodinnom dome: Výhody, nevýhody a údržba',
-    excerpt: 'Vegetačné zelené strechy sú v roku 2026 obrovským trendom. Zlepšujú mikroklímu, chránia dom pred prehrievaním, no majú aj svoje špecifiká a vyššie nároky na statiku.',
+    title: 'Zelená strecha na rodinnom dome: výhody, nevýhody a údržba',
+    excerpt: 'Extenzívna alebo intenzívna zelená strecha: výhody, nároky na statiku a hydroizoláciu, údržba a prečo o nej treba rozhodnúť už v projekte.',
     category: 'Rodinné domy',
     tags: ['Technológie', 'Rodinné domy'],
-    content: `Pri pohľade na moderné štvrte rodinných domov si v roku 2026 nemožno nevšimnúť rastúci trend – namiesto čiernych škridiel alebo plechu vidíte na mnohých domoch (ale aj na prístreškoch či garážach) kvitnúce záhrady. **Zelené (vegetačné) strechy** už dávno nie sú len výsadou ekologických nadšencov, ale racionálnym a vysoko funkčným architektonickým prvkom.
+    content: `Namiesto škridiel alebo plechu dnes na mnohých domoch, prístreškoch či garážach vidno kvitnúce koberce rastlín. **Zelené (vegetačné) strechy** už nie sú len doménou ekologických nadšencov, ale funkčným architektonickým prvkom.
 
-Aké sú reálne výhody zelenej strechy, aké obmedzenia prináša a prečo musíte o jej realizácii rozhodnúť ešte pred vypracovaním projektu?
+Aké sú ich skutočné výhody, aké obmedzenia prinášajú a prečo sa o zelenej streche treba rozhodnúť ešte pred vypracovaním projektu?
 
-## Extenzívna vs. Intenzívna zelená strecha
+## Extenzívna vs. intenzívna zelená strecha
 
-Predtým, než si na strechu naplánujete výsadbu stromov, je dôležité rozlišovať dva základné typy:
+| | Extenzívna | Intenzívna |
+| :--- | :--- | :--- |
+| **Vrstva substrátu** | 5 – 15 cm | 30 cm až 1 m |
+| **Rastliny** | rozchodníky, machy, lúčne byliny | trávnik, kríky, menšie stromy |
+| **Údržba** | minimálna, raz ročne kontrola | ako bežná záhrada, zavlažovanie |
+| **Pochôdznosť** | nie je určená na chodenie | áno, ako strešná záhrada |
+| **Nároky na statiku** | vyššie ako pri bežnej streche | veľmi vysoké |
+| **Pre rodinné domy** | najbežnejší typ | zriedkavo |
 
-1.  **Extenzívna zelená strecha:** Toto je najbežnejší typ pre rodinné domy. Má tenkú vrstvu substrátu (5 až 15 cm) a sú na nej vysadené nenáročné, suchomilné rastliny – najčastejšie rozchodníky (Sedum), machy alebo lúčne byliny. Nevyžaduje takmer žiadnu údržbu a nepočíta sa s ňou ako s pochôdznou terasou.
-2.  **Intenzívna zelená strecha:** Je to v podstate plnohodnotná záhrada na streche. Vrstva substrátu môže mať 30 cm až 1 meter, rastú na nej kríky, dokonca menšie stromy. Tento typ je však **extrémne ťažký** a vyžaduje si špeciálne statické posúdenie a zavlažovací systém. Na bežných domoch sa využíva zriedkavo.
+1.  **Extenzívna zelená strecha** je najbežnejší typ pre rodinné domy. Má tenkú vrstvu substrátu a nenáročné suchomilné rastliny, najčastejšie rozchodníky (Sedum). Údržbu takmer nevyžaduje a nepočíta sa s ňou ako s pochôdznou terasou.
+2.  **Intenzívna zelená strecha** je plnohodnotná záhrada na streche. Je však **veľmi ťažká**, vyžaduje si osobitné statické posúdenie a zavlažovací systém. Na bežných domoch sa používa zriedkavo.
 
 ## Výhody zelenej strechy
 
-Prečo by ste mali zvážiť rozchodníkový koberec namiesto klasickej [strechy](/sluzby/tesarske-prace)?
+*   **Ochrana hydroizolácie a dlhšia životnosť:** UV žiarenie a veľké výkyvy teplôt – plechová strecha sa v lete rozpáli aj na 80 °C – hydroizoláciu degradujú. Zelená vrstva ju chráni a jej životnosť výrazne predlžuje.
+*   **Ochrana pred prehrievaním:** Rastliny odparujú vlhkosť a strechu prirodzene chladia. V letných horúčavách dokáže zelená strecha znížiť teplotu v podkroví aj o 3 až 5 °C.
+*   **Zadržiavanie dažďovej vody:** Zelená strecha dokáže zadržať 50 až 80 % zrážok, ktoré by inak hneď stiekli do kanalizácie. Odľahčí sa tým odvodnenie aj okolie domu.
+*   **Zvuková izolácia:** Substrát a rastliny dobre tlmia hluk, najmä bubnovanie dažďa – oceníte to v podkrovných izbách.
+*   **Mikroklíma a vzhľad:** Zelená strecha zachytáva prach, poskytuje útočisko včelám a motýľom a dom z nej získa výrazný vzhľad.
 
-*   **Ochrana hydroizolácie a dlhá životnosť:** Slnečné UV žiarenie a obrovské výkyvy teplôt (v lete sa plechová strecha môže rozpáliť na 80°C) hydroizoláciu strechy degradujú. Zelená vrstva pôsobí ako štít, ktorý chráni fóliu a predlžuje jej životnosť aj o desiatky rokov.
-*   **Prírodná klimatizácia (Ochrana pred prehrievaním):** Kým klasická strecha teplo sála do okolia aj do interiéru, rastliny na zelenej streche vlhkosť odparujú a tým strechu prirodzene chladia. V letných horúčavách dokáže zelená strecha znížiť teplotu v podkroví aj o 3 až 5 °C.
-*   **Zadržiavanie zrážkovej vody (Retencia):** Zelená strecha dokáže nasať a zadržať 50 % až 80 % dažďovej vody, ktorá by inak okamžite stiekla do kanalizácie. Tým sa znižuje riziko lokálnych záplav a odľahčuje sa zvodový systém.
-*   **Akustická izolácia:** Vrstva zeminy a rastlín vynikajúco pohlcuje hluk, najmä bubnovanie dažďa, čo oceníte najmä v podkrovných izbách.
-*   **Zlepšenie mikroklímy a estetika:** Zelená strecha filtruje prach z ovzdušia, produkuje kyslík, poskytuje útočisko pre včely a motýle, a najmä – vyzerá fantasticky.
+## Na čo si dať pozor
 
-## Na čo si dať pozor (Nevýhody a výzvy)
+*   **Statika:** Toto je kľúčový bod. Zelená strecha je ťažká, najmä keď je nasiaknutá vodou po silnom daždi – pri extenzívnej streche napríklad 100 až 150 kg/m². S týmto zaťažením musí statik počítať už pri návrhu [základov](/blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca) a [monolitických stropov](/sluzby/monoliticke-konstrukcie). Ak sa pre zelenú strechu rozhodnete až počas stavby, konštrukcia ju nemusí uniesť.
+*   **Sneh vo vyšších polohách:** Statik počíta s váhou nasiaknutého substrátu aj snehu. V našom kraji sa snehové zaťaženie výrazne líši – vo vyšších polohách, napríklad v Hriňovej alebo Banskej Štiavnici vo výške nad 600 m n. m., je vysoké, preto je tam návrh strechy ešte dôležitejší.
+*   **Hydroizolácia odolná proti koreňom:** Hydroizolačná fólia musí mať atest proti prerastaniu koreňov (takzvaný FLL test). Ak by korene izoláciu prerazili, hľadanie a oprava zatekania pod vrstvou substrátu je veľmi drahá.
+*   **Vyššie vstupné náklady:** Plochá zelená strecha so všetkými vrstvami – ochrannou, drenážnou, filtračnou, substrátom a výsadbou – je drahšia ako obyčajná plechová krytina. Navýšenie rozpočtu býva v tisícoch eur.
+*   **Občasná údržba:** Aj extenzívnu strechu treba raz ročne, ideálne na jeseň, skontrolovať – vytrhať náletové buriny a stromčeky, vyčistiť odkvapy a skontrolovať odtoky.
 
-*   **Zásadný vplyv na statiku:** Toto je kľúčový bod. Zelená strecha je veľmi ťažká, obzvlášť keď je plná vody po silnom daždi. S týmto zaťažením (napr. 100 - 150 kg/m² pri extenzívnej streche) musí statik počítať už pri návrhu [základov](/blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca) a [monolitických stropov](/sluzby/monoliticke-konstrukcie). Ak sa rozhodnete pre zelenú strechu počas stavby "za pochodu", steny a stropy ju nemusia uniesť.
-*   **Dokonalá hydroizolácia (Ochrana proti prerastaniu koreňov):** Hydroizolačná fólia musí mať špeciálny atest proti prerastaniu koreňov (tzv. FLL test). Ak by korene prerazili izoláciu, hľadanie a oprava zatekania pod vrstvou substrátu je extrémne drahá nočná mora.
-*   **Zvýšené vstupné náklady:** Realizácia plochej zelenej strechy so všetkými jej vrstvami (ochranná, drenážna, filtračná, substrát a výsadba) je pochopiteľne drahšia ako inštalácia obyčajného strešného plechu. Často ide o navýšenie rozpočtu v tisícoch eur.
-*   **Občasná údržba:** Aj bezúdržbová extenzívna strecha vyžaduje, aby ste na ňu raz ročne (ideálne na jeseň) vyšli, vytrhali náletové buriny alebo malé stromčeky (z náletových semien), vyčistili odkvapy a skontrolovali odtoky.
+## Dá sa urobiť zelená strecha aj na šikmej streche?
 
-## Dá sa urobiť zelená strecha aj na šikmej ploche?
+Áno, ale je to technicky náročnejšie. Pri sklone nad 15 stupňov substrát nedrží len vlastnou váhou a musí sa stabilizovať špeciálnymi roštami alebo geotextíliami, aby ho prvý prudký lejak nezmyl do odkvapov.
 
-Áno, ale je to technologicky náročnejšie. Pri sklone strechy nad 15 stupňov už substrát nedrží len vlastnou váhou a musí sa stabilizovať špeciálnymi roštami alebo geotextíliami, aby ho prvý prudký lejak nezmyl do odkvapov.
+## Často kladené otázky (FAQ)
 
-## Zhrnutie
+**1. Koľko váži zelená strecha?**
+Extenzívna zelená strecha nasiaknutá vodou váži približne 100 až 150 kg/m². Intenzívna je výrazne ťažšia. S touto váhou, a vo vyšších polohách aj so snehom, musí počítať statik už pri návrhu stropov a základov.
 
-Zelená strecha je nádherný a ekologicky prínosný prvok, ktorý vášmu domu dodá výnimočný charakter a funkčne ho ochráni. Nesmie sa však realizovať živelne. Vyžaduje si precízny projektový návrh, posilnenú statiku a bezchybné zrealizovanie hydroizolačných vrstiev.
+**2. Dá sa zelená strecha urobiť dodatočne na existujúci dom?**
+Len ak to strecha a nosné konštrukcie unesú. Pred rozhodnutím treba statické posúdenie – pri starších domoch sa môže ukázať, že konštrukciu treba zosilniť.
 
-V spoločnosti **MNSP | Stavby a rekonštrukcie** máme s realizáciou náročných plochých a [monolitických striech](/sluzby/monoliticke-konstrukcie) bohaté skúsenosti. Zvládneme pre vás pripraviť dokonalý a staticky bezpečný podklad, na ktorom vaša strešná záhrada porastie bez akýchkoľvek obáv zo zatekania. [Obráťte sa na nás](/kontakt) a poďme sa porozprávať o vašej novej stavbe.`,
+**3. Akú údržbu potrebuje extenzívna zelená strecha?**
+Minimálnu. Raz ročne, ideálne na jeseň, vytrhajte náletové buriny a stromčeky, vyčistite odkvapy a skontrolujte odtoky.
+
+**4. Chladí zelená strecha dom v lete?**
+Áno. Rastliny odparujú vlhkosť a strechu chladia – teplota v podkroví môže byť v horúčavách nižšia aj o 3 až 5 °C.
+
+**5. Môže zelená strecha zatekať?**
+Pri správnej hydroizolácii s atestom proti prerastaniu koreňov nie. Riziko je v chybe pri realizácii – oprava pod vrstvou substrátu je drahá, preto sa hydroizolácii oplatí venovať maximálnu pozornosť.
+
+## Uvažujete o zelenej streche?
+
+Zelenú strechu treba riešiť už v projekte, nie na stavbe. Staticky navrhnutú nosnú konštrukciu – [monolitický strop](/sluzby/monoliticke-konstrukcie) a základy, ktoré zelenú strechu unesú – postavíme ako súčasť hrubej stavby, holodomu alebo domu na kľúč.
+
+**Ak už máte projekt,** pošlite nám ho spolu s adresou pozemku. Po obhliadke pripravíme nezáväznú položkovú ponuku.
+
+**Ak projekt ešte nemáte,** stačí adresa pozemku a vaša predstava o dome aj o streche. Projekt vám vypracujeme a zelenú strechu doň zapracujeme od začiatku.
+
+[Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-04-05T08:00:00+01:00',
-    updatedAt: '2026-04-05T08:00:00+01:00',
-    imageUrl: '/Blog/zelena-strecha-na-rodinnom-dome.webp'
+    updatedAt: '2026-09-24T08:00:00+02:00',
+    imageUrl: '/Blog/zelena-strecha-rodinny-dom.webp'
   },
   {
     id: 'rekuperacia-v-rodinnom-dome-oplati-sa',
@@ -1782,112 +1824,211 @@ Rozvody rekuperácie zosúladíme so stropmi a ostatnými inštaláciami už pri
   },
   {
     id: 'tepelne-cerpadlo-v-rodinnom-dome',
-    title: 'Tepelné čerpadlo v rodinnom dome: Oplatí sa táto investícia?',
-    excerpt: 'Tepelné čerpadlo je dnes najpopulárnejším zdrojom tepla v novostavbách. Ako funguje, aké sú jeho výhody a nevýhody a prečo ho kombinovať s podlahovým kúrením?',
+    title: 'Tepelné čerpadlo v rodinnom dome: oplatí sa?',
+    excerpt: 'Ako funguje tepelné čerpadlo, koľko stojí, prečo patrí k podlahovému kúreniu, na čo myslieť v projekte a kedy naň možno čerpať Obnov dom.',
     category: 'Rodinné domy',
     tags: ['Technológie', 'Rodinné domy'],
-    content: `Pri rozhodovaní o spôsobe vykurovania [novostavby](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom) je **tepelné čerpadlo v rodinnom dome** jednou z najčastejších a najrozumnejších volieb. Zabezpečí vám nielen teplo v zime, ale aj ohrev teplej úžitkovej vody a v letných mesiacoch dokáže dom dokonca efektívne chladiť.
+    content: `Pri rozhodovaní o vykurovaní [novostavby](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom) je **tepelné čerpadlo** dnes jednou z najčastejších volieb. Vykuruje, ohrieva teplú vodu a v lete dokáže dom aj chladiť.
 
-Aké sú však reálne výhody tohto zariadenia, s čím musíte počítať pri inštalácii a prečo je to dnes zlatý štandard pre energetickú triedu A0?
+Aké sú jeho skutočné výhody, s čím treba počítať pri stavbe a kedy sa oplatí?
 
-## Ako funguje tepelné čerpadlo?
+## Tepelné čerpadlo v skratke
 
-Zariadenie funguje na podobnom princípe ako chladnička, no v opačnom smere. Zatiaľ čo chladnička odoberá teplo zvnútra a vypúšťa ho von, tepelné čerpadlo odoberá tepelnú energiu z okolitého prostredia (vzduch, voda alebo zem) a prenáša ju do vykurovacieho systému vo vnútri domu. Najpopulárnejším a cenovo najdostupnejším typom pre rodinné domy je tepelné čerpadlo **vzduch-voda**, ktoré získava energiu z vonkajšieho vzduchu, a to aj pri teplotách hlboko pod bodom mrazu.
+| | Orientačne |
+| :--- | :--- |
+| **Cena s inštaláciou** | často 6 000 – 10 000 € |
+| **Účinnosť** | z 1 kW elektriny 3 – 5 kW tepla |
+| **Najčastejší typ** | vzduch-voda |
+| **Teplota vykurovacej vody** | ideálne 30 – 35 °C |
+| **Najlepšie funguje s** | podlahovým alebo stenovým vykurovaním |
+| **Kedy ho riešiť** | už v projekte, spolu s podlahami a zateplením |
 
-## Prečo si vybrať tepelné čerpadlo?
+## Ako funguje tepelné čerpadlo
 
-*   **Vysoká účinnosť a úspora nákladov:** Z 1 kW elektrickej energie dokáže tepelné čerpadlo vyrobiť 3 až 5 kW tepelnej energie. Tým sa výrazne znižujú vaše prevádzkové náklady v porovnaní s elektrickým kotlom.
-*   **Ekologická prevádzka:** Nevyužívate žiadne fosílne palivá (ako je plyn alebo uhlie). Tepelné čerpadlo neprodukuje priamo na mieste žiadne emisie CO2, čím pomáha chrániť životné prostredie.
-*   **Všetko v jednom (Vykurovanie, ohrev vody a chladenie):** Kompaktné zariadenie nielen vykuruje dom a pripravuje teplú vodu na sprchovanie, ale v lete dokáže cez podlahové kúrenie interiér aj pasívne chladiť.
-*   **Nevyhnutnosť pre splnenie normy A0:** Aby novostavba v roku 2026 prešla [kolaudáciou](/blog/stavebne-povolenie-krok-za-krokom-v-roku-2026) a spĺňala prísne energetické normy pre domy s takmer nulovou potrebou energie, je inštalácia tepelného čerpadla, prípadne iného obnoviteľného zdroja (napr. fotovoltiky s [rekuperáciou](/blog/rekuperacia-v-rodinnom-dome-oplati-sa)), prakticky nevyhnutná.
+Funguje na podobnom princípe ako chladnička, len opačne. Chladnička odoberá teplo zvnútra a vypúšťa ho von. Tepelné čerpadlo odoberá teplo z okolia – zo vzduchu, vody alebo zeme – a prenáša ho do vykurovacieho systému domu.
 
-## S čím treba počítať?
+Pre rodinné domy je najčastejší a cenovo najdostupnejší typ **vzduch-voda**, ktorý získava energiu z vonkajšieho vzduchu aj pri teplotách pod bodom mrazu.
 
-*   **Vyššia počiatočná investícia:** Inštalácia tepelného čerpadla (jednotka + inštalácia) stojí často od 6 000 do 10 000 €, čo je viac než plynový či elektrický kotol. Investícia sa však vráti na nižších mesačných účtoch.
-*   **Podlahové kúrenie je základ:** Tepelné čerpadlo je tzv. nízkoteplotný zdroj. Najlepšie (a najekonomickejšie) funguje, keď ohrieva vodu na 30 - 35 °C. Preto sa musí ideálne kombinovať s podlahovým alebo stenovým vykurovaním. Na staré, vysokoteplotné liatinové radiátory ho pri [rekonštrukcii staršieho domu](/blog/rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet) neodporúčame.
-*   **Hlučnosť vonkajšej jednotky:** Moderné tepelné čerpadlá sú už veľmi tiché, napriek tomu by sa vonkajšia jednotka nemala inštalovať tesne pod okno do spálne alebo priamo na hranicu so susedovým pozemkom, aby nespôsobovala rušivý hluk v nočných hodinách.
+## Výhody tepelného čerpadla
 
-## Zhrnutie
+*   **Vysoká účinnosť:** Z 1 kW elektrickej energie vyrobí 3 až 5 kW tepla. Prevádzkové náklady sú tak výrazne nižšie ako pri elektrokotle.
+*   **Bez spaľovania na mieste:** Nepotrebuje plyn ani uhlie a priamo pri dome nevytvára emisie.
+*   **Vykurovanie, teplá voda aj chladenie:** Jedno zariadenie vykuruje, pripravuje teplú vodu a v lete môže cez podlahové kúrenie dom aj mierne chladiť.
+*   **Pomáha splniť triedu A0:** Novostavba musí spĺňať energetickú triedu A0, ktorá vyžaduje podiel obnoviteľných zdrojov energie. Tepelné čerpadlo je najčastejší spôsob, ako to dosiahnuť – často v kombinácii s [rekuperáciou](/blog/rekuperacia-v-rodinnom-dome-oplati-sa) a fotovoltikou.
 
-Tepelné čerpadlo predstavuje výbornú investíciu do budúcnosti a komfortu vášho bývania. Zabezpečuje nízke účty za energie a spĺňa najprísnejšie legislatívne požiadavky na ekologické bývanie.
+## S čím treba počítať
 
-Ak plánujete stavbu rodinného domu, obráťte sa na odborníkov z **MNSP | Stavby a rekonštrukcie**. Naši špecialisti vám navrhnú a zrealizujú optimálny vykurovací systém, vrátane profesionálnej inštalácie tepelného čerpadla. [Kontaktujte nás](/kontakt) a bývajte moderne a úsporne.`,
+*   **Vyššia vstupná investícia:** Tepelné čerpadlo s inštaláciou stojí často 6 000 až 10 000 €, viac ako plynový či elektrický kotol. Rozdiel sa vracia na nižších účtoch.
+*   **Podlahové kúrenie je základ:** Tepelné čerpadlo je nízkoteplotný zdroj – najlepšie funguje, keď ohrieva vodu na 30 až 35 °C. Preto sa kombinuje s podlahovým alebo stenovým vykurovaním. Rúry podlahového kúrenia sa zalievajú do [poteru](/sluzby/potery), takže s nimi treba počítať pred betonážou podláh.
+*   **Zateplenie:** Čím lepšie je dom zateplený, tým menší výkon čerpadla stačí a tým nižšie sú účty. Porovnanie izolácií nájdete v článku [Polystyrén alebo minerálna vlna](/blog/zateplenie-fasady-polystyren-alebo-mineralna-vlna).
+*   **Staré radiátory:** Na staré vysokoteplotné liatinové radiátory ho pri [rekonštrukcii staršieho domu](/blog/rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet) neodporúčame – čerpadlo by dom efektívne nevykúrilo.
+*   **Hluk vonkajšej jednotky:** Moderné jednotky sú tiché, no vonkajšiu jednotku neumiestňujte tesne pod okno spálne ani k hranici so susedom, aby v noci nerušila.
+
+## Na čo myslieť v projekte a na stavbe
+
+*   Umiestnenie vonkajšej jednotky – ďalej od spální a od suseda, s pevným podkladom.
+*   Podlahové alebo stenové vykurovanie v celom dome, nie len v kúpeľni.
+*   Zateplenie a okná navrhnuté tak, aby dom potreboval čo najmenej tepla.
+*   Vo vyšších a chladnejších polohách, napríklad na Podpoľaní, treba výkon čerpadla navrhnúť na nižšie zimné teploty.
+*   Priestor pre vnútornú jednotku a zásobník teplej vody v technickej miestnosti.
+
+## Tepelné čerpadlo pri obnove domu a Obnov dom
+
+Tepelné čerpadlo patrí medzi opatrenia podporované z programu **Obnov dom** pri obnove existujúcich rodinných domov. Program spravuje SAŽP, ďalšie kolo je podľa nej plánované na január 2027 (overené 16. 9. 2026). Pri obnove my robíme zateplenie, výmenu okien a dverí a strechu so zateplením. Tepelné čerpadlo zabezpečuje iný dodávateľ – ak ho chcete, vieme vám ho odporučiť. Podmienky programu nájdete na stránke [Rekonštrukcia rodinného domu](/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu).
+
+## Často kladené otázky (FAQ)
+
+**1. Koľko stojí tepelné čerpadlo pre rodinný dom?**
+Tepelné čerpadlo vzduch-voda s inštaláciou stojí často 6 000 až 10 000 €. Presná cena závisí od výkonu, typu a od toho, aký vykurovací systém v dome je.
+
+**2. Funguje tepelné čerpadlo aj v silných mrazoch?**
+Áno. Typ vzduch-voda získava energiu z vonkajšieho vzduchu aj pri teplotách pod bodom mrazu. Vo vyšších a chladnejších polohách treba výkon navrhnúť na nižšie zimné teploty.
+
+**3. Dá sa tepelné čerpadlo použiť s radiátormi?**
+Najlepšie funguje s podlahovým alebo stenovým vykurovaním pri teplote vody 30 až 35 °C. So starými vysokoteplotnými radiátormi v nezateplenom dome ho neodporúčame – účty by boli vysoké.
+
+**4. Potrebuje novostavba tepelné čerpadlo?**
+Novostavba musí spĺňať energetickú triedu A0, ktorá vyžaduje podiel obnoviteľných zdrojov. Tepelné čerpadlo je najčastejší spôsob, ako to splniť, nie však jediný – riešenie navrhne projektant v energetickom hodnotení.
+
+**5. Dá sa na tepelné čerpadlo získať príspevok?**
+Pri obnove existujúceho rodinného domu patrí tepelné čerpadlo medzi opatrenia podporované z programu Obnov dom. Aktuálne podmienky overte na stránke programu pred podaním žiadosti.
+
+## Plánujete dom s tepelným čerpadlom?
+
+S tepelným čerpadlom treba počítať už pri stavbe – podlahové kúrenie, potery, zateplenie a technická miestnosť musia byť pripravené vopred. Tieto práce robíme my a vykurovanie zosúladíme so stavbou od začiatku.
+
+**Ak už máte projekt,** pošlite nám ho spolu s adresou pozemku. Po obhliadke pripravíme nezáväznú položkovú ponuku.
+
+**Ak projekt ešte nemáte,** stačí adresa pozemku a vaša predstava o dome. Projekt vám vypracujeme a vykurovanie doň zapracujeme od začiatku.
+
+[Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-03-10T08:00:00+01:00',
-    updatedAt: '2026-03-10T08:00:00+01:00',
-    imageUrl: '/Blog/tepelne-cerpadlo-v-rodinnom-dome.webp'
+    updatedAt: '2026-09-24T08:00:00+02:00',
+    imageUrl: '/Blog/tepelne-cerpadlo.webp'
   },
   {
     id: 'kolko-stoji-rekonstrukcia-domu-v-roku-2026',
-    title: 'Koľko stojí rekonštrukcia domu v roku 2026? Kompletný prehľad cien',
-    excerpt: 'Plánujete obnovu staršieho domu? Pripravili sme pre vás detailný rozpočet. Zistite, aká je reálna cena rekonštrukcie domu a na čom sa dá ušetriť.',
+    title: 'Koľko stojí rekonštrukcia domu v roku 2026?',
+    excerpt: 'Cena rekonštrukcie domu za m² podľa rozsahu a rozpočet po položkách pre dom so 100 m² – od búrania po interiér. S rezervou a príspevkom Obnov dom.',
     category: 'Rodinné domy',
     tags: ['Rekonštrukcia domu', 'Rodinné domy'],
-    content: `Kúpa staršieho domu a jeho obnova je pre mnohých cestou k vysnívanému bývaniu. Často však narazia na krutú realitu, keď zistia, že **cena rekonštrukcie domu** sa môže vyšplhať až k cene [novej stavby](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026). 
+    content: `Kúpa staršieho domu a jeho obnova je pre mnohých cestou k vlastnému bývaniu. **Cena rekonštrukcie domu** však býva prekvapením – pri rozsiahlej obnove môže dosiahnuť aj dve tretiny ceny [novej stavby](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026).
 
-V roku 2026 sa ceny stavebných materiálov a práce stabilizovali, no stále platí, že kompletná obnova si vyžaduje nemalé investície. Poďme sa spoločne s odborníkmi z **MNSP | Stavby a rekonštrukcie** pozrieť na to, koľko vás bude stáť rekonštrukcia staršieho rodinného domu (pri modelovom príklade domu s podlahovou plochou 100 m²).
+Pozrime sa, koľko stojí rekonštrukcia staršieho rodinného domu – po položkách, na modelovom dome s podlahovou plochou 100 m².
 
-## 1. Búracie práce a odvoz odpadu (2 000 - 5 000 €)
+## Cena rekonštrukcie podľa rozsahu
 
-Skôr než začnete budovať, musíte staré a nefunkčné veci odstrániť.
+| Rozsah | Čo obsahuje | Orientačne za m² |
+| :--- | :--- | :--- |
+| **Čiastočná** | omietky, potery, okná, podlahy, maľby | od približne 300 € |
+| **Kompletná** | statika, všetky rozvody, strecha, zateplenie | približne 750 € |
+| **Prémiová** | prémiové materiály, inteligentná elektroinštalácia, dizajnové riešenia | približne 1 100 € |
+
+Tieto hodnoty vychádzajú z orientačnej kalkulačky na stránke [Rekonštrukcia rodinného domu](/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu). Kompletná obnova „od podlahy po strechu“ sa pri dome so 100 m² pohybuje približne od **60 000 do 120 000 €**, teda **600 až 1 200 € za m²** – podľa stavu strechy, rozsahu rozvodov a nárokov na interiér vrátane kuchyne. Rozpis po položkách nájdete nižšie.
+
+## Rozpočet po položkách (dom so 100 m²)
+
+| Položka | Orientačne |
+| :--- | :--- |
+| 1. Búracie práce a odvoz odpadu | 2 000 – 5 000 € |
+| 2. Nová strecha a krov | 12 000 – 25 000 € |
+| 3. Výmena okien a dverí | 6 000 – 12 000 € |
+| 4. Nové rozvody (voda, plyn, elektrina, kúrenie) | 10 000 – 18 000 € |
+| 5. Potery, omietky a sadrokartón | 8 000 – 15 000 € |
+| 6. Zateplenie a nová fasáda | 10 000 – 18 000 € |
+| 7. Interiér a zariadenie vrátane kuchyne | 15 000 – 30 000 € a viac |
+| **Spolu** | **približne 60 000 – 120 000 €** |
+
+K sume si pripočítajte **rezervu 20 až 30 %** – pri starom dome sa často niečo ukáže až po odkrytí konštrukcií.
+
+## 1. Búracie práce a odvoz odpadu (2 000 – 5 000 €)
+
+Skôr než sa začne stavať, treba staré a nefunkčné veci odstrániť.
 *   Búranie priečok, otlčenie starých omietok, vytrhanie starých podláh a demontáž umakartového jadra.
-*   **Najväčšia položka:** Prenájom kontajnerov a poplatky za uloženie stavebného odpadu na skládke.
-*   *Tip:* Tu sa dá [svojpomocou](/blog/stavba-domu-svojpomocne-vyhody-nevyhody) ušetriť pomerne dosť peňazí, ak máte partiu ochotných kamarátov a čas.
+*   **Najväčšia položka:** prenájom kontajnerov a poplatky za uloženie stavebného odpadu na skládke.
+*   *Tip:* Tu sa dá [svojpomocou](/blog/stavba-domu-svojpomocne-vyhody-nevyhody) ušetriť, ak máte čas a pomocníkov. Ak nie, [búracie práce](/sluzby/buracie-prace) aj s odvozom sute urobíme my.
 
-## 2. Nová strecha a krov (12 000 - 25 000 €)
+## 2. Nová strecha a krov (12 000 – 25 000 €)
 
-Ak je strecha v zlom stave, mení sa zvyčajne kompletne všetko.
-*   Nový krov (alebo oprava starého).
-*   Nová strešná krytina (škridla alebo plech).
+Ak je strecha v zlom stave, zvyčajne sa mení celá.
+*   Nový krov alebo oprava starého.
+*   Nová strešná krytina – škridla alebo plech.
 *   Klampiarske práce (odkvapy, zvody) a zateplenie strechy.
-*   Viac o výbere krytiny sa dočítate v [porovnaní materiálov](/blog/rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet).
 
-## 3. Výmena okien a dverí (6 000 - 12 000 €)
+Krovy a strešné konštrukcie robíme v rámci [tesárskych prác](/sluzby/tesarske-prace).
 
-Pre splnenie moderných energetických štandardov je to nevyhnutnosť.
-*   Kvalitné plastové alebo hliníkové okná s trojsklom.
-*   Nové vchodové dvere, exteriérové žalúzie (voliteľné, ale odporúčané proti letnému prehrievaniu).
-*   Demontáž starých a odborná montáž nových okien (s použitím pások).
+## 3. Výmena okien a dverí (6 000 – 12 000 €)
 
-## 4. Nové rozvody (Voda, plyn, elektrina, kúrenie) (10 000 - 18 000 €)
+Bez nových okien dom energeticky nezlepšíte.
+*   Plastové alebo hliníkové okná s trojsklom.
+*   Nové vchodové dvere a exteriérové žalúzie – voliteľné, no odporúčané proti letnému prehrievaniu.
+*   Demontáž starých a montáž nových okien s tesniacimi páskami.
 
-Zanechať v starom dome pôvodné hliníkové káble či pozinkované trubky je obrovský risk.
-*   Kompletne nová elektroinštalácia (od rozvádzača po zásuvky).
+Okná vymieňajte spolu so zateplením – inak hrozí pleseň v kútoch. Viac v článku [Rekonštrukcia starého domu: čomu sa vyhnúť](/blog/rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet).
+
+## 4. Nové rozvody (10 000 – 18 000 €)
+
+Ponechať v starom dome pôvodné hliníkové káble či pozinkované rúry je veľké riziko.
+*   Nová elektroinštalácia od rozvádzača po zásuvky.
 *   Nové rozvody vody a odpadu.
-*   Nový systém vykurovania: Odstránenie starých radiátorov, vysekanie podláh a inštalácia podlahového kúrenia (prípadne príprava na [tepelné čerpadlo](/blog/tepelne-cerpadlo-v-rodinnom-dome)).
+*   Nové vykurovanie: odstránenie starých radiátorov, vysekanie podláh a podlahové kúrenie, prípadne príprava na [tepelné čerpadlo](/blog/tepelne-cerpadlo-v-rodinnom-dome).
 
-## 5. Úpravy povrchov: Potery, omietky a sadrokartóny (8 000 - 15 000 €)
+## 5. Potery, omietky a sadrokartón (8 000 – 15 000 €)
 
 Keď sú rozvody hotové, steny a podlahy treba zarovnať.
-*   Vyrovnanie podláh (cementový alebo anhydritový poter).
-*   Nové vnútorné [strojové omietky](/sluzby/omietky).
-*   Montáž sadrokartónových podhľadov (ak chcete znížiť stropy a schovať do nich káble či rozvody [rekuperácie](/blog/rekuperacia-v-rodinnom-dome-oplati-sa)).
+*   Nové podlahy s cementovým alebo anhydritovým [poterom](/sluzby/potery).
+*   Nové vnútorné strojové [omietky](/sluzby/omietky).
+*   Sadrokartónové podhľady, ak chcete znížiť stropy a schovať do nich rozvody, napríklad [rekuperácie](/blog/rekuperacia-v-rodinnom-dome-oplati-sa).
 
-## 6. Zateplenie a nová fasáda (10 000 - 18 000 €)
+## 6. Zateplenie a nová fasáda (10 000 – 18 000 €)
 
-Bez zateplenia bude vaša nová [tepelná investícia](/blog/tepelne-cerpadlo-v-rodinnom-dome) neefektívna.
-*   Aplikácia izolantu (polystyrén alebo [minerálna vlna](/blog/zateplenie-fasady-polystyren-alebo-mineralna-vlna)).
-*   Finálna povrchová úprava ([fasádna omietka](/sluzby/fasady)).
+Bez zateplenia bude nové vykurovanie menej efektívne.
+*   Izolant – polystyrén alebo [minerálna vlna](/blog/zateplenie-fasady-polystyren-alebo-mineralna-vlna). Na starý dom z plnej tehly sa častejšie hodí vlna.
+*   Finálna povrchová úprava – [fasádna omietka](/sluzby/fasady).
 
-## 7. Interiérové dokončovacie práce a zariaďovanie (15 000 - 30 000 €+)
+## 7. Interiér a zariadenie (15 000 – 30 000 € a viac)
 
-Toto je fáza, kde sa rozdiely v cene líšia najviac v závislosti od vášho vkusu a nárokov.
-*   Obklady, dlažby a sanita do kúpeľne (3 000 - 8 000 €).
-*   Plávajúce podlahy a interiérové dvere (4 000 - 8 000 €).
-*   Nová kuchynská linka so spotrebičmi (5 000 - 15 000 €).
+Tu sa ceny líšia najviac, podľa vkusu a nárokov.
+*   Obklady, dlažby a sanita do kúpeľne: 3 000 – 8 000 €.
+*   Plávajúce podlahy a interiérové dvere: 4 000 – 8 000 €.
+*   Nová kuchynská linka so spotrebičmi: 5 000 – 15 000 €.
 *   Maľovanie, osvetlenie a drobný nábytok.
 
-## Zhrnutie: Aká je teda celková cena rekonštrukcie domu?
+## Ako znížiť náklady: Obnov dom
 
-Ak to spočítame, kompletná "rekonštrukcia od podlahy po strechu" (kde z pôvodného domu ostanú len holé obvodové múry) pre starší dom s rozlohou 100 m² sa v roku 2026 pohybuje v rozmedzí **60 000 € až 120 000 €**. 
+Zateplenie, výmena okien a dverí či strecha so zateplením patria medzi opatrenia podporované z programu **Obnov dom**. Program spravuje Slovenská agentúra životného prostredia a ďalšie kolo je podľa nej plánované na január 2027 (overené 16. 9. 2026). Obnovu realizujeme my a pripravíme podklady k žiadosti, o príspevku rozhoduje SAŽP. Aktuálne podmienky nájdete na stránke [Rekonštrukcia rodinného domu](/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu).
 
-To predstavuje zhruba **600 € až 1 200 € za m²** podlahovej plochy. 
+## Z našich rekonštrukcií
 
-Je dôležité si uvedomiť, že **cena rekonštrukcie domu** je mimoriadne individuálna. Presný rozpočet je možné stanoviť až po dôkladnej obhliadke statikom a stavebným odborníkom, ktorý zhodnotí reálny stav nehnuteľnosti (či nie sú nutné podrezávanie muriva, zosilňovanie základov atď.).
+*   [Rekonštrukcia rodinného domu Hriňová](/portfolio/rekonstrukcia-rodinneho-domu-hrinova) (2025)
+*   [Rekonštrukcia rodinného domu Detva](/portfolio/rekonstrukcia-rodinneho-domu-detva) (2023)
+*   [Rekonštrukcia interiéru v rodinnom dome Očová](/portfolio/rekonstrukcia-interieru-ocova) (2024)
 
-Plánujete rekonštrukciu? Nenechávajte to na náhodu a nepresné odhady z internetových fór. [Kontaktujte nás v MNSP](/kontakt) a my vám pripravíme transparentný a presný položkový rozpočet na mieru vášmu domu.`,
+## Často kladené otázky (FAQ)
+
+**1. Koľko stojí rekonštrukcia domu na m²?**
+Čiastočná rekonštrukcia od približne 300 € za m², kompletná približne 750 € a prémiová približne 1 100 € za m². Kompletná obnova domu so 100 m² vrátane novej strechy a interiéru sa pohybuje zhruba medzi 60 000 a 120 000 €.
+
+**2. Čo je na rekonštrukcii najdrahšie?**
+Zvyčajne strecha s krovom (12 000 až 25 000 €) a interiér vrátane kuchyne (15 000 až 30 000 € a viac). Veľké položky sú aj nové rozvody a zateplenie s fasádou.
+
+**3. Oplatí sa rekonštrukcia viac ako novostavba?**
+Závisí od stavu domu. Ak má dom zdravé múry, základy a strechu, rekonštrukcia vyjde lacnejšie. Ak je narušená statika a dom je trvalo vlhký, môže byť výhodnejšie ho zbúrať a postaviť nový. Rozhodnúť pomôže obhliadka so statikom.
+
+**4. Akú rezervu si nechať pri rekonštrukcii?**
+Odporúčame 20 až 30 % rozpočtu. Pri starom dome sa často až po odkrytí konštrukcií ukáže vlhké murivo, poškodený krov alebo potreba zosilniť základy.
+
+**5. Dá sa na rekonštrukciu získať príspevok?**
+Na zateplenie, výmenu okien a dverí, strechu so zateplením či tepelné čerpadlo možno čerpať príspevok z programu Obnov dom. Podmienky a výšku príspevku overte v aktuálnej výzve.
+
+## Plánujete rekonštrukciu?
+
+Presný rozpočet sa dá určiť až po obhliadke, keď vidíme skutočný stav domu. Pošlite nám adresu a napíšte, čo chcete meniť – aj keď ešte nemáte projekt. Dom si prídeme pozrieť, posúdime jeho stav a pripravíme nezáväznú položkovú ponuku. Ak treba, projekt aj povolenie vybavíme za vás.
+
+[Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-03-05T08:00:00+01:00',
-    updatedAt: '2026-03-05T08:00:00+01:00',
-    imageUrl: '/Blog/kolko-stoji-rekonstrukcia-domu-v-roku-2026.webp'
+    updatedAt: '2026-09-24T08:00:00+02:00',
+    imageUrl: '/Blog/cena-rekonstrukcie-domu.webp'
   }
 ];
 
