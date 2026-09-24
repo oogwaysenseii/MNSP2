@@ -801,7 +801,7 @@ Najvhodnejšia je jar, marec alebo apríl, keď pôda už nie je zamrznutá. Na 
 [Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-05-25T08:00:00+01:00',
     updatedAt: '2026-09-24T08:00:00+02:00',
-    imageUrl: '/Blog/ako-pripravit-pozemok-na-stavbu-rodinneho-domu.webp'
+    imageUrl: '/Blog/priprava-pozemku.webp'
   },
   {
     id: 'ako-sa-robia-zaklady-domu-kompletny-sprievodca',
