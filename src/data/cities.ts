@@ -31,7 +31,7 @@ export const CITIES = [
       },
       {
         q: 'Realizujete vo Zvolene aj menšie prerábky?',
-        a: 'Našou špecializáciou sú komplexné rekonštrukcie a stavby na kľúč. Pre menšie úpravy nás kontaktujte a posúdime naše aktuálne kapacity.',
+        a: 'Áno. Robíme kompletné stavby aj jednotlivé práce – napríklad vymurovať priečku, vyomietať dom či urobiť potery. Rozsah a termín dohodneme po obhliadke podľa aktuálnych kapacít.',
       },
     ],
     distanceFromOffice: 0,
@@ -66,7 +66,7 @@ export const CITIES = [
       },
       {
         q: 'Pomáhate so stavebným povolením na bystrickom stavebnom úrade?',
-        a: 'Áno, klientom poskytujeme súčinnosť pri vybavovaní administratívy vrátane podkladov pre napojenie na inžinierske siete.',
+        a: 'Áno. Projekt vám na želanie vypracujeme a povolenie stavby vybavíme za vás, vrátane podkladov pre napojenie na inžinierske siete.',
       },
     ],
     distanceFromOffice: 20,

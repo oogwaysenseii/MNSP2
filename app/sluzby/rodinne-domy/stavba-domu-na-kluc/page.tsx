@@ -28,7 +28,7 @@ const FAQ = [
   },
   {
     q: 'Je možné počas stavby meniť projekt?',
-    a: 'Drobné zmeny, ako napríklad posunutie nenosnej priečky či pridanie zásuvky, vieme flexibilne riešiť. Zásadné zmeny nosných konštrukcií si však vyžadujú zmenu stavebného povolenia.',
+    a: 'Drobné zmeny, ako napríklad posunutie nenosnej priečky či pridanie zásuvky, vieme flexibilne riešiť. Zásadné zmeny nosných konštrukcií si však vyžadujú konanie so stavebným úradom. Každú zmenu rozsahu riešime písomným dodatkom.',
   },
   {
     q: 'Zabezpečujete aj inžinierske siete?',
@@ -112,7 +112,7 @@ export default function StavbaDomuNaKlucPage() {
               {
                 step: "02",
                 title: "Projekt a povolenia",
-                desc: "Plánovanie priestoru, geologické posúdenie, architektonický návrh a vybavenie stavebného povolenia.",
+                desc: "Plánovanie priestoru, geologické posúdenie, architektonický návrh a vybavenie povolenia stavby.",
               },
               {
                 step: "03",

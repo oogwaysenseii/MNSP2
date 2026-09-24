@@ -204,7 +204,7 @@ export default async function StavbaLocationPage({ params }: PageProps) {
           {
             step: '02',
             title: 'Projekt a povolenia',
-            desc: `Plánovanie priestoru, geologické posúdenie, architektonický návrh a súčinnosť pri vybavovaní stavebného povolenia pre ${city.accusative} a okolie.`,
+            desc: `Plánovanie priestoru, geologické posúdenie, architektonický návrh a vybavenie povolenia stavby pre ${city.accusative} a okolie.`,
           },
           {
             step: '03',

@@ -691,7 +691,7 @@ export function rodinneDomyLocalAngle(
 
   faq.push({
     q: 'Pomôžete aj s projektom a stavebným povolením?',
-    a: `Áno. Spolupracujeme s architektmi a projektantmi a klientom poskytujeme súčinnosť pri vybavovaní povolenia — vrátane podkladov pre napojenie na inžinierske siete. S miestnym stavebným úradom${
+    a: `Áno. Projekt vám na želanie vypracujeme a povolenie stavby vybavíme za vás, vrátane vyjadrení k napojeniu na inžinierske siete. S miestnym stavebným úradom${
       c.access === 'difficult' ? ' aj s podmienkami pre horšie dostupné pozemky' : ''
     } máme skúsenosti.`,
   });
@@ -923,7 +923,7 @@ export function rekonstrukciaLocalAngle(
 
   faq.push({
     q: 'Musím mať na rekonštrukciu stavebné povolenie?',
-    a: 'Pri zásahu do nosných konštrukcií — búranie nosných stien, prístavby, nadstavby, zmena tvaru strechy — je povolenie nevyhnutné. Pri výmene okien, zateplení či nových omietkach postačuje ohláška. S podkladmi pre stavebný úrad vám pomôžeme.',
+    a: 'Závisí od rozsahu. Podľa nového stavebného zákona sa bežná údržba, napríklad výmena okien v pôvodnom rozsahu či oprava fasády, spravidla nepovoľuje ani neohlasuje. Drobné stavby a menšie úpravy sa ohlasujú stavebnému úradu. Zásah do nosných konštrukcií – búranie nosných stien, prístavba, nadstavba či zmena tvaru strechy – si vyžaduje rozhodnutie o stavebnom zámere. Po obhliadke vám povieme, kam váš zámer patrí, a povolenie vieme vybaviť za vás.',
   });
 
   faq.push({

@@ -45,11 +45,11 @@ export const FAQ_GROUPS: FaqGroup[] = [
     questions: [
       {
         q: 'Zabezpečujete aj stavebné povolenie a projektovú dokumentáciu?',
-        a: 'Spolupracujeme s architektmi a projektantmi, takže vám vieme pomôcť s projektovou dokumentáciou aj s inžinieringom pre stavebné povolenie. Poskytujeme súčinnosť pri podkladoch pre stavebný úrad aj pri vyjadreniach k napojeniu na inžinierske siete.',
+        a: 'Áno. Projekt vám na želanie vypracujeme a povolenie stavby vybavíme za vás – od záväzných stanovísk a vyjadrení správcov sietí cez rozhodnutie o stavebnom zámere až po overenie projektu stavby. Ak máte vlastného projektanta, dodáme mu potrebné podklady.',
       },
       {
         q: 'Musím mať na rekonštrukciu stavebné povolenie?',
-        a: 'Pri zásahu do nosných konštrukcií — búranie nosných stien, prístavby, nadstavby, zmena tvaru strechy — je povolenie nevyhnutné. Pri výmene okien, zateplení či nových omietkach spravidla postačuje ohláška. Po obhliadke vám povieme, do ktorej kategórie váš zámer spadá.',
+        a: 'Závisí od rozsahu. Podľa nového stavebného zákona sa bežná údržba, napríklad výmena okien v pôvodnom rozsahu či oprava fasády, spravidla nepovoľuje ani neohlasuje. Drobné stavby a menšie úpravy sa ohlasujú stavebnému úradu. Zásah do nosných konštrukcií – búranie nosných stien, prístavba, nadstavba či zmena tvaru strechy – si vyžaduje rozhodnutie o stavebnom zámere. Po obhliadke vám povieme, kam váš zámer patrí, a povolenie vieme vybaviť za vás.',
       },
       {
         q: 'Potrebujem pred stavbou geologický prieskum?',
@@ -57,7 +57,15 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: 'Postavíte dom aj podľa môjho vlastného projektu?',
-        a: 'Áno. Ak už máte projektovú dokumentáciu, vychádzame z nej. Ak ešte nie, vieme vás prepojiť s architektom alebo projektantom, s ktorým dlhodobo spolupracujeme.',
+        a: 'Áno. Ak už máte projektovú dokumentáciu, vychádzame z nej. Ak ešte nie, projekt vám vypracujeme.',
+      },
+      {
+        q: 'Potrebujem stavebný dozor?',
+        a: 'Áno, stavebný dozor je potrebný aj pri stavbe na kľúč. Dohliada na to, aby sa stavalo podľa overeného projektu, a kontroluje kvalitu a postup prác.',
+      },
+      {
+        q: 'Pomôžete s príspevkom Obnov dom?',
+        a: 'Áno. Zateplenie, výmena okien a dverí či strecha so zateplením patria medzi opatrenia podporované z programu Obnov dom. Obnovu realizujeme my a pripravíme podklady k žiadosti. Program spravuje Slovenská agentúra životného prostredia, ktorá o príspevku aj rozhoduje.',
       },
     ],
   },
@@ -94,7 +102,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: 'Je možné počas stavby meniť projekt?',
-        a: 'Drobné zmeny, ako posunutie nenosnej priečky či pridanie zásuvky, vieme riešiť flexibilne. Zásadné zmeny nosných konštrukcií si však vyžadujú zmenu stavebného povolenia. Každú zmenu rozsahu riešime písomným dodatkom, aby ste vopred vedeli, čo to znamená pre cenu aj termín.',
+        a: 'Drobné zmeny, ako posunutie nenosnej priečky či pridanie zásuvky, vieme riešiť flexibilne. Zásadné zmeny nosných konštrukcií si však vyžadujú konanie so stavebným úradom. Každú zmenu rozsahu riešime písomným dodatkom, aby ste vopred vedeli, čo to znamená pre cenu aj termín.',
       },
       {
         q: 'Kto na stavbe zodpovedá za priebeh prác?',
@@ -107,7 +115,11 @@ export const FAQ_GROUPS: FaqGroup[] = [
     questions: [
       {
         q: 'Koľko stojí stavba rodinného domu?',
-        a: 'Cena závisí od veľkosti a tvaru domu, štandardu materiálov a od stavu pozemku. Orientačné rozpätie si viete vyskúšať v našej cenovej kalkulačke — záväznú ponuku však vypracujeme až po obhliadke a na základe projektovej dokumentácie.',
+        a: 'Pri murovanom dome na kľúč v strednom štandarde orientačne približne 1 640 € za m² podlahovej plochy. Presná cena závisí od veľkosti a tvaru domu, štandardu materiálov a stavu pozemku. Orientačnú sumu si viete vypočítať v našej cenovej kalkulačke – záväznú ponuku vypracujeme po obhliadke a na základe projektu.',
+      },
+      {
+        q: 'Koľko stojí rekonštrukcia domu?',
+        a: 'Orientačne od približne 300 € za m² pri čiastočnej rekonštrukcii, približne 750 € pri kompletnej a 1 100 € pri prémiovej. Pri starom dome odporúčame rezervu 20 až 30 % na veci, ktoré sa ukážu až po odkrytí konštrukcií. Presnú cenu určíme po obhliadke.',
       },
       {
         q: 'Ako prebieha financovanie stavby?',

@@ -40,7 +40,7 @@ export default function ContactPageContent() {
     },
     {
       question: 'Môžem si počas stavby meniť materiály alebo rozsah prác?',
-      answer: 'Áno. Drobné zmeny riešime priebežne, zásadné zmeny nosných konštrukcií si však vyžadujú zmenu stavebného povolenia. Každú zmenu rozsahu zapíšeme do písomného dodatku s prepočítaním nákladov, takže vopred viete, čo to znamená pre cenu aj pre termín. To, čo je v pôvodnej položkovej ponuke, sa nemení.'
+      answer: 'Áno. Drobné zmeny riešime priebežne, zásadné zmeny nosných konštrukcií si však vyžadujú konanie so stavebným úradom. Každú zmenu rozsahu zapíšeme do písomného dodatku s prepočítaním nákladov, takže vopred viete, čo to znamená pre cenu aj pre termín. To, čo je v pôvodnej položkovej ponuke, sa nemení.'
     }
   ];
 

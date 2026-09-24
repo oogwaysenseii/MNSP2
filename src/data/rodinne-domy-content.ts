@@ -84,7 +84,7 @@ export const RENOVATION_FAQ = [
   },
   {
     q: 'Musím mať na rekonštrukciu stavebné povolenie?',
-    a: 'Pokiaľ zasahujete do nosných konštrukcií (búranie nosných stien, prístavby, nadstavby, nová strecha s iným tvarom), stavebné povolenie je nevyhnutné. Pri bežných úpravách ako výmena okien, zateplenie či nové omietky postačuje ohláška.',
+    a: 'Závisí od rozsahu. Podľa nového stavebného zákona sa bežná údržba, napríklad výmena okien v pôvodnom rozsahu či oprava fasády, spravidla nepovoľuje ani neohlasuje. Drobné stavby a menšie úpravy sa ohlasujú stavebnému úradu. Zásah do nosných konštrukcií – búranie nosných stien, prístavba, nadstavba či zmena tvaru strechy – si vyžaduje rozhodnutie o stavebnom zámere. Po obhliadke vám povieme, kam váš zámer patrí, a povolenie vieme vybaviť za vás.',
   },
   {
     q: 'Dá sa v starom dome urobiť podlahové kúrenie?',

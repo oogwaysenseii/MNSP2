@@ -137,7 +137,7 @@ export default async function RekonstrukciaLocationPage({ params }: PageProps) {
             <p className="text-xs text-zinc-500">
               {conditions.heritage
                 ? 'Pri obnove v pamiatkovej zóne konzultujeme postup a materiály s pamiatkovým úradom ešte pred ohlásením.'
-                : `Poradíme, či vaša rekonštrukcia potrebuje ohlášku alebo stavebné povolenie, a pomôžeme s podkladmi pre stavebný úrad.`}
+                : `Poradíme, či vaša rekonštrukcia potrebuje ohlásenie alebo rozhodnutie o stavebnom zámere, a povolenie vieme vybaviť za vás.`}
             </p>
           </div>
         </div>
