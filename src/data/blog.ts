@@ -2,6 +2,95 @@ import { BlogPost } from '../types';
 
 export const blogPostsData: BlogPost[] = [
   {
+    id: 'pristavba-k-rodinnemu-domu',
+    title: 'Prístavba k rodinnému domu: postup a povolenie',
+    excerpt: 'Prístavba alebo nadstavba rodinného domu: kedy sa hodí ktorá, čo musí uniesť statika, aké povolenie treba po novom a ako prebieha stavba.',
+    category: 'Rodinné domy',
+    tags: ['Rekonštrukcia domu', 'Rodinné domy'],
+    publishedAt: '2026-09-24T11:00:00+02:00',
+    updatedAt: '2026-09-24T11:00:00+02:00',
+    imageUrl: '/Blog/pristavba-k-domu.webp',
+    content: `Rodina sa rozrastá, deti potrebujú vlastné izby alebo chýba pracovňa či garáž – a sťahovať sa nechcete. **Prístavba k rodinnému domu** je často najrozumnejšia cesta, ako získať viac miesta. Prvá otázka však nie je dispozícia, ale či to pozemok, pôvodný dom a stavebný úrad dovolia.
+
+V tomto článku nájdete, kedy sa prístavba hodí viac ako nadstavba, na čo myslieť pri statike a napojení na pôvodný dom, aké povolenie treba po novom a ako prebieha stavba.
+
+## Prístavba alebo nadstavba?
+
+| | Prístavba | Nadstavba |
+| :--- | :--- | :--- |
+| **Potrebuje pozemok** | áno, voľné miesto vedľa domu | nie, stavia sa na dom |
+| **Zaťaženie pôvodného domu** | malé, prístavba má vlastné základy | veľké, pôvodné steny a základy nesú nové podlažie |
+| **Statické posúdenie** | potrebné, najmä pri napojení | nevyhnutné, často so zosilnením konštrukcií |
+| **Bývanie počas stavby** | spravidla áno, obmedzenia pri prepájaní | náročnejšie, pri búraní strechy |
+| **Najväčšie riziko** | napojenie na pôvodný dom a rozdielne sadanie | únosnosť pôvodných základov a stropu |
+| **Hodí sa, ak** | máte voľný pozemok a chcete prízemné priestory | pozemok je malý a dom je staticky zdravý |
+
+Ak je pozemok malý a pôvodný dom má zdravé základy a nosné steny, môže byť vhodnejšia nadstavba. Rozhodne statik po obhliadke.
+
+## Statika a napojenie na pôvodný dom
+
+Prístavba nesie svoju váhu sama – má **vlastné základy**. Kľúčové je, ako sa napojí na pôvodný dom:
+
+*   **Rozdielne sadanie:** Nová časť domu si ešte sadne, pôvodná už nie. Preto sa medzi nimi zvyčajne navrhuje dilatácia, aby na styku nevznikali trhliny. Základy prístavby musia siahať do nezámrznej hĺbky – ako sa robia, opisujeme v článku [Ako sa robia základy domu](/blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca).
+*   **Prepojenie priestorov:** Nové dvere alebo priechod do pôvodného domu sa robia do nosnej steny. Otvor sa robí podľa statického návrhu, s podopretím konštrukcie a osadením prekladu – [rezaním otvorov](/sluzby/rezanie-otvorov) v betóne či murive.
+*   **Strecha a hydroizolácia:** Najčastejším zdrojom problémov je miesto, kde sa stretáva stará a nová strecha a kde sa napája hydroizolácia. Tieto detaily treba vyriešiť už v projekte.
+*   **Stav pôvodného domu:** Ak má pôvodný dom vlhké murivo alebo trhliny, treba ich riešiť skôr, než sa naň prístavba napojí. Viac v článku [Vlhké murivo v starom dome](/blog/vlhke-murivo-v-starom-dome).
+
+## Povolenie po novom
+
+Prístavba je **zmenou dokončenej stavby**. Podľa nového stavebného zákona (č. 25/2025 Z. z.) si zmena dokončenej stavby spravidla vyžaduje **rozhodnutie o stavebnom zámere** a pred začatím prác overenie projektu stavby. Pri menších stavbách môže ísť o drobnú stavbu, ktorá sa len ohlasuje – či to platí aj pre vašu prístavbu, posúdi projektant.
+
+Postup povoľovania krok za krokom opisujeme v článku [Stavebné povolenie krok za krokom](/blog/stavebne-povolenie-krok-za-krokom-v-roku-2026). Projekt aj povolenie vám vieme vybaviť za vás.
+
+## Postup stavby prístavby
+
+1.  **Obhliadka a statik:** Posúdime pozemok, pôvodný dom a možnosti napojenia.
+2.  **Projekt:** Projektant navrhne prístavbu vrátane napojenia strechy, dilatácie a prepojenia priestorov.
+3.  **Povolenie:** Rozhodnutie o stavebnom zámere alebo ohlásenie a overenie projektu.
+4.  **Základy a hrubá stavba:** Vlastné základy prístavby, murivo, [monolitické konštrukcie](/sluzby/monoliticke-konstrukcie) – vence a strop – a krov.
+5.  **Napojenie na pôvodný dom:** Prepojenie strechy a hydroizolácie, otvor do pôvodnej steny.
+6.  **Rozvody a vykurovanie:** Rozšírenie elektroinštalácie, vody a kúrenia – treba overiť, či pôvodný zdroj tepla zvládne väčší dom.
+7.  **Zateplenie a fasáda:** Ideálne zatepliť a zjednotiť fasádu celého domu, nielen prístavby, aby dom vyzeral ako celok a nemal tepelné mosty na styku.
+8.  **Dokončovacie práce a kolaudácia:** Po dokončení nasleduje kolaudácia – postup opisujeme v článku [Kolaudácia rodinného domu po novom](/blog/kolaudacia-rodinneho-domu-postup).
+
+## Na čo myslieť v našom kraji
+
+*   **Staršie vilové štvrte v Banskej Bystrici:** Tehlové domy a vily v širšom centre sú vhodné na prístavby aj nadstavby. Pri obnove dbáme na diagnostiku vlhkosti a trhlín v pôvodnom murive.
+*   **Podpoľanie:** Staršie domy často stoja na kamennej podmurovke. Pred napojením prístavby treba preveriť stav základov a izolácie spodnej stavby pôvodného domu.
+*   **Svahovité pozemky:** Pri prístavbe na svahu môže byť potrebný oporný múr alebo zosilnené základy. Podmienky v jednotlivých mestách opisujeme na stránke [Kde pôsobíme](/lokality).
+
+## S čím pomôžeme
+
+*   Obhliadka domu a pozemku a statické posúdenie v spolupráci so statikom.
+*   Projekt a povolenie – na želanie ich vybavíme za vás.
+*   Celá realizácia prístavby od základov po zateplenie a napojenie na pôvodný dom.
+
+Prístavby a nadstavby patria k našim [rekonštrukciám rodinných domov](/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu).
+
+## Často kladené otázky (FAQ)
+
+**1. Potrebujem na prístavbu k domu povolenie?**
+Spravidla áno. Prístavba je zmenou dokončenej stavby a podľa nového stavebného zákona si zvyčajne vyžaduje rozhodnutie o stavebnom zámere. Pri menších stavbách môže stačiť ohlásenie – posúdi to projektant.
+
+**2. Je lepšia prístavba alebo nadstavba?**
+Prístavba menej zaťažuje pôvodný dom a počas stavby sa v ňom dá spravidla bývať, potrebuje však voľný pozemok. Nadstavba šetrí pozemok, no pôvodné základy a steny musia unesť nové podlažie. Rozhodne statik po obhliadke.
+
+**3. Dá sa počas stavby prístavby v dome bývať?**
+Spravidla áno, keďže prístavba sa stavia vedľa domu. Obmedzenia prídu pri prepájaní priestorov a napájaní strechy a rozvodov.
+
+**4. Musí mať prístavba vlastné základy?**
+Áno. Prístavba sa zakladá samostatne do nezámrznej hĺbky a od pôvodného domu sa zvyčajne oddeľuje dilatáciou, aby rozdielne sadanie nespôsobilo trhliny.
+
+**5. Treba po prístavbe zatepliť celý dom?**
+Nie je to povinné, ale odporúčame to. Zjednotené zateplenie a fasáda celého domu odstránia tepelné mosty na styku a dom bude vyzerať ako jeden celok.
+
+## Plánujete prístavbu?
+
+Pošlite nám adresu domu, fotky a napíšte, koľko miesta a na čo potrebujete. Prídeme sa pozrieť, posúdime pôvodný dom aj pozemok a navrhneme, či je vhodnejšia prístavba, alebo nadstavba. Projekt aj povolenie vieme vybaviť za vás a pripravíme nezáväznú položkovú ponuku.
+
+[Napíšte nám](/kontakt), čo plánujete.`,
+  },
+  {
     id: 'vlhke-murivo-v-starom-dome',
     title: 'Vlhké murivo v starom dome: príčiny a riešenia',
     excerpt: 'Odkiaľ sa berie vlhkosť v murive starého domu, ako ju rozoznať a ako ju odstrániť: podrezanie, injektáž, drenáž a sanačné omietky.',
