@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Clock, Calendar, FileText, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, FileText, ChevronLeft, ChevronRight, RefreshCw } from 'lucide-react';
 import { blogPostsData } from '@/src/data/blog';
 import { getSEOTags } from '@/src/lib/seo';
 import { Metadata } from 'next';
@@ -16,7 +16,7 @@ import { AuthorBox } from '@/src/components/blog/AuthorBox';
 import { RelatedArticles } from '@/src/components/blog/RelatedArticles';
 import { RelatedServices } from '@/src/components/blog/RelatedServices';
 import { CTA } from '@/src/components/sections/CTA';
-import { extractFAQ, getWordCount, calculateReadingTime } from '@/src/lib/blogUtils';
+import { extractFAQ, getWordCount, calculateReadingTime, stripMarkdown, formatSkDate, wasUpdated } from '@/src/lib/blogUtils';
 import { autoLinkKeywords } from '@/src/lib/blogAutoLink';
 
 interface BlogPostPageProps {
@@ -132,7 +132,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         "name": faq.q,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": faq.a
+          // Plain text only — answers are authored in markdown and the raw
+          // source was reaching search engines verbatim.
+          "text": stripMarkdown(faq.a)
         }
       }))
     };
@@ -160,7 +162,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="space-y-6">
             <div className="flex flex-wrap gap-4 items-center text-xs font-mono font-bold tracking-wider text-zinc-400 border-b border-zinc-100 pb-4">
               <span className="text-amber-600 uppercase bg-amber-50 px-2.5 py-1 ">{post.category}</span>
-              <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> {post.date}</span>
+              {/* Dates come from the ISO fields via Intl sk-SK, not from the
+                  hand-written `date` string — that one reads "27. Jún 2026"
+                  while sk-SK gives the correct "27. júna 2026". */}
+              <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> {formatSkDate(post.publishedAt)}</span>
+              {wasUpdated(post.publishedAt, post.updatedAt) && (
+                <span className="flex items-center gap-1.5 text-zinc-500">
+                  <RefreshCw className="w-3.5 h-3.5" /> Aktualizované: {formatSkDate(post.updatedAt!)}
+                </span>
+              )}
               <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> {readTime}</span>
               <span className="flex items-center gap-1.5"><FileText className="w-3.5 h-3.5" /> {wordCount} slov</span>
             </div>
@@ -228,7 +238,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                             sizes="(max-width: 768px) 100vw, 800px" 
                           />
                         </span>
-                      )
+                      ),
+                      // Tables are wrapped, not styled inline: a 5-column table
+                      // at 375px would otherwise make the whole page scroll
+                      // sideways instead of just the table.
+                      // `md-table` is the hook for styling the caption that
+                      // follows a table — `table + p` can't match any more,
+                      // because the paragraph is now a sibling of this div.
+                      table: ({node, ...props}) => (
+                        <div className="md-table my-6 w-full overflow-x-auto">
+                          <table {...props} />
+                        </div>
+                      ),
                     }}
                   >
                     {linkedContent}
@@ -281,9 +302,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             ) : <div />}
           </div>
 
-          {/* CTA */}
-          <CTA pageName={`Blog - ${post.title}`} />
+        </div>
 
+        {/* CTA sits OUTSIDE the max-w-[1500px] px-6 wrapper above. Inside it,
+            that wrapper's 24px side padding stacked on top of the CTA's own
+            container padding, insetting the card 56px instead of the 32px it
+            gets on every other page. mt-8 replaces the space-y-8 it loses. */}
+        <div className="mt-8">
+          <CTA pageName={`Blog - ${post.title}`} />
         </div>
       </div>
     </>

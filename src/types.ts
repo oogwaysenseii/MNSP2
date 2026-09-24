@@ -8,7 +8,6 @@ export interface BlogPost {
   imageUrl: string;
   publishedAt: string;
   updatedAt?: string;
-  date: string;
   author?: string | { name: string; url?: string };
 }
 

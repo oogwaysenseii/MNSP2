@@ -3,281 +3,299 @@ import { BlogPost } from '../types';
 export const blogPostsData: BlogPost[] = [
   {
     id: 'kolko-stoji-stavba-rodinneho-domu-v-roku-2026',
-    title: 'Koľko stojí stavba rodinného domu v roku 2026? Kompletný rozpočet',
-    excerpt: 'Zistite, koľko stojí stavba rodinného domu v roku 2026. Prinášame detailný rozpočet pre dom na kľúč aj hrubú stavbu, vrátane cien za m² a skrytých nákladov.',
+    title: 'Koľko stojí stavba rodinného domu v roku 2026?',
+    excerpt: 'Ceny za m² pre hrubú stavbu, holodom aj dom na kľúč v roku 2026, príklad pre 120 m² a čo v rozpočte chýba. Z praxe v Banskobystrickom kraji.',
     category: 'Rodinné domy',
     tags: ['Rodinné domy', 'Stavba domu'],
-    date: '27. Jún 2026',
     publishedAt: '2026-06-27T08:00:00+01:00',
-    updatedAt: '2026-06-27T08:00:00+01:00',
+    updatedAt: '2026-09-23T08:00:00+01:00',
     imageUrl: '/Blog/kolko-stoji-stavba-domu-v-roku-2026.webp',
-    content: `Stavba rodinného domu je pre väčšinu ľudí najväčšou investíciou v živote. Najčastejšia otázka, ktorú v **MNSP | Stavby a rekonštrukcie** od našich klientov dostávame už na prvom stretnutí, znie jasne: *"Koľko stojí stavba rodinného domu?"* 
+    content: `Pri murovanom rodinnom dome na kľúč v strednom štandarde rátame v roku 2026 orientačne s **1 640 € za m² podlahovej plochy**. Jednopodlažný dom so 120 m² tak vychádza približne na 187 000 až 213 000 €. Uzavretá hrubá stavba z toho tvorí zhruba polovicu.
 
-V roku 2026 vstupuje do cenotvorby viacero faktorov – od sprísnených energetických noriem (A0) až po ceny stavebných materiálov a moderné technológie. Poďme sa férovo a detailne pozrieť na to, ako vyzerá reálny rozpočet na stavbu domu v súčasnosti, či už plánujete hrubú stavbu alebo **stavbu domu na kľúč**.
+Čísla v článku vychádzajú z tých istých položiek ako naša [cenová kalkulačka](/kalkulacka), takže si ich môžete hneď prepočítať na vlastnú plochu.
 
-## Od čoho závisí cena rodinného domu?
+## Cena za m² podľa rozsahu prác
 
-Povedať presnú sumu bez toho, aby sme videli projekt, je ako hádať cenu auta bez znalosti značky a výbavy. Celková **cena domu na kľúč** aj hrubej stavby sa odvíja od týchto kľúčových faktorov:
+Najprv si ujasnite, v akom stave chcete dom prevziať. Každý ďalší stupeň obsahuje všetko z predchádzajúceho.
 
-1. **Zastavaná a úžitková plocha:** Väčší dom automaticky neznamená lineárne vyššiu cenu, ale plocha je stále hlavným determinantom.
-2. **Architektúra a tvaroslovie:** Jednoduchý obdĺžnikový bungalov so sedlovou strechou bude vždy lacnejší ako členitý poschodový dom s plochou strechou, veľkými presklenými plochami a terasami.
-3. **Založenie stavby:** Svahovitý terén alebo zlé geologické podmienky dokážu stavbu predražiť hneď v úvode o tisíce eur. Zistiť [ako sa robia základy domu](/blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca) je dôležitý krok.
-4. **Stavebný materiál:** Výber medzi tehlou, pórobetónom či drevodomom.
-5. **Technológie:** Tepelné čerpadlo, fotovoltika, rekuperácia a inteligentná elektroinštalácia predstavujú vyššiu počiatočnú investíciu, ktorá sa vám však vráti na prevádzkových nákladoch.
+| Rozsah | Čo obsahuje | €/m², stredný štandard | Rozpätie podľa štandardu | 120 m², stredný štandard |
+|---|---|---|---|---|
+| Hrubá stavba otvorená | základy, murivo, stropy, krov a strecha | 725 € | 616 – 979 € | ~87 000 € |
+| Hrubá stavba uzavretá | + okná a vchodové dvere | 865 € | 735 – 1 168 € | ~104 000 € |
+| Holodom | + rozvody, omietky, potery, sadrokartón, zateplenie a fasáda | 1 340 € | 1 139 – 1 809 € | ~161 000 € |
+| Dom na kľúč | + podlahy, obklady, dlažby a sanita | 1 640 € | 1 394 – 2 214 € | ~197 000 € |
 
-## Priemerná cena za m² pri stavbe rodinného domu v roku 2026
+*Ceny platia pre jednopodlažný murovaný dom bez pivnice. Rozpätie zodpovedá ekonomickému, strednému a prémiovému štandardu materiálov. Podlahová plocha je zastavaná plocha vynásobená počtom podlaží.*
 
-Pre základnú orientáciu pri plánovaní rozpočtu používame prepočet na metre štvorcové úžitkovej plochy. Upozorňujeme, že ide o priemerné sumy pri štandardných materiáloch.
+Rozdiel medzi hrubou stavbou a domom na kľúč podrobne porovnávame v článku [Dom na kľúč alebo hrubá stavba?](/blog/dom-na-kluc-alebo-hruba-stavba-kompletne-porovnanie)
 
-* **Hrubá stavba:** cca 600 € – 800 € / m²
-* **Holodom:** cca 1 200 € – 1 400 € / m²
-* **Cena domu na kľúč (štandard):** cca 1 600 € – 2 000 € / m²
-* **Dom na kľúč (prémiové materiály a technológie):** 2 200 € / m² a viac
+## Od čoho cena závisí
 
-*Príklad:* Ak plánujete postaviť štandardný bungalov s úžitkovou plochou 120 m², **cena domu na kľúč** sa bude pohybovať orientačne od 192 000 € do 240 000 €.
+Priemer za m² je dobrý na prvý odhad. Váš dom môže vyjsť inak z týchto dôvodov:
 
-## Detailný rozpočet: Z čoho sa skladá cena domu na kľúč?
+1. **Pozemok a zakladanie.** Rovinatý pozemok s únosným podložím znamená najlacnejšie základy. Svah, spodná voda alebo skala ich predražia. V okolí Banskej Bystrice je terén členitý a stavby často potrebujú oporné múry. Na lazoch na Podpoľaní zasa rozhoduje prístupová cesta pre techniku. Miestne podmienky opisujeme na stránke [Kde pôsobíme](/lokality).
+2. **Tvar domu.** Jednoduchý pôdorys so sedlovou alebo pultovou strechou je lacnejší ako členitý dom s množstvom rohov, vikierov a výklenkov.
+3. **Počet podlaží.** Základy a strecha sa platia len raz, takže pri rovnakej ploche vychádza poschodový dom na m² lacnejšie ako bungalov.
+4. **Štandard materiálov.** Medzi ekonomickým a prémiovým štandardom je v kalkulačke rozdiel približne 60 %.
+5. **Presklenie.** Veľkoformátové hliníkové okná a posuvné portály patria k najdrahším položkám stavby.
+6. **Technológie.** Tepelné čerpadlo, rekuperácia či fotovoltika zvyšujú počiatočnú investíciu, no znižujú náklady na prevádzku.
 
-Aby ste mali lepšiu predstavu, kam vaše peniaze pôjdu, rozdelili sme proces výstavby do základných etáp so spriemerovaným percentuálnym podielom z celkového rozpočtu.
+Ako sa pozemok prejaví v praxi, vidno na dvoch našich stavbách z roku 2023. [Rodinný dom v Banskej Bystrici](/portfolio/rodinny-dom-banska-bystrica) stojí na svahu s garážou v úrovni ulice a oporným múrom z lomového kameňa. [Hrubá stavba v Dúbravách](/portfolio/hruba-stavba-dubravy) vyrástla na rovinatom pozemku.
 
-### 1. Projekt a príprava pozemku (cca 3 – 5 %)
-Ešte pred prvým výkopom musíte investovať do:
-* Geodetického a geologického zamerania.
-* Projektovej dokumentácie (katalógový projekt od cca 1 500 €, projekt na mieru od 3 500 € do 10 000 €+).
-* Inžinieringu a vybavenia stavebného povolenia.
-* Zemných prác a prípravy staveniska.
+## Kam idú peniaze: rozpočet po etapách
 
-### 2. Základy a hrubá stavba (cca 25 – 30 %)
-Toto je fáza, ktorú klienti vidia najradšej, pretože dom rastie pred očami. Zahŕňa:
-* Výkopy a vybudovanie [základovej dosky](/sluzby/monoliticke-konstrukcie).
-* Zvislé a vodorovné nosné konštrukcie ([murárske práce](/sluzby/murarske-prace)).
-* Stropné konštrukcie a komínový systém.
-* Krov a strešnú krytinu ([tesárske práce](/sluzby/tesarske-prace)).
+Takto sa rozdelí cena jednopodlažného domu na kľúč so 120 m² v strednom štandarde:
 
-Pri rozhodovaní, či zvoliť dom na kľúč alebo si riešiť **hrubú stavbu** vo vlastnej réžii, pamätajte, že precízne zhotovená hrubá stavba predchádza nákladným problémom v ďalších fázach. Naša firma [MNSP](/o-nas) zaručuje milimetrovú presnosť.
+| Etapa | Podiel | 120 m² |
+|---|---|---|
+| Základy a základová doska | 10 % | 19 800 € |
+| Murivo | 14 % | 27 000 € |
+| Stropy a vence | 8 % | 16 200 € |
+| Krov a strecha | 12 % | 24 000 € |
+| Okná a vchodové dvere | 9 % | 16 800 € |
+| Rozvody (elektrina, voda, kúrenie) | 13 % | 26 400 € |
+| Vnútorné omietky, potery, sadrokartón | 9 % | 16 800 € |
+| Zateplenie a fasáda | 7 % | 13 800 € |
+| Interiér (podlahy, obklady, sanita) | 18 % | 36 000 € |
+| **Spolu** | **100 %** | **196 800 €** |
 
-### 3. Výplne otvorov a uzavretie stavby (cca 10 – 12 %)
-V roku 2026 sú štandardom pre dosiahnutie normy A0:
-* Kvalitné okná s izolačným trojsklom (plastové sú ekonomickejšie, hliníkové trvácnejšie, no drahšie).
-* Bezpečné vchodové dvere.
-* Exteriérové tienenie (žalúzie alebo rolety), ktoré je nevyhnutné proti letnému prehrievaniu.
+Hrubá stavba tvorí asi 44 % ceny, zvyšok pripadá na rozvody a dokončovacie práce. Pri poschodovom dome je podiel hrubej stavby nižší, pretože sa základy a strecha rozpočítajú na väčšiu plochu. V cene domu na kľúč nie je kuchynská linka, svietidlá ani nábytok.
 
-### 4. Technológie, rozvody a inštalácie (cca 15 – 20 %)
-Najrýchlejšie sa meniaca a predražujúca položka v modernom stavebníctve:
-* Elektroinštalácia, voda, kanalizácia.
-* Vykurovací systém (podlahové kúrenie + tepelné čerpadlo).
-* Systém riadenej výmeny vzduchu – rekuperácia (často nevyhnutná pre splnenie energetického certifikátu).
+## Čo v cene domu nie je
 
-### 5. Dokončovacie práce vo vnútri (cca 15 – 20 %)
-Fáza, kde sa z "hrubej stavby" stáva "holodom":
-* Vnútorné [omietky](/sluzby/omietky) a [potery](/sluzby/potery).
-* Sadrokartónové systémy.
-* Zateplenie strechy/stropu a podláh.
+Tabuľky aj kalkulačka počítajú so samotnou stavbou. Tieto náklady si pripočítajte zvlášť:
 
-### 6. Fasáda a zateplenie exteriéru (cca 8 – 10 %)
-Kvalitný zatepľovací systém a [realizácia fasády](/sluzby/fasady), ktorá domu dodá finálny vzhľad a ochráni ho pred poveternostnými vplyvmi.
+- **Projekt a povolenie stavby.** Katalógový projekt od približne 1 500 €, projekt na mieru od 3 500 do 10 000 € a viac. Postup opisujeme v článku [Stavebné povolenie krok za krokom](/blog/stavebne-povolenie-krok-za-krokom-v-roku-2026).
+- **Geologický prieskum.** Odporúčame ho pri každej novostavbe a vieme ho sprostredkovať.
+- **Prípojky** vody, elektriny, plynu a kanalizácie, prípadne žumpa alebo čistička: 2 000 až 8 000 € podľa dĺžky a terénu.
+- **Spevnené plochy, terasa a plot:** 10 000 až 25 000 €. Aj tieto práce robíme, v cene za m² však nie sú.
+- **Úpravy terénu a záhrada.**
+- **Kuchyňa, svietidlá, vstavané skrine a nábytok.**
+- **Rezerva** na nepredvídané veci, napríklad skalu alebo spodnú vodu pri výkope: 10 až 15 % z rozpočtu.
 
-### 7. Finálne povrchové úpravy – "Dom na kľúč" (cca 10 – 15 %)
-Krok, ktorý robí z domu domov. Často túto fázu majitelia podcenia. Zahŕňa:
-* [Obkladačské práce](/sluzby/obkladacske-prace), dlažby a parkety.
-* Interiérové dvere a zárubne.
-* Sanitu, batérie a vybavenie kúpeľní.
-* Maľovku.
+## Ako dlho stavba trvá a ako sa platí
 
-*(Poznámka: V tejto cene zvyčajne nie je zahrnutá kuchynská linka, svietidlá a voľne stojaci nábytok).*
+- **Trvanie:** murovaný dom na kľúč pri plynulom financovaní 9 až 12 mesiacov vrátane technologických prestávok. Hrubá stavba býva hotová za 2 až 3 mesiace. Podrobný harmonogram nájdete v článku [Koľko trvá stavba rodinného domu](/blog/kolko-trva-stavba-rodinneho-domu).
+- **Platby:** po etapách podľa harmonogramu v zmluve. Celú sumu vopred nežiadame.
+- **Hypotéka:** zmluva o dielo a priebežné súpisy prác slúžia banke ako podklad na čerpanie úveru.
+- **Zmena ceny:** čo je v položkovej ponuke, sa nemení. Cena sa mení len pri zmene rozsahu a každú zmenu riešime písomným dodatkom ešte pred realizáciou.
 
-## Skryté náklady: Na čo si dať pozor pri rozpočte?
+## Ako sa dostanete k presnej cene
 
-Najčastejšou chybou stavebníkov je, že rátajú len so sumou, ktorú im ukazuje kalkulačka na stránke s katalógovými projektmi. Čo v základnom rozpočte zvyčajne **chýba** a na čo musíte mať odložené peniaze?
+1. **Orientačný odhad** si spravíte v [kalkulačke](/kalkulacka): zadáte plochu, počet podlaží a štandard.
+2. **Obhliadka pozemku.** Pozrieme sa na prístup, terén a podložie.
+3. **Položková ponuka** podľa vášho projektu alebo podľa projektu, ktorý vám vypracujeme. Je nezáväzná, kým nepodpíšete zmluvu o dielo.
 
-1. **Prípojky inžinierskych sietí:** Voda, elektrika, plyn, žumpa/čistička odpadových vôd (ak nie je kanalizácia). Môžu stáť od 2 000 € do 8 000 € v závislosti od dĺžky a náročnosti terénu.
-2. **Spevnené plochy a oplotenie:** Zámková dlažba pre autá, chodníky, terasa a plot okolo pozemku ľahko odčerpajú ďalších 10 000 € – 25 000 €.
-3. **Úpravy terénu a záhrada:** Dovoz/odvoz zeminy a založenie trávnika.
-4. **Zariadenie interiéru:** Kuchyňa, vstavané skrine, nábytok.
-5. **Rezerva:** Stavebníctvo je živý organizmus. Vždy odporúčame mať vytvorenú **železnú rezervu vo výške aspoň 10 - 15 %** z celkového rozpočtu na neočakávané výdavky (napríklad ak sa pri výkope narazí na skalu alebo spodnú vodu).
+Čo si pripraviť:
 
-## Prečo si vybrať MNSP pre stavbu vášho domu?
+- projekt, ak ho už máte (ak nie, vypracujeme ho),
+- adresu alebo číslo parcely pozemku,
+- geologický prieskum, ak ho už máte,
+- predstavu o štandarde (ekonomický, stredný, prémiový),
+- kedy chcete začať.
 
-Vybrať si správneho partnera na stavbu domu na kľúč vám dokáže ušetriť tisíce eur a nespočetné množstvo prebdených nocí. Ako to robíme my v MNSP?
+## Často kladené otázky
 
-* **Férová cenotvorba:** Naše ponuky sú transparentné. Žiadne skryté poplatky uprostred realizácie. Presne viete, za čo platíte.
-* **Osobný prístup:** Sme malá, ambiciózna firma. Každý projekt pre nás znamená osobný záväzok.
-* **Kvalita bez kompromisov:** Zamestnávame [vlastných odborníkov na remeslá](/sluzby) a staviame výhradne z certifikovaných materiálov. Nešetríme na miestach, ktoré síce nevidno, ale určujú životnosť stavby.
-* **Časová spoľahlivosť:** Dodržiavame dohodnuté harmonogramy. Váš čas je rovnako dôležitý ako náš.
+**Koľko stojí hrubá stavba domu v roku 2026?**
+Otvorená hrubá stavba (základy, murivo, stropy, strecha) vychádza v strednom štandarde orientačne na 725 € za m² podlahovej plochy, s oknami a dverami na 865 €. Pri 120 m² je to približne 87 000 až 104 000 €.
 
-Neváhajte nás [kontaktovať pre nezáväznú konzultáciu](/kontakt). Radi s vami preberieme váš projekt a naceníme ho podľa vašich reálnych požiadaviek.
+**Koľko stojí dom na kľúč so 120 m²?**
+Jednopodlažný murovaný dom v strednom štandarde vychádza orientačne na 187 000 až 213 000 €. V sume nie je projekt, prípojky, spevnené plochy, kuchyňa ani rezerva.
 
-## Často kladené otázky (FAQ)
+**Je lacnejší bungalov alebo poschodový dom?**
+Pri rovnakej podlahovej ploche vychádza poschodový dom lacnejšie, pretože základy a strecha sa platia len raz. V našej kalkulačke je dvojpodlažný dom so 120 m² asi o 11 % lacnejší ako bungalov s rovnakou plochou. Či to platí aj pre váš projekt, overíme pri ponuke.
 
-**1. Oplatí sa viac dom na kľúč alebo svojpomocná výstavba?**
-Svojpomocnou výstavbou dokážete ušetriť približne 20 - 30 % nákladov. Avšak, musíte obetovať obrovské množstvo vlastného času, energie a nervov. Zároveň riskujete technologické chyby bez záruky. Dom na kľúč od profesionálnej firmy vám garantuje kvalitu, záruku na dielo a rýchlosť. 
+**Koľko stojí projekt rodinného domu?**
+Katalógový projekt stojí od približne 1 500 €, projekt na mieru od 3 500 do 10 000 € a viac. Ak projekt ešte nemáte, vypracujeme vám ho.
 
-**2. Koľko percent si mám nechať ako rezervu v rozpočte?**
-Odporúčame počítať so sumou o 10 až 15 % vyššou, ako je pôvodne stanovený rozpočet. Tieto prostriedky vám pokryjú neočakávané geologické komplikácie, zmeny v materiáloch alebo navýšenie cien surovín počas výstavby.
+**Akú rezervu si nechať v rozpočte?**
+Odporúčame 10 až 15 % navyše. Pokryje nečakané veci pri zemných prácach, napríklad skalu alebo spodnú vodu, aj zmeny, ktoré si vyberiete počas stavby.
 
-**3. Je hrubá stavba lepšia ako holodom?**
-Závisí od vašich zručností. Hrubá stavba vás dostane "pod strechu". Dokončiť ju do štádia holodomu znamená nájsť a zosynchronizovať elektrikárov, inštalatérov, omietkarov a kúrenárov, čo býva najstresujúcejšia časť stavby.
+## Máte záujem o cenovú ponuku pre svoj dom?
 
-**4. Predražia moderné technológie stavbu výrazne?**
-Áno, počiatočná investícia do tepelného čerpadla, rekuperácie či fotovoltiky môže stavbu predražiť o 15 000 až 30 000 €. Tieto náklady sa vám ale v priebehu rokov vrátia na extrémne nízkych účtoch za energie a vyššom komforte bývania.
+**Ak už máte projekt,** pošlite nám ho spolu s adresou pozemku. Po obhliadke pripravíme nezáväznú položkovú ponuku.
 
-**5. Dokážete postaviť dom na kľúč podľa môjho vlastného projektu?**
-Samozrejme. Radi vám postavíme dom podľa individuálneho architektonického návrhu, aj podľa zakúpeného katalógového projektu.
+**Ak projekt ešte nemáte,** stačí adresa pozemku a vaša predstava o dome – veľkosť, počet podlaží a štandard. Projekt vám vypracujeme a ponuku pripravíme podľa neho.
 
-**6. Pomôžete nám aj s vybavením stavebného povolenia?**
-V prípade záujmu a po individuálnej dohode vieme našim klientom, ktorým realizujeme stavbu, asistovať aj v procese inžinieringu.
-
-## Zhrnutie
-
-Stavba rodinného domu v roku 2026 vyžaduje dôkladné plánovanie. Počítajte s priemernou cenou okolo 1 600 – 2 000 € za m² pri dome na kľúč. Najdôležitejšie je nepodceniť rezervu a nezabudnúť na pridružené náklady (prípojky, okolie domu, interiér). Základom úspechu bez stresu je výber spoľahlivej stavebnej firmy s transparentným jednaním.
-
-Pokiaľ hľadáte zodpovedného partnera pre realizáciu vašej **hrubej stavby** alebo kompletnej **stavby domu na kľúč**, sme tu pre vás.
-
----
-
-### Súvisiace odkazy a ďalšie čítanie
-* **Naše služby:** [Stavba domu na kľúč](/sluzby/rodinne-domy/stavba-domu-na-kluc)
-* **Naše služby:** [Hrubá stavba a murárske práce](/sluzby/murarske-prace)
-* **Prečítajte si aj:** [Rekonštrukcia staršieho domu v roku 2026: S čím počítať a na čo nezabudnúť](/blog/rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet)
-* **Máte otázky?** [Kontaktujte nás pre cenovú ponuku](/kontakt)
+[Napíšte nám](/kontakt), čo plánujete.
 `
   },
   {
     id: 'stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom',
-    title: 'Stavba rodinného domu v roku 2026: Kompletný sprievodca krok za krokom',
-    excerpt: 'Plánujete stavať dom? Prevedieme vás celým procesom krok za krokom. Zistite, ako prebieha výstavba v roku 2026, čo obnáša a na čo určite nezabudnúť.',
+    title: 'Stavba rodinného domu krok za krokom (2026)',
+    excerpt: 'Ako prebieha stavba rodinného domu od pozemku po kolaudáciu: 8 krokov, koľko trvajú a čo zariaďujete vy a čo stavebná firma.',
     category: 'Rodinné domy',
     tags: ['Rodinné domy', 'Stavba domu'],
-    content: `Plánujete si splniť sen o vlastnom bývaní? **Stavba rodinného domu** je pre väčšinu z nás najväčším životným a finančným projektom. V roku 2026 sa stavebníctvo vyznačuje prísnymi energetickými normami (štandard A0), rastúcim dopytom po moderných technológiách a snahou o maximálnu efektivitu. V tomto rozsiahlom sprievodcovi vás prevedieme celým procesom krok za krokom – od prvej myšlienky až po odovzdanie kľúčov.
+    content: `Plánujete si splniť sen o vlastnom bývaní? **Stavba rodinného domu** je pre väčšinu ľudí najväčší životný aj finančný projekt. V tomto sprievodcovi vás prevedieme celým procesom v ôsmich krokoch – od výberu pozemku až po kolaudáciu. Pri každom kroku nájdete, ako dlho orientačne trvá, čo zariaďujete vy a s čím vám pomôže stavebná firma.
 
-Ak uvažujete nad tým, [koľko stojí stavba rodinného domu v roku 2026](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026), odporúčame prečítať si náš predchádzajúci článok venovaný detailnému rozpočtu. Teraz sa však poďme pozrieť na to, ako samotná **stavba rodinného domu** prebieha v praxi.
+Ak vás najprv zaujíma rozpočet, prečítajte si článok [Koľko stojí stavba rodinného domu v roku 2026](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026) alebo si orientačnú cenu vypočítajte v našej [kalkulačke](/kalkulacka).
 
-## Krok 1: Výber a kúpa ideálneho pozemku
+## Celý postup na jeden pohľad
 
-Všetko sa začína pozemkom. Kúpa stavebného pozemku je často kompromisom medzi lokalitou, cenou a technickými možnosťami. Pri výbere si dajte pozor na nasledujúce aspekty:
+| Krok | Orientačný čas | Čo zariaďujete vy | S čím pomôže firma |
+|---|---|---|---|
+| 1. Pozemok | podľa ponuky pozemkov | kúpa pozemku | obhliadka prístupu, terénu a sietí |
+| 2. Projekt | spolu s krokom 3: 3 – 6 mesiacov | vlastný projekt, ak ho máte | projekt vám na želanie vypracujeme |
+| 3. Povolenie stavby | (spolu s krokom 2) | – | stavebný zámer a vyjadrenia vybavíme za vás |
+| 4. Základy a hrubá stavba | spolu s krokom 5: 2 – 3 mesiace | – | základy, murivo, stropy |
+| 5. Strecha a okná | (spolu s krokom 4) | výber krytiny a okien | krov, krytina, okná a dvere |
+| 6. Rozvody a technológie | 3 – 5 týždňov | výber technológií | elektrina, voda, kúrenie |
+| 7. Dokončovacie práce | 3 – 4 mesiace | výber podláh, obkladov a sanity | omietky, potery, fasáda, interiér |
+| 8. Kolaudácia | do 15 dní od obhliadky | podanie návrhu | dokumentácia ku kolaudácii |
 
-*   **Územný plán obce (ÚPI):** Pred kúpou si vždy vyžiadajte územno-plánovaciu informáciu. Tá vám presne povie, čo na danom pozemku môžete postaviť, aká je povolená zastavanosť, výšková regulácia a odstupové vzdialenosti.
-*   **Inžinierske siete:** Sú na hranici pozemku dotiahnuté elektrina, voda, plyn a kanalizácia? Ak nie, ich dobudovanie môže stavbu predražiť o tisíce eur.
+Samotná stavba domu na kľúč trvá pri plynulom financovaní 9 až 12 mesiacov vrátane technologických prestávok. Podrobný harmonogram po týždňoch nájdete v článku [Koľko trvá stavba rodinného domu](/blog/kolko-trva-stavba-rodinneho-domu).
+
+## Krok 1: Výber a kúpa pozemku
+
+Všetko sa začína pozemkom. Kúpa stavebného pozemku je často kompromisom medzi lokalitou, cenou a technickými možnosťami. Pri výbere si dajte pozor na nasledujúce veci:
+
+*   **Územný plán obce (ÚPI):** Pred kúpou si vždy vyžiadajte územnoplánovaciu informáciu. Tá vám povie, čo na danom pozemku môžete postaviť, aká je povolená zastavanosť, výšková regulácia a odstupové vzdialenosti.
+*   **Inžinierske siete:** Sú na hranici pozemku elektrina, voda, plyn a kanalizácia? Ak nie, ich dobudovanie môže stavbu predražiť o tisíce eur.
 *   **Geológia a orientácia:** Svahovitý terén alebo zlé geologické podmienky (spodná voda, íly) si vyžadujú nákladnejšie založenie stavby. Ideálna orientácia záhrady a obytných miestností je na juh, juhozápad alebo juhovýchod.
 
-*Praktický príklad:* Klient kúpil lacný pozemok na okraji obce. Neskôr zistil, že k nemu nevedie prístupová cesta vo vlastníctve obce a musí si ju vybudovať sám, vrátane predĺženia inžinierskych sietí. Pôvodná "úspora" sa zmenila na dodatočné náklady vo výške 15 000 €.
+*Príklad:* Lacný pozemok na okraji obce môže mať háčik – nevedie k nemu obecná prístupová cesta. Stavebník si ju potom musí vybudovať sám aj s predĺžením inžinierskych sietí a pôvodná „úspora“ sa zmení na dodatočné náklady rádovo v tisíckach až desaťtisícoch eur.
+
+V našom kraji sa pozemky líšia výrazne: okolie Banskej Bystrice je členité a stavby tam často potrebujú oporné múry, na lazoch na Podpoľaní zasa rozhoduje prístupová cesta pre techniku. Miestne podmienky opisujeme na stránke [Kde pôsobíme](/lokality).
+
+**S čím pomôžeme:** Pozemok si prejdeme ešte pred cenovou ponukou – prístup pre techniku, terén a napojenie na siete. Viac v článku [Ako pripraviť pozemok na stavbu rodinného domu](/blog/ako-pripravit-pozemok-na-stavbu-rodinneho-domu).
 
 ## Krok 2: Architektonický návrh a projektová dokumentácia
 
-Keď máte pozemok, potrebujete projekt. Tu stojíte pred dôležitým rozhodnutím: katalógový projekt alebo projekt na mieru od architekta? Vzhľadom na prísne požiadavky na energetickú triedu A0 v roku 2026, musí byť projekt spracovaný mimoriadne precízne.
+Keď máte pozemok, potrebujete projekt. Tu stojíte pred rozhodnutím: katalógový projekt, alebo projekt na mieru od architekta? Novostavba musí spĺňať energetickú triedu A0, preto musí byť projekt spracovaný dôkladne – od hrúbky izolácií po návrh vykurovania.
 
 ### Katalógový projekt vs. projekt na mieru
 
 | Vlastnosť | Katalógový projekt | Projekt na mieru |
 | :--- | :--- | :--- |
 | **Cena** | Od 1 500 € do 3 000 € | Od 3 500 € do 10 000 € a viac |
-| **Rýchlosť dodania** | Takmer okamžite (často do 2 týždňov) | Týždne až mesiace |
-| **Prispôsobenie pozemku** | Nutnosť osadenia, často kompromisy | 100 % využitie potenciálu pozemku |
-| **Individuálne požiadavky**| Zmeny za príplatok, obmedzené možnosti | Úplná sloboda v dizajne a funkciách |
+| **Rýchlosť dodania** | Rýchla, projekt už existuje | Týždne až mesiace |
+| **Prispôsobenie pozemku** | Treba ho osadiť, často s kompromismi | Návrh priamo na váš pozemok |
+| **Individuálne požiadavky** | Zmeny za príplatok, obmedzené možnosti | Dispozícia a vzhľad podľa vás |
 
-V **MNSP** vám vieme zrealizovať stavbu podľa oboch variantov. Vždy však odporúčame projekt pred realizáciou spoločne skonzultovať.
+**S čím pomôžeme:** Projekt vám na želanie vypracujeme. Ak už projekt máte, staviame podľa neho. Pred realizáciou ho vždy spoločne prejdeme.
 
-## Krok 3: Inžiniering a stavebné povolenie v roku 2026
+## Krok 3: Povolenie stavby
 
-Nová stavebná legislatíva postupne zavádza digitalizáciu, no získanie stavebného povolenia stále vyžaduje čas a trpezlivosť. Proces inžinieringu zahŕňa získanie vyjadrení od správcov inžinierskych sietí, životného prostredia, obce a ďalších dotknutých orgánov.
+Od 1. apríla 2025 platí nový stavebný zákon (č. 25/2025 Z. z.) a postup sa oproti minulosti zmenil. Namiesto klasického stavebného povolenia dnes prebieha:
 
-V roku 2026 musíte okrem klasickej projektovej dokumentácie predložiť aj prepracované posúdenie energetickej náročnosti budovy. Bez splnenia parametrov pre primárnu energiu (trieda A0) povolenie nezískate.
+1.  **Stavebný zámer:** Projektant pripraví dokumentáciu stavebného zámeru a k nej sa zbierajú záväzné stanoviská a vyjadrenia dotknutých orgánov a správcov inžinierskych sietí.
+2.  **Rozhodnutie o stavebnom zámere:** Stavebný úrad zámer posúdi a vydá rozhodnutie.
+3.  **Overenie projektu stavby:** Podrobný projekt sa predloží na overenie. Stavať sa začína až po jeho overení.
+
+Od roku 2027 prichádza novela zákona, ktorá niektoré kroky ďalej upravuje – pred podaním si preto vždy overte aktuálny postup.
+
+**S čím pomôžeme:** Stavebný zámer aj vyjadrenia vieme na želanie vybaviť za vás. Podrobnejšie o povoľovaní píšeme v článku [Stavebné povolenie krok za krokom](/blog/stavebne-povolenie-krok-za-krokom-v-roku-2026).
 
 ## Krok 4: Založenie stavby a hrubá stavba
 
-S povolením v ruke môžeme konečne začať stavať. Z hľadiska vizuálneho pokroku je toto najuspokojivejšia fáza.
+S overeným projektom môžeme začať stavať. Z hľadiska viditeľného pokroku je to najuspokojivejšia fáza.
 
 ### Základová doska
-Správne [založenie stavby a monolitické konštrukcie](/sluzby/monoliticke-konstrukcie) sú kľúčové pre dlhú životnosť. Po odobratí ornice a vyhĺbení základových pásov sa ukladá bleskozvod, ležatá kanalizácia a chráničky na siete. Následne sa vylieva betón, armuje a betónuje samotná základová doska.
+Správne [založenie stavby a monolitické konštrukcie](/sluzby/monoliticke-konstrukcie) sú kľúčové pre dlhú životnosť domu. Po odobratí ornice a vyhĺbení základových pásov sa ukladá bleskozvod, ležatá kanalizácia a chráničky na siete. Následne sa vylieva betón, armuje a betónuje samotná základová doska.
 
 ### Zvislé a vodorovné konštrukcie
-Po dozretí betónu nastupujú [murárske práce](/sluzby/murarske-prace). Na izolovanú základovú dosku sa začnú murovať obvodové steny a vnútorné priečky. Najčastejšie sa používa brúsená tehla alebo pórobetónové tvárnice (Ytong). Nasleduje realizácia stropu – či už monolitického železobetónového, montovaného, alebo dreveného trámového.
+Po dozretí betónu nastupujú [murárske práce](/sluzby/murarske-prace). Na izolovanú základovú dosku sa murujú obvodové steny a vnútorné priečky, najčastejšie z brúsenej tehly alebo pórobetónových tvárnic. Nasleduje strop – monolitický železobetónový, montovaný alebo drevený trámový.
+
+**S čím pomôžeme:** Pred stavbou odporúčame geologický prieskum – vieme ho sprostredkovať. Základy aj hrubú stavbu robíme vlastnou technikou. Ako to vyzerá v praxi, ukazuje napríklad [hrubá stavba v Dúbravách](/portfolio/hruba-stavba-dubravy). Viac o základoch v článku [Ako sa robia základy domu](/blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca).
 
 ## Krok 5: Zastrešenie a výplne otvorov
 
-Aby bola stavba chránená pred poveternostnými vplyvmi, musí sa uzavrieť. [Tesárske práce](/sluzby/tesarske-prace) zahŕňajú montáž krovu, na ktorý sa ukladá strešná krytina (betónová, keramická alebo plechová).
+Aby bola stavba chránená pred počasím, musí sa uzavrieť. [Tesárske práce](/sluzby/tesarske-prace) zahŕňajú montáž krovu, na ktorý sa ukladá strešná krytina (betónová, keramická alebo plechová).
 
-Následne sa inštalujú okná a exteriérové dvere. V roku 2026 sú absolútnym štandardom izolačné trojsklá a predpríprava (alebo priama montáž) na exteriérové žalúzie či rolety, ktoré bránia letnému prehrievaniu. Týmto krokom je hrubá stavba uzavretá.
+Následne sa osádzajú okná a exteriérové dvere. Bežným štandardom sú dnes izolačné trojsklá a príprava (alebo priama montáž) na exteriérové žalúzie či rolety, ktoré bránia letnému prehrievaniu. Týmto krokom je hrubá stavba uzavretá.
 
-## Krok 6: Technológie, inštalácie a rozvody (Smart Home)
+**S čím pomôžeme:** Okná objednávame včas – na mieru vyrábané okná majú dodaciu lehotu aj niekoľko týždňov, preto ich riešime už počas murovania.
 
-Moderná **stavba rodinného domu** pripomína skôr zložitý organizmus ako len hromadu tehál. Táto fáza je technologicky najnáročnejšia:
+## Krok 6: Technológie, inštalácie a rozvody
 
-1.  **Elektroinštalácia:** Ťahanie káblov pre svetlá, zásuvky, internet, alarm, kamerové systémy a prípadnú inteligentnú elektroinštaláciu (Smart Home).
+Moderná **stavba rodinného domu** pripomína skôr zložitý organizmus ako hromadu tehál. Táto fáza je technologicky najnáročnejšia:
+
+1.  **Elektroinštalácia:** Káble pre svetlá, zásuvky, internet, alarm, kamerové systémy a prípadnú inteligentnú elektroinštaláciu.
 2.  **Voda a kanalizácia:** Rozvody k umývadlám, sprchám, WC a práčke.
-3.  **Vykurovanie a chladenie:** Rozvody pre podlahové vykurovanie. Zdrojom tepla je dnes najčastejšie tepelné čerpadlo, často kombinované s fotovoltickými panelmi.
-4.  **Rekuperácia:** Systém riadeného vetrania s rekuperáciou tepla zabezpečuje neustály prísun čerstvého vzduchu bez tepelných strát.
+3.  **Vykurovanie a chladenie:** Rozvody pre podlahové vykurovanie. Zdrojom tepla je dnes najčastejšie [tepelné čerpadlo](/blog/tepelne-cerpadlo-v-rodinnom-dome), často v kombinácii s fotovoltikou.
+4.  **Rekuperácia:** Systém [riadeného vetrania s rekuperáciou](/blog/rekuperacia-v-rodinnom-dome-oplati-sa) zabezpečuje prísun čerstvého vzduchu bez zbytočných tepelných strát.
+
+**S čím pomôžeme:** Kompletné rozvody sú súčasťou domu na kľúč, takže ich koordinujeme s ostatnými prácami a nemusíte zháňať jednotlivé profesie.
 
 ## Krok 7: Dokončovacie práce a interiéry
 
-Blížime sa do finále. Na rad prichádzajú procesy, ktoré zmenia stavbu na skutočný domov:
+Blížime sa do finále. Na rad prichádzajú práce, ktoré zmenia stavbu na domov:
 
-*   **Omietky a potery:** Realizácia vnútorných [omietok](/sluzby/omietky) a vyliatie podlahových [poterov](/sluzby/potery).
-*   **Fasáda:** Zateplenie obvodového plášťa (polystyrén alebo minerálna vlna) a nanesenie finálnej [fasádnej omietky](/sluzby/fasady).
-*   **Povrchové úpravy:** Maľovanie stien, inštalácia sadrokartónových podhľadov.
-*   **Obklady a dlažby:** [Obkladačské práce](/sluzby/obkladacske-prace) v kúpeľniach, WC a technickej miestnosti. Pokládka plávajúcich podláh.
-*   **Kompletizácia:** Montáž interiérových dverí, zapojenie zásuviek, vypínačov, svietidiel a osadenie sanity (WC, vane, umývadlá).
+*   **Omietky a potery:** Vnútorné [omietky](/sluzby/omietky) a podlahové [potery](/sluzby/potery).
+*   **Fasáda:** Zateplenie obvodového plášťa a finálna [fasádna omietka](/sluzby/fasady). Porovnanie materiálov nájdete v článku [Polystyrén alebo minerálna vlna](/blog/zateplenie-fasady-polystyren-alebo-mineralna-vlna).
+*   **Povrchové úpravy:** Sadrokartónové podhľady a maľovanie stien.
+*   **Obklady a dlažby:** [Obkladačské práce](/sluzby/obkladacske-prace) v kúpeľniach, WC a technickej miestnosti a pokládka podláh.
+*   **Kompletizácia:** Interiérové dvere, zásuvky, vypínače, svietidlá a sanita.
+
+**S čím pomôžeme:** Mokré procesy – omietky, potery, fasádu – plánujeme do teplejších mesiacov, pretože potrebujú teplotu nad nulou. Technologické prestávky máte v harmonograme vopred.
 
 ## Krok 8: Kolaudácia a sťahovanie
 
-Posledným formálnym krokom je kolaudácia. Stavebnému úradu musíte preukázať, že dom bol postavený v súlade so stavebným povolením a projektovou dokumentáciou. Budete potrebovať:
+Posledným formálnym krokom je kolaudácia. Podľa nového stavebného zákona po kolaudačnej obhliadke vydáva stavebný úrad **kolaudačné osvedčenie** (predtým kolaudačné rozhodnutie). Ak úrad nezistí nedostatky, vydá ho do 15 dní. Budete potrebovať najmä:
+
 *   Geometrický plán.
 *   Energetický certifikát budovy.
 *   Revízne správy (elektro, bleskozvod, komín, tlakové skúšky).
-*   Certifikáty zabudovaných materiálov.
+*   Doklady k zabudovaným materiálom.
 
-Po vydaní kolaudačného rozhodnutia si dom zapíšete do katastra a môžete si konečne užívať svoje nové bývanie!
+Bez kolaudačného osvedčenia dom nemôžete legálne užívať ani zapísať do katastra ako dokončenú stavbu. Po jeho vydaní si dom zapíšete do katastra a môžete sa sťahovať.
 
----
+**S čím pomôžeme:** Po dokončení vám odovzdáme dokumentáciu ku kolaudácii.
+
+## Kto za čo zodpovedá
+
+*   **Stavbyvedúci:** Za každé dielo zodpovedá konkrétny stavbyvedúci, ktorý koordinuje profesie a je vaším kontaktom počas celej stavby.
+*   **Platby:** Platí sa po etapách podľa harmonogramu v zmluve, nikdy nie celá suma vopred.
+*   **Zmeny:** Každú zmenu rozsahu riešime písomným dodatkom, aby ste vopred vedeli, čo znamená pre cenu aj termín.
+*   **Záruka:** Rozsah záruky je uvedený v zmluve o dielo a zodpovedá typu prác.
 
 ## Často kladené otázky (FAQ)
 
 **1. Čo je to stavba rodinného domu na kľúč?**
-Stavba na kľúč znamená, že jedna stavebná firma (generálny dodávateľ) preberie zodpovednosť za kompletnú realizáciu od základov až po finálne povrchové úpravy. Vy si prevezmete hotový dom pripravený na nasťahovanie nábytku.
+Stavba na kľúč znamená, že jedna stavebná firma preberie zodpovednosť za kompletnú realizáciu od základov až po finálne povrchové úpravy. Vy prevezmete hotový dom pripravený na nasťahovanie nábytku.
 
 **2. Ako dlho trvá stavba rodinného domu?**
-Pri klasickej murovanej stavbe zvyčajne proces trvá od 10 do 18 mesiacov v závislosti od plynulosti financovania, počasia a kapacít dodávateľov. Pri montovaných domoch môže byť tento čas skrátený na polovicu.
+Murovaný dom na kľúč trvá pri plynulom financovaní zvyčajne 9 až 12 mesiacov vrátane technologických prestávok. Samotná hrubá stavba býva hotová za 2 až 3 mesiace. Príprava projektu a povolenia trvá navyše približne 3 až 6 mesiacov.
 
 **3. Je možné zmeniť projekt počas výstavby?**
-Menšie úpravy (napr. posunutie nenosnej priečky) sú zvyčajne bez problémov možné a riešia sa zápisom do stavebného denníka. Zásadné zmeny (veľkosť okien, nosné steny, prístavby) však vyžadujú zmenu stavby pred dokončením, čo obnáša opätovné jednanie s úradmi.
+Menšie úpravy, napríklad posunutie nenosnej priečky, sú zvyčajne bez problémov. Zásadné zmeny, ako veľkosť okien, nosné steny či prístavby, si vyžadujú konanie so stavebným úradom. Každú zmenu rozsahu riešime písomným dodatkom, aby ste vopred vedeli, čo znamená pre cenu aj termín.
 
 **4. Potrebujem stavebný dozor, ak staviam na kľúč s firmou?**
-Áno, podľa zákona je stavebný dozor povinný. Okrem zákonnej povinnosti je to človek, ktorý chráni vaše záujmy, kontroluje kvalitu prác a dodržiavanie technologických postupov nezávisle od stavebnej firmy.
+Nie. Ak dom stavia stavebná firma, za odborné vedenie stavby zodpovedá jej stavbyvedúci.
 
 **5. Aké sú najväčšie výzvy pri stavbe domu v roku 2026?**
-Najväčšou výzvou je zosúladenie komplexných technológií (tepelné čerpadlo, fotovoltika, rekuperácia) tak, aby fungovali efektívne a dom spĺňal prísny štandard energetickej triedy A0.
+Najmä zosúladiť technológie – tepelné čerpadlo, fotovoltiku a rekuperáciu – tak, aby fungovali efektívne a dom spĺňal energetickú triedu A0.
 
 **6. Môžem si časť prác na stavbe urobiť sám?**
-Áno, mnohí klienti si nechajú zrealizovať hrubú stavbu alebo holodom a dokončovacie práce (maľovanie, plávajúce podlahy, úpravy záhrady) si robia svojpomocne, aby ušetrili.
+Áno. Mnohí klienti si nechajú postaviť hrubú stavbu alebo holodom a dokončovacie práce, ako maľovanie, plávajúce podlahy či úpravy záhrady, si robia svojpomocne.
 
 **7. Kedy je najlepšie začať so stavbou?**
-Ideálny čas na začatie zemných prác a vylievanie základov je jar (marec/apríl), kedy už nehrozia trvalé mrazy. Vďaka tomu máte dostatok času dostať stavbu pod strechu a uzavrieť ju do príchodu ďalšej zimy.
+Ideálny čas na začatie zemných prác a betonáž základov je jar (marec, apríl), keď už nehrozia trvalé mrazy. Stavbu tak stihnete dostať pod strechu a uzavrieť pred ďalšou zimou.
 
----
+## Máte záujem o cenovú ponuku pre svoj dom?
 
-## Zhrnutie
+**Ak už máte projekt,** pošlite nám ho spolu s adresou pozemku. Po obhliadke pripravíme nezáväznú položkovú ponuku.
 
-Úspešná **stavba rodinného domu** vyžaduje dôkladnú prípravu, kvalitný projekt a výber skúsených partnerov. Proces začína kúpou pozemku a vybavením povolení, pokračuje realizáciou hrubej stavby, inštaláciou moderných technológií a končí precíznymi dokončovacími prácami a kolaudáciou. Hoci je to náročná cesta, s dobrým plánovaním a správnou stavebnou firmou ju zvládnete s prehľadom.
+**Ak projekt ešte nemáte,** stačí adresa pozemku a vaša predstava o dome – veľkosť, počet podlaží a štandard. Projekt vám vypracujeme a ponuku pripravíme podľa neho.
 
-Ak hľadáte spoľahlivého partnera, ktorý vás prevedie celým procesom a zrealizuje vašu stavbu v najvyššej kvalite, tím **MNSP | Stavby a rekonštrukcie** je vám plne k dispozícii. [Kontaktujte nás pre bezplatnú konzultáciu](/kontakt) a poďme spoločne premeniť váš projekt na skutočnosť.`,
-    date: '12. Jún 2026',
+[Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-06-12T08:00:00+01:00',
-    updatedAt: '2026-06-12T08:00:00+01:00',
+    updatedAt: '2026-09-24T08:00:00+02:00',
     imageUrl: '/Blog/stavba-domu-v-roku-2026.webp'
   },
   {
     id: 'dom-na-kluc-alebo-hruba-stavba-kompletne-porovnanie',
     title: 'Dom na kľúč alebo hrubá stavba? Kompletné porovnanie',
-    excerpt: 'Rozhodujete sa, ako budete realizovať svoje nové bývanie? Porovnali sme výhody, nevýhody, časovú náročnosť a reálne náklady oboch prístupov.',
+    excerpt: 'Hrubá stavba, holodom alebo dom na kľúč: čo obsahujú, koľko stoja za m², ako dlho trvajú a pre koho sa ktorý variant hodí.',
     category: 'Rodinné domy',
     tags: ['Rodinné domy', 'Stavba domu'],
-    content: `Stojíte pred dôležitým rozhodnutím a neviete, či je pre vás lepší **dom na kľúč alebo hrubá stavba**? Táto otázka trápi takmer každého budúceho majiteľa rodinného domu. Kým v minulosti bolo úplne bežné stavať domy po večeroch a víkendoch s pomocou širokej rodiny a známych, v roku 2026 je situácia výrazne odlišná. Moderné stavebné postupy, prísne energetické normy (štandard A0) a vysoké pracovné vyťaženie menia pohľad na to, ako Slováci pristupujú k výstavbe.
+    content: `Pri stavbe rodinného domu sa so stavebnou firmou môžete dohodnúť na troch základných rozsahoch: **hrubá stavba**, **holodom** alebo **dom na kľúč**. Líšia sa tým, kde práca firmy končí a kde začína vaša – a s tým aj cenou, časom a množstvom starostí.
 
-V tomto detailnom porovnaní sa pozrieme na to, čo presne oba pojmy znamenajú, aké majú výhody i nevýhody a ktoré riešenie bude najvýhodnejšie práve pre váš životný štýl a rozpočet.
+Stručne: ak máte vlastných remeselníkov a čas, hrubá stavba ušetrí najviac peňazí. Ak si chcete urobiť len povrchy, strednou cestou je holodom. Ak stavbu nechcete riadiť, zvoľte dom na kľúč. Nižšie nájdete, čo ktorý variant obsahuje, koľko orientačne stojí a pre koho sa hodí.
 
 ## Čo presne znamená hrubá stavba?
 
-Termín "hrubá stavba" nie je v slovenskej legislatíve exaktne definovaný, preto si vždy pred podpisom zmluvy so stavebnou firmou presne vyšpecifikujte, čo ponuka obsahuje. Zaužívaným štandardom je, že ide o základnú nosnú schránku domu, ktorá chráni interiér pred poveternostnými vplyvmi.
+Termín „hrubá stavba“ nie je v slovenskej legislatíve presne definovaný, preto si pred podpisom zmluvy so stavebnou firmou vždy presne vyšpecifikujte, čo ponuka obsahuje. Zaužívaným štandardom je, že ide o nosnú schránku domu, ktorá chráni interiér pred poveternostnými vplyvmi.
 
 ### Čo štandardná hrubá stavba obsahuje:
 *   **Zemné práce a základy:** Výkopové práce, ležatá kanalizácia, uzemnenie, vybetónovanie základových pásov a základovej dosky (vrátane hydroizolácie pod murivom).
@@ -286,18 +304,26 @@ Termín "hrubá stavba" nie je v slovenskej legislatíve exaktne definovaný, pr
 *   **Strešná konštrukcia:** Montáž krovu ([tesárske práce](/sluzby/tesarske-prace)), položenie poistnej hydroizolácie, latovanie a montáž strešnej krytiny (vrátane odkvapového systému).
 
 ### Čo hrubá stavba (zvyčajne) neobsahuje:
-*   Výplne otvorov (okná, exteriérové dvere). *Poznámka: Ak sa okná inštalujú, hovoríme už o "uzavretej hrubej stavbe".*
+*   Výplne otvorov (okná, exteriérové dvere). *Poznámka: Ak sa okná osádzajú, hovoríme o „uzavretej hrubej stavbe“.*
 *   Rozvody elektriny, vody, odpadu a kúrenia.
 *   Vnútorné omietky a podlahové potery.
 *   Zateplenie fasády a strechy.
-*   Akékoľvek interiérové práce (podlahy, obklady, sanita, dvere).
+*   Interiérové práce (podlahy, obklady, sanita, dvere).
+
+Takúto zákazku sme realizovali napríklad v roku 2023 v Dúbravách: [hrubá stavba rodinného domu](/portfolio/hruba-stavba-dubravy) od výkopu základových rýh cez murivo z pórobetónu a väzníkový krov až po strešnú krytinu a vnútorné omietky.
+
+## Čo je holodom?
+
+Holodom je stredná cesta medzi hrubou stavbou a domom na kľúč. Dom je zvonku hotový – strecha, okná, zateplenie a fasáda – a vnútri sú urobené rozvody, omietky, potery a sadrokartónové podhľady. Chýbajú len finálne povrchy: podlahy, obklady, interiérové dvere a sanita.
+
+Tieto práce si viete zabezpečiť podľa vlastného výberu a bez vplyvu na statiku či energetiku domu. Preto je holodom obľúbený u stavebníkov, ktorí si chcú časť prác urobiť sami, no technicky náročné veci nechať na firmu.
 
 ## Čo znamená dom na kľúč?
 
-**Dom na kľúč** predstavuje maximálny komfort pre investora. Stavebná firma – generálny dodávateľ (ako napríklad naša spoločnosť **MNSP | Stavby a rekonštrukcie**) – preberá zodpovednosť za kompletnú realizáciu stavby. Vy ako klient odovzdáte firme projektovú dokumentáciu (alebo si ju necháte vypracovať) a na konci procesu dostanete kľúče od hotového, vyčisteného domu, do ktorého si stačí nasťahovať nábytok.
+Pri **dome na kľúč** preberá jedna stavebná firma zodpovednosť za celú stavbu – od základov až po finálne povrchy. Projekt môžete priniesť vlastný, alebo vám ho vypracujeme. Na konci prevezmete hotový, vyčistený dom, do ktorého si stačí nasťahovať nábytok.
 
 ### Rozsah prác pri dome na kľúč:
-Okrem všetkých bodov z hrubej stavby obsahuje dom na kľúč kompletné dokončovacie práce:
+Okrem všetkého z hrubej stavby a holodomu obsahuje dom na kľúč:
 *   Montáž okien, dverí a exteriérového tienenia.
 *   Kompletné vnútorné inštalácie (elektro, voda, plyn, kanalizácia, kúrenie, rekuperácia).
 *   Vyliatie poterov a nanesenie [vnútorných omietok](/sluzby/omietky).
@@ -306,97 +332,103 @@ Okrem všetkých bodov z hrubej stavby obsahuje dom na kľúč kompletné dokon�
 *   Pokládku podláh a [obkladačské práce](/sluzby/obkladacske-prace).
 *   Inštaláciu sanity, vypínačov, zásuviek a svietidiel.
 
-*Upozornenie:* Kuchynská linka, vstavané skrine a krb zvyčajne nie sú štandardnou súčasťou ceny "na kľúč" a riešia sa ako nadštandard, resp. doplnková výbava.
+*Upozornenie:* Kuchynská linka, vstavané skrine a krb zvyčajne nie sú súčasťou ceny „na kľúč“ a riešia sa ako doplnková výbava.
 
-## Dom na kľúč alebo hrubá stavba: Detailné porovnanie
+Ako stavba prebieha krok za krokom, opisujeme v [sprievodcovi stavbou rodinného domu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom).
 
-Pre lepšiu orientáciu sme pre vás pripravili prehľadnú porovnávaciu tabuľku:
+## Porovnanie v číslach
 
-| Parameter | Hrubá stavba (a následná svojpomoc/subdodávky) | Dom na kľúč od jednej firmy |
-| :--- | :--- | :--- |
-| **Starosti a stres** | Vysoké (vyžaduje denný manažment a hľadanie partií) | Minimálne (všetko rieši manažér stavby) |
-| **Časová náročnosť** | Zvyčajne 2 až 4 roky | Zvyčajne 10 až 14 mesiacov (murovaný dom) |
-| **Financie (cena)** | Cca o 15–20 % lacnejšie (ak nepočítame hodnotu vášho času) | Vyššia počiatočná investícia (presne daný rozpočet) |
-| **Záruka na dielo** | Roztrieštená (ťažko dokázať, kto urobil chybu) | Komplexná záruka (3 až 5 rokov na celé dielo od 1 firmy) |
-| **Kvalita prác** | Kolísavá (závisí od zručnosti jednotlivých majstrov) | Profesionálna s certifikovanými postupmi |
-| **Riziko inflácie** | Vysoké (zdražovanie materiálov počas dlhšej výstavby) | Nízke (cena a materiál sú zafixované zmluvou) |
+Ceny vychádzajú z našej [kalkulačky](/kalkulacka) pre jednopodlažný murovaný dom so 120 m² v strednom štandarde. Podrobný rozpis nájdete v článku [Koľko stojí stavba rodinného domu v roku 2026](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026).
 
-## Výhody a nevýhody oboch riešení
+| | Hrubá stavba | Holodom | Dom na kľúč |
+| :--- | :--- | :--- | :--- |
+| **Obsahuje** | základy, murivo, stropy, strecha (pri uzavretej aj okná) | navyše rozvody, omietky, potery, sadrokartón, zateplenie a fasádu | navyše podlahy, obklady, sanitu a dvere |
+| **Cena za m²** | 725 €, s oknami 865 € | 1 340 € | 1 640 € |
+| **Dom so 120 m²** | približne 87 000 – 104 000 € | približne 161 000 € | približne 197 000 € |
+| **Trvanie prác firmy** | 2 – 3 mesiace | približne 5 – 7 mesiacov | 9 – 12 mesiacov |
+| **Čo ostáva na vás** | všetky dokončovacie práce a ich koordinácia | podlahy, obklady, sanita a dvere | výber materiálov |
+| **Záruka** | na práce firmy podľa zmluvy, na zvyšok zodpovedajú vaši remeselníci | na práce firmy podľa zmluvy, na povrchy zodpovedajú vaši remeselníci | na celé dielo podľa zmluvy o dielo |
+| **Riziko zdraženia** | vyššie, dokončenie svojpomocne trvá často 2 – 3 roky | stredné | nízke, cena z položkovej ponuky sa mení len pri zmene rozsahu |
+| **Hodí sa, ak** | máte vlastných remeselníkov a čas | chcete si dokončiť len povrchy | stavbu nechcete riadiť |
 
-Rozhodnutie, či **dom na kľúč alebo hrubá stavba**, závisí od vašich zručností, voľného času, financií a psychickej odolnosti.
+Časy vychádzajú z článku [Koľko trvá stavba rodinného domu](/blog/kolko-trva-stavba-rodinneho-domu).
+
+## Kedy zvoliť ktorý variant
+
+Rozhodnutie závisí od vašich zručností, voľného času a financií.
 
 ### Kedy zvoliť hrubú stavbu?
 
-Tento postup je vhodný pre ľudí, ktorí pracujú v stavebníctve, majú množstvo zručných známych, alebo majú obmedzený počiatočný rozpočet a nevadí im rozložiť si financovanie (aj bývanie) na niekoľko rokov. Častým modelom je nechať si od odbornej firmy postaviť pevnú hrubú stavbu so zárukou na statiku, a dokončovacie práce realizovať vo vlastnej réžii.
+Tento postup je vhodný pre ľudí, ktorí pracujú v stavebníctve, majú okolo seba zručných známych alebo majú obmedzený počiatočný rozpočet a nevadí im rozložiť stavbu na dlhší čas. Častým modelom je nechať si od firmy postaviť hrubú stavbu so zárukou na nosné konštrukcie a dokončovacie práce robiť vo vlastnej réžii.
 
 **Výhody:**
-*   Priame zníženie finančných nákladov (šetríte maržu za koordináciu a prácu).
-*   Flexibilita v tempe výstavby (robíte, keď máte peniaze).
+*   Nižšie náklady – šetríte na práci a koordinácii.
+*   Flexibilné tempo – dokončujete podľa toho, ako máte peniaze a čas.
 
 **Nevýhody:**
-*   Obrovská časová náročnosť. Večery, víkendy a dovolenky strávite na stavbe.
-*   Komplikácie so zárukou. Ak napríklad zateká sprchový kút, vodár bude obviňovať obkladača a obkladač vodára.
-*   Predraženie vplyvom času. Kým dom dostaviate, ceny technológií a materiálov môžu stúpnuť.
-*   Technologické chyby. Moderné domy v kategórii A0 vyžadujú presné technologické postupy, ktoré laici (či majstri "zo starej školy") často nepoznajú.
+*   Veľká časová náročnosť. Večery, víkendy a dovolenky strávite na stavbe.
+*   Komplikovanejšia záruka. Ak napríklad zateká sprchový kút, vodár môže obviňovať obkladača a obkladač vodára.
+*   Riziko zdraženia. Kým dom dostaviate, ceny materiálov a technológií môžu stúpnuť.
+*   Technologické chyby. Domy v energetickej triede A0 vyžadujú presné postupy – napríklad pri napojení okien alebo vzduchotesnosti.
+
+### Kedy zvoliť holodom?
+
+Ak si chcete ušetriť časť nákladov vlastnou prácou, no rozvody, omietky, potery a fasádu radšej necháte odborníkom. Finálne povrchy – podlahy, obklady, dvere a sanitu – potom vyberáte a dokončujete vlastným tempom.
 
 ### Kedy zvoliť dom na kľúč?
 
-Ak ste zamestnaný človek, podnikateľ alebo lekár a váš voľný čas chcete venovať rodine či svojim koníčkom, dom na kľúč je jedinou rozumnou voľbou.
+Ak pracujete na plný úväzok a voľný čas chcete venovať rodine, dom na kľúč vám ušetrí najviac starostí.
 
 **Výhody:**
-*   **Jeden partner, jedna záruka:** Ak sa čokoľvek pokazí, máte jedno telefónne číslo, kam zavoláte. O všetko sa postaráme.
-*   **Presný harmonogram a rýchlosť:** Stavba napreduje bez zbytočných prestojov, pretože jednotlivé remeslá na seba plynule nadväzujú.
-*   **Pevná cena:** Už pred prvým výkopom viete, [koľko stojí stavba rodinného domu v roku 2026](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026) a vyhnete sa "nečakaným" výdavkom, ak nezmeníte zadanie.
-*   **Kolaudácia bez stresu:** Stavebná firma dodá k dielu všetky potrebné certifikáty a revízne správy.
+*   **Jeden partner, jedna zmluva:** Za celé dielo zodpovedá jedna firma a máte jedného stavbyvedúceho, ktorému zavoláte.
+*   **Plynulý harmonogram:** Jednotlivé remeslá na seba nadväzujú bez zbytočných prestojov.
+*   **Pevná cena:** Cena z položkovej ponuky sa nemení. Zmeniť sa môže len pri zmene rozsahu, a to písomným dodatkom.
+*   **Jednoduchšia kolaudácia:** Dostanete od nás dokumentáciu ku kolaudácii.
 
 **Nevýhody:**
-*   Potreba mať pripravenú celú sumu (alebo vybavené hypotekárne financovanie) už na začiatku výstavby.
+*   Vyššia celková suma a menej priestoru ušetriť vlastnou prácou.
+*   Financovanie treba mať vybavené pred začiatkom stavby. Platí sa však po etapách podľa harmonogramu, nie celá suma naraz.
 
-## Finančné hľadisko: Oplatí sa stavať svojpomocne?
+## Oplatí sa stavať svojpomocne?
 
-Pojem "ušetrím" je pri svojpomocnej výstavbe často veľmi relatívny. Predstavte si, že zarábate vo svojej práci 15 € na hodinu. Na stavbe po večeroch strávite ročne 800 hodín (ako neodborná sila často pracujete pomalšie). Váš "ušetrený" čas má teda hodnotu 12 000 €. Navyše ste preťažený, bez dovolenky a hrozia vám pokuty od stavebného úradu pri neodbornej inštalácii niektorých zariadení (napr. plyn, elektro).
+Pojem „ušetrím“ je pri svojpomocnej výstavbe relatívny. *Príklad:* Ak zarábate 15 € na hodinu a na stavbe strávite ročne 800 hodín, váš čas má hodnotu 12 000 € ročne. Elektroinštaláciu a plyn navyše smie robiť len oprávnená osoba a pred kolaudáciou potrebujú revízie, takže ich budete platiť aj pri svojpomoci.
 
-Skutočná úspora medzi hrubou stavbou a domom na kľúč zvyčajne predstavuje 15 až 20 %. Otázkou ostáva, či vám tieto peniaze stoja za 3 roky stresu, chýbajúce víkendy a riziko manželskej krízy, ktorá patrí k najčastejším vedľajším účinkom dlhodobých svojpomocných stavieb.
-
-## Ako urobiť finálne rozhodnutie?
-
-Ak si nie ste istí, dobrou zlatou strednou cestou je "Holodom". Tento variant je niekde na polceste: stavba je zvonku kompletne hotová (vrátane fasády, okien a strechy) a vnútri sú urobené všetky potery, omietky a inštalácie. Chýbajú už len finálne povrchy – podlahy, dvere, obklady a sanita. Tieto vizuálne prvky si dokážete pomerne jednoducho (a bez vplyvu na statiku či energetiku domu) zrealizovať podľa svojho uváženia.
-
----
+Rozdiel v cene medzi hrubou stavbou so svojpomocným dokončením a domom na kľúč býva približne 15 až 20 %. Otázkou je, či vám táto suma vyváži dva až tri roky víkendov na stavbe. Podrobnejšie to rozoberáme v článku [Stavba domu svojpomocne](/blog/stavba-domu-svojpomocne-vyhody-nevyhody).
 
 ## Často kladené otázky (FAQ)
 
 **1. Je lepšie vybrať si dom na kľúč alebo hrubú stavbu pri hypotéke?**
-Z hľadiska banky je jednoznačne jednoduchší dom na kľúč s generálnym dodávateľom. Banke predložíte zmluvu o dielo a jasný rozpočet. Pri svojpomoci a hrubej stavbe musíte banke neustále predkladať desiatky bločkov z rôznych stavebnín a dokazovať preinvestovanosť, čo čerpanie hypotéky značne komplikuje.
+Pri dome na kľúč predložíte banke zmluvu o dielo a položkový rozpočet a priebežné súpisy prác potom slúžia ako podklad na čerpanie. Pri svojpomocnom dokončení musíte čerpanie dokladať faktúrami a bločkami od rôznych dodávateľov, čo je náročnejšie.
 
 **2. Koľko percent z celkovej ceny domu tvorí hrubá stavba?**
-V roku 2026 tvorí hrubá stavba (založenie, múry, strecha, okná) približne 35 % až 45 % z celkových nákladov na dom. Zvyšných 55 % až 65 % tvoria moderné inštalácie, technológie (čerpadlo, rekuperácia) a vnútorné dokončovacie práce. Viac sa dočítate v našom [sprievodcovi rozpočtom](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026).
+Podľa našej kalkulačky tvorí otvorená hrubá stavba (základy, murivo, stropy, strecha) približne 44 % ceny domu na kľúč, s oknami a dverami približne 53 %. Zvyšok pripadá na rozvody, zateplenie a dokončovacie práce. Platí to pre jednopodlažný dom v strednom štandarde.
 
 **3. Poskytuje vaša firma záruku aj v prípade, ak nám robíte len hrubú stavbu?**
-Áno, na diela realizované našou spoločnosťou poskytujeme štandardnú záruku. Samozrejme, záruka sa vzťahuje len na nami vykonané práce (statika, múry, základy) a materiály. Nezodpovedáme za chyby, ktoré spôsobia iní majstri v neskorších fázach.
+Áno. Záruka je vždy uvedená v zmluve o dielo a vzťahuje sa na práce, ktoré sme urobili – napríklad základy, murivo či strechu. Za práce, ktoré neskôr urobia iní remeselníci, zodpovedajú oni.
 
 **4. Môžem pri dome na kľúč použiť vlastný stavebný materiál?**
-U nás v **MNSP** sa vieme individuálne dohodnúť. Avšak z hľadiska záruk a logistiky vždy odporúčame využívať overené materiály od našich dodávateľov, kde vieme garantovať kvalitu, termíny dodania a bezproblémovú reklamáciu.
+Áno, po vzájomnej dohode. Záruka sa potom vzťahuje na naše prevedenie, nie na materiál, ktorý sme nedodali. Pri materiáloch od nás preberáme zodpovednosť za dielo ako celok.
 
 **5. Dokážete zrealizovať dom na kľúč aj z môjho projektu od architekta?**
-Samozrejme. Radi si s vami k projektu sadneme, vypracujeme detailný položkový rozpočet a dohodneme sa na komplexnej realizácii. [Prevedieme vás celým procesom krok za krokom](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom).
+Áno. Ak už projekt máte, pripravíme podľa neho položkový rozpočet a dohodneme realizáciu. Ak ho ešte nemáte, vypracujeme vám ho.
 
 **6. Čo ak počas výstavby na kľúč zmením názor na výber podlahy či obkladov?**
-Zmluvy na dom na kľúč obsahujú cenové štandardy materiálov. Ak sa počas výstavby rozhodnete pre prémiovejší obklad, než bol v štandarde, doplatíte len cenový rozdiel samotného materiálu. Menšie úpravy riešime s maximálnou ústretovosťou.
+Zmluva na dom na kľúč určuje cenový štandard materiálov. Ak si vyberiete drahší obklad či podlahu, doplatíte len rozdiel v cene materiálu. Zmenu zapíšeme písomným dodatkom, aby ste vopred vedeli, čo znamená pre cenu aj termín.
 
 **7. Kto vybavuje kolaudáciu pri dome na kľúč?**
-Vo väčšine prípadov my ako generálny dodávateľ pripravíme všetky potrebné certifikáty a revízne správy (elektro, komín, tlakové skúšky vody) a energetický certifikát, čím vám proces kolaudácie maximálne uľahčíme.
+Pri dome na kľúč vám pripravíme potrebné doklady – revízne správy (elektro, komín, tlakové skúšky vody) a energetický certifikát. Po kolaudačnej obhliadke vydá stavebný úrad kolaudačné osvedčenie.
 
----
+## Máte záujem o cenovú ponuku pre svoj dom?
 
-## Zhrnutie
+Staviame všetky tri varianty – hrubú stavbu, holodom aj dom na kľúč.
 
-Dilema, či je výhodnejší **dom na kľúč alebo hrubá stavba**, nemá univerzálnu odpoveď. Záleží na vašich prioritách. Ak túžite po bezstarostnej výstavbe s jednou garanciou, jasným harmonogramom a profesionálnou kvalitou zodpovedajúcou moderným trendom roku 2026, dom na kľúč je bezkonkurenčnou voľbou. Hrubá stavba a následná svojpomocná koordinácia majú zmysel len vtedy, ak máte dostatok času, stavebných skúseností a spoľahlivých remeselníkov vo svojom okolí.
+**Ak už máte projekt,** pošlite nám ho spolu s adresou pozemku a napíšte, ktorý variant zvažujete. Po obhliadke pripravíme nezáväznú položkovú ponuku.
 
-V **MNSP | Stavby a rekonštrukcie** vám ponúkame obe cesty. Zastávame férový prístup, kedy presne viete, za čo platíte. Nech už sa rozhodnete pre hrubú stavbu, holodom alebo realizáciu kompletne na kľúč, sme tu pre vás. [Kontaktujte nás](/kontakt) a dohodnite si stretnutie, kde preberieme váš vysnívaný projekt.`,
-    date: '05. Jún 2026',
+**Ak projekt ešte nemáte,** stačí adresa pozemku a vaša predstava o dome – veľkosť, počet podlaží a štandard. Projekt vám vypracujeme a ponuku pripravíme podľa neho.
+
+Orientačnú cenu si medzitým môžete vypočítať v [kalkulačke](/kalkulacka). [Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-06-05T08:00:00+01:00',
-    updatedAt: '2026-06-05T08:00:00+01:00',
+    updatedAt: '2026-09-24T08:00:00+02:00',
     imageUrl: '/Blog/stavba-na-kluc-vs-hruba-stavba.webp'
   },
   {
@@ -507,7 +539,6 @@ Niektoré firmy ponúkajú komplexné služby, tzv. inžiniering. V **MNSP** vá
 Problém, **ako vybrať stavebnú firmu**, nie je neriešiteľný, no vyžaduje si čas, zdravý sedliacky rozum a dôkladné preverovanie. Zamerajte sa na transparentnosť rozpočtu, kvalitu zmluvy o dielo, reálne referencie a osobný prístup. Nenechajte sa zlákať najnižšou cenou, pretože tá sa v konečnom dôsledku môže stať tou najdrahšou voľbou.
 
 V spoločnosti **MNSP | Stavby a rekonštrukcie** staviame na otvorenej komunikácii, precíznosti a férových podmienkach. Sme hrdí na naše realizácie a s radosťou vám ukážeme, ako pracujeme. Ak hľadáte spoľahlivého partnera pre stavbu vášho domu alebo rekonštrukciu, neváhajte nás osloviť. [Kontaktujte nás pre nezáväznú konzultáciu](/kontakt) a presvedčte sa sami o našej profesionalite.`,
-    date: '02. Jún 2026',
     publishedAt: '2026-06-02T08:00:00+01:00',
     updatedAt: '2026-06-02T08:00:00+01:00',
     imageUrl: '/Blog/ako-si-vybrat-stavebnu-firmu.webp'
@@ -614,7 +645,6 @@ Nemusí to byť chyba, pokiaľ máte oficiálny rozbor vody (a voda je pitná s 
 Tieto a mnohé ďalšie **chyby pri stavbe domu** vznikajú zväčša z troch dôvodov: zo snahy ušetriť na nesprávnom mieste, z nedostatku času na prípravu a z výberu nespoľahlivých dodávateľov. Najlepšou ochranou je dôkladné plánovanie, kvalitný projekt a výber spoľahlivého partnera.
 
 Ak nechcete riskovať peniaze, čas a nervy s neoverenými partiami majstrov, zverte svoju stavbu do rúk profesionálov. V **MNSP | Stavby a rekonštrukcie** máme za sebou množstvo úspešných projektov a vieme presne, ako sa vyhnúť úskaliam stavebného procesu. [Kontaktujte nás](/kontakt) a postavíme vám dom, ktorý vám bude robiť radosť celé desaťročia.`,
-    date: '30. Máj 2026',
     publishedAt: '2026-05-30T08:00:00+01:00',
     updatedAt: '2026-05-30T08:00:00+01:00',
     imageUrl: '/Blog/najcastejsie-chyby-pri-stavbe-rodinneho-domu.webp'
@@ -711,7 +741,6 @@ Najlepším obdobím je jar (marec/apríl), kedy pôda už nie je zamrznutá. V�
 Profesionálna **príprava pozemku na stavbu** vytvára pevný základ pre celý nasledujúci stavebný proces. Zahŕňa úradné geodetické zamerania, vyčistenie parcely, zriadenie prípojok, odborné stiahnutie ornice a vytvorenie zázemia pre stavebnú techniku a pracovníkov. Neodborné a unáhlené kroky v tejto fáze sa môžu vypomstiť v podobe zbytočných zdržaní a prehnaných nákladov na sanácie chýb.
 
 Spoločnosť **MNSP | Stavby a rekonštrukcie** disponuje vlastnou technikou a skúsenými operátormi. V rámci realizácie stavieb na kľúč preberáme kompletnú zodpovednosť aj za počiatočné terénne a zemné práce. S nami máte istotu, že vaša stavba začne presne, bezpečne a načas. [Kontaktujte nás pre bezplatnú konzultáciu](/kontakt) a my pripravíme váš pozemok na zrod nového domova.`,
-    date: '25. Máj 2026',
     publishedAt: '2026-05-25T08:00:00+01:00',
     updatedAt: '2026-05-25T08:00:00+01:00',
     imageUrl: '/Blog/ako-pripravit-pozemok-na-stavbu-rodinneho-domu.webp'
@@ -811,7 +840,6 @@ Aplikuje sa na čistý a vyzretý betón základovej dosky (zvyčajne formou nat
 Dúfame, že už máte lepšiu predstavu o tom, **ako sa robia základy domu**. Je to proces vyžadujúci nekompromisnú presnosť, kvalitné materiály a skúsenosti s monolitickými prácami. Podcenenie geologického prieskumu, šetrenie na oceli či nedostatočné zhutnenie podložia sa na stavbe skôr či neskôr prejavia fatálnymi následkami.
 
 V **MNSP | Stavby a rekonštrukcie** berieme základy doslova ako posvätnú vec. Naši odborníci garantujú statickú bezpečnosť, stopercentné dodržanie projektu a precízne remeselné vyhotovenie. Ak hľadáte firmu, ktorej môžete pri stavbe vášho domu dôverovať od prvého výkopu, [kontaktujte nás](/kontakt). Radi s vami preberieme váš projekt.`,
-    date: '20. Máj 2026',
     publishedAt: '2026-05-20T08:00:00+01:00',
     updatedAt: '2026-05-20T08:00:00+01:00',
     imageUrl: '/Blog/ako-sa-robia-zaklady-domu.webp'
@@ -918,7 +946,6 @@ Sused je účastníkom stavebného konania. Svoj súhlas (resp. nevznesenie nám
 Vybavenie **stavebného povolenia** je byrokratický maratón, na ktorý sa treba dobre pripraviť. Kľúčom k úspechu je kvalitný projekt, pevné nervy pri jednaní s úradníkmi a dokonalý poriadok v papieroch. Ak si na tento proces netrúfate sami, prenechajte ho odborníkom na inžiniering.
 
 Keď konečne držíte v rukách právoplatné povolenie, ten najväčší papierový boj máte za sebou a môžete sa naplno vrhnúť do realizácie. Ak hľadáte spoľahlivého partnera pre samotnú výstavbu, **MNSP | Stavby a rekonštrukcie** je vám k dispozícii. [Kontaktujte nás](/kontakt) a premeníme váš projekt na skutočný domov.`,
-    date: '15. Máj 2026',
     publishedAt: '2026-05-15T08:00:00+01:00',
     updatedAt: '2026-05-15T08:00:00+01:00',
     imageUrl: '/Blog/stavebne-povolenie-krok-za-krokom-v-roku-2026.webp'
@@ -1018,7 +1045,6 @@ Ak premýšľate, **koľko trvá stavba domu**, musíte brať do úvahy faktory,
 Ak chcete bývať rýchlo a bez stresu z organizovania majstrov, [dom na kľúč](/blog/dom-na-kluc-alebo-hruba-stavba-kompletne-porovnanie) je ideálnou voľbou. V spoločnosti **MNSP | Stavby a rekonštrukcie** máme vlastné tímy pracovníkov a overených dodávateľov, vďaka čomu dokážeme procesy plynulo nadväzovať bez zbytočných prestojov.
 
 Zaväzujeme sa k pevnému termínu dokončenia priamo v zmluve. Zverte nám svoj projekt a o 9 až 12 mesiacov vám odovzdáme kľúče od vášho nového domova. [Kontaktujte nás](/kontakt) a dohodnite si termín nezáväzného stretnutia.`,
-    date: '10. Máj 2026',
     publishedAt: '2026-05-10T08:00:00+01:00',
     updatedAt: '2026-05-10T08:00:00+01:00',
     imageUrl: '/Blog/kolko-trva-stavba-rodinneho-domu.webp'
@@ -1111,7 +1137,6 @@ Pri významnej obnove budovy ste povinný splniť minimálne požiadavky na ener
 Rekonštrukcia staršieho rodinného domu je ako otváranie Pandorinej skrinky. Nikdy neviete, čo presne vás pod starými omietkami a podlahami čaká. Preto je dôležité mať pred začatím prác jasný plán, kvalitný projekt a dostatočnú finančnú rezervu (ideálne 20-30 % nad plánovaný rozpočet na nečakané výdavky).
 
 V spoločnosti **MNSP | Stavby a rekonštrukcie** máme obrovské skúsenosti s transformáciou starých, zanedbaných domov na moderné, bezpečné a energeticky úsporné bývanie. Posúdime stav vašej nehnuteľnosti, navrhneme optimálny postup prác a zrealizujeme rekonštrukciu odborne a s garanciou kvality. [Kontaktujte nás](/kontakt) a vdýchnite vášmu starému domu nový život.`,
-    date: '05. Máj 2026',
     publishedAt: '2026-05-05T08:00:00+01:00',
     updatedAt: '2026-05-05T08:00:00+01:00',
     imageUrl: '/Blog/rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet.webp'
@@ -1169,7 +1194,6 @@ V **MNSP | Stavby a rekonštrukcie** odporúčame klientom postupovať na zákla
 Zateplenie fasády nie je len o estetike, ale o masívnom šetrení nákladov na vykurovanie a chladenie. Oba materiály – polystyrén aj vata – splnia svoj účel na sto percent, ak sú správne zvolené k typu muriva a stopercentne odborne zrealizované.
 
 Hľadáte spoľahlivých majstrov na aplikáciu zatepľovacieho systému s [finálnymi omietkami](/sluzby/omietky)? [Kontaktujte MNSP | Stavby a rekonštrukcie](/kontakt). Zhodnotíme stav vášho domu, poradíme s výberom materiálu a postaráme sa o bezchybnú realizáciu vašej novej fasády.`,
-    date: '30. Apríl 2026',
     publishedAt: '2026-04-30T08:00:00+01:00',
     updatedAt: '2026-04-30T08:00:00+01:00',
     imageUrl: '/Blog/zateplenie-fasady-polystyren-alebo-mineralna-vlna.webp'
@@ -1232,7 +1256,6 @@ Nie sme úplní odporcovia svojpomoci, ale v roku 2026 dáva zmysel iba v špeci
 Stavba domu svojpomocne pre bežného "kancelárskeho" človeka je často romantickou predstavou, ktorá narazí na tvrdú realitu nedostatku času, nervov a chýbajúcich technologických zručností. Pár ušetrených tisíc eur zvyčajne padne na opravu chýb alebo sa prejaví na vašom podlomenom zdraví či rodinných vzťahoch.
 
 Zverte svoj projekt profesionálom a venujte sa tomu, čo viete robiť najlepšie, a svojej rodine. V **MNSP | Stavby a rekonštrukcie** vám ponúkame férové ceny, transparentné zmluvy a garanciu, že vaša stavba prebehne hladko a odborne. [Kontaktujte nás](/kontakt) a dohodnite si stretnutie, kde preberieme vaše možnosti.`,
-    date: '20. Apríl 2026',
     publishedAt: '2026-04-20T08:00:00+01:00',
     updatedAt: '2026-04-20T08:00:00+01:00',
     imageUrl: '/Blog/stavba-domu-svojpomocne-vyhody-nevyhody.webp'
@@ -1296,7 +1319,6 @@ Kvalitný, certifikovaný montovaný drevodom s kvalitnými izoláciami, ktoré 
 *   **Vyberte si murovaný dom, ak:** Preferujete dlhú životnosť (dom pre ďalšie generácie), výbornú akustiku, zdravú klímu (schopnosť tehly regulovať vlhkosť) a vysokú teplotnú zotrvačnosť, ktorá zabezpečí chládok v lete a stabilné teplo v zime.
 
 Ak je vaším favoritom klasika, poctivé materiály a dlhovekosť, v **MNSP | Stavby a rekonštrukcie** vám radi postavíme murovaný dom z prémiových materiálov presne podľa vašich predstáv. [Kontaktujte nás pre bezplatnú cenovú ponuku](/kontakt).`,
-    date: '15. Apríl 2026',
     publishedAt: '2026-04-15T08:00:00+01:00',
     updatedAt: '2026-04-15T08:00:00+01:00',
     imageUrl: '/Blog/murovany-dom-vs-drevodom-porovnanie.webp'
@@ -1344,7 +1366,6 @@ Prečo by ste mali zvážiť rozchodníkový koberec namiesto klasickej [strechy
 Zelená strecha je nádherný a ekologicky prínosný prvok, ktorý vášmu domu dodá výnimočný charakter a funkčne ho ochráni. Nesmie sa však realizovať živelne. Vyžaduje si precízny projektový návrh, posilnenú statiku a bezchybné zrealizovanie hydroizolačných vrstiev.
 
 V spoločnosti **MNSP | Stavby a rekonštrukcie** máme s realizáciou náročných plochých a [monolitických striech](/sluzby/monoliticke-konstrukcie) bohaté skúsenosti. Zvládneme pre vás pripraviť dokonalý a staticky bezpečný podklad, na ktorom vaša strešná záhrada porastie bez akýchkoľvek obáv zo zatekania. [Obráťte sa na nás](/kontakt) a poďme sa porozprávať o vašej novej stavbe.`,
-    date: '05. Apríl 2026',
     publishedAt: '2026-04-05T08:00:00+01:00',
     updatedAt: '2026-04-05T08:00:00+01:00',
     imageUrl: '/Blog/zelena-strecha-na-rodinnom-dome.webp'
@@ -1405,7 +1426,6 @@ Rekuperácia tento problém úplne eliminuje. Váš dom "dýcha" za vás.
 Naša odpoveď znie: **Pri dnešných moderných novostavbách určite áno.** Rekuperácia už nie je len o šetrení tepla (návratnosť investície môže byť pomerne dlhá), ale predovšetkým o **komforte, zdraví a kvalite vnútorného ovzdušia**. Získate dom bez plesní, bez vydýchaného vzduchu a bez prachu z ulice.
 
 Ak plánujete stavbu rodinného domu, radi vám v **MNSP | Stavby a rekonštrukcie** pomôžeme nielen so samotnou výstavbou, ale aj s návrhom a koordináciou moderných technológií. [Kontaktujte nás](/kontakt) a postavíme vám dom, v ktorom sa vám bude zdravo a príjemne dýchať.`,
-    date: '25. Marec 2026',
     publishedAt: '2026-03-25T08:00:00+01:00',
     updatedAt: '2026-03-25T08:00:00+01:00',
     imageUrl: '/Blog/rekuperacia-v-rodinnom-dome.webp'
@@ -1442,7 +1462,6 @@ Zariadenie funguje na podobnom princípe ako chladnička, no v opačnom smere. Z
 Tepelné čerpadlo predstavuje výbornú investíciu do budúcnosti a komfortu vášho bývania. Zabezpečuje nízke účty za energie a spĺňa najprísnejšie legislatívne požiadavky na ekologické bývanie.
 
 Ak plánujete stavbu rodinného domu, obráťte sa na odborníkov z **MNSP | Stavby a rekonštrukcie**. Naši špecialisti vám navrhnú a zrealizujú optimálny vykurovací systém, vrátane profesionálnej inštalácie tepelného čerpadla. [Kontaktujte nás](/kontakt) a bývajte moderne a úsporne.`,
-    date: '10. Marec 2026',
     publishedAt: '2026-03-10T08:00:00+01:00',
     updatedAt: '2026-03-10T08:00:00+01:00',
     imageUrl: '/Blog/tepelne-cerpadlo-v-rodinnom-dome.webp'
@@ -1516,7 +1535,6 @@ To predstavuje zhruba **600 € až 1 200 € za m²** podlahovej plochy.
 Je dôležité si uvedomiť, že **cena rekonštrukcie domu** je mimoriadne individuálna. Presný rozpočet je možné stanoviť až po dôkladnej obhliadke statikom a stavebným odborníkom, ktorý zhodnotí reálny stav nehnuteľnosti (či nie sú nutné podrezávanie muriva, zosilňovanie základov atď.).
 
 Plánujete rekonštrukciu? Nenechávajte to na náhodu a nepresné odhady z internetových fór. [Kontaktujte nás v MNSP](/kontakt) a my vám pripravíme transparentný a presný položkový rozpočet na mieru vášmu domu.`,
-    date: '05. Marec 2026',
     publishedAt: '2026-03-05T08:00:00+01:00',
     updatedAt: '2026-03-05T08:00:00+01:00',
     imageUrl: '/Blog/kolko-stoji-rekonstrukcia-domu-v-roku-2026.webp'

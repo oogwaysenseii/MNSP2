@@ -14,8 +14,14 @@ const keywords = [
 ];
 
 export function autoLinkKeywords(content: string): string {
-  // A simple tokenizer to protect code blocks, links, URLs, and headings
-  const tokenRegex = /(```[\s\S]*?```|`[^`]+`|\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s]+|^#{1,6}\s+.*$)/gm;
+  // A simple tokenizer to protect code blocks, links, URLs, headings and
+  // table rows.
+  //
+  // Table rows (`^[ \t]*\|.*$`) are protected because a keyword link inside a
+  // pricing table reads as clutter — the cells are terse scope labels, not
+  // running text. Headings were already protected; both stay out of scope so
+  // auto-linking only ever touches prose.
+  const tokenRegex = /(```[\s\S]*?```|`[^`]+`|\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s]+|^#{1,6}\s+.*$|^[ \t]*\|.*$)/gm;
   
   const tokens: { type: 'text' | 'protected'; text: string }[] = [];
   let lastIndex = 0;

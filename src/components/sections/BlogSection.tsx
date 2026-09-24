@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion } from 'motion/react';
 import { Clock, ArrowRight, ArrowUpRight, Search } from 'lucide-react';
 import { blogPostsData } from '@/src/data/blog';
-import { calculateReadingTime } from '@/src/lib/blogUtils';
+import { calculateReadingTime, formatSkDate } from '@/src/lib/blogUtils';
 
 interface BlogSectionProps {
   filterCategory?: string;
@@ -195,7 +195,7 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
                                   <div className="flex gap-4 items-center text-[10px] font-mono font-bold tracking-wider text-zinc-400">
                                     <span className="text-amber-600 bg-amber-50 px-2.5 py-0.5 font-bold uppercase">{post.category}</span>
                                     <span>•</span>
-                                    <span>{post.date}</span>
+                                    <span>{formatSkDate(post.publishedAt)}</span>
                                   </div>
 
                                   <h3 className="text-lg sm:text-xl font-display font-extrabold text-zinc-950 leading-tight tracking-tight group-hover:text-amber-600 transition-colors">
