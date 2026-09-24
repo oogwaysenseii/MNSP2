@@ -1062,101 +1062,139 @@ Vlastník susedného pozemku alebo stavby je účastníkom konania, ak môže by
   },
   {
     id: 'kolko-trva-stavba-rodinneho-domu',
-    title: 'Koľko trvá stavba rodinného domu? Reálny harmonogram prác',
-    excerpt: 'Od prvého výkopu až po kolaudáciu. Zistite, koľko trvá stavba domu, aké sú technologické prestávky a čo najviac spomaľuje celý proces.',
+    title: 'Koľko trvá stavba rodinného domu? Reálny harmonogram',
+    excerpt: 'Dom na kľúč za 9 – 12 mesiacov, hrubá stavba za 2 – 3. Harmonogram po etapách, technologické prestávky a čo stavbu najviac spomaľuje.',
     category: 'Stavebné procesy',
     tags: ['Stavebné procesy', 'Stavba domu'],
-    content: `Otázka, **koľko trvá stavba domu**, zaznieva na našich stretnutiach s klientmi hneď po otázke na cenu. A odpoveď? "Závisí to." To znie síce alibisticky, ale v stavebníctve vstupuje do hry obrovské množstvo premenných – od počasia, cez zložitosť projektu, až po spôsob financovania.
+    content: `Otázka, **koľko trvá stavba domu**, zaznieva na našich stretnutiach s klientmi hneď po otázke na cenu. Odpoveď „závisí to“ znie alibisticky, no do hry naozaj vstupuje veľa premenných – počasie, zložitosť projektu aj spôsob financovania.
 
-Ak staviate dom na kľúč so serióznou firmou a financovanie máte zabezpečené, štandardný murovaný dom s rozlohou okolo 120 m² je možné postaviť **za 9 až 12 mesiacov**. Ak sa rozhodnete pre svojpomocnú výstavbu, počítajte s tým, že sa tento čas minimálne zdvojnásobí (často trvá 2 až 3 roky).
+Ak staviate dom na kľúč so stavebnou firmou a financovanie máte zabezpečené, bežný murovaný dom s plochou okolo 120 m² sa dá postaviť **za 9 až 12 mesiacov**. Pri svojpomocnej výstavbe počítajte s tým, že sa tento čas minimálne zdvojnásobí – často to trvá 2 až 3 roky.
 
-Poďme si tento časový úsek rozmeniť na drobné a pozrime sa na reálny harmonogram jednotlivých etáp.
+## Harmonogram na jeden pohľad
 
-## 0. Prípravná fáza: Papiere (3 - 6 mesiacov)
+| Etapa | Trvanie prác | Technologická prestávka |
+| :--- | :--- | :--- |
+| 0. Projekt a povolenie | 3 – 6 mesiacov | – |
+| 1. Zemné práce a základy | 2 – 4 týždne | zretie dosky 2 – 4 týždne |
+| 2. Hrubá stavba a zastrešenie | 4 – 8 týždňov | zretie stropu približne 28 dní |
+| 3. Uzavretie stavby | 2 – 4 týždne | dodacia lehota okien 6 – 10 týždňov |
+| 4. Vnútorné inštalácie a rozvody | 3 – 5 týždňov | – |
+| 5. Omietky a potery | 4 – 6 týždňov | schnutie poteru 4 – 6 týždňov |
+| 6. Zateplenie a fasáda | 3 – 5 týždňov | závisí od počasia |
+| 7. Interiérové dokončovacie práce | 4 – 8 týždňov | – |
+| 8. Kompletizácia | 2 – 4 týždne | – |
 
-Tento čas nepočítame do samotnej výstavby, ale nemôžeme ho ignorovať. Vypracovanie projektu a hlavne byrokratický proces na úradoch zaberie kopec času. [Stavebné povolenie](/blog/stavebne-povolenie-krok-za-krokom-v-roku-2026) na Slovensku nezískate zo dňa na deň. S reálnou stavbou môžete začať až vtedy, keď držíte v rukách papier s pečiatkou "právoplatné".
+Viaceré etapy bežia súbežne – napríklad fasáda sa robí, kým vo vnútri schnú potery. Preto súčet etáp nie je rovný celkovému času.
 
-## 1. Zemné práce a základy (2 - 4 týždne)
+Podľa rozsahu to vychádza takto: **hrubá stavba** 2 až 3 mesiace, **holodom** približne 5 až 7 mesiacov a **dom na kľúč** 9 až 12 mesiacov. Čo ktorý rozsah obsahuje, porovnávame v článku [Dom na kľúč alebo hrubá stavba?](/blog/dom-na-kluc-alebo-hruba-stavba-kompletne-porovnanie)
 
-Akonáhle na [pozemok pripravený na stavbu](/blog/ako-pripravit-pozemok-na-stavbu-rodinneho-domu) dorazí bager, veci naberú rýchly spád.
-*   Zameranie geodetom, stiahnutie ornice a výkopy trvajú zvyčajne **2 až 3 dni**.
-*   Rozvody pod doskou a zaliatie základových pásov **1 až 2 dni**.
-*   Murovanie debniacich tvárnic (DT), zásypy a zhutnenie **2 až 3 dni**.
-*   Armovanie a betonáž základovej dosky **1 deň**.
+## 0. Prípravná fáza: projekt a povolenie (3 – 6 mesiacov)
 
-*Technologická prestávka:* Základová doska musí pred začatím murovania "zrieť". Zvyčajne sa odporúča počkať **2 až 4 týždne** (podľa počasia), kým betón dosiahne požadovanú pevnosť. Prečítajte si viac o tom, [ako sa robia základy domu](/blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca).
+Tento čas nepočítame do samotnej výstavby, no nedá sa ignorovať. Vypracovanie projektu a povoľovanie na úradoch trvá mesiace. Podľa nového stavebného zákona môžete začať stavať až po rozhodnutí o stavebnom zámere a overení projektu stavby. Postup opisujeme v článku [Stavebné povolenie krok za krokom](/blog/stavebne-povolenie-krok-za-krokom-v-roku-2026).
 
-## 2. Hrubá stavba a zastrešenie (4 - 8 týždňov)
+## 1. Zemné práce a základy (2 – 4 týždne)
 
-Tu váš dom začne naberať reálne kontúry.
+Keď na [pozemok pripravený na stavbu](/blog/ako-pripravit-pozemok-na-stavbu-rodinneho-domu) dorazí bager, veci naberú rýchly spád.
+*   Zameranie geodetom, stiahnutie ornice a výkopy: **2 až 3 dni**.
+*   Rozvody pod doskou a zaliatie základových pásov: **1 až 2 dni**.
+*   Murovanie debniacich tvárnic, zásypy a zhutnenie: **2 až 3 dni**.
+*   Armovanie a betonáž základovej dosky: **1 deň**.
+
+*Technologická prestávka:* Základová doska musí pred začatím murovania zrieť. Zvyčajne sa odporúča počkať **2 až 4 týždne** podľa počasia, kým betón dosiahne potrebnú pevnosť. Viac v článku [Ako sa robia základy domu](/blog/ako-sa-robia-zaklady-domu-kompletny-sprievodca).
+
+## 2. Hrubá stavba a zastrešenie (4 – 8 týždňov)
+
+Tu dom začne naberať skutočné kontúry.
 *   Hydroizolácia pod murivo a vymurovanie obvodových a nosných stien: **1 až 2 týždne**.
-*   Stropná konštrukcia (ak ide o monolitický alebo montovaný strop): Príprava, debnenie a betonáž trvá cca **1 týždeň**. Opäť nasleduje technologická prestávka na vyzretie betónu (cca 28 dní).
-*   Ak máte väzníkovú strechu, tento krok odpadá a montáž krovu trvá len **1 až 3 dni**. Klasický tesársky krov zaberie cca **1 týždeň**.
-*   Pokládka strešnej krytiny, inštalácia odkvapov (klampiarske práce) a komína: **1 až 2 týždne**.
+*   Stropná konštrukcia (monolitický alebo montovaný strop): príprava, debnenie a betonáž trvá približne **1 týždeň**. Nasleduje technologická prestávka na vyzretie betónu, približne 28 dní.
+*   Pri väzníkovej streche tento krok odpadá a montáž krovu trvá **1 až 3 dni**. Klasický tesársky krov zaberie približne **1 týždeň**.
+*   Strešná krytina, odkvapy a komín: **1 až 2 týždne**.
 
-Týmto krokom máte dom "pod strechou" a je chránený pred zrážkami.
+Týmto krokom je dom „pod strechou“ a chránený pred zrážkami.
 
-## 3. Uzavretie stavby (2 - 4 týždne)
+## 3. Uzavretie stavby (2 – 4 týždne)
 
-Z hrubej stavby sa pomaly stáva uzavretý objekt.
+Z hrubej stavby sa stáva uzavretý objekt.
 *   Murovanie vnútorných priečok: **1 týždeň**.
-*   Montáž okien, vchodových a terasových dverí: Samotná montáž trvá **1 až 2 dni**, ale **pozor na dodacie lehoty**. Kvalitné okná (najmä ak máte hliníkové alebo neštandardné farby) sa vyrábajú na mieru a na dodanie môžete čakať 6 až 10 týždňov. Preto ich treba objednávať už v čase, keď sa ťahajú obvodové múry.
+*   Montáž okien, vchodových a terasových dverí: samotná montáž trvá **1 až 2 dni**, pozor však na **dodacie lehoty**. Okná na mieru, najmä hliníkové alebo v neštandardnej farbe, sa vyrábajú 6 až 10 týždňov. Objednávajú sa preto už v čase, keď sa murujú obvodové steny.
 
-## 4. Vnútorné inštalácie a rozvody (3 - 5 týždňov)
+## 4. Vnútorné inštalácie a rozvody (3 – 5 týždňov)
 
-Najdôležitejšie "tepy" vášho domu.
-*   Elektroinštalácie (sekanie drážok, ťahanie káblov): **1 až 2 týždne**.
+*   Elektroinštalácia (drážky, káble): **1 až 2 týždne**.
 *   Vodoinštalácia a kanalizácia vo vnútri domu: **1 týždeň**.
-*   Rozvody pre technológie (rúrky pre podlahové kúrenie, rozvody rekuperácie, klimatizácie, alarm): **1 až 2 týždne**.
+*   Rozvody pre technológie (podlahové kúrenie, rekuperácia, klimatizácia, alarm): **1 až 2 týždne**.
 
-Dôležitá je perfektná koordinácia profesií, inak sa majstri na stavbe budú brzdiť navzájom.
+Dôležitá je dobrá koordinácia profesií, inak sa remeselníci na stavbe navzájom brzdia.
 
-## 5. Úpravy povrchov – Omietky a potery (4 - 6 týždňov)
+## 5. Omietky a potery (4 – 6 týždňov)
 
-Toto je fáza s najväčším množstvom "mokrých procesov".
-*   Strojové [omietky](/sluzby/omietky) (vápenno-cementové alebo sadrové): Aplikácia trvá cca **1 až 2 týždne**. Následne musia schnúť a odvetrávať (cca 2 až 4 týždne podľa hrúbky a počasia).
-*   Realizácia podláh: Na rozvody podlahového kúrenia sa vylieva anhydritový alebo cementový poter (trvá to **1 deň**). 
-*   *Technologická prestávka:* Poter schne veľmi dlho. Na anhydritový poter zvyčajne nemôžete položiť finálnu podlahu skôr ako po **4 až 6 týždňoch** (vyžaduje sa tzv. nábehové vykurovanie na vysušenie).
+V tejto fáze je najviac takzvaných mokrých procesov.
+*   Strojové [omietky](/sluzby/omietky) (vápennocementové alebo sadrové): nanášanie trvá približne **1 až 2 týždne**, potom musia schnúť a odvetrávať 2 až 4 týždne podľa hrúbky a počasia.
+*   Podlahy: na rozvody podlahového kúrenia sa vylieva anhydritový alebo cementový [poter](/sluzby/potery) – trvá to **1 deň**.
+*   *Technologická prestávka:* Poter schne dlho. Na anhydritový poter zvyčajne nemôžete položiť finálnu podlahu skôr ako po **4 až 6 týždňoch** a potrebuje takzvané nábehové vykurovanie.
 
-## 6. Zateplenie a vonkajšia fasáda (3 - 5 týždňov)
+## 6. Zateplenie a fasáda (3 – 5 týždňov)
 
-Zatiaľ čo zrejú vnútorné potery a omietky, práce sa môžu presunúť do exteriéru.
-*   Zateplenie obvodových stien (polystyrén alebo minerálna vlna) a nanesenie lepidla so sieťkou: **2 až 3 týždne**.
-*   Aplikácia finálnej [fasády](/sluzby/fasady) (škrabaná alebo hladená omietka): **1 týždeň**. Tento krok je extrémne závislý od počasia (nesmie pršať, mrznúť, ani byť príliš horúco).
+Kým vo vnútri schnú potery a omietky, práce sa presúvajú von.
+*   Zateplenie obvodových stien (polystyrén alebo minerálna vlna) a stierka so sieťkou: **2 až 3 týždne**.
+*   Finálna [fasádna omietka](/sluzby/fasady): **1 týždeň**. Tento krok veľmi závisí od počasia – nesmie pršať, mrznúť ani byť príliš horúco.
 
-## 7. Interiérové dokončovacie práce (4 - 8 týždňov)
+## 7. Interiérové dokončovacie práce (4 – 8 týždňov)
 
-Dom už vyzerá ako dom, ale zvnútra ho treba pripraviť na bývanie.
-*   Montáž sadrokartónových podhľadov (stropov) a izolácie strechy: **2 týždne**.
-*   Obkladačské práce (kúpeľne, WC): **2 až 3 týždne**.
+*   Sadrokartónové podhľady a izolácia strechy: **2 týždne**.
+*   Obkladačské práce v kúpeľniach a na WC: **2 až 3 týždne**.
 *   Maľovanie stien: **1 týždeň**.
 *   Montáž technológií (tepelné čerpadlo, rekuperačná jednotka, kotol): **1 týždeň**.
 
-## 8. Kompletizácia a finále (2 - 4 týždne)
+## 8. Kompletizácia (2 – 4 týždne)
 
-Posledné úpravy, aby ste sa mohli nasťahovať.
 *   Pokládka finálnych podláh (plávajúca podlaha, vinyl, dlažba): **1 až 2 týždne**.
 *   Osadenie interiérových dverí a zárubní: **2 až 3 dni**.
-*   Kompletizácia elektriky (zásuvky, vypínače, svietidlá) a sanity (záchody, batérie): **1 týždeň**.
+*   Zásuvky, vypínače, svietidlá a sanita: **1 týždeň**.
 
----
+Po dokončení nasleduje kolaudácia. Po obhliadke vydá stavebný úrad kolaudačné osvedčenie, ak nezistí nedostatky, do 15 dní.
+
+## Ako harmonogram ovplyvní ročné obdobie
+
+Interiérové práce bežia celoročne. Mokré procesy – betonáže, omietky, potery a zateplenie fasády – potrebujú teplotu nad nulou, preto ich plánujeme do teplejších mesiacov. Ideálne je začať so zemnými prácami na jar, aby bola stavba pod strechou a uzavretá pred zimou.
+
+V našom kraji sa sezóna líši aj podľa nadmorskej výšky. Na Podpoľaní, napríklad v Hriňovej vo výške okolo 625 m n. m., sú zimy dlhšie a stavebná sezóna kratšia ako vo Zvolenskej kotline. Harmonogram preto prispôsobujeme tak, aby sa mokré procesy stihli pred mrazmi. Miestne podmienky opisujeme na stránke [Kde pôsobíme](/lokality).
 
 ## Čo najviac spomaľuje stavbu domu?
 
-Ak premýšľate, **koľko trvá stavba domu**, musíte brať do úvahy faktory, ktoré dokážu harmonogram natiahnuť aj o niekoľko mesiacov:
+1.  **Počasie:** Počas hrubej stavby vás zastavia dlhé dažde, mrazy zasa znemožňujú mokré procesy.
+2.  **Neskoré objednávky materiálov:** Okná, špeciálna strešná krytina či interiérové dvere majú dodacie lehoty aj v mesiacoch.
+3.  **Nesúlad remeselníkov:** Ak si na každú prácu zháňate inú partiu, ťažko ich zosúladíte. Keď elektrikár mešká týždeň, omietkári nenastúpia a posunú vás v poradí o mesiac. Toto je najčastejšia [chyba pri stavbe domu](/blog/najcastejsie-chyby-pri-stavbe-rodinneho-domu) svojpomocne.
+4.  **Zmeny za pochodu:** Každá zmena projektu počas stavby – posunutie priečky, iný typ kúrenia – znamená prestoje, nové nacenenie a čakanie.
 
-1.  **Zlé počasie:** Počas hrubej stavby vás zastavia trvalé dažde, mrazy znemožňujú mokré procesy (betonáž, omietky, fasádu).
-2.  **Neskoré objednávky materiálov:** Okná, špeciálna strešná krytina či interiérové dvere majú dodacie lehoty v mesiacoch.
-3.  **Nesúlad majstrov:** Ak si na každú prácu zháňate inú partiu, ťažko ich zosúladíte. Keď elektrikár mešká týždeň, omietkari vám na stavbu nenastúpia a posunú vás v poradovníku o mesiac dozadu. Toto je najčastejšia [chyba pri stavbe domu](/blog/najcastejsie-chyby-pri-stavbe-rodinneho-domu) svojpomocne.
-4.  **Vymýšľanie za pochodu:** Každá zmena projektu počas výstavby (posunutie priečky, zmena typu kúrenia) znamená prestoje, nové nacenovanie a čakanie.
+## Často kladené otázky (FAQ)
 
-## Zhrnutie
+**1. Ako dlho trvá hrubá stavba rodinného domu?**
+Samotná hrubá stavba – základy, murivo, stropy a strecha – býva hotová za 2 až 3 mesiace vrátane technologických prestávok.
 
-Ak chcete bývať rýchlo a bez stresu z organizovania majstrov, [dom na kľúč](/blog/dom-na-kluc-alebo-hruba-stavba-kompletne-porovnanie) je ideálnou voľbou. V spoločnosti **MNSP | Stavby a rekonštrukcie** máme vlastné tímy pracovníkov a overených dodávateľov, vďaka čomu dokážeme procesy plynulo nadväzovať bez zbytočných prestojov.
+**2. Dá sa stavať aj cez zimu?**
+Interiérové práce áno. Betonáže, omietky, potery a zateplenie fasády potrebujú teplotu nad nulou, preto ich plánujeme do teplejších mesiacov. Technologické prestávky zahrnieme do harmonogramu vopred.
 
-Zaväzujeme sa k pevnému termínu dokončenia priamo v zmluve. Zverte nám svoj projekt a o 9 až 12 mesiacov vám odovzdáme kľúče od vášho nového domova. [Kontaktujte nás](/kontakt) a dohodnite si termín nezáväzného stretnutia.`,
+**3. Koľko trvá stavba holodomu?**
+Približne 5 až 7 mesiacov. Holodom je zvonku hotový a vnútri má rozvody, omietky a potery – chýbajú len podlahy, obklady, dvere a sanita.
+
+**4. Kedy začať, aby sme sa nasťahovali do roka?**
+Ak máte overený projekt a zabezpečené financovanie, začnite so zemnými prácami na jar. Pri plynulej stavbe na kľúč je potom dom zvyčajne hotový do 9 až 12 mesiacov.
+
+**5. Ako dlho trvá stavba svojpomocne?**
+Pri svojpomocnej výstavbe sa čas minimálne zdvojnásobí, často to trvá 2 až 3 roky. Najviac času sa stráca čakaním na jednotlivých remeselníkov.
+
+## Máte záujem o cenovú ponuku pre svoj dom?
+
+Termín dokončenia dohodneme v zmluve o dielo, aby ste od začiatku vedeli, kedy sa môžete sťahovať.
+
+**Ak už máte projekt,** pošlite nám ho spolu s adresou pozemku. Po obhliadke pripravíme nezáväznú položkovú ponuku aj s harmonogramom.
+
+**Ak projekt ešte nemáte,** stačí adresa pozemku a vaša predstava o dome – veľkosť, počet podlaží a štandard. Projekt vám vypracujeme a ponuku pripravíme podľa neho.
+
+[Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-05-10T08:00:00+01:00',
-    updatedAt: '2026-05-10T08:00:00+01:00',
+    updatedAt: '2026-09-24T08:00:00+02:00',
     imageUrl: '/Blog/kolko-trva-stavba-rodinneho-domu.webp'
   },
   {
