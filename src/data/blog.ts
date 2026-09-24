@@ -2,6 +2,91 @@ import { BlogPost } from '../types';
 
 export const blogPostsData: BlogPost[] = [
   {
+    id: 'vlhke-murivo-v-starom-dome',
+    title: 'Vlhké murivo v starom dome: príčiny a riešenia',
+    excerpt: 'Odkiaľ sa berie vlhkosť v murive starého domu, ako ju rozoznať a ako ju odstrániť: podrezanie, injektáž, drenáž a sanačné omietky.',
+    category: 'Rodinné domy',
+    tags: ['Rekonštrukcia domu', 'Rodinné domy'],
+    publishedAt: '2026-09-24T10:00:00+02:00',
+    updatedAt: '2026-09-24T10:00:00+02:00',
+    imageUrl: '/Blog/vlhke-murivo.webp',
+    content: `Opadaná omietka pri podlahe, biele výkvety solí na stene, pleseň v rohoch miestnosti. **Vlhké murivo** je najčastejší skrytý problém starších rodinných domov – a zároveň problém, ktorý sa často rieši zle: novou omietkou alebo zateplením, ktoré vlhkosť v stene uzavrú.
+
+Hlavné pravidlo znie: **najprv odstrániť príčinu a murivo odvlhčiť, až potom omietať a zatepľovať.** V tomto článku nájdete, ako rozoznať, odkiaľ vlhkosť ide, a ako sa sanácia robí.
+
+## Odkiaľ vlhkosť ide
+
+| Príčina | Ako sa prejavuje | Riešenie |
+| :--- | :--- | :--- |
+| **Vzlínajúca vlhkosť zo zeme** | výkvety solí, opadaná omietka a fľaky v spodnej časti stien, najmä pri podlahe | podrezanie alebo injektáž muriva, izolácia spodnej stavby |
+| **Zatekanie zvonku** | fľaky pod odkvapmi, pri parapetoch, pod strechou | oprava strechy, odkvapov, parapetov a sokla |
+| **Kondenzácia vo vnútri** | pleseň v rohoch miestností, za nábytkom, pri oknách | vetranie, zateplenie, odstránenie tepelných mostov |
+| **Spodná voda a zlé odvodnenie** | vlhký sokel dookola domu, voda stekajúca k domu | drenáž, odvedenie dažďovej vody od domu |
+
+Príčiny sa často kombinujú. Starý dom bez izolácie spodnej stavby, s poškodeným odkvapom a novými tesnými oknami môže mať všetky tri naraz. Preto sanácia začína diagnostikou, nie omietkou.
+
+## Postup sanácie vlhkého muriva
+
+1.  **Diagnostika:** Obhliadka domu, meranie vlhkosti muriva a určenie príčiny – či voda vzlína zo zeme, zateká zvonku alebo kondenzuje vo vnútri.
+2.  **Odstránenie príčiny:** Oprava odkvapov a strechy, odvedenie dažďovej vody od domu, prípadne drenáž okolo základov.
+3.  **Prerušenie vzlínania:** Pri vzlínajúcej vlhkosti sa murivo **podreže** a vloží sa doň izolácia, alebo sa urobí **injektáž** – do muriva sa navŕtajú otvory a vpraví sa doň prípravok, ktorý vytvorí vodorovnú bariéru. Ktorý spôsob sa hodí, závisí od typu a hrúbky muriva.
+4.  **Izolácia spodnej stavby:** Odkopanie a odizolovanie základov, ak to stav domu a prístup dovolia.
+5.  **Vysychanie:** Murivo musí vyschnúť. Trvá to mesiace, podľa hrúbky a materiálu steny. Vlhkosť pred ďalšími prácami odmeriame.
+6.  **Sanačné alebo vápenné omietky:** Pôvodné zasolené omietky sa otlčú a nahradia [sanačnou omietkou](/sluzby/omietky), ktorá zachytí soli a nechá murivo dýchať.
+7.  **Zateplenie až na suchý múr:** Na starý dom sa zvyčajne použije paropriepustný systém s minerálnou vlnou. Porovnanie nájdete v článku [Polystyrén alebo minerálna vlna](/blog/zateplenie-fasady-polystyren-alebo-mineralna-vlna).
+
+## Najčastejšie chyby
+
+*   **Polystyrén na vlhký múr:** Polystyrén vlhkosť neprepúšťa. Na vlhkej stene ju uzavrie, murivo začne degradovať a vlhkosť sa presunie do interiéru.
+*   **Cementová omietka namiesto sanačnej:** Tvrdá cementová omietka na vlhkom murive rýchlo opadá a soli sa pod ňou hromadia.
+*   **Maľovanie plesne:** Náter proti plesni pomôže na pár týždňov. Ak sa neodstráni príčina – vlhkosť alebo kondenzácia –, pleseň sa vráti.
+*   **Nové okná bez vetrania:** Tesné okná v nezateplenom dome zvyšujú kondenzáciu. Viac v článku [Rekonštrukcia starého domu: čomu sa vyhnúť](/blog/rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet).
+*   **Oprava bez diagnostiky:** Ak sa podreže murivo, no voda v skutočnosti zateká od odkvapu, problém zostane.
+
+## Vlhkosť v starých domoch v našom kraji
+
+S vlhkým murivom sa stretávame v celom kraji, no príčiny sa podľa oblasti líšia:
+
+*   **Nivy okolo Zvolena a Žiaru nad Hronom:** Staršia zástavba stojí na miestach s vyššou hladinou spodnej vody a domy zvyčajne nemajú funkčnú izoláciu spodnej stavby. Vlhkosť vzlína murivom nahor, preto pri obnove začíname podrezaním alebo injektážou a drenážou, až potom fasádou.
+*   **Podpoľanie – Detva, Hriňová a okolité osady:** Staršie domy kombinujú kamennú podmurovku s tehlovým alebo dreveným nadstavaním. Najčastejšie tu riešime vzlínajúcu vlhkosť a chýbajúcu izoláciu spodnej stavby. Sanáciu začíname odvlhčením muriva, nie fasádou.
+*   **Ílovité podložie okolo Lučenca a Krupiny:** Íl mení objem podľa vlhkosti a staršie domy naň reagujú sadaním. Pri obhliadke preto posudzujeme aj základy a odvedenie zrážkovej vody od domu.
+*   **Pamiatkové zóny, napríklad v Banskej Štiavnici a Banskej Bystrici:** Používame vápenné omietky, ktoré nechajú murivo dýchať, a postup konzultujeme s pamiatkovým úradom.
+
+Podmienky v jednotlivých mestách opisujeme na stránke [Kde pôsobíme](/lokality).
+
+## S čím pomôžeme
+
+*   Pri obhliadke posúdime stav muriva a príčinu vlhkosti.
+*   Urobíme sanáciu vlhkého muriva, izoláciu spodnej stavby a drenáž – vrátane [výkopových prác](/sluzby/vykopove-zemne-prace).
+*   Otlčieme staré omietky a nanesieme sanačné alebo vápenné omietky.
+*   Dom zateplíme vhodným paropriepustným systémom.
+
+Sanácia vlhkosti patrí k bežným súčastiam našich [rekonštrukcií rodinných domov](/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu).
+
+## Často kladené otázky (FAQ)
+
+**1. Ako zistím, odkiaľ ide vlhkosť v murive?**
+Vzlínajúca vlhkosť sa prejavuje v spodnej časti stien pri podlahe, často s bielymi výkvetmi solí. Zatekanie sa prejaví fľakmi pod odkvapmi či pri parapetoch a kondenzácia plesňou v rohoch a za nábytkom. Istotu dá až obhliadka a meranie vlhkosti muriva.
+
+**2. Je lepšie podrezanie alebo injektáž muriva?**
+Závisí od typu a hrúbky muriva a od prístupu. Podrezaním sa do muriva vloží vodorovná izolácia, injektážou sa vytvorí bariéra vpravením prípravku do navŕtaných otvorov. Vhodný spôsob navrhneme po obhliadke.
+
+**3. Ako dlho vysychá murivo po sanácii?**
+Mesiace, podľa hrúbky a materiálu steny. S omietaním a zateplením sa začína, až keď meranie ukáže, že vlhkosť klesla.
+
+**4. Dá sa vlhký dom zatepliť?**
+Až po odstránení príčiny vlhkosti a vyschnutí muriva. Na starý dom sa zvyčajne použije paropriepustný systém s minerálnou vlnou. Polystyrén na vlhkom múre vlhkosť uzavrie.
+
+**5. Pomôže sanačná omietka sama?**
+Sanačná omietka zachytí soli a nechá murivo dýchať, príčinu vlhkosti však neodstráni. Ak voda naďalej vzlína alebo zateká, časom sa poškodí aj nová omietka.
+
+## Trápi vás vlhkosť v dome?
+
+Pošlite nám adresu domu a opíšte, kde sa vlhkosť prejavuje – fotky pomôžu. Dom si prídeme pozrieť, posúdime príčinu a navrhneme postup sanácie s nezáväznou položkovou ponukou.
+
+[Napíšte nám](/kontakt), čo vás trápi.`,
+  },
+  {
     id: 'kolaudacia-rodinneho-domu-postup',
     title: 'Kolaudácia rodinného domu 2026: postup po novom',
     excerpt: 'Ako po novom stavebnom zákone skolaudovať rodinný dom: doklady ku kolaudácii, lehoty, kolaudačné osvedčenie, súpisné číslo a zápis do katastra.',
