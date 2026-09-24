@@ -1320,60 +1320,102 @@ Pošlite nám adresu domu a napíšte, čo chcete meniť – aj keď ešte nemá
   },
   {
     id: 'zateplenie-fasady-polystyren-alebo-mineralna-vlna',
-    title: 'Zateplenie fasády: Polystyrén alebo minerálna vlna? Porovnanie',
-    excerpt: 'Vyberáte izoláciu pre váš dom? Pozrite si veľké porovnanie dvoch najpopulárnejších materiálov na zateplenie fasády. Aké sú ich výhody, nevýhody a rozdiely v cene?',
+    title: 'Zateplenie fasády: polystyrén alebo minerálna vlna?',
+    excerpt: 'Polystyrén alebo minerálna vlna na fasádu: porovnanie izolácie, paropriepustnosti, horľavosti a ceny, kedy sa ktorý hodí a hrúbka pre Obnov dom.',
     category: 'Stavebné procesy',
     tags: ['Stavebné procesy', 'Rodinné domy'],
-    content: `Keď príde rad na [zateplenie fasády](/sluzby/fasady), stavebníci sa najčastejšie delia na dva tábory. Jeden nedá dopustiť na biely polystyrén (EPS), druhý prísahá na vlastnosti minerálnej (kamennej) vlny. Oba materiály majú v stavebníctve v roku 2026 svoje pevné a nezastupiteľné miesto, no oba sa správajú inak a vyžadujú si odlišný technologický prístup.
+    content: `Keď príde rad na [zateplenie fasády](/sluzby/fasady), stavebníci sa najčastejšie delia na dva tábory. Jedni nedajú dopustiť na polystyrén (EPS), druhí na minerálnu (kamennú) vlnu. Oba materiály majú svoje pevné miesto, no správajú sa inak a vyžadujú odlišný technologický postup.
 
-V spoločnosti **MNSP | Stavby a rekonštrukcie** realizujeme desiatky zateplení ročne. Pripravili sme pre vás objektívne porovnanie, ktoré vám pomôže rozhodnúť sa, čím zatepliť váš rodinný dom.
+Zatepľujeme novostavby aj staršie domy pri rekonštrukciách. V tomto porovnaní nájdete, v čom sa materiály líšia, kedy sa ktorý hodí a na čo myslieť pri hrúbke izolácie.
 
-## 1. Expandovaný polystyrén (EPS) – Klasika, ktorá nesklame
+## Porovnanie na jeden pohľad
 
-Biele (a dnes už čoraz častejšie sivé, s prídavkom grafitu) dosky z expandovaného polystyrénu sú absolútne najpoužívanejším izolantom na Slovensku. Tvorí ho z 98 % vzduch uzatvorený v bunkách polystyrénu.
+| | Polystyrén (EPS) | Minerálna vlna |
+| :--- | :--- | :--- |
+| **Tepelná izolácia** | veľmi dobrá, sivý grafitový λ = 0,031 W/mK | dobrá |
+| **Paropriepustnosť** | nízka – „nedýcha“ | vysoká – „dýcha“ |
+| **Horľavosť** | samozhášavý, pri požiari sa taví | nehorľavá, trieda A1 |
+| **Zvuková izolácia** | slabšia | lepšia |
+| **Hmotnosť a práca** | ľahký, ľahko sa reže | ťažšia, prašnejšia práca |
+| **Citlivosť na dážď počas prác** | nízka | vysoká, nesmie zmoknúť |
+| **Cena** | nižšia | o 30 – 50 % vyššia |
+| **Hodí sa pre** | novostavby z keramickej tehly, tiché lokality | staré domy, pórobetón, hlučné lokality |
+
+## 1. Expandovaný polystyrén (EPS)
+
+Biele a čoraz častejšie aj sivé dosky s prídavkom grafitu patria na Slovensku k najpoužívanejším izolantom. Z 98 % ich tvorí vzduch uzavretý v bunkách polystyrénu.
 
 ### Výhody polystyrénu:
-*   **Vynikajúca tepelná izolácia:** Sivý (grafitový) polystyrén má dnes špičkové izolačné vlastnosti (súčiniteľ tepelnej vodivosti lambda λ = 0,031 W/mK), čím pri menšej hrúbke dosahuje lepšie parametre ako bežná vlna.
-*   **Ľahká manipulácia:** Je extrémne ľahký. Majstri na lešení sa s ním nenadrú, ľahko sa reže odporovou pílou na milimetrovú presnosť.
-*   **Nenáročný na vlhkosť počas prác:** Zatiaľ čo vlnu musíte na stavbe úzkostlivo chrániť pred dažďom, polystyrénu trocha vody neublíži (aj keď samozrejme, nesmie dlhodobo stáť v mlákach).
-*   **Cena:** Polystyrén (najmä biely EPS 70F) je cenovo najdostupnejšia voľba na trhu.
+*   **Veľmi dobrá tepelná izolácia:** Sivý grafitový polystyrén má súčiniteľ tepelnej vodivosti λ = 0,031 W/mK, takže pri menšej hrúbke dosahuje lepšie parametre ako bežná vlna.
+*   **Ľahká manipulácia:** Je veľmi ľahký a odporovou pílou sa dá presne narezať.
+*   **Menšia citlivosť na vlhkosť počas prác:** Vlnu treba na stavbe starostlivo chrániť pred dažďom, polystyrénu trocha vody neublíži. Dlhodobo v mokre však stáť nesmie.
+*   **Cena:** Najmä biely EPS 70F je cenovo najdostupnejšia voľba.
 
 ### Nevýhody polystyrénu:
-*   **Je difúzne uzavretý ("nedýcha"):** Má vysoký difúzny odpor. Neodporúča sa na staré, [vlhké domy](/blog/rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet), kde by mohol vlhkosť uzavrieť v múroch.
-*   **Horľavosť:** Aj keď sa doň dnes pridávajú retardéry horenia (je tzv. samozhášavý), pri priamom požiari sa roztaví. Nad určité výšky (výškové budovy) ho normy zakazujú používať.
-*   **Akustika:** Polystyrén veľmi slabé izoluje hluk z ulice (oproti vlne).
+*   **Nízka paropriepustnosť:** Má vysoký difúzny odpor. Neodporúča sa na staré, [vlhké domy](/blog/rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet), kde by mohol vlhkosť uzavrieť v múroch.
+*   **Horľavosť:** Pridávajú sa doň retardéry horenia a je samozhášavý, pri priamom požiari sa však roztaví. Nad určitú výšku budov ho normy nepovoľujú.
+*   **Akustika:** Hluk z ulice izoluje slabšie ako vlna.
 
-## 2. Minerálna (kamenná) vlna – Dýchajúca a nehorľavá alternatíva
+## 2. Minerálna (kamenná) vlna
 
-Minerálna vlna sa vyrába tavením čadičového kameňa a spriadaním jeho vlákien. Tvorí tuhé a pomerne ťažké izolačné dosky.
+Minerálna vlna sa vyrába tavením čadičového kameňa a spriadaním jeho vlákien. Tvorí pevné a pomerne ťažké izolačné dosky.
 
 ### Výhody minerálnej vlny:
-*   **Výborná paropriepustnosť ("dýcha"):** Vlna má extrémne nízky difúzny odpor. Vlhkosť z interiéru bez problémov prestúpi cez múr a vlnu až do exteriéru. Je ideálna na staré domy a novostavby z pórobetónu (Ytong), ktoré majú vo svojom objeme ešte veľa zvyškovej zabudovanej vody z výroby.
-*   **Akustická izolácia:** Ak staviate dom pri rušnej ceste, vlna je jasná voľba. Jej hutná štruktúra pohlcuje zvukové vlny z okolia oveľa lepšie ako polystyrén.
-*   **Absolútna nehorľavosť:** Trieda reakcie na oheň A1. Minerálna vlna nehorí. Chráni nosné konštrukcie pred ohňom.
+*   **Vysoká paropriepustnosť:** Vlna má veľmi nízky difúzny odpor. Vlhkosť z interiéru prestúpi cez múr aj vlnu von. Hodí sa na staré domy aj na novostavby z pórobetónu, ktoré majú v sebe ešte veľa zabudovanej vody z výroby.
+*   **Zvuková izolácia:** Ak staviate pri rušnej ceste, vlna je jasná voľba. Jej hutná štruktúra pohlcuje hluk z okolia oveľa lepšie ako polystyrén.
+*   **Nehorľavosť:** Trieda reakcie na oheň A1. Minerálna vlna nehorí a chráni nosné konštrukcie pred ohňom.
 
 ### Nevýhody minerálnej vlny:
-*   **Cena:** Zateplenie vatou je o **30 % až 50 % drahšie** ako zateplenie bielym polystyrénom. Neplatíte len za drahší materiál, ale aj za špeciálne (drahšie) hmoždinky s oceľovým tŕňom a drahšiu prácu.
-*   **Hmotnosť a prácnosť:** Dosky sú ťažké. Režú sa špeciálnym nožom alebo pílou, pri práci vzniká prach a vlákna, ktoré dráždia pokožku (majstri musia pracovať v ochranných oblekoch).
-*   **Náchylnosť na vlhkosť pred aplikáciou omietky:** Kým na vatovú fasádu nenanesiete finálnu omietku, nesmie za žiadnych okolností zmoknúť. Ak vata na fasáde navlhne (lebo ste nechránili lešenie sieťami), stratí svoje izolačné vlastnosti a ťažko schne.
+*   **Cena:** Zateplenie vlnou je o **30 až 50 % drahšie** ako zateplenie bielym polystyrénom. Drahší je materiál, hmoždinky s oceľovým tŕňom aj práca.
+*   **Hmotnosť a prácnosť:** Dosky sú ťažké, režú sa špeciálnym nožom alebo pílou a pri práci vzniká prach a vlákna, ktoré dráždia pokožku.
+*   **Citlivosť na vlhkosť pred omietkou:** Kým sa na vlnu nenanesie finálna omietka, nesmie zmoknúť. Ak na fasáde navlhne, stratí izolačné vlastnosti a ťažko schne.
 
-## Čo si teda vybrať v roku 2026?
+## Čo si teda vybrať
 
-V **MNSP | Stavby a rekonštrukcie** odporúčame klientom postupovať na základe materiálu obvodových múrov a rozpočtu.
+Odporúčame rozhodovať sa podľa materiálu obvodových múrov, lokality a rozpočtu.
 
-*   **Zvoľte (sivý grafitový) Polystyrén ak:** Staviate [novostavbu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom) z keramickej tehly (ktorá neobsahuje toľko zabudovanej vlhkosti), domáca rekuperácia sa postará o vetranie, staviate v tichej štvrti a máte napätý rozpočet.
-*   **Zvoľte Minerálnu vlnu ak:** Zatepľujete starý dom z plnej tehly, staviate pri hlučnej ceste, alebo máte dom vymurovaný z pórobetónu (a neplánujete ho nechať rok vymrznúť a vyschnúť predtým, než naň dáte izoláciu).
+*   **Sivý grafitový polystyrén zvoľte, ak:** staviate [novostavbu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom) z keramickej tehly, ktorá nemá toľko zabudovanej vlhkosti, o vetranie sa postará rekuperácia, dom je v tichej štvrti a rozpočet je napätý.
+*   **Minerálnu vlnu zvoľte, ak:** zatepľujete starý dom z plnej tehly, staviate pri hlučnej ceste alebo máte dom z pórobetónu a nechcete ho pred zateplením nechať rok vysychať.
 
-*Tip:* Nech už si vyberiete akýkoľvek izolant, najväčšou chybou je neodborná aplikácia (chýbajúce "L" výrezy okolo okien, lepenie "na buchty" bez obvodového rámika, či chýbajúce kotvenie). Zle zrealizované zateplenie sa môže odtrhnúť, alebo môže vytvoriť pod izolantom komínový efekt. 
+*Tip:* Pri oboch materiáloch je najväčšou chybou neodborná aplikácia – chýbajúce výrezy v tvare „L“ okolo okien, lepenie len na body bez obvodového rámika či chýbajúce kotvenie. Zle urobené zateplenie sa môže odtrhnúť alebo pod izolantom vytvoriť komínový efekt.
 
-## Zhrnutie
+## Hrúbka izolácie a príspevok Obnov dom
 
-Zateplenie fasády nie je len o estetike, ale o masívnom šetrení nákladov na vykurovanie a chladenie. Oba materiály – polystyrén aj vata – splnia svoj účel na sto percent, ak sú správne zvolené k typu muriva a stopercentne odborne zrealizované.
+Hrúbku izolácie určuje projekt podľa muriva a požadovanej energetickej triedy. V chladnejších a vyšších polohách nášho kraja, napríklad na Podpoľaní, odporúčame väčšie hrúbky izolantov – dlhšie zimy sa inak prejavia na účtoch za kúrenie.
 
-Hľadáte spoľahlivých majstrov na aplikáciu zatepľovacieho systému s [finálnymi omietkami](/sluzby/omietky)? [Kontaktujte MNSP | Stavby a rekonštrukcie](/kontakt). Zhodnotíme stav vášho domu, poradíme s výberom materiálu a postaráme sa o bezchybnú realizáciu vašej novej fasády.`,
+Ak chcete na zateplenie existujúceho domu čerpať príspevok z programu **Obnov dom**, výzva vyžaduje pri zateplení obvodového plášťa **minimálne 150 mm** izolácie (podľa SAŽP, overené 16. 9. 2026). Ďalšie kolo je podľa SAŽP plánované na január 2027. Podmienky programu a to, s čím vám pomôžeme, nájdete na stránke [Rekonštrukcia rodinného domu](/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu).
+
+## Koľko stojí zateplenie pri novostavbe
+
+V našej [kalkulačke](/kalkulacka) tvorí zateplenie a fasáda približne 7 % ceny domu na kľúč – pri jednopodlažnom dome so 120 m² v strednom štandarde približne 13 800 €. Pri minerálnej vlne počítajte s vyššou sumou. Celý rozpočet stavby rozoberáme v článku [Koľko stojí stavba rodinného domu](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026).
+
+## Často kladené otázky (FAQ)
+
+**1. Je lepší polystyrén alebo minerálna vlna?**
+Ani jeden nie je lepší vo všetkom. Polystyrén je lacnejší a ľahší, vlna lepšie prepúšťa vlhkosť, izoluje hluk a nehorí. Rozhoduje murivo, lokalita a rozpočet – na starý dom z plnej tehly alebo na pórobetón sa častejšie hodí vlna, na novostavbu z keramickej tehly v tichej lokalite polystyrén.
+
+**2. Aký je rozdiel medzi bielym a sivým polystyrénom?**
+Sivý polystyrén obsahuje grafit, vďaka ktorému lepšie izoluje – súčiniteľ tepelnej vodivosti má λ = 0,031 W/mK. Rovnaký účinok tak dosiahnete pri menšej hrúbke ako s bielym.
+
+**3. Aká hrúbka izolácie je potrebná pre príspevok Obnov dom?**
+Pri zateplení obvodového plášťa výzva Obnov dom vyžaduje minimálne 150 mm izolácie. Podmienky sa môžu v ďalšom kole zmeniť, preto ich pred podaním žiadosti overte na stránke programu.
+
+**4. Dá sa zatepľovať aj v zime?**
+Zateplenie a fasádna omietka patria k mokrým procesom, ktoré potrebujú teplotu nad nulou. Preto ich plánujeme do teplejších mesiacov – nesmie pršať, mrznúť ani byť príliš horúco.
+
+**5. Dá sa zatepliť starý vlhký dom?**
+Áno, ale najprv treba vyriešiť príčinu vlhkosti, napríklad chýbajúcu izoláciu proti zemnej vlhkosti. Potom sa na starý dom zvyčajne použije paropriepustný systém s minerálnou vlnou, aby sa vlhkosť v múroch neuzavrela.
+
+## Plánujete zateplenie?
+
+**Ak zatepľujete existujúci dom,** pošlite nám adresu a napíšte, z čoho je dom postavený. Prídeme sa pozrieť, posúdime stav muriva, odporučíme materiál a pripravíme nezáväznú položkovú ponuku.
+
+**Ak staviate nový dom,** zateplenie je súčasťou našej dodávky na kľúč aj holodomu. Pošlite nám projekt, alebo ak ho ešte nemáte, vypracujeme ho.
+
+[Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-04-30T08:00:00+01:00',
-    updatedAt: '2026-04-30T08:00:00+01:00',
-    imageUrl: '/Blog/zateplenie-fasady-polystyren-alebo-mineralna-vlna.webp'
+    updatedAt: '2026-09-24T08:00:00+02:00',
+    imageUrl: '/Blog/zateplenie-polystyren-vlna.webp'
   },
   {
     id: 'stavba-domu-svojpomocne-vyhody-nevyhody',
