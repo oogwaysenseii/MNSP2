@@ -1199,95 +1199,124 @@ Termín dokončenia dohodneme v zmluve o dielo, aby ste od začiatku vedeli, ked
   },
   {
     id: 'rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet',
-    title: 'Rekonštrukcia starého domu v roku 2026: Na čo myslieť a čomu sa vyhnúť',
-    excerpt: 'Plánujete kúpiť starší dom a zrekonštruovať ho? Tento článok vás prevedie najčastejšími úskaliami rekonštrukcií od vlhkosti až po nečakané statické poruchy.',
+    title: 'Rekonštrukcia starého domu: čomu sa vyhnúť (2026)',
+    excerpt: 'Šesť chýb pri rekonštrukcii starého domu – od kúpy bez statika po zlé zateplenie. Plus povolenia podľa nového zákona, orientačné ceny a Obnov dom.',
     category: 'Rodinné domy',
     tags: ['Rodinné domy', 'Rekonštrukcia domu'],
-    content: `Ceny novostavieb stúpajú, dobrých pozemkov v mestách je málo. Niet divu, že čoraz viac ľudí sa rozhoduje pre kúpu staršieho rodinného domu a jeho kompletnú rekonštrukciu. Môže to byť skvelá investícia do nehnuteľnosti s "dušou" a zabehnutou infraštruktúrou, ale aj priama cesta k finančnému vyčerpaniu a nervovému zrúteniu.
+    content: `Ceny novostavieb stúpajú a dobrých pozemkov v mestách je málo. Čoraz viac ľudí sa preto rozhoduje kúpiť starší rodinný dom a zrekonštruovať ho. Môže to byť výborná investícia do domu so zabehnutým okolím a infraštruktúrou – ale aj cesta k nečakaným výdavkom, ak sa podcení príprava.
 
-Kde leží hranica medzi úspešnou obnovou a katastrofou? Ak plánujete **rekonštrukciu domu**, zistite, čomu sa musíte v roku 2026 nevyhnutne vyhnúť.
+Ak plánujete **rekonštrukciu starého domu**, v tomto článku nájdete šesť najčastejších chýb, na čo si dať pozor pri povoleniach a koľko rekonštrukcia orientačne stojí.
+
+## Rekonštrukcia v skratke
+
+| | Orientačne |
+| :--- | :--- |
+| **Čiastočná rekonštrukcia** (omietky, potery, okná, podlahy, maľby) | od približne 300 € za m² |
+| **Kompletná rekonštrukcia** (statika, všetky rozvody, strecha, zateplenie) | približne 750 € za m² |
+| **Prémiová rekonštrukcia** (prémiové materiály, inteligentná elektroinštalácia) | približne 1 100 € za m² |
+| **Rezerva na nečakané veci** | 20 – 30 % rozpočtu |
+| **Prvý krok** | obhliadka statikom a stavebnou firmou ešte pred kúpou |
+
+Ceny vychádzajú z orientačnej kalkulačky na stránke [Rekonštrukcia rodinného domu](/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu). Pri starom dome ich viac ako inde ovplyvní to, čo sa nájde po odkrytí konštrukcií, preto je rezerva vyššia ako pri novostavbe.
 
 ## 1. Kúpa domu bez stavebnej a statickej prehliadky
 
-Najväčšia chyba, akú môžete urobiť, sa deje ešte predtým, ako do domu vôbec prvýkrát udriete kladivom. Mnohí kupujú starý dom len na základe vizuálneho dojmu a lokality. 
+Najväčšia chyba sa stáva ešte predtým, ako do domu prvýkrát udriete kladivom. Mnohí kupujú starý dom len podľa vizuálneho dojmu a lokality.
 
-**Skryté hrozby starých domov:**
-*   **Vlhkosť a plesne:** Voda ťahajúca zo základov (chýbajúca hydroizolácia) znamená masívne búranie podláh, injektáže alebo podrezávanie muriva (v tisíckach eur).
-*   **Drevené stropy a krov:** Napadnutie drevokazným hmyzom alebo hnilobou často znamená nutnosť vybudovať úplne nový strop a strechu.
-*   **Statické poruchy:** Trhliny na stenách môžu byť neškodné (opadávanie omietky), ale aj kritické (sadajúce základy).
+**Skryté problémy starých domov:**
+*   **Vlhkosť a plesne:** Voda ťahajúca zo základov pre chýbajúcu hydroizoláciu znamená búranie podláh, injektáže alebo podrezávanie muriva – rádovo tisíce eur.
+*   **Drevené stropy a krov:** Napadnutie drevokazným hmyzom alebo hnilobou často znamená nový strop aj strechu.
+*   **Statické poruchy:** Trhliny na stenách môžu byť neškodné, napríklad v omietke, ale aj vážne, ak sadajú základy.
 
-*Naša rada:* Ešte pred podpisom kúpnej zmluvy si na obhliadku prizvite statika a zástupcu stavebnej firmy. To, čo laickému oku ujde, odborník odhalí za 10 minút.
+*Naša rada:* Ešte pred podpisom kúpnej zmluvy si na obhliadku prizvite statika a zástupcu stavebnej firmy. Odborník si všimne veci, ktoré laickému oku ujdú.
 
-## 2. Podcenenie byrokracie (Kedy treba stavebné povolenie?)
+## 2. Podcenenie povolení
 
-Pri rekonštrukcii panuje mylná predstava, že si vo svojom dome môžete robiť, čo chcete.
+Pri rekonštrukcii panuje predstava, že si vo svojom dome môžete robiť, čo chcete. Od 1. apríla 2025 platí nový stavebný zákon (č. 25/2025 Z. z.) a rozsah povolenia závisí od toho, do čoho zasahujete:
 
-*   **Ohláška drobných stavieb:** Stačí vtedy, ak nezasahujete do nosných konštrukcií, nemeníte vzhľad stavby a nemeníte spôsob jej užívania (napríklad výmena podláh, zariaďovacej sanity, nové [omietky](/sluzby/omietky)).
-*   **Stavebné povolenie:** Potrebujete ho **vždy**, keď zasahujete do nosných stien (idete robiť nový prechod medzi obývačkou a kuchyňou), meníte tvar strechy, pristavujete, alebo zväčšujete okná (zmena vzhľadu fasády). Prečítajte si, ako vybaviť [stavebné povolenie](/blog/stavebne-povolenie-krok-za-krokom-v-roku-2026).
+*   **Bežná údržba**, ako oprava fasády, výmena okien v pôvodnom rozsahu či výmena strešnej krytiny, sa spravidla nepovoľuje ani neohlasuje.
+*   **Drobné stavby a menšie úpravy** sa ohlasujú stavebnému úradu.
+*   **Zásah do nosných konštrukcií** – nový prechod v nosnej stene, zmena tvaru strechy, prístavba, nadstavba či zväčšenie okien, ktoré mení vzhľad domu – si vyžaduje rozhodnutie o stavebnom zámere.
 
-Pustiť sa do búrania nosných stien bez posudku statika a povolenia je hazard so životom.
+Presné zaradenie vášho zámeru vám po obhliadke povieme. Postup povoľovania opisujeme v článku [Stavebné povolenie krok za krokom](/blog/stavebne-povolenie-krok-za-krokom-v-roku-2026).
 
-## 3. Výmena okien bez zateplenia (Syndróm plesnivých kútov)
+Búrať nosné steny bez posudku statika a bez povolenia je nebezpečné pre celý dom aj pre ľudí v ňom. Otvory do nosných stien robíme až podľa statického návrhu – [rezaním](/sluzby/rezanie-otvorov) alebo [jadrovým vŕtaním](/sluzby/jadrove-vrtanie) s podopretím konštrukcie.
 
-Typický slovenský scenár: Kúpime dom, staré netesniace drevené okná okamžite vymeníme za nové, kvalitné plastové trojsklá, no na [zateplenie fasády](/sluzby/fasady) nám už nezvýšia peniaze.
+## 3. Výmena okien bez zateplenia
 
-Čo sa stane v zime?
-Staré okná fungovali ako prirodzené vetranie (netesnili). Nové okná dom hermeticky uzavrú. Vlhkosť z varenia, dýchania a prania nemá kam uniknúť. Začne sa zrážať na najchladnejších miestach v dome – na nezateplených stenách v kútoch a za nábytkom. Výsledkom sú masívne čierne plesne do niekoľkých týždňov.
+Typický scenár: kúpime dom, staré netesniace drevené okná hneď vymeníme za nové trojsklá, no na [zateplenie fasády](/sluzby/fasady) už peniaze nezvýšia.
 
-*Pravidlo:* Zateplenie a výmena okien by mali ísť ideálne ruka v ruke. Ak meníte okná skôr, musíte násobne viac vetrať (ideálne zaviesť rekuperáciu).
+Čo sa stane v zime? Staré okná netesnili a fungovali ako prirodzené vetranie. Nové okná dom utesnia a vlhkosť z varenia, dýchania a prania nemá kam uniknúť. Začne sa zrážať na najchladnejších miestach – na nezateplených stenách v kútoch a za nábytkom. Výsledkom býva pleseň už v priebehu niekoľkých týždňov.
 
-## 4. Ponechanie starých rozvodov "veď ešte fungujú"
+*Pravidlo:* Zateplenie a výmena okien by mali ísť ruka v ruke. Ak meníte okná skôr, treba oveľa viac vetrať, ideálne riadeným vetraním s rekuperáciou.
 
-Toto je extrémne drahé "šetrenie". Ak robíte kompletnú rekonštrukciu, meníte dispozíciu a robíte nové omietky, ponechanie starých hliníkových káblov alebo pozinkovaných vodovodných trubiek je časovaná bomba.
+## 4. Ponechanie starých rozvodov, „veď ešte fungujú“
 
-Starý hliník v elektrike sa láme a v kombinácii s novými, energeticky náročnými spotrebičmi (indukčná doska, tepelné čerpadlo) hrozí vyhorením inštalácie. Zanesené staré trubky môžu kedykoľvek prasknúť.
+Toto šetrenie sa nevypláca. Ak robíte kompletnú rekonštrukciu, meníte dispozíciu a robíte nové omietky, ponechať staré hliníkové káble alebo pozinkované vodovodné rúry je veľké riziko.
 
-*Pravidlo:* Pri komplexnej obnove vždy vysekajte a vymeňte kompletne všetky rozvody (voda, odpad, elektrina) od základov až po strechu.
+Starý hliník v elektroinštalácii sa láme a pri nových, energeticky náročných spotrebičoch, ako je indukčná doska alebo tepelné čerpadlo, hrozí vyhorenie inštalácie. Zanesené staré rúry môžu kedykoľvek prasknúť.
 
-## 5. Nesprávne zateplenie a "udusenie" vlhkého domu
+*Pravidlo:* Pri komplexnej obnove vymeňte všetky rozvody – vodu, odpad aj elektrinu – od základov až po strechu.
 
-Zatepliť starý dom polystyrénom nie je to isté, ako zatepliť [novostavbu z tehly](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom). 
+## 5. Nesprávne zateplenie vlhkého domu
 
-Staré domy z plnej tehly, kvádra, alebo dokonca hliny a kameňa majú úplne inú paropriepustnosť. Ak na starý dom s nedokonalou izoláciou proti zemnej vlhkosti "capnete" 15 cm polystyrénu (ktorý nedýcha), vlhkosť uzavriete v múroch. Murivo začne degradovať a vlhkosť sa presunie do interiéru.
+Zatepliť starý dom nie je to isté ako zatepliť [novostavbu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom).
 
-Na staršie domy je často nutné použiť paropriepustné systémy (minerálna vlna, odvetrávané fasády) alebo pred zateplením dom stopercentne odizolovať od základov.
+Staré domy z plnej tehly, kameňa alebo nepálenej hliny majú inú paropriepustnosť. Ak na dom s nedokonalou izoláciou proti zemnej vlhkosti nalepíte 15 cm polystyrénu, ktorý vlhkosť neprepúšťa, uzavriete ju v múroch. Murivo začne degradovať a vlhkosť sa presunie do interiéru.
 
-## 6. Ilúzia "Urobíme si to sami a ušetríme"
+Na staršie domy sa preto často používajú paropriepustné systémy – minerálna vlna alebo prevetrávané fasády – alebo sa dom pred zateplením dôkladne odizoluje od zemnej vlhkosti. Porovnanie materiálov nájdete v článku [Polystyrén alebo minerálna vlna](/blog/zateplenie-fasady-polystyren-alebo-mineralna-vlna).
 
-Urobiť si sadrokartóny alebo vymaľovať dokáže po pozretí YouTube tutoriálov veľa šikovných ľudí. No rekonštrukcia obnáša procesy, pri ktorých laické experimenty končia katastrofou (a drahými prerábkami).
+## 6. Predstava „urobíme si to sami a ušetríme“
 
-Ide o najmä o:
-*   Zásahy do statiky (preklady a nosné steny).
-*   Napájanie nového krovu na staré vence.
-*   Hydroizolácie (voda si nájde aj dierku veľkosti špendlíkovej hlavičky).
-*   Kúrenárske systémy (najmä tepelné čerpadlá si vyžadujú profesionálny návrh a inštaláciu, inak nebudú fungovať efektívne).
+Sadrokartón alebo maľovanie zvládne podľa návodov veľa šikovných ľudí. Rekonštrukcia však obsahuje práce, pri ktorých sa laické pokusy končia drahými prerábkami:
 
-Ak nemáte predchádzajúce skúsenosti so stavbami, zverte kritické časti rekonštrukcie do rúk profesionálnej stavebnej firmy. Týmto krokom si ušetríte mesiace života a v konečnom dôsledku často aj nemalé finančné prostriedky (odpadnú opravy po fušeroch).
+*   Zásahy do statiky – preklady a nosné steny.
+*   Napojenie nového krovu na staré vence.
+*   Hydroizolácie – voda si nájde aj veľmi malú netesnosť.
+*   Vykurovanie – najmä tepelné čerpadlo potrebuje odborný návrh a inštaláciu, inak nebude fungovať efektívne.
 
----
+Ak nemáte skúsenosti zo stavieb, kritické časti rekonštrukcie zverte stavebnej firme. Ušetríte čas a často aj peniaze za opravy.
+
+## Príspevok Obnov dom
+
+Časť prác pri obnove rodinného domu – zateplenie, výmena okien a dverí či strecha so zateplením – patrí medzi opatrenia podporované z programu Obnov dom. Program spravuje Slovenská agentúra životného prostredia. Prvé kolo výzvy Obnov dom mini+ sa uzavrelo 31. augusta 2026 a ďalšie je podľa SAŽP plánované na január 2027 (overené 16. 9. 2026).
+
+Aktuálne podmienky, podporované opatrenia a naše služby v rámci programu nájdete na stránke [Rekonštrukcia rodinného domu](/sluzby/rodinne-domy/rekonstrukcia-rodinneho-domu). Obnovu realizujeme my a pripravíme podklady k žiadosti. O pridelení príspevku rozhoduje SAŽP.
+
+## Z našich rekonštrukcií
+
+*   [Rekonštrukcia rodinného domu Hriňová](/portfolio/rekonstrukcia-rodinneho-domu-hrinova) (2025)
+*   [Rekonštrukcia rodinného domu Detva](/portfolio/rekonstrukcia-rodinneho-domu-detva) (2023)
+*   [Rekonštrukcia interiéru v rodinnom dome Očová](/portfolio/rekonstrukcia-interieru-ocova) (2024)
 
 ## Často kladené otázky (FAQ)
 
 **1. Oplatí sa starý dom rekonštruovať, alebo je lepšie ho zbúrať?**
-Toto je najťažšia otázka. Ak je statika narušená, dom nemá izolácie proti vode, vlhne a stropy sú prehnité, zvyčajne je ekonomickejšie (a rýchlejšie) dom zrovnať so zemou a [postaviť nový](/blog/kolko-stoji-stavba-rodinneho-domu-v-roku-2026). Ak má dom zdravé, hrubé múry a kvalitnú strechu, rekonštrukcia má zmysel. Presne to vám povie statik po obhliadke.
+Ak je narušená statika, dom nemá izoláciu proti vode, vlhne a stropy sú prehnité, býva ekonomickejšie a rýchlejšie dom zbúrať a postaviť nový. Ak má zdravé, hrubé múry a kvalitnú strechu, rekonštrukcia má zmysel. Po obhliadke so statikom vám otvorene povieme, ktorá cesta dáva zmysel.
 
 **2. Koľko stojí kompletná rekonštrukcia domu?**
-Kompletná obnova starého domu (z ktorého ostanú v podstate len holé obvodové steny a možno strecha) stojí v roku 2026 často od 70 % do 90 % ceny novostavby s rovnakou rozlohou. Pripravte sa na sumy v desiatkach tisíc eur (pri dome nad 100 m² zvyčajne nad 80 000 - 100 000 €).
+Orientačne približne 750 € za m² podlahovej plochy, pri prémiových materiáloch okolo 1 100 € za m². Pri dome so 120 m² to vychádza približne na 90 000 €. K tomu si pripočítajte rezervu 20 až 30 % na veci, ktoré sa ukážu až po odkrytí konštrukcií.
 
-**3. Môžem v rekonštruovanom dome použiť tepelné čerpadlo?**
-Áno, ale má to podmienku. Tepelné čerpadlo funguje najefektívnejšie pri nízkoteplotnom spáde (s podlahovým kúrením). Ak si v dome necháte staré liatinové radiátory a dom nezateplíte, tepelné čerpadlo ich nedokáže efektívne vykúriť a účty za elektrinu budú obrovské.
+**3. Treba na rekonštrukciu povolenie?**
+Závisí od rozsahu. Bežná údržba sa spravidla nepovoľuje, drobné úpravy sa ohlasujú a zásah do nosných konštrukcií, prístavba, nadstavba či zmena tvaru strechy si vyžaduje rozhodnutie o stavebnom zámere. Po obhliadke vám povieme, kam váš zámer patrí.
 
-**4. Na čo slúži energetický certifikát pri rekonštrukcii?**
-Pri významnej obnove budovy ste povinný splniť minimálne požiadavky na energetickú hospodárnosť (ak je to technicky a ekonomicky možné). Navyše, energetický certifikát (alebo projektové hodnotenie) často potrebujete k žiadosti o dotácie (napr. z programu Obnov dom).
+**4. Môžeme počas rekonštrukcie v dome bývať?**
+Pri čiastočnej rekonštrukcii sa to dá zvládnuť, práce sa však predĺžia a treba počítať s prachom a hlukom. Pri kompletnej rekonštrukcii so zásahom do rozvodov a dispozície odporúčame dom na čas opustiť.
 
-## Zhrnutie
+**5. Môžem v rekonštruovanom dome použiť tepelné čerpadlo?**
+Áno, s podmienkou. Tepelné čerpadlo funguje najefektívnejšie pri nízkej teplote vykurovacej vody, napríklad s podlahovým kúrením. Ak si v dome necháte staré liatinové radiátory a dom nezateplíte, čerpadlo ho efektívne nevykúri a účty za elektrinu budú vysoké.
 
-Rekonštrukcia staršieho rodinného domu je ako otváranie Pandorinej skrinky. Nikdy neviete, čo presne vás pod starými omietkami a podlahami čaká. Preto je dôležité mať pred začatím prác jasný plán, kvalitný projekt a dostatočnú finančnú rezervu (ideálne 20-30 % nad plánovaný rozpočet na nečakané výdavky).
+**6. Na čo slúži energetický certifikát pri rekonštrukcii?**
+Pri významnej obnove budovy treba splniť minimálne požiadavky na energetickú hospodárnosť, ak je to technicky a ekonomicky možné. Energetické hodnotenie často potrebujete aj k žiadosti o príspevok, napríklad z programu Obnov dom.
 
-V spoločnosti **MNSP | Stavby a rekonštrukcie** máme obrovské skúsenosti s transformáciou starých, zanedbaných domov na moderné, bezpečné a energeticky úsporné bývanie. Posúdime stav vašej nehnuteľnosti, navrhneme optimálny postup prác a zrealizujeme rekonštrukciu odborne a s garanciou kvality. [Kontaktujte nás](/kontakt) a vdýchnite vášmu starému domu nový život.`,
+## Plánujete rekonštrukciu staršieho domu?
+
+Pošlite nám adresu domu a napíšte, čo chcete meniť – aj keď ešte nemáte projekt. Dom si prídeme pozrieť, posúdime jeho stav a po obhliadke pripravíme nezáväznú položkovú ponuku. Ak treba, projekt aj povolenie vybavíme za vás.
+
+[Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-05-05T08:00:00+01:00',
-    updatedAt: '2026-05-05T08:00:00+01:00',
-    imageUrl: '/Blog/rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet.webp'
+    updatedAt: '2026-09-24T08:00:00+02:00',
+    imageUrl: '/Blog/rekonstrukcia-stareho-domu.webp'
   },
   {
     id: 'zateplenie-fasady-polystyren-alebo-mineralna-vlna',
