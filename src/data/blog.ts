@@ -1678,63 +1678,107 @@ V spoločnosti **MNSP | Stavby a rekonštrukcie** máme s realizáciou náročn�
   },
   {
     id: 'rekuperacia-v-rodinnom-dome-oplati-sa',
-    title: 'Rekuperácia v rodinnom dome: Oplatí sa investícia do riadeného vetrania?',
-    excerpt: 'Čerstvý vzduch bez tepelných strát. Zistite, ako funguje rekuperácia, prečo je v moderných novostavbách takmer nevyhnutnosťou a aké sú jej skutočné výhody.',
+    title: 'Rekuperácia v rodinnom dome: oplatí sa?',
+    excerpt: 'Ako funguje rekuperácia, koľko stojí, aké má výhody a nevýhody, centrálna alebo lokálna a prečo o nej treba rozhodnúť už v projekte domu.',
     category: 'Rodinné domy',
     tags: ['Technológie', 'Rodinné domy'],
-    content: `Pri plánovaní moderného bývania sa čoraz častejšie skloňuje slovo **rekuperácia**. Pre niekoho je to zbytočný luxus, pre iného absolútna nevyhnutnosť, bez ktorej si [novostavbu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom) ani nevie predstaviť. 
+    content: `Pri plánovaní nového domu sa čoraz častejšie skloňuje slovo **rekuperácia**. Pre niekoho je to zbytočný luxus, pre iného samozrejmosť, bez ktorej si [novostavbu](/blog/stavba-domu-v-roku-2026-kompletny-sprievodca-krok-za-krokom) nevie predstaviť.
 
-Čo to vlastne tá rekuperácia je, ako funguje a oplatí sa do nej v roku 2026 investovať? V **MNSP | Stavby a rekonštrukcie** vám prinášame prehľadný pohľad na túto technológiu.
+Čo rekuperácia je, ako funguje, koľko stojí a kedy sa do nej oplatí investovať?
 
-## Čo je to rekuperácia a ako funguje?
+## Rekuperácia v skratke
 
-Zjednodušene povedané, rekuperácia je **systém riadeného vetrania so spätným získavaním tepla**. 
+| | Orientačne |
+| :--- | :--- |
+| **Cena systému pre rodinný dom** | približne 4 000 – 7 000 € (jednotka a rozvody) |
+| **Účinnosť spätného získavania tepla** | pri kvalitných jednotkách aj nad 90 % |
+| **Údržba** | výmena filtrov zvyčajne 2-krát ročne |
+| **Kedy ju riešiť** | už v projekte, pred betonážou stropov |
+| **Najväčší prínos** | čerstvý vzduch, menej vlhkosti a plesní, menej prachu |
 
-V bežnom dome (bez rekuperácie), keď chcete vyvetrať, otvoríte okno. Vydýchaný vzduch unikne von a dnu prúdi čerstvý vzduch. Problém je, že v zime s vydýchaným vzduchom unikne aj drahocenné teplo, a dnu vpustíte mráz, ktorý musíte následne vykúriť.
+## Čo je rekuperácia a ako funguje
+
+Rekuperácia je **riadené vetranie so spätným získavaním tepla**.
+
+V dome bez rekuperácie otvoríte okno. Vydýchaný vzduch unikne von a dnu prúdi čerstvý. V zime však s vydýchaným vzduchom uniká aj teplo a dnu vpúšťate mráz, ktorý treba znova vykúriť.
 
 **Ako to rieši rekuperácia:**
-1.  Systém neustále odsáva teplý, vydýchaný a vlhký vzduch z miestností (kuchyňa, kúpeľňa, WC).
-2.  Tento vzduch putuje do rekuperačnej jednotky (výmenníka).
-3.  Zároveň systém nasáva z vonku čerstvý, ale studený vzduch.
-4.  Vo výmenníku odovzdá teplý vzduch z interiéru svoje teplo studenému vzduchu z exteriéru (bez toho, aby sa fyzicky zmiešali).
-5.  Do izieb (obývačka, spálne) tak prúdi čerstvý, prefiltrovaný a už **predhriaty vzduch**.
+1.  Systém priebežne odsáva teplý, vydýchaný a vlhký vzduch z kuchyne, kúpeľne a WC.
+2.  Vzduch prechádza rekuperačnou jednotkou s výmenníkom.
+3.  Zároveň systém nasáva zvonku čerstvý, no studený vzduch.
+4.  Vo výmenníku odovzdá teplý vzduch z interiéru teplo studenému vzduchu zvonku – bez toho, aby sa zmiešali.
+5.  Do obývačky a spální tak prúdi čerstvý, prefiltrovaný a **predhriaty vzduch**.
 
-## Prečo je rekuperácia v moderných domoch takmer nutnosťou?
+## Prečo sa rekuperácia v novostavbách odporúča
 
-Dnešné domy (v energetickom štandarde A0) sú stavané ako hermeticky uzavreté termosky. Kvalitné [zateplenie fasády](/blog/zateplenie-fasady-polystyren-alebo-mineralna-vlna), špičkové okná s trojsklami a parozábrany v streche neprepustia dnu ani von takmer žiaden vzduch. 
+Dnešné domy v energetickej triede A0 sú veľmi tesné. Kvalitné [zateplenie fasády](/blog/zateplenie-fasady-polystyren-alebo-mineralna-vlna), okná s trojsklami a parozábrany v streche neprepustia takmer žiadny vzduch.
 
-Ak v takomto dome nebudete intenzívne a pravidelne vetrať (čo v zime málokto robí dostatočne), rýchlo stúpne koncentrácia CO2 (čo spôsobuje únavu a bolesti hlavy) a najmä vlhkosť. Zadržaná vlhkosť z varenia, sprchovania a dýchania kondenzuje na najchladnejších miestach (najčastejšie v rohoch okien) a vznikajú **plesne**.
+Ak v takom dome pravidelne a dostatočne nevetráte – a v zime to robí málokto –, rýchlo stúpne koncentrácia CO₂, ktorá spôsobuje únavu a bolesti hlavy, a najmä vlhkosť. Vlhkosť z varenia, sprchovania a dýchania kondenzuje na najchladnejších miestach, najčastejšie v rohoch okien, a vzniká pleseň.
 
-Rekuperácia tento problém úplne eliminuje. Váš dom "dýcha" za vás.
+Rekuperácia tento problém rieši priebežným vetraním – aj keď ste v práci alebo spíte.
 
-## Hlavné výhody rekuperácie
+## Výhody rekuperácie
 
-*   **Neustály prísun čerstvého vzduchu:** Už sa nezobudíte v "ťažkom", vydýchanom vzduchu. Vetrá sa 24 hodín denne, potichu a bez prievanu.
-*   **Úspora nákladov na kúrenie:** Keďže nevetráte oknami a nestrácate teplo, účinnosť spätného získavania tepla je v kvalitných jednotkách aj nad 90 %. To sa prejaví na nižších účtoch.
-*   **Koniec plesniam a nadmernej vlhkosti:** Systém udržuje v dome ideálnu vlhkosť a zabraňuje jej hromadeniu.
-*   **Filtrovanie vzduchu:** Nasávaný vzduch prechádza filtrami, ktoré zachytávajú prach, peľ a dokonca aj smog. Je to obrovské plus pre alergikov a astmatikov.
-*   **Zníženie hluku z vonku:** Ak bývate pri rušnej ceste, nemusíte otvárať okná, aby ste vyvetrali. Dnu máte čerstvý vzduch a ticho.
+*   **Stály prísun čerstvého vzduchu:** Vetrá sa 24 hodín denne, potichu a bez prievanu.
+*   **Nižšie náklady na kúrenie:** Nevetráte oknami a teplo sa vo výmenníku vracia späť. Účinnosť kvalitných jednotiek je aj nad 90 %.
+*   **Menej vlhkosti a plesní:** Systém bráni hromadeniu vlhkosti v dome.
+*   **Filtrovanie vzduchu:** Nasávaný vzduch prechádza filtrami, ktoré zachytávajú prach, peľ aj smog. Veľké plus pre alergikov a astmatikov.
+*   **Menej hluku zvonku:** Ak bývate pri rušnej ceste, nemusíte kvôli vetraniu otvárať okná.
 
 ## Nevýhody a na čo si dať pozor
 
-*   **Vstupná investícia:** Kompletný systém (jednotka + rozvody) pre bežný rodinný dom stojí zvyčajne od 4 000 do 7 000 €.
-*   **Nutnosť plánovania:** Rozvody rekuperácie sú pomerne hrubé rúry (cca 7,5 - 9 cm), ktoré sa zväčša schovávajú do sadrokartónových podhľadov (čo znižuje strop) alebo sa zalejú priamo do [monolitických stropov](/sluzby/monoliticke-konstrukcie). Musí sa s nimi počítať už vo fáze projektu! Dodatočná inštalácia je veľmi komplikovaná.
-*   **Pravidelná údržba:** Filtre v jednotke je potrebné meniť (zvyčajne 2x ročne), inak systém stráca účinnosť a do domu sa môžu dostať nečistoty.
-*   **Znížená vlhkosť v zime:** V tuhých mrazoch môže rekuperácia (najmä tie bez entalpického výmenníka) vzduch v dome príliš vysušiť (pod 30 %), čo si vyžaduje použitie zvlhčovačov.
+*   **Vstupná investícia:** Kompletný systém s jednotkou a rozvodmi stojí pre bežný rodinný dom zvyčajne 4 000 až 7 000 €.
+*   **Treba ju naplánovať v projekte:** Rozvody sú pomerne hrubé rúry (približne 7,5 až 9 cm). Zvyčajne sa schovávajú do sadrokartónových podhľadov, čo znižuje strop, alebo sa zalejú priamo do [monolitických stropov](/sluzby/monoliticke-konstrukcie). Dodatočná inštalácia je komplikovaná.
+*   **Pravidelná údržba:** Filtre treba meniť zvyčajne dvakrát ročne, inak systém stráca účinnosť a do domu sa môžu dostať nečistoty.
+*   **Suchší vzduch v zime:** V tuhých mrazoch môže rekuperácia bez entalpického výmenníka vzduch vysušiť pod 30 % vlhkosti a môže byť potrebný zvlhčovač.
 
-## Centrálna vs. Lokálna rekuperácia
+## Centrálna vs. lokálna rekuperácia
 
-*   **Centrálna rekuperácia:** Jedna veľká jednotka (zväčša v technickej miestnosti) a systém potrubí rozvedený do celého domu. Najlepšie riešenie pre [novostavby](/blog/dom-na-kluc-alebo-hruba-stavba-kompletne-porovnanie).
-*   **Lokálna (izbová) rekuperácia:** Malé jednotky, ktoré sa inštalujú priamo do prierazu v obvodovej stene (bez potrubí). Sú lacnejšie a ideálne pre [rekonštrukcie starších domov](/blog/rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet), ale majú nižší výkon a mierne vyššiu hlučnosť v danej miestnosti.
+| | Centrálna | Lokálna (izbová) |
+| :--- | :--- | :--- |
+| **Ako funguje** | jedna jednotka a rozvody do celého domu | malé jednotky priamo v obvodovej stene, bez rozvodov |
+| **Výkon** | vyšší, vetrá celý dom | nižší, vetrá jednu miestnosť |
+| **Hlučnosť** | nízka, jednotka je v technickej miestnosti | mierne vyššia v danej miestnosti |
+| **Cena** | vyššia | nižšia |
+| **Hodí sa pre** | novostavby | rekonštrukcie starších domov |
 
-## Zhrnutie: Oplatí sa to?
+Na čo myslieť pri obnove staršieho domu, rozoberáme v článku [Rekonštrukcia starého domu](/blog/rekonstrukcia-domu-v-roku-2026-comu-sa-vyhnut-a-naco-mysliet).
 
-Naša odpoveď znie: **Pri dnešných moderných novostavbách určite áno.** Rekuperácia už nie je len o šetrení tepla (návratnosť investície môže byť pomerne dlhá), ale predovšetkým o **komforte, zdraví a kvalite vnútorného ovzdušia**. Získate dom bez plesní, bez vydýchaného vzduchu a bez prachu z ulice.
+## Oplatí sa to?
 
-Ak plánujete stavbu rodinného domu, radi vám v **MNSP | Stavby a rekonštrukcie** pomôžeme nielen so samotnou výstavbou, ale aj s návrhom a koordináciou moderných technológií. [Kontaktujte nás](/kontakt) a postavíme vám dom, v ktorom sa vám bude zdravo a príjemne dýchať.`,
+**Pri novostavbe spravidla áno.** Návratnosť čisto z úspory tepla môže byť pomerne dlhá, rekuperácia je však najmä o **komforte, zdraví a kvalite vzduchu** – dom bez plesní, bez vydýchaného vzduchu a s menej prachom z ulice.
+
+Pri rekonštrukcii staršieho domu záleží na rozsahu. Ak meníte okná a zatepľujete, dom sa utesní a vetranie treba riešiť – ak nie centrálnou, tak aspoň lokálnou rekuperáciou alebo dôsledným vetraním oknami.
+
+## Často kladené otázky (FAQ)
+
+**1. Koľko stojí rekuperácia v rodinnom dome?**
+Kompletný centrálny systém s jednotkou a rozvodmi stojí pre bežný rodinný dom zvyčajne 4 000 až 7 000 €. Lokálne jednotky do jednotlivých miestností sú lacnejšie.
+
+**2. Dá sa rekuperácia urobiť dodatočne?**
+Dá, ale centrálnu rekuperáciu dodatočne komplikuje to, že rozvody treba niekam schovať – do podhľadov, ktoré znížia strop. Pri existujúcich domoch sa preto častejšie používa lokálna rekuperácia bez rozvodov.
+
+**3. Ako často treba meniť filtre?**
+Zvyčajne dvakrát ročne. Znečistené filtre znižujú účinnosť systému a horšie čistia nasávaný vzduch.
+
+**4. Vysušuje rekuperácia vzduch v dome?**
+V tuhých mrazoch môže, najmä jednotka bez entalpického výmenníka – vlhkosť môže klesnúť pod 30 %. Entalpický výmenník alebo zvlhčovač to rieši.
+
+**5. Kedy treba o rekuperácii rozhodnúť?**
+Už v projekte. Rozvody sa buď zalievajú do monolitických stropov, alebo sa s nimi počíta v podhľadoch – po betonáži stropov je na to neskoro.
+
+## Plánujete dom s rekuperáciou?
+
+Rozvody rekuperácie zosúladíme so stropmi a ostatnými inštaláciami už pri príprave stavby, aby sa neriešili až po betonáži. Rekuperácia môže byť súčasťou domu na kľúč.
+
+**Ak už máte projekt,** pošlite nám ho spolu s adresou pozemku. Po obhliadke pripravíme nezáväznú položkovú ponuku.
+
+**Ak projekt ešte nemáte,** stačí adresa pozemku a vaša predstava o dome. Projekt vám vypracujeme a rekuperáciu doň zapracujeme od začiatku.
+
+[Napíšte nám](/kontakt), čo plánujete.`,
     publishedAt: '2026-03-25T08:00:00+01:00',
-    updatedAt: '2026-03-25T08:00:00+01:00',
-    imageUrl: '/Blog/rekuperacia-v-rodinnom-dome.webp'
+    updatedAt: '2026-09-24T08:00:00+02:00',
+    imageUrl: '/Blog/rekuperacia.webp'
   },
   {
     id: 'tepelne-cerpadlo-v-rodinnom-dome',
