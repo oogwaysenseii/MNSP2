@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 43 — P2 s rovnakou výškou panela</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;
+        --ease:cubic-bezier(.22,.61,.36,1);
+        --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+        --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.65 var(--sans)}
+  .wrap{max-width:1340px;margin:0 auto;padding:48px 24px 120px}
+  .kicker{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 var(--sans);letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:84ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2{font:800 22px/1.25 var(--sans);letter-spacing:-.01em;margin:54px 0 6px;padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 var(--mono);letter-spacing:.16em;color:var(--amber-6);display:block;margin-bottom:9px}
+  .seclede{font-size:14.5px;color:var(--ink-2);margin:0 0 16px;max-width:92ch}
+  code.i,td code{font:500 12px/1.5 var(--mono);background:#f4f4f5;padding:1px 5px}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:26%}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#78350f}
+  .warn b.h{display:block;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+            margin-bottom:7px;color:#92400e}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  ul.flags li b{color:var(--ink)}
+  .pick{background:#09090b;color:#fff;padding:20px 24px;margin:18px 0 0;display:flex;gap:18px;align-items:flex-start}
+  .pick .p1{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--amber);flex:none;padding-top:3px}
+  .pick p{margin:0;font-size:14.5px;line-height:1.65;color:#d4d4d8}
+  .pick p b{color:#fff}
+  .vhead{display:flex;align-items:baseline;gap:12px;margin:30px 0 10px;flex-wrap:wrap}
+  .vhead b{font:800 15px/1 var(--sans)}
+  .vhead span{font:700 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .vhead .h{margin-left:auto;font:700 10px/1 var(--mono);letter-spacing:.1em;background:#18181b;color:#fff;padding:6px 10px}
+  .vhead .h b{color:var(--amber);font-weight:700}
+  .to{font-size:13px;color:var(--ink-2);margin:14px 0 0;line-height:1.6;max-width:104ch}
+  .to b{color:var(--ink)}
+  .btn{font:700 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;
+       border:1px solid #d4d4d8;background:#fff;cursor:pointer;margin:0 8px 14px 0}
+  .btn.on{background:#18181b;color:#fff;border-color:#18181b}
+  .stage{background:#fff;border:1px solid #d4d4d8;padding:26px 0 30px;overflow-x:auto}
+  .strip{display:flex;gap:20px;padding:0 26px;width:max-content}
+
+  /* ============ tile ============ */
+  .t{width:334px;flex:none;display:block;text-decoration:none;color:inherit;position:relative;
+     box-shadow:0 22px 52px rgba(0,0,0,0);
+     transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+  .t:hover,.sim .t{transform:translateY(-4px);box-shadow:0 22px 52px rgba(0,0,0,.19)}
+  .ph{position:relative;height:400px;overflow:hidden;background:#e4e4e7}
+  .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+          transition:transform 1.1s var(--ease)}
+  .t:hover .ph img,.sim .t .ph img{transform:scale(1.07)}
+  .fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+            background:repeating-linear-gradient(-45deg,#e4e4e7 0 10px,#d4d4d8 10px 20px);
+            font:700 9px/1 var(--mono);letter-spacing:.14em;color:#71717a;text-transform:uppercase}
+  .num{position:absolute;left:18px;top:16px;z-index:30}
+  .num span{display:block;font:700 11px/1 var(--mono);letter-spacing:.2em;color:rgba(255,255,255,.82);
+            text-shadow:0 1px 3px rgba(0,0,0,.6)}
+  .num i{display:block;height:2px;width:22px;background:var(--amber);margin-top:7px;
+         transition:width .55s var(--ease)}
+  .t:hover .num i,.sim .t .num i{width:54px}
+
+  /* panel */
+  .box{position:absolute;left:0;right:0;bottom:0;z-index:20;background:rgba(0,0,0,.8);
+       padding:20px 22px;display:flex;flex-direction:column;justify-content:flex-end;
+       transition:min-height .45s var(--ease)}
+  .cat{font:700 10px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;display:block;
+       color:var(--amber);flex:none}
+  .ttl{font:800 17px/1.26 var(--sans);letter-spacing:-.015em;margin:9px 0 0;color:#fff;flex:none}
+  .meta{font:400 10px/1.5 var(--mono);letter-spacing:.13em;text-transform:uppercase;margin:11px 0 0;
+        color:rgba(255,255,255,.74);flex:none}
+  .meta s{text-decoration:none;padding:0 6px;color:rgba(255,255,255,.34)}
+  .go span{display:inline-flex;align-items:center;gap:7px;border-bottom:1px solid var(--amber);
+           padding-bottom:6px;font:700 10px/1 var(--mono);letter-spacing:.18em;color:#fff}
+  .go em{font-style:normal;transition:transform .3s var(--ease)}
+  .t:hover .go em,.sim .t .go em{transform:translateX(4px)}
+
+  /* ---- U1: rovnaká výška, pri hoveri narastie ---- */
+  .U1 .box{min-height:149px}
+  .U1 .t:hover .box,.U1.sim .t .box{min-height:189px}
+  .U1 .go{max-height:0;overflow:hidden;opacity:0;flex:none;
+          transition:max-height .45s var(--ease),opacity .45s var(--ease),margin-top .45s var(--ease)}
+  .U1 .t:hover .go,.U1.sim .t .go{max-height:34px;opacity:1;margin-top:13px}
+
+  /* ---- U2: rovnaká výška stále, CTA vždy viditeľné ---- */
+  .U2 .box{min-height:189px}
+  .U2 .go{margin-top:13px;flex:none}
+
+  /* ---- U3: názov na dva riadky, panel najnižší ---- */
+  .U3 .box{min-height:128px}
+  .U3 .t:hover .box,.U3.sim .t .box{min-height:168px}
+  .U3 .ttl{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .U3 .go{max-height:0;overflow:hidden;opacity:0;flex:none;
+          transition:max-height .45s var(--ease),opacity .45s var(--ease),margin-top .45s var(--ease)}
+  .U3 .t:hover .go,.U3.sim .t .go{max-height:34px;opacity:1;margin-top:13px}
+
+  /* ---- referencia: P2 bez zjednotenia ---- */
+  .REF .box{min-height:0}
+  .REF .go{max-height:0;overflow:hidden;opacity:0;flex:none;
+           transition:max-height .45s var(--ease),opacity .45s var(--ease),margin-top .45s var(--ease)}
+  .REF .t:hover .go,.REF.sim .t .go{max-height:34px;opacity:1;margin-top:13px}
+
+  .edge{position:relative}
+  .edge:after{content:"";position:absolute;left:0;right:0;top:0;height:2px;
+              background:repeating-linear-gradient(90deg,#dc2626 0 6px,transparent 6px 12px);z-index:40}
+
+  @media(max-width:560px){.wrap{padding:28px 16px 80px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 43 · Projektové karty — P2</p>
+  <h1>P2 s rovnakou výškou panela</h1>
+  <p class="lede">Panel sa už neprispôsobuje dĺžke názvu. Tri spôsoby, ako to urobiť — líšia sa
+     v tom, čo za uniformitu zaplatíte: výškou panela, pohybom pri hoveri, alebo kusom názvu.</p>
+  <span class="status">Stav: <b>&nbsp;návrh — nič nie je aplikované v kóde</b></span>
+
+  <p style="margin:22px 0 0">
+    <button class="btn" id="simBtn">Zapnúť stav pri prejdení myšou</button>
+    <span style="font-size:13px;color:var(--muted)">— prepne všetky karty naraz</span>
+  </p>
+
+  <!-- ============================================================ -->
+  <h2><span class="no">01 — PROBLÉM</span>P2 tak, ako bol navrhnutý</h2>
+  <p class="seclede">Červená prerušovaná čiara označuje hornú hranu panela. Pri rôznej dĺžke názvu
+     skáče hore-dole — v páse vedľa seba to vidno hneď.</p>
+  <div class="stage"><div class="strip REF" id="sREF"></div></div>
+
+  <!-- ============================================================ -->
+  <h2><span class="no">02 — TRI RIEŠENIA</span></h2>
+
+  <div class="vhead"><b>U1</b><span>Pevných 149 px · pri hoveri 189 px</span>
+    <span class="h">PANEL <b id="hU1">—</b></span></div>
+  <div class="stage"><div class="strip U1" id="sU1"></div></div>
+  <p class="to"><b>Ako:</b> <code class="i">min-height: 149px</code> — výška najdlhšieho názvu.
+     Text je zarovnaný na spodok panela, takže metadáta sedia na jednej linke naprieč všetkými
+     kartami a prebytočné miesto zostane hore ako väčšie odsadenie.<br>
+     <b>Pri hoveri</b> panel narastie na 189 px a vysunie sa riadok „Zobraziť“.<br>
+     <b>Platíte:</b> pri krátkom názve je panel zbytočne vysoký — na karte Detva je nad textom
+     43 px prázdna. A horná hrana sa pri hoveri posunie.</p>
+
+  <div class="vhead"><b>U2</b><span>Pevných 189 px stále · nič sa nehýbe</span>
+    <span class="h">PANEL <b id="hU2">—</b></span></div>
+  <div class="stage"><div class="strip U2" id="sU2"></div></div>
+  <p class="to"><b>Ako:</b> panel má rovno výšku aj s riadkom „Zobraziť“, ktorý je preto viditeľný
+     stále. Pri hoveri sa nemení nič okrem šípky.<br>
+     <b>Platíte:</b> 189 px je <b>47 % dlaždice</b> trvalo. A „Zobraziť“ stratí účinok — keď svieti
+     na všetkých jedenástich kartách naraz, prestane byť pozvaním.</p>
+
+  <div class="vhead"><b>U3</b><span>Názov na dva riadky · panel 128 px</span>
+    <span class="h">PANEL <b id="hU3">—</b></span></div>
+  <div class="stage"><div class="strip U3" id="sU3"></div></div>
+  <p class="to"><b>Ako:</b> <code class="i">line-clamp-2</code> na názve <em>a</em>
+     <code class="i">min-height: 128px</code> na paneli. Orezanie drží strop (žiadny názov panel
+     nerozšíri), <code class="i">min-height</code> drží dno (jednoriadkový názov ho nestiahne).
+     <b>Treba oboje</b> — samotné orezanie nestačí, lebo tri zo šiestich názvov majú jeden riadok
+     a panel by im vyšiel o 22 px nižší.<br>
+     <b>Platíte:</b> dlhý názov sa oreže. Pri SENIOR ACTIVE Hriňová zmizne koniec — <b>teda aj
+     lokalita</b>. Tá je síce aj v metadátach pod názvom, ale v názve už nebude.</p>
+
+  <div class="pick">
+    <span class="p1">Moja voľba</span>
+    <p><b>U3.</b> Výšku má nastavenú ako U1 — ale navyše má <em>strop</em>, takže nespadne, keď
+       o rok pribudne projekt so štvorriadkovým názvom. U1 by sa vtedy roztiahol a uniformita
+       by padla. Pri 128 px zakrýva panel <b>32 % fotky</b> namiesto 37 % (U1) alebo 47 % (U2),
+       čo je pri sekcii, ktorá má ukazovať realizácie, ten správny smer.
+       <br><br>
+       Orezanie názvu neberiem ako stratu: lokalita je hneď pod ním v metadátach a plný názov je
+       na detaile projektu. <b>Ak s orezávaním nesúhlasíte, berte U1</b> — tá je druhá najlepšia
+       a jediné, čo jej vyčítam, je 43 px prázdna nad krátkym názvom. <b>U2 neodporúčam</b>:
+       trvalých 47 % fotky pod panelom je veľa a stále svietiace „Zobraziť“ prestane vyzývať.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2><span class="no">03 — NAMERANÉ</span></h2>
+  <table id="mt">
+    <tr><th>Variant</th><th>Panel v pokoji</th><th>Pri hoveri</th><th>Podiel z dlaždice</th><th>Rovnaký na všetkých?</th></tr>
+  </table>
+
+  <div class="warn">
+    <b class="h">Prečo je text zarovnaný na spodok panela</b>
+    Pri pevnej výške a krátkom názve vznikne v paneli prebytok. Keby bol text hore, zostala by pod
+    metadátami diera a panel by vyzeral nedorobený. <code class="i">justify-content: flex-end</code>
+    presunie prebytok nad text — číta sa ako väčšie odsadenie — a hlavne tým
+    <b>metadáta na všetkých kartách sedia na jednej linke</b>, čo je pri páse vedľa seba to,
+    čo oko kontroluje.
+  </div>
+
+  <!-- ============================================================ -->
+  <h2><span class="no">04 — IMPLEMENTÁCIA</span>Oproti návrhu 12</h2>
+  <p class="seclede">Návrh 12 menil textový blok na
+     <code class="i">absolute inset-x-0 bottom-0 z-20 bg-black/80 px-[22px] py-5</code>.
+     Pre rovnakú výšku k tomu pribudnú tri triedy.</p>
+  <table>
+    <tr><th>Variant</th><th>Doplniť na textový blok</th><th>Na názov</th></tr>
+    <tr><td>U1</td>
+        <td><code>flex flex-col justify-end min-h-[149px] group-hover/tile:min-h-[189px]</code><br>
+            <code>transition-[min-height] duration-[450ms] ease-[cubic-bezier(.22,.61,.36,1)]</code></td>
+        <td>—</td></tr>
+    <tr><td>U2</td>
+        <td><code>flex flex-col justify-end min-h-[189px]</code><br>
+            riadok „Zobraziť“ prestane byť vysúvací — zmazať
+            <code>max-h-0 opacity-0</code> a jeho prechod</td>
+        <td>—</td></tr>
+    <tr><td><b>U3</b></td>
+        <td><code>flex flex-col justify-end min-h-[128px] group-hover/tile:min-h-[168px]</code><br>
+            <code>transition-[min-height] duration-[450ms] ease-[cubic-bezier(.22,.61,.36,1)]</code></td>
+        <td><code>line-clamp-2</code></td></tr>
+  </table>
+  <div class="warn">
+    <b class="h">Dve veci, ktoré v tomto projekte vždy zlyhajú</b>
+    <b>1.</b> <code class="i">min-height</code>, nie <code class="i">height</code> — inak dlhší text
+    panel pretečie namiesto toho, aby ho roztiahol. Rovnakú vec sme riešili pri páse v ServicesGrid
+    (návrh 27).<br>
+    <b>2.</b> <code class="i">font-mono</code> na tomto webe nefunguje. Kategória, metadáta aj
+    „Zobraziť“ potrebujú explicitný stack <code class="i">MONO</code> ako v ServicesGrid.
+  </div>
+
+  <!-- ============================================================ -->
+  <h2><span class="no">05 — VLAJKY</span></h2>
+  <ul class="flags">
+    <li><b>U1 a U2 sa pri dlhšom názve roztiahnu.</b> 149 px je výška dnešného najdlhšieho názvu,
+        ale <code class="i">min-height</code> je minimum, nie strop — štvorriadkový názov ho prebije
+        a uniformita padne. Tomu bráni až orezanie v U3.</li>
+    <li><b>Samotné orezanie na uniformitu nestačí.</b> Zistil som to až pri meraní: s
+        <code class="i">line-clamp-2</code> a bez <code class="i">min-height</code> vyšli panely
+        106 a 128 px, lebo tri zo šiestich názvov majú jeden riadok. U3 má preto oboje.</li>
+    <li><b>U3 oreže názov uprostred slova.</b> Pri SENIOR ACTIVE Hriňová vyjde
+        <code class="i">…sociálnych služieb SENIOR ACTIV…</code> — nie je to čistý rez na hranici
+        slova, lebo <code class="i">line-clamp</code> reže podľa riadku, nie podľa významu.
+        V ukážke to vidno. Ak vám to prekáža, sú dve cesty: skrátiť názvy v dátach
+        (<code class="i">src/data/projects.ts</code>), alebo vziať U1 a orezanie nepoužiť.</li>
+    <li><b>Čísla sú z tohto dokumentu, nie z bežiacej stránky.</b> Rovnaká výhrada ako v návrhu 42:
+        moje merania sa nezhodovali s číslami z návrhu 12 a nerozkľúčoval som prečo. Pred
+        nasadením premerajte na skutočnom komponente.</li>
+    <li><b>Platí pre karusel aj pre mriežku na <code class="i">/portfolio</code></b> — ten istý
+        <code class="i">ProjectTile</code>. V mriežke je rovnaká výška panela ešte dôležitejšia,
+        lebo karty stoja v riadkoch nad sebou.</li>
+    <li><b>Toto je stále P2</b>, teda text na fotke. Ak by text mal ísť pod fotku, platí návrh 41
+        a nič z tohto dokumentu sa nepoužije.</li>
+  </ul>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var P=[
+    {t:'Zariadenie sociálnych služieb Detva',c:'Občianske stavby',
+     m:['Detva','Rok 2026','€ 4.5M','18 mesiacov'],img:'assets/Domov-socialnych-sluzieb-Detva.webp'},
+    {t:'Zariadenie pre seniorov a domov sociálnych služieb SENIOR ACTIVE Hriňová',c:'Občianske stavby',
+     m:['Hriňová','Rok 2025','€ 450 000','4 mesiace'],img:'assets/rekonstrukcia-domovu-dochodcov-senior-active-hrinova.webp'},
+    {t:'Novohradské múzeum a galéria Lučenec',c:'Občianske stavby',
+     m:['Lučenec','Rok 2025','€ 1.2M','6 mesiacov'],img:'assets/Rekonstrukcia-novohradskeho-muzea-Lucenec.webp'},
+    {t:'Rekonštrukcia rodinného domu Hriňová',c:'Rodinné domy',
+     m:['Hriňová','Rok 2025'],img:'assets/kompletna-rekonstrukcia-domu-hrinova.webp'},
+    {t:'Hrubá stavba Dúbravy',c:'Rodinné domy',
+     m:['Dúbravy','Rok 2023'],img:'assets/hruba-stavba-rd-dubravy.webp'},
+    {t:'Rodinný dom Banská Bystrica',c:'Rodinné domy',
+     m:['Banská Bystrica','Rok 2023'],img:'assets/rodinny-dom-banska-bystrica-slnecne-strane.webp'}
+  ];
+  function meta(m){return m.map(function(v,i){return (i?'<s>·</s>':'')+v;}).join('');}
+  function tile(p,i,markEdge){
+    return '<a class="t"><div class="ph">'+
+      '<img src="'+p.img+'" alt="'+p.t+'" onerror="this.outerHTML=\'<span class=&quot;fallback&quot;>fotka</span>\'">'+
+      '<div class="num"><span>'+String(i+1).padStart(2,'0')+'</span><i></i></div>'+
+      '<div class="box'+(markEdge?' edge':'')+'">'+
+        '<span class="cat">'+p.c+'</span>'+
+        '<h3 class="ttl">'+p.t+'</h3>'+
+        '<p class="meta">'+meta(p.m)+'</p>'+
+        '<div class="go"><span>Zobraziť <em>→</em></span></div>'+
+      '</div></div></a>';
+  }
+  document.getElementById('sREF').innerHTML=P.map(function(p,i){return tile(p,i,true);}).join('');
+  ['sU1','sU2','sU3'].forEach(function(id){
+    document.getElementById(id).innerHTML=P.map(function(p,i){return tile(p,i,false);}).join('');
+  });
+
+  var on=false,b=document.getElementById('simBtn');
+  b.onclick=function(){
+    on=!on;
+    document.querySelectorAll('.strip').forEach(function(s){s.classList.toggle('sim',on);});
+    b.className=on?'btn on':'btn';
+    b.textContent=on?'Vypnúť stav pri prejdení myšou':'Zapnúť stav pri prejdení myšou';
+    setTimeout(measure,700);
+  };
+
+  function heights(id){
+    return [...document.querySelectorAll('#'+id+' .box')]
+      .map(function(e){return Math.round(e.getBoundingClientRect().height);});
+  }
+  function measure(){
+    var rows=[['REF','P2 bez zjednotenia','sREF'],['U1','Pevných 149 px','sU1'],
+              ['U2','Pevných 189 px','sU2'],['U3','Názov na 2 riadky','sU3']];
+    var out='<tr><th>Variant</th><th>Panel v pokoji</th><th>Pri hoveri</th>'+
+      '<th>Podiel z dlaždice</th><th>Rovnaký na všetkých?</th></tr>';
+    rows.forEach(function(r){
+      var hs=heights(r[2]); if(!hs.length) return;
+      var uni=new Set(hs).size===1;
+      var cur=Math.max.apply(null,hs);
+      var el=document.getElementById('h'+r[0]);
+      if(el) el.textContent=cur+' PX';
+      out+='<tr><td><b>'+r[0]+'</b> — '+r[1]+'</td>'+
+        '<td>'+(uni?cur+' px':Math.min.apply(null,hs)+'–'+cur+' px')+'</td>'+
+        '<td>'+(r[0]==='U2'?'bez zmeny':'+40 px')+'</td>'+
+        '<td>'+Math.round(cur/400*100)+' %</td>'+
+        '<td'+(uni?'':' style="color:#b91c1c;font-weight:700"')+'>'+(uni?'áno':'NIE')+'</td></tr>';
+    });
+    document.getElementById('mt').innerHTML=out;
+  }
+  window.addEventListener('resize',measure);
+  window.addEventListener('load',measure);
+  setTimeout(measure,260); measure();
+})();
+</script>
+</body>
+</html>

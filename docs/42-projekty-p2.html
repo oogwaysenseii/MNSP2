@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 42 — Projektové karty: P2</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;
+        --ease:cubic-bezier(.22,.61,.36,1);
+        --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+        --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.65 var(--sans)}
+  .wrap{max-width:1340px;margin:0 auto;padding:48px 24px 120px}
+  .kicker{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 var(--sans);letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:84ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2{font:800 22px/1.25 var(--sans);letter-spacing:-.01em;margin:54px 0 6px;padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 var(--mono);letter-spacing:.16em;color:var(--amber-6);display:block;margin-bottom:9px}
+  .seclede{font-size:14.5px;color:var(--ink-2);margin:0 0 16px;max-width:92ch}
+  code.i,td code{font:500 12px/1.5 var(--mono);background:#f4f4f5;padding:1px 5px}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:26%}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#78350f}
+  .warn b.h{display:block;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+            margin-bottom:7px;color:#92400e}
+  .fixme{background:#fef2f2;border:1px solid #dc2626;border-left:3px solid #dc2626;
+         padding:16px 20px;margin:18px 0;font-size:14px;color:#7f1d1d}
+  .fixme b.h{display:block;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+             margin-bottom:9px;color:#b91c1c}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  ul.flags li b{color:var(--ink)}
+  .pick{background:#09090b;color:#fff;padding:20px 24px;margin:18px 0 0;display:flex;gap:18px;align-items:flex-start}
+  .pick .p1{font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--amber);flex:none;padding-top:3px}
+  .pick p{margin:0;font-size:14.5px;line-height:1.65;color:#d4d4d8}
+  .pick p b{color:#fff}
+  .vhead{display:flex;align-items:baseline;gap:12px;margin:30px 0 10px;flex-wrap:wrap}
+  .vhead b{font:800 15px/1 var(--sans)}
+  .vhead span{font:700 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .vhead .h{margin-left:auto;font:700 10px/1 var(--mono);letter-spacing:.1em;background:#18181b;color:#fff;padding:6px 10px}
+  .vhead .h b{color:var(--amber);font-weight:700}
+  .to{font-size:13px;color:var(--ink-2);margin:14px 0 0;line-height:1.6;max-width:104ch}
+  .to b{color:var(--ink)}
+  .btn{font:700 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;
+       border:1px solid #d4d4d8;background:#fff;cursor:pointer;margin:0 8px 14px 0}
+  .btn.on{background:#18181b;color:#fff;border-color:#18181b}
+  .stage{background:#fff;border:1px solid #d4d4d8;padding:26px 0 30px;overflow-x:auto}
+  .stage.dark{background:#f4f4f5}
+  .strip{display:flex;gap:20px;padding:0 26px;width:max-content}
+
+  /* ============ tile ============ */
+  .t{width:334px;flex:none;display:block;text-decoration:none;color:inherit;position:relative;
+     box-shadow:0 22px 52px rgba(0,0,0,0);
+     transition:transform .5s var(--ease),translate .5s var(--ease),box-shadow .5s var(--ease)}
+  .t:hover,.sim .t{transform:translateY(-4px);box-shadow:0 22px 52px rgba(0,0,0,.19)}
+  .ph{position:relative;overflow:hidden;background:#e4e4e7}
+  .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+          transition:transform 1.1s var(--ease)}
+  .t:hover .ph img,.sim .t .ph img{transform:scale(1.07)}
+  .fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+            background:repeating-linear-gradient(-45deg,#e4e4e7 0 10px,#d4d4d8 10px 20px);
+            font:700 9px/1 var(--mono);letter-spacing:.14em;color:#71717a;text-transform:uppercase}
+  .num{position:absolute;left:18px;top:16px;z-index:30}
+  .num span{display:block;font:700 11px/1 var(--mono);letter-spacing:.2em;color:rgba(255,255,255,.82);
+            text-shadow:0 1px 3px rgba(0,0,0,.6)}
+  .num i{display:block;height:2px;width:22px;background:var(--amber);margin-top:7px;
+         transition:width .55s var(--ease)}
+  .t:hover .num i,.sim .t .num i{width:54px}
+  .cat{font:700 10px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;display:block;color:var(--amber)}
+  .ttl{font:800 17px/1.26 var(--sans);letter-spacing:-.015em;margin:9px 0 0;color:#fff}
+  .meta{font:400 10px/1.5 var(--mono);letter-spacing:.13em;text-transform:uppercase;margin:11px 0 0;
+        color:rgba(255,255,255,.74)}
+  .meta s{text-decoration:none;padding:0 6px;color:rgba(255,255,255,.34)}
+  .reveal{max-height:0;overflow:hidden;opacity:0;
+          transition:max-height .5s var(--ease),opacity .5s var(--ease),margin-top .5s var(--ease)}
+  .t:hover .reveal,.sim .t .reveal{max-height:34px;opacity:1;margin-top:13px}
+  .reveal span{display:inline-flex;align-items:center;gap:7px;border-bottom:1px solid var(--amber);
+               padding-bottom:6px;font:700 10px/1 var(--mono);letter-spacing:.18em;color:#fff}
+  .reveal em{font-style:normal;transition:transform .3s var(--ease)}
+  .t:hover .reveal em,.sim .t .reveal em{transform:translateX(4px)}
+
+  /* ---- dnešný stav: prechod ---- */
+  .NOW .ph{height:400px}
+  .NOW .scrim{position:absolute;inset:0;z-index:10;transition:opacity .5s var(--ease);
+    background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.6) 20%,transparent 42%)}
+  .NOW .t:hover .scrim,.NOW.sim .t .scrim{opacity:.92}
+  .NOW .box{position:absolute;left:22px;right:22px;bottom:20px;z-index:20}
+
+  /* ---- P2: plný panel na fotke ---- */
+  .P2 .ph{height:400px}
+  .P2 .box{position:absolute;left:0;right:0;bottom:0;z-index:20;
+           background:rgba(0,0,0,.8);padding:20px 22px}
+
+  /* ---- P2b: ten istý panel, ale pod fotkou ---- */
+  .P2B .ph{height:250px}
+  .P2B .box{position:relative;background:rgba(0,0,0,.8);padding:20px 22px}
+
+  /* ---- P2c: pod fotkou, plná čierna ---- */
+  .P2C .ph{height:250px}
+  .P2C .box{position:relative;background:#09090b;padding:20px 22px;
+            transition:background .35s var(--ease)}
+  .P2C .t:hover .box,.P2C.sim .t .box{background:#18181b}
+  .P2C .rule{position:absolute;left:0;right:0;top:0;height:2px;background:var(--amber);
+             transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease)}
+  .P2C .t:hover .rule,.P2C.sim .t .rule{transform:scaleX(1)}
+
+  .swatch{display:flex;gap:0;margin:14px 0;border:1px solid var(--line)}
+  .swatch div{flex:1;padding:16px 14px;font:700 10px/1.5 var(--mono);letter-spacing:.1em;
+              text-transform:uppercase;color:#fff;text-align:center}
+  .swatch .lbl{display:block;font-size:9px;opacity:.7;margin-top:6px;letter-spacing:.08em}
+
+  @media(max-width:560px){.wrap{padding:28px 16px 80px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 42 · Projektové karty — P2</p>
+  <h1>P2 naživo</h1>
+  <p class="lede">Plný panel s ostrou hornou hranou namiesto prechodu, podľa špecifikácie z návrhu 12.
+     Vykreslený v skutočnej šírke 334 px — a vyskúšaný aj v novej pozícii pod fotkou,
+     kde narazí na jednu vec.</p>
+  <span class="status">Stav: <b>&nbsp;návrh — P2 nikdy nebol nasadený</b></span>
+
+  <div class="warn">
+    <b class="h">Pre poriadok: na stránke je stále prechod, nie P2</b>
+    V <code class="i">ProjectTile</code> je dnes
+    <code class="i">linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.6) 20%, transparent 42%)</code>
+    s krytím 0,92 pri prejdení myšou — teda verzia z návrhov 10/11. P2 z návrhu 12 zostal
+    neaplikovaný, takže to nižšie je prvý raz, čo ho vidíte vykresleného.
+  </div>
+
+  <p style="margin:22px 0 0">
+    <button class="btn" id="simBtn">Zapnúť stav pri prejdení myšou</button>
+    <span style="font-size:13px;color:var(--muted)">— prepne všetky karty naraz</span>
+  </p>
+
+  <!-- ============================================================ -->
+  <h2><span class="no">01 — POROVNANIE</span>Prechod verzus plný panel</h2>
+
+  <div class="vhead"><b>Dnes</b><span>prechod zdola · nasadené</span>
+    <span class="h">PANEL <b id="hNOW">—</b></span></div>
+  <div class="stage"><div class="strip NOW" id="sNOW"></div></div>
+
+  <div class="vhead"><b>P2</b><span>plný panel na fotke · návrh 12</span>
+    <span class="h">PANEL <b id="hP2">—</b></span></div>
+  <div class="stage"><div class="strip P2" id="sP2"></div></div>
+  <p class="to"><b>Čo sa zmenilo:</b> zmizla samostatná vrstva s prechodom. Farba
+     <code class="i">rgba(0,0,0,.8)</code> sedí priamo na textovom bloku, ten ide cez celú šírku
+     a odsadenie 20 / 22 px si nesie zvnútra. Horná hrana je ostrá a kopíruje výšku textu.<br>
+     <b>Prínos oproti prechodu:</b> metadáta sú čitateľné aj nad svetlou oblohou — prechod mal
+     v hornej časti krytie 0,6 a pri bielej fotke tam text plával.<br>
+     <b>Riziko:</b> panel je viditeľný obdĺžnik, takže dlaždica sa opticky rozpadne na dve časti.
+     Pri trojriadkovom názve zaberie veľkú časť fotky.</p>
+
+  <!-- ============================================================ -->
+  <h2><span class="no">02 — P2 POD FOTKOU</span>Čo sa stane, keď panel zíde z fotky</h2>
+  <p class="seclede">Minule ste chceli text vo vlastnom boxe pod fotkou. Logická kombinácia je
+     „P2, ale nižšie“. Tu je — a hneď aj to, prečo to takto nejde.</p>
+
+  <div class="vhead"><b>P2b</b><span>ten istý panel, pod fotkou · nefunguje</span>
+    <span class="h">KARTA <b id="hP2B">—</b></span></div>
+  <div class="stage dark"><div class="strip P2B" id="sP2B"></div></div>
+
+  <div class="fixme">
+    <b class="h">80 % čierna funguje len na fotke</b>
+    <code class="i">rgba(0,0,0,.8)</code> je <b>priesvitná</b> — presne o to v P2 ide, aby cez panel
+    bolo tušiť fotku a dlaždica nepôsobila ako dva zlepené obdĺžniky. Lenže pod fotkou už nie je
+    fotka. Panel vtedy presvitá na podklad stránky a z čiernej sa stane <b>sivá</b>.
+    <div class="swatch">
+      <div style="background:#09090b">#09090B<span class="lbl">P2 na tmavej fotke</span></div>
+      <div style="background:rgba(0,0,0,.8)">rgba(0,0,0,.8) na bielej<span class="lbl">= #333333</span></div>
+      <div style="background:rgba(0,0,0,.8);background-color:#333">#333333<span class="lbl">to isté, bez priesvitnosti</span></div>
+    </div>
+    Na bielej stránke z nej vyjde <code class="i">#333333</code>, na sivom páse ešte svetlejšia.
+    Vyzerá to ako nedotiahnutá čierna, nie ako zámer — a pri rolovaní cez rôzne podklady by panel
+    menil odtieň.
+  </div>
+
+  <div class="vhead"><b>P2c</b><span>pod fotkou, plná čierna · riešenie</span>
+    <span class="h">KARTA <b id="hP2C">—</b></span></div>
+  <div class="stage dark"><div class="strip P2C" id="sP2C"></div></div>
+  <p class="to"><b>Oprava:</b> priesvitnosť sa zahodí a panel dostane plnú
+     <code class="i">#09090B</code>. Tým prestane byť „P2“ v pôvodnom zmysle — jeho podstatou bola
+     práve tá priesvitnosť — a stane sa z neho samostatná čierna karta.<br>
+     <b>Pridané hover efekty</b>, keďže panel už nemá fotku, ktorá by sa hýbala pod ním: amber linka
+     sa vykreslí zľava doprava po hornej hrane panela a panel zosvetlie na
+     <code class="i">#18181B</code>.<br>
+     <b>Pozor:</b> toto je presne variant C z návrhu 41. Ak sa vám páči, rozhodnutie je už hotové.</p>
+
+  <div class="pick">
+    <span class="p1">Moja voľba</span>
+    <p><b>P2 na fotke, nie pod ňou.</b> P2 má zmysel presne tam, kde bol navrhnutý — ako plný
+       priesvitný panel na fotografii. Vyrieši čitateľnosť nad svetlou oblohou, čo prechod nevie,
+       a tá priesvitnosť drží dlaždicu pohromade ako jeden objekt.
+       <br><br>
+       Pod fotku ho presúvať nemá zmysel: buď stratí priesvitnosť a je z neho obyčajná čierna karta
+       (čo už máme ako variant C v návrhu 41), alebo si ju nechá a zošedne. <b>Takže si vyberte
+       podľa toho, čo chcete</b> — ak má text zostať na fotke, berte P2; ak má ísť pod ňu,
+       berte niektorý variant z návrhu 41 a na P2 zabudnite.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2><span class="no">03 — NAMERANÉ</span>Výška panela podľa dĺžky názvu</h2>
+  <p class="seclede">Dlaždica má 400 px. Panel rastie s dĺžkou názvu a pri prejdení myšou ešte
+     o riadok „Zobraziť“.</p>
+  <table>
+    <tr><th>Prípad</th><th>V pokoji</th><th>Pri prejdení myšou</th><th>Podiel z dlaždice (hover)</th></tr>
+    <tr><td>Dvojriadkový názov — Detva</td><td><b>106 px</b></td><td><b>146 px</b></td><td>37 %</td></tr>
+    <tr><td>Trojriadkový názov — SENIOR ACTIVE</td><td><b>149 px</b></td><td><b>189 px</b></td><td><b>47 %</b></td></tr>
+  </table>
+  <div class="warn">
+    <b class="h">Moje čísla nesedia s návrhom 12 a nevyriešil som prečo</b>
+    Návrh 12 uvádzal 137 px pri dvojriadkovom a 161 px pri trojriadkovom názve, plus 47 px
+    pri prejdení myšou. Ja tu meriam <b>106 / 149 px</b> a prírastok <b>40 px</b>.
+    Rozdiel šírky (334 vs 337 px) to nevysvetľuje — to je 1 %. Pravdepodobne mal vtedajší
+    zástupca dlaždice trochu inú veľkosť písma alebo sa metadáta lámali na dva riadky.
+    <b>Neoveril som to spätne</b>, takže ak sa o výšku opierate, premerajte ju až na skutočnom
+    komponente. Čísla v tabuľke vyššie sú z tohto dokumentu, nie z bežiacej stránky.
+    <br><br>
+    Čo platí tak či tak: <b>pri trojriadkovom názve a prejdení myšou zakryje panel 47 % fotky.</b>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2><span class="no">04 — VLAJKY</span></h2>
+  <ul class="flags">
+    <li><b>P2 je stále len návrh.</b> Ak ho chcete, platí implementačná časť z návrhu 12:
+        zmazať vrstvu na riadkoch 79–82 a zmeniť jeden <code class="i">className</code> na textovom
+        bloku. Dve zmeny, žiadny nový súbor.</li>
+    <li><b>Krytie 0,8 je odhad, nie meranie.</b> Návrh 12 to hovoril tiež: pri slabo čitateľnom texte
+        zvýšiť na 0,85, pri príliš ťažkom paneli znížiť na 0,72. Posúdiť sa to dá až na vašich
+        fotkách, nie na šrafovanom zástupcovi v tomto dokumente.</li>
+    <li><b>Trojriadkový názov zaberie veľa fotky.</b> SENIOR ACTIVE Hriňová je najhorší prípad
+        a je v ukážke zámerne. Ak vám panel príde privysoký, riešenie je
+        <code class="i">line-clamp-2</code> na názve — ale stratí sa tým lokalita na konci názvu.</li>
+    <li><b>P2 aj P2c platia pre karusel aj pre mriežku na <code class="i">/portfolio</code></b> —
+        obe používajú ten istý <code class="i">ProjectTile</code>.</li>
+  </ul>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var P=[
+    {t:'Zariadenie sociálnych služieb Detva',c:'Občianske stavby',
+     m:['Detva','Rok 2026','€ 4.5M','18 mesiacov'],img:'assets/Domov-socialnych-sluzieb-Detva.webp'},
+    {t:'Zariadenie pre seniorov a domov sociálnych služieb SENIOR ACTIVE Hriňová',c:'Občianske stavby',
+     m:['Hriňová','Rok 2025','€ 450 000','4 mesiace'],img:'assets/rekonstrukcia-domovu-dochodcov-senior-active-hrinova.webp'},
+    {t:'Novohradské múzeum a galéria Lučenec',c:'Občianske stavby',
+     m:['Lučenec','Rok 2025','€ 1.2M','6 mesiacov'],img:'assets/Rekonstrukcia-novohradskeho-muzea-Lucenec.webp'},
+    {t:'Rekonštrukcia rodinného domu Hriňová',c:'Rodinné domy',
+     m:['Hriňová','Rok 2025'],img:'assets/kompletna-rekonstrukcia-domu-hrinova.webp'},
+    {t:'Hrubá stavba Dúbravy',c:'Rodinné domy',
+     m:['Dúbravy','Rok 2023'],img:'assets/hruba-stavba-rd-dubravy.webp'},
+    {t:'Rodinný dom Banská Bystrica',c:'Rodinné domy',
+     m:['Banská Bystrica','Rok 2023'],img:'assets/rodinny-dom-banska-bystrica-slnecne-strane.webp'}
+  ];
+  function meta(m){return m.map(function(v,i){return (i?'<s>·</s>':'')+v;}).join('');}
+  function inner(p){
+    return '<span class="cat">'+p.c+'</span>'+
+      '<h3 class="ttl">'+p.t+'</h3>'+
+      '<p class="meta">'+meta(p.m)+'</p>'+
+      '<div class="reveal"><span>Zobraziť <em>→</em></span></div>';
+  }
+  function photo(p,i,extra){
+    return '<div class="ph">'+
+      '<img src="'+p.img+'" alt="'+p.t+'" onerror="this.outerHTML=\'<span class=&quot;fallback&quot;>fotka</span>\'">'+
+      (extra||'')+
+      '<div class="num"><span>'+String(i+1).padStart(2,'0')+'</span><i></i></div>';
+  }
+
+  /* dnes — prechod, box vnútri fotky */
+  document.getElementById('sNOW').innerHTML=P.map(function(p,i){
+    return '<a class="t">'+photo(p,i,'<div class="scrim"></div>')+
+      '<div class="box">'+inner(p)+'</div></div></a>';}).join('');
+
+  /* P2 — plný panel vnútri fotky */
+  document.getElementById('sP2').innerHTML=P.map(function(p,i){
+    return '<a class="t">'+photo(p,i)+'<div class="box">'+inner(p)+'</div></div></a>';}).join('');
+
+  /* P2b — ten istý panel pod fotkou */
+  document.getElementById('sP2B').innerHTML=P.map(function(p,i){
+    return '<a class="t">'+photo(p,i)+'</div><div class="box">'+inner(p)+'</div></a>';}).join('');
+
+  /* P2c — pod fotkou, plná čierna + hover */
+  document.getElementById('sP2C').innerHTML=P.map(function(p,i){
+    return '<a class="t">'+photo(p,i)+'</div>'+
+      '<div class="box"><span class="rule"></span>'+inner(p)+'</div></a>';}).join('');
+
+  var on=false,b=document.getElementById('simBtn');
+  b.onclick=function(){
+    on=!on;
+    document.querySelectorAll('.strip').forEach(function(s){s.classList.toggle('sim',on);});
+    b.className=on?'btn on':'btn';
+    b.textContent=on?'Vypnúť stav pri prejdení myšou':'Zapnúť stav pri prejdení myšou';
+    setTimeout(measure,650);
+  };
+
+  function measure(){
+    var R=function(e){return e.getBoundingClientRect();};
+    var g=function(sel){var e=document.querySelector(sel);return e?Math.round(R(e).height):0;};
+    document.getElementById('hNOW').textContent=g('#sNOW .box')+' PX';
+    document.getElementById('hP2').textContent=g('#sP2 .box')+' PX';
+    document.getElementById('hP2B').textContent=g('#sP2B .t')+' PX';
+    document.getElementById('hP2C').textContent=g('#sP2C .t')+' PX';
+
+  }
+  window.addEventListener('resize',measure);
+  window.addEventListener('load',measure);
+  setTimeout(measure,260); measure();
+})();
+</script>
+</body>
+</html>

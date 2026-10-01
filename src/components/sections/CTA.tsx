@@ -23,7 +23,7 @@ export function CTA({
           with the projects section above it. */}
       <div className="mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8">
         <div className="relative flex flex-col gap-7 overflow-hidden bg-zinc-950
-          px-10 py-10 sm:px-10 lg:flex-row lg:items-center lg:gap-16">
+          px-5 py-5 sm:px-10 sm:py-10 lg:flex-row lg:items-center lg:gap-16">
 
           {/* Background shapes — wedge plus three slanted hairlines.
               z-[1] keeps them under both columns (z-[3]); as an absolutely

@@ -39,7 +39,7 @@ export const SERVICES: readonly Service[] = [
     description: 'Kompletná výstavba a rekonštrukcie moderných rodinných domov.',
     tier: 'building',
     imageUrl: '/rodinne-domy/rodinne-domy.webp',
-    highlights: ['Stavba na kľúč', 'Hrubá stavba aj rekonštrukcia'],
+    highlights: ['Stavba domu na kľúč', 'Rekonštrukcie rodinných domov'],
     featured: true,
   },
   {
@@ -50,7 +50,7 @@ export const SERVICES: readonly Service[] = [
     // TODO: replace with a real project photo
     imageUrl:
       'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop&q=80',
-    highlights: ['Bytové a polyfunkčné domy', 'Koordinácia všetkých profesií'],
+    highlights: ['Bytové a polyfunkčné budovy', 'Výstavba a rekonštrukcie'],
   },
   {
     slug: 'komercna-vystavba',
@@ -61,7 +61,7 @@ export const SERVICES: readonly Service[] = [
     // TODO: replace with a real project photo
     imageUrl:
       'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop&q=80',
-    highlights: ['Prevádzky a predajne', 'Realizácia počas prevádzky'],
+    highlights: ['Obchodné objekty', 'Komerčná výstavba a rekonštrukcie '],
   },
   {
     slug: 'priemyselne-objekty',
@@ -71,7 +71,7 @@ export const SERVICES: readonly Service[] = [
     // TODO: replace with a real project photo
     imageUrl:
       'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop&q=80',
-    highlights: ['Haly a sklady', 'Základy a monolitické konštrukcie'],
+    highlights: ['Priemyselná výstavba', 'Rekonštrukcie priemyselných objektov'],
   },
   {
     slug: 'obcianske-stavby',

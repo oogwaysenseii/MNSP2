@@ -222,11 +222,13 @@ export function Hero() {
             {/* mt-auto drží tlačidlá na spodnej hrane radu, aby ostali
                 zarovnané s panelom aj so šípkami. Voľné miesto na slajde 01
                 sa tak zbiera nad nimi, nie pod textom. */}
-            <div className="flex flex-wrap gap-4 mt-10 lg:mt-auto">
+            {/* Pod sm sú tlačidlá pod sebou: jednostĺpcová mriežka so šírkou
+                podľa obsahu natiahne spodné tlačidlo na šírku horného. */}
+            <div className="grid w-fit grid-cols-1 gap-4 sm:flex sm:flex-wrap mt-10 lg:mt-auto">
               <Link
                 id="hero-cta-contact"
                 href="/kontakt"
-                className="group inline-flex items-center gap-2 px-6 py-3.5 bg-amber-500 text-zinc-950 text-sm font-semibold hover:bg-amber-400 transition-all shadow-lg hover:shadow-amber-500/15 cursor-pointer"
+                className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-amber-500 text-zinc-950 text-sm font-semibold hover:bg-amber-400 transition-all shadow-lg hover:shadow-amber-500/15 cursor-pointer"
               >
                 {'Nezáväzne dopytovať cenu'}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -234,7 +236,7 @@ export function Hero() {
               <Link
                 id="hero-cta-portfolio"
                 href="/portfolio"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold border border-white/25 transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold border border-white/25 transition-all cursor-pointer"
               >
                 {'Zobraziť naše referencie'}
               </Link>

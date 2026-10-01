@@ -42,7 +42,7 @@ export const STANDARDS = [
     id: 'standard',
     name: 'Zlatá stredná cesta',
     multiplier: 1.0,
-    desc: 'Moderné kvalitné materiály, výborný pomer cena / výkon.',
+    desc: 'Moderné kvalitné materiály, výborný pomer cena / kvalita.',
   },
   {
     id: 'premium',
