@@ -125,7 +125,7 @@ export function Header() {
               scroll doesn't trigger a new network request.
             */}
             <Image
-                src="/MNSP-logo-tmava.webp"
+                src="/MNSP-logo-tmava-v2.webp"
                 alt="MNSP | Stavby a rekonštrukcie"
                 width={252}
                 height={84}
@@ -133,7 +133,7 @@ export function Header() {
                 className={`h-[40px] w-auto max-w-none ${isSolid ? "hidden" : "block"}`}
             />
             <Image
-                src="/MNSP-logo-svetla.webp"
+                src="/MNSP-logo-svetla-v2.webp"
                 alt="MNSP | Stavby a rekonštrukcie"
                 width={252}
                 height={84}
