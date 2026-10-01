@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+// Inter, self-hosted (variable — every weight from one file). No request to
+// Google's servers; only the unicode subsets a page actually uses download.
+import '@fontsource-variable/inter';
 import './globals.css';
 import { Header } from '@/src/components/layout/Header';
 import { Footer } from '@/src/components/layout/Footer';

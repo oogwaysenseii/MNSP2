@@ -55,7 +55,7 @@ export default function BlogSection({ filterCategory, hideFilters, showSidebar, 
               {badge || "NÁŠ BLOG"}
             </span>
               <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-zinc-950 tracking-tight">
-                {title || "Zistite viac o našich postupoch"}
+                {title || "Prečítajte si viac"}
               </h3>
             </div>
             <Link

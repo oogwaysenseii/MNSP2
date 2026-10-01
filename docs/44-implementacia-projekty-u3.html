@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Návrh 44 — Implementácia U3</title>
+<style>
+  :root{--ink:#0b0b0c;--ink-2:#3f3f46;--muted:#71717a;--line:#e4e4e7;--paper:#f4f4f2;
+        --amber:#f59e0b;--amber-6:#d97706;--amber-7:#b45309;
+        --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+        --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.65 var(--sans)}
+  .wrap{max-width:1180px;margin:0 auto;padding:48px 24px 120px}
+  .kicker{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber-6);margin:0}
+  h1{font:800 38px/1.12 var(--sans);letter-spacing:-.02em;margin:14px 0 12px}
+  .lede{font-size:17px;color:var(--ink-2);max-width:84ch;margin:0}
+  .status{display:inline-flex;margin-top:20px;padding:7px 14px;background:#18181b;color:#fff;
+          font:700 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+  .status b{color:var(--amber)}
+  h2{font:800 22px/1.25 var(--sans);letter-spacing:-.01em;margin:54px 0 6px;padding-top:22px;border-top:2px solid var(--ink)}
+  h2 .no{font:700 12px/1 var(--mono);letter-spacing:.16em;color:var(--amber-6);display:block;margin-bottom:9px}
+  .seclede{font-size:14.5px;color:var(--ink-2);margin:0 0 16px;max-width:92ch}
+  code.i,td code{font:500 12px/1.5 var(--mono);background:#f4f4f5;padding:1px 5px}
+  .file{display:inline-flex;align-items:center;gap:8px;background:#18181b;color:#fff;
+        font:700 11px/1 var(--mono);letter-spacing:.06em;padding:7px 11px;margin:0 0 10px}
+  .file b{color:var(--amber);font-weight:700}
+  pre{background:#18181b;color:#e4e4e7;padding:16px 18px;overflow-x:auto;margin:0 0 14px;
+      font:400 12.5px/1.72 var(--mono);border-left:3px solid var(--amber)}
+  pre.del{border-left-color:#dc2626;opacity:.92}
+  pre .c{color:#71717a} pre .a{color:#86efac} pre .r{color:#fca5a5} pre .y{color:#fcd34d}
+  .lbl{font:700 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+       display:block;margin:0 0 7px}
+  .lbl.rm{color:#b91c1c} .lbl.add{color:#15803d}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);margin:14px 0}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top}
+  th{background:#fafafa;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  td:first-child{font-weight:600;width:26%}
+  .warn{background:#fffbeb;border:1px solid var(--amber);border-left:3px solid var(--amber);
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#78350f}
+  .warn b.h{display:block;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+            margin-bottom:7px;color:#92400e}
+  .good{background:#f0fdf4;border:1px solid #16a34a;border-left:3px solid #16a34a;
+        padding:14px 18px;margin:16px 0;font-size:14px;color:#14532d}
+  .good b.h{display:block;font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+            margin-bottom:7px;color:#166534}
+  ul.flags{list-style:none;padding:0;margin:0}
+  ul.flags li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2);position:relative}
+  ul.flags li:before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--amber)}
+  ul.flags li b{color:var(--ink)}
+  ul.flags li.red:before{background:#dc2626}
+  ol.chk{list-style:none;counter-reset:c;padding:0;margin:0}
+  ol.chk li{counter-increment:c;position:relative;padding:12px 0 12px 44px;border-bottom:1px solid var(--line);
+            font-size:14px;color:var(--ink-2)}
+  ol.chk li:before{content:counter(c,decimal-leading-zero);position:absolute;left:0;top:13px;
+                   font:700 11px/1 var(--mono);letter-spacing:.1em;color:var(--amber-7);
+                   border:1px solid var(--line);padding:5px 6px;background:#fff}
+  ol.chk li b{color:var(--ink)}
+  ol.chk li em{font-style:normal;font:500 12px/1.6 var(--mono);color:var(--muted);display:block;margin-top:4px}
+  .steps{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0}
+  .steps span{font:700 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
+              background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);padding:9px 12px}
+  @media(max-width:560px){.wrap{padding:28px 16px 80px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Návrh 44 · Implementácia · ProjectTile</p>
+  <h1>U3 — rozpísané do krokov</h1>
+  <p class="lede">P2 panel s orezaným názvom a rovnakou výškou na každej karte. Mení sa jediný
+     komponent — <code class="i">ProjectTile</code> v <code class="i">Projects.tsx</code>.
+     Tri povinné zmeny, jedna voliteľná.</p>
+  <span class="status">Cieľ: <b>&nbsp;U3 · panel 128 px · rovnaký na všetkých kartách</b></span>
+
+  <div class="good">
+    <b class="h">Jedna oprava oproti návrhu 43</b>
+    V návrhu 43 som dával <code class="i">min-h-[128px]</code> na panel. <b>Na skutočnom komponente
+    by to nestačilo.</b> Názov je tam <code class="i">text-[18px] lg:text-[clamp(17px,1.45vw,21px)]</code>,
+    takže pri širokom okne narastie až na 21 px — dvojriadkový názov potom potrebuje 138 px, ale
+    jednoriadkový by na svojom 128 px dne zostal. Panely by sa opäť rozišli.
+    <br><br>
+    Riešenie je lepšie a jednoduchšie: <b>pevná výška ide na názov, nie na panel.</b>
+    <code class="i">min-h-[2.52em]</code> je presne dva riadky pri
+    <code class="i">leading-[1.26]</code> (2 × 1,26) a keďže <code class="i">em</code> sa počíta
+    z vlastnej veľkosti písma, <b>škáluje sa samo</b> s tým clampom. Panel potom žiadne
+    <code class="i">min-height</code> nepotrebuje — jeho výška vyjde rovnaká sama.
+    <br><br>
+    Overené pri 17, 18 aj 21 px: panel 128 / 130 / 138 px a na všetkých šiestich kartách rovnaký.
+  </div>
+
+  <div class="steps">
+    <span>01 · zmazať prechod</span><span>02 · panel</span><span>03 · názov</span>
+    <span>04 · mono (voliteľné)</span><span>05 · kontrola</span>
+  </div>
+
+  <!-- ============================================================ 01 -->
+  <h2><span class="no">01 — ZMAZAŤ PRECHOD</span>Vrstva so stmavením zaniká</h2>
+  <span class="file">src/components/sections/Projects.tsx · <b>riadky 79–82</b></span>
+  <span class="lbl rm">Zmazať celý element vrátane komentára</span>
+<pre class="del">{<span class="c">/* stmavenie zdola */</span>}
+<span class="r">&lt;div className="absolute inset-0 transition-opacity duration-500
+  bg-[linear-gradient(to_top,rgba(0,0,0,.92)_0%,rgba(0,0,0,.6)_20%,transparent_42%)]
+  group-hover/tile:opacity-[0.92]" /&gt;</span></pre>
+  <p class="seclede">Farba sa presúva priamo na textový blok, takže samostatná vrstva nemá čo robiť.
+     Zanikne s ňou aj prechod krytia pri prejdení myšou — to je zámer, panel je nepriehľadný rovnako
+     v pokoji aj pri hoveri.</p>
+
+  <!-- ============================================================ 02 -->
+  <h2><span class="no">02 — PANEL</span>Textový blok cez celú šírku</h2>
+  <span class="file">src/components/sections/Projects.tsx · <b>riadok 94</b></span>
+  <span class="lbl rm">Predtým — blok odsadený od okrajov</span>
+<pre class="del">&lt;div className="<span class="r">absolute bottom-5 left-[22px] right-[22px] z-20</span>"&gt;</pre>
+  <span class="lbl add">Potom — blok cez celú šírku, farba a odsadenie na ňom</span>
+<pre>&lt;div className="<span class="a">absolute inset-x-0 bottom-0 z-20 bg-black/80 px-[22px] py-5</span>"&gt;</pre>
+  <table>
+    <tr><th>Trieda</th><th>Čo robí</th></tr>
+    <tr><td><code>inset-x-0 bottom-0</code></td><td>cez celú šírku, prisadnuté k spodku fotky</td></tr>
+    <tr><td><code>bg-black/80</code></td><td>80 % čierna. Priesvitnosť je zámer — cez panel je tušiť
+        fotku, takže dlaždica nepôsobí ako dva zlepené obdĺžniky</td></tr>
+    <tr><td><code>px-[22px] py-5</code></td><td>22 px po stranách, 20 px hore aj dole</td></tr>
+    <tr><td>žiadne <code>min-h</code></td><td>výšku určí názov — viď krok 03</td></tr>
+  </table>
+
+  <!-- ============================================================ 03 -->
+  <h2><span class="no">03 — NÁZOV</span>Dva riadky, vždy</h2>
+  <span class="file">src/components/sections/Projects.tsx · <b>riadok 99</b></span>
+  <span class="lbl rm">Predtým</span>
+<pre class="del">&lt;h3 className="mt-[9px] text-[18px] lg:text-[clamp(17px,1.45vw,21px)] font-extrabold
+  leading-[1.26] tracking-[-0.015em] text-white"&gt;</pre>
+  <span class="lbl add">Potom — pribudli dve triedy</span>
+<pre>&lt;h3 className="mt-[9px] <span class="a">line-clamp-2 min-h-[2.52em]</span> text-[18px]
+  lg:text-[clamp(17px,1.45vw,21px)] font-extrabold
+  leading-[1.26] tracking-[-0.015em] text-white"&gt;</pre>
+  <table>
+    <tr><th>Trieda</th><th>Čo robí</th></tr>
+    <tr><td><code>line-clamp-2</code></td><td><b>strop.</b> Dlhší názov sa oreže na dva riadky
+        s výpustkou, takže panel nikdy nenarastie</td></tr>
+    <tr><td><code>min-h-[2.52em]</code></td><td><b>dno.</b> 2 × <code>leading-[1.26]</code>.
+        Jednoriadkový názov zaberie miesto dvoch, takže panel nikdy neklesne.
+        <code>em</code> sa počíta z vlastnej veľkosti písma, takže to drží aj pri
+        <code>clamp(17px,1.45vw,21px)</code></td></tr>
+  </table>
+  <div class="warn">
+    <b class="h">Obe triedy sú potrebné, samotné orezanie nestačí</b>
+    Zistil som to až meraním: s <code class="i">line-clamp-2</code> a bez
+    <code class="i">min-h</code> vyšli panely 106 a 128 px, lebo <b>tri zo šiestich názvov majú
+    jeden riadok</b> (Hrubá stavba Dúbravy, Rodinný dom Banská Bystrica, Rekonštrukcia rodinného
+    domu Hriňová). Orezanie rieši len dlhé názvy.
+  </div>
+
+  <!-- ============================================================ 04 -->
+  <h2><span class="no">04 — MONO</span>Voliteľné, ale ste práve v tých riadkoch</h2>
+  <p class="seclede">V paneli sú štyri prvky s <code class="i">font-mono</code> — kategória (95),
+     metadáta (103), „Zobraziť“ (117) a poradové číslo (86). <b>Žiadny z nich sa monospace
+     nevykresľuje:</b> <code class="i">--font-mono</code> v <code class="i">globals.css</code> vedie
+     cez nedefinované <code class="i">--font-jetbrains-mono</code>, takže je celá deklarácia
+     neplatná a font sa dedí. Je to samostatná chyba, nie súčasť U3 — ale práve v týchto riadkoch ste.</p>
+<pre><span class="c">// navrch súboru, k ostatným konštantám (vedľa EASE)</span>
+<span class="a">/**
+ * Explicitný stack namiesto `font-mono`: --font-mono v globals.css vedie cez
+ * nedefinované --font-jetbrains-mono, takže je celá deklarácia neplatná
+ * a `font-mono` sa potichu vykreslí bezpätkovo. To isté rieši ServicesGrid.
+ */
+const MONO = 'font-[family-name:ui-monospace,SFMono-Regular,Menlo,monospace]';</span>
+
+<span class="c">// potom na riadkoch 86, 95, 103 a 117 nahradiť font-mono za ${MONO}
+// (pozor: tie className sú reťazce v úvodzovkách — treba z nich spraviť šablóny `...`)</span></pre>
+
+  <!-- ============================================================ 05 -->
+  <h2><span class="no">05 — KONTROLA</span></h2>
+  <ol class="chk">
+    <li><b>Panel má rovnakú výšku na všetkých kartách</b> pri 1280 px.
+        <em>[...document.querySelectorAll('[class*=bg-black]')].map(e=&gt;e.getBoundingClientRect().height) — jedna hodnota</em></li>
+    <li><b>A stále rovnakú pri 1600 px a viac</b>, kde clamp vytiahne názov na 21 px.
+        <em>toto je presne to, čo by s min-h na paneli spadlo</em></li>
+    <li><b>Metadáta sedia na jednej linke naprieč kartami.</b>
+        <em>getBoundingClientRect().bottom na .meta — rovnaká hodnota na všetkých</em></li>
+    <li><b>Prechodová vrstva je preč.</b>
+        <em>v dlaždici nesmie byť žiadny element s linear-gradient</em></li>
+    <li><b>Horná hrana panela je ostrá a panel ide od kraja po kraj.</b></li>
+    <li><b>SENIOR ACTIVE Hriňová sa oreže s výpustkou.</b>
+        <em>pozor: reže uprostred slova — „…SENIOR ACTIV…“. Je to očakávané</em></li>
+    <li><b>Pri prejdení myšou narastie panel o 40 px</b> a rovnako na každej karte.</li>
+    <li><b>Na <code class="i">/portfolio</code> v mriežke to platí tiež</b> — ten istý komponent.
+        Tam je rovnaká výška ešte dôležitejšia, karty stoja v riadkoch nad sebou.</li>
+    <li><b>Ak ste spravili krok 04:</b> <code class="i">getComputedStyle(el).fontFamily</code>
+        na kategórii musí začínať <code class="i">ui-monospace</code>.</li>
+  </ol>
+
+  <!-- ============================================================ 06 -->
+  <h2><span class="no">06 — VLAJKY</span></h2>
+  <ul class="flags">
+    <li class="red"><b>Názov sa oreže uprostred slova.</b> <code class="i">line-clamp</code> reže
+        podľa riadku, nie podľa významu — pri SENIOR ACTIVE Hriňová vyjde
+        <code class="i">…SENIOR ACTIV…</code> a z názvu zmizne lokalita. Je v metadátach hneď pod
+        ním a plný názov je na detaile projektu, ale <b>je to strata obsahu a rozhodnutie je vaše.</b>
+        Alternatíva: skrátiť názvy v <code class="i">src/data/projects.ts</code>.</li>
+    <li><b>Fotka je <code class="i">h-[340px] lg:h-[400px]</code></b>, takže podiel panela sa líši:
+        pri 400 px zaberie 128 px <b>32 %</b>, pri 340 px <b>38 %</b>. Moje čísla z návrhu 43
+        boli počítané na 400 px.</li>
+    <li><b>Krytie 0,8 je odhad.</b> Ak bude text na niektorých fotkách slabý, zvýšte na
+        <code class="i">bg-black/85</code>; ak bude panel ťažký, skúste
+        <code class="i">bg-black/[0.72]</code>. Posúdiť sa to dá len na vašich fotkách.</li>
+    <li><b>Metadáta sa dnes zmestia na jeden riadok — overené na všetkých šiestich projektoch</b>
+        (žiadny sa nezalamuje, všetky majú 15 px). Nemeral som, koľko miesta zostáva navyše, takže
+        neviem povedať, aká dlhá kombinácia lokality a rozpočtu by to pretrhla. Ak sa raz zalomí
+        na dva riadky, panel narastie o ~15 px — na všetkých kartách rovnako, takže uniformita
+        vydrží.</li>
+    <li><b>Tri zo šiestich projektov nemajú rozpočet ani trvanie</b> — v dátach je pri nich
+        <code class="i">TODO: doplniť</code>. Karta to znesie, ale doplnenie dát spraví sekciu
+        krajšou než ktorákoľvek z týchto zmien.</li>
+  </ul>
+
+</div>
+</body>
+</html>

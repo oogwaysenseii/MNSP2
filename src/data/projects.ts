@@ -73,8 +73,8 @@ export const projectsData: Project[] = [
     category: 'Občianske stavby',
     location: 'Detva',
     year: 2026,
-    duration: '18 mesiacov',
-    budgetString: '€ 4.5M',
+    duration: '',
+    budgetString: '',
     imageUrl: '/Domov-socialnych-sluzieb-Detva.webp',
     gallery: [
       { url: '/Domov-socialnych-sluzieb-Detva.webp', caption: 'Pohľad na hlavný vchod' },
@@ -129,8 +129,8 @@ export const projectsData: Project[] = [
     category: 'Občianske stavby',
     location: 'Lučenec',
     year: 2025,
-    duration: '6 mesiacov',
-    budgetString: '€ 1.2M',
+    duration: '',
+    budgetString: ' ',
     imageUrl: '/Rekonstrukcia-novohradskeho-muzea-Lucenec.webp'
   },
   {
@@ -148,8 +148,8 @@ export const projectsData: Project[] = [
     category: 'Občianske stavby',
     location: 'Hriňová',
     year: 2025,
-    duration: '4 mesiace',
-    budgetString: '€ 450 000',
+    duration: '',
+    budgetString: '',
     imageUrl: '/rekonstrukcia-domovu-dochodcov-senior-active-hrinova.webp',
     // Chronologicky podľa EXIF (17. 2. – 7. 5. 2025). Všetkých 9 fotografií
     // má EXIF, poradie je teda presné.
